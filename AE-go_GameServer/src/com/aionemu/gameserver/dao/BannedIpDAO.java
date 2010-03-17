@@ -16,8 +16,6 @@
  */
 package com.aionemu.gameserver.dao;
 
-import java.sql.Timestamp;
-
 import com.aionemu.commons.database.dao.DAO;
 import com.aionemu.gameserver.model.ban.BannedIP;
 

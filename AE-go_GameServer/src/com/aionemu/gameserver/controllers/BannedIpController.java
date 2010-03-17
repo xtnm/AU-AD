@@ -16,15 +16,9 @@
  */
 package com.aionemu.gameserver.controllers;
 
-import java.sql.Timestamp;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.CopyOnWriteArraySet;
-
 import org.apache.log4j.Logger;
 
 import com.aionemu.commons.database.dao.DAOManager;
-import com.aionemu.commons.utils.NetworkUtils;
 import com.aionemu.gameserver.dao.BannedIpDAO;
 import com.aionemu.gameserver.model.ban.BannedIP;
 
@@ -39,6 +33,7 @@ public class BannedIpController
    /**
     * Logger for this class.
     */
+	@SuppressWarnings("unused")
    private static final Logger      log   = Logger.getLogger(BannedIpController.class);
 
    /**

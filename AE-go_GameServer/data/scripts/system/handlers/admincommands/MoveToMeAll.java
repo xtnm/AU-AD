@@ -37,6 +37,7 @@ public class MoveToMeAll extends AdminCommand
 {
     @Inject
     private TeleportService teleportService;
+    @SuppressWarnings("unused")
     @Inject
     private World   world;
 
