@@ -16,6 +16,7 @@
  */
 package com.aionemu.gameserver.dao;
 
+import java.sql.Timestamp;
 import java.util.Set;
 
 import com.aionemu.commons.database.dao.DAO;

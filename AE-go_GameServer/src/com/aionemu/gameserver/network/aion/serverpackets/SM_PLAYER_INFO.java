@@ -19,6 +19,7 @@ package com.aionemu.gameserver.network.aion.serverpackets;
 import java.nio.ByteBuffer;
 import java.util.List;
 
+import com.aionemu.gameserver.configs.main.GSConfig;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.player.PlayerAppearance;

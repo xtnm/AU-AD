@@ -23,11 +23,16 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
+import com.aionemu.gameserver.controllers.PlayerController;
 import com.aionemu.gameserver.model.ChatType;
+import com.aionemu.gameserver.model.PlayerClass;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_MESSAGE;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_PLAYER_INFO;
 import com.aionemu.gameserver.services.PlayerService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
+import com.aionemu.gameserver.world.World;
+import com.google.inject.Inject;
 import com.google.inject.Injector;
 
 /**
@@ -41,7 +46,6 @@ public class AdminCommandChatHandler implements ChatHandler
 	private static final Logger			log			= Logger.getLogger(AdminCommandChatHandler.class);
 
 	private Map<String, AdminCommand>	commands	= new HashMap<String, AdminCommand>();
-	@SuppressWarnings("unused")
 	private PlayerService				playerService;
 
 	AdminCommandChatHandler(Injector injector)

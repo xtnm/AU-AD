@@ -32,7 +32,6 @@ public class AccountTimeController
    /**
     * Logger for this class.
     */
-   @SuppressWarnings("unused")
    private static final Logger      log   = Logger.getLogger(AccountTimeController.class);
    
    /**
