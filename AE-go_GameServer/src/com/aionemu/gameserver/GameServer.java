@@ -112,7 +112,7 @@ public class GameServer
 		log.info("..................................................");
 		log.info("..................................................");
 		
-		log.warn("Remember to hate Atomics every day, and forever ...");
+		log.warn("Remember to hate Atomics the asshole every day, and forever ...");
 		
 		gs.startServers();
 		GameTimeManager.startClock();
