@@ -16,9 +16,15 @@
  */
 package com.aionemu.gameserver.network.aion.clientpackets;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
+import com.aionemu.commons.database.dao.DAOManager;
 import com.aionemu.gameserver.configs.main.GSConfig;
+import com.aionemu.gameserver.dao.ShopItemsDAO;
 import com.aionemu.gameserver.model.ChatType;
 import com.aionemu.gameserver.model.account.Account;
 import com.aionemu.gameserver.model.account.PlayerAccountData;
@@ -51,6 +57,7 @@ import com.aionemu.gameserver.network.aion.serverpackets.SM_UI_SETTINGS;
 import com.aionemu.gameserver.network.aion.serverpackets.unk.SM_UNK5E;
 import com.aionemu.gameserver.services.ClassChangeService;
 import com.aionemu.gameserver.services.GroupService;
+import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.services.LegionService;
 import com.aionemu.gameserver.services.PlayerService;
 import com.aionemu.gameserver.services.PunishmentService;
@@ -83,6 +90,8 @@ public class CM_ENTER_WORLD extends AionClientPacket
 	private TeleportService		teleportService;
 	@Inject
 	private PunishmentService	punishmentService;
+	@Inject
+	private ItemService			itemService;
 
 	/**
 	 * Constructs new instance of <tt>CM_ENTER_WORLD </tt> packet
@@ -187,6 +196,21 @@ public class CM_ENTER_WORLD extends AionClientPacket
 			}
 
 			client.sendPacket(new SM_INVENTORY_INFO());
+			
+			/*
+			 * Shop Items
+			 */
+			List<Integer> shopItems = DAOManager.getDAO(ShopItemsDAO.class).loadAddedItems(player.getObjectId());
+			
+			if(shopItems.size() > 0)
+			{
+				Iterator<Integer> items = shopItems.iterator();
+				int buffer = 0;
+				while(items.hasNext())
+				{
+					itemService.addItem(player, items.next(), 1, false);
+				}
+			}
 
 			playerService.playerLoggedIn(player);
 
