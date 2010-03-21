@@ -14,46 +14,39 @@
  *  You should have received a copy of the GNU General Public License
  *  along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aionemu.gameserver.unishell;
+package com.aionemu.gameserver.unishell.commands;
 
-import java.net.ServerSocket;
-import java.net.Socket;
-
-import org.apache.log4j.Logger;
+import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_QUIT_RESPONSE;
+import com.aionemu.gameserver.world.World;
+import com.google.inject.Inject;
 
 /**
  * @author xitanium
  *
  */
-public class Unishell implements Runnable
+public class Kick implements UnishellCommand
 {
+
+	@Inject
+	private World			world;
 	
-	private static final Logger log = Logger.getLogger(Unishell.class);
-	private int port;
-	
-	public Unishell(int port)
+	@Override
+	public String execute(String[] params)
 	{
-		this.port = port;
-	}
-	
-	public void run()
-	{
-		try
+		// TODO Auto-generated method stub
+		int targetPlayerId = Integer.parseInt(params[0]);
+		
+		Player target = world.findPlayer(targetPlayerId);
+		
+		if(target == null)
 		{
-			ServerSocket serverSocket = new ServerSocket(this.port);
-			log.info("Unishell listening on port " + this.port);
-			Socket client;
-			while(true)
-			{
-				client = serverSocket.accept();
-				Thread clientHandler = new UnishellClientHandler(client);
-				clientHandler.start();
-			}
+			return "NO_SUCH_PLAYER";
 		}
-		catch(Exception e)
-		{
-			log.error("Cannot start Unishell", e);
-		}
+		
+		target.getClientConnection().close(new SM_QUIT_RESPONSE(), true);
+		
+		return "KICKED " + targetPlayerId;
 		
 	}
 

@@ -14,47 +14,29 @@
  *  You should have received a copy of the GNU General Public License
  *  along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aionemu.gameserver.unishell;
+package com.aionemu.gameserver.unishell.commands;
 
-import java.net.ServerSocket;
-import java.net.Socket;
-
-import org.apache.log4j.Logger;
+import java.util.Map;
 
 /**
  * @author xitanium
  *
  */
-public class Unishell implements Runnable
+public class UnishellCommandIndex
 {
 	
-	private static final Logger log = Logger.getLogger(Unishell.class);
-	private int port;
+	public static Map<String, UnishellCommand> registeredCommands;
 	
-	public Unishell(int port)
+	public static void registerUnishellCommands()
 	{
-		this.port = port;
+		
+		registeredCommands.put("KICK", new Kick());
+		
 	}
 	
-	public void run()
+	public static UnishellCommand getCommand(String name)
 	{
-		try
-		{
-			ServerSocket serverSocket = new ServerSocket(this.port);
-			log.info("Unishell listening on port " + this.port);
-			Socket client;
-			while(true)
-			{
-				client = serverSocket.accept();
-				Thread clientHandler = new UnishellClientHandler(client);
-				clientHandler.start();
-			}
-		}
-		catch(Exception e)
-		{
-			log.error("Cannot start Unishell", e);
-		}
-		
+		return registeredCommands.get(name);
 	}
 
 }

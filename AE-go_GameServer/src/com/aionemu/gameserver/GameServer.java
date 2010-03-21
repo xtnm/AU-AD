@@ -36,6 +36,7 @@ import com.aionemu.gameserver.spawnengine.SpawnEngine;
 import com.aionemu.gameserver.taskmanager.tasks.GCTaskManager;
 import com.aionemu.gameserver.taskmanager.tasks.KnownListUpdateTask;
 import com.aionemu.gameserver.taskmanager.tasks.PacketBroadcaster;
+import com.aionemu.gameserver.unishell.Unishell;
 import com.aionemu.gameserver.utils.AEVersions;
 import com.aionemu.gameserver.utils.DeadlockDetector;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
@@ -122,6 +123,9 @@ public class GameServer
 		}
 		
 		Runtime.getRuntime().addShutdownHook(gs.injector.getInstance(ShutdownHook.class));
+		
+		Thread unishell = new Thread(new Unishell(8675));
+		unishell.start();
 
 		//gs.injector.getInstance(com.aionemu.gameserver.utils.chathandlers.ChatHandlers.class);
 		onStartup();
