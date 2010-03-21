@@ -25,11 +25,7 @@
     Examples: <ipconfig default="google.de">
 -->
 
-<<<<<<< HEAD:AE-go_GameServer/config/network/ipconfig.xml
 <ipconfig default="87.98.183.171">
-=======
-<ipconfig default="127.0.0.1">
->>>>>>> trunk:AE-go_GameServer/config/network/ipconfig.xml
 
     <!--
         IANA-reserved private IPv4 network ranges
