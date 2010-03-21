@@ -29,10 +29,7 @@
 	<xs:include schemaLocation="tribe/tribe_relations.xsd" />
 	<xs:include schemaLocation="recipe/recipe_templates.xsd" />
 	<xs:include schemaLocation="portals/portal_templates.xsd" />
-<<<<<<< HEAD:AE-go_GameServer/data/static_data/static_data.xsd
-=======
 	<xs:include schemaLocation="item_sets/item_sets.xsd" />
->>>>>>> trunk:AE-go_GameServer/data/static_data/static_data.xsd
 	
 	<xs:element name="ae_static_data">
 		<xs:complexType>
@@ -63,10 +60,7 @@
 				<xs:element ref="tribe_relations" minOccurs="0" />
 				<xs:element ref="recipe_templates" minOccurs="0" />
 				<xs:element ref="portal_templates" minOccurs="0" />
-<<<<<<< HEAD:AE-go_GameServer/data/static_data/static_data.xsd
-=======
 				<xs:element ref="item_sets" minOccurs="0" />
->>>>>>> trunk:AE-go_GameServer/data/static_data/static_data.xsd
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
