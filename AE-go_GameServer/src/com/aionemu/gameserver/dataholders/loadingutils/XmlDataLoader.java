@@ -98,7 +98,7 @@ public class XmlDataLoader
 		}
 		catch(SAXException saxe)
 		{
-			log.fatal("Error while getting schema", saxe);
+			log.fatal("Error while getting schema : " + XML_SCHEMA_FILE, saxe);
 			throw new Error("Error while getting schema", saxe);
 		}
 
