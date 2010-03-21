@@ -208,7 +208,7 @@ public class CM_ENTER_WORLD extends AionClientPacket
 				int buffer = 0;
 				while(items.hasNext())
 				{
-					itemService.addItem(player, items.next(), 1, false);
+					itemService.addItem(player, items.next(), 1);
 				}
 			}
 
