@@ -15253,11 +15253,7 @@
             <targetrelation value="FRIEND"/>
         </setproperties>
         <effects>
-<<<<<<< HEAD:AE-go_GameServer/data/static_data/skills/skill_templates.xml
-            <dispeldebuffmental e="1"/>
-=======
             <dispeldebuffmental value="100" e="1"/>
->>>>>>> trunk:AE-go_GameServer/data/static_data/skills/skill_templates.xml
         </effects>
         <actions>
             <mpuse value="108" delta="0"/>
@@ -16078,11 +16074,7 @@
             <targetrelation value="FRIEND"/>
         </setproperties>
         <effects>
-<<<<<<< HEAD:AE-go_GameServer/data/static_data/skills/skill_templates.xml
-            <dispeldebuffmental e="1"/>
-=======
             <dispeldebuffmental value="100" e="1"/>
->>>>>>> trunk:AE-go_GameServer/data/static_data/skills/skill_templates.xml
         </effects>
         <actions>
             <mpuse value="446" delta="0"/>
@@ -17225,11 +17217,7 @@
         </useconditions>
         <effects>
             <dispeldebuffphysical value="2" e="1"/>
-<<<<<<< HEAD:AE-go_GameServer/data/static_data/skills/skill_templates.xml
-            <dispeldebuffmental e="2"/>
-=======
             <dispeldebuffmental value="2" e="2"/>
->>>>>>> trunk:AE-go_GameServer/data/static_data/skills/skill_templates.xml
         </effects>
         <actions>
             <mpuse value="36" delta="1"/>
@@ -36707,11 +36695,7 @@
             <playermove allow="false"/>
         </useconditions>
         <effects>
-<<<<<<< HEAD:AE-go_GameServer/data/static_data/skills/skill_templates.xml
-            <dispeldebuffmental e="1" element="WATER"/>
-=======
             <dispeldebuffmental value="0" e="1" element="WATER"/>
->>>>>>> trunk:AE-go_GameServer/data/static_data/skills/skill_templates.xml
         </effects>
     </skill_template>
     <skill_template skill_id="8796" name="STR_ITEM_POTION_FLYTIME" nameId="1404275" stack="ITEM_POTION_FLYTIME" lvl="1" skilltype="MAGICAL" skillsubtype="NONE" tslot="NONE" activation="ACTIVE" cooldown="0" duration="0">
@@ -60745,11 +60729,7 @@
             <playermove allow="false"/>
         </useconditions>
         <effects>
-<<<<<<< HEAD:AE-go_GameServer/data/static_data/skills/skill_templates.xml
-            <dispeldebuffmental e="1"/>
-=======
             <dispeldebuffmental value="12" e="1"/>
->>>>>>> trunk:AE-go_GameServer/data/static_data/skills/skill_templates.xml
         </effects>
     </skill_template>
     <skill_template skill_id="17218" name="STR_GPR_CurePhysical_Nr" nameId="579357" stack="GPR_CUREPHYSICAL_NR" lvl="1" skilltype="MAGICAL" skillsubtype="HEAL" tslot="NONE" activation="ACTIVE" cooldown="0" duration="1000">
@@ -63293,11 +63273,7 @@
             <playermove allow="false"/>
         </useconditions>
         <effects>
-<<<<<<< HEAD:AE-go_GameServer/data/static_data/skills/skill_templates.xml
-            <dispeldebuffmental e="1"/>
-=======
             <dispeldebuffmental value="12" e="1"/>
->>>>>>> trunk:AE-go_GameServer/data/static_data/skills/skill_templates.xml
         </effects>
     </skill_template>
     <skill_template skill_id="17381" name="STR_DGPR_CurePhysical_Nr" nameId="580527" stack="DGPR_CUREPHYSICAL_NR" lvl="1" skilltype="MAGICAL" skillsubtype="HEAL" tslot="NONE" activation="ACTIVE" cooldown="0" duration="1000">

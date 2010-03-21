@@ -586,15 +586,6 @@
         </monster_hunt>
 
 	<!-- TODO: [Spy/Group] A Suspicious Box -->
-<<<<<<< HEAD:AE-go_GameServer/data/static_data/quest_script_data/heiron.xml
-
-	<!-- TODO: [Spy/Group] Suspicious Scientists -->
-	
-	<!-- TODO: [Spy/Group] The Key is the Key -->
-
-	<!-- TODO: [Spy/Group] The Research Journal -->
-
-=======
 	<report_to id="1615" start_npc_id="204573" end_npc_id="204832" />
 
 	<!-- TODO: [Spy/Group] Suspicious Scientists -->
@@ -605,8 +596,6 @@
 
 	<!-- TODO: [Spy/Group] The Research Journal -->
 
-
->>>>>>> trunk:AE-go_GameServer/data/static_data/quest_script_data/heiron.xml
 	<!-- TODO: A Cube for Michalis -->
 
 	<!-- TODO: A Flute For the Fixing -->

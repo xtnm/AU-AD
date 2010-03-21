@@ -24,11 +24,7 @@
   
 	<!-- TODO: Altgard Duties -->
   
-<<<<<<< HEAD:AE-go_GameServer/data/static_data/quest_script_data/altgard.xml
 	<!-- TODO: Conversing With a Skurv -->
-=======
-	<!-- Conversing With a Skurv handled by script -->
->>>>>>> trunk:AE-go_GameServer/data/static_data/quest_script_data/altgard.xml
   
 	<!-- TODO: Encroachers -->
   
@@ -56,11 +52,6 @@
   		<monster_infos var_id="0" npc_id="210413" max_kill="10"/>
   	</monster_hunt>
   	
-<<<<<<< HEAD:AE-go_GameServer/data/static_data/quest_script_data/altgard.xml
-  	<!-- TODO: The Scribbler -->
-=======
-  	<!-- The Scribbler handled by script -->
->>>>>>> trunk:AE-go_GameServer/data/static_data/quest_script_data/altgard.xml
   	
   	<!-- The Way to His Heart -->
   	<item_collecting start_npc_id="203582" id="2205"/>
@@ -86,12 +77,6 @@
   	<!-- No-Frills Quills -->
   	<item_collecting start_npc_id="203605" id="2214"/>
   	
-<<<<<<< HEAD:AE-go_GameServer/data/static_data/quest_script_data/altgard.xml
-  	<!-- TODO: Poison Root, Potent Fruit -->
-=======
-  	<!-- Poison Root, Potent Fruit handled by scipt-->
->>>>>>> trunk:AE-go_GameServer/data/static_data/quest_script_data/altgard.xml
-  	
   	<!-- Retrieving the Report -->
   	<report_to start_npc_id="203603" end_npc_id="203605" id="2210"/>
   	
@@ -104,19 +89,6 @@
   	<!-- Gleaning the Meaning -->
   	<report_to start_npc_id="203606" end_npc_id="203616" id="2217"/>
   	
-<<<<<<< HEAD:AE-go_GameServer/data/static_data/quest_script_data/altgard.xml
-  	<!-- TODO: Knot Your Average Message -->
-  	
-  	<!-- Manir's Message -->
-  	<report_to start_npc_id="203607" end_npc_id="203631" id="2222"/>
-  	
-  	<!-- TODO: Manir's Uncle -->
-  	
-  	<!-- TODO: Picking off Frightcorn -->
-  	
-  	<!-- Ripened Frightcorn -->
-  	<item_collecting start_npc_id="203604" id="2219"/>
-=======
   	<!-- Knot Your Average Message handled by scrypt-->
   	
   	<!-- TODO: Manir's Message -->
@@ -131,7 +103,6 @@
   	</monster_hunt>
   	<!-- Ripened Frightcorn -->
   	<item_collecting start_npc_id="203604" id="2219" action_item_id="700052"/>
->>>>>>> trunk:AE-go_GameServer/data/static_data/quest_script_data/altgard.xml
   	
   	<!-- TODO: Scout it Out -->
   	
@@ -228,11 +199,7 @@
   	
   	<!-- The Sting of Poison -->
   	<monster_hunt start_npc_id="203664" id="2264">
-<<<<<<< HEAD:AE-go_GameServer/data/static_data/quest_script_data/altgard.xml
-  		<monster_infos var_id="0" npc_id="210754" max_kill="3"/>
-=======
   		<monster_infos var_id="0" npc_id="210447" max_kill="3"/>
->>>>>>> trunk:AE-go_GameServer/data/static_data/quest_script_data/altgard.xml
   	</monster_hunt>
   	
   	<!-- A Drinking Problem -->
@@ -357,11 +324,7 @@
   	
   	<!-- Turbulent Splash Spirits -->
   	<monster_hunt start_npc_id="203650" id="2256">
-<<<<<<< HEAD:AE-go_GameServer/data/static_data/quest_script_data/altgard.xml
-  		<monster_infos var_id="0" npc_id="210522" max_kill="5"/>
-=======
   		<monster_infos var_id="0" npc_id="210577" max_kill="5"/>
->>>>>>> trunk:AE-go_GameServer/data/static_data/quest_script_data/altgard.xml
   	</monster_hunt> 
   	
   	<!-- [Coin] Mutated Spirits -->

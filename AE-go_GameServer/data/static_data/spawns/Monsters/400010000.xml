@@ -1184,11 +1184,7 @@
 	<spawn map="400010000" npcid="290026" pool="21" interval="105">
 		<object x="1596" y="1066" z="1494" h="21"/>
 		<object x="1122.09" y="1695.91" z="1588.62" h="68"/>
-<<<<<<< HEAD:AE-go_GameServer/data/static_data/spawns/Monsters/400010000.xml
-		<object x="1609.5" y="1159.15" z="1501.24" h="20"/>
-=======
 		<object x="1609.5" y="1159.15" z="1501.24" h="20"/>
->>>>>>> trunk:AE-go_GameServer/data/static_data/spawns/Monsters/400010000.xml
 		<object x="1638.01" y="1186.1" z="1500.11" h="68"/>
 		<object x="1167.29" y="1769.62" z="1578.26" h="6"/>
 		<object x="1164.82" y="1770.65" z="1578.41" h="83"/>
