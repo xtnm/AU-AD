@@ -3,7 +3,6 @@
 
 	<xs:include schemaLocation="global_types.xsd" />
 	<xs:include schemaLocation="import.xsd" />
-
 	<xs:include schemaLocation="items/item_templates.xsd" />
 	<xs:include schemaLocation="stats/stats.xsd" />
 	<xs:include schemaLocation="npcs/npcs.xsd"/>
@@ -30,7 +29,6 @@
 	<xs:include schemaLocation="recipe/recipe_templates.xsd" />
 	<xs:include schemaLocation="portals/portal_templates.xsd" />
 	<xs:include schemaLocation="item_sets/item_sets.xsd" />
-	
 	<xs:element name="ae_static_data">
 		<xs:complexType>
 			<xs:sequence>
@@ -64,6 +62,5 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	
 </xs:schema>
 

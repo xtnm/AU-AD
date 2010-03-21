@@ -878,10 +878,7 @@
 	<xs:complexType name="DispelDebuffMentalEffect">
 		<xs:complexContent>
 			<xs:extension base="Effect">
-<<<<<<< HEAD:AE-go_GameServer/data/static_data/skills/skills.xsd
-=======
 				<xs:attribute name="value" type="xs:int" />
->>>>>>> trunk:AE-go_GameServer/data/static_data/skills/skills.xsd
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
