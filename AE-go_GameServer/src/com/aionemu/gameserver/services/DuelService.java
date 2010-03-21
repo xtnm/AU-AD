@@ -173,9 +173,8 @@ public class DuelService
 		loseDuel(player);
 		
 		PacketSendUtility.sendPacket(player, SM_DUEL.SM_DUEL_RESULT(DuelResult.DUEL_LOST, lastAttacker.getName()));
-		PlayerLifeStats pls = player.getLifeStats();
-		player.setLifeStats(new PlayerLifeStats(player, 1, pls.getCurrentMp()));
-		player.getLifeStats().triggerRestoreTask();
+		player.getLifeStats().setCurrentHp(1);
+		player.getLifeStats().triggerHpMpRestoreTask();
 	}
 
 	/**

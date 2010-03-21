@@ -31,7 +31,11 @@ import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.google.inject.Inject;
 
 /**
+<<<<<<< HEAD:AE-go_GameServer/data/scripts/system/handlers/quest/ascension/_1007ACeremonyinSanctum.java
  * @author MrPoke
+=======
+ * @author MrPoke + Dune11
+>>>>>>> trunk:AE-go_GameServer/data/scripts/system/handlers/quest/ascension/_1007ACeremonyinSanctum.java
  *
  */
 public class _1007ACeremonyinSanctum extends QuestHandler

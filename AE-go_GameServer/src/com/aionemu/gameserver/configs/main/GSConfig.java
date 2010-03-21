@@ -47,7 +47,6 @@ public class GSConfig
 	public static String			ADMIN_TAG5;
 	
 	
-	
 	/**
 	 * Character name pattern (checked when character is being created)
 	 */

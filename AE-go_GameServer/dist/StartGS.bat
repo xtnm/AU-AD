@@ -11,7 +11,11 @@ REM NOTE: Remove tag REM from previous line.
 
 REM -------------------------------------
 REM Default parameters for a basic server.
+<<<<<<< HEAD:AE-go_GameServer/dist/StartGS.bat
 java -Xms512m -Xmx1024m -ea -Xbootclasspath/p:./libs/jsr166.jar -javaagent:libs/ae_commons.jar -cp ./libs/*;ae_gameserver.jar com.aionemu.gameserver.GameServer
+=======
+java -Xms512m -Xmx1536m -ea -Xbootclasspath/p:./libs/jsr166.jar -javaagent:libs/ae_commons.jar -cp ./libs/*;ae_gameserver.jar com.aionemu.gameserver.GameServer
+>>>>>>> trunk:AE-go_GameServer/dist/StartGS.bat
 REM -------------------------------------
 
 SET CLASSPATH=%OLDCLASSPATH%

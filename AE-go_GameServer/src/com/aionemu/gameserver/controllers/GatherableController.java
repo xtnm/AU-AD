@@ -135,8 +135,7 @@ public class GatherableController extends VisibleObjectController<Gatherable>
 		{
 			int skillLvl = getOwner().getObjectTemplate().getSkillLevel();
 			int xpReward = (int)(0.008*(skillLvl+100)*(skillLvl+100)+60);
-			
-			if (player.getSkillList().addSkillXp(player, getOwner().getObjectTemplate().getHarvestSkill(), xpReward*10))
+			if (player.getSkillList().addSkillXp(player, getOwner().getObjectTemplate().getHarvestSkill(), xpReward))
 				player.getCommonData().addExp(xpReward);
 			else
 				PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.MSG_DONT_GET_PRODUCTION_EXP(new DescriptionId(DataManager.SKILL_DATA.getSkillTemplate(getOwner().getObjectTemplate().getHarvestSkill()).getNameId())));

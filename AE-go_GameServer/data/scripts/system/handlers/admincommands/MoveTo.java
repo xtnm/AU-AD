@@ -85,8 +85,14 @@ public class MoveTo extends AdminCommand
 			return;
 		}
 		
-
+		if( WorldMapType.getWorld(worldId) == null)
+		{
+			PacketSendUtility.sendMessage(admin, "Illegal WorldId %d " + worldId );
+		}
+		else
+		{
 			teleportService.teleportTo(admin, worldId, x, y, z, 0);
 			PacketSendUtility.sendMessage(admin, "Teleported to " + x + " " + y + " " + z + " [" + worldId + "]");
+		}
 	}
 }

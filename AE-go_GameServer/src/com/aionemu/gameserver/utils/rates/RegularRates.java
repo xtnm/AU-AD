@@ -20,10 +20,19 @@ import com.aionemu.gameserver.configs.main.RateConfig;
 
 /**
  * @author ATracer
+<<<<<<< HEAD:AE-go_GameServer/src/com/aionemu/gameserver/utils/rates/RegularRates.java
  *
+=======
+>>>>>>> trunk:AE-go_GameServer/src/com/aionemu/gameserver/utils/rates/RegularRates.java
  */
 public class RegularRates extends Rates
 {
+	@Override
+	public int getGroupXpRate()
+	{
+		return RateConfig.GROUPXP_RATE;
+	}
+
 	@Override
 	public int getDropRate()
 	{
@@ -31,9 +40,15 @@ public class RegularRates extends Rates
 	}
 
 	@Override
-	public float getApRate()
+	public float getApNpcRate()
 	{
-		return RateConfig.AP_RATE;
+		return RateConfig.AP_NPC_RATE;
+	}
+
+	@Override
+	public float getApPlayerRate()
+	{
+		return RateConfig.AP_PLAYER_RATE;
 	}
 
 	@Override

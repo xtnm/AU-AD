@@ -45,20 +45,9 @@ public class MySQL5AccountTimeDAO extends AccountTimeDAO
     * {@inheritDoc}
     */
    @Override
-   public boolean update(final AccountTime account)
+   public boolean update(AccountTime account)
    {
-      return DB.insertUpdate("UPDATE account_time SET penalty_end = ? WHERE account_id = ?", new IUStH() {
-         @Override
-         public void handleInsertUpdate(PreparedStatement preparedStatement) throws SQLException
-         {
-            if (account.getPenaltyEnd() == null)
-               preparedStatement.setNull(1, Types.TIMESTAMP);
-            else
-               preparedStatement.setTimestamp(1, account.getPenaltyEnd());
-            preparedStatement.setInt(2, account.getId());
-            preparedStatement.execute();
-         }
-      });
+	   return false;
    }
    
    /**

@@ -58,6 +58,9 @@ public class SM_EMOTION extends AionServerPacket
 	private float				speed = 6.0f;
 
 	private int					state;
+	
+	private int 				baseAttackSpeed;
+	private int 				currentAttackSpeed;
 
 	/**
 	 * Coordinates of player
@@ -97,6 +100,8 @@ public class SM_EMOTION extends AionServerPacket
 		this.emotion = emotion;
 		this.targetObjectId = targetObjectId;
 		this.state = creature.getState();
+		this.baseAttackSpeed = creature.getGameStats().getBaseStat(StatEnum.ATTACK_SPEED);
+		this.currentAttackSpeed = creature.getGameStats().getCurrentStat(StatEnum.ATTACK_SPEED);
 		
 		if (creature.isInState(CreatureState.FLYING))
 			this.speed = creature.getGameStats().getCurrentStat(StatEnum.FLY_SPEED) / 1000f;
@@ -124,6 +129,8 @@ public class SM_EMOTION extends AionServerPacket
 			this.speed = player.getGameStats().getCurrentStat(StatEnum.SPEED) / 1000f;
 
 		this.state = player.getState();
+		this.baseAttackSpeed = player.getGameStats().getBaseStat(StatEnum.ATTACK_SPEED);
+		this.currentAttackSpeed = player.getGameStats().getCurrentStat(StatEnum.ATTACK_SPEED);
 	}
 
 	/**
@@ -259,8 +266,8 @@ public class SM_EMOTION extends AionServerPacket
 				// emote startloop
 				writeH(buf, state);
 				writeF(buf, speed);
-				writeH(buf, 2142); // attack speed?
-				writeH(buf, 2142); // attack speed?
+				writeH(buf, baseAttackSpeed);
+				writeH(buf, currentAttackSpeed);
 				break;
 			case 31:
 				// powershard on

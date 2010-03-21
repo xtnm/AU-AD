@@ -18,18 +18,20 @@ package com.aionemu.gameserver.utils.rates;
 
 /**
  * @author ATracer
- *
  */
 public abstract class Rates
-{	
+{
+	public abstract int getGroupXpRate();
+
 	public abstract int getXpRate();
-	
-	public abstract float getApRate();
-	
+
+	public abstract float getApNpcRate();
+
+	public abstract float getApPlayerRate();
+
 	public abstract int getDropRate();
-	
+
 	public abstract int getQuestXpRate();
-	
 	public abstract int getQuestKinahRate();
 
 	/**
@@ -47,5 +49,5 @@ public abstract class Rates
 			default:
 				return new RegularRates();
 		}
-	}	
+	}
 }

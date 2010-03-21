@@ -137,5 +137,12 @@
 	<portal_templates>
 		<import file="portals" skipRoot="true"/>
 	</portal_templates>
+<<<<<<< HEAD:AE-go_GameServer/data/static_data/static_data.xml
+=======
+	
+	<item_sets>
+		<import file="item_sets" skipRoot="true"/>
+	</item_sets>
+>>>>>>> trunk:AE-go_GameServer/data/static_data/static_data.xml
 
 </ae_static_data>

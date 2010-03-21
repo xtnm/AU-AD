@@ -95,11 +95,7 @@ public class Ban extends AdminCommand
          final   AccountTime      newBanAccount   = new AccountTime();
                Timestamp      time         = new Timestamp(System.currentTimeMillis() + (timeToBan*60*1000));
          
-         // Setting Name
-         newBanAccount.setId(AccountTimeController.getAccountId(target.getName()));
          
-         // Setting Time to Ban
-         newBanAccount.setPenaltyEnd(time);
          
          // Kicking Player
          target.getClientConnection().close(new SM_QUIT_RESPONSE(), true);

@@ -45,8 +45,6 @@ public abstract class RequestResponseHandler
 	{
 		if (response == 0)
 			denyRequest(requester, responder);
-		else if(response ==256)
-			denyRequest(requester, responder);
 		else
 			acceptRequest(requester, responder);
 	}

@@ -22,7 +22,6 @@ import org.apache.log4j.Logger;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.state.CreatureState;
 import com.aionemu.gameserver.network.aion.AionClientPacket;
-import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EMOTION;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
 import com.aionemu.gameserver.utils.PacketSendUtility;
@@ -138,16 +137,10 @@ public class CM_EMOTION extends AionClientPacket
 						return;
 					}
 				}
-				PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, 30, 0, 0), true);
-				player.setState(CreatureState.FLYING);
-				player.getController().startFly();
-				player.getLifeStats().triggerFpReduce();
+				player.getFlyController().startFly();
 				break;
 			case 9:
-				PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, 9, 0, 0), true);
-				player.unsetState(CreatureState.FLYING);
-				player.getController().endFly();
-				player.getLifeStats().triggerFpRestore();
+				player.getFlyController().endFly();
 				break;
 			case 0x21:
 			case 0x13:
@@ -158,8 +151,8 @@ public class CM_EMOTION extends AionClientPacket
 				player.unsetState(CreatureState.WEAPON_EQUIPPED);
 				break;
 			case 0x15:
-				// cannot toggle walk when you flying
-				if(player.isInState(CreatureState.FLYING))
+				// cannot toggle walk when you flying or gliding
+				if(player.getFlyState() > 0)
 					return;
 				player.setState(CreatureState.WALKING);
 				break;

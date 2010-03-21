@@ -19,7 +19,6 @@ package com.aionemu.gameserver.utils.stats;
 import org.apache.log4j.Logger;
 
 import com.aionemu.commons.utils.Rnd;
-import com.aionemu.gameserver.configs.main.RateConfig;
 import com.aionemu.gameserver.controllers.attack.AttackStatus;
 import com.aionemu.gameserver.model.SkillElement;
 import com.aionemu.gameserver.model.gameobjects.Creature;
@@ -70,7 +69,7 @@ public class StatFunctions
 
 		int xpPercentage =  XPRewardEnum.xpRewardFrom(targetLevel - playerLevel);
 
-		return (int) Math.floor(baseXP * xpPercentage * RateConfig.GROUPXP_RATE / 100);
+		return (int) Math.floor(baseXP * xpPercentage * player.getRates().getGroupXpRate() / 100);
 	}
 
 	/**
@@ -107,7 +106,7 @@ public class StatFunctions
 		int playerLevel = player.getCommonData().getLevel();
 		int targetLevel = target.getLevel();								
 		int percentage =  XPRewardEnum.xpRewardFrom(targetLevel - playerLevel);
-		return (int) Math.floor(10 * percentage * player.getRates().getApRate() / 100);
+		return (int) Math.floor(10 * percentage * player.getRates().getApNpcRate() / 100);
 	}
 
 	public static int calculateGroupDPReward(Player player, Creature target)
@@ -121,7 +120,7 @@ public class StatFunctions
 
 		int xpPercentage =  XPRewardEnum.xpRewardFrom(targetLevel - playerLevel);
 
-		return (int) Math.floor(baseDP * xpPercentage * RateConfig.GROUPXP_RATE / 100);
+		return (int) Math.floor(baseDP * xpPercentage * player.getRates().getGroupXpRate() / 100);
 	}	
 
 	/**
@@ -184,7 +183,7 @@ public class StatFunctions
 
 				int base = Rnd.get(min,max);
 				
-				Damage = Math.round((base * (ags.getCurrentStat(StatEnum.POWER) * 0.01f + ags.getBaseStat(StatEnum.MAIN_HAND_POWER) * 0.01f)) 
+				Damage = Math.round((base * (ags.getCurrentStat(StatEnum.POWER) * 0.01f + ags.getStatBonus(StatEnum.MAIN_HAND_POWER) * 0.01f)) 
 						                  + ags.getStatBonus(StatEnum.MAIN_HAND_POWER) + skillDamages);
 
 			}
@@ -253,7 +252,7 @@ public class StatFunctions
 		int max = Math.round((((offHandAttack * 100)/ average) * totalMax)/100);
 
 		int base = Rnd.get(min,max);
-		Damage = Math.round((base * (ags.getCurrentStat(StatEnum.POWER) * 0.01f + ags.getBaseStat(StatEnum.OFF_HAND_POWER) * 0.01f)) 
+		Damage = Math.round((base * (ags.getCurrentStat(StatEnum.POWER) * 0.01f + ags.getStatBonus(StatEnum.OFF_HAND_POWER) * 0.01f)) 
                  + ags.getStatBonus(StatEnum.OFF_HAND_POWER));
 
 		Damage = adjustDamages(attacker, target, Damage);

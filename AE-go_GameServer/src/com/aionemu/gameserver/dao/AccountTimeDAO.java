@@ -37,7 +37,7 @@ public abstract class AccountTimeDAO implements DAO
     *            record to update
     * @return true in case of success or false in other case
     */
-   public abstract boolean update(AccountTime account);
+	public abstract boolean update(AccountTime account);
    
    /**
    * Return the player account id (in account_id column of player table in the database).

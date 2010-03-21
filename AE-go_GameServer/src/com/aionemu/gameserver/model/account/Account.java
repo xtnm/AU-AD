@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import com.aionemu.gameserver.model.gameobjects.player.Storage;
 /**
  * This class represents game account and is holding such informations as:
  * <ul>
@@ -51,6 +52,8 @@ public class Account implements Iterable<PlayerAccountData>
 	private AccountTime						accountTime;
 
 	private Map<Integer, PlayerAccountData>	players	= new HashMap<Integer, PlayerAccountData>();
+	
+	private Storage							accountWarehouse;
 
 	public Account(int id)
 	{
@@ -153,6 +156,21 @@ public class Account implements Iterable<PlayerAccountData>
 	public void addPlayerAccountData(PlayerAccountData accPlData)
 	{
 		players.put(accPlData.getPlayerCommonData().getPlayerObjId(), accPlData);
+	}
+	/**
+	 * @return the accountWarehouse
+	 */
+	public Storage getAccountWarehouse()
+	{
+		return accountWarehouse;
+	}
+
+	/**
+	 * @param accountWarehouse the accountWarehouse to set
+	 */
+	public void setAccountWarehouse(Storage accountWarehouse)
+	{
+		this.accountWarehouse = accountWarehouse;
 	}
 
 	/** Returns the number of players that are on this account */

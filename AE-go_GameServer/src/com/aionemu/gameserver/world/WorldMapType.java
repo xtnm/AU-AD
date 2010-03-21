@@ -19,8 +19,6 @@ package com.aionemu.gameserver.world;
 public enum WorldMapType
 {
 	PRISON(510010000),
-	
-	//Asmodea
 	PANDAEMONIUM(120010000),
 	ISHALGEN(220010000),
 	MORHEIM(220020000),
@@ -28,7 +26,6 @@ public enum WorldMapType
 	BELUSLAN(220040000),
 	BRUSTHONIN(220050000),
 
-	//Elysia
 	SANCTUM(110010000),
 	POETA(210010000),
 	VERTERON(210030000),
@@ -54,7 +51,11 @@ public enum WorldMapType
         THEOBOMOSLAB(310110000),
 		DROPNIR(320080000),
 
-	RESHANTA(400010000);
+	RESHANTA(400010000),
+	
+	//Instances
+	NOCHSANA_TRAINING_CAMP(300030000),
+	FIRE_TEMPLE(320100000);
 
 	private final int worldId;
 
@@ -70,7 +71,6 @@ public enum WorldMapType
 	
 	/**
 	 * @param id of world
-	 * @return
 	 */
 	public static WorldMapType getWorld(int id)
 	{

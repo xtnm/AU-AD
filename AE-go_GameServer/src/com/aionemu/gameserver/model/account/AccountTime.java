@@ -16,7 +16,6 @@
  */
 
 package com.aionemu.gameserver.model.account;
-import java.sql.Timestamp;
 /**
  * Class for storing account's online and rest time
  * 
@@ -28,20 +27,10 @@ public class AccountTime
 	 * Accumulated online time in millis
 	 */
 	private long	accumulatedOnlineTime;
-	private int      id;
 	/**
 	 * Accumulated rest(offline) time in millis
 	 */
 	private long	accumulatedRestTime;
-	private Timestamp   penaltyEnd;
-    public int getId()
-    {
-      return id;
-    }
-    public void setId(int id)
-   {
-      this.id = id;
-   }
 	/**
 	 * get daily accumulated online time in millis
 	 * 
@@ -127,24 +116,6 @@ public class AccountTime
 	{
 		return toMinutes(accumulatedRestTime);
 	}
-  
-   /**
-   * Returns the penalty time end
-   * @return penalty end
-   */
-   public Timestamp getPenaltyEnd()
-   {
-      return penaltyEnd;
-   }
-   
-   /**
-   * Sets the penalty time end
-   * @param penaltyEnd - int : penlaty end time
-   */
-   public void setPenaltyEnd(Timestamp penaltyEnd)
-   {
-      this.penaltyEnd = penaltyEnd;
-   }
 	/**
 	 * Converts milliseconds to hours.<br>
 	 * For instance if millis = 1 hr 32 min, 1 hour will be returned

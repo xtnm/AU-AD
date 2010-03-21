@@ -86,15 +86,6 @@ public class SM_MESSAGE extends AionServerPacket
 		this.y = player.getY();
 		this.z = player.getZ();
 	}
-	
-	public SM_MESSAGE(Player player, String message, ChatType chatType, Race race)
-	{
-		this.senderObjectId = player.getObjectId();
-		this.senderName = player.getName();
-		this.message = message;
-		this.race = race;
-		this.chatType = chatType;
-	}
 
 	/**
 	 * Manual creation of chat message.<br>

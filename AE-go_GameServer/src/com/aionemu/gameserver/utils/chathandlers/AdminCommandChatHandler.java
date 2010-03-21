@@ -23,17 +23,10 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import com.aionemu.gameserver.controllers.PlayerController;
 import com.aionemu.gameserver.model.ChatType;
-import com.aionemu.gameserver.model.PlayerClass;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_MESSAGE;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_PLAYER_INFO;
-import com.aionemu.gameserver.services.PlayerService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
-import com.aionemu.gameserver.world.World;
-import com.google.inject.Inject;
-import com.google.inject.Injector;
 
 /**
  * This chat handler is responsible for handling admin commands, starting with //
@@ -46,11 +39,10 @@ public class AdminCommandChatHandler implements ChatHandler
 	private static final Logger			log			= Logger.getLogger(AdminCommandChatHandler.class);
 
 	private Map<String, AdminCommand>	commands	= new HashMap<String, AdminCommand>();
-	private PlayerService				playerService;
 
-	AdminCommandChatHandler(Injector injector)
+	AdminCommandChatHandler()
 	{
-		this.playerService = injector.getInstance(PlayerService.class);
+
 	}
 
 	void registerAdminCommand(AdminCommand command)
@@ -83,18 +75,7 @@ public class AdminCommandChatHandler implements ChatHandler
 				{
 					Player p = onlinePlayers.next();
 					PacketSendUtility.sendPacket(p, new SM_MESSAGE(sender, "[WORLD] " + sender.getName() + ": "
-						+ message, ChatType.ANNOUNCEMENTS, null));
-				}
-				return ChatHandlerResponse.BLOCKED_MESSAGE;
-			}
-			else if(sender.CHAT_FIX_EVENT_CHANNEL)
-			{
-				Iterator<Player> onlinePlayers = sender.getActiveRegion().getWorld().getPlayersIterator();
-				while(onlinePlayers.hasNext())
-				{
-					Player p = onlinePlayers.next();
-					PacketSendUtility.sendPacket(p, new SM_MESSAGE(sender, "[EVENT] " + sender.getName() + ": "
-						+ message, ChatType.ANNOUNCEMENTS, null));
+						+ message, ChatType.ANNOUNCEMENTS));
 				}
 				return ChatHandlerResponse.BLOCKED_MESSAGE;
 			}
@@ -131,7 +112,7 @@ public class AdminCommandChatHandler implements ChatHandler
 						{
 							Player p = onlinePlayers.next();
 							PacketSendUtility.sendPacket(p, new SM_MESSAGE(sender, "[WORLD] - " + sender.getName() + ": "
-								+ worldMessage, ChatType.ANNOUNCEMENTS, null));
+								+ worldMessage, ChatType.ANNOUNCEMENTS));
 						}
 					}
 				}
@@ -172,7 +153,11 @@ public class AdminCommandChatHandler implements ChatHandler
 	}
 
 	/**
+<<<<<<< HEAD:AE-go_GameServer/src/com/aionemu/gameserver/utils/chathandlers/AdminCommandChatHandler.java
 	 * Clear all registered handlers (before reload).
+=======
+	 * Clear all registered handlers (before reload). 
+>>>>>>> trunk:AE-go_GameServer/src/com/aionemu/gameserver/utils/chathandlers/AdminCommandChatHandler.java
 	 */
 	void clearHandlers()
 	{
@@ -181,7 +166,10 @@ public class AdminCommandChatHandler implements ChatHandler
 
 	/**
 	 * Returns count of available admin command handlers.
+<<<<<<< HEAD:AE-go_GameServer/src/com/aionemu/gameserver/utils/chathandlers/AdminCommandChatHandler.java
 	 * 
+=======
+>>>>>>> trunk:AE-go_GameServer/src/com/aionemu/gameserver/utils/chathandlers/AdminCommandChatHandler.java
 	 * @return count of available admin command handlers.
 	 */
 	public int getSize()

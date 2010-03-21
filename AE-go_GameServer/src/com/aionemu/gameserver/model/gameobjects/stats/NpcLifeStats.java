@@ -25,14 +25,15 @@ import com.aionemu.gameserver.model.gameobjects.Npc;
 public class NpcLifeStats extends CreatureLifeStats<Npc>
 {
 
+	/**
+	 * 
+	 * @param owner
+	 */
 	public NpcLifeStats(Npc owner)
 	{
-		super(owner,0,0);
-		this.currentHp = owner.getGameStats().getCurrentStat(StatEnum.MAXHP);
-		this.currentMp = owner.getGameStats().getCurrentStat(StatEnum.MAXMP);	
+		super(owner, owner.getGameStats().getCurrentStat(StatEnum.MAXHP), owner.getGameStats().getCurrentStat(
+			StatEnum.MAXMP));
 	}
-
-
 	@Override
 	protected void onIncreaseHp()
 	{
@@ -42,15 +43,11 @@ public class NpcLifeStats extends CreatureLifeStats<Npc>
 	@Override
 	protected void onIncreaseMp()
 	{
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	protected void onReduceHp()
 	{
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -59,5 +56,4 @@ public class NpcLifeStats extends CreatureLifeStats<Npc>
 		// TODO Auto-generated method stub
 		
 	}
-
 }

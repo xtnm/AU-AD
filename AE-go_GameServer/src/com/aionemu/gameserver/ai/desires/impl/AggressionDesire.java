@@ -17,7 +17,6 @@
 package com.aionemu.gameserver.ai.desires.impl;
 
 import java.util.Collections;
-import com.aionemu.gameserver.model.NpcType;
 import com.aionemu.gameserver.ai.AI;
 import com.aionemu.gameserver.ai.desires.AbstractDesire;
 import com.aionemu.gameserver.ai.events.Event;
@@ -28,7 +27,6 @@ import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK;
-import com.aionemu.gameserver.model.templates.stats.NpcRank;
 import com.aionemu.gameserver.utils.MathUtil;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
@@ -60,29 +58,10 @@ public final class AggressionDesire extends AbstractDesire
 			{
 				final Player player = (Player) visibleObject;
 				
-				if (!player.getLifeStats().isAlreadyDead() && MathUtil.isInRange(npc, player, npc.getAggroRange())
+				if(!player.getLifeStats().isAlreadyDead() && MathUtil.isInRange(npc, player, npc.getAggroRange())
 					&& (Math.abs(player.getZ() - npc.getZ()) < 30))
 				{
-				if (npc.getObjectTemplate().getTribe().equals("GUARD_DARK") || npc.getObjectTemplate().getTribe().equals("GUARD"))
-               {
-                  if (player.getAccessLevel() > 0)
-                     continue;
-               }
-               else
-               {
-                  if ((player.getLevel() - npc.getLevel()) >= 10)
-                     continue;
-                  
-                  if (player.getVisualState() == 1 && npc.getObjectTemplate().getRank() == NpcRank.NORMAL)
-                     continue;
-                  
-                  if (player.getVisualState() == 2 && (npc.getObjectTemplate().getRank() == NpcRank.ELITE || npc.getObjectTemplate().getRank() == NpcRank.NORMAL))
-                     continue;
-                  
-                  if (player.getVisualState() >= 3)
-                     continue;
-               }
-               
+
 					if(!npc.isAggressiveTo(player.getCommonData().getRace()))
 						continue;
 

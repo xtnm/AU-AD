@@ -19,7 +19,6 @@ package com.aionemu.gameserver.network.aion.serverpackets;
 import java.nio.ByteBuffer;
 import java.util.List;
 
-import com.aionemu.gameserver.configs.main.GSConfig;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.player.PlayerAppearance;
@@ -99,14 +98,9 @@ public class SM_PLAYER_INFO extends AionServerPacket
 		writeB(buf, unk);
 
 		writeC(buf, player.getHeading());
-if (player.getClientConnection().getAccount().getAccessLevel() > 0)
-{
-writeS(buf,"<GM> "+ player.getName());
-}
-else
-{
+
 		writeS(buf, player.getName());
-}
+
 		writeD(buf, pcd.getTitleId());
 		writeC(buf, 0x0);// if set 0x1 can't jump and fly..
 		writeH(buf, player.getCastingSkillId());
@@ -223,7 +217,7 @@ else
 		writeF(buf, 2.0f); // gravity or slide surface o_O
 		writeF(buf, player.getGameStats().getCurrentStat(StatEnum.SPEED) / 1000f); // move speed
 
-		writeH(buf, player.getGameStats().getCurrentStat(StatEnum.ATTACK_SPEED));
+		writeH(buf, player.getGameStats().getBaseStat(StatEnum.ATTACK_SPEED));
 		writeH(buf, player.getGameStats().getCurrentStat(StatEnum.ATTACK_SPEED));
 		writeC(buf, 0);
 

@@ -62,9 +62,9 @@ public class Speed extends AdminCommand
 			return;
 		}
 		
-		if(parameter < 0 || parameter > 20000)
+		if(parameter < 0 || parameter > 200)
 		{
-			PacketSendUtility.sendMessage(admin, "Valid values are in 0-20000 range");
+			PacketSendUtility.sendMessage(admin, "Valid values are in 0-200 range");
 			return;
 		}
 

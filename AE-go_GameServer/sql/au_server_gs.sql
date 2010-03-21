@@ -265,10 +265,15 @@ CREATE TABLE IF NOT EXISTS `legions` (
 
 CREATE TABLE IF NOT EXISTS `legion_announcement_list` (
   `legion_id` int(11) NOT NULL,
+<<<<<<< HEAD:AE-go_GameServer/sql/au_server_gs.sql
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `announcement` varchar(120) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY  (`id`),
+=======
+  `announcement` varchar(120) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+>>>>>>> trunk:AE-go_GameServer/sql/au_server_gs.sql
   FOREIGN KEY (`legion_id`) REFERENCES `legions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -293,6 +298,17 @@ CREATE TABLE IF NOT EXISTS `legion_emblems` (
   FOREIGN KEY (`legion_id`) REFERENCES `legions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+<<<<<<< HEAD:AE-go_GameServer/sql/au_server_gs.sql
+=======
+CREATE TABLE IF NOT EXISTS `legion_history` (
+  `legion_id` int(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `history_type` enum('CREATE','JOIN','KICK','APPOINTED','EMBLEM_REGISTER','EMBLEM_MODIFIED') NOT NULL,
+  `name` varchar(16) NOT NULL,
+  FOREIGN KEY (`legion_id`) REFERENCES `legions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+>>>>>>> trunk:AE-go_GameServer/sql/au_server_gs.sql
 -- ----------------------------
 -- player_recipes
 -- ----------------------------

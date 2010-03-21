@@ -20,14 +20,29 @@ import com.aionemu.gameserver.configs.main.RateConfig;
 
 /**
  * @author ATracer
+<<<<<<< HEAD:AE-go_GameServer/src/com/aionemu/gameserver/utils/rates/PremiumRates.java
  *
+=======
+>>>>>>> trunk:AE-go_GameServer/src/com/aionemu/gameserver/utils/rates/PremiumRates.java
  */
 public class PremiumRates extends Rates
 {
 	@Override
-	public float getApRate()
+	public int getGroupXpRate()
 	{
-		return RateConfig.PREMIUM_AP_RATE;
+		return RateConfig.PREMIUM_GROUPXP_RATE;
+	}
+
+	@Override
+	public float getApNpcRate()
+	{
+		return RateConfig.PREMIUM_AP_NPC_RATE;
+	}
+
+	@Override
+	public float getApPlayerRate()
+	{
+		return RateConfig.PREMIUM_AP_PLAYER_RATE;
 	}
 
 	@Override

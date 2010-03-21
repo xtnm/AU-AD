@@ -272,6 +272,7 @@ public class _1006Ascension extends QuestHandler
 									{
 										// TODO: Tempt decrease P attack.
 										mob.getGameStats().setStat(StatEnum.MAIN_HAND_POWER, mob.getGameStats().getCurrentStat(StatEnum.MAIN_HAND_POWER) / 3);
+										mob.getGameStats().setStat(StatEnum.PHYSICAL_DEFENSE, 0);
 										mob.getAggroList().addDamageHate(player, 1000, 0);
 										mob.getAi().handleEvent(Event.ATTACKED);
 									}
@@ -418,12 +419,6 @@ public class _1006Ascension extends QuestHandler
 					qs.setQuestVar(3);
 					updateQuestStatus(player, qs);
 					PacketSendUtility.sendPacket(player, new SM_SYSTEM_MESSAGE(SystemMessageId.QUEST_FAILED_$1, DataManager.QUEST_DATA.getQuestById(questId).getName()));
-				}
-				else
-				{
-					List<Npc> np = new ArrayList<Npc>();
-					np.add((Npc) questService.addNewSpawn(320010000, player.getInstanceId(), 205000, 438f, 403f, 233f, (byte) 0, true));
-
 				}
 			}
 		}

@@ -13,6 +13,7 @@
 	<map id="220020000" name="Morheim" />
 	<map id="220050000" name="Brusthonin" />
 	<map id="220040000" name="Beluslan" />
+<<<<<<< HEAD:AE-go_GameServer/data/static_data/world_maps.xml
 	<map id="310110000" name="TheobomosLab" />
 	<map id="300060000" name="SulfurTreeNest"/>
 	<map id="300100000" name="SteelRake" />
@@ -27,6 +28,9 @@
 	<map id="300050000" name="AsteriaChamber" />
     <map id="320130000" name="Admastronghold" />
 	<map id="300040000" name="Darkpoeta" />	
+=======
+	
+>>>>>>> trunk:AE-go_GameServer/data/static_data/world_maps.xml
 	<map id="300010000" name="IDAbPro" />
 	<map id="300030000" name="NochsanaTrainingCamp" instance="true" />
 	<map id="310010000" name="IDAbProL1" instance="true" />

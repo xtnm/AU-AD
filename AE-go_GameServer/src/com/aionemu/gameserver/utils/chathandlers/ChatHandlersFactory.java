@@ -20,9 +20,7 @@ import com.aionemu.commons.scripting.scriptmanager.ScriptManager;
 import com.aionemu.commons.services.ScriptService;
 import com.aionemu.gameserver.GameServerError;
 import com.google.inject.Injector;
-
 import java.io.File;
-
 /**
  * This factory is responsible for creating class tree starting with {@link ChatHandlers}
  * 
@@ -51,7 +49,7 @@ public class ChatHandlersFactory
 	{
 		ChatHandlers handlers = new ChatHandlers();
 
-		final AdminCommandChatHandler adminCCH = new AdminCommandChatHandler(injector);
+		final AdminCommandChatHandler adminCCH = new AdminCommandChatHandler();
 
 		handlers.addChatHandler(adminCCH);
 
