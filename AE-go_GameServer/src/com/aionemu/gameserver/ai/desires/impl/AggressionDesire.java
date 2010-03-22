@@ -30,6 +30,8 @@ import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK;
 import com.aionemu.gameserver.utils.MathUtil;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
+import com.aionemu.gameserver.model.NpcType;
+import com.aionemu.gameserver.model.templates.stats.NpcRank;
 
 /**
  * @author KKnD
