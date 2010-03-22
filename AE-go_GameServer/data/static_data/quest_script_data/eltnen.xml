@@ -245,8 +245,6 @@
 
 	<!-- TODO: 1314 An Elim out of Water -->
 
-	<!-- TODO: 1311 A Germ of Hope -->
-
 	<!-- TODO: 1309 Manduri's Diary -->
 
 	<!-- Stalking the Wily Lapia -->
@@ -577,8 +575,6 @@
 
 	<!-- 1459 Krato Needs Lapis -->
 	<item_collecting id="1459" start_npc_id="203923" />
-
-	<!-- TODO: 1469 [Spy/Group] Finding Denlavis -->
 
 	<!-- 1444 Combat Preparation -->
 	<item_collecting id="1444" start_npc_id="204013" />

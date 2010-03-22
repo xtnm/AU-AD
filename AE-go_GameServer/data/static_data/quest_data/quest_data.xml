@@ -949,9 +949,6 @@
         <rewards exp="11000" gold="2250"/>
         <finished_quest_conds>1147</finished_quest_conds>
     </quest>
-    <quest race_permitted="ELYOS" max_repeat_count="1" minlevel_permitted="14" nameId="2204653" name="Stolen Village Seal" id="1156">
-        <rewards exp="14900"/>
-    </quest>
     <quest race_permitted="ELYOS" cannot_share="true" max_repeat_count="1" minlevel_permitted="14" nameId="2204655" name="Gaphyrk's Love" id="1157">
         <rewards exp="15500"/>
         <finished_quest_conds>1156</finished_quest_conds>
@@ -1419,13 +1416,6 @@
     <quest race_permitted="ELYOS" cannot_share="true" max_repeat_count="1" minlevel_permitted="20" nameId="2204821" name="Seeds of Restoration" id="1310">
         <rewards exp="25000"/>
         <finished_quest_conds>1302</finished_quest_conds>
-    </quest>
-    <quest race_permitted="ELYOS" cannot_share="true" max_repeat_count="1" minlevel_permitted="20" nameId="2204823" name="A Germ of Hope" id="1311">
-        <rewards exp="20000"/>
-        <finished_quest_conds>1310</finished_quest_conds>
-        <quest_work_items>
-            <quest_work_item count="1" item_id="182201305"/>
-        </quest_work_items>
     </quest>
     <quest race_permitted="ELYOS" cannot_share="true" max_repeat_count="1" minlevel_permitted="20" nameId="2204825" name="Hopeful Delivery" id="1312">
         <rewards exp="35000" gold="1450">
@@ -2090,13 +2080,6 @@
     <quest race_permitted="ELYOS" max_repeat_count="1" minlevel_permitted="20" nameId="2205043" name="The Frillneck Threat" id="1421">
         <rewards exp="36000" gold="7300"/>
     </quest>
-    <quest race_permitted="ELYOS" cannot_share="true" max_repeat_count="1" minlevel_permitted="30" nameId="2205045" name="A Better Sword" id="1422">
-        <rewards exp="39100" gold="4800"/>
-        <quest_work_items>
-            <quest_work_item count="1" item_id="182201389"/>
-            <quest_work_item count="1" item_id="182201390"/>
-        </quest_work_items>
-    </quest>
     <quest race_permitted="ELYOS" max_repeat_count="1" minlevel_permitted="30" nameId="2205047" name="Expert Advice" id="1423">
         <rewards exp="10000">
             <reward_item count="5" item_id="162000026"/>
@@ -2414,18 +2397,6 @@
     </quest>
     <quest race_permitted="ELYOS" max_repeat_count="1" minlevel_permitted="32" nameId="2205137" name="Hannet's Lost Love" id="1468">
         <rewards exp="190000"/>
-    </quest>
-    <quest race_permitted="ELYOS" cannot_share="true" max_repeat_count="1" minlevel_permitted="32" nameId="2205139" name="[Spy/Group] Finding Denlavis" id="1469">
-        <rewards reward_abyss_point="100" exp="400000">
-            <selectable_reward_item count="1" item_id="114100812"/>
-            <selectable_reward_item count="1" item_id="114300822"/>
-            <selectable_reward_item count="1" item_id="114500784"/>
-            <selectable_reward_item count="1" item_id="114600741"/>
-        </rewards>
-        <finished_quest_conds>1468</finished_quest_conds>
-        <quest_work_items>
-            <quest_work_item count="1" item_id="182201386"/>
-        </quest_work_items>
     </quest>
     <quest race_permitted="ELYOS" cannot_share="true" max_repeat_count="1" minlevel_permitted="32" nameId="2205141" name="[Spy/Group] Hannet's Vengeance" id="1470">
         <rewards title="18" reward_abyss_point="100" exp="780600">
