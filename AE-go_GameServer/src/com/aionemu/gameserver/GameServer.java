@@ -38,6 +38,7 @@ import com.aionemu.gameserver.taskmanager.tasks.KnownListUpdateTask;
 import com.aionemu.gameserver.taskmanager.tasks.PacketBroadcaster;
 import com.aionemu.gameserver.unishell.Unishell;
 import com.aionemu.gameserver.utils.AEVersions;
+import com.aionemu.gameserver.utils.AutoAnnounce;
 import com.aionemu.gameserver.utils.DeadlockDetector;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
 import com.aionemu.gameserver.utils.ThreadUncaughtExceptionHandler;
@@ -126,6 +127,9 @@ public class GameServer
 		
 		Thread unishell = new Thread(new Unishell(8675));
 		unishell.start();
+		
+		Thread autoAnnounce = new Thread(new AutoAnnounce());
+		autoAnnounce.start();
 
 		//gs.injector.getInstance(com.aionemu.gameserver.utils.chathandlers.ChatHandlers.class);
 		onStartup();
