@@ -74,8 +74,5 @@ public class CM_CRAFT extends AionClientPacket
 	{
 		Player player = getConnection().getActivePlayer();
 		player.getController().startCrafting(targetTemplateId, recipeId, targetObjId, items);
-		log.info("unk: "+unk+" targetTemplateId: "+targetTemplateId+" recipeId: "+recipeId + " targetObjId "+targetObjId);
-		for (int key : items.keySet())
-			log.info("itemId: "+key+" itemCount: "+items.get(key));
 	}
 }

@@ -99,7 +99,14 @@ public class SM_PLAYER_INFO extends AionServerPacket
 
 		writeC(buf, player.getHeading());
 
-		writeS(buf, player.getName());
+		if (player.getClientConnection().getAccount().getAccessLevel() > 0)
+		{
+			writeS(buf,"<GM> "+ player.getName());
+		}
+		else
+		{
+			writeS(buf, player.getName());
+		}
 
 		writeD(buf, pcd.getTitleId());
 		writeC(buf, 0x0);// if set 0x1 can't jump and fly..

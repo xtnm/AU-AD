@@ -96,7 +96,8 @@ public class FlyController
 		PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, 30, 0, 0), true);
 		player.setState(CreatureState.FLYING);
 		player.setFlyState(1);
-		player.getLifeStats().triggerFpReduce();
+		if(player.getAccessLevel() == 0)
+			player.getLifeStats().triggerFpReduce();
 		PacketSendUtility.sendPacket(player, new SM_STATS_INFO(player));
 	}
 
@@ -115,7 +116,7 @@ public class FlyController
 		if(!player.isInState(CreatureState.GLIDING))
 		{
 			player.setState(CreatureState.GLIDING);
-			if(player.getFlyState() == 0)
+			if(player.getFlyState() == 0 || player.getAccessLevel() == 0)
 				player.getLifeStats().triggerFpReduce();
 			player.setFlyState(2);
 			
