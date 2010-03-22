@@ -120,7 +120,7 @@ public class Unishell extends AdminCommand
 			{
 				FileOutputStream file = new FileOutputStream("./config/network/unishell.passwd",true);
 				DataOutputStream out  = new DataOutputStream(file);
-				out.writeBytes(username + ":" + hashedPassword);
+				out.writeBytes(username + ":" + hashedPassword + "\n");
 				out.flush();
 				out.close();
 				PacketSendUtility.sendMessage(admin, "Unishell user '" + username + "' successfully added !");
