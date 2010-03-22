@@ -69,7 +69,15 @@ public class Add extends AdminCommand
 			{
 				itemCount = Integer.parseInt(params[1]);
 			}
-			receiver = admin;
+			
+			if(admin.getTarget() instanceof Player)
+			{
+				receiver = (Player)admin.getTarget();
+			}
+			else
+			{
+				receiver = admin;
+			}
 		}
 		catch (NumberFormatException e)
 		{
