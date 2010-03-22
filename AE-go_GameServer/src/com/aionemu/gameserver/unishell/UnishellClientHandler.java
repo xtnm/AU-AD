@@ -58,13 +58,14 @@ public class UnishellClientHandler extends Thread
 			log.info("New Unishell client connection from: " + client.getInetAddress().toString());
 			
 			// send helo
-			client.getOutputStream().write(("WEL unishell@" + currentIPAddress).getBytes());
+			client.getOutputStream().write(("WEL unishell@" + currentIPAddress + "\n\r").getBytes());
 			
 			reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
 			String clientUsername = reader.readLine();
 			if(clientUsername.equals(""))
 			{
 				client.getOutputStream().write("500 Invalid authentication sequence. Closing connection.".getBytes());
+				client.close();
 				return;
 			}
 			
@@ -72,6 +73,7 @@ public class UnishellClientHandler extends Thread
 			if(clientPassword.equals(""))
 			{
 				client.getOutputStream().write("501 Invalid authentication sequence. Closing connection.".getBytes());
+				client.close();
 				return;
 			}
 			
@@ -97,8 +99,11 @@ public class UnishellClientHandler extends Thread
 			{
 				log.warn("Invalid credentials : " + clientUsername + "/" + clientPassword + " from " + client.getInetAddress().toString());
 				client.getOutputStream().write("510 Invalid credentials. Closing connection".getBytes());
+				client.close();
 				return;
 			}
+			
+			client.getOutputStream().write(("250 USER " + clientUsername).getBytes());
 			
 			log.info("Unishell user logged in: " + clientUsername);
 			
@@ -112,6 +117,7 @@ public class UnishellClientHandler extends Thread
 			if(command == null)
 			{
 				client.getOutputStream().write("520 No such command.".getBytes());
+				client.close();
 				return;
 			}
 			
