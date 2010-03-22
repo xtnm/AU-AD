@@ -16,28 +16,48 @@
  */
 package com.aionemu.gameserver.unishell.commands;
 
-import java.util.Map;
+import java.util.Iterator;
+
+import com.aionemu.gameserver.network.aion.serverpackets.SM_QUIT_RESPONSE;
+import com.aionemu.gameserver.world.World;
+import com.google.inject.Inject;
 
 /**
  * @author xitanium
  *
  */
-public class UnishellCommandIndex
+public class Player implements UnishellCommand
 {
+
+	@Inject
+	private World			world;
 	
-	public static Map<String, UnishellCommand> registeredCommands;
-	
-	public static void registerUnishellCommands()
+	@Override
+	public String execute(String[] params)
 	{
+		String result = "";
 		
-		registeredCommands.put("KICK", new Kick());
-		registeredCommands.put("PLAYER", new Player());
+		if(params.length == 0)
+		{
+			return "550 Invalid syntax.";
+		}
 		
-	}
-	
-	public static UnishellCommand getCommand(String name)
-	{
-		return registeredCommands.get(name);
+		if(params[0].equals("LIST"))
+		{
+			Iterator<com.aionemu.gameserver.model.gameobjects.player.Player> players = world.getPlayersIterator();
+			while(players.hasNext())
+			{
+				com.aionemu.gameserver.model.gameobjects.player.Player current = players.next();
+				result += current.getObjectId() + " " + current.getName() + "\n\r";
+			}
+		}
+		else
+		{
+			return "555 No such sub-command";
+		}
+		
+		return result;
+		
 	}
 
 }
