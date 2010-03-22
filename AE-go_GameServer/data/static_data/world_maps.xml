@@ -13,7 +13,6 @@
 	<map id="220020000" name="Morheim" death_level="0" water_level="16"/>
 	<map id="220050000" name="Brusthonin" death_level="0" water_level="5"/>
 	<map id="220040000" name="Beluslan" death_level="0" water_level="16"/>
-	
 	<map id="300010000" name="IDAbPro" death_level="0" water_level="16"/>
 	<map id="300030000" name="NochsanaTrainingCamp" instance="true" death_level="0" water_level="16"/>
 	<map id="310010000" name="IDAbProL1" instance="true" death_level="0" water_level="16"/>

@@ -4,7 +4,7 @@ map npcid pool interval
 object x y z h
 Altgard -->
 <spawns>
-	<!-- # Angolem Fragment -->
+	<!-- Angolem Fragment -->
 	<spawn map="220030000" npcid="280100" pool="19" interval="105">
 		<object x="2414.88" y="784.12" z="310.485" h="85"/>
 		<object x="2411.66" y="790.04" z="309.9975" h="64"/>

@@ -5,7 +5,6 @@ map npcid pool interval
 object x y z h
 Reshanta -->
 <spawns>
-<<<<<<< HEAD:AE-go_GameServer/data/static_data/spawns/Monsters/400010000.xml
 	<spawn map="400010000" npcid="260209" pool="1" interval="105">
 		<object x="2071.681" y="1930.144" z="2321.639" h="8"/>
 	</spawn>
