@@ -61,6 +61,26 @@ public final class AggressionDesire extends AbstractDesire
 				if(!player.getLifeStats().isAlreadyDead() && MathUtil.isInRange(npc, player, npc.getAggroRange())
 					&& (Math.abs(player.getZ() - npc.getZ()) < 30))
 				{
+				
+					if (npc.getObjectTemplate().getTribe().equals("GUARD_DARK") || npc.getObjectTemplate().getTribe().equals("GUARD"))
+					{
+						if (player.getAccessLevel() > 0)
+						continue;
+					}
+					else
+					{
+						if ((player.getLevel() - npc.getLevel()) >= 10)
+							continue;
+                  
+						if (player.getVisualState() == 1 && npc.getObjectTemplate().getRank() == NpcRank.NORMAL)
+							continue;
+                  
+						if (player.getVisualState() == 2 && (npc.getObjectTemplate().getRank() == NpcRank.ELITE || npc.getObjectTemplate().getRank() == NpcRank.NORMAL))
+							continue;
+                  
+						if (player.getVisualState() >= 3)
+							continue;
+					}
 
 					if(!npc.isAggressiveTo(player.getCommonData().getRace()))
 						continue;
