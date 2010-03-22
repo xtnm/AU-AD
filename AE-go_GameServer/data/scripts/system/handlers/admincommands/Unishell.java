@@ -137,8 +137,14 @@ public class Unishell extends AdminCommand
 				log.error("Cannot write to unishell password file for writing at ./config/network/unishell.passwd", ioe);
 				PacketSendUtility.sendMessage(admin, "Error: cannot write to password file.");
 				return;
-			}
+			}			
 			
+		}
+		else
+		{
+			PacketSendUtility.sendMessage(admin, "Syntax: //unishell <useradd|> <values...>");
+			PacketSendUtility.sendMessage(admin, "//unishell useradd username password");
+			return;
 		}
 
 	}

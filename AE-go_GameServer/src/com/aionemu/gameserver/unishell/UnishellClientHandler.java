@@ -87,7 +87,7 @@ public class UnishellClientHandler extends Thread
 				if(clientUsername.equals(currentFileCredentials.getKey()))
 				{
 					String clientPasswordHash = CryptoHelper.encodeSHA1(clientPassword);
-					if(clientPassword.equals(clientPasswordHash))
+					if(currentFileCredentials.getValue().equals(clientPasswordHash))
 					{
 						hasValidCredentials = true;
 						break;
@@ -103,7 +103,7 @@ public class UnishellClientHandler extends Thread
 				return;
 			}
 			
-			client.getOutputStream().write(("250 USER " + clientUsername).getBytes());
+			client.getOutputStream().write(("250 USER " + clientUsername + "\n\r").getBytes());
 			
 			log.info("Unishell user logged in: " + clientUsername);
 			
@@ -123,11 +123,11 @@ public class UnishellClientHandler extends Thread
 			
 			log.info("Unishell client " + clientUsername + " executed command: " + inputCommand);
 			
-			client.getOutputStream().write("200 DATA".getBytes());
+			client.getOutputStream().write(("200 DATA \n\r").getBytes());
 			
 			client.getOutputStream().write(command.execute(commandAndParams[1].split(" ")).getBytes());
 			
-			client.getOutputStream().write("250 END".getBytes());
+			client.getOutputStream().write("\n\r250 END".getBytes());
 			
 			return;
 			
