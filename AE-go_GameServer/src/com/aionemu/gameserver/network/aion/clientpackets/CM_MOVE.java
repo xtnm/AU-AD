@@ -29,7 +29,7 @@ import com.google.inject.Inject;
 /**
  * Packet about player movement.
  * 
- * @author -Nemesiss-
+ * @author -Nemesis-
  * 
  */
 public class CM_MOVE extends AionClientPacket
