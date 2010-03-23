@@ -87,11 +87,6 @@ public class Player extends Creature
 	private FlyController		flyController;
 	public boolean				CHAT_FIX_WORLD_CHANNEL;
 	private CraftingTask		craftingTask;
-<<<<<<< HEAD:AE-go_GameServer/src/com/aionemu/gameserver/model/gameobjects/player/Player.java
-	
-=======
-
->>>>>>> trunk:AE-go_GameServer/src/com/aionemu/gameserver/model/gameobjects/player/Player.java
 	/**
 	 * Static information for players
 	 */
@@ -861,25 +856,14 @@ public class Player extends Creature
 	public void setFlyController(FlyController flyController)
 	{
 		this.flyController = flyController;
-<<<<<<< HEAD:AE-go_GameServer/src/com/aionemu/gameserver/model/gameobjects/player/Player.java
-	}
-	
-=======
 	}
 
->>>>>>> trunk:AE-go_GameServer/src/com/aionemu/gameserver/model/gameobjects/player/Player.java
 	public int getLastOnline()
 	{
 		Timestamp lastOnline = playerCommonData.getLastOnline();
 		if(lastOnline == null || isOnline())
 			return 0;
-<<<<<<< HEAD:AE-go_GameServer/src/com/aionemu/gameserver/model/gameobjects/player/Player.java
-		
 		return (int) (lastOnline.getTime() / 1000);
-=======
-
-		return (int) (lastOnline.getTime() / 1000);
->>>>>>> trunk:AE-go_GameServer/src/com/aionemu/gameserver/model/gameobjects/player/Player.java
 	}
 	/**
 	 * 

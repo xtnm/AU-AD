@@ -57,13 +57,8 @@ public class SM_EMOTION extends AionServerPacket
 	 */
 	private float				speed = 6.0f;
 
-<<<<<<< HEAD:AE-go_GameServer/src/com/aionemu/gameserver/network/aion/serverpackets/SM_EMOTION.java
-	private int					state;
-	
-=======
 	private int					state;
 
->>>>>>> trunk:AE-go_GameServer/src/com/aionemu/gameserver/network/aion/serverpackets/SM_EMOTION.java
 	private int 				baseAttackSpeed;
 	private int 				currentAttackSpeed;
 
@@ -106,13 +101,8 @@ public class SM_EMOTION extends AionServerPacket
 		this.targetObjectId = targetObjectId;
 		this.state = creature.getState();
 		this.baseAttackSpeed = creature.getGameStats().getBaseStat(StatEnum.ATTACK_SPEED);
-<<<<<<< HEAD:AE-go_GameServer/src/com/aionemu/gameserver/network/aion/serverpackets/SM_EMOTION.java
-		this.currentAttackSpeed = creature.getGameStats().getCurrentStat(StatEnum.ATTACK_SPEED);
-		
-=======
 		this.currentAttackSpeed = creature.getGameStats().getCurrentStat(StatEnum.ATTACK_SPEED);
 
->>>>>>> trunk:AE-go_GameServer/src/com/aionemu/gameserver/network/aion/serverpackets/SM_EMOTION.java
 		if (creature.isInState(CreatureState.FLYING))
 			this.speed = creature.getGameStats().getCurrentStat(StatEnum.FLY_SPEED) / 1000f;
 		else
