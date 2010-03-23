@@ -28,6 +28,7 @@ import com.aionemu.gameserver.model.gameobjects.stats.PlayerLifeStats;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_DUEL;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_QUESTION_WINDOW;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
+import com.aionemu.gameserver.skillengine.model.SkillTargetSlot;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.world.World;
 import com.google.inject.Inject;
@@ -169,19 +170,28 @@ public class DuelService
 		if(!isDueling(player.getObjectId()))
 			return;
 
+		/**
+		 * all debuffs are removed from looser
+		 */
+		player.getEffectController().removeAbnormalEffectsByTargetSlot(SkillTargetSlot.DEBUFF);
+		
 		int opponnentId = duels.get(player.getObjectId());
 		Player opponent = world.findPlayer(opponnentId);
 
 		if(opponent != null)
 		{
+			/**
+			 * all debuffs are removed from winner, but buffs will remain
+			 */
+			opponent.getEffectController().removeAbnormalEffectsByTargetSlot(SkillTargetSlot.DEBUFF);
 			PacketSendUtility.sendPacket(opponent, SM_DUEL.SM_DUEL_RESULT(DuelResult.DUEL_WON, player.getName()));
 			PacketSendUtility.sendPacket(player, SM_DUEL.SM_DUEL_RESULT(DuelResult.DUEL_LOST, opponent.getName()));
 		}
 		else
 		{
-			log.warn("CHECKPOING : duel opponent is already out of world");
+			log.warn("CHECKPOINT : duel opponent is already out of world");
 		}
-		
+
 		removeDuel(player.getObjectId(), opponnentId);
 	}
 
@@ -212,7 +222,7 @@ public class DuelService
 	 */
 	public boolean isDueling(int playerObjId, int targetObjId)
 	{
-		return (duels.containsKey(playerObjId) && duels.containsValue(targetObjId));
+		return duels.containsKey(playerObjId) && duels.get(playerObjId) == targetObjId;
 	}
 
 	/**
