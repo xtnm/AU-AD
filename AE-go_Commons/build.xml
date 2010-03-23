@@ -62,11 +62,6 @@
             depends="compile"
             description="Create the jar file">
     	
-    	<exec dir="." executable="svnversion" outputproperty="revision"
-    		failifexecutionfails="false">
-    		<arg line="-n ." />
-    	</exec>
-    	
 		<tstamp>
 			<format property="date" pattern="yyyy-MM-dd-HH:mm" />
 		</tstamp>
