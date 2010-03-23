@@ -58,7 +58,7 @@ import com.aionemu.gameserver.utils.chathandlers.AdminCommand;
 import com.google.inject.Inject;
 
 /**
- * @author MrPoke
+ * @author xitanium
  * 
  */
 public class Unishell extends AdminCommand
@@ -82,8 +82,9 @@ public class Unishell extends AdminCommand
 		
 		if(params.length < 2)
 		{
-			PacketSendUtility.sendMessage(admin, "Syntax: //unishell <useradd|> <values...>");
+			PacketSendUtility.sendMessage(admin, "Syntax: //unishell <useradd|show> <values...>");
 			PacketSendUtility.sendMessage(admin, "//unishell useradd username password");
+			PacketSendUtility.sendMessage(admin, "//unishell show users");
 			return;
 		}
 		
@@ -138,6 +139,25 @@ public class Unishell extends AdminCommand
 				PacketSendUtility.sendMessage(admin, "Error: cannot write to password file.");
 				return;
 			}			
+			
+		}
+		else if(params[0].equals("show"))
+		{
+			if(params.length < 2)
+			{
+				PacketSendUtility.sendMessage(admin, "Syntax: //unishell show users");
+				return;
+			}
+			
+			if(params[1].equals("users"))
+			{
+				Iterator<Entry<String, String>> authorizedKeys = AuthorizedKeys.loadAuthorizedKeys().entrySet().iterator();
+				while(authorizedKeys.hasNext())
+				{
+					Entry<String,String> current = authorizedKeys.next();
+					PacketSendUtility.sendMessage(admin, "user: " + current.getKey() + " | password: " + current.getValue());
+				}
+			}
 			
 		}
 		else
