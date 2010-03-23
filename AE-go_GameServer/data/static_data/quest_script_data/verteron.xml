@@ -1,6 +1,6 @@
 <quest_scripts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="quest_script_data.xsd">
 <!--
-  ~ This file is part of aion-unique.
+  ~ for you by veigar
   ~
   ~ aion-unique is free software: you can redistribute it and/or modify
   ~ it under the terms of the GNU General Public License as published by
@@ -51,9 +51,12 @@
 	
 	<!-- TODO: Summons to the Citadel -->
 	
-	<!-- TODO: Undelivered Armor -->
 	
+	<!-- TODO: Undelivered Armor -->
+	<report_to start_npc_id="203097" end_npc_id="203101" id="1131"/>
+		
 	<!-- TODO: [Event] Fei's Blessing -->
+	
 	
 	<!-- TODO: [Event] Lato's Blessing -->
 	
@@ -64,7 +67,7 @@
 	<item_collecting start_npc_id="203332" id="1187"/>
 	
 	<!-- A Father's Letter -->
-	<report_to start_npc_id="790000" end_npc_id="203125" id="1150"/>
+	<report_to start_npc_id="790000" end_npc_id="203125" item_id="182200523" id="1150"/>
 	
 	<!-- A Mother's Worry -->
 	<report_to start_npc_id="203110" end_npc_id="203123" id="1138"/>
@@ -79,6 +82,7 @@
 	<item_collecting start_npc_id="203124" id="1145"/>
 	
 	<!-- TODO: Danger From Above -->
+	<report_to start_npc_id="203109" end_npc_id="203109" id="1011"/>
 	
 	<!-- Decorative Weapons -->
 	<item_collecting id="1136" start_npc_id="203100" action_item_id="700116" />
@@ -93,7 +97,8 @@
 	<report_to start_npc_id="203123" end_npc_id="203139" item_id="182200519" id="1146"/>
 	
 	<!-- TODO: Masked Loiterers -->
-	
+	<report_to start_npc_id="203111" end_npc_id="203111" id="1012"/>
+		
 	<!-- Nola's Request -->
 	<monster_hunt start_npc_id="730001" id="1143">
 		<monster_infos var_id="0" npc_id="212883" max_kill="15"/>
@@ -145,12 +150,17 @@
 	<!-- Stolen Jewelry -->
 	<item_collecting start_npc_id="203127" id="1160"/>
 	
+	<!-- Stolen Village Seal -->
+	<report_to start_npc_id="203128" end_npc_id="798003" id="1156"/>
+	
 	<!-- TODO: The Potion Maker's Mistake -->
+	<report_to id="1164" start_npc_id="203131" end_npc_id="203149"/>
 	
 	<!-- Village Seal Found -->
 	<report_to start_npc_id="798003" end_npc_id="203128" item_id="182200502" id="1158"/>
 	
 	<!-- TODO: A Special Omelette -->
+	<report_to id="1154" start_npc_id="203150" end_npc_id="203130"/>
 	
 	<!-- An Antidote for Roseino -->
 	<report_to start_npc_id="203103" end_npc_id="203155" item_id="182200542" id="1171"/>
@@ -162,10 +172,12 @@
 	<item_collecting start_npc_id="203148" id="1166"/>
 	
 	<!-- TODO: Eninte's Request -->
+	<report_to id="1199" start_npc_id="203161" end_npc_id="203893"/>
 	
 	<!-- TODO: Frillneck Hunt -->
 	
 	<!-- TODO: Headless Stone Statue -->
+	<item_collecting id="1170" start_npc_id="730000" action_item_id="700033" />
 	
 	<!-- http://www.aionarmory.com/search.aspx?browse=4.3.2#quests:50+2+1 -->
 	
@@ -186,7 +198,7 @@
 	<item_collecting start_npc_id="203153" id="1213"/>
 	
 	<!-- TODO: Alteno's Wedding Ring -->
-	
+	<item_collecting id="1162" start_npc_id="203095" action_item_id="700005"/>	
 	<!-- TODO: Arachna Antidote -->
 	
 	<!-- Gift to a Pilgrim -->
@@ -246,6 +258,10 @@
 	<item_collecting start_npc_id="203155" action_item_id="700113" id="1178"/>
 	
 	<!-- TODO: [Group] Persistent Krall -->
+	<monster_hunt id="1202" start_npc_id="203147">
+		<monster_infos npc_id="210176" var_id="0" max_kill="10"/>
+		<monster_infos npc_id="210165" var_id="0" max_kill="10"/>
+	</monster_hunt>
 	
 	<!-- TODO: Ancient Stone Fragment -->
 	
@@ -253,6 +269,7 @@
 	<item_collecting start_npc_id="203172" id="1215"/>
 	
 	<!-- TODO: Held Sacred -->
+	<item_collecting id="1017" start_npc_id="203178" action_item_id="700115"/>
 	
 	<!-- Investigating Wind Spirits -->
 	<report_to start_npc_id="203165" end_npc_id="203097" id="1184"/>
@@ -266,6 +283,7 @@
 	<item_collecting start_npc_id="203166" id="1189"/>
 	
 	<!-- TODO: Spirit Of Nature -->
+	<report_to id="1183" start_npc_id="730012" end_npc_id="730012"/>
 	
 	<!-- The Wriggot Menace -->
 	<item_collecting start_npc_id="730012" id="1186"/>
@@ -288,6 +306,10 @@
 	</monster_hunt>
 	
 	<!-- TODO: [Group] Culling Krall -->
+	<monster_hunt id="1181" start_npc_id="203147">
+		<monster_infos npc_id="210176" var_id="0" max_kill="10"/>
+		<monster_infos npc_id="210165" var_id="0" max_kill="10"/>		
+	</monster_hunt>
 	
 	<!-- An Urgent Letter -->
 	<report_to start_npc_id="203099" end_npc_id="203183" item_id="182200555" id="1191"/>
@@ -301,11 +323,15 @@
 	<!-- TODO: Flying Reconnaissance -->
 	
 	<!-- TODO: Krall Desecration -->
+	<monster_hunt id="1022" start_npc_id="203178">
+		<monster_infos npc_id="210177" var_id="0" max_kill="5"/>	
+	</monster_hunt>
 	
 	<!-- Message From Morai -->
 	<report_to start_npc_id="203164" end_npc_id="203167" id="1188"/>
 	
-	<!--  Numonerk's Demand Note handled by script -->
+	<!-- Numonerk's Demand Note -->
+	<report_to start_npc_id="203121" end_npc_id="798004" item_id="182200566" id="1218"/>
 
 	<!-- Saving the Snappers -->
 	<monster_hunt start_npc_id="203169" id="1216">
@@ -318,6 +344,7 @@
 	<!-- TODO: Verteron Reinforcements -->
 	
 	<!-- TODO: [Group] Krall Conspiracy -->
+	<item_collecting id="1193" start_npc_id="203098"/>
 	
 	<!-- TODO: [Group] Reducing Tursin Strength -->
 	
