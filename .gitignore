@@ -3,3 +3,4 @@
 *.class
 tools/
 build/
+unishell.passwd
