@@ -24,9 +24,12 @@
   
 	<!-- TODO: Altgard Duties -->
   
-	<!-- Conversing With a Skurv handled by script -->
-  
+	<!-- Conversing With a Skurv -->
+	  
 	<!-- TODO: Encroachers -->
+	<monster_hunt id="2012" start_npc_id="203559">
+		<monster_infos var_id="0" npc_id="210715" max_kill="4"/>
+	</monster_hunt>	
   
 	<!-- TODO: Fungus Among Us -->
   
@@ -52,7 +55,7 @@
   		<monster_infos var_id="0" npc_id="210413" max_kill="10"/>
   	</monster_hunt>
   	
-  	<!-- The Scribbler handled by script -->
+  	<!-- TODO: The Scribbler -->
   	
   	<!-- The Way to His Heart -->
   	<item_collecting start_npc_id="203582" id="2205"/>
@@ -78,7 +81,8 @@
   	<!-- No-Frills Quills -->
   	<item_collecting start_npc_id="203605" id="2214"/>
   	
-  	<!-- Poison Root, Potent Fruit handled by scipt-->
+  	<!-- Poison Root, Potent Fruit -->
+	<item_collecting id="2213" start_npc_id="203604" action_item_id="700057"/>
   	
   	<!-- Retrieving the Report -->
   	<report_to start_npc_id="203603" end_npc_id="203605" id="2210"/>
@@ -92,18 +96,19 @@
   	<!-- Gleaning the Meaning -->
   	<report_to start_npc_id="203606" end_npc_id="203616" id="2217"/>
   	
-  	<!-- Knot Your Average Message handled by scrypt-->
+  	<!-- TODO: Knot Your Average Message -->
   	
-  	<!-- TODO: Manir's Message -->
+  	<!-- Manir's Message -->
+  	<report_to start_npc_id="203607" end_npc_id="203631" id="2222"/>
   	
-  	
-  	<!-- Manir's Uncle handled by script -->
+  	<!-- TODO: Manir's Uncle -->
   	
   	<!-- Picking off Frightcorn -->
-	<monster_hunt start_npc_id="203604" id="2220">
-  		<monster_infos var_id="0" npc_id="210470" max_kill="5"/>
-  		<monster_infos var_id="0" npc_id="210472" max_kill="5"/>
-  	</monster_hunt>
+	<monster_hunt id="2220" start_npc_id="203604">
+		<monster_infos npc_id="210472"  var_id="0" max_kill="5"/>
+		<monster_infos npc_id="210470"  var_id="0" max_kill="5"/>
+	</monster_hunt>
+  	
   	<!-- Ripened Frightcorn -->
   	<item_collecting start_npc_id="203604" id="2219" action_item_id="700052"/>
   	
@@ -137,7 +142,7 @@
   	<!-- TODO: Put Your Money Where Your Mouth Is -->
   	
   	<!-- A Fertile Field -->
-  	<item_collecting start_npc_id="203629" action_item_id="182203226" id="2237"/>
+  	<item_collecting start_npc_id="203629" action_item_id="700051" id="2237"/>
   	
   	<!-- A Friendly Wager -->
   	<item_collecting start_npc_id="203621" id="2230"/>
@@ -160,7 +165,12 @@
   	
   	<!-- http://www.aionarmory.com/search.aspx?browse=4.3.6#quests:50+2+1 -->
   	
-  	<!-- TODO: Take the Initiative -->
+  	<!-- Take the Initiative -->
+	<monster_hunt id="2015" start_npc_id="203631">
+		<monster_infos npc_id="210510"  var_id="0" max_kill="1"/>
+		<monster_infos npc_id="210504"  var_id="0" max_kill="5"/>
+		<monster_infos npc_id="210553"  var_id="0" max_kill="5"/>
+	</monster_hunt>
   	
   	<!-- A Crystal Hand Mirror -->
   	<report_to start_npc_id="798031" end_npc_id="798035" id="2243"/>
@@ -188,7 +198,8 @@
   	<!-- Glowing Mushroom -->
   	<item_collecting start_npc_id="203630" id="2241"/>
   	
-  	<!-- TODO: Making a New Start -->
+  	<!-- Making a New Start -->
+	<item_collecting id="2292" start_npc_id="203625" />
   	
   	<!-- TODO: Malodor Antidote -->
   	
@@ -198,11 +209,11 @@
   	<item_collecting start_npc_id="798036" id="2263"/>
   	
   	<!-- The Broken Honey Jar -->
-  	<item_collecting start_npc_id="203613" action_item_id="182203224" id="2232"/>
+  	<item_collecting start_npc_id="203613" action_item_id="700061" id="2232"/>
   	
   	<!-- The Sting of Poison -->
   	<monster_hunt start_npc_id="203664" id="2264">
-  		<monster_infos var_id="0" npc_id="210447" max_kill="3"/>
+  		<monster_infos var_id="0" npc_id="210754" max_kill="3"/>
   	</monster_hunt>
   	
   	<!-- A Drinking Problem -->
@@ -260,10 +271,11 @@
   	<!-- The Blue Crystals -->
   	<item_collecting start_npc_id="798033" id="2249"/>
   	
-  	<!-- TODO: The Gerger's Disguise -->
+  	<!-- The Gerger's Disguise -->
+	<item_collecting id="2247" start_npc_id="203645" />
   	
   	<!-- The Gerger's Insignia -->
-  	<item_collecting start_npc_id="203645" action_item_id="182203230" id="2246"/>
+  	<item_collecting start_npc_id="203645" action_item_id="700147" id="2246"/>
   	
   	<!-- The Lost Cube -->
   	<item_collecting start_npc_id="203669" id="2272"/>
@@ -327,13 +339,13 @@
   	
   	<!-- Turbulent Splash Spirits -->
   	<monster_hunt start_npc_id="203650" id="2256">
-  		<monster_infos var_id="0" npc_id="210577" max_kill="5"/>
+  		<monster_infos var_id="0" npc_id="210522" max_kill="5"/>
   	</monster_hunt> 
   	
   	<!-- [Coin] Mutated Spirits -->
   	<monster_hunt start_npc_id="203659" id="2293">
   		<monster_infos var_id="0" npc_id="210576" max_kill="6"/>
-  		<monster_infos var_id="1" npc_id="210523" max_kill="16"/>
+  		<monster_infos var_id="0" npc_id="210523" max_kill="16"/>
   	</monster_hunt>
   	
   	<!-- TODO: [Group] A Lucrative Endeavor -->
@@ -433,7 +445,7 @@
   	
   	<!-- Turbulent Splash Spirits -->
   	<monster_hunt start_npc_id="203650" id="2256">
-  		<monster_infos var_id="0" npc_id="210577" max_kill="5"/>
+  		<monster_infos var_id="0" npc_id="210522" max_kill="5"/>
   	</monster_hunt> 
   	
   	<!-- [Coin] Mutated Spirits -->
