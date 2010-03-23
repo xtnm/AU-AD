@@ -26,6 +26,7 @@ import com.aionemu.gameserver.model.items.ItemSlot;
 import com.aionemu.gameserver.model.items.NpcEquippedGear;
 import com.aionemu.gameserver.model.templates.NpcTemplate;
 import com.aionemu.gameserver.model.templates.item.ItemTemplate;
+import com.aionemu.gameserver.model.templates.spawn.SpawnTemplate;
 import com.aionemu.gameserver.network.aion.AionConnection;
 import com.aionemu.gameserver.network.aion.AionServerPacket;
 
@@ -55,6 +56,7 @@ public class SM_NPC_INFO extends AionServerPacket
 	{
 		this.npc = npc;
 		isAggressive = npc.isAggressiveTo(player.getCommonData().getRace());
+		
 	}
 
 	/**
@@ -70,12 +72,12 @@ public class SM_NPC_INFO extends AionServerPacket
 		writeD(buf, npc.getObjectId());
 		writeD(buf, npc.getNpcId());
 		writeD(buf, npc.getNpcId());
-		
+
 		if(isAggressive)
 			writeC(buf, NpcType.AGGRESSIVE.getId());
 		else
 			writeC(buf, npcTemplate.getNpcType().getId());// 0-monster, 38 - (non attackable), 8- pre-emptive attack (aggro monsters)
-		
+
 		writeH(buf, npc.getState());// unk 65=normal,0x47 (71)= [dead npc ?]no drop,0x21(33)=fight state,0x07=[dead monster?]
 								// no drop
 								// 3,19 - wings spread (NPCs)
@@ -83,7 +85,7 @@ public class SM_NPC_INFO extends AionServerPacket
 								// 7,23 - dead (no drop)
 								// 8,24 - [dead][NPC only] - looks like some orb of light (no normal mesh)
 								// 32,33 - fight mode
-		
+
 		writeC(buf, npc.getHeading());
 		writeD(buf, npcTemplate.getNameId());
 		writeD(buf, npcTemplate.getTitleId());// titleID
@@ -103,7 +105,7 @@ public class SM_NPC_INFO extends AionServerPacket
 		writeC(buf, 100 * currHp / maxHp);// %hp
 		writeD(buf, npc.getObjectTemplate().getStatsTemplate().getMaxHp());
 		writeC(buf, npc.getLevel());// lvl
-		
+
 		NpcEquippedGear gear = npcTemplate.getEquipment();
 		if(gear == null)
 			writeH(buf, 0x00);
@@ -117,15 +119,14 @@ public class SM_NPC_INFO extends AionServerPacket
 				writeD(buf, 0x00);
 			}
 		}
-	
-	
+
 		writeF(buf, 1.5f);// unk
 		writeF(buf, npcTemplate.getHeight());
 		writeF(buf, 0.3f);// speed
 
 		writeH(buf, 2000);// 0x834 (depends on speed ? )
 		writeH(buf, 2000);// 0x834
-	
+
 		writeC(buf, 0x00);// unk
 
 		/**
@@ -135,9 +136,11 @@ public class SM_NPC_INFO extends AionServerPacket
 		writeF(buf, npc.getY());// y
 		writeF(buf, npc.getZ());// z
 		writeC(buf, 0x00); // move type
-
-		writeC(buf, 0);
-		writeC(buf, 0);
+		SpawnTemplate spawn = npc.getSpawn();
+		if (spawn == null)
+			writeH(buf, 0);
+		else
+			writeH(buf, spawn.getStaticid());
 		writeC(buf, 0);
 		writeC(buf, 0); // all unknown
 		writeC(buf, 0);
@@ -153,16 +156,9 @@ public class SM_NPC_INFO extends AionServerPacket
 		 * 2 : summon
 		 * 32 : trap
 		 * 1024 : holy servant, noble energy
-		 */		
+		 */
 		writeH(buf, 1);
 		writeC(buf, 0x00);// unk
-		if (npc.getTarget() == null)
-		{
-			writeD(buf, 0);
-		}
-		else
-		{
-			writeD(buf, npc.getTarget().getObjectId());
-		}
+		writeD(buf, npc.getTarget() == null ? 0 : npc.getTarget().getObjectId());
 	}
 }

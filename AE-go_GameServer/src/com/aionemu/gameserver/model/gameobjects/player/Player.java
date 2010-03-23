@@ -87,7 +87,11 @@ public class Player extends Creature
 	private FlyController		flyController;
 	public boolean				CHAT_FIX_WORLD_CHANNEL;
 	private CraftingTask		craftingTask;
+<<<<<<< HEAD:AE-go_GameServer/src/com/aionemu/gameserver/model/gameobjects/player/Player.java
 	
+=======
+
+>>>>>>> trunk:AE-go_GameServer/src/com/aionemu/gameserver/model/gameobjects/player/Player.java
 	/**
 	 * Static information for players
 	 */
@@ -406,9 +410,8 @@ public class Player extends Creature
 			this.accountWarehouse = storage;
 			accountWarehouse.setOwner(this);
 		}
-
 	}
-	
+
 	/**
 	 * 
 	 * @param storageType
@@ -430,7 +433,7 @@ public class Player extends Creature
 		else
 			return null;
 	}
-	
+
 	/**
 	 *  Items from UPDATE_REQUIRED storages and equipment
 	 *  
@@ -439,7 +442,7 @@ public class Player extends Creature
 	public List<Item> getDirtyItemsToUpdate()
 	{
 		List<Item> dirtyItems = new ArrayList<Item>();
-		
+
 		Storage cubeStorage = getStorage(StorageType.CUBE.getId());
 		if(cubeStorage.getPersistentState() == PersistentState.UPDATE_REQUIRED)
 		{
@@ -447,8 +450,7 @@ public class Player extends Creature
 			dirtyItems.addAll(cubeStorage.getDeletedItems());
 			cubeStorage.setPersistentState(PersistentState.UPDATED);
 		}
-		
-			
+
 		Storage  regularWhStorage = getStorage(StorageType.REGULAR_WAREHOUSE.getId());
 		if(regularWhStorage.getPersistentState() == PersistentState.UPDATE_REQUIRED)
 		{
@@ -456,7 +458,7 @@ public class Player extends Creature
 			dirtyItems.addAll(regularWhStorage.getDeletedItems());
 			regularWhStorage.setPersistentState(PersistentState.UPDATED);
 		}
-		
+
 		Storage  accountWhStorage = getStorage(StorageType.ACCOUNT_WAREHOUSE.getId());
 		if(accountWhStorage.getPersistentState() == PersistentState.UPDATE_REQUIRED)
 		{
@@ -464,14 +466,14 @@ public class Player extends Creature
 			dirtyItems.addAll(accountWhStorage.getDeletedItems());
 			accountWhStorage.setPersistentState(PersistentState.UPDATED);
 		}
-		
+
 		Equipment  equipment = getEquipment();
 		if(equipment.getPersistentState() == PersistentState.UPDATE_REQUIRED)
 		{
 			dirtyItems.addAll(equipment.getEquippedItems());
 			equipment.setPersistentState(PersistentState.UPDATED);
 		}
-		
+
 		return dirtyItems;
 	}
 	/**
@@ -482,19 +484,19 @@ public class Player extends Creature
 	public List<Item> getAllItems()
 	{
 		List<Item> allItems = new ArrayList<Item>();
-		
+
 		Storage cubeStorage = getStorage(StorageType.CUBE.getId());
 		allItems.addAll(cubeStorage.getAllItems());
-			
+
 		Storage  regularWhStorage = getStorage(StorageType.REGULAR_WAREHOUSE.getId());
 		allItems.addAll(regularWhStorage.getStorageItems());
-		
+
 		Storage  accountWhStorage = getStorage(StorageType.ACCOUNT_WAREHOUSE.getId());
 		allItems.addAll(accountWhStorage.getStorageItems());
-		
+
 		Equipment  equipment = getEquipment();
 		allItems.addAll(equipment.getEquippedItems());
-		
+
 		return allItems;
 	}
 
@@ -753,7 +755,7 @@ public class Player extends Creature
 	{
 		return regularWarehouse;
 	}
-	
+
 	/**
 	 * 0: regular, 1: fly, 2: glide
 	 */
@@ -814,7 +816,7 @@ public class Player extends Creature
 	{
 		return isInVisualState(CreatureVisualState.BLINKING);
 	}
-	
+
 	/**
 	 * Check is player is invul
 	 * 
@@ -835,12 +837,12 @@ public class Player extends Creature
 	{
 		this.invul = invul;
 	}
-	
+
 	public void setMailbox(Mailbox mailbox)
 	{
 		this.mailbox = mailbox;
 	}
-	
+
 	public Mailbox getMailbox()
 	{
 		return mailbox;
@@ -859,15 +861,25 @@ public class Player extends Creature
 	public void setFlyController(FlyController flyController)
 	{
 		this.flyController = flyController;
+<<<<<<< HEAD:AE-go_GameServer/src/com/aionemu/gameserver/model/gameobjects/player/Player.java
 	}
 	
+=======
+	}
+
+>>>>>>> trunk:AE-go_GameServer/src/com/aionemu/gameserver/model/gameobjects/player/Player.java
 	public int getLastOnline()
 	{
 		Timestamp lastOnline = playerCommonData.getLastOnline();
 		if(lastOnline == null || isOnline())
 			return 0;
+<<<<<<< HEAD:AE-go_GameServer/src/com/aionemu/gameserver/model/gameobjects/player/Player.java
 		
 		return (int) (lastOnline.getTime() / 1000);
+=======
+
+		return (int) (lastOnline.getTime() / 1000);
+>>>>>>> trunk:AE-go_GameServer/src/com/aionemu/gameserver/model/gameobjects/player/Player.java
 	}
 	/**
 	 * 
