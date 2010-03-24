@@ -68,7 +68,7 @@ public class InstanceService
 			throw new UnsupportedOperationException("Invalid call for next available instance  of " + worldId);
 
 		int nextInstanceId = map.getNextInstanceId();
-
+		destroyTime=map.getdestroyTime();
 		log.info("Creating new instance: " + worldId + " " + nextInstanceId);
 
 		WorldMapInstance worldMapInstance = new WorldMapInstance(map, nextInstanceId);
@@ -77,7 +77,7 @@ public class InstanceService
 		
 		if(destroyTime == 0)
 			destroyTime = 60 * 30;//TODO take from template
-		
+		log.info("Destroying instance at:" + destroyTime + "sec after " + worldId);
 		setDestroyTime(worldMapInstance, destroyTime);
 		return worldMapInstance;
 	}

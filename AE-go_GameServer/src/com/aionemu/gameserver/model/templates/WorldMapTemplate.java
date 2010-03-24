@@ -76,6 +76,11 @@ public class WorldMapTemplate
 	 */
 	@XmlAttribute(name = "water_level", required = true)
 	private int	waterlevel	= 16;
+	/**
+	 * destroyTime on instance
+	 */
+	@XmlAttribute(name = "destroy_time")
+	private int	destroyTime	= 0;
 
 	public String getName()
 	{
@@ -122,5 +127,9 @@ public class WorldMapTemplate
 	public int getDeathLevel()
 	{
 		return deathlevel;
+	}
+	public int getdestroyTime()
+	{
+		return destroyTime;
 	}
 }
