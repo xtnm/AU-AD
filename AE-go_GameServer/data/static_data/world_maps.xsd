@@ -14,6 +14,7 @@
 						<xs:attribute name="instance" type="xs:boolean" />
 						<xs:attribute name="water_level" type="xs:int" use="required" />
 						<xs:attribute name="death_level" type="xs:int" use="required" />
+						<xs:attribute name="destroy_time" type="xs:int" />
 					</xs:complexType>
 				</xs:element>
 			</xs:sequence>

@@ -18,11 +18,14 @@ package com.aionemu.gameserver.network.aion.clientpackets;
 
 import org.apache.log4j.Logger;
 
+import com.aionemu.gameserver.configs.main.CustomConfig;
 import com.aionemu.gameserver.controllers.movement.MovementType;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.model.gameobjects.state.CreatureState;
 import com.aionemu.gameserver.network.aion.AionClientPacket;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_MOVE;
 import com.aionemu.gameserver.utils.PacketSendUtility;
+import com.aionemu.gameserver.utils.stats.StatFunctions;
 import com.aionemu.gameserver.world.World;
 import com.google.inject.Inject;
 
@@ -111,10 +114,18 @@ public class CM_MOVE extends AionClientPacket
 	{
 		Player player = getConnection().getActivePlayer();
 		
+		if(CustomConfig.ACTIVE_FALL_DAMAGE && player.isInState(CreatureState.ACTIVE) && (!player.isInState(CreatureState.FLYING)&&!player.isInState(CreatureState.GLIDING)&&type!=MovementType.MOVEMENT_MOVIN_ELEVATOR)){
+			int damage = StatFunctions.calculateFallDamage(player.getZ(), z);
+			player.getLifeStats().reduceHp(damage, player);
+		}
+		
 		switch(type)
 		{
 			case MOVEMENT_START_MOUSE:
 			case MOVEMENT_START_KEYBOARD:
+			case MOVEMENT_MOVIN_ELEVATOR:
+			case MOVEMENT_ON_ELEVATOR:
+			case MOVEMENT_STAYIN_ELEVATOR:
 				world.updatePosition(player, x, y, z, heading);
 				player.getController().onStartMove();
 				PacketSendUtility.broadcastPacket(player, new SM_MOVE(player, x, y, z, x2, y2, z2, heading, type),

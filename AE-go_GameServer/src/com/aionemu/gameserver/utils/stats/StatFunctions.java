@@ -19,6 +19,7 @@ package com.aionemu.gameserver.utils.stats;
 import org.apache.log4j.Logger;
 
 import com.aionemu.commons.utils.Rnd;
+import com.aionemu.gameserver.configs.main.CustomConfig;
 import com.aionemu.gameserver.controllers.attack.AttackStatus;
 import com.aionemu.gameserver.model.SkillElement;
 import com.aionemu.gameserver.model.gameobjects.Creature;
@@ -554,4 +555,21 @@ public class StatFunctions
 		return resistRate;
 	}
 
+	public static int calculateFallDamage(float old_z, float new_z){
+		
+		int output = 0;
+		
+		float fall_damage_multiplier=(float) CustomConfig.FALL_DAMAGE_MULTIPLIER;
+		
+		float distance = (old_z - new_z);
+		
+		if(distance>=CustomConfig.MINIMUM_DISTANCE_DAMAGE){
+			output = ((int)(distance*fall_damage_multiplier));
+		}
+		
+		return output;
+		
+	}
+	
+	
 }

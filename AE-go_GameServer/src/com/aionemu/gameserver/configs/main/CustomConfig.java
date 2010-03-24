@@ -61,4 +61,23 @@ public class CustomConfig
 	 */
 	@Property(key = "gameserver.base.flytime", defaultValue = "60")
 	public static int		BASE_FLYTIME;
+
+	/**
+	 * Fly damage activator
+	 */
+	@Property(key = "active.fall.damage", defaultValue = "true")
+	public static boolean		ACTIVE_FALL_DAMAGE;
+	
+	
+	/**
+	 * Base Fly damage multiplier
+	 */
+	@Property(key = "fall.damage.multiplier", defaultValue = "2.5")
+	public static float		FALL_DAMAGE_MULTIPLIER;
+	
+	/**
+	 * Fly minimum damage range
+	 */
+	@Property(key = "minimum.distance.damage", defaultValue = "30")
+	public static int		MINIMUM_DISTANCE_DAMAGE;
 }

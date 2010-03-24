@@ -91,6 +91,15 @@ public class WorldMap
 	}
 	
 	/**
+	 * Returns destorytime
+	 * 
+	 * @return destorytime
+	 */
+	public int getdestroyTime()
+	{
+		return worldMapTemplate.getdestroyTime();
+	}
+	/**
 	 * 
 	 * @return int
 	 */
@@ -170,7 +179,7 @@ public class WorldMap
 	{
 		return world;
 	}
-
+	
 	/**
 	 * @return the nextInstanceId
 	 */
