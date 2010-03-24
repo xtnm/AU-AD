@@ -47,27 +47,30 @@ public class AutoAnnounce extends Thread
 	
 	public void run()
 	{
-		while(true)
+		if(announces != null)
 		{
-			while(announces.hasNext())
+			while(true)
 			{
-				String announce = announces.next();
-				Iterator<Player> players = world.getPlayersIterator();
-				while(players.hasNext())
+				while(announces.hasNext())
 				{
-					PacketSendUtility.sendMessage(players.next(), "Annonce automatique : " + announce);
+					String announce = announces.next();
+					Iterator<Player> players = world.getPlayersIterator();
+					while(players.hasNext())
+					{
+						PacketSendUtility.sendMessage(players.next(), "Annonce automatique : " + announce);
+					}
+					try
+					{
+						Thread.currentThread().sleep(120000);
+					}
+					catch(InterruptedException ie)
+					{
+						
+					}
 				}
-				try
-				{
-					Thread.currentThread().sleep(120000);
-				}
-				catch(InterruptedException ie)
-				{
-					
-				}
+				announces = null;
+				announces = DAOManager.getDAO(AutoAnnounceDAO.class).loadAnnounces().iterator();
 			}
-			announces = null;
-			announces = DAOManager.getDAO(AutoAnnounceDAO.class).loadAnnounces().iterator();
 		}
 	}
 	
