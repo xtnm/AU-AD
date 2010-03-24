@@ -5,8 +5,8 @@
 	<!-- INSTANCES -->
 	
 	<!-- Nochsana Training Camp Asmodians -->
-	<portal npcid="700414"  instance="true" minlevel="25" maxlevel="28" group="true">
-		<entrypoint mapid="400010000" x="876.7211" y="3079.2874" z="1644.5786"/>
+	<portal npcid="700414"  instance="true" minlevel="25" maxlevel="28" group="true" race="ASMODIANS">
+		<entrypoint mapid="400010000" x="876.7211" y="3079.2874" z="1644.5786" race="ASMODIANS"/>
 		<exitpoint mapid="300030000" x="513" y="668" z="331"/>
 	</portal>
 	
@@ -139,6 +139,18 @@
 	<portal npcid="730076" minlevel="25" maxlevel="50" instance="false" group="false" race="ASMODIANS">
 		<entrypoint mapid="400010000" x="0" y="0" z="0" race="ASMODIANS"/>
 		<exitpoint mapid="220030000" x="1748" y="1807" z="254"/>
+	</portal>
+	
+	<!-- Admastrong (Elys)-->
+	<portal npcid="278628" instance="true" minlevel="30" group="true" maxlevel="50">
+		<entrypoint mapid="400010000" x="3100.549" y="970.769" z="1513.91" race="ELYOS"/>
+		<exitpoint mapid="320130000" x="576.403" y="760.331" z="198.624"/>
+	</portal>
+	
+	<!-- Admastrong (Asmos)-->
+	<portal npcid="278127" instance="true" minlevel="30" group="true" maxlevel="50">
+		<entrypoint mapid="400010000" x="731.322" y="2824.824" z="1594.225" race="ASMODIANS"/>
+		<exitpoint mapid="320130000" x="576.403" y="760.331" z="198.624"/>
 	</portal>
 	
 </portal_templates>
