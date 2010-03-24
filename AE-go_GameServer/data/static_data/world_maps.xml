@@ -9,7 +9,7 @@
 	<map id="210060000" name="Theomobos" death_level="0" water_level="1"/>
 	<map id="210040000" name="Heiron" death_level="0" water_level="100"/>
 	<map id="220010000" name="Ishalgen" max_user="200" twin_count="2" death_level="0" water_level="248"/>
-	<map id="220030000" name="Altgard" max_user="200" death_level="0" water_level="248"/>
+	<map id="220030000" name="Altgard" max_user="200" death_level="0" water_level="16"/>
 	<map id="220020000" name="Morheim" death_level="0" water_level="16"/>
 	<map id="220050000" name="Brusthonin" death_level="0" water_level="5"/>
 	<map id="220040000" name="Beluslan" death_level="0" water_level="16"/>

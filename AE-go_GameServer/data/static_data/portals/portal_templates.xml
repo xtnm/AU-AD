@@ -5,8 +5,8 @@
 	<!-- INSTANCES -->
 	
 	<!-- Nochsana Training Camp Asmodians -->
-	<portal npcid="700414"  instance="true" minlevel="25" maxlevel="28" group="true" race="ASMODIANS">
-		<entrypoint mapid="400010000" x="876.7211" y="3079.2874" z="1644.5786" race="ASMODIANS"/>
+	<portal npcid="700414"  instance="true" minlevel="25" maxlevel="28" group="true">
+		<entrypoint mapid="400010000" x="876.7211" y="3079.2874" z="1644.5786"/>
 		<exitpoint mapid="300030000" x="513" y="668" z="331"/>
 	</portal>
 	
