@@ -42,6 +42,7 @@ public class AutoAnnounce extends Thread
 	
 	public AutoAnnounce()
 	{
+		log.info("AutoAnnounce loading from database ...");
 		announces = DAOManager.getDAO(AutoAnnounceDAO.class).loadAnnounces().iterator();
 	}
 	
@@ -55,13 +56,15 @@ public class AutoAnnounce extends Thread
 				{
 					String announce = announces.next();
 					Iterator<Player> players = world.getPlayersIterator();
+					log.info("AutoAnnounce:: " + announce);
 					while(players.hasNext())
 					{
 						PacketSendUtility.sendMessage(players.next(), "Annonce automatique : " + announce);
 					}
+					
 					try
 					{
-						Thread.currentThread().sleep(120000);
+						Thread.sleep(120000);
 					}
 					catch(InterruptedException ie)
 					{
@@ -69,6 +72,7 @@ public class AutoAnnounce extends Thread
 					}
 				}
 				announces = null;
+				log.info("AutoAnnounce reloading from database");
 				announces = DAOManager.getDAO(AutoAnnounceDAO.class).loadAnnounces().iterator();
 			}
 		}
