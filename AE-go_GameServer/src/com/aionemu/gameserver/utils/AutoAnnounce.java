@@ -34,7 +34,7 @@ public class AutoAnnounce extends Thread
 {
 	
 	private static final Logger log = Logger.getLogger(AutoAnnounce.class);
-	private Iterator<String> announces;
+	private Iterator<String> announces = null;
 	private boolean status = false;
 	
 	@Inject
@@ -48,34 +48,33 @@ public class AutoAnnounce extends Thread
 	
 	public void run()
 	{
-		if(announces != null)
+		while(announces != null)
 		{
-			while(true)
+			while(announces.hasNext())
 			{
-				while(announces.hasNext())
+				String announce = announces.next();
+				Iterator<Player> players = world.getPlayersIterator();
+				log.info("AutoAnnounce:: " + announce);
+				while(players.hasNext())
 				{
-					String announce = announces.next();
-					Iterator<Player> players = world.getPlayersIterator();
-					log.info("AutoAnnounce:: " + announce);
-					while(players.hasNext())
-					{
-						PacketSendUtility.sendMessage(players.next(), "Annonce automatique : " + announce);
-					}
-					
-					try
-					{
-						Thread.sleep(120000);
-					}
-					catch(InterruptedException ie)
-					{
-						
-					}
+					PacketSendUtility.sendMessage(players.next(), "Annonce automatique : " + announce);
 				}
-				announces = null;
-				log.info("AutoAnnounce reloading from database");
-				announces = DAOManager.getDAO(AutoAnnounceDAO.class).loadAnnounces().iterator();
+				
+				try
+				{
+					Thread.sleep(120000);
+				}
+				catch(InterruptedException ie)
+				{
+					
+				}
 			}
+			
 		}
+		announces = null;
+		log.info("AutoAnnounce reloading from database");
+		announces = DAOManager.getDAO(AutoAnnounceDAO.class).loadAnnounces().iterator();
+		run();
 	}
 	
 }
