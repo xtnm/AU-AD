@@ -55,7 +55,7 @@
 
     <!-- Root Logger -->
     <root>
-        <priority value="debug"/>
+        <priority value="info"/>
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="CONSOLE_TO_FILE"/>
         <appender-ref ref="ERROR_APPENDER"/>
