@@ -83,10 +83,12 @@ public class Player extends Creature
 	private int					flyState		= 0;
 	private boolean				isTrading;
 	private long				prisonTimer		= 0;
+	public boolean				CHAT_FIX_WORLD_CHANNEL;
 	private boolean				invul;
 	private FlyController		flyController;
-	public boolean				CHAT_FIX_WORLD_CHANNEL;
 	private CraftingTask		craftingTask;
+	private int					flightTeleportId;
+	private int					flightDistance;
 	/**
 	 * Static information for players
 	 */
@@ -865,11 +867,13 @@ public class Player extends Creature
 			return 0;
 		return (int) (lastOnline.getTime() / 1000);
 	}
+
 	/**
 	 * 
 	 * @param craftingTask
 	 */
-	public void setCraftingTask(CraftingTask craftingTask) {
+	public void setCraftingTask(CraftingTask craftingTask)
+	{
 		this.craftingTask = craftingTask;
 	}
 
@@ -877,8 +881,44 @@ public class Player extends Creature
 	 * 
 	 * @return
 	 */
-	public CraftingTask getCraftingTask() {
+	public CraftingTask getCraftingTask()
+	{
 		return craftingTask;
 	}
 
+	/**
+	 * 
+	 * @param flightTeleportId
+	 */
+	public void setFlightTeleportId(int flightTeleportId)
+	{
+		this.flightTeleportId = flightTeleportId;
+	}
+
+	/**
+	 * 
+	 * @return flightTeleportId
+	 */
+	public int getFlightTeleportId()
+	{
+		return flightTeleportId;
+	}
+
+	/**
+	 * 
+	 * @param flightDistance
+	 */
+	public void setFlightDistance(int flightDistance)
+	{
+		this.flightDistance = flightDistance;
+	}
+
+	/**
+	 * 
+	 * @return flightDistance
+	 */
+	public int getFlightDistance()
+	{
+		return flightDistance;
+	}
 }

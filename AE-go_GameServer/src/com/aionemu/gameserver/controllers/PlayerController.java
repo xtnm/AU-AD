@@ -517,9 +517,8 @@ public class PlayerController extends CreatureController<Player>
 	public void onFlyTeleportEnd()
 	{
 		Player player = getOwner();
-		player.unsetState(CreatureState.FLYING);
+		player.unsetState(CreatureState.FLIGHT_TELEPORT);
 		player.setState(CreatureState.ACTIVE);
-		PacketSendUtility.broadcastPacket(player, new SM_PLAYER_INFO(player, false));
 		addZoneUpdateMask(ZoneUpdateMode.ZONE_REFRESH);
 	}
 
@@ -585,6 +584,10 @@ public class PlayerController extends CreatureController<Player>
 			die();
 			return;
 		}
+		
+		ZoneInstance currentZone = player.getZoneInstance();
+		if(currentZone != null && currentZone.isBreath())
+			return;
 		
 		//TODO need fix character height
 		float playerheight = player.getPlayerAppearance().getHeight() * 1.6f;
