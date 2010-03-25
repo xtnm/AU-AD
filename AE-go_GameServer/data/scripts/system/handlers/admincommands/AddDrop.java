@@ -55,7 +55,7 @@ public class AddDrop extends AdminCommand
 
 		if(params.length != 6)
 		{
-			PacketSendUtility.sendMessage(admin, "syntax //adddrop <mobid> <itemid> <min> <max> <chance> <quest>");
+			PacketSendUtility.sendMessage(admin, "syntax //adddrop <mobid> <itemid> <min> <max> <chance>");
 			return;
 		}
 
@@ -66,16 +66,15 @@ public class AddDrop extends AdminCommand
 			final int min = Integer.parseInt(params[2]);
 			final int max = Integer.parseInt(params[3]);
 			final int chance = Integer.parseInt(params[4]);
-			final int quest = Integer.parseInt(params[5]);
 
 			DropList dropList = dropService.getDropList();
 
-			DropTemplate dropTemplate = new DropTemplate(mobId, itemId, min, max, chance, quest);
+			DropTemplate dropTemplate = new DropTemplate(mobId, itemId, min, max, chance);
 			dropList.addDropTemplate(mobId, dropTemplate);
 
 			DB.insertUpdate("INSERT INTO droplist ("
-				+ "`mobId`, `itemId`, `min`, `max`, `chance`, `quest`)" + " VALUES "
-				+ "(?, ?, ?, ?, ?, ?)", new IUStH() {
+				+ "`mobId`, `itemId`, `min`, `max`, `chance`)" + " VALUES "
+				+ "(?, ?, ?, ?, ?)", new IUStH() {
 					@Override
 					public void handleInsertUpdate(PreparedStatement ps) throws SQLException
 					{
@@ -84,7 +83,6 @@ public class AddDrop extends AdminCommand
 						ps.setInt(3, min);
 						ps.setInt(4, max);
 						ps.setInt(5, chance);
-						ps.setInt(6, quest);
 						ps.execute();
 					}
 				});
