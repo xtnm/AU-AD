@@ -94,7 +94,7 @@
         <object staticid="0" x="420.32236" y="723.1807" z="157.99872" h="24" w="0" rw="0"/>
     </spawn>
     <spawn map="320130000" npcid="213802" pool="1" interval="3600">
-        <object staticid="0" x="366.92648" y="644.2889" z="169.6935" h="3600" w="0" rw="0"/>
+        <object staticid="0" x="366.92648" y="644.2889" z="169.6935" h="90" w="0" rw="0"/>
     </spawn>
     <spawn map="320130000" npcid="214742" pool="1" interval="3600">
         <object staticid="0" x="441.1511" y="724.86505" z="155.96724" h="37" w="0" rw="0"/>
