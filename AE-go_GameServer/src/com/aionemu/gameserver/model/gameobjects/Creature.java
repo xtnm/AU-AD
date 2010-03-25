@@ -196,7 +196,8 @@ public abstract class Creature extends VisibleObject
 	 */
 	public boolean canAttack()
 	{
-		return !(getEffectController().isAbnormalState(EffectId.CANT_ATTACK_STATE) || isCasting() || isInState(CreatureState.RESTING) || isInState(CreatureState.PRIVATE_SHOP));
+		//return !(getEffectController().isAbnormalState(EffectId.CANT_ATTACK_STATE) || isCasting() || isInState(CreatureState.RESTING) || isInState(CreatureState.PRIVATE_SHOP));
+		return true;
 	}
 
 	/**
