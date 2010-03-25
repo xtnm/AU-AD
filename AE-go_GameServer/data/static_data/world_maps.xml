@@ -27,7 +27,7 @@
 	<map id="300130000" name="MirenChamber" instance="true" death_level="0" water_level="16" />
 	<map id="300140000" name="KrotanChamber" instance="true" death_level="0" water_level="16" />
 	<map id="310110000" name="TheobomosLab" instance="true" death_level="0" water_level="16" />
-	<map id="320130000" name="Admastronghold" instance="true" death_level="0" water_level="16" />
+	<map id="320130000" name="Admastronghold" instance="true" death_level="0" water_level="16" destroy_time="14400" />
 	<map id="310010000" name="IDAbProL1" instance="true" death_level="0" water_level="16"/>
 	<map id="310020000" name="IDAbProL2" instance="true" death_level="0" water_level="16"/>
 	<map id="310030000" name="IDAbGateL1" death_level="0" water_level="16"/>
