@@ -138,12 +138,7 @@
   	
   	<!-- TODO: Put Your Money Where Your Mouth Is -->
   	
-<<<<<<< HEAD:AE-go_GameServer/data/static_data/quest_script_data/altgard.xml
-  	<!-- A Fertile Field -->
-  	<item_collecting start_npc_id="203629" action_item_id="700051" id="2237"/>
-=======
   	<!-- A Fertile Field handled by script -->
->>>>>>> trunk:AE-go_GameServer/data/static_data/quest_script_data/altgard.xml
   	
   	<!-- A Friendly Wager -->
   	<item_collecting start_npc_id="203621" id="2230"/>
@@ -209,14 +204,8 @@
   	<!-- Shugo Potion -->
   	<item_collecting start_npc_id="798036" id="2263"/>
   	
-<<<<<<< HEAD:AE-go_GameServer/data/static_data/quest_script_data/altgard.xml
-  	<!-- The Broken Honey Jar -->
-  	<item_collecting start_npc_id="203613" action_item_id="700061" id="2232"/>
-  	
-=======
   	<!-- The Broken Honey Jar handled by script -->
 
->>>>>>> trunk:AE-go_GameServer/data/static_data/quest_script_data/altgard.xml
   	<!-- The Sting of Poison -->
   	<monster_hunt start_npc_id="203664" id="2264">
   		<monster_infos var_id="0" npc_id="210754" max_kill="3"/>
