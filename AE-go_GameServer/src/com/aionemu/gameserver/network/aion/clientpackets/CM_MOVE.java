@@ -18,7 +18,7 @@ package com.aionemu.gameserver.network.aion.clientpackets;
 
 import org.apache.log4j.Logger;
 
-import com.aionemu.gameserver.configs.main.CustomConfig;
+import com.aionemu.gameserver.controllers.MoveController;
 import com.aionemu.gameserver.controllers.movement.MovementType;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.state.CreatureState;
@@ -41,17 +41,19 @@ public class CM_MOVE extends AionClientPacket
 	 * logger for this class
 	 */
 	private static final Logger	log	= Logger.getLogger(CM_MOVE.class);
-	
+
 	@Inject
 	private World				world;
 
 	private MovementType		type;
-	
+
 	private byte heading;
-	
+
 	private byte movementType;
-	
+
 	private float x, y, z, x2, y2, z2;
+
+	private byte glideFlag;
 
 	/**
 	 * Constructs new instance of <tt>CM_MOVE </tt> packet
@@ -74,7 +76,6 @@ public class CM_MOVE extends AionClientPacket
 		if(!player.isSpawned())
 			return;
 
-		
 		x = readF();
 		y = readF();
 		z = readF();
@@ -91,15 +92,15 @@ public class CM_MOVE extends AionClientPacket
 				y2 = readF();
 				z2 = readF();
 				break;
-			case VALIDATE_GLIDE_DOWN:
+			case MOVEMENT_GLIDE_DOWN:
 			case MOVEMENT_GLIDE_START_MOUSE:
 				x2 = readF();
 				y2 = readF();
 				z2 = readF();
 				// no break
-			case VALIDATE_GLIDE_UP:
+			case MOVEMENT_GLIDE_UP:
 			case VALIDATE_GLIDE_MOUSE:
-				readC();
+				glideFlag = (byte)readC();
 				break;
 			default:
 				break;
@@ -113,12 +114,6 @@ public class CM_MOVE extends AionClientPacket
 	protected void runImpl()
 	{
 		Player player = getConnection().getActivePlayer();
-		
-		if(CustomConfig.ACTIVE_FALL_DAMAGE && player.isInState(CreatureState.ACTIVE) && (!player.isInState(CreatureState.FLYING)&&!player.isInState(CreatureState.GLIDING)&&type!=MovementType.MOVEMENT_MOVIN_ELEVATOR)){
-			int damage = StatFunctions.calculateFallDamage(player.getZ(), z);
-			player.getLifeStats().reduceHp(damage, player);
-		}
-		
 		switch(type)
 		{
 			case MOVEMENT_START_MOUSE:
@@ -127,29 +122,66 @@ public class CM_MOVE extends AionClientPacket
 			case MOVEMENT_ON_ELEVATOR:
 			case MOVEMENT_STAYIN_ELEVATOR:
 				world.updatePosition(player, x, y, z, heading);
+				player.getMoveController().setNewDirection(x2, y2, z2);
 				player.getController().onStartMove();
+				player.getFlyController().onStopGliding();
 				PacketSendUtility.broadcastPacket(player, new SM_MOVE(player, x, y, z, x2, y2, z2, heading, type),
 					false);
 				break;
 			case MOVEMENT_GLIDE_START_MOUSE:
-			case VALIDATE_GLIDE_DOWN:
+				player.getMoveController().setNewDirection(x2, y2, z2);
+				// no break
+			case MOVEMENT_GLIDE_DOWN:
 				world.updatePosition(player, x, y, z, heading);
 				player.getController().onMove();
-				PacketSendUtility.broadcastPacket(player, new SM_MOVE(player, x, y, z, x2, y2, z2, heading, type),
+				PacketSendUtility.broadcastPacket(player, new SM_MOVE(player, x, y, z, x2, y2, z2, heading, glideFlag, type),
 					false);
 				player.getFlyController().switchToGliding();
+				break;
+			case MOVEMENT_GLIDE_UP:
+				world.updatePosition(player, x, y, z, heading);
+				player.getController().onMove();
+				PacketSendUtility.broadcastPacket(player, new SM_MOVE(player, x, y, z, heading, glideFlag, type),
+					false);
+				player.getFlyController().switchToGliding();
+				break;
+			case VALIDATE_GLIDE_MOUSE:
+				world.updatePosition(player, x, y, z, heading);
+				player.getController().onMove();
+				player.getFlyController().switchToGliding();
+
+				/**
+				 * Broadcast a fake packet to trick the client
+				 */
+				//TODO: glideSpeed == runSpeed ?
+				float glideSpeed = player.getPlayerStatsTemplate().getRunSpeed();
+				double angle = Math.toRadians(heading * 3);
+				x2 = (float) (glideSpeed * Math.cos(angle));
+				y2 = (float) (glideSpeed * Math.sin(angle));
+
+				PacketSendUtility.broadcastPacket(player,
+						new SM_MOVE(player, x, y, z, x2, y2, z2, heading, glideFlag, MovementType.MOVEMENT_GLIDE_DOWN),
+						false);
 				break;
 			case VALIDATE_MOUSE:
 			case VALIDATE_KEYBOARD:
 				player.getController().onMove();
+				player.getFlyController().onStopGliding();
 				world.updatePosition(player, x, y, z, heading);
+
+				MoveController mc = player.getMoveController();
+
+				PacketSendUtility.broadcastPacket(player, new SM_MOVE(player, x, y, z,
+						mc.getTargetX(), mc.getTargetY(), mc.getTargetZ(), heading,
+						(type == MovementType.VALIDATE_MOUSE) ? MovementType.MOVEMENT_START_MOUSE : MovementType.MOVEMENT_START_KEYBOARD),
+						false);
 				break;
 			case MOVEMENT_STOP:
-				PacketSendUtility.broadcastPacket(player, new SM_MOVE(player, x, y, z, x2, y2, z2, heading, type),
+				PacketSendUtility.broadcastPacket(player, new SM_MOVE(player, x, y, z, heading, type),
 					false);
 				world.updatePosition(player, x, y, z, heading);
 				player.getController().onStopMove();
-				player.getFlyController().onStopMove();
+				player.getFlyController().onStopGliding();
 				break;
 			case UNKNOWN:
 				StringBuilder sb = new StringBuilder();
@@ -163,7 +195,7 @@ public class CM_MOVE extends AionClientPacket
 			default:
 				break;
 		}
-		
+
 		if(type != MovementType.MOVEMENT_STOP && player.isProtectionActive())
 		{
 			player.getController().stopProtectionActiveTask();

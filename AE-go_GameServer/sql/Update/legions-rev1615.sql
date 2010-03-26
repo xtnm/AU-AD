@@ -1,1 +1,0 @@
-ALTER TABLE `legion_history` ADD PRIMARY KEY ( `date` ) 

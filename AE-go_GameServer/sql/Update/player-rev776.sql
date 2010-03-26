@@ -1,1 +1,0 @@
-ALTER TABLE `players` ADD COLUMN `recoverexp` bigint(20) NOT NULL default '0' AFTER `exp`;

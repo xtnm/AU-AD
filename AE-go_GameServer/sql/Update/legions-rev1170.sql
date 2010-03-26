@@ -1,1 +1,0 @@
-ALTER TABLE `legions` ADD `contribution_points` INT NOT NULL DEFAULT '0' AFTER `level` 

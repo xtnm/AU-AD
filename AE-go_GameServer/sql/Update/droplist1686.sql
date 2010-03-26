@@ -1,1 +1,0 @@
-ALTER TABLE  `droplist` DROP  `quest`

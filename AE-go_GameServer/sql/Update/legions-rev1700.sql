@@ -1,3 +1,0 @@
-ALTER TABLE `legion_history` DROP PRIMARY KEY 
-ALTER TABLE `legion_history` ADD `id` INT NOT NULL AUTO_INCREMENT FIRST ,
-ADD PRIMARY KEY ( `id` ) 
