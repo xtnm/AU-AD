@@ -23,6 +23,7 @@ import com.aionemu.gameserver.controllers.attack.AttackStatus;
 import com.aionemu.gameserver.controllers.movement.AttackCalcObserver;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.model.templates.item.ItemTemplate;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SKILL_ACTIVATION;
 import com.aionemu.gameserver.skillengine.effect.EffectTemplate;
 import com.aionemu.gameserver.skillengine.effect.Effects;
@@ -88,6 +89,17 @@ public class Effect
 	
 	private boolean isStopped;
 	
+	private ItemTemplate itemTemplate;
+	
+	/**
+	 * Hate that will be placed on effected list
+	 */
+	private int tauntHate;
+	/**
+	 * Total hate that will be broadcasted
+	 */
+	private int effectHate;
+	
 	public Effect(Creature effector, Creature effected, SkillTemplate skillTemplate, int skillLevel, int duration)
 	{
 		this.effector = effector;
@@ -95,6 +107,12 @@ public class Effect
 		this.skillTemplate = skillTemplate;
 		this.skillLevel = skillLevel;
 		this.duration = duration;
+	}
+	
+	public Effect(Creature effector, Creature effected, SkillTemplate skillTemplate, int skillLevel, int duration, ItemTemplate itemTemplate)
+	{
+		this(effector, effected, skillTemplate, skillLevel, duration);
+		this.itemTemplate = itemTemplate;
 	}
 	
 	/**
@@ -453,6 +471,7 @@ public class Effect
 			
 			template.calculate(this);
 			template.calculateSubEffect(this);
+			template.calculateHate(this);
 			effectCounter++;
 		}
 	}
@@ -475,6 +494,12 @@ public class Effect
 			template.startSubEffect(this);
 			effectCounter++;
 		}
+		
+		/**
+		 * broadcast final hate to all visible objects
+		 */
+		if(effectHate != 0)
+			effector.getController().broadcastHate(effectHate);
 	}
 	
 	/**
@@ -596,6 +621,11 @@ public class Effect
 	{
 		return skillTemplate.getPvpDamage();
 	}
+	
+	public ItemTemplate getItemTemplate()
+	{
+		return itemTemplate;
+	}
 
 	/**
 	 * Try to add this effect to effected controller
@@ -607,5 +637,37 @@ public class Effect
 			effected.getEffectController().addEffect(this);
 			addedToController = true;
 		}
+	}
+
+	/**
+	 * @return the effectHate
+	 */
+	public int getEffectHate()
+	{
+		return effectHate;
+	}
+
+	/**
+	 * @param effectHate the effectHate to set
+	 */
+	public void setEffectHate(int effectHate)
+	{
+		this.effectHate = effectHate;
+	}
+
+	/**
+	 * @return the tauntHate
+	 */
+	public int getTauntHate()
+	{
+		return tauntHate;
+	}
+
+	/**
+	 * @param tauntHate the tauntHate to set
+	 */
+	public void setTauntHate(int tauntHate)
+	{
+		this.tauntHate = tauntHate;
 	}
 }

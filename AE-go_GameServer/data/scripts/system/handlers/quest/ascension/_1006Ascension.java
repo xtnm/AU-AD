@@ -22,7 +22,6 @@ import java.util.List;
 
 import com.aionemu.gameserver.ai.events.Event;
 import com.aionemu.gameserver.configs.main.CustomConfig;
-import com.aionemu.gameserver.dataholders.DataManager;
 import com.aionemu.gameserver.model.PlayerClass;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.Npc;
@@ -120,8 +119,7 @@ public class _1006Ascension extends QuestHandler
 				Npc mob = (Npc) questService.addNewSpawn(310010000, instanceId, 211043, (float) 226.7, (float) 251.5, (float) 205.5, (byte) 0, true);
 				// TODO: Tempt decrease P attack.
 				mob.getGameStats().setStat(StatEnum.MAIN_HAND_POWER, mob.getGameStats().getCurrentStat(StatEnum.MAIN_HAND_POWER) / 3);
-				mob.getAggroList().addDamageHate(player, 1000, 0);
-				mob.getAi().handleEvent(Event.ATTACKED);
+				mob.getAggroList().addDamage(player, 1000);
 				return true;
 			}
 		}
@@ -273,8 +271,7 @@ public class _1006Ascension extends QuestHandler
 										// TODO: Tempt decrease P attack.
 										mob.getGameStats().setStat(StatEnum.MAIN_HAND_POWER, mob.getGameStats().getCurrentStat(StatEnum.MAIN_HAND_POWER) / 3);
 										mob.getGameStats().setStat(StatEnum.PHYSICAL_DEFENSE, 0);
-										mob.getAggroList().addDamageHate(player, 1000, 0);
-										mob.getAi().handleEvent(Event.ATTACKED);
+										mob.getAggroList().addDamage(player, 1000);
 									}
 								}
 							}, 43000);
@@ -399,7 +396,7 @@ public class _1006Ascension extends QuestHandler
 		{
 			qs.setQuestVar(3);
 			updateQuestStatus(player, qs);
-			PacketSendUtility.sendPacket(player, new SM_SYSTEM_MESSAGE(SystemMessageId.QUEST_FAILED_$1, DataManager.QUEST_DATA.getQuestById(questId).getName()));
+			PacketSendUtility.sendPacket(player, new SM_SYSTEM_MESSAGE(SystemMessageId.QUEST_FAILED_$1, questsData.getQuestById(questId).getName()));
 		}
 		return false;
 	}
@@ -418,7 +415,7 @@ public class _1006Ascension extends QuestHandler
 				{
 					qs.setQuestVar(3);
 					updateQuestStatus(player, qs);
-					PacketSendUtility.sendPacket(player, new SM_SYSTEM_MESSAGE(SystemMessageId.QUEST_FAILED_$1, DataManager.QUEST_DATA.getQuestById(questId).getName()));
+					PacketSendUtility.sendPacket(player, new SM_SYSTEM_MESSAGE(SystemMessageId.QUEST_FAILED_$1, questsData.getQuestById(questId).getName()));
 				}
 			}
 		}

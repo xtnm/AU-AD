@@ -18,6 +18,7 @@ package com.aionemu.gameserver.network.aion.serverpackets;
 
 import java.nio.ByteBuffer;
 
+import com.aionemu.gameserver.model.gameobjects.VisibleObject;
 import com.aionemu.gameserver.network.aion.AionConnection;
 import com.aionemu.gameserver.network.aion.AionServerPacket;
 
@@ -28,32 +29,33 @@ import com.aionemu.gameserver.network.aion.AionServerPacket;
  */
 public class SM_LOOKATOBJECT extends AionServerPacket
 {
-	private int	lookerObjectId;
-	private int	targetObjectId;
-	private int	heading;
-	
-	public SM_LOOKATOBJECT(int lookerObjectId, int targetObjectId, int heading)
+	private VisibleObject	visibleObject;
+	private int		targetObjectId;
+	private int		heading;
+
+	public SM_LOOKATOBJECT(VisibleObject visibleObject)
 	{
-		this.lookerObjectId = lookerObjectId;
-		this.targetObjectId = targetObjectId;
-		this.heading = heading;
+		this.visibleObject = visibleObject;
+		if(visibleObject.getTarget() != null)
+		{
+			this.targetObjectId = visibleObject.getTarget().getObjectId();
+			this.heading = Math.abs(128 - visibleObject.getTarget().getHeading());
+		}
+		else
+		{
+			this.targetObjectId = 0;
+			this.heading = visibleObject.getHeading();
+		}
 	}
-	/*public SM_DIALOG(int targetObjectId)
-	{
-		this.targetObjectId = targetObjectId;
-		
-	}*/
 
 	/**
 	* {@inheritDoc}
 	*/
-	
 	@Override
 	protected void writeImpl(AionConnection con, ByteBuffer buf)
-	{		
-		writeD(buf, lookerObjectId);
-		writeD(buf, targetObjectId); // unknown
-		writeC(buf, heading); // unknown
-
-	}	
+	{
+		writeD(buf, visibleObject.getObjectId());
+		writeD(buf, targetObjectId);
+		writeC(buf, heading);
+	}
 }

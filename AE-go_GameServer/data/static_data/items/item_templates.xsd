@@ -29,8 +29,12 @@
 			<xs:element name="godstone" type="Godstone" minOccurs="0"
 				maxOccurs="1" />
 		</xs:sequence>
+		<xs:attribute name="return_alias" type="xs:string" />
+		<xs:attribute name="return_world" type="xs:int" />
 		<xs:attribute name="equipment_type" type="equipType" />
 		<xs:attribute name="slot" type="xs:int" />
+		<xs:attribute name="usedelayid" type="xs:int" />
+		<xs:attribute name="usedelay" type="xs:int" />
 		<xs:attribute name="cash_item" type="xs:int" />
 		<xs:attribute name="dmg_decal" type="xs:int" />
 		<xs:attribute name="weapon_boost" type="xs:int" />
@@ -44,7 +48,7 @@
 		<xs:attribute name="can_proc_enchant" type="xs:boolean" />
 		<xs:attribute name="drop" type="xs:boolean" />
 		<xs:attribute name="dye" type="xs:boolean" />
-		<xs:attribute name="race" type="xs:string" />
+		<xs:attribute name="race" type="itemRace" />
 		<xs:attribute name="aic" type="xs:int" />
 		<xs:attribute name="ai" type="xs:int" />
 		<xs:attribute name="ap" type="xs:int" />
@@ -212,6 +216,14 @@
 			<xs:enumeration value="EPIC" />
 			<xs:enumeration value="MYTHIC" />
 			<xs:enumeration value="JUNK" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="itemRace">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ELYOS" />
+			<xs:enumeration value="ASMODIANS" />
+			<xs:enumeration value="ALL" />
 		</xs:restriction>
 	</xs:simpleType>
 </xs:schema>

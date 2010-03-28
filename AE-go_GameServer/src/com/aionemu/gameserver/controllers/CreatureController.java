@@ -22,12 +22,14 @@ import java.util.concurrent.Future;
 
 import com.aionemu.gameserver.controllers.movement.MovementType;
 import com.aionemu.gameserver.model.gameobjects.Creature;
+import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.state.CreatureState;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_LOOKATOBJECT;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_MOVE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS.TYPE;
-import com.aionemu.gameserver.skillengine.model.HopType;
+import com.aionemu.gameserver.skillengine.model.HealType;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 
 /**
@@ -43,11 +45,14 @@ public abstract class CreatureController<T extends Creature> extends VisibleObje
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void notSee(VisibleObject object)
+	public void notSee(VisibleObject object, boolean isOutOfRange)
 	{
-		super.notSee(object);
+		super.notSee(object, isOutOfRange);
 		if(object == getOwner().getTarget())
+		{
 			getOwner().setTarget(null);
+			PacketSendUtility.broadcastPacket(getOwner(), new SM_LOOKATOBJECT(getOwner()));
+		}
 	}
 
 	/**
@@ -114,7 +119,7 @@ public abstract class CreatureController<T extends Creature> extends VisibleObje
 	 * @param hopType
 	 * @param value
 	 */
-	public void onRestore(HopType hopType, int value)
+	public void onRestore(HealType hopType, int value)
 	{
 		switch(hopType)
 		{
@@ -186,7 +191,7 @@ public abstract class CreatureController<T extends Creature> extends VisibleObje
 	{
 		// TODO Auto-generated method stub
 	}
-	
+
 	/**
 	 * 
 	 * @param taskId
@@ -196,7 +201,7 @@ public abstract class CreatureController<T extends Creature> extends VisibleObje
 	{
 		return tasks.get(taskId);
 	}
-	
+
 	/**
 	 * 
 	 * @param taskId
@@ -209,7 +214,7 @@ public abstract class CreatureController<T extends Creature> extends VisibleObje
 			task.cancel(false);
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param taskId
@@ -220,7 +225,7 @@ public abstract class CreatureController<T extends Creature> extends VisibleObje
 		cancelTask(taskId);
 		tasks.put(taskId, task);
 	}
-	
+
 	/**
 	 * Cancel all tasks associated with this controller
 	 * (when deleting object)
@@ -240,7 +245,7 @@ public abstract class CreatureController<T extends Creature> extends VisibleObje
 		super.delete();
 		cancelAllTasks();
 	}
-	
+
 	/**
 	 * Die by reducing HP to 0
 	 */
@@ -249,4 +254,19 @@ public abstract class CreatureController<T extends Creature> extends VisibleObje
 		getOwner().getLifeStats().reduceHp(getOwner().getLifeStats().getCurrentHp() + 1, null);
 	}
 	
+	/**
+	 *  Notify hate value to all visible creatures
+	 *  
+	 * @param value
+	 */
+	public void broadcastHate(int value)
+	{
+		for(VisibleObject visibleObject : getOwner().getKnownList())
+		{
+			if(visibleObject instanceof Npc)
+			{
+				((Npc) visibleObject).getAggroList().notifyHate(getOwner(), value);
+			}
+		}
+	}
 }

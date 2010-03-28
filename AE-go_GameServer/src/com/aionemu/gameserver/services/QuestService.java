@@ -22,7 +22,7 @@ import java.util.Set;
 
 import com.aionemu.commons.utils.Rnd;
 import com.aionemu.gameserver.configs.main.GroupConfig;
-import com.aionemu.gameserver.dataholders.DataManager;
+import com.aionemu.gameserver.dataholders.QuestsData;
 import com.aionemu.gameserver.model.PlayerClass;
 import com.aionemu.gameserver.model.drop.DropItem;
 import com.aionemu.gameserver.model.drop.DropTemplate;
@@ -36,6 +36,7 @@ import com.aionemu.gameserver.model.templates.quest.CollectItem;
 import com.aionemu.gameserver.model.templates.quest.CollectItems;
 import com.aionemu.gameserver.model.templates.quest.QuestDrop;
 import com.aionemu.gameserver.model.templates.quest.QuestItems;
+import com.aionemu.gameserver.model.templates.quest.QuestWorkItems;
 import com.aionemu.gameserver.model.templates.quest.Rewards;
 import com.aionemu.gameserver.model.templates.spawn.SpawnTemplate;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_QUEST_ACCEPTED;
@@ -57,13 +58,15 @@ import com.google.inject.Inject;
 public class QuestService
 {
 	@Inject
-	ItemService itemService;
+	ItemService		itemService;
 	@Inject
-	SpawnEngine spawnEngine;
+	SpawnEngine		spawnEngine;
 	@Inject
-	QuestEngine questEngine;
+	QuestEngine		questEngine;
 	@Inject
-	AbyssService abyssService;
+	AbyssService	abyssService;
+	@Inject
+	QuestsData		questsData;
 
 	public boolean questFinish(QuestEnv env)
 	{
@@ -77,7 +80,7 @@ public class QuestService
 		QuestState qs = player.getQuestStateList().getQuestState(id);
 		if(qs == null || qs.getStatus() != QuestStatus.REWARD)
 			return false;
-		QuestTemplate	template = DataManager.QUEST_DATA.getQuestById(id);
+		QuestTemplate	template = questsData.getQuestById(id);
 		Storage inventory = player.getInventory();
 		Rewards rewards = template.getRewards().get(reward);
 		List<QuestItems> questItems = new ArrayList<QuestItems>();
@@ -149,6 +152,23 @@ public class QuestService
 				abyssService.doReward(player, rewards.getRewardAbyssPoint());
 			}
 
+			//remove all worker list item if finished.
+			QuestWorkItems qwi = questsData.getQuestById(id).getQuestWorkItems();
+			
+			if(qwi != null)
+			{
+				int count = 0;
+				for(QuestItems qi : qwi.getQuestWorkItem())
+				{
+					if(qi != null)
+					{	
+						count = player.getInventory().getItemCountByItemId(qi.getItemId());
+						if(count > 0)
+							player.getInventory().removeFromBagByItemId(qi.getItemId(), count);					
+					}
+				}
+			}
+
 			qs.setStatus(QuestStatus.COMPLITE);
 			qs.setCompliteCount(qs.getCompliteCount() + 1);
 			PacketSendUtility.sendPacket(player, new SM_QUEST_STEP(id, qs.getStatus(), qs.getQuestVars().getQuestVars()));
@@ -163,7 +183,7 @@ public class QuestService
 	{
 		
 		Player player = env.getPlayer();
-		QuestTemplate	template = DataManager.QUEST_DATA.getQuestById(env.getQuestId());
+		QuestTemplate	template = questsData.getQuestById(env.getQuestId());
 		if(template.getRacePermitted() != null)
 		{
 			if(template.getRacePermitted() != player.getCommonData().getRace())
@@ -215,7 +235,7 @@ public class QuestService
 	{
 		Player player = env.getPlayer();
 		int id = env.getQuestId();
-		QuestTemplate	template = DataManager.QUEST_DATA.getQuestById(env.getQuestId());
+		QuestTemplate	template = questsData.getQuestById(env.getQuestId());
 		if(questStatus != QuestStatus.LOCKED)
 		{
 			if(!checkStartCondition(env))
@@ -269,7 +289,7 @@ public class QuestService
 		QuestState qs = player.getQuestStateList().getQuestState(id);
 		if(qs == null)
 			return false;
-		QuestTemplate	template = DataManager.QUEST_DATA.getQuestById(env.getQuestId());
+		QuestTemplate	template = questsData.getQuestById(env.getQuestId());
 		CollectItems collectItems = template.getCollectItems();
 		if(collectItems == null)
 			return true;
@@ -334,7 +354,7 @@ public class QuestService
 		QuestState qs = player.getQuestStateList().getQuestState(questId);
 		if (qs == null || qs.getStatus() != QuestStatus.START)
 			return false;
-		QuestTemplate	template = DataManager.QUEST_DATA.getQuestById(questId);
+		QuestTemplate	template = questsData.getQuestById(questId);
 		CollectItems collectItems = template.getCollectItems();
 		if(collectItems == null)
 			return true;

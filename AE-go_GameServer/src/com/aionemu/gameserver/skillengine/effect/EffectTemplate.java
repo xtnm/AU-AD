@@ -25,11 +25,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 import com.aionemu.gameserver.dataholders.DataManager;
+import com.aionemu.gameserver.dataholders.loadingutils.XmlServiceProxy;
 import com.aionemu.gameserver.model.SkillElement;
 import com.aionemu.gameserver.skillengine.change.Change;
 import com.aionemu.gameserver.skillengine.effect.modifier.ActionModifier;
 import com.aionemu.gameserver.skillengine.effect.modifier.ActionModifiers;
 import com.aionemu.gameserver.skillengine.model.Effect;
+import com.aionemu.gameserver.skillengine.model.HopType;
 import com.aionemu.gameserver.skillengine.model.SkillTemplate;
 
 /**
@@ -40,6 +42,8 @@ import com.aionemu.gameserver.skillengine.model.SkillTemplate;
 @XmlType(name = "Effect")
 public abstract class EffectTemplate 
 {
+	protected XmlServiceProxy	xsp;
+	
 	protected ActionModifiers modifiers;
     protected List<Change> change;
     @XmlAttribute
@@ -54,6 +58,12 @@ public abstract class EffectTemplate
 	protected SkillElement element = SkillElement.NONE;
 	@XmlElement(name = "subeffect")
 	protected SubEffect subEffect;
+	@XmlAttribute(name = "hoptype")
+	protected HopType hopType;
+	@XmlAttribute(name = "hopa")
+	protected int hopA;
+	@XmlAttribute(name = "hopb")
+	protected int hopB;
 	
 	/**
 	 * @return the duration
@@ -113,6 +123,7 @@ public abstract class EffectTemplate
 		return element;
 	}
 
+
 	/**
 	 * @param value
 	 * @return
@@ -170,6 +181,34 @@ public abstract class EffectTemplate
 		effect.setSubEffect(newEffect);
 	}
 	
+	/**
+	 *  Hate will be added to result value only if particular
+	 *  effect template has success result
+	 *  
+	 * @param effect
+	 */
+	public void calculateHate(Effect effect)
+	{	
+		if(hopType == null)
+			return;
+		
+		if(effect.getSuccessEffect() < position)
+			return;
+		
+		int currentHate = effect.getEffectHate();
+		
+		switch(hopType)
+		{
+			case DAMAGE:
+				effect.setEffectHate(currentHate + effect.getReserved1()); 
+				break;
+			case SKILLLV:
+				int skillLvl = effect.getSkillLevel();
+				effect.setEffectHate(currentHate + (hopB + hopA * skillLvl)); 
+			default:
+				break;
+		}
+	}
 	
 	/**
 	 * 

@@ -31,7 +31,6 @@ import com.aionemu.gameserver.model.gameobjects.stats.modifiers.StatModifier;
 import com.aionemu.gameserver.model.items.ItemId;
 import com.aionemu.gameserver.model.templates.VisibleObjectTemplate;
 import com.aionemu.gameserver.model.templates.stats.ModifiersTemplate;
-import com.aionemu.gameserver.skillengine.model.learn.SkillRace;
 
 /**
  * @author Luno modified by ATracer
@@ -55,6 +54,12 @@ public class ItemTemplate extends VisibleObjectTemplate
 
 	@XmlAttribute(name = "slot")
 	private int					itemSlot;
+	
+	@XmlAttribute(name = "usedelayid")
+	private int					useDelayId;
+	
+	@XmlAttribute(name = "usedelay")
+	private int					useDelay;
 
 	@XmlAttribute(name = "equipment_type")
 	private EquipType			equipmentType;
@@ -132,9 +137,15 @@ public class ItemTemplate extends VisibleObjectTemplate
 	private boolean				itemDyePermitted;
 
 	@XmlAttribute(name = "race")
-	private SkillRace			race	= SkillRace.ALL;
+	private ItemRace			race	= ItemRace.ALL;
 
 	private int					itemId;
+	
+	@XmlAttribute(name = "return_world")
+	private int					returnWorldId;
+	
+	@XmlAttribute(name = "return_alias")
+	private String				returnAlias;
 	
 	@XmlElement(name = "godstone")
 	private GodstoneInfo		godstoneInfo;
@@ -371,7 +382,7 @@ public class ItemTemplate extends VisibleObjectTemplate
 	/**
 	 * @return the race
 	 */
-	public SkillRace getRace()
+	public ItemRace getRace()
 	{
 		return race;
 	}
@@ -435,4 +446,35 @@ public class ItemTemplate extends VisibleObjectTemplate
 		return itemId;
 	}
 
+	/**
+	 * @return the returnWorldId
+	 */
+	public int getReturnWorldId()
+	{
+		return returnWorldId;
+	}
+
+	/**
+	 * @return the returnAlias
+	 */
+	public String getReturnAlias()
+	{
+		return returnAlias;
+	}
+	
+	/**
+	 * @return the delay for item.
+	 */
+	public int getDelayTime()
+	{
+		return useDelay;
+	}
+	
+	/**
+	 * @return item delay id
+	 */
+	public int getDelayId()
+	{
+		return useDelayId;
+	}
 }

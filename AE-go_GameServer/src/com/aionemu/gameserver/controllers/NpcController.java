@@ -38,9 +38,9 @@ import com.aionemu.gameserver.model.gameobjects.state.CreatureState;
 import com.aionemu.gameserver.model.gameobjects.stats.NpcGameStats;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_DELETE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_DIALOG_WINDOW;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EMOTION;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_LOOKATOBJECT;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_MESSAGE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_QUESTION_WINDOW;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SELL_ITEM;
@@ -65,9 +65,9 @@ public class NpcController extends CreatureController<Npc>
 	protected Future<?>			decayTask;
 
 	@Override
-	public void notSee(VisibleObject object)
+	public void notSee(VisibleObject object, boolean isOutOfRange)
 	{
-		super.notSee(object);
+		super.notSee(object, isOutOfRange);
 		if(object instanceof Creature)
 			getOwner().getAggroList().remove((Creature) object);
 		if(object instanceof Player && getOwner().getAi() != null)
@@ -78,8 +78,16 @@ public class NpcController extends CreatureController<Npc>
 	public void see(VisibleObject object)
 	{
 		super.see(object);
-		if(object instanceof Player && getOwner().getAi() != null)
-			getOwner().getAi().handleEvent(Event.SEE_PLAYER);
+		Npc owner = getOwner();
+		if(object instanceof Player && owner.getAi() != null)
+		{
+			owner.getAi().handleEvent(Event.SEE_PLAYER);
+			//TODO check on retail how walking npc is presented, probably need replace emotion
+			// with some state etc.
+			if(owner.getMoveController().isWalking())
+				PacketSendUtility.sendPacket((Player) object, new SM_EMOTION(owner, 21));
+		}
+			
 	}
 
 	@Override
@@ -105,7 +113,6 @@ public class NpcController extends CreatureController<Npc>
 		if(owner == null || !owner.isSpawned())
 			return;
 
-		PacketSendUtility.broadcastPacket(owner, new SM_DELETE(owner));
 		if(owner.getAi() != null)
 			owner.getAi().handleEvent(Event.DESPAWN);
 		sp.getWorld().despawn(owner);
@@ -140,6 +147,7 @@ public class NpcController extends CreatureController<Npc>
 
 		// deselect target at the end
 		owner.setTarget(null);
+		PacketSendUtility.broadcastPacket(owner, new SM_LOOKATOBJECT(owner));
 	}
 
 	@Override
@@ -376,10 +384,9 @@ public class NpcController extends CreatureController<Npc>
 			return;
 		}
 
-		npc.getAggroList().addDamageHate(creature, damage, 0);
+		npc.getAggroList().addDamage(creature, damage);
 		npc.getLifeStats().reduceHp(damage, creature);
 
-		ai.handleEvent(Event.ATTACKED);
 		PacketSendUtility.broadcastPacket(npc, new SM_ATTACK_STATUS(npc, type, skillId, damage));
 	}
 

@@ -30,6 +30,8 @@ import com.aionemu.gameserver.dataholders.PlayerExperienceTable;
 import com.aionemu.gameserver.dataholders.PlayerInitialData;
 import com.aionemu.gameserver.dataholders.PlayerStatsData;
 import com.aionemu.gameserver.dataholders.PortalData;
+import com.aionemu.gameserver.dataholders.QuestScriptsData;
+import com.aionemu.gameserver.dataholders.QuestsData;
 import com.aionemu.gameserver.dataholders.SkillData;
 import com.aionemu.gameserver.dataholders.SkillTreeData;
 import com.aionemu.gameserver.dataholders.SpawnsData;
@@ -40,6 +42,7 @@ import com.aionemu.gameserver.dataholders.WalkerData;
 import com.aionemu.gameserver.dataholders.WarehouseExpandData;
 import com.aionemu.gameserver.dataholders.WorldMapsData;
 import com.aionemu.gameserver.dataholders.ZoneData;
+import com.aionemu.gameserver.dataholders.loadingutils.XmlServiceProxy;
 import com.aionemu.gameserver.questEngine.QuestEngine;
 import com.aionemu.gameserver.services.AbyssService;
 import com.aionemu.gameserver.services.AccountService;
@@ -97,7 +100,8 @@ public class DataInjectionModule extends AbstractModule
 	@Override
 	protected void configure()
 	{
-		bind(ShutdownHook.class).in(Scopes.SINGLETON);
+		bind(XmlServiceProxy.class).in(Scopes.SINGLETON);
+		bind(ShutdownHook.class).in(Scopes.SINGLETON);	
 		bind(DataManager.class).asEagerSingleton();
 		bind(World.class).asEagerSingleton();
 		bind(SpawnEngine.class).asEagerSingleton();
@@ -132,7 +136,7 @@ public class DataInjectionModule extends AbstractModule
 		bind(MailService.class).in(Scopes.SINGLETON);
 		bind(InstanceService.class).in(Scopes.SINGLETON);
 	}
-
+	
 	@Provides
 	SpawnsData provideSpawnData(DataManager datamanager)
 	{
@@ -268,5 +272,17 @@ public class DataInjectionModule extends AbstractModule
 	ItemSetData provideItemSetData(DataManager datamanager)
 	{
 		return datamanager.ITEM_SET_DATA;
+	}
+	
+	@Provides
+	QuestsData provideQuestsData(DataManager datamanager)
+	{
+		return datamanager.QUEST_DATA;
+	}
+	
+	@Provides
+	QuestScriptsData provideQuestScriptsData(DataManager datamanager)
+	{
+		return datamanager.QUEST_SCRIPTS_DATA;
 	}
 }

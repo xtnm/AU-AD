@@ -28,10 +28,15 @@ public class AggressiveAi extends MonsterAi
 	public AggressiveAi()
 	{
 		super();
+		/**
+		 * Event handlers
+		 */
 		this.addEventHandler(EventHandlers.SEEPLAYER_EH.getHandler());
 		this.addEventHandler(EventHandlers.NOTSEEPLAYER_EH.getHandler());
 		
+		/**
+		 * State handlers
+		 */
 		this.addStateHandler(StateHandlers.ACTIVE_AGGRO_SH.getHandler());
-		this.addStateHandler(StateHandlers.THINKING_AGGRO_SH.getHandler());
 	}
 }

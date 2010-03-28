@@ -20,12 +20,12 @@ import org.apache.log4j.Logger;
 
 import com.aionemu.gameserver.itemengine.actions.AbstractItemAction;
 import com.aionemu.gameserver.itemengine.actions.ItemActions;
+import com.aionemu.gameserver.model.Race;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.AionClientPacket;
 import com.aionemu.gameserver.questEngine.QuestEngine;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
-import com.aionemu.gameserver.services.ItemService;
 import com.google.inject.Inject;
 
 /**
@@ -38,8 +38,6 @@ public class CM_USE_ITEM extends AionClientPacket {
 
 	@Inject
 	QuestEngine questEngine;
-	@Inject
-	ItemService itemService;
 
 	private static final Logger log = Logger.getLogger(CM_USE_ITEM.class);
 
@@ -68,12 +66,26 @@ public class CM_USE_ITEM extends AionClientPacket {
 	{
 		Player player = getConnection().getActivePlayer();
 		Item item = player.getInventory().getItemByObjId(uniqueItemId);
+		
 		if(item == null)
 		{
 			log.warn(String.format("CHECKPOINT: null item use action: %d %d", player.getObjectId(), uniqueItemId));
 			return;
 		}
-
+		
+		//check item race
+		switch(item.getItemTemplate().getRace())
+		{
+			case ASMODIANS:
+				if(player.getCommonData().getRace() != Race.ASMODIANS)
+					return;
+				break;
+			case ELYOS:
+				if(player.getCommonData().getRace() != Race.ELYOS)
+					return;
+				break;
+		}	
+		
 		if (questEngine.onItemUseEvent(new QuestEnv(null, player, 0, 0), item))
 			return;
 
@@ -94,7 +106,7 @@ public class CM_USE_ITEM extends AionClientPacket {
 		{
 			for (AbstractItemAction itemAction : itemActions.getItemActions())
 			{
-				itemAction.act(player, item, targetItem, itemService);
+				itemAction.act(player, item, targetItem);
 			}
 		}
 	}

@@ -44,9 +44,20 @@ public class PortalData
 	/** A map containing all npc templates */
 	private TIntObjectHashMap<PortalTemplate> portalData	= new TIntObjectHashMap<PortalTemplate>();
 	private HashMap<Integer, ArrayList<PortalTemplate>> instancesMap = new HashMap<Integer, ArrayList<PortalTemplate>>();
-	
+	private HashMap<String, PortalTemplate> namedPortals = new HashMap<String, PortalTemplate>();
+
+	/**
+	 *  - Inititialize all maps for subsequent use
+	 *  - Don't nullify initial portal list as it will be used during reload
+	 * @param u
+	 * @param parent
+	 */
 	void afterUnmarshal(Unmarshaller u, Object parent)
 	{
+		portalData.clear();
+		instancesMap.clear();
+		namedPortals.clear();
+		
 		for(PortalTemplate portal : portals)
 		{
 			portalData.put(portal.getNpcId(), portal);
@@ -61,8 +72,9 @@ public class PortalData
 				}
 				templates.add(portal);
 			}
+			if(portal.getName() != null && !portal.getName().isEmpty())
+				namedPortals.put(portal.getName(), portal);
 		}
-		portals = null;
 	}
 	
 	public int size()
@@ -94,6 +106,39 @@ public class PortalData
 				return portal;
 		}
 		throw new IllegalArgumentException("There is no portal template for: " + worldId + " " + race);	
+	}
+	
+	/**
+	 * 
+	 * @param worldId
+	 * @param name
+	 * @return
+	 */
+	public PortalTemplate getTemplateByNameAndWorld(int worldId, String name)
+	{
+		PortalTemplate portal = namedPortals.get(name);
+		
+		if(portal != null && portal.getExitPoint().getMapId() != worldId)
+			throw new IllegalArgumentException("Invalid combination of world and name: " + worldId + " " + name);	
+			
+		return portal;
+	}
+
+	/**
+	 * @return the portals
+	 */
+	public List<PortalTemplate> getPortals()
+	{
+		return portals;
+	}
+
+	/**
+	 * @param portals the portals to set
+	 */
+	public void setPortals(List<PortalTemplate> portals)
+	{
+		this.portals = portals;
+		afterUnmarshal(null, null);
 	}
 	
 	
