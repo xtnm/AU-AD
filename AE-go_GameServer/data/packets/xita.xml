@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<packets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="packets.xsd"
+	delay="2000">
+
+	<!--
+	Information:
+		* To send this mapping use admin command '//send demo'.
+		* Each packet is sent with delay {packets#delay} between them.
+		* Each packet part can be repeated many times by specifying attribute {part#repeat}
+		  i.e. <part type="c" value="0x00" repeat="29" />
+	-->
+
+	<packet opcode="0x02">
+		<part type="d" value="0x00" />
+		<part type="c" value="0x00" />
+		<part type="h" value="0x00" />
+		
+		<part type="h" value="0x00" />
+		<part type="d" value="0x00" />
+		<part type="d" value="0xafe2f505" />
+		<part type="h" value="0x2f75" />
+		<part type="d" value="0x00" />
+		<part type="c" value="0x00" />
+		<part type="h" value="0x01" />
+		<part type="d" value="0x00" />
+		<part type="d" value="0x00" />
+		<part type="c" value="0x00" />
+		<part type="d" value="0xafe2f505" />
+		<part type="d" value="0x00" />		
+		<part type="d" value="0x00" />
+		<part type="d" value="0x00" />
+		<part type="d" value="0x00" />
+		<part type="d" value="0x00" />		
+		<part type="d" value="0x00" />
+		<part type="d" value="0x00" />
+		<part type="d" value="0x00" />
+		
+		<part type="s" value="Xitaniuum" />
+		
+		<part type="h" value="0x00" />
+		<part type="d" value="0x00" />
+		<part type="d" value="0xafe2f505" />
+		<part type="h" value="0x2f75" />
+		<part type="d" value="0x00" />
+		<part type="c" value="0x00" />
+		<part type="h" value="0x01" />
+		<part type="d" value="0x00" />
+		<part type="d" value="0x00" />
+		<part type="c" value="0x00" />
+		<part type="d" value="0xafe2f505" />
+		<part type="d" value="0x00" />		
+		<part type="d" value="0x00" />
+		<part type="d" value="0x00" />
+		<part type="d" value="0x00" />
+		<part type="d" value="0x00" />		
+		<part type="d" value="0x00" />
+		<part type="d" value="0x00" />
+		<part type="d" value="0x00" />
+		
+		<part type="s" value="Xitanium" />
+		
+		
+		<part type="h" value="0x00" />		
+		
+	</packet>
+
+</packets>
