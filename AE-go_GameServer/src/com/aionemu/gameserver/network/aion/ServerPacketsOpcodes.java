@@ -128,6 +128,7 @@ public class ServerPacketsOpcodes
 		addPacketOpcode(SM_LEGION_UPDATE_MEMBER.class, 0x91, idSet);
 		addPacketOpcode(SM_LEGION_MEMBERLIST.class, 0x95, idSet);
 		addPacketOpcode(SM_LEGION_EDIT.class, 0x9E, idSet);
+		addPacketOpcode(SM_AUCTION_LIST.class, 0xAA, idSet);
 		addPacketOpcode(SM_MAIL_SERVICE.class, 0xA1, idSet);
 		addPacketOpcode(SM_RIFT_STATUS.class, 0xA4, idSet);
 		addPacketOpcode(SM_PLAYER_ID.class, 0xA5, idSet);
@@ -180,7 +181,6 @@ public class ServerPacketsOpcodes
 		addPacketOpcode(SM_ATTACK_STATUS.class, 0xFD, idSet);
 		addPacketOpcode(SM_RECONNECT_KEY.class, 0xFF, idSet);
 		addPacketOpcode(SM_CUSTOM_PACKET.class, 99999, idSet); // fake packet
-		addPacketOpcode(SM_AUCTION_LIST.class, 0xFE, idSet);
 
 		// Unrecognized Opcodes from 1.5.4:
 		// addPacketOpcode(SM_BUY_LIST.class, 0x7E, idSet);

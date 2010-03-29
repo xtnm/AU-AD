@@ -37,13 +37,13 @@ public class SM_AUCTION_LIST extends AionServerPacket
 	@Override
 	protected void writeImpl(AionConnection con, ByteBuffer buf)
 	{
-		writeD(buf, 0);
+		writeD(buf, 2);
 		writeC(buf, 0);
 		writeH(buf, 0);
 		
 		//item 1
-		writeH(buf, 0);
-		writeD(buf, 0);
+		writeH(buf, 20);
+		writeD(buf, 5224);
 		writeD(buf, 100000450);
 		writeH(buf, 45000);
 		writeD(buf, 0);
@@ -52,7 +52,7 @@ public class SM_AUCTION_LIST extends AionServerPacket
 		writeD(buf, 0);
 		writeD(buf, 0);
 		writeC(buf, 0);
-		writeD(buf, 100000450);
+		writeD(buf, 0);
 		writeD(buf, 0);
 		writeD(buf, 0);
 		writeD(buf, 0);
@@ -65,7 +65,7 @@ public class SM_AUCTION_LIST extends AionServerPacket
 		
 		//item 2
 		writeH(buf, 0);
-		writeD(buf, 0);
+		writeD(buf, 21980);
 		writeD(buf, 101500608);
 		writeH(buf, 185000);
 		writeD(buf, 0);
