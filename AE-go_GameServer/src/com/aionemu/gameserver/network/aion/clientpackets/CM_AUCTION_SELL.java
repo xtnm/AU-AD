@@ -77,6 +77,6 @@ public class CM_AUCTION_SELL extends AionClientPacket
 	{
 		Player player = getConnection().getActivePlayer();
 		Item item = player.getInventory().getItemByObjId(uniqueObjectId);
-		PacketSendUtility.sendMessage(player, "Received Auction Sell request : " + item.getName() + " x " + count + " for " + price + "kinah. Feature under dev, ignore this message.");
+		PacketSendUtility.sendMessage(player, "Received Auction Sell request : " + item.getItemTemplate().getName() + " x " + count + " for " + price + "kinah. Feature under dev, ignore this message.");
 	}
 }
