@@ -16,6 +16,8 @@
  */
 package com.aionemu.gameserver.network.aion.clientpackets;
 
+import com.aionemu.commons.database.dao.DAOManager;
+import com.aionemu.gameserver.dao.AuctionTradeDAO;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.AionClientPacket;
@@ -82,21 +84,24 @@ public class CM_AUCTION_SELL extends AionClientPacket
 		Player player = getConnection().getActivePlayer();
 		Item item = player.getInventory().getItemByObjId(uniqueObjectId);
 		
-		if(player.getInventory().getKinahItem().getItemCount() < price)
+		if(player.getInventory().getKinahItem().getItemCount() < 100)
 		{
 			//TODO: send correct SM_MESSAGE packet instead of custom string
 			PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.NOT_ENOUGH_KINAH(price));
 			return;
 		}
 		
+		// place trade into database
+		DAOManager.getDAO(AuctionTradeDAO.class).insertTrade(player, item, price);
+		
 		// remove item from inventory
 		player.getInventory().removeFromBagByObjectId(uniqueObjectId, count);
 		PacketSendUtility.sendPacket(player, new SM_DELETE_ITEM(uniqueObjectId));
 		
 		// remove kinah
-		player.getInventory().decreaseKinah(price);
+		player.getInventory().decreaseKinah(100);
 		PacketSendUtility.sendPacket(player, new SM_UPDATE_ITEM(player.getInventory().getKinahItem()));		
 		
-		PacketSendUtility.sendMessage(player, "Received Auction Sell request : " + item.getItemTemplate().getName() + " x " + count + " for " + price + "kinah. Feature under dev, ignore this message.");
+		PacketSendUtility.sendMessage(player, "Vente enregistree !");
 	}
 }
