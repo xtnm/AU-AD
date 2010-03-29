@@ -80,7 +80,7 @@ public class CM_AUCTION_SELL extends AionClientPacket
 	protected void runImpl()
 	{
 		Player player = getConnection().getActivePlayer();
-		Item item = player.getInventory().getFirstItemByItemId(uniqueObjectId);
+		Item item = player.getInventory().getItemByObjId(uniqueObjectId);
 		
 		if(player.getInventory().getKinahItem().getItemCount() < price)
 		{
