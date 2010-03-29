@@ -142,7 +142,7 @@ public class AionPacketHandlerFactory
 		addPacket(new CM_INSTANCE_GATE_OPEN(0x8D), State.IN_GAME);
 		addPacket(new CM_AUCTION_SELL(0x75), State.IN_GAME);
 		addPacket(new CM_TICKET(0x80), State.IN_GAME);
-		addPacket(new CM_AUCTION_SHOW_CATEGORY(0x69), State.IN_GAME);
+		addPacket(new CM_AUCTION_SHOW_CATEGORY(0x61), State.IN_GAME);
 	}
 
 	public AionPacketHandler getPacketHandler()
