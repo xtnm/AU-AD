@@ -19,7 +19,11 @@ package com.aionemu.gameserver.network.aion.clientpackets;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.AionClientPacket;
+import com.aionemu.gameserver.network.aion.SystemMessageId;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_DELETE_ITEM;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_PONG;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_UPDATE_ITEM;
 import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.world.World;
@@ -76,7 +80,23 @@ public class CM_AUCTION_SELL extends AionClientPacket
 	protected void runImpl()
 	{
 		Player player = getConnection().getActivePlayer();
-		Item item = player.getInventory().getItemByObjId(uniqueObjectId);
+		Item item = player.getInventory().getFirstItemByItemId(uniqueObjectId);
+		
+		if(player.getInventory().getKinahItem().getItemCount() < price)
+		{
+			//TODO: send correct SM_MESSAGE packet instead of custom string
+			PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.NOT_ENOUGH_KINAH(price));
+			return;
+		}
+		
+		// remove item from inventory
+		player.getInventory().removeFromBagByObjectId(uniqueObjectId, count);
+		PacketSendUtility.sendPacket(player, new SM_DELETE_ITEM(uniqueObjectId));
+		
+		// remove kinah
+		player.getInventory().decreaseKinah(price);
+		PacketSendUtility.sendPacket(player, new SM_UPDATE_ITEM(player.getInventory().getKinahItem()));		
+		
 		PacketSendUtility.sendMessage(player, "Received Auction Sell request : " + item.getItemTemplate().getName() + " x " + count + " for " + price + "kinah. Feature under dev, ignore this message.");
 	}
 }
