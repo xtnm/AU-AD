@@ -61,6 +61,7 @@ import com.aionemu.gameserver.network.aion.clientpackets.CM_GET_MAIL_ATTACHMENT;
 import com.aionemu.gameserver.network.aion.clientpackets.CM_GODSTONE_SOCKET;
 import com.aionemu.gameserver.network.aion.clientpackets.CM_GROUP_DISTRIBUTION;
 import com.aionemu.gameserver.network.aion.clientpackets.CM_GROUP_RESPONSE;
+import com.aionemu.gameserver.network.aion.clientpackets.CM_INSTANCE_GATE_OPEN;
 import com.aionemu.gameserver.network.aion.clientpackets.CM_INVITE_TO_GROUP;
 import com.aionemu.gameserver.network.aion.clientpackets.CM_L2AUTH_LOGIN_CHECK;
 import com.aionemu.gameserver.network.aion.clientpackets.CM_LEGION;
@@ -233,6 +234,7 @@ public class AionPacketHandlerFactory
 		addPacket(new CM_GATHER(0xF9), State.IN_GAME);// 1.5
 		addPacket(new CM_ENTER_WORLD(0xFE), State.AUTHED);
 		addPacket(new CM_LEVEL_READY(0xFF), State.IN_GAME);
+		addPacket(new CM_INSTANCE_GATE_OPEN(0x8D), State.IN_GAME);
 	}
 
 	public AionPacketHandler getPacketHandler()
