@@ -21,6 +21,7 @@ import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.AionClientPacket;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_PONG;
 import com.aionemu.gameserver.services.ItemService;
+import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.world.World;
 import com.google.inject.Inject;
 
@@ -76,6 +77,6 @@ public class CM_AUCTION_SELL extends AionClientPacket
 	{
 		Player player = getConnection().getActivePlayer();
 		Item item = player.getInventory().getItemByObjId(uniqueObjectId);
-		
+		PacketSendUtility.sendMessage(player, "Received Auction Sell request : " + item.getName() + " x " + count + " for " + price + "kinah. Feature under dev, ignore this message.");
 	}
 }

@@ -62,7 +62,7 @@ public class CM_TICKET extends AionClientPacket
 	protected void readImpl()
 	{
 		// empty
-		ticketType = readC();
+		ticketType = readH();
 		data = readS();
 	}
 

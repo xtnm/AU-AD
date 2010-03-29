@@ -20,6 +20,7 @@ import com.aionemu.gameserver.network.aion.AionClientPacket;
 import com.aionemu.gameserver.network.aion.AionPacketHandler;
 import com.aionemu.gameserver.network.aion.AionConnection.State;
 import com.aionemu.gameserver.network.aion.clientpackets.CM_ATTACK;
+import com.aionemu.gameserver.network.aion.clientpackets.CM_AUCTION_SELL;
 import com.aionemu.gameserver.network.aion.clientpackets.CM_BLOCK_ADD;
 import com.aionemu.gameserver.network.aion.clientpackets.CM_BLOCK_DEL;
 import com.aionemu.gameserver.network.aion.clientpackets.CM_BLOCK_SET_REASON;
@@ -236,6 +237,7 @@ public class AionPacketHandlerFactory
 		addPacket(new CM_ENTER_WORLD(0xFE), State.AUTHED);
 		addPacket(new CM_LEVEL_READY(0xFF), State.IN_GAME);
 		addPacket(new CM_INSTANCE_GATE_OPEN(0x8D), State.IN_GAME);
+		addPacket(new CM_AUCTION_SELL(0x75), State.IN_GAME);
 		addPacket(new CM_TICKET(0x80), State.IN_GAME);
 	}
 
