@@ -42,8 +42,8 @@ public class SM_AUCTION_LIST extends AionServerPacket
 		writeH(buf, 0);
 		
 		//item 1
-		writeH(buf, 20);
-		writeD(buf, 5);
+		writeD(buf, 20);
+		writeH(buf, 33);
 		writeD(buf, 100000450);
 		writeH(buf, 45000);
 		writeD(buf, 0);
@@ -64,8 +64,8 @@ public class SM_AUCTION_LIST extends AionServerPacket
 		writeS(buf, "Xitanium");
 		
 		//item 2
-		writeH(buf, 0);
-		writeD(buf, 23);
+		writeD(buf, 0);
+		writeH(buf, 33);
 		writeD(buf, 101500608);
 		writeH(buf, 185000);
 		writeD(buf, 0);
