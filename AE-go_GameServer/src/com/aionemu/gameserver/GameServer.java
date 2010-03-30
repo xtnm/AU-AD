@@ -29,6 +29,7 @@ import com.aionemu.commons.services.LoggingService;
 import com.aionemu.commons.utils.AEInfos;
 import com.aionemu.gameserver.configs.Config;
 import com.aionemu.gameserver.configs.main.TaskManagerConfig;
+import com.aionemu.gameserver.controllers.BannedChatController;
 import com.aionemu.gameserver.dao.PlayerDAO;
 import com.aionemu.gameserver.dataholders.loadingutils.XmlServiceProxy;
 import com.aionemu.gameserver.network.loginserver.LoginServer;
@@ -48,8 +49,7 @@ import com.aionemu.gameserver.utils.gametime.GameTimeManager;
 import com.aionemu.gameserver.utils.guice.DataInjectionModule;
 import com.aionemu.gameserver.utils.guice.IDFactoriesInjectionModule;
 import com.aionemu.gameserver.utils.guice.NetworkInjectionModule;
-import com.aionemu.gameserver.utils.guice.ObjectControllerInjectionModule;
-import com.aionemu.gameserver.controllers.BannedChatController;
+import com.aionemu.gameserver.utils.guice.ObjectFactoryInjectionModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
@@ -77,7 +77,7 @@ public class GameServer
 		// in InjectionModule with asEagerSingleton() call
 		DataInjectionModule dataIM = new DataInjectionModule();
 		NetworkInjectionModule networkIM = new NetworkInjectionModule();
-		ObjectControllerInjectionModule controllerIM = new ObjectControllerInjectionModule();
+		ObjectFactoryInjectionModule controllerIM = new ObjectFactoryInjectionModule();
 		
 		injector = Guice.createInjector(dataIM,networkIM, new IDFactoriesInjectionModule(), controllerIM);		
 		dataIM.setInjector(injector);
