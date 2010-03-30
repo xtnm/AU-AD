@@ -37,53 +37,34 @@ public class SM_AUCTION_LIST extends AionServerPacket
 	@Override
 	protected void writeImpl(AionConnection con, ByteBuffer buf)
 	{
-		writeD(buf, 2);
+		writeH(buf, 25);
 		writeC(buf, 0);
-		writeH(buf, 0);
+		writeD(buf, 0);
 		
-		//item 1
-		writeD(buf, 0);
-		writeH(buf, 0);
-		writeD(buf, 100000450);
-		writeH(buf, 45000);
-		writeD(buf, 0);
-		writeC(buf, 0);
-		writeH(buf, 1);
-		writeD(buf, 0);
-		writeD(buf, 0);
-		writeC(buf, 0);
-		writeD(buf, 0);
-		writeD(buf, 0);
-		writeD(buf, 0);
-		writeD(buf, 0);
-		writeD(buf, 0);
-		writeD(buf, 0);
-		writeD(buf, 0);
-		writeD(buf, 0);
-		writeD(buf, 0);
-		writeS(buf, "Xitanium");
-		
-		//item 2
-		writeD(buf, 0);
-		writeH(buf, 0);
-		writeD(buf, 101500608);
-		writeH(buf, 185000);
-		writeD(buf, 0);
-		writeC(buf, 0);
-		writeH(buf, 1);
-		writeD(buf, 0);
-		writeD(buf, 0);
-		writeC(buf, 0);
-		writeD(buf, 101500608);
-		writeD(buf, 0);
-		writeD(buf, 0);
-		writeD(buf, 0);
-		writeD(buf, 0);
-		writeD(buf, 0);
-		writeD(buf, 0);
-		writeD(buf, 0);
-		writeD(buf, 0);
-		writeS(buf, "Arkshadow");
+		for(int i=0; i<25; i++)
+		{
+			//item 1
+			writeD(buf, 0);
+			writeH(buf, 0);
+			writeD(buf, 100000450);
+			writeH(buf, 45000);
+			writeD(buf, 0);
+			writeC(buf, 0);
+			writeH(buf, 1);
+			writeD(buf, 0);
+			writeD(buf, 0);
+			writeC(buf, 0);
+			writeD(buf, 0);
+			writeD(buf, 0);
+			writeD(buf, 0);
+			writeD(buf, 0);
+			writeD(buf, 0);
+			writeD(buf, 0);
+			writeD(buf, 0);
+			writeD(buf, 0);
+			writeD(buf, 0);
+			writeS(buf, "Xitanium" + i);
+		}
 		
 		// end
 		writeH(buf, 0);
