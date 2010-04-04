@@ -337,7 +337,12 @@ public class LegionService
 		/**
 		 * This will handle the rest of the information that needs to be loaded
 		 */
-		getLegionInfo(legion);
+		loadLegionInfo(legion);
+		
+		/**
+		 * Add our legion to the Cache
+		 */
+		addCachedLegion(legion);
 
 		/**
 		 * Return the legion
@@ -370,7 +375,12 @@ public class LegionService
 		/**
 		 * This will handle the rest of the information that needs to be loaded
 		 */
-		getLegionInfo(legion);
+		loadLegionInfo(legion);
+		
+		/**
+		 * Add our legion to the Cache
+		 */
+		addCachedLegion(legion);
 
 		/**
 		 * Return the legion
@@ -383,7 +393,7 @@ public class LegionService
 	 * 
 	 * @param legion
 	 */
-	private void getLegionInfo(Legion legion)
+	private void loadLegionInfo(Legion legion)
 	{
 		/**
 		 * Check if legion is not null
@@ -428,12 +438,7 @@ public class LegionService
 		/**
 		 * Load Legion History
 		 */
-		legion.setLegionHistory(DAOManager.getDAO(LegionDAO.class).loadLegionHistory(legion.getLegionId()));
-
-		/**
-		 * Add our legion to the Cache
-		 */
-		addCachedLegion(legion);
+		DAOManager.getDAO(LegionDAO.class).loadLegionHistory(legion);
 	}
 
 	/**
@@ -577,7 +582,12 @@ public class LegionService
 	{
 		if(legionRestrictions.canCreateLegion(activePlayer, legionName))
 		{
-			Legion legion = new Legion(aionObjectsIDFactory.nextId(), legionName, activePlayer.getObjectId());
+			/**
+			 * Create new legion and put originator as first member
+			 */
+			Legion legion = new Legion(aionObjectsIDFactory.nextId(), legionName);
+			legion.addLegionMember(activePlayer.getObjectId());
+			
 			activePlayer.getInventory().decreaseKinah(LegionConfig.LEGION_CREATE_REQUIRED_KINAH);
 
 			/**
@@ -1219,7 +1229,7 @@ public class LegionService
 	 */
 	private boolean storeNewAnnouncement(int legionId, Timestamp currentTime, String message)
 	{
-		Legion target = new Legion(legionId);
+		Legion target = new Legion(legionId, "");
 		target.addAnnouncementToList(currentTime, message);
 		return true;
 	}

@@ -33,7 +33,6 @@ import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.player.RequestResponseHandler;
-import com.aionemu.gameserver.model.gameobjects.player.StorageType;
 import com.aionemu.gameserver.model.gameobjects.state.CreatureState;
 import com.aionemu.gameserver.model.gameobjects.stats.NpcGameStats;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK;
@@ -46,7 +45,6 @@ import com.aionemu.gameserver.network.aion.serverpackets.SM_QUESTION_WINDOW;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SELL_ITEM;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_TRADELIST;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_WAREHOUSE_INFO;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS.TYPE;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.restrictions.RestrictionsManager;
@@ -248,20 +246,7 @@ public class NpcController extends CreatureController<Npc>
 						return;
 
 					PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(targetObjectId, 26));
-					PacketSendUtility.sendPacket(player, new SM_WAREHOUSE_INFO(player.getStorage(
-						StorageType.REGULAR_WAREHOUSE.getId()).getStorageItems(),
-						StorageType.REGULAR_WAREHOUSE.getId(), player.getWarehouseSize()));
-					PacketSendUtility.sendPacket(player, new SM_WAREHOUSE_INFO(null, StorageType.REGULAR_WAREHOUSE
-						.getId(), player.getWarehouseSize())); // strange
-					// retail
-					// way of sending
-					// warehouse packets
-					PacketSendUtility
-						.sendPacket(player, new SM_WAREHOUSE_INFO(player.getStorage(
-							StorageType.ACCOUNT_WAREHOUSE.getId()).getAllItems(),
-							StorageType.ACCOUNT_WAREHOUSE.getId(), 0));
-					PacketSendUtility.sendPacket(player, new SM_WAREHOUSE_INFO(null, StorageType.ACCOUNT_WAREHOUSE
-						.getId(), 0));
+					sp.getWarehouseService().sendWarehouseInfo(player);
 				}
 				break;
 			case 27:
@@ -334,7 +319,7 @@ public class NpcController extends CreatureController<Npc>
 				sp.getCubeExpandService().expandCube(player, npc);
 				break;
 			case 42:
-				sp.getWarehouseExpandService().expandWarehouse(player, npc);
+				sp.getWarehouseService().expandWarehouse(player, npc);
 				break;
 			case 47:
 				// legion warehouse

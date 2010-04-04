@@ -92,6 +92,7 @@ public class ItemService
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @param itemId
 	 * @param itemUniqueId
 	 * @param count
@@ -114,6 +115,9 @@ public class ItemService
 
 	/**
 	 *  Loads item stones from DB for each item in a list if item is ARMOR or WEAPON
+=======
+	 *  Loads item stones from DB for each item in a list if item is ARMOR or WEAPON
+>>>>>>> trunk
 	 *  Godstones will be laoded for WEAPON items
 	 *  
 	 * @param itemList

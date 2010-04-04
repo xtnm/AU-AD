@@ -22,6 +22,7 @@ import com.aionemu.gameserver.model.gameobjects.stats.listeners.ItemEquipmentLis
 import com.aionemu.gameserver.model.items.ItemSlot;
 import com.aionemu.gameserver.model.templates.item.ArmorType;
 import com.aionemu.gameserver.model.templates.item.WeaponType;
+import com.aionemu.gameserver.model.templates.itemset.ItemSetTemplate;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_DELETE_ITEM;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EMOTION;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
@@ -128,6 +129,7 @@ public class Equipment
 		PacketSendUtility.sendPacket(owner, new SM_UPDATE_ITEM(item));
 		
 		ItemEquipmentListener.onItemEquipment(item, owner);
+		owner.getObserveController().notifyItemEquip(item, owner);
 		owner.getLifeStats().updateCurrentStats();
 	}
 
@@ -204,7 +206,9 @@ public class Equipment
 	{
 		Item item = equipment.remove(slot);
 		item.setEquipped(false);
+		
 		ItemEquipmentListener.onItemUnequipment(item, owner);
+		owner.getObserveController().notifyItemUnEquip(item, owner);
 		
 		owner.getLifeStats().updateCurrentStats();
 		owner.getInventory().putToBag(item);
@@ -405,6 +409,25 @@ public class Equipment
 		return equippedItems;
 	}
 
+	/**
+	 * @return Number of parts equipped belonging to requested itemset
+	 */
+	public int itemSetPartsEquipped(int itemSetTemplateId)
+	{
+		int number = 0;
+
+		for(Item item : equipment.values())
+		{
+			ItemSetTemplate setTemplate = item.getItemTemplate().getItemSet();
+			if(setTemplate != null && setTemplate.getId() == itemSetTemplateId)
+			{
+				++number;
+			}
+		}
+		
+		return number;
+	}
+	
 	/**
 	 *  Should be called only when loading from DB for items isEquipped=1
 	 *  
@@ -659,6 +682,23 @@ public class Equipment
 			equipment.get(ItemSlot.SUB_HAND.getSlotIdMask()).getItemTemplate().getWeaponType() == weaponType)
 		{
 			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * @param armorType
+	 */
+	public boolean isArmorEquipped(ArmorType armorType)
+	{
+		int[] armorSlots = new int[]{ItemSlot.BOOTS.getSlotIdMask(), ItemSlot.GLOVES.getSlotIdMask(),
+			ItemSlot.HELMET.getSlotIdMask(), ItemSlot.PANTS.getSlotIdMask(),
+			ItemSlot.SHOULDER.getSlotIdMask(), ItemSlot.TORSO.getSlotIdMask()};
+		
+		for(int slot : armorSlots)
+		{
+			if(equipment.get(slot) != null && equipment.get(slot).getItemTemplate().getArmorType() == armorType)
+				return true;
 		}
 		return false;
 	}
