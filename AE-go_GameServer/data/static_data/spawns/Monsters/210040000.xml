@@ -3021,9 +3021,6 @@ Added some missing mobs by stpavel
 		<object x="2757.41" y="1921.6188" z="150.93213" h="52"/>
 		<object x="2495.223" y="2081.641" z="150.95705" h="90"/>
 	</spawn>
-<<<<<<< HEAD
-</spawns>
-=======
 	<!-- Klaw Patrol -->
     <spawn map="210040000" npcid="211503" pool="26" interval="105">
         <object x="1505.73" y="275.1721" z="115.24648" h="82"/>
@@ -3054,4 +3051,3 @@ Added some missing mobs by stpavel
         <object x="1138.112" y="422.2599" z="123.41449" h="27"/>
     </spawn>
 </spawns>
->>>>>>> trunk
