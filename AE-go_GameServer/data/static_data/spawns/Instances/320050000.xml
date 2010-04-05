@@ -1,5 +1,5 @@
-<!-- éditer bye Salvator,spawn bye Zaranne,Correction
- spawn bye Aspara, team: Sielaion.fr -->
+<!-- éditer by Salvator,spawn by Zaranne,Correction
+ spawn by Aspara, team: Sielaion.fr -->
 <spawns>
     <!-- Waterdrop Spirit -->
     <spawn map="320050000" npcid="212761" pool="16" interval="400">
@@ -295,9 +295,9 @@
     </spawn>
     <!-- exit instance  -->
     <spawn map="320050000" npcid="700153" pool="3" interval="400">
-        <object staticid="0" x="378.362" y="73.09899" z="226.6414" h="67" w="0" rw="0"/>
-        <object staticid="0" x="232.02122" y="305.76303" z="550.63354" h="17" w="0" rw="0"/>
-        <object staticid="0" x="462.43338" y="438.54065" z="375.05508" h="15" w="0" rw="0"/>
+        <object x="378.362" y="73.09899" z="226.6414" h="67"/>
+        <object x="232.02122" y="305.76303" z="550.63354" h="17"/>
+        <object x="462.43338" y="438.54065" z="375.05508" h="15"/>
     </spawn>
     <!-- hyuirinerk -->	
     <spawn map="320050000" npcid="798107" pool="1" interval="400">

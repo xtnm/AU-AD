@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <spawns>
+
     <spawn map="300040000" npcid="700080" pool="1" interval="3600">
         <object staticid="0" x="299.1822" y="316.32364" z="133.49701" h="59" w="0" rw="0"/>
     </spawn>
