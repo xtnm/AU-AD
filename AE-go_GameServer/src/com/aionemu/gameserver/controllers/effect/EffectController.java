@@ -20,7 +20,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+
+import javolution.util.FastMap;
 
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
@@ -41,18 +42,15 @@ public class EffectController
 {
 	private Creature owner;
 
-	private Map<String, Effect> passiveEffectMap;
-	private Map<String, Effect> noshowEffects;
-	private Map<String, Effect> abnormalEffectMap;
+	private Map<String, Effect> passiveEffectMap = new FastMap<String, Effect>().shared();
+	private Map<String, Effect> noshowEffects = new FastMap<String, Effect>().shared();
+	private Map<String, Effect> abnormalEffectMap = new FastMap<String, Effect>().shared();
 
 	private int abnormals;
 
 	public EffectController(Creature owner)
 	{
 		this.owner = owner;
-		this.abnormalEffectMap = new ConcurrentHashMap<String, Effect>();
-		this.passiveEffectMap = new ConcurrentHashMap<String, Effect>();
-		this.noshowEffects = new ConcurrentHashMap<String, Effect>();
 	}
 
 	/**

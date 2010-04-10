@@ -95,7 +95,9 @@ public class PlayerController extends CreatureController<Player>
 		{
 			boolean update = false;
 			Npc npc = ((Npc) object);
+
 			PacketSendUtility.sendPacket(getOwner(), new SM_NPC_INFO(npc, getOwner()));
+
 			for(int questId : sp.getQuestEngine().getNpcQuestData(npc.getNpcId()).getOnQuestStart())
 			{
 				if(sp.getQuestService().checkStartCondition(new QuestEnv(object, getOwner(), questId, 0)))
@@ -140,11 +142,8 @@ public class PlayerController extends CreatureController<Player>
 			if(update)
 				updateNearbyQuestList();
 		}
-		
-		if(isOutOfRange)
-			PacketSendUtility.sendPacket(getOwner(), new SM_DELETE(object, 0));
-		else
-			PacketSendUtility.broadcastPacket(getOwner(), new SM_DELETE(object, 15), true);
+
+		PacketSendUtility.sendPacket(getOwner(), new SM_DELETE(object, isOutOfRange ? 0 : 15));
 	}
 
 	public void updateNearbyQuests()
@@ -309,6 +308,7 @@ public class PlayerController extends CreatureController<Player>
 	 * 
 	 * @param skillId
 	 */
+	@Override
 	public void useSkill(int skillId)
 	{
 		Player player = getOwner();
@@ -393,7 +393,30 @@ public class PlayerController extends CreatureController<Player>
 	public boolean isEnemy(Player player)
 	{
 		return player.getCommonData().getRace() != getOwner().getCommonData().getRace()
-			|| sp.getDuelService().isDueling(player.getObjectId(), getOwner().getObjectId());
+			|| isDueling(player);
+	}
+	
+	/**
+	 * Player-player friends:<br>
+	 * - not in duel<br>
+	 * - same race<br>
+	 * 
+	 * @param player
+	 * @return
+	 */
+	public boolean isFriend(Player player)
+	{
+		return player.getCommonData().getRace() == getOwner().getCommonData().getRace() && !isDueling(player);
+	}
+	
+	/**
+	 * 
+	 * @param player
+	 * @return
+	 */
+	public boolean isDueling(Player player)
+	{
+		return sp.getDuelService().isDueling(player.getObjectId(), getOwner().getObjectId());
 	}
 
 	/**

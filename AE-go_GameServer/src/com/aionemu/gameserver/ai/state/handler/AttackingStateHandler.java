@@ -19,6 +19,7 @@ package com.aionemu.gameserver.ai.state.handler;
 import com.aionemu.gameserver.ai.AI;
 import com.aionemu.gameserver.ai.desires.impl.AttackDesire;
 import com.aionemu.gameserver.ai.desires.impl.MoveToTargetDesire;
+import com.aionemu.gameserver.ai.desires.impl.SkillUseDesire;
 import com.aionemu.gameserver.ai.state.AIState;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Npc;
@@ -63,7 +64,12 @@ public class AttackingStateHandler extends StateHandler
 			new SM_EMOTION(owner, 30, 0, target.getObjectId()));
 		PacketSendUtility.broadcastPacket(owner,
 			new SM_EMOTION(owner, 19, 0, target.getObjectId()));
+		
 		owner.getMoveController().setSpeed(owner.getGameStats().getCurrentStat(StatEnum.SPEED) / 1000f);
+		owner.getMoveController().setDistance(owner.getGameStats().getCurrentStat(StatEnum.ATTACK_RANGE) / 1000f);
+		
+		if(owner.getNpcSkillList() != null)
+			ai.addDesire(new SkillUseDesire(owner, AIState.USESKILL.getPriority()));
 		ai.addDesire(new AttackDesire(owner, target, AIState.ATTACKING.getPriority()));
 		ai.addDesire(new MoveToTargetDesire(owner, target, AIState.ATTACKING.getPriority()));
 

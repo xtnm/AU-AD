@@ -18,6 +18,8 @@ package com.aionemu.gameserver.controllers;
 
 import java.util.concurrent.Future;
 
+import org.apache.log4j.Logger;
+
 import com.aionemu.gameserver.controllers.movement.MovementType;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
@@ -34,6 +36,9 @@ import com.aionemu.gameserver.utils.ThreadPoolManager;
 public class MoveController
 {
 
+	@SuppressWarnings("unused")
+	private static final Logger	log	= Logger.getLogger(MoveController.class);
+	
 	private Future<?> moveTask;
 	private Creature owner;
 	private boolean directionChanged = true;
@@ -47,9 +52,14 @@ public class MoveController
 
 	private int moveCounter;
 	private float speed = 0;
+	private float distance = 2;
 	
 	private boolean walking;
-
+	
+	/**
+	 * 
+	 * @param owner
+	 */
 	public MoveController(Creature owner)
 	{
 		this.owner = owner;
@@ -69,6 +79,14 @@ public class MoveController
 	public void setSpeed(float speed)
 	{
 		this.speed = speed;
+	}
+
+	/**
+	 * @param distance the distance to set
+	 */
+	public void setDistance(float distance)
+	{
+		this.distance = distance;
 	}
 
 	/**
@@ -133,7 +151,10 @@ public class MoveController
 
 	private void move()
 	{
-		if(!owner.canPerformMove())
+		/**
+		 * Demo npc skills - prevent movement while casting
+		 */
+		if(!owner.canPerformMove() || owner.isCasting())
 		{
 			if(!isStopped)
 			{
@@ -155,7 +176,7 @@ public class MoveController
 		float ownerZ = owner.getZ();
 
 		double dist = MathUtil.getDistance(ownerX, ownerY, ownerZ, targetX, targetY, targetZ);
-		if(dist > 2)
+		if(dist > this.distance)
 		{
 			isStopped = false;
 
@@ -170,6 +191,7 @@ public class MoveController
 			{
 				PacketSendUtility.broadcastPacket(owner, new SM_MOVE(owner,	ownerX, ownerY, ownerZ,
 					(float) (x2 / 0.2) , (float) (y2 / 0.2) , 0 , heading2, MovementType.MOVEMENT_START_KEYBOARD));
+				directionChanged = false;
 			}
 
 			moveCounter++;

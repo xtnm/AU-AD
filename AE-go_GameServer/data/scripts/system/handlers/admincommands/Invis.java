@@ -31,33 +31,33 @@ import com.aionemu.gameserver.utils.chathandlers.AdminCommand;
 
 public class Invis extends AdminCommand
 {
-   public Invis()
-   {
-      super("invis");
-   }
+	public Invis()
+	{
+		super("invis");
+	}
 
-   @Override
-   public void executeCommand(Player admin, String[] params)
-   {
-      if(admin.getAccessLevel() < AdminConfig.COMMAND_INVIS)
-      {
-         PacketSendUtility.sendMessage(admin, "Vous n'avez pas les droits suffisants pour utiliser cette commande.");
-         return;
-      }
-      
-      if (admin.getVisualState() < 3)
-      {
-         admin.getEffectController().setAbnormal(EffectId.INVISIBLE_RELATED.getEffectId());
-         admin.setVisualState(CreatureVisualState.HIDE3);
-         PacketSendUtility.broadcastPacket(admin, new SM_PLAYER_STATE(admin), true);
-         PacketSendUtility.sendMessage(admin, "Vous êtes invisible.");
-      }
-      else
-      {
-         admin.getEffectController().unsetAbnormal(EffectId.INVISIBLE_RELATED.getEffectId());
-         admin.unsetVisualState(CreatureVisualState.HIDE3);
-         PacketSendUtility.broadcastPacket(admin, new SM_PLAYER_STATE(admin), true);
-         PacketSendUtility.sendMessage(admin, "Vous redevez visible.");
-      }
-   }
+	@Override
+	public void executeCommand(Player admin, String[] params)
+	{
+		if(admin.getAccessLevel() < AdminConfig.COMMAND_INVIS)
+		{
+			PacketSendUtility.sendMessage(admin, "You don't have enough rights to execute this command.");
+			return;
+		}
+		
+		if (admin.getVisualState() < 3)
+		{
+			admin.getEffectController().setAbnormal(EffectId.INVISIBLE_RELATED.getEffectId());
+			admin.setVisualState(CreatureVisualState.HIDE3);
+			PacketSendUtility.broadcastPacket(admin, new SM_PLAYER_STATE(admin), true);
+			PacketSendUtility.sendMessage(admin, "You are invisible.");
+		}
+		else
+		{
+			admin.getEffectController().unsetAbnormal(EffectId.INVISIBLE_RELATED.getEffectId());
+			admin.unsetVisualState(CreatureVisualState.HIDE3);
+			PacketSendUtility.broadcastPacket(admin, new SM_PLAYER_STATE(admin), true);
+			PacketSendUtility.sendMessage(admin, "You are visible.");
+		}
+	}
 }

@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.aionemu.commons.callbacks.Enhancable;
+import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.controllers.FlyController;
 import com.aionemu.gameserver.controllers.PlayerController;
 import com.aionemu.gameserver.controllers.effect.PlayerEffectController;
@@ -929,5 +930,10 @@ public class Player extends Creature
 	public boolean isUsingFlyTeleport()
 	{
 		return isInState(CreatureState.FLIGHT_TELEPORT) && flightTeleportId != 0;
+	}
+	
+	public boolean isGM()
+	{
+		return getAccessLevel() == AdminConfig.GM_LEVEL;
 	}
 }

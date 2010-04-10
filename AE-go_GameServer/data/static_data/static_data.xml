@@ -141,5 +141,9 @@
 	<item_sets>
 		<import file="item_sets" skipRoot="true"/>
 	</item_sets>
+	
+	<npc_skill_templates>
+		<import file="npc_skills" skipRoot="true"/>
+	</npc_skill_templates>
 
 </ae_static_data>

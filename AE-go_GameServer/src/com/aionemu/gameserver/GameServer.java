@@ -29,7 +29,7 @@ import com.aionemu.commons.services.LoggingService;
 import com.aionemu.commons.utils.AEInfos;
 import com.aionemu.gameserver.configs.Config;
 import com.aionemu.gameserver.configs.main.TaskManagerConfig;
-import com.aionemu.gameserver.controllers.BannedChatController;
+import com.aionemu.gameserver.configs.main.ThreadConfig;
 import com.aionemu.gameserver.dao.PlayerDAO;
 import com.aionemu.gameserver.dataholders.loadingutils.XmlServiceProxy;
 import com.aionemu.gameserver.network.loginserver.LoginServer;
@@ -37,7 +37,6 @@ import com.aionemu.gameserver.questEngine.QuestEngine;
 import com.aionemu.gameserver.services.ServiceProxy;
 import com.aionemu.gameserver.spawnengine.SpawnEngine;
 import com.aionemu.gameserver.taskmanager.tasks.GCTaskManager;
-import com.aionemu.gameserver.taskmanager.tasks.KnownListUpdateTask;
 import com.aionemu.gameserver.taskmanager.tasks.PacketBroadcaster;
 import com.aionemu.gameserver.unishell.Unishell;
 import com.aionemu.gameserver.utils.AEVersions;
@@ -45,6 +44,7 @@ import com.aionemu.gameserver.utils.AutoAnnounce;
 import com.aionemu.gameserver.utils.DeadlockDetector;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
 import com.aionemu.gameserver.utils.ThreadUncaughtExceptionHandler;
+import com.aionemu.gameserver.utils.Util;
 import com.aionemu.gameserver.utils.gametime.GameTimeManager;
 import com.aionemu.gameserver.utils.guice.DataInjectionModule;
 import com.aionemu.gameserver.utils.guice.IDFactoriesInjectionModule;
@@ -104,20 +104,18 @@ public class GameServer
 		DAOManager.getDAO(PlayerDAO.class).setPlayersOffline(false);
 		gs.spawnMonsters();
 		gs.initQuests();
-		BannedChatController.load();
+		
+		Util.printSection("TaskManagers");
 		PacketBroadcaster.getInstance();
-		KnownListUpdateTask.getInstance();
 		if(TaskManagerConfig.ALLOW_GC) 		
 			new Thread(new GCTaskManager(TaskManagerConfig.GC_INTERVAL)).start();
 		
+		Util.printSection("System");
 		AEVersions.printFullVersionInfo();
 		AEInfos.printAllInfos();
 		
-		log.info("..................................................");
-		log.info("..................................................");
+		Util.printSection("GameServerLog");
 		log.info("AE Game Server started in " + (System.currentTimeMillis() - start) / 1000 + " seconds.");
-		log.info("..................................................");
-		log.info("..................................................");
 		
 		gs.startServers();
 		GameTimeManager.startClock();
@@ -145,6 +143,8 @@ public class GameServer
 	 */
 	private void spawnMonsters()
 	{
+		Util.printSection("Spawns");
+		
 		SpawnEngine spawnEngine = injector.getInstance(SpawnEngine.class);
 		spawnEngine.setInjector(injector);
 		spawnEngine.spawnAll();
@@ -152,6 +152,8 @@ public class GameServer
 
 	private void initQuests()
 	{
+		Util.printSection("Quests");
+		
 		QuestEngine questEngine = injector.getInstance(QuestEngine.class);
 		questEngine.setInjector(injector);
 		questEngine.load();
@@ -190,10 +192,13 @@ public class GameServer
 		// init config
 		Config.load();
 		// Second should be database factory
+		Util.printSection("DataBase");
 		DatabaseFactory.init();
 		// Initialize DAOs
 		DAOManager.init();
 		// Initialize thread pools
+		Util.printSection("Threads");
+		ThreadConfig.load();
 		ThreadPoolManager.getInstance();
 	}
 	

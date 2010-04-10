@@ -246,7 +246,7 @@ public class NpcController extends CreatureController<Npc>
 						return;
 
 					PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(targetObjectId, 26));
-					sp.getWarehouseService().sendWarehouseInfo(player);
+					sp.getWarehouseService().sendWarehouseInfo(player, true);
 				}
 				break;
 			case 27:
@@ -423,10 +423,14 @@ public class NpcController extends CreatureController<Npc>
 	}
 
 	/**
-	 * 
+	 * Schedule respawn of npc
+	 * In instances - no npc respawn
 	 */
 	public void scheduleRespawn()
-	{
+	{	
+		if(getOwner().isInInstance())
+			return;
+		
 		int instanceId = getOwner().getInstanceId();
 		if(!getOwner().getSpawn().isNoRespawn(instanceId))
 		{

@@ -23,6 +23,9 @@ import com.aionemu.commons.configuration.Property;
  */
 public class AdminConfig
 {
+	@Property(key = "gameserver.administration.gmlevel", defaultValue = "3")
+	public static int	GM_LEVEL;
+	
 	@Property(key = "gameserver.administration.command.add", defaultValue = "3")
 	public static int	COMMAND_ADD;
 
@@ -43,6 +46,9 @@ public class AdminConfig
 
 	@Property(key = "gameserver.administration.command.announce", defaultValue = "3")
 	public static int	COMMAND_ANNOUNCE;
+	
+	@Property(key = "gameserver.administration.command.announce_faction", defaultValue = "3")
+	public static int	COMMAND_ANNOUNCE_FACTION;
 
 	@Property(key = "gameserver.administration.command.configure", defaultValue = "3")
 	public static int	COMMAND_CONFIGURE;
@@ -61,6 +67,9 @@ public class AdminConfig
 
 	@Property(key = "gameserver.administration.command.info", defaultValue = "3")
 	public static int	COMMAND_INFO;
+	
+	@Property(key = "gameserver.administration.command.invis", defaultValue = "3")
+	public static int	COMMAND_INVIS;
 
 	@Property(key = "gameserver.administration.command.invul", defaultValue = "3")
 	public static int	COMMAND_INVUL;

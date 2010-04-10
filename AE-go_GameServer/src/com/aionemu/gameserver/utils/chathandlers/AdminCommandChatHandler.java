@@ -24,6 +24,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 import com.aionemu.gameserver.model.ChatType;
+import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_MESSAGE;
 import com.aionemu.gameserver.utils.PacketSendUtility;
@@ -32,6 +33,7 @@ import com.aionemu.gameserver.utils.PacketSendUtility;
  * This chat handler is responsible for handling admin commands, starting with //
  * 
  * @author Luno
+ * @author Divinity - updated for GM Audit
  * 
  */
 public class AdminCommandChatHandler implements ChatHandler
@@ -153,11 +155,7 @@ public class AdminCommandChatHandler implements ChatHandler
 	}
 
 	/**
-<<<<<<< HEAD:AE-go_GameServer/src/com/aionemu/gameserver/utils/chathandlers/AdminCommandChatHandler.java
-	 * Clear all registered handlers (before reload).
-=======
 	 * Clear all registered handlers (before reload). 
->>>>>>> trunk:AE-go_GameServer/src/com/aionemu/gameserver/utils/chathandlers/AdminCommandChatHandler.java
 	 */
 	void clearHandlers()
 	{
@@ -166,10 +164,6 @@ public class AdminCommandChatHandler implements ChatHandler
 
 	/**
 	 * Returns count of available admin command handlers.
-<<<<<<< HEAD:AE-go_GameServer/src/com/aionemu/gameserver/utils/chathandlers/AdminCommandChatHandler.java
-	 * 
-=======
->>>>>>> trunk:AE-go_GameServer/src/com/aionemu/gameserver/utils/chathandlers/AdminCommandChatHandler.java
 	 * @return count of available admin command handlers.
 	 */
 	public int getSize()

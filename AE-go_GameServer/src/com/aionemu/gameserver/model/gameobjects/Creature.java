@@ -67,6 +67,14 @@ public abstract class Creature extends VisibleObject
 	private int transformedModelId;
 	private ObserveController 	observeController;
 
+	/**
+	 * 
+	 * @param objId
+	 * @param controller
+	 * @param spawnTemplate
+	 * @param objectTemplate
+	 * @param position
+	 */
 	public Creature(int objId, CreatureController<? extends Creature> controller,
 		SpawnTemplate spawnTemplate, VisibleObjectTemplate objectTemplate, WorldPosition position)
 	{
@@ -160,21 +168,41 @@ public abstract class Creature extends VisibleObject
 		this.ai = ai;
 	}
 	
+	/**
+	 *  Is creature casting some skill
+	 *  
+	 * @return
+	 */
 	public boolean isCasting()
 	{
 		return castingSkill != null;
 	}
 	
+	/**
+	 *  Set current casting skill or null when skill ends
+	 *  
+	 * @param castingSkill
+	 */
 	public void setCasting(Skill castingSkill)
 	{
 		this.castingSkill = castingSkill;
 	}
 	
+	/**
+	 *  Current casting skill id
+	 *  
+	 * @return
+	 */
 	public int getCastingSkillId()
 	{
 		return castingSkill != null ? castingSkill.getSkillTemplate().getSkillId() : 0;
 	}
 	
+	/**
+	 *  Current casting skill
+	 *  
+	 * @return
+	 */
 	public Skill getCastingSkill()
 	{
 		return castingSkill;

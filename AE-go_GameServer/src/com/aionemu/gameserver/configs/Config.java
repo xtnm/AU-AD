@@ -32,8 +32,10 @@ import com.aionemu.gameserver.configs.main.PeriodicSaveConfig;
 import com.aionemu.gameserver.configs.main.RateConfig;
 import com.aionemu.gameserver.configs.main.ShutdownConfig;
 import com.aionemu.gameserver.configs.main.TaskManagerConfig;
+import com.aionemu.gameserver.configs.main.ThreadConfig;
 import com.aionemu.gameserver.configs.network.IPConfig;
 import com.aionemu.gameserver.configs.network.NetworkConfig;
+import com.aionemu.gameserver.utils.Util;
 
 /**
  * @author -Nemesiss-
@@ -58,12 +60,15 @@ public class Config
 			ConfigurableProcessor.process(Config.class, props);
 
 			// Administration
+			Util.printSection("Administration");
 			String administration = "./config/administration";
 			Properties[] adminProps = PropertiesUtils.loadAllFromDirectory(administration);
+			
 			ConfigurableProcessor.process(AdminConfig.class, adminProps);
 			log.info("Loading: " + administration + "/admin.properties");
 
 			// Main
+			Util.printSection("Main");
 			String main = "./config/main";
 			Properties[] mainProps = PropertiesUtils.loadAllFromDirectory(main);
 			
@@ -93,10 +98,15 @@ public class Config
 			
 			ConfigurableProcessor.process(PeriodicSaveConfig.class, mainProps);
 			log.info("Loading: " + main + "/periodicsave.properties");
+			
+			ConfigurableProcessor.process(ThreadConfig.class, mainProps);
+			log.info("Loading: " + main + "/thread.properties");
 
 			// Network
+			Util.printSection("Network");
 			String network = "./config/network";
 			Properties[] networkProps = PropertiesUtils.loadAllFromDirectory(network);	
+			
 			ConfigurableProcessor.process(NetworkConfig.class, networkProps);		
 			log.info("Loading: " + network + "/database.properties");
 			log.info("Loading: " + network + "/network.properties");

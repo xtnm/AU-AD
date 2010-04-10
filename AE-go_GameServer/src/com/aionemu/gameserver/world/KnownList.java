@@ -19,7 +19,8 @@ package com.aionemu.gameserver.world;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+
+import javolution.util.FastMap;
 
 import com.aionemu.gameserver.model.gameobjects.AionObject;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
@@ -31,6 +32,7 @@ import com.aionemu.gameserver.utils.MathUtil;
  * @author -Nemesiss-
  * @modified kosyachok
  */
+
 public class KnownList implements Iterable<VisibleObject>
 {
 	/**
@@ -46,11 +48,11 @@ public class KnownList implements Iterable<VisibleObject>
 	/**
 	 * Owner of this KnownList.
 	 */
-	private final VisibleObject						owner;
+	protected final VisibleObject						owner;
 	/**
 	 * List of objects that this KnownList owner known
 	 */
-	private final Map<Integer, VisibleObject>	knownObjects				= new ConcurrentHashMap<Integer, VisibleObject>();
+	protected final Map<Integer, VisibleObject>	knownObjects	= new FastMap<Integer, VisibleObject>().shared();
 
 	/**
 	 * COnstructor.
@@ -112,7 +114,7 @@ public class KnownList implements Iterable<VisibleObject>
 	 * 
 	 * @param object
 	 */
-	private final void add(VisibleObject object)
+	protected void add(VisibleObject object)
 	{
 		/**
 		 * object is not known.
@@ -126,7 +128,7 @@ public class KnownList implements Iterable<VisibleObject>
 	 * 
 	 * @param object
 	 */
-	private final void del(VisibleObject object, boolean isOutOfRange)
+	private void del(VisibleObject object, boolean isOutOfRange)
 	{
 		/**
 		 * object was known.
@@ -158,7 +160,7 @@ public class KnownList implements Iterable<VisibleObject>
 	/**
 	 * Find objects that are in visibility range.
 	 */
-	private void findVisibleObjects()
+	protected void findVisibleObjects()
 	{
 		if(owner == null || !owner.isSpawned())
 			return;
@@ -174,7 +176,7 @@ public class KnownList implements Iterable<VisibleObject>
 			{
 				if(newObject == owner || newObject == null)
 					continue;
-
+				
 				if(!checkObjectInRange(owner, newObject))
 					continue;
 
@@ -190,7 +192,7 @@ public class KnownList implements Iterable<VisibleObject>
 		}
 	}
 
-	private boolean checkObjectInRange(VisibleObject owner, VisibleObject newObject)
+	protected boolean checkObjectInRange(VisibleObject owner, VisibleObject newObject)
 	{
 		//check if Z distance is greater than maxZvisibleDistance		
 		if(Math.abs(owner.getZ() - newObject.getZ()) > maxZvisibleDistance)

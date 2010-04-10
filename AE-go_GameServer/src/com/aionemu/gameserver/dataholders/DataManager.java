@@ -21,6 +21,7 @@ import javax.inject.Inject;
 import org.apache.log4j.Logger;
 
 import com.aionemu.gameserver.dataholders.loadingutils.XmlDataLoader;
+import com.aionemu.gameserver.utils.Util;
 
 /**
  * 
@@ -128,6 +129,8 @@ public final class DataManager
 	
 	public static ItemSetData			ITEM_SET_DATA;
 	
+	public NpcSkillData					NPC_SKILL_DATA;
+	
 	private XmlDataLoader loader;
 
 	/**
@@ -137,6 +140,7 @@ public final class DataManager
 	@Inject
 	public DataManager(XmlDataLoader xmlDataLoader)
 	{
+		Util.printSection("StaticDatas");
 		log.info("##### STATIC DATA [section beginning] #####");
 
 		this.loader = xmlDataLoader;
@@ -171,6 +175,8 @@ public final class DataManager
 		RECIPE_DATA = data.recipeData;
 		PORTAL_DATA = data.portalData;
 		ITEM_SET_DATA  = data.itemSetData;
+		NPC_SKILL_DATA = data.npcSkillData;
+		
 		// some sexy time message
 		long seconds = time / 1000;
 
