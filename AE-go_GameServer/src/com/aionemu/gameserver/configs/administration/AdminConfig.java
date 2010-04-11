@@ -164,9 +164,6 @@ public class AdminConfig
 	@Property(key = "gameserver.administration.command.prison", defaultValue = "3")
 	public static int	COMMAND_PRISON;
 	
-	@Property(key = "gameserver.administration.command.invis", defaultValue = "3")
-	public static int           COMMAND_INVIS;
-	
 	@Property(key = "gameserver.administration.command.movetomeallall", defaultValue = "3")
 	public static int           COMMAND_MOVETOMEALLALL;
 
