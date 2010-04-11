@@ -35,7 +35,7 @@ public class AutoAnnounce extends Thread
 	
 	private static final Logger log = Logger.getLogger(AutoAnnounce.class);
 	private Iterator<String> announces = null;
-	private boolean status = false;
+	private boolean reload = false;
 	
 	private World world;
 	
@@ -50,9 +50,7 @@ public class AutoAnnounce extends Thread
 	{
 		while(announces.hasNext())
 		{
-			String announce = announces.next();
 			Iterator<Player> players = world.getPlayersIterator();
-			log.info("AutoAnnounce:: " + announce);
 			
 			if(!players.hasNext())
 			{
@@ -60,10 +58,16 @@ public class AutoAnnounce extends Thread
 				return;
 			}
 			
+			String announce = announces.next();
+			
+			log.info("AutoAnnounce:: " + announce);
+			
 			while(players.hasNext())
 			{
 				PacketSendUtility.sendMessage(players.next(), "Annonce automatique : " + announce);
 			}
+			
+			reload = true;
 			
 			try
 			{
@@ -91,8 +95,23 @@ public class AutoAnnounce extends Thread
 				{
 					
 				}
-				log.info("AutoAnnounce loading from database ...");
-				announces = DAOManager.getDAO(AutoAnnounceDAO.class).loadAnnounces().iterator();
+				if(reload)
+				{
+					log.info("AutoAnnounce reloading from database ...");
+					announces = DAOManager.getDAO(AutoAnnounceDAO.class).loadAnnounces().iterator();
+				}
+				else
+				{
+					try
+					{
+						Thread.sleep(120000);
+					}
+					catch(InterruptedException ie)
+					{
+						
+					}
+					reload = true;
+				}
 			}
 		}
 	}
