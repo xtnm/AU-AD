@@ -24,6 +24,8 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 import com.aionemu.gameserver.model.ChatType;
+import com.aionemu.gameserver.model.PlayerClass;
+import com.aionemu.gameserver.model.Race;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_MESSAGE;
@@ -99,13 +101,28 @@ public class AdminCommandChatHandler implements ChatHandler
 					if(worldMessage.equals("fix"))
 					{
 						sender.CHAT_FIX_WORLD_CHANNEL = true;
-						PacketSendUtility.sendMessage(sender, "Votre chat est maintenant fixe sur le canal 'world'");
-						PacketSendUtility.sendMessage(sender, "Tapez .world unfix pour liberer votre chat du canal.");
+						if(sender.getCommonData().getRace() == Race.ASMODIANS)
+						{
+							PacketSendUtility.sendMessage(sender, "Votre chat est maintenant fixe sur le canal 'Asmodiens'");
+							PacketSendUtility.sendMessage(sender, "Tapez .world unfix pour liberer votre chat du canal.");
+						}
+						else
+						{
+							PacketSendUtility.sendMessage(sender, "Votre chat est maintenant fixe sur le canal 'Elyseens'");
+							PacketSendUtility.sendMessage(sender, "Tapez .world unfix pour liberer votre chat du canal.");
+						}
 					}
 					else if(worldMessage.equals("unfix"))
 					{
 						sender.CHAT_FIX_WORLD_CHANNEL = false;
-						PacketSendUtility.sendMessage(sender, "Votre chat est maintenant libere du canal 'world'.");
+						if(sender.getCommonData().getRace() == Race.ASMODIANS)
+						{
+							PacketSendUtility.sendMessage(sender, "Votre chat est maintenant libere du canal 'Asmodiens'.");
+						}
+						else
+						{
+							PacketSendUtility.sendMessage(sender, "Votre chat est maintenant libere du canal 'Elyseens'.");
+						}
 					}
 					else
 					{
@@ -113,8 +130,15 @@ public class AdminCommandChatHandler implements ChatHandler
 						while(onlinePlayers.hasNext())
 						{
 							Player p = onlinePlayers.next();
-							PacketSendUtility.sendPacket(p, new SM_MESSAGE(sender, "[WORLD] - " + sender.getName() + ": "
-								+ worldMessage, ChatType.ANNOUNCEMENTS));
+							if(sender.getCommonData().getRace() == Race.ASMODIANS && p.getCommonData().getRace() == Race.ASMODIANS)
+							{
+								PacketSendUtility.sendPacket(p, new SM_MESSAGE(sender, "[Asmodiens] " + sender.getName() + " : " + worldMessage, ChatType.ANNOUNCEMENTS));
+							}
+							else if(sender.getCommonData().getRace() == Race.ELYOS && p.getCommonData().getRace() == Race.ELYOS)
+							{
+								PacketSendUtility.sendPacket(p, new SM_MESSAGE(sender, "[Elyseens] " + sender.getName() + " : " + worldMessage, ChatType.ANNOUNCEMENTS));
+							}
+							else { }
 						}
 					}
 				}
