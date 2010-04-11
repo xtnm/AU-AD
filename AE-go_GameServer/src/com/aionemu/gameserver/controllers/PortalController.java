@@ -18,6 +18,8 @@ package com.aionemu.gameserver.controllers;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 
@@ -27,6 +29,7 @@ import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.group.PlayerGroup;
 import com.aionemu.gameserver.model.templates.portal.ExitPoint;
+import com.aionemu.gameserver.model.templates.portal.PortalItem;
 import com.aionemu.gameserver.model.templates.portal.PortalTemplate;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EMOTION;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_USE_OBJECT;
@@ -95,6 +98,7 @@ public class PortalController extends NpcController
 				}
 				
 				PlayerGroup group = player.getPlayerGroup();
+				boolean success = true;
 
 				if(portalTemplate.isGroup() && group != null)
 				{
@@ -106,7 +110,17 @@ public class PortalController extends NpcController
 						transfer(player, instance);
 						return;
 					}
-
+					
+					Collection<Player> players = group.getMembers();
+					for(Player p : players)
+					{
+						if(!checkPortalItem(p, portalTemplate.getPortalItem()))
+							success = false;
+					}
+					
+					if(!success)
+						return;
+					
 					portGroup(player);
 				}
 				else if(!portalTemplate.isGroup())
@@ -154,7 +168,8 @@ public class PortalController extends NpcController
 			instance = worldMap.getWorldMapInstance();
 		}
 		
-		transfer(requester, instance);
+		if(usePortalItem(requester, portalTemplate.getPortalItem()))
+			transfer(requester, instance);
 	}
 
 	/**
@@ -176,8 +191,9 @@ public class PortalController extends NpcController
 		WorldMapInstance instance = instanceService.getNextAvailableInstance(portalTemplate.getExitPoint().getMapId());
 		instanceService.registerGroupWithInstance(instance, group);
 		for(Player player : players)
-		{
-			transfer(player, instance);
+		{	
+			if(usePortalItem(player, portalTemplate.getPortalItem()))
+				transfer(player, instance);
 		}
 	}
 
@@ -209,5 +225,47 @@ public class PortalController extends NpcController
 		}
 		return true;
 	}
+	
+	private boolean usePortalItem(Player player, List<PortalItem> portalItems)
+	{
+		boolean success = false;
 
+		Iterator<PortalItem> items = portalItems.iterator();
+		
+		if(!items.hasNext())
+			return true;
+		
+		while(items.hasNext())
+		{
+			success = false;
+			PortalItem pitem = items.next();
+			if(player.getInventory().removeFromBagByItemId(pitem.getItemid(), pitem.getQuantity()))
+				success = true;
+		}
+		
+		return success;
+	}
+
+	private boolean checkPortalItem(Player player, List<PortalItem> portalItems)
+	{
+		boolean success = true;
+		
+		Iterator<PortalItem> items = portalItems.iterator();
+
+		if(!items.hasNext())
+			return success;
+		
+		while(items.hasNext())
+		{
+			PortalItem pitem = items.next();
+			
+			if(player.getInventory().getItemCountByItemId(pitem.getItemid()) < pitem.getQuantity())
+			{
+				PacketSendUtility.sendMessage(player, "You don't have the required items.");
+				success = false;
+			}
+		}
+		
+		return success;
+	}
 }

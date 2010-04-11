@@ -16,6 +16,7 @@
  */
 package com.aionemu.gameserver.model.templates.portal;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -132,6 +133,9 @@ public class PortalTemplate
 	 */
 	public List<PortalItem> getPortalItem()
 	{
+		if(portalItem == null)			
+			portalItem = new ArrayList<PortalItem>();		
+		
 		return portalItem;
 	}
 }
