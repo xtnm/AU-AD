@@ -30,8 +30,12 @@ import com.aionemu.commons.utils.AEInfos;
 import com.aionemu.gameserver.configs.Config;
 import com.aionemu.gameserver.configs.main.TaskManagerConfig;
 import com.aionemu.gameserver.configs.main.ThreadConfig;
+import com.aionemu.gameserver.controllers.BannedChatController;
+import com.aionemu.gameserver.controllers.BannedIpController;
+import com.aionemu.gameserver.dao.BannedIpDAO;
 import com.aionemu.gameserver.dao.PlayerDAO;
 import com.aionemu.gameserver.dataholders.loadingutils.XmlServiceProxy;
+import com.aionemu.gameserver.model.ban.BannedIP;
 import com.aionemu.gameserver.network.loginserver.LoginServer;
 import com.aionemu.gameserver.questEngine.QuestEngine;
 import com.aionemu.gameserver.services.ServiceProxy;
@@ -101,6 +105,7 @@ public class GameServer
 		initUtilityServicesAndConfig();
 
 		GameServer gs = new GameServer();
+		
 		//Set all players is offline
 		DAOManager.getDAO(PlayerDAO.class).setPlayersOffline(false);
 		gs.spawnMonsters();
@@ -114,6 +119,9 @@ public class GameServer
 		Util.printSection("System");
 		AEVersions.printFullVersionInfo();
 		AEInfos.printAllInfos();
+		
+		// Load chat bans
+		BannedChatController.load();
 		
 		Util.printSection("GameServerLog");
 		log.info("AE Game Server started in " + (System.currentTimeMillis() - start) / 1000 + " seconds.");

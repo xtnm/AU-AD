@@ -71,7 +71,7 @@ public class AutoAnnounce extends Thread
 			
 			try
 			{
-				Thread.sleep(120000);
+				Thread.sleep(300000);
 			}
 			catch(InterruptedException ie)
 			{
@@ -105,7 +105,7 @@ public class AutoAnnounce extends Thread
 				{
 					try
 					{
-						Thread.sleep(120000);
+						Thread.sleep(300000);
 					}
 					catch(InterruptedException ie)
 					{

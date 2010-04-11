@@ -78,8 +78,15 @@ public class AdminCommandChatHandler implements ChatHandler
 				while(onlinePlayers.hasNext())
 				{
 					Player p = onlinePlayers.next();
-					PacketSendUtility.sendPacket(p, new SM_MESSAGE(sender, "[WORLD] " + sender.getName() + ": "
-						+ message, ChatType.ANNOUNCEMENTS));
+					if(sender.getCommonData().getRace() == Race.ASMODIANS && p.getCommonData().getRace() == Race.ASMODIANS)
+					{
+						PacketSendUtility.sendPacket(p, new SM_MESSAGE(sender, "[Asmodiens] " + sender.getName() + " : " + message, ChatType.ANNOUNCEMENTS));
+					}
+					else if(sender.getCommonData().getRace() == Race.ELYOS && p.getCommonData().getRace() == Race.ELYOS)
+					{
+						PacketSendUtility.sendPacket(p, new SM_MESSAGE(sender, "[Elyseens] " + sender.getName() + " : " + message, ChatType.ANNOUNCEMENTS));
+					}
+					else { }
 				}
 				return ChatHandlerResponse.BLOCKED_MESSAGE;
 			}
