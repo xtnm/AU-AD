@@ -216,7 +216,7 @@ public class GoTo extends AdminCommand
 
 		else if(params[0].toLowerCase().equals("azoturan"))
 		{
-			teleportService.teleportTo(admin, 310100000, 458, 428, 1039, 0);
+			teleportService.teleportTo(admin, 310100000, 304.16013, 323.43713, 1021.4955, 0);
 			PacketSendUtility.sendMessage(admin, "Teleported to Azoturan.");
 		}
 
@@ -288,13 +288,13 @@ public class GoTo extends AdminCommand
 
 		else if(params[0].toLowerCase().equals("admastrong"))
 		{
-			teleportService.teleportTo(admin,320130000, 621, 745, 200, 0);
+			teleportService.teleportTo(admin,320130000, 450.66864, 199.70248, 167.84444, 0);
 			PacketSendUtility.sendMessage(admin, "Teleported to Adma stronghold");
 		}
 
 		else if(params[0].toLowerCase().equals("asteria"))
 		{
-			teleportService.teleportTo(admin,300050000, 497, 563, 199, 0);
+			teleportService.teleportTo(admin,300050000, 469.343, 567.713, 201.732, 0);
 			PacketSendUtility.sendMessage(admin, "Teleported to Asteria Chamber");
 		}
 
@@ -360,13 +360,13 @@ public class GoTo extends AdminCommand
 
 		else if(params[0].toLowerCase().equals("sulfurtree"))
 		{
-			teleportService.teleportTo(admin,300060000, 462, 339, 162, 0);
+			teleportService.teleportTo(admin,300060000, 462.352, 345.609, 162.817, 0);
 			PacketSendUtility.sendMessage(admin, "Teleported to Sulfur Tree Nest");
 		}
 
 		else if(params[0].toLowerCase().equals("theolab"))
 		{
-			teleportService.teleportTo(admin,310110000, 528, 602, 203, 0);
+			teleportService.teleportTo(admin,310110000, 476.96606, 201.32736, 169.98848, 0);
 			PacketSendUtility.sendMessage(admin, "Teleported to Theobomos Lab");
 		}
 
@@ -388,6 +388,18 @@ public class GoTo extends AdminCommand
 			PacketSendUtility.sendMessage(admin, "Teleported to Test Server.");
 		}
 
+		else if(params[0].toLowerCase().equals("alquimia"))
+		{			
+			teleportService.teleportTo(admin, 320110000, 606.7069, 527.3919, 200.05792, 0);
+			PacketSendUtility.sendMessage(admin, "Teleported to Test Server.");
+		}
+		
+		else if(params[0].toLowerCase().equals("adma"))
+		{			
+			teleportService.teleportTo(admin, 320130000, 450.66864, 199.70248, 167.84444, 0);
+			PacketSendUtility.sendMessage(admin, "Teleported to Test Server.");
+		}
+		
 		else 
 			PacketSendUtility.sendMessage(admin, "Target location was not found!");
 	}
