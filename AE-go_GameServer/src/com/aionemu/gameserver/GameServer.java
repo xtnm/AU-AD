@@ -50,6 +50,7 @@ import com.aionemu.gameserver.utils.guice.DataInjectionModule;
 import com.aionemu.gameserver.utils.guice.IDFactoriesInjectionModule;
 import com.aionemu.gameserver.utils.guice.NetworkInjectionModule;
 import com.aionemu.gameserver.utils.guice.ObjectFactoryInjectionModule;
+import com.aionemu.gameserver.world.World;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
@@ -131,7 +132,8 @@ public class GameServer
 		Thread unishell = new Thread(new Unishell(8675));
 		unishell.start();
 		
-		Thread autoAnnounce = new Thread(new AutoAnnounce());
+		World world = gs.injector.getInstance(World.class);
+		Thread autoAnnounce = new Thread(new AutoAnnounce(world));
 		autoAnnounce.start();
 
 		//gs.injector.getInstance(com.aionemu.gameserver.utils.chathandlers.ChatHandlers.class);

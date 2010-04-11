@@ -37,11 +37,11 @@ public class AutoAnnounce extends Thread
 	private Iterator<String> announces = null;
 	private boolean status = false;
 	
-	@Inject
 	private World world;
 	
-	public AutoAnnounce()
+	public AutoAnnounce(World world)
 	{
+		this.world = world;
 		log.info("AutoAnnounce loading from database ...");
 		announces = DAOManager.getDAO(AutoAnnounceDAO.class).loadAnnounces().iterator();
 	}
@@ -53,6 +53,12 @@ public class AutoAnnounce extends Thread
 			String announce = announces.next();
 			Iterator<Player> players = world.getPlayersIterator();
 			log.info("AutoAnnounce:: " + announce);
+			
+			if(!players.hasNext())
+			{
+				log.info("No player connected to send automatic announces to.");
+				return;
+			}
 			
 			while(players.hasNext())
 			{
