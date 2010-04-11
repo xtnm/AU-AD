@@ -216,7 +216,7 @@ public class GoTo extends AdminCommand
 
 		else if(params[0].toLowerCase().equals("azoturan"))
 		{
-			teleportService.teleportTo(admin, 310100000, 304.16013, 323.43713, 1021.4955, 0);
+			teleportService.teleportTo(admin, 310100000, 304, 323, 1022, 0);
 			PacketSendUtility.sendMessage(admin, "Teleported to Azoturan.");
 		}
 
@@ -288,85 +288,85 @@ public class GoTo extends AdminCommand
 
 		else if(params[0].toLowerCase().equals("admastrong"))
 		{
-			teleportService.teleportTo(admin,320130000, 450.66864, 199.70248, 167.84444, 0);
+			teleportService.teleportTo(admin, 320130000, 450, 199, 168, 0);
 			PacketSendUtility.sendMessage(admin, "Teleported to Adma stronghold");
 		}
 
 		else if(params[0].toLowerCase().equals("asteria"))
 		{
-			teleportService.teleportTo(admin,300050000, 469.343, 567.713, 201.732, 0);
+			teleportService.teleportTo(admin, 300050000, 469, 567, 202, 0);
 			PacketSendUtility.sendMessage(admin, "Teleported to Asteria Chamber");
 		}
 
 		else if(params[0].toLowerCase().equals("roah"))
 		{
-			teleportService.teleportTo(admin,300070000, 504, 552, 100, 0);
+			teleportService.teleportTo(admin, 300070000, 504, 552, 100, 0);
 			PacketSendUtility.sendMessage(admin, "Teleported to Chamber of Roah");
 		}
 
 		else if(params[0].toLowerCase().equals("darkpoeta"))
 		{
-			teleportService.teleportTo(admin,300040000, 812, 537, 119, 0);
+			teleportService.teleportTo(admin, 300040000, 812, 537, 119, 0);
 			PacketSendUtility.sendMessage(admin, "Teleported to Darkpoeta");
 		}
 
 		else if(params[0].toLowerCase().equals("dredgion"))
 		{
-			teleportService.teleportTo(admin,300110000, 484, 856, 418, 0);
+			teleportService.teleportTo(admin, 300110000, 484, 856, 418, 0);
 			PacketSendUtility.sendMessage(admin, "Teleported to Dredgion");
 		}
 
 		else if(params[0].toLowerCase().equals("krotan"))
 		{
-			teleportService.teleportTo(admin,300140000, 528, 775, 201, 0);
+			teleportService.teleportTo(admin, 300140000, 528, 775, 201, 0);
 			PacketSendUtility.sendMessage(admin, "Teleported to Krotan Chamber");
 		}
 
 		else if(params[0].toLowerCase().equals("kysis"))
 		{
-			teleportService.teleportTo(admin,300120000, 527, 703, 192, 0);
+			teleportService.teleportTo(admin, 300120000, 527, 703, 192, 0);
 			PacketSendUtility.sendMessage(admin, "Teleported to Kysis Chamber");
 		}
 
 		else if(params[0].toLowerCase().equals("leftwing"))
 		{
-			teleportService.teleportTo(admin,300080000, 484, 585, 356, 0);
+			teleportService.teleportTo(admin, 300080000, 484, 585, 356, 0);
 			PacketSendUtility.sendMessage(admin, "Teleported to Left Wing Chamber");
 		}
 
 		else if(params[0].toLowerCase().equals("miren"))
 		{
-			teleportService.teleportTo(admin,300130000, 526, 700, 192, 0);
+			teleportService.teleportTo(admin, 300130000, 526, 700, 192, 0);
 			PacketSendUtility.sendMessage(admin, "Teleported to Miren Chamber");
 		}
 
 		else if(params[0].toLowerCase().equals("nochsana"))
 		{
-			teleportService.teleportTo(admin,300030000, 315, 603, 373, 0);
+			teleportService.teleportTo(admin, 300030000, 315, 603, 373, 0);
 			PacketSendUtility.sendMessage(admin, "Teleported to Nochsana Training Camp");
 		}
 
 		else if(params[0].toLowerCase().equals("rightwing"))
 		{
-			teleportService.teleportTo(admin,300090000, 263, 380, 104, 0);
+			teleportService.teleportTo(admin, 300090000, 263, 380, 104, 0);
 			PacketSendUtility.sendMessage(admin, "Teleported to Right Wing Chamber");
 		}
 
 		else if(params[0].toLowerCase().equals("steelrake"))
 		{
-			teleportService.teleportTo(admin,300100000, 241, 506, 949, 0);
+			teleportService.teleportTo(admin, 300100000, 241, 506, 949, 0);
 			PacketSendUtility.sendMessage(admin, "Teleported to Steel Rake");
 		}
 
 		else if(params[0].toLowerCase().equals("sulfurtree"))
 		{
-			teleportService.teleportTo(admin,300060000, 462.352, 345.609, 162.817, 0);
+			teleportService.teleportTo(admin, 300060000, 462, 345, 163, 0);
 			PacketSendUtility.sendMessage(admin, "Teleported to Sulfur Tree Nest");
 		}
 
 		else if(params[0].toLowerCase().equals("theolab"))
 		{
-			teleportService.teleportTo(admin,310110000, 476.96606, 201.32736, 169.98848, 0);
+			teleportService.teleportTo(admin, 310110000, 476, 201, 170, 0);
 			PacketSendUtility.sendMessage(admin, "Teleported to Theobomos Lab");
 		}
 
@@ -390,13 +390,13 @@ public class GoTo extends AdminCommand
 
 		else if(params[0].toLowerCase().equals("alquimia"))
 		{			
-			teleportService.teleportTo(admin, 320110000, 606.7069, 527.3919, 200.05792, 0);
+			teleportService.teleportTo(admin, 320110000, 606, 527, 201, 0);
 			PacketSendUtility.sendMessage(admin, "Teleported to Test Server.");
 		}
 		
 		else if(params[0].toLowerCase().equals("adma"))
 		{			
-			teleportService.teleportTo(admin, 320130000, 450.66864, 199.70248, 167.84444, 0);
+			teleportService.teleportTo(admin, 320130000, 450, 199, 168, 0);
 			PacketSendUtility.sendMessage(admin, "Teleported to Test Server.");
 		}
 		
