@@ -99,6 +99,7 @@ public class AutoAnnounce extends Thread
 				{
 					log.info("AutoAnnounce reloading from database ...");
 					announces = DAOManager.getDAO(AutoAnnounceDAO.class).loadAnnounces().iterator();
+					reload = false;
 				}
 				else
 				{
