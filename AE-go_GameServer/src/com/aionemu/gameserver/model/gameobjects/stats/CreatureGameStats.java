@@ -234,7 +234,10 @@ public class CreatureGameStats<T extends Creature>
 			{
 				StatEffectId eid = modifiers.getKey();
 				int slots;
-
+				
+				if(modifiers.getValue() == null)
+					continue;
+				
 				for(StatModifier modifier : modifiers.getValue())
 				{
 					slots = ItemSlot.NONE.getSlotIdMask();
