@@ -222,9 +222,8 @@ public class StatFunctions
 		}
 		else if(attacker instanceof Summon)
 		{
-			int mainHandAttack = ags.getBaseStat(StatEnum.MAIN_HAND_POWER);
-			int base = Rnd.get(16,20);
-			Damage = Math.round(base * (ags.getCurrentStat(StatEnum.POWER) * 0.01f));
+			int level = ((Summon)attacker).getLevel();
+			return ((level * level) / 10);
 		}
 		else
 		{

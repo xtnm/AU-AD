@@ -115,6 +115,7 @@ public class SummonController extends CreatureController<Summon>
 		super.onAttack(creature, damage);
 		getOwner().getLifeStats().reduceHp(damage, creature);
 		PacketSendUtility.broadcastPacket(getOwner().getMaster(), new SM_ATTACK_STATUS(getOwner(), TYPE.REGULAR, 0, damage), true);
+		PacketSendUtility.broadcastPacket(getOwner().getMaster(), new SM_SUMMON_UPDATE(getOwner()), true);
 	}
 			
 	@Override
@@ -134,15 +135,14 @@ public class SummonController extends CreatureController<Summon>
 			
 	@Override
 	public void attackTarget(Creature target)
-	{
-		getOwner().setMode(SummonMode.ATTACK);
+	{		
 		Player master = getOwner().getMaster();
 
 		super.attackTarget(target);
 		
 		List<AttackResult> attackResult = AttackUtil.calculateAttackResult(getOwner(), target);
 
-		int damage = 35;
+		int damage = 0;
 		for(AttackResult result : attackResult)
 		{
 			damage += result.getDamage();
