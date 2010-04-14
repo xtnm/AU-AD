@@ -38,7 +38,7 @@ public class Summon extends Creature
 	private Player	master;
 	private SummonMode mode;
 
-	private Future<?> attackTask;
+	private Future<?> attackTask = null;
 
 	public static enum SummonMode
 	{
@@ -85,12 +85,12 @@ public class Summon extends Creature
 	
 	public void setAttackTask(Future<?> task)
 	{
-		this.attackTask = task;
+		attackTask = task;
 	}
 	
 	public Future<?> getAttackTask()
 	{
-		return this.attackTask;
+		return attackTask;
 	}
 
 	/**
