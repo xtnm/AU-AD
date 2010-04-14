@@ -52,9 +52,9 @@ public class CM_SUMMON_COMMAND extends AionClientPacket
 	@Override
 	protected void readImpl()
 	{
-		mode = readH();
-		unk1 = readD();
-		unk2 = readD();
+		mode = readC();
+		readD();
+		readD();
 		targetObjId = readD();
 	}
 
@@ -72,10 +72,6 @@ public class CM_SUMMON_COMMAND extends AionClientPacket
 					if(target != null && target instanceof Creature)
 					{
 						summon.getController().attackTarget((Creature)target);
-					}
-					else
-					{
-						log.error("Summon target Aion object cannot be loaded, data are unk1=" + unk1 + " and unk2=" + unk2);
 					}
 					break;
 				case 1:
