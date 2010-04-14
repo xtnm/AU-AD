@@ -23,6 +23,7 @@ import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Summon;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.AionClientPacket;
+import com.aionemu.gameserver.utils.ThreadPoolManager;
 import com.aionemu.gameserver.world.World;
 import com.google.inject.Inject;
 
@@ -62,16 +63,24 @@ public class CM_SUMMON_COMMAND extends AionClientPacket
 	protected void runImpl()
 	{
 		Player activePlayer = getConnection().getActivePlayer();
-		Summon summon = activePlayer.getSummon();
+		final Summon summon = activePlayer.getSummon();
 		if(summon != null)
 		{
 			switch(mode)
 			{
 				case 0:
-					AionObject target = world.findAionObject(targetObjId);
+					final AionObject target = world.findAionObject(targetObjId);
 					if(target != null && target instanceof Creature)
 					{
-						summon.getController().attackTarget((Creature)target);
+						ThreadPoolManager.getInstance().scheduleAtFixedRate(new Runnable() {
+							
+							@Override
+							public void run() {
+								// TODO Auto-generated method stub
+								summon.getController().attackTarget((Creature)target);
+							}
+						}, 0, 2000);
+						
 					}
 					break;
 				case 1:
