@@ -25,10 +25,12 @@ import com.aionemu.gameserver.model.gameobjects.Summon;
 import com.aionemu.gameserver.model.gameobjects.Summon.SummonMode;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SUMMON_OWNER_REMOVE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SUMMON_PANEL_REMOVE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SUMMON_UPDATE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS.TYPE;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
 
@@ -94,7 +96,34 @@ public class SummonController extends CreatureController<Summon>
 		PacketSendUtility.sendPacket(master, SM_SYSTEM_MESSAGE.SUMMON_GUARDMODE(getOwner().getNameId()));
 		PacketSendUtility.sendPacket(master, new SM_SUMMON_UPDATE(getOwner()));
 	}
-
+	
+	@Override
+	public void onAttack(Creature creature, int damage)
+	{
+		if(getOwner().getLifeStats().isAlreadyDead())
+		{
+			return;
+		}
+		super.onAttack(creature, damage);
+		getOwner().getLifeStats().reduceHp(damage, creature);
+		PacketSendUtility.broadcastPacket(getOwner().getMaster(), new SM_ATTACK_STATUS(getOwner(), TYPE.REGULAR, 0, damage), true);
+	}
+			
+	@Override
+	public void onDie(Creature lastAttacker)
+	{
+		super.onDie(lastAttacker);
+		Player master = getOwner().getMaster();
+		int summonObjId = getOwner().getObjectId();
+		getOwner().setMaster(null);
+		master.setSummon(null);
+		getOwner().getController().delete();
+		PacketSendUtility.sendPacket(master, SM_SYSTEM_MESSAGE.SUMMON_DISMISSED(getOwner().getNameId()));
+		PacketSendUtility.sendPacket(master, new SM_SUMMON_OWNER_REMOVE(summonObjId));
+		//TODO temp till found on retail
+		PacketSendUtility.sendPacket(master, new SM_SUMMON_PANEL_REMOVE());
+	}
+			
 	@Override
 	public void attackTarget(Creature target)
 	{
@@ -114,7 +143,7 @@ public class SummonController extends CreatureController<Summon>
 		long time = System.currentTimeMillis();
 		int attackType = 0; // TODO investigate attack types
 		PacketSendUtility.broadcastPacket(master, new SM_ATTACK(getOwner(), target, getOwner().getGameStats().getAttackCounter(),
-			(int) time, attackType, attackResult), true);
+			274, attackType, attackResult), true);
 
 		target.getController().onAttack(getOwner(), damage);
 
