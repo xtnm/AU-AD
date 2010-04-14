@@ -208,6 +208,7 @@ public class CM_ENTER_WORLD extends AionClientPacket
 				Iterator<Integer> items = shopItems.iterator();
 				int buffer = 0;
 				int kinahCount = 0;
+				
 				while(items.hasNext())
 				{
 					int iid = items.next();
@@ -217,9 +218,10 @@ public class CM_ENTER_WORLD extends AionClientPacket
 					}
 					else
 					{
-						itemService.addItem(player, items.next(), 1);
+						itemService.addItem(player, iid, 1);
 					}
 				}
+				
 				if(kinahCount > 0)
 				{
 					itemService.addItem(player, player.getInventory().getKinahItem().getItemTemplate().getTemplateId(), kinahCount);
