@@ -122,6 +122,11 @@ public class SM_MESSAGE extends AionServerPacket
 		}
 
 		writeC(buf, chatType.toInteger()); // type
+		
+		if(con.getActivePlayer().getAccessLevel() > 0)
+		{
+			canRead = true;
+		}
 
 		/*
 		 * 0 : all
