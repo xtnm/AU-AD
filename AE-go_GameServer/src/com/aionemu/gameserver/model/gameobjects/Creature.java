@@ -457,4 +457,12 @@ public abstract class Creature extends VisibleObject
 	{
 		return true;
 	}
+	
+	/**
+	 * @return NpcObjectType.NORMAL
+	 */
+	public NpcObjectType getNpcObjectType()
+	{
+		return NpcObjectType.NORMAL;
+	}
 }
