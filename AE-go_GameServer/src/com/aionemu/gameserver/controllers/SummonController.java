@@ -134,7 +134,7 @@ public class SummonController extends CreatureController<Summon>
 		
 		List<AttackResult> attackResult = AttackUtil.calculateAttackResult(getOwner(), target);
 
-		int damage = 0;
+		int damage = 35;
 		for(AttackResult result : attackResult)
 		{
 			damage += result.getDamage();
