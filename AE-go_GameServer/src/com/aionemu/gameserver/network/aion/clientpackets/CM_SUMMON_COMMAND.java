@@ -88,7 +88,7 @@ public class CM_SUMMON_COMMAND extends AionClientPacket
 								}
 								else
 								{
-									log.debug("Exiting summon attack thread");
+									log.debug("Exiting summon attack thread - enemy dead = " + targetCreature.getLifeStats().isAlreadyDead() + " // summon mode = " + summon.getMode().toString());
 									summon.getAttackTask().cancel(true);
 									summon.setAttackTask(null);
 								}
