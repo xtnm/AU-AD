@@ -16,6 +16,8 @@
  */
 package com.aionemu.gameserver.network.aion.clientpackets;
 
+import org.apache.log4j.Logger;
+
 import com.aionemu.gameserver.model.gameobjects.AionObject;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Summon;
@@ -34,8 +36,13 @@ public class CM_SUMMON_COMMAND extends AionClientPacket
 	private int mode;
 	private int targetObjId;
 	
+	private int unk1 = 0;
+	private int unk2 = 0;
+	
 	@Inject
 	private World world;
+	
+	private static final Logger log = Logger.getLogger(CM_SUMMON_COMMAND.class);
 	
 	public CM_SUMMON_COMMAND(int opcode)
 	{
@@ -46,8 +53,8 @@ public class CM_SUMMON_COMMAND extends AionClientPacket
 	protected void readImpl()
 	{
 		mode = readH();
-		readD();
-		readD();
+		unk1 = readD();
+		unk2 = readD();
 		targetObjId = readD();
 	}
 
@@ -65,6 +72,10 @@ public class CM_SUMMON_COMMAND extends AionClientPacket
 					if(target != null && target instanceof Creature)
 					{
 						summon.getController().attackTarget((Creature)target);
+					}
+					else
+					{
+						log.error("Summon target Aion object cannot be loaded, data are unk1=" + unk1 + " and unk2=" + unk2);
 					}
 					break;
 				case 1:
