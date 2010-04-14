@@ -21,6 +21,7 @@ import org.apache.log4j.Logger;
 import com.aionemu.gameserver.model.gameobjects.AionObject;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Summon;
+import com.aionemu.gameserver.model.gameobjects.Summon.SummonMode;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.AionClientPacket;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
@@ -70,16 +71,25 @@ public class CM_SUMMON_COMMAND extends AionClientPacket
 			{
 				case 0:
 					final AionObject target = world.findAionObject(targetObjId);
-					if(target != null && target instanceof Creature)
+					if(target != null && target instanceof Creature && summon.getAttackTask() == null)
 					{
-						ThreadPoolManager.getInstance().scheduleAtFixedRate(new Runnable() {
+						summon.setAttackTask(ThreadPoolManager.getInstance().scheduleAtFixedRate(new Runnable() {
 							
 							@Override
 							public void run() {
 								// TODO Auto-generated method stub
-								summon.getController().attackTarget((Creature)target);
+								Creature targetCreature = (Creature)target;
+								if(!targetCreature.getLifeStats().isAlreadyDead() && summon.getMode() == SummonMode.ATTACK)
+								{
+									summon.getController().attackTarget((Creature)target);
+								}
+								else
+								{
+									summon.getAttackTask().cancel(true);
+									summon.setAttackTask(null);
+								}
 							}
-						}, 0, 2000);
+						}, 0, 2000));
 						
 					}
 					break;

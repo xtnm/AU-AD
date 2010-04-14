@@ -16,6 +16,8 @@
  */
 package com.aionemu.gameserver.model.gameobjects;
 
+import java.util.concurrent.Future;
+
 import com.aionemu.gameserver.controllers.CreatureController;
 import com.aionemu.gameserver.controllers.SummonController;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
@@ -35,6 +37,8 @@ public class Summon extends Creature
 
 	private Player	master;
 	private SummonMode mode;
+
+	private Future<?> attackTask;
 
 	public static enum SummonMode
 	{
@@ -77,6 +81,16 @@ public class Summon extends Creature
 		super.setLifeStats(new SummonLifeStats(this));
 		
 		this.mode = SummonMode.GUARD;
+	}
+	
+	public void setAttackTask(Future<?> task)
+	{
+		this.attackTask = task;
+	}
+	
+	public Future<?> getAttackTask()
+	{
+		return this.attackTask;
 	}
 
 	/**
