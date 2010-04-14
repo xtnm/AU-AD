@@ -12,7 +12,7 @@
 	<classpathentry kind="src" path="config/main"/>
 	<classpathentry kind="src" path="config/network"/>
 	<classpathentry excluding="administration/|main/|network/" kind="src" path="config"/>
-	<classpathentry kind="lib" path="lib/ae_commons.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ae_commons.jar"/>
 	<classpathentry kind="lib" path="lib/log4j-1.2.15.jar"/>
 	<classpathentry kind="lib" path="lib/commons-io-1.4.jar"/>
 	<classpathentry kind="lib" path="lib/javac.jar"/>

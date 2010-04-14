@@ -23,12 +23,15 @@ import com.aionemu.gameserver.controllers.NpcController;
 import com.aionemu.gameserver.controllers.attack.AggroList;
 import com.aionemu.gameserver.dataholders.DataManager;
 import com.aionemu.gameserver.model.Race;
+import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.model.gameobjects.state.CreatureState;
 import com.aionemu.gameserver.model.gameobjects.stats.NpcGameStats;
 import com.aionemu.gameserver.model.gameobjects.stats.NpcLifeStats;
 import com.aionemu.gameserver.model.templates.NpcTemplate;
 import com.aionemu.gameserver.model.templates.VisibleObjectTemplate;
 import com.aionemu.gameserver.model.templates.npcskill.NpcSkillList;
 import com.aionemu.gameserver.model.templates.spawn.SpawnTemplate;
+import com.aionemu.gameserver.model.templates.stats.NpcRank;
 import com.aionemu.gameserver.utils.MathUtil;
 import com.aionemu.gameserver.world.WorldPosition;
 
@@ -186,5 +189,41 @@ public class Npc extends Creature
 	public void setNpcSkillList(NpcSkillList npcSkillList)
 	{
 		this.npcSkillList = npcSkillList;
+	}
+	
+	@Override
+	protected boolean isEnemyNpc(Npc visibleObject)
+	{
+		return false;//TODO
+	}
+
+	@Override
+	protected boolean isEnemyPlayer(Player visibleObject)
+	{
+		return true;//TODO
+	}
+	
+	@Override
+	protected boolean canSeeNpc(Npc npc)
+	{
+		return true; //TODO
+	}
+
+	@Override
+	protected boolean canSeePlayer(Player player)
+	{
+		if(!player.isInState(CreatureState.ACTIVE))
+			return false;
+		
+		if (player.getVisualState() == 1 && getObjectTemplate().getRank() == NpcRank.NORMAL)
+		   return false;
+		
+		if (player.getVisualState() == 2 && (getObjectTemplate().getRank() == NpcRank.ELITE || getObjectTemplate().getRank() == NpcRank.NORMAL))
+		   return false;
+		
+		if (player.getVisualState() >= 3)
+		   return false;
+		
+		return true;
 	}
 }

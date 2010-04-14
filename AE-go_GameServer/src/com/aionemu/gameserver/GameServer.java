@@ -40,7 +40,6 @@ import com.aionemu.gameserver.network.loginserver.LoginServer;
 import com.aionemu.gameserver.questEngine.QuestEngine;
 import com.aionemu.gameserver.services.ServiceProxy;
 import com.aionemu.gameserver.spawnengine.SpawnEngine;
-import com.aionemu.gameserver.taskmanager.tasks.GCTaskManager;
 import com.aionemu.gameserver.taskmanager.tasks.PacketBroadcaster;
 import com.aionemu.gameserver.unishell.Unishell;
 import com.aionemu.gameserver.utils.AEVersions;
@@ -70,7 +69,7 @@ public class GameServer
 	/** Logger for gameserver */
 	private static final Logger	log	= Logger.getLogger(GameServer.class);
 
-	private Injector			injector;	
+	private Injector			injector;
 
 	/**
 	 * Creates instance of GameServer, which includes loading static data, initializing world.
@@ -83,11 +82,11 @@ public class GameServer
 		DataInjectionModule dataIM = new DataInjectionModule();
 		NetworkInjectionModule networkIM = new NetworkInjectionModule();
 		ObjectFactoryInjectionModule controllerIM = new ObjectFactoryInjectionModule();
-		
-		injector = Guice.createInjector(dataIM,networkIM, new IDFactoriesInjectionModule(), controllerIM);		
+
+		injector = Guice.createInjector(dataIM, networkIM, new IDFactoriesInjectionModule(), controllerIM);
 		dataIM.setInjector(injector);
 		networkIM.setInjector(injector);
-		
+
 		// after all data is loaded need to set service proxy to xml service adapter
 		injector.getInstance(XmlServiceProxy.class).setServiceProxy(injector.getInstance(ServiceProxy.class));
 	}
@@ -105,17 +104,14 @@ public class GameServer
 		initUtilityServicesAndConfig();
 
 		GameServer gs = new GameServer();
-		
-		//Set all players is offline
+		// Set all players is offline
 		DAOManager.getDAO(PlayerDAO.class).setPlayersOffline(false);
 		gs.spawnMonsters();
 		gs.initQuests();
-		
+
 		Util.printSection("TaskManagers");
 		PacketBroadcaster.getInstance();
-		if(TaskManagerConfig.ALLOW_GC) 		
-			new Thread(new GCTaskManager(TaskManagerConfig.GC_INTERVAL)).start();
-		
+
 		Util.printSection("System");
 		AEVersions.printFullVersionInfo();
 		AEInfos.printAllInfos();
@@ -125,16 +121,16 @@ public class GameServer
 		
 		Util.printSection("GameServerLog");
 		log.info("AE Game Server started in " + (System.currentTimeMillis() - start) / 1000 + " seconds.");
-		
+
 		gs.startServers();
 		GameTimeManager.startClock();
-		
+
 		if(TaskManagerConfig.DEADLOCK_DETECTOR_ENABLED)
 		{
 			log.info("Starting deadlock detector");
 			new Thread(new DeadlockDetector(TaskManagerConfig.DEADLOCK_DETECTOR_INTERVAL)).start();
 		}
-		
+
 		Runtime.getRuntime().addShutdownHook(gs.injector.getInstance(ShutdownHook.class));
 		
 		Thread unishell = new Thread(new Unishell(8675));
@@ -144,7 +140,7 @@ public class GameServer
 		Thread autoAnnounce = new Thread(new AutoAnnounce(world));
 		autoAnnounce.start();
 
-		//gs.injector.getInstance(com.aionemu.gameserver.utils.chathandlers.ChatHandlers.class);
+		// gs.injector.getInstance(com.aionemu.gameserver.utils.chathandlers.ChatHandlers.class);
 		onStartup();
 	}
 
@@ -154,20 +150,23 @@ public class GameServer
 	private void spawnMonsters()
 	{
 		Util.printSection("Spawns");
-		
+
 		SpawnEngine spawnEngine = injector.getInstance(SpawnEngine.class);
 		spawnEngine.setInjector(injector);
 		spawnEngine.spawnAll();
+		spawnEngine.addGameTimeHook();
+		
 	}
 
 	private void initQuests()
 	{
 		Util.printSection("Quests");
-		
+
 		QuestEngine questEngine = injector.getInstance(QuestEngine.class);
 		questEngine.setInjector(injector);
 		questEngine.load();
 	}
+
 	/**
 	 * Starts servers for connection with aion client and login server.
 	 */
@@ -178,7 +177,7 @@ public class GameServer
 
 		// Nio must go first
 		nioServer.connect();
-		loginServer.connect();		
+		loginServer.connect();
 	}
 
 	/**
@@ -211,29 +210,29 @@ public class GameServer
 		ThreadConfig.load();
 		ThreadPoolManager.getInstance();
 	}
-	
-	private static Set<StartupHook> STARTUP_HOOKS = new HashSet<StartupHook>();
-	
+
+	private static Set<StartupHook>	startUpHooks	= new HashSet<StartupHook>();
+
 	public synchronized static void addStartupHook(StartupHook hook)
 	{
-		if (STARTUP_HOOKS != null)
-			STARTUP_HOOKS.add(hook);
+		if(startUpHooks != null)
+			startUpHooks.add(hook);
 		else
 			hook.onStartup();
 	}
-	
+
 	private synchronized static void onStartup()
 	{
-		final Set<StartupHook> startupHooks = STARTUP_HOOKS;
-		
-		STARTUP_HOOKS = null;
-		
-		for (StartupHook hook : startupHooks)
-			hook.onStartup();				
+		final Set<StartupHook> startupHooks = startUpHooks;
+
+		startUpHooks = null;
+
+		for(StartupHook hook : startupHooks)
+			hook.onStartup();
 	}
-	
+
 	public interface StartupHook
 	{
-		public void onStartup();		
+		public void onStartup();
 	}
 }

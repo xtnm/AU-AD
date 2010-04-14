@@ -26,5 +26,6 @@ public enum TaskId
 	RESPAWN,
 	PRISON,
 	PROTECTION_ACTIVE,
-	DROWN
+	DROWN,
+	DESPAWN
 }

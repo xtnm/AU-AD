@@ -93,8 +93,7 @@
 	<!-- Belbua's Treasure -->
 	<item_collecting id="1141" start_npc_id="730001" action_item_id="700122"/>
 	
-	<!-- Delicate Mandrake -->
-	<report_to start_npc_id="203123" end_npc_id="203139" item_id="182200519" id="1146"/>
+	<!-- Delicate Mandrake script. TODO: Needed timer.-->
 	
 	<!-- TODO: Masked Loiterers -->
 	<report_to start_npc_id="203111" end_npc_id="203111" id="1012"/>
