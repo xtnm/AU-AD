@@ -97,6 +97,14 @@ public class SummonController extends CreatureController<Summon>
 		PacketSendUtility.sendPacket(master, new SM_SUMMON_UPDATE(getOwner()));
 	}
 	
+	public void attackMode()
+	{
+		getOwner().setMode(SummonMode.ATTACK);
+		Player master = getOwner().getMaster();
+		PacketSendUtility.sendPacket(master, SM_SYSTEM_MESSAGE.SUMMON_ATTACKMODE(getOwner().getNameId()));
+		PacketSendUtility.sendPacket(master, new SM_SUMMON_UPDATE(getOwner()));
+	}
+	
 	@Override
 	public void onAttack(Creature creature, int damage)
 	{

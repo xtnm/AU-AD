@@ -72,6 +72,7 @@ public class CM_SUMMON_COMMAND extends AionClientPacket
 				case 0:
 					final AionObject target = world.findAionObject(targetObjId);
 					log.debug("Summon attacking");
+					summon.getController().attackMode();
 					if(target != null && target instanceof Creature && summon.getAttackTask() == null)
 					{
 						log.debug("Starting Summon attack thread");
