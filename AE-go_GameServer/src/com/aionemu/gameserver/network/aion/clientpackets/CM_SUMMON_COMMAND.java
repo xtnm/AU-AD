@@ -73,7 +73,7 @@ public class CM_SUMMON_COMMAND extends AionClientPacket
 					final AionObject target = world.findAionObject(targetObjId);
 					log.debug("Summon attacking");
 					summon.getController().attackMode();
-					if(target != null && target instanceof Creature && summon.getAttackTask() == null)
+					if(target != null && target instanceof Creature &&  summon.getAttackTask() == null)
 					{
 						log.debug("Starting Summon attack thread");
 						summon.setAttackTask(ThreadPoolManager.getInstance().scheduleAtFixedRate(new Runnable() {
@@ -82,7 +82,7 @@ public class CM_SUMMON_COMMAND extends AionClientPacket
 							public void run() {
 								// TODO Auto-generated method stub
 								Creature targetCreature = (Creature)target;
-								if(!targetCreature.getLifeStats().isAlreadyDead() && summon.getMode() == SummonMode.ATTACK)
+								if(!targetCreature.getLifeStats().isAlreadyDead() && !summon.getLifeStats().isAlreadyDead() && summon.getMode() == SummonMode.ATTACK)
 								{
 									log.debug("Summon attacking target");
 									summon.getController().attackTarget((Creature)target);
