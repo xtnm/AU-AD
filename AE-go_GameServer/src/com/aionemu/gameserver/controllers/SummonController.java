@@ -16,10 +16,15 @@
  */
 package com.aionemu.gameserver.controllers;
 
+import java.util.List;
+
+import com.aionemu.gameserver.controllers.attack.AttackResult;
+import com.aionemu.gameserver.controllers.attack.AttackUtil;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Summon;
 import com.aionemu.gameserver.model.gameobjects.Summon.SummonMode;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SUMMON_OWNER_REMOVE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SUMMON_UPDATE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
@@ -92,6 +97,26 @@ public class SummonController extends CreatureController<Summon>
 	{
 		getOwner().setMode(SummonMode.ATTACK);
 		Player master = getOwner().getMaster();
+
+		super.attackTarget(target);
+		
+		List<AttackResult> attackResult = AttackUtil.calculateAttackResult(getOwner(), target);
+
+		int damage = 0;
+		for(AttackResult result : attackResult)
+		{
+			damage += result.getDamage();
+		}
+
+		long time = System.currentTimeMillis();
+		int attackType = 0; // TODO investigate attack types
+		PacketSendUtility.broadcastPacket(master, new SM_ATTACK(getOwner(), target, getOwner().getGameStats().getAttackCounter(),
+			(int) time, attackType, attackResult), true);
+
+		target.getController().onAttack(getOwner(), damage);
+
+		getOwner().getGameStats().increaseAttackCounter();
+		
 		PacketSendUtility.sendPacket(master, SM_SYSTEM_MESSAGE.SUMMON_ATTACKMODE(getOwner().getNameId()));
 		PacketSendUtility.sendPacket(master, new SM_SUMMON_UPDATE(getOwner()));
 	}
