@@ -25,11 +25,13 @@ import com.aionemu.gameserver.model.SkillElement;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.Npc;
+import com.aionemu.gameserver.model.gameobjects.Summon;
 import com.aionemu.gameserver.model.gameobjects.player.Equipment;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.state.CreatureState;
 import com.aionemu.gameserver.model.gameobjects.stats.CreatureGameStats;
 import com.aionemu.gameserver.model.gameobjects.stats.StatEnum;
+import com.aionemu.gameserver.model.gameobjects.stats.SummonGameStats;
 import com.aionemu.gameserver.model.templates.item.WeaponType;
 import com.aionemu.gameserver.model.templates.stats.NpcRank;
 
@@ -217,6 +219,12 @@ public class StatFunctions
 					equipment.usePowerShard(mainHandPowerShard, 1);
 				}
 			}
+		}
+		else if(attacker instanceof Summon)
+		{
+			int mainHandAttack = ags.getBaseStat(StatEnum.MAIN_HAND_POWER);
+			int base = Rnd.get(16,20);
+			Damage = Math.round(base * (ags.getCurrentStat(StatEnum.POWER) * 0.01f));
 		}
 		else
 		{
