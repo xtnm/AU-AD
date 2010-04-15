@@ -17,7 +17,7 @@
 package com.aionemu.gameserver.network.aion.clientpackets;
 
 import org.apache.log4j.Logger;
-
+import com.aionemu.gameserver.controllers.SummonController.UnsummonType;
 import com.aionemu.gameserver.model.gameobjects.AionObject;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Summon;
@@ -75,27 +75,7 @@ public class CM_SUMMON_COMMAND extends AionClientPacket
 					summon.getController().attackMode();
 					if(target != null && target instanceof Creature &&  summon.getAttackTask() == null)
 					{
-						log.debug("Starting Summon attack thread");
-						summon.setAttackTask(ThreadPoolManager.getInstance().scheduleAtFixedRate(new Runnable() {
-							
-							@Override
-							public void run() {
-								// TODO Auto-generated method stub
-								Creature targetCreature = (Creature)target;
-								if(!targetCreature.getLifeStats().isAlreadyDead() && !summon.getLifeStats().isAlreadyDead() && summon.getMode() == SummonMode.ATTACK)
-								{
-									log.debug("Summon attacking target");
-									summon.getController().attackTarget((Creature)target);
-								}
-								else
-								{
-									log.debug("Exiting summon attack thread - enemy dead = " + targetCreature.getLifeStats().isAlreadyDead() + " // summon mode = " + summon.getMode().toString());
-									summon.getAttackTask().cancel(true);
-									summon.setAttackTask(null);
-								}
-							}
-						}, 0, 2000));
-						
+						summon.getController().attackMode();
 					}
 					break;
 				case 1:
@@ -105,7 +85,7 @@ public class CM_SUMMON_COMMAND extends AionClientPacket
 					summon.getController().restMode();
 					break;
 				case 3:
-					summon.getController().release();
+					summon.getController().release(UnsummonType.COMMAND);
 					break;
 					
 			}

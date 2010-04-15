@@ -60,6 +60,12 @@ public class StatFunctions
 		return (int) Math.floor(baseXP * xpPercentage * player.getRates().getXpRate() / 100);
 	}
 
+	/**
+	 * 
+	 * @param player
+	 * @param target
+	 * @return
+	 */
 	public static long calculateGroupExperienceReward(Player player, Creature target)
 	{
 		int playerLevel = player.getCommonData().getLevel();
@@ -98,7 +104,7 @@ public class StatFunctions
 	 * 
 	 * @param player
 	 * @param target
-	 * @return int
+	 * @return AP reward
 	 */
 	public static int calculateSoloAPReward(Player player, Creature target) 
 	{
@@ -108,6 +114,12 @@ public class StatFunctions
 		return (int) Math.floor(10 * percentage * player.getRates().getApNpcRate() / 100);
 	}
 
+	/**
+	 * 
+	 * @param player
+	 * @param target
+	 * @return DP reward
+	 */
 	public static int calculateGroupDPReward(Player player, Creature target)
 	{
 		int playerLevel = player.getCommonData().getLevel();
@@ -158,11 +170,7 @@ public class StatFunctions
 		CreatureGameStats<?> ags = attacker.getGameStats();
 		CreatureGameStats<?> tgs = target.getGameStats();
 
-		log.debug("Calculating base damages (skill base damages: "+skillDamages+") ...");
-		log.debug("| Attacker: "+ags);
-		log.debug("| Target  : "+tgs);
-
-		int Damage = 0;
+		int resultDamage = 0;
 
 		if (attacker instanceof Player)
 		{
@@ -195,26 +203,26 @@ public class StatFunctions
 
 				int base = Rnd.get(min,max);
 				
-				Damage = Math.round((base * (ags.getCurrentStat(StatEnum.POWER) * 0.01f + ags.getStatBonus(StatEnum.MAIN_HAND_POWER) * 0.01f)) 
+				resultDamage = Math.round((base * (ags.getCurrentStat(StatEnum.POWER) * 0.01f + ags.getStatBonus(StatEnum.MAIN_HAND_POWER) * 0.01f)) 
 						                  + ags.getStatBonus(StatEnum.MAIN_HAND_POWER) + skillDamages);
 
 			}
 			else   //if hand attack
 			{
 				int base = Rnd.get(16,20);
-				Damage = Math.round(base * (ags.getCurrentStat(StatEnum.POWER) * 0.01f));
+				resultDamage = Math.round(base * (ags.getCurrentStat(StatEnum.POWER) * 0.01f));
 			}
 
 			//adjusting baseDamages according to attacker and target level
 			//
-			Damage = adjustDamages(attacker, target, Damage);
+			resultDamage = adjustDamages(attacker, target, resultDamage);
 
 			if(attacker.isInState(CreatureState.POWERSHARD))
 			{
 				Item mainHandPowerShard = equipment.getMainHandPowerShard();
 				if(mainHandPowerShard != null)
 				{
-					Damage += mainHandPowerShard.getItemTemplate().getWeaponBoost();
+					resultDamage += mainHandPowerShard.getItemTemplate().getWeaponBoost();
 
 					equipment.usePowerShard(mainHandPowerShard, 1);
 				}
@@ -222,8 +230,10 @@ public class StatFunctions
 		}
 		else if(attacker instanceof Summon)
 		{
-			int level = ((Summon)attacker).getLevel();
-			return ((level * level) / 10);
+			int baseDamage = ags.getCurrentStat(StatEnum.MAIN_HAND_POWER);
+			int max = (int)(baseDamage + baseDamage * attacker.getLevel() / 10);
+			int min = max - ags.getCurrentStat(StatEnum.MAIN_HAND_POWER);		
+			resultDamage += Rnd.get(min, max);
 		}
 		else
 		{
@@ -232,21 +242,24 @@ public class StatFunctions
 			double hpGaugeMod = 1+(((Npc) attacker).getObjectTemplate().getHpGauge()/10);
 			int baseDamage = ags.getCurrentStat(StatEnum.MAIN_HAND_POWER);
 			int max = (int)((baseDamage * multipler * hpGaugeMod) + ((baseDamage*attacker.getLevel())/10));
-			int min = max - ags.getCurrentStat(StatEnum.MAIN_HAND_POWER);
-			
-			Damage += Rnd.get(min, max);
+			int min = max - ags.getCurrentStat(StatEnum.MAIN_HAND_POWER);		
+			resultDamage += Rnd.get(min, max);
 		}
 
-		Damage -= Math.round(tgs.getCurrentStat(StatEnum.PHYSICAL_DEFENSE) * 0.10f);
+		resultDamage -= Math.round(tgs.getCurrentStat(StatEnum.PHYSICAL_DEFENSE) * 0.10f);
 
-		if (Damage<=0)
-			Damage=1;
+		if (resultDamage<=0)
+			resultDamage=1;
 
-		log.debug("|=> Damages calculation result: damages("+Damage+")");
-
-		return Damage;
+		return resultDamage;
 	}
 
+	/**
+	 * 
+	 * @param attacker
+	 * @param target
+	 * @return
+	 */
 	public static int calculateOffHandPhysicDamageToTarget(Creature attacker, Creature target)
 	{
 		CreatureGameStats<?> ags = attacker.getGameStats();
@@ -316,9 +329,6 @@ public class StatFunctions
 	{
 		CreatureGameStats<?> sgs = speller.getGameStats();
 		CreatureGameStats<?> tgs = target.getGameStats();
-		log.debug("Calculating magic damages between "+speller.getObjectId()+" and "+target.getObjectId()+" (skill base damages: "+baseDamages+")...");
-		log.debug("| Speller : "+sgs);
-		log.debug("| Target  : "+tgs);
 
 		int damages = Math.round(baseDamages * ((sgs.getCurrentStat(StatEnum.KNOWLEDGE) / 100f) + (sgs.getCurrentStat(StatEnum.BOOST_MAGICAL_SKILL) / 1000f)));
 		
@@ -340,14 +350,18 @@ public class StatFunctions
 		//
 		// damages -= Math.round((elementaryDefense+magicalResistance)*0.60f);
 
-
 		if (damages<=0) {
 			damages=1;
 		}
-		log.debug("|=> Magic damages calculation result: damages("+damages+")");
+
 		return damages;
 	}
 
+	/**
+	 * 
+	 * @param npcRank
+	 * @return
+	 */
 	public static int calculateRankMultipler(NpcRank npcRank)
 	{
 		//FIXME: to correct formula, have any reference?
