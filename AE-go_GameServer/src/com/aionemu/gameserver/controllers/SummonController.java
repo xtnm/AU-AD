@@ -25,6 +25,7 @@ import com.aionemu.gameserver.model.gameobjects.Summon;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
 import com.aionemu.gameserver.model.gameobjects.Summon.SummonMode;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.model.gameobjects.stats.StatEnum;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EMOTION;
@@ -115,6 +116,30 @@ public class SummonController extends CreatureController<Summon>
 				}
 			}
 		}, 5000);
+	}
+	
+	public void rest()
+	{
+		if(getOwner().getRestTask() == null)
+		{
+			getOwner().setRestTask(ThreadPoolManager.getInstance().scheduleAtFixedRate(new Runnable() {
+				
+				@Override
+				public void run() 
+				{
+					if(getOwner().getMode() == SummonMode.REST)
+					{
+						getOwner().getLifeStats().increaseHp(2 * getOwner().getGameStats().getCurrentStat(StatEnum.REGEN_HP));
+						PacketSendUtility.sendPacket(getOwner().getMaster(), new SM_SUMMON_UPDATE(getOwner()));
+					}
+					else
+					{
+						getOwner().getRestTask().cancel(true);
+						getOwner().setRestTask(null);
+					}
+				}
+			}, 1500, 2500));
+		}
 	}
 
 	/**
