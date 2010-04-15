@@ -27,11 +27,13 @@ import com.aionemu.gameserver.model.gameobjects.Summon.SummonMode;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_EMOTION;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SUMMON_OWNER_REMOVE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SUMMON_PANEL_REMOVE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SUMMON_UPDATE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS.TYPE;
+import com.aionemu.gameserver.restrictions.RestrictionsManager;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
 
@@ -50,7 +52,7 @@ public class SummonController extends CreatureController<Summon>
 			release(UnsummonType.DISTANCE);
 		}
 	}
-	
+
 	@Override
 	public Summon getOwner()
 	{
@@ -63,11 +65,11 @@ public class SummonController extends CreatureController<Summon>
 	public void release(final UnsummonType unsummonType)
 	{
 		final Summon owner = getOwner();
-		
+
 		if(owner.getMode() == SummonMode.RELEASE)
 			return;
 		owner.setMode(SummonMode.RELEASE);
-		
+
 		final Player master = owner.getMaster();
 		final int summonObjId = owner.getObjectId();
 
@@ -78,41 +80,43 @@ public class SummonController extends CreatureController<Summon>
 				PacketSendUtility.sendPacket(master, new SM_SUMMON_UPDATE(getOwner()));
 				break;
 			case DISTANCE:
-				PacketSendUtility.sendPacket(getOwner().getMaster(), SM_SYSTEM_MESSAGE.SUMMON_UNSUMMON_BY_TOO_DISTANCE());
+				PacketSendUtility.sendPacket(getOwner().getMaster(), SM_SYSTEM_MESSAGE
+					.SUMMON_UNSUMMON_BY_TOO_DISTANCE());
 				PacketSendUtility.sendPacket(master, new SM_SUMMON_UPDATE(getOwner()));
 				break;
 			case LOGOUT:
 			case UNSPECIFIED:
 				break;
-		}		
-		
+		}
+
 		ThreadPoolManager.getInstance().schedule(new Runnable(){
-			
+
 			@Override
 			public void run()
 			{
 				owner.setMaster(null);
 				master.setSummon(null);
 				owner.getController().delete();
-				
+
 				switch(unsummonType)
 				{
 					case COMMAND:
 					case DISTANCE:
-						PacketSendUtility.sendPacket(master, SM_SYSTEM_MESSAGE.SUMMON_DISMISSED(getOwner().getNameId()));
+					case UNSPECIFIED:
+						PacketSendUtility
+							.sendPacket(master, SM_SYSTEM_MESSAGE.SUMMON_DISMISSED(getOwner().getNameId()));
 						PacketSendUtility.sendPacket(master, new SM_SUMMON_OWNER_REMOVE(summonObjId));
-						
-						//TODO temp till found on retail
+
+						// TODO temp till found on retail
 						PacketSendUtility.sendPacket(master, new SM_SUMMON_PANEL_REMOVE());
 						break;
-					case LOGOUT:
-					case UNSPECIFIED:
+					case LOGOUT:				
 						break;
-				}	
+				}
 			}
 		}, 5000);
 	}
-	
+
 	/**
 	 * Change to rest mode
 	 */
@@ -123,7 +127,7 @@ public class SummonController extends CreatureController<Summon>
 		PacketSendUtility.sendPacket(master, SM_SYSTEM_MESSAGE.SUMMON_RESTMODE(getOwner().getNameId()));
 		PacketSendUtility.sendPacket(master, new SM_SUMMON_UPDATE(getOwner()));
 	}
-	
+
 	/**
 	 * Change to guard mode
 	 */
@@ -134,7 +138,10 @@ public class SummonController extends CreatureController<Summon>
 		PacketSendUtility.sendPacket(master, SM_SYSTEM_MESSAGE.SUMMON_GUARDMODE(getOwner().getNameId()));
 		PacketSendUtility.sendPacket(master, new SM_SUMMON_UPDATE(getOwner()));
 	}
-	
+
+	/**
+	 * Change to attackMode
+	 */
 	public void attackMode()
 	{
 		getOwner().setMode(SummonMode.ATTACK);
@@ -142,62 +149,68 @@ public class SummonController extends CreatureController<Summon>
 		PacketSendUtility.sendPacket(master, SM_SYSTEM_MESSAGE.SUMMON_ATTACKMODE(getOwner().getNameId()));
 		PacketSendUtility.sendPacket(master, new SM_SUMMON_UPDATE(getOwner()));
 	}
-	
-	@Override
-	public void onAttack(Creature creature, int damage)
-	{
-		if(getOwner().getLifeStats().isAlreadyDead())
-		{
-			return;
-		}
-		super.onAttack(creature, damage);
-		getOwner().getLifeStats().reduceHp(damage, creature);
-		PacketSendUtility.broadcastPacket(getOwner().getMaster(), new SM_ATTACK_STATUS(getOwner(), TYPE.REGULAR, 0, damage), true);
-		PacketSendUtility.broadcastPacket(getOwner().getMaster(), new SM_SUMMON_UPDATE(getOwner()), true);
-	}
-			
-	@Override
-	public void onDie(Creature lastAttacker)
-	{
-		super.onDie(lastAttacker);
-		Player master = getOwner().getMaster();
-		int summonObjId = getOwner().getObjectId();
-		getOwner().setMaster(null);
-		master.setSummon(null);
-		getOwner().getController().delete();
-		PacketSendUtility.sendPacket(master, SM_SYSTEM_MESSAGE.SUMMON_DISMISSED(getOwner().getNameId()));
-		PacketSendUtility.sendPacket(master, new SM_SUMMON_OWNER_REMOVE(summonObjId));
-		//TODO temp till found on retail
-		PacketSendUtility.sendPacket(master, new SM_SUMMON_PANEL_REMOVE());
-	}
-			
+
 	@Override
 	public void attackTarget(Creature target)
-	{		
+	{
+		Summon summon = getOwner();
 		Player master = getOwner().getMaster();
+		if(!summon.canAttack())
+			return;
 
+		if(!RestrictionsManager.canAttack(master, target))
+			return;
+
+		if(!summon.isEnemy(target))
+			return;
+		/**
+		 * notify attack observers
+		 */
 		super.attackTarget(target);
-		
-		List<AttackResult> attackResult = AttackUtil.calculateAttackResult(getOwner(), target);
+
+		List<AttackResult> attackList = AttackUtil.calculateAttackResult(summon, target);
 
 		int damage = 0;
-		for(AttackResult result : attackResult)
+		for(AttackResult result : attackList)
 		{
 			damage += result.getDamage();
 		}
 
-		long time = System.currentTimeMillis();
-		int attackType = 0; // TODO investigate attack types
-		PacketSendUtility.broadcastPacket(master, new SM_ATTACK(getOwner(), target, getOwner().getGameStats().getAttackCounter(),
-			274, attackType, attackResult), true);
+		int attackType = 0;
+		PacketSendUtility.broadcastPacket(summon, new SM_ATTACK(summon, target, summon.getGameStats()
+			.getAttackCounter(), 274, attackType, attackList));
 
-		target.getController().onAttack(getOwner(), damage);
+		target.getController().onAttack(summon, damage);
+		summon.getGameStats().increaseAttackCounter();
 
-		getOwner().getGameStats().increaseAttackCounter();
-		
-		PacketSendUtility.sendPacket(master, SM_SYSTEM_MESSAGE.SUMMON_ATTACKMODE(getOwner().getNameId()));
-		PacketSendUtility.sendPacket(master, new SM_SUMMON_UPDATE(getOwner()));
 	}
+
+	@Override
+	public void onAttack(Creature creature, int damage)
+	{
+		if(getOwner().getLifeStats().isAlreadyDead())
+			return;
+		
+		//temp 
+		if(getOwner().getMode() == SummonMode.RELEASE)
+			return;
+		
+		super.onAttack(creature, damage);
+		getOwner().getLifeStats().reduceHp(damage, creature);
+		PacketSendUtility.broadcastPacket(getOwner(), new SM_ATTACK_STATUS(getOwner(), TYPE.REGULAR, 0,
+			damage));
+		PacketSendUtility.sendPacket(getOwner().getMaster(), new SM_SUMMON_UPDATE(getOwner()));
+	}
+	
+	@Override
+	public void onDie(Creature lastAttacker)
+	{
+		release(UnsummonType.UNSPECIFIED);
+		Summon owner = getOwner();
+		PacketSendUtility.broadcastPacket(owner, new SM_EMOTION(owner, 13, 0, lastAttacker == null ? 0 : lastAttacker
+			.getObjectId()));
+	}
+
 	public static enum UnsummonType
 	{
 		LOGOUT,
