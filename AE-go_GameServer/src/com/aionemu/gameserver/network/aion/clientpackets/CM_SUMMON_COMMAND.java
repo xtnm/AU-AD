@@ -83,6 +83,7 @@ public class CM_SUMMON_COMMAND extends AionClientPacket
 					break;
 				case 2:
 					summon.getController().restMode();
+					summon.getController().rest();
 					break;
 				case 3:
 					summon.getController().release(UnsummonType.COMMAND);
