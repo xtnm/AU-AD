@@ -30,7 +30,7 @@ public class _2900NoEscapingDestiny extends QuestHandler {
 			return false;
 		final Player player = env.getPlayer();
 		final QuestState qs = player.getQuestStateList().getQuestState(questId);
-		if(qs != null)
+		if(qs != null || player.getLevel() < 20)
 			return false;
 		env.setQuestId(questId);
 		questService.startQuest(env, QuestStatus.START);
