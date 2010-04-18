@@ -6,6 +6,7 @@ import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
+import com.aionemu.gameserver.world.zone.ZoneName;
 
 public class _2900NoEscapingDestiny extends QuestHandler {
 	
@@ -19,15 +20,21 @@ public class _2900NoEscapingDestiny extends QuestHandler {
 	@Override
 	public void register()
 	{
-		qe.setNpcQuestData(204182).addOnQuestStart(questId);
 		qe.setNpcQuestData(204182).addOnTalkEvent(questId);
-		qe.setNpcQuestData(203550).addOnTalkEvent(questId);
-		qe.setNpcQuestData(790003).addOnTalkEvent(questId);
-		qe.setNpcQuestData(790002).addOnTalkEvent(questId);
-		qe.setNpcQuestData(204264).addOnTalkEvent(questId);
-		qe.setNpcQuestData(203550).addOnTalkEvent(questId);
-		qe.setNpcQuestData(204263).addOnKillEvent(questId);
-		qe.setNpcQuestData(204061).addOnTalkEvent(questId);
+		qe.setQuestEnterZone(ZoneName.ALTGARD_FORTRESS_220030000).add(questId);
+	}
+	
+	public boolean onEnterZoneEvent(QuestEnv env, ZoneName zone)
+	{
+		if(zone != ZoneName.ALTGARD_FORTRESS_220030000)
+			return false;
+		final Player player = env.getPlayer();
+		final QuestState qs = player.getQuestStateList().getQuestState(questId);
+		if(qs != null)
+			return false;
+		env.setQuestId(questId);
+		questService.startQuest(env, QuestStatus.START);
+		return true;
 	}
 	
 	@Override
@@ -39,13 +46,6 @@ public class _2900NoEscapingDestiny extends QuestHandler {
 			targetId = ((Npc) env.getVisibleObject()).getNpcId();
 		QuestState qs = player.getQuestStateList().getQuestState(questId);
 		if(targetId == 204182)
-		{
-			if(qs == null || qs.getStatus() == QuestStatus.NONE)
-			{
-				return defaultQuestStartDialog(env);
-			}
-		}
-		else if(targetId == 204061)
 		{
 			if(qs != null)
 			{
