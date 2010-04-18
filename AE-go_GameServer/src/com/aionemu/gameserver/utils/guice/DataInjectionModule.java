@@ -36,6 +36,7 @@ import com.aionemu.gameserver.dataholders.QuestsData;
 import com.aionemu.gameserver.dataholders.SkillData;
 import com.aionemu.gameserver.dataholders.SkillTreeData;
 import com.aionemu.gameserver.dataholders.SpawnsData;
+import com.aionemu.gameserver.dataholders.SummonStatsData;
 import com.aionemu.gameserver.dataholders.TeleLocationData;
 import com.aionemu.gameserver.dataholders.TeleporterData;
 import com.aionemu.gameserver.dataholders.TradeListData;
@@ -53,6 +54,7 @@ import com.aionemu.gameserver.services.CubeExpandService;
 import com.aionemu.gameserver.services.DebugService;
 import com.aionemu.gameserver.services.DropService;
 import com.aionemu.gameserver.services.DuelService;
+import com.aionemu.gameserver.services.EnchantService;
 import com.aionemu.gameserver.services.ExchangeService;
 import com.aionemu.gameserver.services.GroupService;
 import com.aionemu.gameserver.services.InstanceService;
@@ -68,6 +70,7 @@ import com.aionemu.gameserver.services.RespawnService;
 import com.aionemu.gameserver.services.ServiceProxy;
 import com.aionemu.gameserver.services.SkillLearnService;
 import com.aionemu.gameserver.services.SocialService;
+import com.aionemu.gameserver.services.StigmaService;
 import com.aionemu.gameserver.services.TeleportService;
 import com.aionemu.gameserver.services.TradeService;
 import com.aionemu.gameserver.services.WarehouseService;
@@ -137,7 +140,9 @@ public class DataInjectionModule extends AbstractModule
 		bind(QuestService.class).in(Scopes.SINGLETON);
 		bind(MailService.class).in(Scopes.SINGLETON);
 		bind(InstanceService.class).in(Scopes.SINGLETON);
+		bind(EnchantService.class).in(Scopes.SINGLETON);
 		bind(DebugService.class).asEagerSingleton();
+		bind(StigmaService.class).in(Scopes.SINGLETON);
 	}
 	
 	@Provides
@@ -251,6 +256,12 @@ public class DataInjectionModule extends AbstractModule
 	PlayerStatsData providePlayerStatsData(DataManager datamanager)
 	{
 		return datamanager.PLAYER_STATS_DATA;
+	}
+	
+	@Provides
+	SummonStatsData provideSummonStatsData(DataManager datamanager)
+	{
+		return datamanager.SUMMON_STATS_DATA;
 	}
 
 	@Provides

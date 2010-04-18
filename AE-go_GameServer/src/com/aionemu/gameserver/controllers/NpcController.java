@@ -129,9 +129,10 @@ public class NpcController extends CreatureController<Npc>
 
 		this.doReward(lastAttacker);
 		
-		if(lastAttacker instanceof Player)
+		Creature master = lastAttacker.getMaster();
+		if(master instanceof Player)
 		{
-			this.doDrop((Player) lastAttacker);
+			this.doDrop((Player) master);
 		}
 		
 		owner.getAi().handleEvent(Event.DIED);
@@ -192,8 +193,7 @@ public class NpcController extends CreatureController<Npc>
 				break;
 			case 4:
 				// stigma
-				PacketSendUtility.sendPacket(player, new SM_MESSAGE(0, null, "This feature is not available yet",
-					ChatType.ANNOUNCEMENTS));
+				PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(targetObjectId, 1));		
 				break;
 			case 5:
 				// create legion

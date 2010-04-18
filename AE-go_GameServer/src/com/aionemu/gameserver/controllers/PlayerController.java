@@ -64,6 +64,7 @@ import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
 import com.aionemu.gameserver.world.World;
 import com.aionemu.gameserver.world.zone.ZoneInstance;
+import com.google.inject.internal.Nullable;
 
 /**
  * This class is for controlling players.
@@ -209,28 +210,30 @@ public class PlayerController extends CreatureController<Player>
 	 * Should only be triggered from one place (life stats)
 	 */
 	@Override
-	public void onDie(Creature lastAttacker)
+	public void onDie(@Nullable Creature lastAttacker)
 	{		
 		Player player = this.getOwner();
-
-
-		if(lastAttacker instanceof Player)
+		
+		Creature master = null;
+		if(lastAttacker != null)
+			master = lastAttacker.getMaster();
+		
+		if(master instanceof Player)
 		{
-
-			if(sp.getDuelService().isDueling(lastAttacker.getObjectId()))
+			if(isDueling((Player) master))
 			{
-				sp.getDuelService().onDie(player, (Player) lastAttacker);
+				sp.getDuelService().onDie(player);
 				return;
 			}
 			else
 			{
-				doReward(lastAttacker);
+				doReward(master);
 			}
 		}
 
 		super.onDie(lastAttacker);
 		
-		if(lastAttacker instanceof Npc)
+		if(master instanceof Npc)
 		{
 			if(player.getLevel() > 4)
 				player.getCommonData().calculateExpLoss();
@@ -455,13 +458,15 @@ public class PlayerController extends CreatureController<Player>
 		
 		PacketSendUtility.sendPacket(player, new SM_STATS_INFO(player));
 
-		// add new skills
-		sp.getSkillLearnService().addNewSkills(player, false);
-		if(level == 10)
+		if(level == 10 && player.getSkillList().getSkillEntry(30001) != null)
 		{
+			int skillLevel = player.getSkillList().getSkillLevel(30001);
 			player.getSkillList().removeSkill(30001);
 			PacketSendUtility.sendPacket(player, new SM_SKILL_LIST(player));
+			player.getSkillList().addSkill(player, 30002, skillLevel, true);
 		}
+		// add new skills
+		sp.getSkillLearnService().addNewSkills(player, false);
 
 		/** update member list packet if player is legion member **/
 		if(player.isLegionMember())
@@ -589,10 +594,10 @@ public class PlayerController extends CreatureController<Player>
 	}
 
 	@Override
-	public void createSummon(int npcId)
+	public void createSummon(int npcId, int skillLvl)
 	{
 		Player master = getOwner();
-		Summon summon = sp.getSpawnEngine().spawnSummon(master, npcId);
+		Summon summon = sp.getSpawnEngine().spawnSummon(master, npcId, skillLvl);
 		master.setSummon(summon);
 		PacketSendUtility.sendPacket(master, new SM_SUMMON_PANEL(summon));
 		PacketSendUtility.broadcastPacket(master, new SM_EMOTION(summon, 30));

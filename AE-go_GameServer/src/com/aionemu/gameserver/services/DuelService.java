@@ -199,7 +199,7 @@ public class DuelService
 	 * @param player
 	 * @param lastAttacker
 	 */
-	public void onDie(Player player, Player lastAttacker)
+	public void onDie(Player player)
 	{
 		loseDuel(player);
 		player.getLifeStats().setCurrentHp(1);

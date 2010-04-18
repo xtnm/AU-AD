@@ -24,6 +24,7 @@ import com.aionemu.gameserver.dataholders.DataManager;
 import com.aionemu.gameserver.model.items.GodStone;
 import com.aionemu.gameserver.model.items.ItemStorage;
 import com.aionemu.gameserver.model.items.ManaStone;
+import com.aionemu.gameserver.model.templates.item.EquipType;
 import com.aionemu.gameserver.model.templates.item.ItemTemplate;
 
 /**
@@ -48,6 +49,8 @@ public class Item extends AionObject
 	private GodStone godStone;
 
 	private int itemLocation;
+	
+	private int echantLevel;
 
 	/**
 	 * @param objId
@@ -79,7 +82,7 @@ public class Item extends AionObject
 	 * 
 	 * This constructor should be called only from DAO while loading from DB
 	 */
-	public Item(int objId, int itemId, int itemCount, int itemColor, boolean isEquipped, int equipmentSlot, int itemLocation)
+	public Item(int objId, int itemId, int itemCount, int itemColor, boolean isEquipped, int equipmentSlot, int itemLocation, int enchant)
 	{
 		super(objId);
 
@@ -89,6 +92,7 @@ public class Item extends AionObject
 		this.isEquipped = isEquipped;
 		this.equipmentSlot = equipmentSlot;
 		this.itemLocation = itemLocation;
+		this.echantLevel = enchant;
 	}
 
 	@Override
@@ -284,6 +288,23 @@ public class Item extends AionObject
 	}
 
 	/**
+	 * @return the echantLevel
+	 */
+	public int getEchantLevel()
+	{
+		return echantLevel;
+	}
+
+	/**
+	 * @param echantLevel the echantLevel to set
+	 */
+	public void setEchantLevel(int echantLevel)
+	{
+		this.echantLevel = echantLevel;
+		setPersistentState(PersistentState.UPDATE_REQUIRED);
+	}
+
+	/**
 	 * @return the persistentState
 	 */
 	public PersistentState getPersistentState()
@@ -334,6 +355,14 @@ public class Item extends AionObject
 	public int getItemMask()
 	{
 		return itemTemplate.getMask();
+	}
+	
+	public EquipType getEquipmentType()
+	{
+		if(itemTemplate.isStigma())
+			return EquipType.STIGMA;
+		else
+			return itemTemplate.getEquipmentType();
 	}
 	
 	@Override

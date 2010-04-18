@@ -476,4 +476,12 @@ public abstract class Creature extends VisibleObject
 	{
 		return NpcObjectType.NORMAL;
 	}
+	
+	/**
+	 * @return Master of this creature or self
+	 */
+	public Creature getMaster()
+	{
+		return this;
+	}
 }
