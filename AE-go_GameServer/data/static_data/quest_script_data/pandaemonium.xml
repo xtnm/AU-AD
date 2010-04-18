@@ -132,6 +132,7 @@
         <!-- TODO: Moorinerk's Offer -->
         
         <!-- TODO: No Escaping Destiny // Mission type need script -->
+        <report_to start_npc_id="204182" end_npc_id="204061" id="2900" />
         
         <!-- TODO: On Behalf of a Friend // will be scripted -->
         
