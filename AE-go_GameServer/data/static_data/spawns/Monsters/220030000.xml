@@ -2537,7 +2537,7 @@ Altgard-->
 	</spawn>
 	<!-- Umkata the Restless (Monster Normal lvl:18)-->
 	<spawn map="220030000" npcid="210752" pool="1" interval="295">
-		<object x="2900.01" y="1738.46" z="254.53" h="43"/>>
+		<object x="2900.01" y="1738.46" z="254.53" h="43"/>
 	</spawn>
 	<!-- Veteran MuMu Gatherer (Monster Normal lvl:13)-->
 	<spawn map="220030000" npcid="210572" pool="3" interval="295">
