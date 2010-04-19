@@ -95,7 +95,13 @@ public class MailService
 
 		if(message.length() > 1000)
 			message = message.substring(0, 1000);
-
+		
+		if(!DAOManager.getDAO(PlayerDAO.class).isNameUsed(recipientName))
+		{
+			PacketSendUtility.sendPacket(sender, new SM_MAIL_SERVICE(MailMessage.NO_SUCH_CHARACTER_NAME));
+			return;
+		}
+		
 		PlayerCommonData recipientCommonData = DAOManager.getDAO(PlayerDAO.class).loadPlayerCommonDataByName(
 			recipientName, world);
 		Player onlineRecipient;
