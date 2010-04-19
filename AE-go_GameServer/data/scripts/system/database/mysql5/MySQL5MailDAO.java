@@ -37,6 +37,7 @@ import com.aionemu.gameserver.model.gameobjects.Letter;
 import com.aionemu.gameserver.model.gameobjects.PersistentState;
 import com.aionemu.gameserver.model.gameobjects.player.Mailbox;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.model.gameobjects.player.PlayerCommonData;
 import com.aionemu.gameserver.model.gameobjects.player.StorageType;
 
 /**
@@ -224,7 +225,21 @@ public class MySQL5MailDAO extends MailDAO
 			}
 		});
 	}
-	
+
+	@Override
+	public void updateOfflineMailCounter(final PlayerCommonData recipientCommonData)
+	{
+		DB.insertUpdate("UPDATE players SET mailboxLetters=? WHERE name=?", new IUStH(){
+			@Override
+			public void handleInsertUpdate(PreparedStatement stmt) throws SQLException
+			{
+				stmt.setInt(1, recipientCommonData.getMailboxLetters());				
+				stmt.setString(2, recipientCommonData.getName());
+				stmt.execute();
+			}
+		});
+	}
+
 	@Override
 	public int[] getUsedIDs() 
 	{

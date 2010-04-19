@@ -71,7 +71,7 @@ public class MailService
 	}
 
 	/**
-	 * 
+	 * TODO split this method
 	 * @param sender
 	 * @param recipientName
 	 * @param title
@@ -95,13 +95,6 @@ public class MailService
 
 		if(message.length() > 1000)
 			message = message.substring(0, 1000);
-
-		if(!DAOManager.getDAO(PlayerDAO.class).isNameUsed(recipientName))
-		{
-			// TODO retail message
-			PacketSendUtility.sendMessage(sender, "Incorrect recipient name");
-			return;
-		}
 
 		PlayerCommonData recipientCommonData = DAOManager.getDAO(PlayerDAO.class).loadPlayerCommonDataByName(
 			recipientName, world);
@@ -230,7 +223,10 @@ public class MailService
 
 		if(!DAOManager.getDAO(MailDAO.class).storeLetter(time, newLetter))
 			return;
-
+		
+		/**
+		 * Calculate kinah
+		 */
 		senderInventory.decreaseKinah(finalAttachedKinahCount);
 
 		if(attachedItem != null)
@@ -239,7 +235,10 @@ public class MailService
 
 		int finalMailCommission = 10 + kinahMailCommission + itemMailCommission;
 		senderInventory.decreaseKinah(finalMailCommission);
-
+		
+		/**
+		 * Send mail update packets
+		 */
 		if(onlineRecipient != null)
 		{
 			Mailbox recipientMailbox = onlineRecipient.getMailbox();
@@ -252,6 +251,16 @@ public class MailService
 		}
 
 		PacketSendUtility.sendPacket(sender, new SM_MAIL_SERVICE(MailMessage.MAIL_SEND_SECCESS));
+		
+		/**
+		 * Update loaded common data and db if player is offline
+		 */
+		if(!recipientCommonData.isOnline())
+		{
+			recipientCommonData.setMailboxLetters(recipientCommonData.getMailboxLetters() + 1);
+			DAOManager.getDAO(MailDAO.class).updateOfflineMailCounter(recipientCommonData);
+		}
+		
 	}
 
 	/**
