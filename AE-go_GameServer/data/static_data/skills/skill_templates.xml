@@ -2280,7 +2280,7 @@
             <mpuse value="79" delta="0"/>
         </actions>
     </skill_template>
-    <skill_template skill_id="251" name="STR_SKILL_FI_AggressiveMode_G1" nameId="564143" stack="SKILL_FI_AGGRESSIVEMODE" lvl="1" skilltype="MAGICAL" skillsubtype="BUFF" tslot="NOSHOW" activation="TOGGLE" cooldown="10" duration="0">
+    <skill_template skill_id="251" name="STR_SKILL_FI_AggressiveMode_G1" nameId="564143" stack="SKILL_GL_251_258_385" lvl="1" skilltype="MAGICAL" skillsubtype="BUFF" tslot="NOSHOW" activation="TOGGLE" cooldown="10" duration="0">
         <setproperties>
             <firsttarget value="ME"/>
             <firsttargetrange value="1"/>
@@ -2411,7 +2411,7 @@
             <mpuse value="76" delta="0"/>
         </actions>
     </skill_template>
-    <skill_template skill_id="258" name="STR_SKILL_FI_DefenseMode_G1" nameId="564139" stack="SKILL_FI_DEFENSEMODE" lvl="1" skilltype="MAGICAL" skillsubtype="BUFF" tslot="NOSHOW" activation="TOGGLE" cooldown="10" duration="0">
+    <skill_template skill_id="258" name="STR_SKILL_FI_DefenseMode_G1" nameId="564139" stack="SKILL_GL_251_258_385" lvl="1" skilltype="MAGICAL" skillsubtype="BUFF" tslot="NOSHOW" activation="TOGGLE" cooldown="10" duration="0">
         <setproperties>
             <firsttarget value="ME"/>
             <firsttargetrange value="1"/>
@@ -4759,7 +4759,7 @@
             <mpuse value="42" delta="0"/>
         </actions>
     </skill_template>
-    <skill_template skill_id="385" name="STR_SKILL_FI_BladeMode_G1" nameId="584053" stack="SKILL_FI_BLADEMODE" lvl="1" skilltype="MAGICAL" skillsubtype="NONE" tslot="NOSHOW" activation="TOGGLE" cooldown="10" duration="0">
+    <skill_template skill_id="385" name="STR_SKILL_FI_BladeMode_G1" nameId="584053" stack="SKILL_GL_251_258_385" lvl="1" skilltype="MAGICAL" skillsubtype="NONE" tslot="NOSHOW" activation="TOGGLE" cooldown="10" duration="0">
         <setproperties>
             <firsttarget value="ME"/>
             <targetrange value="ONLYONE"/>
