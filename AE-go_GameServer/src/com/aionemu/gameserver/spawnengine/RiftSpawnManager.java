@@ -63,7 +63,7 @@ public class RiftSpawnManager
 	private ConcurrentLinkedQueue<Npc> rifts = new ConcurrentLinkedQueue<Npc>();
 	
 	
-	private static final int RIFT_RESPAWN_DELAY = 100 * 60 * 1000;
+	private static final int RIFT_RESPAWN_DELAY = 120 * 60 * 1000;
 	private static final int RIFT_LIFETIME = 26 * 60 * 1000;
 	
 	private Map<String, SpawnGroup> spawnGroups = new HashMap<String, SpawnGroup>();
