@@ -201,7 +201,7 @@ public class StatFunctions
 
 				int base = Rnd.get(min,max);
 				
-				resultDamage = Math.round((base * (ags.getBaseStat(StatEnum.POWER) * 0.01f + ags.getStatBonus(StatEnum.MAIN_HAND_POWER) * 0.01f)) 
+				resultDamage = Math.round((base * (ags.getCurrentStat(StatEnum.POWER) * 0.01f + (ags.getBaseStat(StatEnum.MAIN_HAND_POWER) * 0.2f)* 0.01f)) 
 						                  + ags.getStatBonus(StatEnum.MAIN_HAND_POWER) + skillDamages);
 
 			}
@@ -284,7 +284,7 @@ public class StatFunctions
 		int max = Math.round((((offHandAttack * 100)/ average) * totalMax)/100);
 
 		int base = Rnd.get(min,max);
-		Damage = Math.round((base * (ags.getBaseStat(StatEnum.POWER) * 0.01f + ags.getStatBonus(StatEnum.OFF_HAND_POWER) * 0.01f)) 
+		Damage = Math.round((base * (ags.getCurrentStat(StatEnum.POWER) * 0.01f + (ags.getBaseStat(StatEnum.OFF_HAND_POWER) * 0.2f) * 0.01f)) 
                  + ags.getStatBonus(StatEnum.OFF_HAND_POWER));
 
 		Damage = adjustDamages(attacker, target, Damage);
