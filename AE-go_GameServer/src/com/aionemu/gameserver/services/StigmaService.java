@@ -105,6 +105,7 @@ public class StigmaService
 				int skillId = stigmaInfo.getSkillid();
 				SkillListEntry skill = new SkillListEntry(skillId, stigmaInfo.getSkilllvl(), PersistentState.NOACTION);
 				player.getSkillList().addSkill(skill);
+				PacketSendUtility.sendPacket(player, new SM_SKILL_LIST(skill, 0));
 			}
 		}
 	}
