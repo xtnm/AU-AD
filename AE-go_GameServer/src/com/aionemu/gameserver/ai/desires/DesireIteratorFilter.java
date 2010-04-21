@@ -37,7 +37,7 @@ public interface DesireIteratorFilter
 	 * However {@link com.aionemu.gameserver.ai.desires.DesireQueue#clear()} can be called.
 	 * 
 	 * @param desire
-	 *            current element of iteration that is beeing filtered
+	 *            current element of iteration that is being filtered
 	 * @return true if this filter accepted desire, false otherwise
 	 */
 	public boolean isOk(Desire desire);

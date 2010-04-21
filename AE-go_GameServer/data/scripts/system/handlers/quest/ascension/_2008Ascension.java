@@ -361,6 +361,7 @@ public class _2008Ascension extends QuestHandler
 		return false;
 	}
 
+	@Override
 	public boolean onEnterWorldEvent(QuestEnv env)
 	{
 		Player player = env.getPlayer();
@@ -408,6 +409,7 @@ public class _2008Ascension extends QuestHandler
 		return true;
 	}
 
+	@Override
 	public boolean onDieEvent(QuestEnv env)
 	{
 		Player player = env.getPlayer();

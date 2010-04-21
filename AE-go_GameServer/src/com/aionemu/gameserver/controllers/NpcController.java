@@ -174,6 +174,7 @@ public class NpcController extends CreatureController<Npc>
 	/**
 	 * Handle dialog
 	 */
+	@Override
 	public void onDialogSelect(int dialogId, final Player player, int questId)
 	{
 

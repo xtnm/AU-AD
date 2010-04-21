@@ -81,6 +81,7 @@ public class NpcTemplate extends VisibleObjectTemplate
 		return npcId;
 	}
 
+	@Override
 	public int getNameId()
 	{
 		return nameId;

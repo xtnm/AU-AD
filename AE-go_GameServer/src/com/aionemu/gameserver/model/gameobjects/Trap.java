@@ -103,6 +103,7 @@ public class Trap extends Npc
 	/**
 	 * @return NpcObjectType.TRAP
 	 */
+	@Override
 	public NpcObjectType getNpcObjectType()
 	{
 		return NpcObjectType.TRAP;

@@ -36,6 +36,7 @@ import com.aionemu.gameserver.model.gameobjects.player.BlockedPlayer;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.player.PlayerCommonData;
 import com.aionemu.gameserver.world.World;
+
 /**
  * MySQL5 DAO for editing the block list
  * @author Ben
@@ -43,7 +44,6 @@ import com.aionemu.gameserver.world.World;
  */
 public class MySQL5BlockListDAO extends BlockListDAO
 {
-	
 	public static final String 	LOAD_QUERY 			= "SELECT blocked_player, reason FROM blocks WHERE player=?";
 	public static final String	ADD_QUERY 			= "INSERT INTO blocks (player, blocked_player, reason) VALUES (?, ?, ?)";
 	public static final String 	DEL_QUERY			= "DELETE FROM blocks WHERE player=? AND blocked_player=?";
@@ -121,8 +121,7 @@ public class MySQL5BlockListDAO extends BlockListDAO
 			@Override
 			public void setParams(PreparedStatement stmt) throws SQLException
 			{
-				stmt.setInt(1,  player.getObjectId());
-				
+				stmt.setInt(1, player.getObjectId());			
 			}
 		});
 		return new BlockList(list);
@@ -156,5 +155,4 @@ public class MySQL5BlockListDAO extends BlockListDAO
 	{
 		return MySQL5DAOUtils.supports(databaseName, majorVersion, minorVersion);
 	}
-
 }

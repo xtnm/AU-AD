@@ -426,6 +426,7 @@ public class PlayerController extends CreatureController<Player>
 	/**
 	 * Handle dialog
 	 */
+	@Override
 	public void onDialogSelect(int dialogId, Player player, int questId)
 	{
 		switch(dialogId)

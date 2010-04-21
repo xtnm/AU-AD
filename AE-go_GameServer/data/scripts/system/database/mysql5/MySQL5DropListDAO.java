@@ -30,14 +30,13 @@ import com.aionemu.gameserver.model.drop.DropTemplate;
  * @author ATracer
  * 
  */
-
 public class MySQL5DropListDAO extends DropListDAO
 {
     public static final String SELECT_QUERY = "SELECT * FROM `droplist`";
     
     @Override
-    public DropList load() {
-  
+    public DropList load() 
+    {
         final DropList dropList = new DropList();
         
         DB.select(SELECT_QUERY, new ParamReadStH()
@@ -70,7 +69,9 @@ public class MySQL5DropListDAO extends DropListDAO
         return dropList;
     }
     
-    /** {@inheritDoc} */
+    /** 
+     * {@inheritDoc} 
+     */
     @Override
     public boolean supports(String databaseName, int majorVersion, int minorVersion)
     {

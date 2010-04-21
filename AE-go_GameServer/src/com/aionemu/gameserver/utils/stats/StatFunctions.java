@@ -142,7 +142,7 @@ public class StatFunctions
 	 */
 	public static int calculateHate(Creature creature, int value) 
 	{
-		return (int) Math.round(value * creature.getGameStats().getCurrentStat(StatEnum.BOOST_HATE) / 100f);
+		return Math.round(value * creature.getGameStats().getCurrentStat(StatEnum.BOOST_HATE) / 100f);
 	}
 
 	/**
@@ -229,7 +229,7 @@ public class StatFunctions
 		else if(attacker instanceof Summon)
 		{
 			int baseDamage = ags.getCurrentStat(StatEnum.MAIN_HAND_POWER);
-			int max = (int)(baseDamage + baseDamage * attacker.getLevel() / 10);
+			int max = (baseDamage + baseDamage * attacker.getLevel() / 10);
 			int min = max - ags.getCurrentStat(StatEnum.MAIN_HAND_POWER);		
 			resultDamage += Rnd.get(min, max);
 		}

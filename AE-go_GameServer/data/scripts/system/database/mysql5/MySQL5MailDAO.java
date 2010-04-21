@@ -48,6 +48,7 @@ public class MySQL5MailDAO extends MailDAO
 {
 	private static final Logger log = Logger.getLogger(MySQL5MailDAO.class);
 	
+	@Override
 	public Mailbox loadPlayerMailbox(Player player)
 	{
 		final Mailbox mailbox = new Mailbox();
@@ -133,6 +134,7 @@ public class MySQL5MailDAO extends MailDAO
 		return mailboxItems;
 	}
 	
+	@Override
 	public void storeMailbox(Player player)
 	{
 		Mailbox mailbox = player.getMailbox();
@@ -144,6 +146,7 @@ public class MySQL5MailDAO extends MailDAO
 		}		
 	}
 	
+	@Override
 	public boolean storeLetter(Timestamp time, Letter letter)
 	{
 		boolean result = false;
@@ -214,6 +217,7 @@ public class MySQL5MailDAO extends MailDAO
 		});
 	}
 	
+	@Override
 	public boolean deleteLetter (final int letterId)
 	{
 		return DB.insertUpdate("DELETE FROM mail WHERE mailUniqueId=?", new IUStH() {

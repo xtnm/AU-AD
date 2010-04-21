@@ -107,6 +107,7 @@ public class _2223AMythicalMonster extends QuestHandler
 		return false;
 	}
 	
+	@Override
 	public boolean onKillEvent(QuestEnv env)
 	{
 		Player player = env.getPlayer();

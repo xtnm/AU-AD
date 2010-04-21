@@ -42,7 +42,6 @@ public class TradeList
 	private Map<Integer, Integer> requiredItems  = new HashMap<Integer, Integer>();
 
 	/**
-	 * 
 	 * @param itemId
 	 * @param count
 	 */
@@ -57,8 +56,8 @@ public class TradeList
 			tradeItems.add(tradeItem);
 		}
 	}
+	
 	/**
-	 * 
 	 * @param itemId
 	 * @param count
 	 */
@@ -69,7 +68,6 @@ public class TradeList
 	}
 	
 	/**
-	 * 
 	 * @param itemObjId
 	 * @param count
 	 */
@@ -80,7 +78,6 @@ public class TradeList
 	}
 	
 	/**
-	 * 
 	 * @return price TradeList sum price
 	 */
 	public boolean calculateBuyListPrice(Player player, int priceRate)

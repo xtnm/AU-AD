@@ -32,11 +32,6 @@ public class AEVersions
 	private static final Version	commons		= new Version(AEInfos.class);
 	private static final Version	gameserver	= new Version(GameServer.class);
 
-	private AEVersions()
-	{
-
-	}
-
 	private static String getRevisionInfo(Version version)
 	{
 		return String.format("%-6s", version.getRevision());

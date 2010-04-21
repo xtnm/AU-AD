@@ -68,6 +68,7 @@ public class Npc extends Creature
 		this.aggroList = new AggroList(this);
 	}
 
+	@Override
 	public NpcTemplate getObjectTemplate()
 	{
 		return (NpcTemplate) objectTemplate;

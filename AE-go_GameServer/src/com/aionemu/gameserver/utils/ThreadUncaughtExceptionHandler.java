@@ -16,12 +16,14 @@
  */
 package com.aionemu.gameserver.utils;
 
+import java.lang.Thread.UncaughtExceptionHandler;
+
 import org.apache.log4j.Logger;
 
 /**
  * @author -Nemesiss-
  */
-public class ThreadUncaughtExceptionHandler implements Thread.UncaughtExceptionHandler
+public class ThreadUncaughtExceptionHandler implements UncaughtExceptionHandler
 {
 	/**
 	 * Logger for this class.
@@ -38,6 +40,7 @@ public class ThreadUncaughtExceptionHandler implements Thread.UncaughtExceptionH
 		if(e instanceof OutOfMemoryError)
 		{
 			// TODO try get some memory or restart
+			log.error("Out of memory! You should get more memory!");
 		}
 		// TODO! some threads should be "restarted" on error
 	}
