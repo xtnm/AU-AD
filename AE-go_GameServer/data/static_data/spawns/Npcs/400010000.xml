@@ -114,7 +114,7 @@
 	</spawn>
 	<!-- Bacht (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278011" pool="1" interval="295">
-		<object x="971.6549" y="3030.1912" z="1641.6229" h="0"/>
+		<object x="971.78314" y="3029.9421" z="1641.6229" h="74"/>
 	</spawn>
 	<!-- Bakan (NPC Normal lvl:45 Subtext: Ancient Seal Administration Officer)-->
 	<spawn map="400010000" npcid="278145" pool="1" interval="295">
@@ -374,7 +374,7 @@
 	</spawn>
 	<!-- Fraiban (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278010" pool="1" interval="295">
-		<object x="968.8937" y="3019.738" z="1641.6229" h="0"/>
+		<object x="969.22205" y="3019.7883" z="1641.6229" h="45"/>
 	</spawn>
 	<!-- Fyra (NPC Elite lvl:50)-->
 	<spawn map="400010000" npcid="278055" pool="1" interval="295">
@@ -686,7 +686,7 @@
 	</spawn>
 	<!-- Lawusan (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278012" pool="1" interval="295">
-		<object x="961.0129" y="3027.926" z="1641.6229" h="0"/>
+		<object x="961.42053" y="3027.9062" z="1641.6229" h="107"/>
 	</spawn>
 	<!-- Leban (NPC Normal lvl:50 Subtext : Abyss Training Instructor)-->
 	<spawn map="400010000" npcid="278126" pool="1" interval="295">
