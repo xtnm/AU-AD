@@ -216,7 +216,7 @@ public class Effect
 	 */
 	public Future<?> getPeriodicTask(int i)
 	{
-		return periodicTasks[i];
+		return periodicTasks[i-1];
 	}
 
 	/**
@@ -227,7 +227,7 @@ public class Effect
 	{
 		if(periodicTasks == null)
 			periodicTasks = new Future<?>[4];
-		this.periodicTasks[i] = periodicTask;
+		this.periodicTasks[i-1] = periodicTask;
 	}
 
 	/**
@@ -351,7 +351,7 @@ public class Effect
 	 */
 	public AttackCalcObserver getAttackStatusObserver(int i)
 	{
-		return attackStatusObserver[i];
+		return attackStatusObserver[i-1];
 	}
 
 	/**
@@ -361,7 +361,7 @@ public class Effect
 	{
 		if(this.attackStatusObserver == null)
 			this.attackStatusObserver = new AttackCalcObserver[4];
-		this.attackStatusObserver[i] = attackStatusObserver;
+		this.attackStatusObserver[i-1] = attackStatusObserver;
 	}
 
 	/**
@@ -370,7 +370,7 @@ public class Effect
 	 */
 	public AttackCalcObserver getAttackShieldObserver(int i)
 	{
-		return attackShieldObserver[i];
+		return attackShieldObserver[i-1];
 	}
 
 	/**
@@ -380,7 +380,7 @@ public class Effect
 	{
 		if(this.attackShieldObserver == null)
 			this.attackShieldObserver = new AttackCalcObserver[4];
-		this.attackShieldObserver[i] = attackShieldObserver;
+		this.attackShieldObserver[i-1] = attackShieldObserver;
 	}
 
 	/**
@@ -699,7 +699,7 @@ public class Effect
 	 */
 	public ActionObserver getActionObserver(int i)
 	{
-		return actionObserver[i];
+		return actionObserver[i-1];
 	}
 
 	/**
@@ -709,6 +709,6 @@ public class Effect
 	{
 		if(actionObserver == null)
 			actionObserver = new ActionObserver[4];
-		actionObserver[i] = observer;
+		actionObserver[i-1] = observer;
 	}
 }
