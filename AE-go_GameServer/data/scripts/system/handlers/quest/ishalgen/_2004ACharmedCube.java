@@ -48,6 +48,7 @@ public class _2004ACharmedCube extends QuestHandler
 		qe.setNpcQuestData(700047).addOnTalkEvent(questId);
 		qe.setNpcQuestData(203550).addOnTalkEvent(questId);
 		qe.setNpcQuestData(210402).addOnKillEvent(questId);
+                qe.setNpcQuestData(210403).addOnKillEvent(questId);
 	}
 	
 	@Override
@@ -187,13 +188,20 @@ public class _2004ACharmedCube extends QuestHandler
 		switch(targetId)
 		{
 			case 210402:
-				if(var >= 3 && var < 6)
+                        case 210403:
+				if(var >= 3 && var < 8)
 				{
 					qs.setQuestVarById(0, qs.getQuestVarById(0) + 1);
 					updateQuestStatus(player, qs);
 					return true;
 				}
-		}
+                                else if(var == 8)
+                                {
+					qs.setStatus(QuestStatus.REWARD);
+					updateQuestStatus(player, qs);
+					return true;
+		                }
+               } 
 		return false;
 	}
 	@Override

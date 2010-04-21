@@ -236,7 +236,7 @@
   	<!-- An Important Announcement -->
   	<report_to start_npc_id="203650" end_npc_id="204190" item_id="182203239" id="2258"/>
   	
-  	<!-- TODO: Aurtri's Letter -->
+  	<!-- Aurtri's Letter handled by script -->
   	
   	<!-- Creating a Delay -->
   	<item_collecting start_npc_id="203655" id="2270"/>
