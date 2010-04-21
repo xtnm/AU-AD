@@ -352,6 +352,52 @@
 			<xs:enumeration value="ADMA_PLAINS_220050000"/>
 			<xs:enumeration value="SHAMANS_HOUSE_220050000"/>
 			<xs:enumeration value="VIGRID_PLAINS_220050000"/>
+			<!-- beluslan -->
+			<xs:enumeration value="KIDORUNS_CAMPSITE_220040000"/>
+			<xs:enumeration value="CHAOS_PASS_220040000"/>
+			<xs:enumeration value="GIANTS_VALLEY_220040000"/>
+			<xs:enumeration value="CHAOS_BRAMBLES_220040000"/>
+			<xs:enumeration value="ANAIR_ICE_LAKE_220040000"/>
+			<xs:enumeration value="ANAIR_HARBOR_220040000"/>
+			<xs:enumeration value="ALQUIMIA_APPROACH_220040000"/>
+			<xs:enumeration value="LEPHARIST_BARRACKS_220040000"/>
+			<xs:enumeration value="THE_LONE_COTTAGE_220040000"/>
+			<xs:enumeration value="HOARFROST_OUTPOST_220040000"/>
+			<xs:enumeration value="MALEK_PASS_220040000"/>
+			<xs:enumeration value="FANG_TROLL_ENCAMPMENT_220040000"/>
+			<xs:enumeration value="FROST_SPIRIT_VALLEY_220040000"/>
+			<xs:enumeration value="BERITRAS_WEAPON_220040000"/>
+			<xs:enumeration value="BLACK_PLAINS_220040000"/>
+			<xs:enumeration value="ABANDONED_CAMPSITE_220040000"/>
+			<xs:enumeration value="BESFER_GHOST_VILLAGE_220040000"/>
+			<xs:enumeration value="KURNGALFBERG_220040000"/>
+			<xs:enumeration value="MALEK_MINE_WORKSHOP_220040000"/>
+			<xs:enumeration value="GLACIER_PEAKS_220040000"/>
+			<xs:enumeration value="MINE_PORT_220040000"/>
+			<xs:enumeration value="HOARFROST_FORTRESS_220040000"/>
+			<xs:enumeration value="HOARFROST_SHELTER_220040000"/>
+			<xs:enumeration value="MALEK_DIGGINGS_220040000"/>
+			<xs:enumeration value="ALQUIMIA_CASTLE_GATE_220040000"/>
+			<xs:enumeration value="RED_MANE_CAVERN_220040000"/>
+			<xs:enumeration value="ROAD_TO_MORHEIM_220040000"/>
+			<xs:enumeration value="BELUSLAN_FORTRESS_220040000"/>
+			<xs:enumeration value="MOSBEAR_SNOWFIELD_220040000"/>
+			<xs:enumeration value="GHOST_VILLAGE_OBSERVATION_POST_220040000"/>
+			<xs:enumeration value="ALUKINAS_PALACE_220040000"/>
+			<xs:enumeration value="ALQUIMIA_STRONGHOLD_220040000"/>
+			<xs:enumeration value="BESFER_REFUGEE_CAMP_220040000"/>
+			<xs:enumeration value="HUNIBOR_ICE_GATE_220040000"/>
+			<xs:enumeration value="THE_WHISPERING_FOREST_220040000"/>
+			<xs:enumeration value="MAHISHAS_NEST_220040000"/>
+			<xs:enumeration value="ANAIR_LIGHTHOUSE_220040000"/>
+			<xs:enumeration value="CAMP_KISTENIAN_220040000"/>
+			<xs:enumeration value="BAKARMA_BARRACKS_220040000"/>
+			<xs:enumeration value="MIST_VALLEY_220040000"/>
+			<xs:enumeration value="MAMUT_GRAVEYARD_220040000"/>
+			<xs:enumeration value="THE_SACRED_ORCHARD_220040000"/>
+			<xs:enumeration value="BELUSLAN_OBSERVATORY_220040000"/>
+			<xs:enumeration value="MALEK_MINE_220040000"/>
+			<xs:enumeration value="BELUSLANS_ROOF_220040000"/>
 		</xs:restriction>
 	</xs:simpleType>
 
