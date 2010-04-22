@@ -36,6 +36,7 @@ import com.aionemu.gameserver.dao.ItemStoneListDAO;
 import com.aionemu.gameserver.dao.MailDAO;
 import com.aionemu.gameserver.dao.PlayerAppearanceDAO;
 import com.aionemu.gameserver.dao.PlayerDAO;
+import com.aionemu.gameserver.dao.PlayerEffectsDAO;
 import com.aionemu.gameserver.dao.PlayerMacrossesDAO;
 import com.aionemu.gameserver.dao.PlayerPunishmentsDAO;
 import com.aionemu.gameserver.dao.PlayerQuestListDAO;
@@ -282,6 +283,8 @@ public class PlayerService
 
 		// update passive stats after effect controller, stats and equipment are initialized
 		player.getController().updatePassiveStats();
+		// load saved effects
+		DAOManager.getDAO(PlayerEffectsDAO.class).loadPlayerEffects(player);
 
 		if(player.getCommonData().getTitleId() > 0)
 		{
@@ -402,7 +405,10 @@ public class PlayerService
 		
 		player.onLoggedOut();
 		
+		//store current effects
+		DAOManager.getDAO(PlayerEffectsDAO.class).storePlayerEffects(player);
 		player.getEffectController().removeAllEffects();
+		
 		player.getLifeStats().cancelAllTasks();
 		
 		if(player.getLifeStats().isAlreadyDead())
@@ -439,6 +445,7 @@ public class PlayerService
 		DAOManager.getDAO(PlayerDAO.class).onlinePlayer(player, false);
 
 		storePlayer(player);
+		
 	}
 
 	public void playerLoggedOutDelay(final Player player, int delay)

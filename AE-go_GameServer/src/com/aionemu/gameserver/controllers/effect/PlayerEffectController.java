@@ -16,12 +16,18 @@
  */
 package com.aionemu.gameserver.controllers.effect;
 
+import java.util.Collections;
+
+import com.aionemu.gameserver.dataholders.DataManager;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.templates.item.ArmorType;
 import com.aionemu.gameserver.model.templates.item.WeaponType;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ABNORMAL_STATE;
 import com.aionemu.gameserver.skillengine.model.Effect;
 import com.aionemu.gameserver.skillengine.model.SkillTargetSlot;
+import com.aionemu.gameserver.skillengine.model.SkillTemplate;
+import com.aionemu.gameserver.utils.PacketSendUtility;
 
 /**
  * @author ATracer
@@ -150,6 +156,31 @@ public class PlayerEffectController extends EffectController
 	{
 		int isState = this.armorEffects & armorType.getMask();
 		return isState == armorType.getMask();
+	}
+
+	/**
+	 * @param skillId
+	 * @param skillLvl
+	 * @param currentTime
+	 * @param reuseDelay
+	 */
+	public void addSavedEffect(int skillId, int skillLvl, int currentTime, int reuseDelay)
+	{
+		SkillTemplate template = DataManager.SKILL_DATA.getSkillTemplate(skillId);
+		int duration = template.getEffectsDuration();
+		int remainingTime = duration - currentTime;
+		
+		if(remainingTime <= 0)
+			return;
+		
+		Effect effect = new Effect(getOwner(), getOwner(), template, skillLvl, remainingTime);
+		
+		abnormalEffectMap.put(effect.getStack(), effect);
+		effect.startEffect();
+
+		PacketSendUtility.sendPacket(getOwner(),
+			new SM_ABNORMAL_STATE(Collections.singletonList(effect), abnormals));
+		
 	}
 	
 }

@@ -627,11 +627,25 @@ public class Effect
 			mpUseTask = null;
 		}
 	}
-
+	/**
+	 * Time till the effect end
+	 * 
+	 * @return
+	 */
 	public int getElapsedTime()
 	{
 		int elapsedTime = endTime - (int)System.currentTimeMillis();
 		return elapsedTime > 0 ? elapsedTime : 0;
+	}
+	
+	/**
+	 * Time effect is active
+	 * 
+	 * @return
+	 */
+	public int getCurrentTime()
+	{
+		return duration - getElapsedTime();
 	}
 	
 	/**
