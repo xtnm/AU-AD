@@ -211,7 +211,7 @@ public class ItemEquipmentListener
 	 * @param itemStones
 	 * @param cgs
 	 */
-	private static void removeStoneStats(Set<ManaStone> itemStones, CreatureGameStats<?> cgs)
+	public static void removeStoneStats(Set<ManaStone> itemStones, CreatureGameStats<?> cgs)
 	{
 		if(itemStones == null || itemStones.size() == 0)
 			return;

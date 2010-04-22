@@ -619,6 +619,36 @@ public class ItemService
 
 	/**
 	 * @param player
+	 * @param item
+	 */
+	public void removeAllManastone(Player player, Item item)
+	{
+		if(item == null)
+		{
+			log.warn("Item not found during manastone remove");
+			return;
+		}
+		
+		if(!item.hasManaStones())
+		{
+			return;
+		}
+		
+		Set<ManaStone> itemStones = item.getItemStones();
+		Iterator<ManaStone> iterator = itemStones.iterator();
+		while(iterator.hasNext())
+		{
+			ManaStone manaStone = iterator.next();
+			manaStone.setPersistentState(PersistentState.DELETED);
+			iterator.remove();
+			DAOManager.getDAO(ItemStoneListDAO.class).store(Collections.singleton(manaStone));
+		}
+		
+		PacketSendUtility.sendPacket(player, new SM_UPDATE_ITEM(item));	
+	}
+
+	/**
+	 * @param player
 	 * @param weaponId
 	 * @param stoneId
 	 */

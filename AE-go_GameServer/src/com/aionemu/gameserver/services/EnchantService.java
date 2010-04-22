@@ -17,6 +17,7 @@
 package com.aionemu.gameserver.services;
 
 import javax.inject.Inject;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 
@@ -50,7 +51,7 @@ public class EnchantService
 	/**
 	 * @param player
 	 * @param targetItem
-	 * @param parentItem 
+	 * @param parentItem
 	 */
 	public void breakItem(Player player, Item targetItem, Item parentItem)
 	{
@@ -89,7 +90,7 @@ public class EnchantService
 
 		inventory.removeFromBag(targetItem, true);
 		PacketSendUtility.sendPacket(player, new SM_DELETE_ITEM(targetItem.getObjectId()));
-		
+
 		inventory.removeFromBagByObjectId(parentItem.getObjectId(), 1);
 
 		itemService.addItem(player, enchantItemId, number);
@@ -161,25 +162,27 @@ public class EnchantService
 			if(currentEnchant < 10)
 				currentEnchant += 1;
 		}
-		
+
 		targetItem.setEchantLevel(currentEnchant);
 		PacketSendUtility.sendPacket(player, new SM_UPDATE_ITEM(targetItem));
-		
+
 		if(targetItem.isEquipped())
 			player.getEquipment().setPersistentState(PersistentState.UPDATE_REQUIRED);
 		else
 			player.getInventory().setPersistentState(PersistentState.UPDATE_REQUIRED);
-		
-		if (result)
+
+		if(result)
 		{
-			PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.STR_ENCHANT_ITEM_SUCCEED(new DescriptionId(Integer.parseInt(targetItem.getName()))));
+			PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.STR_ENCHANT_ITEM_SUCCEED(new DescriptionId(Integer
+				.parseInt(targetItem.getName()))));
 		}
 		else
 		{
-			PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.STR_ENCHANT_ITEM_FAILED(new DescriptionId(Integer.parseInt(targetItem.getName()))));
+			PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.STR_ENCHANT_ITEM_FAILED(new DescriptionId(Integer
+				.parseInt(targetItem.getName()))));
 		}
 		player.getInventory().removeFromBagByObjectId(parentItem.getObjectId(), 1);
-		
+
 		return result;
 	}
 
@@ -188,22 +191,62 @@ public class EnchantService
 	 * @param parentItem
 	 * @param targetItem
 	 */
-	public void socketManastone(Player player, Item parentItem, Item targetItem)
+	public boolean socketManastone(Player player, Item parentItem, Item targetItem)
 	{
-		PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.STR_GIVE_ITEM_OPTION_SUCCEED(new DescriptionId(
-			Integer.parseInt(targetItem.getName()))));
+		boolean result = false;
+		int successRate = 76;
 
-		ManaStone manaStone = itemService.addManaStone(targetItem,
-			parentItem.getItemTemplate().getTemplateId());
-		if(manaStone == null)
-			return;
-
-		if(targetItem.isEquipped())
+		int stoneCount = targetItem.getItemStones().size();
+		switch(stoneCount)
 		{
-			ItemEquipmentListener.addStoneStats(manaStone, player.getGameStats());
-			PacketSendUtility.sendPacket(player, new SM_STATS_INFO(player));
+			case 1:
+				successRate = 57;
+				break;
+			case 2:
+				successRate = 43;
+				break;
+			case 3:
+				successRate = 33;
+				break;
+			case 4:
+				successRate = 25;
+				break;
+			case 5:
+				successRate = 19;
+				break;
 		}
+
+		if(stoneCount >= 6)
+			successRate = 2;
+
+		if(Rnd.get(0, 100) < successRate)
+			result = true;
+		if(result)
+		{
+			PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.STR_GIVE_ITEM_OPTION_SUCCEED(new DescriptionId(
+				Integer.parseInt(targetItem.getName()))));
+			ManaStone manaStone = itemService.addManaStone(targetItem, parentItem.getItemTemplate().getTemplateId());
+			if(targetItem.isEquipped())
+			{
+				ItemEquipmentListener.addStoneStats(manaStone, player.getGameStats());
+				PacketSendUtility.sendPacket(player, new SM_STATS_INFO(player));
+			}
+		}
+		else
+		{
+			PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.STR_GIVE_ITEM_OPTION_FAILED(new DescriptionId(
+				Integer.parseInt(targetItem.getName()))));
+			Set<ManaStone> manaStones = targetItem.getItemStones();
+			if(targetItem.isEquipped())
+			{
+				ItemEquipmentListener.removeStoneStats(manaStones, player.getGameStats());
+				PacketSendUtility.sendPacket(player, new SM_STATS_INFO(player));
+			}
+			itemService.removeAllManastone(player, targetItem);
+		}
+
 		PacketSendUtility.sendPacket(player, new SM_UPDATE_ITEM(targetItem));
 		player.getInventory().removeFromBagByObjectId(parentItem.getObjectId(), 1);
+		return result;
 	}
 }
