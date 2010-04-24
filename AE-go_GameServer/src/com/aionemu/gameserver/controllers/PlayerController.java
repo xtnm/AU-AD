@@ -348,13 +348,23 @@ public class PlayerController extends CreatureController<Player>
 	@Override
 	public void onStartMove()
 	{
-		if(this.getOwner().isCasting())
-		{
-			this.getOwner().setCasting(null);
-			PacketSendUtility.sendPacket(this.getOwner(), new SM_SKILL_CANCEL(this.getOwner()));
-			PacketSendUtility.sendPacket(this.getOwner(), SM_SYSTEM_MESSAGE.STR_SKILL_CANCELED());
-		}
+		cancelCurrentSkill();
 		super.onStartMove();
+	}
+	
+	/**
+	 * Cancel current skill and remove cooldown
+	 */
+	private void cancelCurrentSkill()
+	{
+		Player player = getOwner();
+		if(player.isCasting())
+		{
+			Skill castingSkill = player.getCastingSkill();
+			player.getSkillCoolDowns().remove(castingSkill.getSkillTemplate().getSkillId());
+			player.setCasting(null);
+			PacketSendUtility.sendPacket(player, new SM_SKILL_CANCEL(player));
+		}	
 	}
 
 	/**
