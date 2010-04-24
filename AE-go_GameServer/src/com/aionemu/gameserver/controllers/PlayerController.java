@@ -358,10 +358,10 @@ public class PlayerController extends CreatureController<Player>
 	private void cancelCurrentSkill()
 	{
 		Player player = getOwner();
-		if(player.isCasting())
+		Skill castingSkill = player.getCastingSkill();
+		if(castingSkill != null)
 		{
-			Skill castingSkill = player.getCastingSkill();
-			player.getSkillCoolDowns().remove(castingSkill.getSkillTemplate().getSkillId());
+			player.removeCoolDown(castingSkill.getSkillTemplate().getSkillId());
 			player.setCasting(null);
 			PacketSendUtility.sendPacket(player, new SM_SKILL_CANCEL(player));
 		}	

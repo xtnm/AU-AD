@@ -18,6 +18,7 @@ package com.aionemu.gameserver.world;
 
 import java.util.Iterator;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import javolution.util.FastMap;
 
@@ -33,7 +34,7 @@ public class WorldMap
 {
 	private WorldMapTemplate				worldMapTemplate;
 
-	private int nextInstanceId = 1;
+	private AtomicInteger nextInstanceId = new AtomicInteger(0);
 	/**
 	 * List of instances.
 	 */
@@ -46,11 +47,20 @@ public class WorldMap
 	{
 		this.world = world;
 		this.worldMapTemplate = worldMapTemplate;
+		
 		if(worldMapTemplate.getTwinCount() != 0)
+		{
 			for(int i = 1; i <= worldMapTemplate.getTwinCount(); i++)
-				addInstance(nextInstanceId, new WorldMapInstance(this, nextInstanceId));
+			{
+				int nextId = getNextInstanceId();
+				addInstance(nextId, new WorldMapInstance(this, nextId));	
+			}			
+		}	
 		else
-			addInstance(nextInstanceId, new WorldMapInstance(this, nextInstanceId));
+		{
+			int nextId = getNextInstanceId();
+			addInstance(nextId, new WorldMapInstance(this, nextId));
+		}
 	}
 
 	/**
@@ -162,7 +172,6 @@ public class WorldMap
 	public void addInstance(int instanceId, WorldMapInstance instance)
 	{
 		instances.put(instanceId, instance);
-		nextInstanceId++;
 	}
 	/**
 	 * Returns the World containing this WorldMap.
@@ -177,7 +186,7 @@ public class WorldMap
 	 */
 	public int getNextInstanceId()
 	{
-		return nextInstanceId;
+		return nextInstanceId.incrementAndGet();
 	}
 
 	/**

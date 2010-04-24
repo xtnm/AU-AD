@@ -511,6 +511,19 @@ public abstract class Creature extends VisibleObject
 	/**
 	 * 
 	 * @param skillId
+	 * @return
+	 */
+	public long getCoolDown(int skillId)
+	{
+		if(skillCoolDowns == null)
+			return 0;
+		
+		return skillCoolDowns.get(skillId);
+	}
+	
+	/**
+	 * 
+	 * @param skillId
 	 * @param time
 	 */
 	public void setCoolDown(int skillId, long time)
@@ -527,5 +540,16 @@ public abstract class Creature extends VisibleObject
 	public Map<Integer, Long> getSkillCoolDowns()
 	{
 		return skillCoolDowns;
+	}
+	
+	/**
+	 * 
+	 * @param skillId
+	 */
+	public void removeCoolDown(int skillId)
+	{
+		if(skillCoolDowns == null)
+			return;
+		skillCoolDowns.remove(skillId);
 	}
 }

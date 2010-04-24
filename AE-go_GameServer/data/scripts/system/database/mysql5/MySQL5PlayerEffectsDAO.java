@@ -75,8 +75,7 @@ public class MySQL5PlayerEffectsDAO extends PlayerEffectsDAO
 	public void storePlayerEffects(final Player player)
 	{
 		deletePlayerEffects(player);
-		Iterator<Effect> iterator = player.getEffectController().iterator();
-		final Map<Integer, Long> cooldowns = player.getSkillCoolDowns();
+		Iterator<Effect> iterator = player.getEffectController().iterator();		
 		
 		while(iterator.hasNext())
 		{
@@ -95,10 +94,8 @@ public class MySQL5PlayerEffectsDAO extends PlayerEffectsDAO
 					stmt.setInt(3, effect.getSkillLevel());
 					stmt.setInt(4, effect.getCurrentTime());
 					
-					int reuseTime = 0;
-					Long cooldown = cooldowns.get(effect.getSkillId());
-					if(cooldown != null)
-						cooldowns.remove(cooldown);	
+					long reuseTime = player.getCoolDown(effect.getSkillId());
+					player.removeCoolDown(effect.getSkillId());
 					
 					stmt.setLong(5, reuseTime);
 					stmt.execute();
@@ -106,6 +103,7 @@ public class MySQL5PlayerEffectsDAO extends PlayerEffectsDAO
 			});
 		}
 		
+		final Map<Integer, Long> cooldowns = player.getSkillCoolDowns();
 		if(cooldowns != null)
 		{
 			for(Map.Entry<Integer, Long> entry : cooldowns.entrySet())
