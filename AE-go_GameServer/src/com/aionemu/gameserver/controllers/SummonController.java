@@ -189,7 +189,7 @@ public class SummonController extends CreatureController<Summon>
 	}
 
 	@Override
-	public void onAttack(Creature creature, int damage)
+	public void onAttack(Creature creature, int skillId, TYPE type, int damage)
 	{
 		if(getOwner().getLifeStats().isAlreadyDead())
 			return;
@@ -198,13 +198,13 @@ public class SummonController extends CreatureController<Summon>
 		if(getOwner().getMode() == SummonMode.RELEASE)
 			return;
 		
-		super.onAttack(creature, damage);
+		super.onAttack(creature, skillId, type, damage);
 		getOwner().getLifeStats().reduceHp(damage, creature);
 		PacketSendUtility.broadcastPacket(getOwner(), new SM_ATTACK_STATUS(getOwner(), TYPE.REGULAR, 0,
 			damage));
 		PacketSendUtility.sendPacket(getOwner().getMaster(), new SM_SUMMON_UPDATE(getOwner()));
 	}
-	
+
 	@Override
 	public void onDie(Creature lastAttacker)
 	{

@@ -112,7 +112,7 @@ public abstract class CreatureController<T extends Creature> extends VisibleObje
 	/**
 	 * Perform tasks when Creature was attacked
 	 */
-	public void onAttack(Creature creature, int damage)
+	public final void onAttack(Creature creature, int damage)
 	{
 		this.onAttack(creature, 0, TYPE.REGULAR, damage);
 	}
