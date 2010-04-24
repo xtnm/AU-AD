@@ -42,6 +42,7 @@ import com.aionemu.gameserver.network.aion.serverpackets.SM_PLAYER_SPAWN;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_PRICES;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_QUEST_LIST;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_RECIPE_LIST;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_SKILL_COOLDOWN;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SKILL_LIST;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_STATS_INFO;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_TITLE_LIST;
@@ -135,46 +136,39 @@ public class CM_ENTER_WORLD extends AionClientPacket
 
 			sendPacket(new SM_SKILL_LIST(player));
 			stigmaService.onPlayerLogin(player);
+			
+			if(player.getSkillCoolDowns() != null)
+				sendPacket(new SM_SKILL_COOLDOWN(player.getSkillCoolDowns()));
 
-			// sendPacket(new SM_UNK91());
-			// sendPacket(new SM_UNKC7());
-			// sendPacket(new SM_UNKC8());
-
-			client.sendPacket(new SM_QUEST_LIST(player));
-
-			client.sendPacket(new SM_RECIPE_LIST(player.getRecipeList().getRecipeList()));
+			sendPacket(new SM_QUEST_LIST(player));
+			sendPacket(new SM_RECIPE_LIST(player.getRecipeList().getRecipeList()));
 
 			/*
 			 * Needed
 			 */
-			client.sendPacket(new SM_ENTER_WORLD_CHECK());
+			sendPacket(new SM_ENTER_WORLD_CHECK());
 
 			byte[] uiSettings = player.getPlayerSettings().getUiSettings();
 			byte[] shortcuts = player.getPlayerSettings().getShortcuts();
 
 			if(uiSettings != null)
-				client.sendPacket(new SM_UI_SETTINGS(uiSettings, 0));
+				sendPacket(new SM_UI_SETTINGS(uiSettings, 0));
 
 			if(shortcuts != null)
-				client.sendPacket(new SM_UI_SETTINGS(shortcuts, 1));
+				sendPacket(new SM_UI_SETTINGS(shortcuts, 1));
 
-			// sendPacket(new SM_UNK60());
-			// sendPacket(new SM_UNK17());
 			sendPacket(new SM_UNK5E());
 
 			// Cubesize limit set in inventory.
 			int cubeSize = player.getCubeSize();
 			player.getInventory().setLimit(27 + cubeSize * 9);
 
-			// TODO no need to load items here - inventory will be populated at startup
-			// will be removed next time
-
 			// items
 			Storage inventory = player.getInventory();
 			List<Item> equipedItems = player.getEquipment().getEquippedItems();
 			if(equipedItems.size() != 0)
 			{
-				client.sendPacket(new SM_INVENTORY_INFO(player.getEquipment().getEquippedItems(), cubeSize));
+				sendPacket(new SM_INVENTORY_INFO(player.getEquipment().getEquippedItems(), cubeSize));
 			}
 
 			List<Item> unequipedItems = inventory.getAllItems();
@@ -185,39 +179,27 @@ public class CM_ENTER_WORLD extends AionClientPacket
 				int index = 0;
 				while(index + 10 < itemsSize)
 				{
-					client.sendPacket(new SM_INVENTORY_INFO(unequipedItems.subList(index, index + 10), cubeSize));
+					sendPacket(new SM_INVENTORY_INFO(unequipedItems.subList(index, index + 10), cubeSize));
 					index += 10;
 				}
-				client.sendPacket(new SM_INVENTORY_INFO(unequipedItems.subList(index, itemsSize), cubeSize));
+				sendPacket(new SM_INVENTORY_INFO(unequipedItems.subList(index, itemsSize), cubeSize));
 			}
 
-			client.sendPacket(new SM_INVENTORY_INFO());
+			sendPacket(new SM_INVENTORY_INFO());
 
 			playerService.playerLoggedIn(player);
-
-			// sendPacket(new SM_UNKD3());
-
-			/*
-			 * Needed
-			 */
 			
-			client.sendPacket(new SM_STATS_INFO(player));
+			sendPacket(new SM_STATS_INFO(player));
 			sendPacket(new SM_CUBE_UPDATE(player, 6));
 
 			teleportService.sendSetBindPoint(player);
-			
-			// sendPacket(new SM_UNKE1());
-			sendPacket(new SM_MACRO_LIST(player));
 
+			sendPacket(new SM_MACRO_LIST(player));
 			sendPacket(new SM_GAME_TIME());
 			player.getController().updateNearbyQuests();
 
-			sendPacket(new SM_TITLE_LIST(player));
-			
-			client.sendPacket(new SM_CHANNEL_INFO(player.getPosition()));
-			/*
-			 * Needed
-			 */
+			sendPacket(new SM_TITLE_LIST(player));		
+			sendPacket(new SM_CHANNEL_INFO(player.getPosition()));
 			sendPacket(new SM_PLAYER_SPAWN(player));
 			sendPacket(new SM_EMOTION_LIST());
 			sendPacket(new SM_INFLUENCE_RATIO());

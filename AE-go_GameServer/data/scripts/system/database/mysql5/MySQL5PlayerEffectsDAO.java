@@ -20,6 +20,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Iterator;
+import java.util.Map;
 
 import com.aionemu.commons.database.DB;
 import com.aionemu.commons.database.IUStH;
@@ -58,8 +59,12 @@ public class MySQL5PlayerEffectsDAO extends PlayerEffectsDAO
 					int skillId = rset.getInt("skill_id");
 					int skillLvl = rset.getInt("skill_lvl");
 					int currentTime = rset.getInt("current_time");
-					int reuseDelay = rset.getInt("reuse_delay");
-					player.getEffectController().addSavedEffect(skillId, skillLvl, currentTime, reuseDelay);
+					long reuseDelay = rset.getLong("reuse_delay");				
+					player.getEffectController().addSavedEffect(skillId, skillLvl, currentTime);
+					
+					if(reuseDelay > System.currentTimeMillis())
+						player.setCoolDown(skillId, reuseDelay);
+					
 				}
 			}
 		});
@@ -71,6 +76,8 @@ public class MySQL5PlayerEffectsDAO extends PlayerEffectsDAO
 	{
 		deletePlayerEffects(player);
 		Iterator<Effect> iterator = player.getEffectController().iterator();
+		final Map<Integer, Long> cooldowns = player.getSkillCoolDowns();
+		
 		while(iterator.hasNext())
 		{
 			final Effect effect = iterator.next();
@@ -78,7 +85,7 @@ public class MySQL5PlayerEffectsDAO extends PlayerEffectsDAO
 			
 			if(elapsedTime < 60000)
 				continue;
-			
+
 			DB.insertUpdate(INSERT_QUERY, new IUStH() {
 				@Override
 				public void handleInsertUpdate(PreparedStatement stmt) throws SQLException
@@ -87,12 +94,41 @@ public class MySQL5PlayerEffectsDAO extends PlayerEffectsDAO
 					stmt.setInt(2, effect.getSkillId());
 					stmt.setInt(3, effect.getSkillLevel());
 					stmt.setInt(4, effect.getCurrentTime());
-					stmt.setInt(5, 0);
+					
+					int reuseTime = 0;
+					Long cooldown = cooldowns.get(effect.getSkillId());
+					if(cooldown != null)
+						cooldowns.remove(cooldown);	
+					
+					stmt.setLong(5, reuseTime);
 					stmt.execute();
 				}
 			});
 		}
 		
+		if(cooldowns != null)
+		{
+			for(Map.Entry<Integer, Long> entry : cooldowns.entrySet())
+			{
+				final int skillId = entry.getKey();
+				final long reuseTime = entry.getValue();
+				if(reuseTime - System.currentTimeMillis() < 60000)
+					continue;
+				
+				DB.insertUpdate(INSERT_QUERY, new IUStH() {
+					@Override
+					public void handleInsertUpdate(PreparedStatement stmt) throws SQLException
+					{
+						stmt.setInt(1, player.getObjectId());
+						stmt.setInt(2, skillId);
+						stmt.setInt(3, 0);
+						stmt.setInt(4, 0);											
+						stmt.setLong(5, reuseTime);
+						stmt.execute();
+					}
+				});
+			}
+		}
 	}
 	
 	private void deletePlayerEffects(final Player player)

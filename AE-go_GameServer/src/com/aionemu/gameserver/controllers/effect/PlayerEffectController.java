@@ -164,7 +164,7 @@ public class PlayerEffectController extends EffectController
 	 * @param currentTime
 	 * @param reuseDelay
 	 */
-	public void addSavedEffect(int skillId, int skillLvl, int currentTime, int reuseDelay)
+	public void addSavedEffect(int skillId, int skillLvl, int currentTime)
 	{
 		SkillTemplate template = DataManager.SKILL_DATA.getSkillTemplate(skillId);
 		int duration = template.getEffectsDuration();

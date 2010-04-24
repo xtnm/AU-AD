@@ -184,6 +184,7 @@ public class ServerPacketsOpcodes
 		addPacketOpcode(SM_SUMMON_PANEL_REMOVE.class, 0x92, idSet);
 		addPacketOpcode(SM_SUMMON_UPDATE.class, 0x93, idSet);
 		addPacketOpcode(SM_SUMMON_OWNER_REMOVE.class, 0x94, idSet);
+		addPacketOpcode(SM_SKILL_COOLDOWN.class, 0x4B, idSet);
 		// Unrecognized Opcodes from 1.5.4:
 		// addPacketOpcode(SM_BUY_LIST.class, 0x7E, idSet);
 
