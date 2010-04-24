@@ -334,7 +334,7 @@
         </points>
 		<link>ANAIR_ICE_LAKE_220040000</link>
     </zone>
-    <zone mapid="220040000" name="ALQUIMIA_APPROACH_220040000" priority="16">
+    <zone mapid="220040000" name="ALQUIMIA_APPROACH_220040000" priority="16" fly="true">
         <points>
             <point x="2876.52" y="2328.11"/>
             <point x="2869.1338" y="2320.7239"/>
@@ -1395,7 +1395,7 @@
         </points>
 		<link>MALEK_MINE_220040000</link>
     </zone>
-    <zone mapid="220040000" name="ALQUIMIA_CASTLE_GATE_220040000" priority="16">
+    <zone mapid="220040000" name="ALQUIMIA_CASTLE_GATE_220040000" priority="16" fly="true">
         <points>
             <point x="2191.71" y="2921.96"/>
             <point x="2197.1106" y="2907.7224"/>
@@ -1492,7 +1492,7 @@
         </points>
 		<link>GIANTS_VALLEY_220040000</link>
     </zone>
-    <zone mapid="220040000" name="BELUSLAN_FORTRESS_220040000" priority="14">
+    <zone mapid="220040000" name="BELUSLAN_FORTRESS_220040000" priority="14" fly="true">
         <points>
             <point x="148.26021" y="80.739"/>
             <point x="42.200745" y="218.09468"/>
@@ -1673,7 +1673,7 @@
         </points>
 		<link>THE_WHISPERING_FOREST_220040000</link>
     </zone>
-    <zone mapid="220040000" name="ALQUIMIA_STRONGHOLD_220040000" priority="20">
+    <zone mapid="220040000" name="ALQUIMIA_STRONGHOLD_220040000" priority="20" fly="true">
         <points>
             <point x="2520.91" y="2466.03"/>
             <point x="2481.7734" y="2454.4858"/>
