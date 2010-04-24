@@ -402,18 +402,31 @@ public class MailService
 	 * 
 	 * @param player
 	 */
-	public void onPlayerLogin(final Player player)
+	public void onPlayerLogin(Player player)
 	{
-		ThreadPoolManager.getInstance().schedule(new Runnable(){
+		ThreadPoolManager.getInstance().schedule(new MailLoadTask(player), 5000);
+	}
+	
+	/**
+	 * Task to load all player mail items
+	 * @author ATracer
+	 */
+	private class MailLoadTask implements Runnable
+	{
+		private Player player;
+		
+		private MailLoadTask(Player player)
+		{
+			this.player = player;
+		}
 
-			@Override
-			public void run()
-			{
-				player.setMailbox(DAOManager.getDAO(MailDAO.class).loadPlayerMailbox(player));
-				PacketSendUtility.sendPacket(player, new SM_MAIL_SERVICE(player, player.getMailbox().getLetters()));
-				if(player.getMailbox().haveUnread())
-					PacketSendUtility.sendPacket(player, new SM_MAIL_SERVICE(true, true));
-			}
-		}, 10000);
+		@Override
+		public void run()
+		{
+			player.setMailbox(DAOManager.getDAO(MailDAO.class).loadPlayerMailbox(player));
+			PacketSendUtility.sendPacket(player, new SM_MAIL_SERVICE(player, player.getMailbox().getLetters()));
+			if(player.getMailbox().haveUnread())
+				PacketSendUtility.sendPacket(player, new SM_MAIL_SERVICE(true, true));
+		}
 	}
 }
