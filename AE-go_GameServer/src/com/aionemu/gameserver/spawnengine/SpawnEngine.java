@@ -16,13 +16,10 @@
  */
 package com.aionemu.gameserver.spawnengine;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.aionemu.commons.callbacks.EnhancedObject;
-import com.aionemu.gameserver.ai.events.Event;
 import com.aionemu.gameserver.controllers.ActionitemController;
 import com.aionemu.gameserver.controllers.BindpointController;
 import com.aionemu.gameserver.controllers.GatherableController;
@@ -41,7 +38,6 @@ import com.aionemu.gameserver.dataholders.SpawnsData;
 import com.aionemu.gameserver.dataholders.SummonStatsData;
 import com.aionemu.gameserver.dataholders.WorldMapsData;
 import com.aionemu.gameserver.model.NpcType;
-import com.aionemu.gameserver.model.gameobjects.AionObject;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Gatherable;
 import com.aionemu.gameserver.model.gameobjects.Monster;
@@ -58,10 +54,6 @@ import com.aionemu.gameserver.model.templates.WorldMapTemplate;
 import com.aionemu.gameserver.model.templates.spawn.SpawnGroup;
 import com.aionemu.gameserver.model.templates.spawn.SpawnTemplate;
 import com.aionemu.gameserver.model.templates.stats.SummonStatsTemplate;
-import com.aionemu.gameserver.utils.gametime.DayTime;
-import com.aionemu.gameserver.utils.gametime.GameTime;
-import com.aionemu.gameserver.utils.gametime.GameTimeManager;
-import com.aionemu.gameserver.utils.gametime.listeners.DayTimeListener;
 import com.aionemu.gameserver.utils.idfactory.IDFactory;
 import com.aionemu.gameserver.utils.idfactory.IDFactoryAionObject;
 import com.aionemu.gameserver.world.KnownList;
@@ -447,37 +439,5 @@ public class SpawnEngine
 			}
 		}
 		log.info("Spawned " + worldId + " [" + instanceIndex + "] : " + instanceSpawnCounter);
-	}
-
-	/**
-	 * 
-	 * @param dayTime
-	 */
-	private void sendDayTimeChangeEvents(DayTime dayTime)
-	{
-		Iterator<AionObject> it = world.getObjectsIterator();
-		while(it.hasNext())
-		{
-			AionObject obj = it.next();
-			if(obj instanceof Npc)
-			{
-				((Npc) obj).getAi().handleEvent(Event.DAYTIME_CHANGE);
-			}
-		}
-	}
-
-	/**
-	 * Called only once when game server starts
-	 */
-	public void addGameTimeHook()
-	{
-		((EnhancedObject) GameTimeManager.getGameTime()).addCallback(new DayTimeListener(){
-			@Override
-			protected void onDayTimeChange(GameTime gameTime)
-			{
-				sendDayTimeChangeEvents(gameTime.getDayTime());
-			}
-
-		});
 	}
 }

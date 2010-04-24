@@ -56,6 +56,7 @@ import com.aionemu.gameserver.services.DropService;
 import com.aionemu.gameserver.services.DuelService;
 import com.aionemu.gameserver.services.EnchantService;
 import com.aionemu.gameserver.services.ExchangeService;
+import com.aionemu.gameserver.services.GameTimeService;
 import com.aionemu.gameserver.services.GroupService;
 import com.aionemu.gameserver.services.InstanceService;
 import com.aionemu.gameserver.services.ItemService;
@@ -143,6 +144,7 @@ public class DataInjectionModule extends AbstractModule
 		bind(EnchantService.class).in(Scopes.SINGLETON);
 		bind(DebugService.class).asEagerSingleton();
 		bind(StigmaService.class).in(Scopes.SINGLETON);
+		bind(GameTimeService.class).asEagerSingleton();
 	}
 	
 	@Provides

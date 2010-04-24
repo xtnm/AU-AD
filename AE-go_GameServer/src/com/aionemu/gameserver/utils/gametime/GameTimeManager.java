@@ -66,6 +66,7 @@ public class GameTimeManager
 
 		updater = new GameTimeUpdater(getGameTime());
 		ThreadPoolManager.getInstance().scheduleAtFixedRate(updater, 0, 5000);
+		
 		clockStarted = true;
 	}
 
