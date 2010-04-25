@@ -79,7 +79,7 @@ public class CM_TICKET extends AionClientPacket
 		ticketTitle = tckData[0];
 		ticketMessage = tckData[1];
 		ticketAddData = tckData[2];
-		PacketSendUtility.sendMessage(player, "Votre requete a bien été enregistree.");
+		PacketSendUtility.sendMessage(player, "Votre requete a bien ete enregistree.");
 		DAOManager.getDAO(TicketDAO.class).insertTicket(ticketType, player, ticketTitle, ticketMessage, ticketAddData);
 		PacketSendUtility.sendMessage(player, "Type : " + ticketType);
 		PacketSendUtility.sendMessage(player, "Titre : " + ticketTitle);
