@@ -35,6 +35,7 @@ import com.aionemu.gameserver.model.templates.item.ItemTemplate;
 import com.aionemu.gameserver.model.templates.item.WeaponType;
 import com.aionemu.gameserver.model.templates.itemset.ItemSetTemplate;
 import com.aionemu.gameserver.model.templates.itemset.PartBonus;
+import com.aionemu.gameserver.services.EnchantService;
 
 /**
  * @author xavier
@@ -86,6 +87,8 @@ public class ItemEquipmentListener
 		
 		if(item.getItemTemplate().isArmor())
 			recalculateArmorMastery(owner);
+		
+		EnchantService.onItemEquip(owner, item);
 	}
 
 	/**
@@ -265,6 +268,9 @@ public class ItemEquipmentListener
 		
 		if(item.getItemTemplate().isArmor())
 			recalculateArmorMastery(owner);
+		
+		EnchantService.onItemUnequip(owner, item);
+		
 	}
 	
 	/**
