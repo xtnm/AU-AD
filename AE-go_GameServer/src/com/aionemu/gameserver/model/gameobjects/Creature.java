@@ -515,7 +515,7 @@ public abstract class Creature extends VisibleObject
 	 */
 	public long getCoolDown(int skillId)
 	{
-		if(skillCoolDowns == null)
+		if(skillCoolDowns == null || !skillCoolDowns.containsKey(skillId))
 			return 0;
 		
 		return skillCoolDowns.get(skillId);

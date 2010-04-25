@@ -941,6 +941,7 @@ public class SM_SYSTEM_MESSAGE extends AionServerPacket
 	}
 	
 
+	public static final SM_SYSTEM_MESSAGE	STR_MSG_DICE_INVEN_ERROR	= new SM_SYSTEM_MESSAGE(1390182);
 	public static final SM_SYSTEM_MESSAGE	COMBINE_INVENTORY_IS_FULL	= new SM_SYSTEM_MESSAGE(1330037);
 
 	private final int						code;
