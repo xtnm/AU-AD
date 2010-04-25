@@ -33,8 +33,8 @@
 	<map id="310030000" name="IDAbGateL1" death_level="0" water_level="16"/>
 	<map id="310040000" name="IDAbGateL2" death_level="0" water_level="16"/>
 	<map id="310050000" name="IDLF3Lp" instance="true" death_level="0" water_level="16"/>
-	<map id="310060000" name="IDLF1B" death_level="0" water_level="16"/>
-	<map id="310070000" name="IDLF1B_Stigma" death_level="0" water_level="16"/>
+	<map id="310060000" name="IDLF1B" instance="true" death_level="0" water_level="16"/>
+	<map id="310070000" name="IDLF1B_Stigma" instance="true" death_level="0" water_level="16"/>
 	<map id="310080000" name="IDLC1_arena" death_level="0" water_level="16"/>
 	<map id="310090000" name="IDLF3_Castle_indratoo" death_level="0" water_level="16"/>
 	<map id="310100000" name="IDLF3_Castle_Lehpar" instance="true" death_level="0" water_level="16"/>
@@ -46,7 +46,7 @@
 	<map id="320040000" name="IDAbGateD2" death_level="0" water_level="16"/>
 	<map id="320050000" name="IDDF2Flying" death_level="0" instance="true" water_level="16"/>
 	<map id="320060000" name="IDDF1B" death_level="0" water_level="16"/>
-	<map id="320070000" name="IDSpace" death_level="0" water_level="16"/>
+	<map id="320070000" name="IDSpace" instance="true" death_level="0" water_level="16"/>
 	<map id="320080000" name="IDDF3_Dragon" instance="true" death_level="0" water_level="16"/>
 	<map id="320090000" name="IDDC1_arena" death_level="0" water_level="16"/>
 	<map id="320100000" name="IDDF2_Dflame" instance="true" death_level="0" water_level="16" destroy_time="1800"/>

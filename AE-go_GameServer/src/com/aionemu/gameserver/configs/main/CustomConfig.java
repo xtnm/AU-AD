@@ -29,8 +29,14 @@ public class CustomConfig
 	/**
 	 * Skill autolearn
 	 */
-	@Property(key = "gameserver.skill.autolearn", defaultValue = "true")
+	@Property(key = "gameserver.skill.autolearn", defaultValue = "false")
 	public static boolean	SKILL_AUTOLEARN;
+
+	/**
+	 * Stigma autolearn
+	 */
+	@Property(key = "gameserver.stigma.autolearn", defaultValue = "false")
+	public static boolean	STIGMA_AUTOLEARN;
 
 	/**
 	 * Disable monsters aggressive behave

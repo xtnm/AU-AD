@@ -28,7 +28,6 @@ import com.aionemu.gameserver.model.gameobjects.PersistentState;
 import com.aionemu.gameserver.model.gameobjects.player.AbyssRank;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 
-
 /**
  * @author ATracer
  *
@@ -139,5 +138,4 @@ public class MySQL5AbyssRankDAO extends AbyssRankDAO
 	{
 		return MySQL5DAOUtils.supports(databaseName, majorVersion, minorVersion);
 	}
-
 }

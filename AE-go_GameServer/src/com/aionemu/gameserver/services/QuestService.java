@@ -134,11 +134,11 @@ public class QuestService
 		{
 			if(rewards.getGold() != null)
 			{
-				inventory.increaseKinah((int)(player.getRates().getQuestKinahRate() * rewards.getGold()));
+				inventory.increaseKinah((player.getRates().getQuestKinahRate() * rewards.getGold()));
 			}
 			if(rewards.getExp() != null)
 			{
-				int rewardExp = (int)(player.getRates().getQuestXpRate() * rewards.getExp());
+				int rewardExp = (player.getRates().getQuestXpRate() * rewards.getExp());
 				player.getCommonData().addExp(rewardExp);
 			}
 

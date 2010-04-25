@@ -43,7 +43,7 @@ public class IDFactory
 	/**
 	 * Id that will be used as minimal on next id request
 	 */
-	private int					nextMinId	= 0;
+	private volatile int		nextMinId	= 0;
 
 	/**
 	 * Returns next free id.

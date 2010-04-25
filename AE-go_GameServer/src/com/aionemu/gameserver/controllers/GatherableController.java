@@ -226,6 +226,6 @@ public class GatherableController extends VisibleObjectController<Gatherable>
 	@Override
 	public Gatherable getOwner()
 	{
-		return (Gatherable) super.getOwner();
+		return super.getOwner();
 	}
 }

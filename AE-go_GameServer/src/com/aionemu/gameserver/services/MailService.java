@@ -71,7 +71,7 @@ public class MailService
 	}
 
 	/**
-	 * 
+	 * TODO split this method
 	 * @param sender
 	 * @param recipientName
 	 * @param title
@@ -95,14 +95,13 @@ public class MailService
 
 		if(message.length() > 1000)
 			message = message.substring(0, 1000);
-
+		
 		if(!DAOManager.getDAO(PlayerDAO.class).isNameUsed(recipientName))
 		{
-			// TODO retail message
-			PacketSendUtility.sendMessage(sender, "Incorrect recipient name");
+			PacketSendUtility.sendPacket(sender, new SM_MAIL_SERVICE(MailMessage.NO_SUCH_CHARACTER_NAME));
 			return;
 		}
-
+		
 		PlayerCommonData recipientCommonData = DAOManager.getDAO(PlayerDAO.class).loadPlayerCommonDataByName(
 			recipientName, world);
 		Player onlineRecipient;
@@ -230,7 +229,10 @@ public class MailService
 
 		if(!DAOManager.getDAO(MailDAO.class).storeLetter(time, newLetter))
 			return;
-
+		
+		/**
+		 * Calculate kinah
+		 */
 		senderInventory.decreaseKinah(finalAttachedKinahCount);
 
 		if(attachedItem != null)
@@ -239,7 +241,10 @@ public class MailService
 
 		int finalMailCommission = 10 + kinahMailCommission + itemMailCommission;
 		senderInventory.decreaseKinah(finalMailCommission);
-
+		
+		/**
+		 * Send mail update packets
+		 */
 		if(onlineRecipient != null)
 		{
 			Mailbox recipientMailbox = onlineRecipient.getMailbox();
@@ -252,6 +257,16 @@ public class MailService
 		}
 
 		PacketSendUtility.sendPacket(sender, new SM_MAIL_SERVICE(MailMessage.MAIL_SEND_SECCESS));
+		
+		/**
+		 * Update loaded common data and db if player is offline
+		 */
+		if(!recipientCommonData.isOnline())
+		{
+			recipientCommonData.setMailboxLetters(recipientCommonData.getMailboxLetters() + 1);
+			DAOManager.getDAO(MailDAO.class).updateOfflineMailCounter(recipientCommonData);
+		}
+		
 	}
 
 	/**
@@ -387,18 +402,31 @@ public class MailService
 	 * 
 	 * @param player
 	 */
-	public void onPlayerLogin(final Player player)
+	public void onPlayerLogin(Player player)
 	{
-		ThreadPoolManager.getInstance().schedule(new Runnable(){
+		ThreadPoolManager.getInstance().schedule(new MailLoadTask(player), 5000);
+	}
+	
+	/**
+	 * Task to load all player mail items
+	 * @author ATracer
+	 */
+	private class MailLoadTask implements Runnable
+	{
+		private Player player;
+		
+		private MailLoadTask(Player player)
+		{
+			this.player = player;
+		}
 
-			@Override
-			public void run()
-			{
-				player.setMailbox(DAOManager.getDAO(MailDAO.class).loadPlayerMailbox(player));
-				PacketSendUtility.sendPacket(player, new SM_MAIL_SERVICE(player, player.getMailbox().getLetters()));
-				if(player.getMailbox().haveUnread())
-					PacketSendUtility.sendPacket(player, new SM_MAIL_SERVICE(true, true));
-			}
-		}, 10000);
+		@Override
+		public void run()
+		{
+			player.setMailbox(DAOManager.getDAO(MailDAO.class).loadPlayerMailbox(player));
+			PacketSendUtility.sendPacket(player, new SM_MAIL_SERVICE(player, player.getMailbox().getLetters()));
+			if(player.getMailbox().haveUnread())
+				PacketSendUtility.sendPacket(player, new SM_MAIL_SERVICE(true, true));
+		}
 	}
 }

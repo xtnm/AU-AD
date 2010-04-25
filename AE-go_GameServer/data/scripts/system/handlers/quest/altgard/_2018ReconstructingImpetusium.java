@@ -165,6 +165,7 @@ public class _2018ReconstructingImpetusium extends QuestHandler
 		return false;
 	}
 	
+	@Override
 	public boolean onKillEvent(QuestEnv env)
 	{
 		Player player = env.getPlayer();

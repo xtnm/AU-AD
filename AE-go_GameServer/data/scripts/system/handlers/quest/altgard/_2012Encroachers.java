@@ -52,6 +52,7 @@ public class _2012Encroachers extends QuestHandler
 	}
 	
 	/** Disponible des le level 10 **/
+	@Override
 	public boolean onLvlUpEvent(QuestEnv env)
 	{
 		Player player = env.getPlayer();
@@ -64,6 +65,7 @@ public class _2012Encroachers extends QuestHandler
 		return true;
 	}
 	
+	@Override
 	public boolean onDialogEvent(QuestEnv env)
 	{
 		/** Initialisation de l'event **/
@@ -121,6 +123,7 @@ public class _2012Encroachers extends QuestHandler
 		return false;
 	}
 	
+	@Override
 	public boolean onKillEvent(QuestEnv env)
 	{
 		/** Checks **/

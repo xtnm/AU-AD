@@ -27,6 +27,8 @@ import com.aionemu.gameserver.utils.ThreadPoolManager;
 /**
  * @author lord_rex and MrPoke 
  * 	based on l2j-free engines.
+ * 
+ * This can be used for periodic calls.
  */
 public abstract class AbstractPeriodicTaskManager extends AbstractLockManager implements Runnable, StartupHook
 {

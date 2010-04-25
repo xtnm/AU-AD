@@ -403,8 +403,8 @@
 		
 	</monster_hunt>
 
-	<!-- A Better Sword -->
-	<report_to id="1422" start_npc_id="203912" end_npc_id="203912"/>
+	<!-- 1422 A Better Sword -->
+	<item_collecting id="1422" start_npc_id="203912" />
 
 	<!-- TODO: 1037 Secrets of the Temple -->
 
@@ -646,7 +646,7 @@
 	<!-- TODO: 1378 Supplies for Hylas -->
 	<report_to id="1378" start_npc_id="203948" end_npc_id="203995" item_id="182201339"/>
 
-	<!-- TODO: 1040 Scouting the Scouts -->
+	<!-- 1040 Scouting the Scouts handled by script -->
 
 	<!-- TODO: 1373 Water The rapy -->
 

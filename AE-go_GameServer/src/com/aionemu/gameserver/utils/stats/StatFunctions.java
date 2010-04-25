@@ -144,7 +144,7 @@ public class StatFunctions
 	 */
 	public static int calculateHate(Creature creature, int value) 
 	{
-		return (int) Math.round(value * creature.getGameStats().getCurrentStat(StatEnum.BOOST_HATE) / 100f);
+		return Math.round(value * creature.getGameStats().getCurrentStat(StatEnum.BOOST_HATE) / 100f);
 	}
 
 	/**
@@ -203,7 +203,7 @@ public class StatFunctions
 
 				int base = Rnd.get(min,max);
 				
-				resultDamage = Math.round((base * (ags.getCurrentStat(StatEnum.POWER) * 0.01f + ags.getStatBonus(StatEnum.MAIN_HAND_POWER) * 0.01f)) 
+				resultDamage = Math.round((base * (ags.getCurrentStat(StatEnum.POWER) * 0.01f + (ags.getBaseStat(StatEnum.MAIN_HAND_POWER) * 0.2f)* 0.01f)) 
 						                  + ags.getStatBonus(StatEnum.MAIN_HAND_POWER) + skillDamages);
 
 			}
@@ -231,7 +231,7 @@ public class StatFunctions
 		else if(attacker instanceof Summon)
 		{
 			int baseDamage = ags.getCurrentStat(StatEnum.MAIN_HAND_POWER);
-			int max = (int)(baseDamage + baseDamage * attacker.getLevel() / 10);
+			int max = (baseDamage + baseDamage * attacker.getLevel() / 10);
 			int min = max - ags.getCurrentStat(StatEnum.MAIN_HAND_POWER);		
 			resultDamage += Rnd.get(min, max);
 		}
@@ -286,7 +286,7 @@ public class StatFunctions
 		int max = Math.round((((offHandAttack * 100)/ average) * totalMax)/100);
 
 		int base = Rnd.get(min,max);
-		Damage = Math.round((base * (ags.getCurrentStat(StatEnum.POWER) * 0.01f + ags.getStatBonus(StatEnum.OFF_HAND_POWER) * 0.01f)) 
+		Damage = Math.round((base * (ags.getCurrentStat(StatEnum.POWER) * 0.01f + (ags.getBaseStat(StatEnum.OFF_HAND_POWER) * 0.2f) * 0.01f)) 
                  + ags.getStatBonus(StatEnum.OFF_HAND_POWER));
 
 		Damage = adjustDamages(attacker, target, Damage);

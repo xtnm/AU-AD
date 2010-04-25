@@ -21,16 +21,15 @@ import com.aionemu.gameserver.model.gameobjects.Creature;
 
 /**
  * @author ATracer
- *
+ * 
  */
 public class DummyAi extends AI<Creature>
 {
-
+	/**
+	 * This AI has no any event/state handlers
+	 */
 	public DummyAi()
 	{
-		/**
-		 * This AI has no any event/state handlers
-		 */
+		// nothing
 	}
-	
 }

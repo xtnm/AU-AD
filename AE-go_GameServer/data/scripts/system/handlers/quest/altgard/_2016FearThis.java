@@ -182,6 +182,7 @@ public class _2016FearThis extends QuestHandler
 		return true;
 	}
 
+	@Override
 	public boolean onKillEvent(QuestEnv env)
 	{
 		Player player = env.getPlayer();

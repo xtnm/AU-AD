@@ -35,8 +35,8 @@ import com.google.inject.Inject;
  * //sys info - System Informations
  * //sys memory - Memory Informations
  * //sys gc - Garbage Collector
- * //sys shutdown <seconds> <announceInterval> - Shutdowner
- * //sys restart <seconds> <announceInterval> - Restarter
+ * //sys shutdown <seconds> <announceInterval> - Call shutdown
+ * //sys restart <seconds> <announceInterval> - Call restart
  * //sys threadpool - Thread pools info
  */
 public class AESystem extends AdminCommand

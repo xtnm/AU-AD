@@ -21,6 +21,8 @@ import java.util.Iterator;
 import org.apache.log4j.Logger;
 
 import com.aionemu.commons.utils.ExitCode;
+import com.aionemu.commons.utils.concurrent.RunnableStatsManager;
+import com.aionemu.commons.utils.concurrent.RunnableStatsManager.SortBy;
 import com.aionemu.gameserver.configs.main.ShutdownConfig;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
@@ -173,7 +175,8 @@ public class ShutdownHook extends Thread
 			}
 		}
 		log.info("All players are disconnected...");
-
+		
+		RunnableStatsManager.dumpClassStats(SortBy.AVG);
 		playerUpdateService.onShutdown();
 		// Save game time.
 		GameTimeManager.saveTime();

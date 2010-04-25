@@ -46,7 +46,7 @@ public class Effect
 	private Creature effector;
 	private Future<?> checkTask = null;
 	private Future<?> task = null;
-	private Future<?> periodicTask = null;
+	private Future<?>[] periodicTasks = null;
 	private Future<?> mpUseTask = null;
 	
 	/**
@@ -214,17 +214,20 @@ public class Effect
 	/**
 	 * @return the periodicTask
 	 */
-	public Future<?> getPeriodicTask()
+	public Future<?> getPeriodicTask(int i)
 	{
-		return periodicTask;
+		return periodicTasks[i-1];
 	}
 
 	/**
 	 * @param periodicTask the periodicTask to set
+	 * @param i
 	 */
-	public void setPeriodicTask(Future<?> periodicTask)
+	public void setPeriodicTask(Future<?> periodicTask, int i)
 	{
-		this.periodicTask = periodicTask;
+		if(periodicTasks == null)
+			periodicTasks = new Future<?>[4];
+		this.periodicTasks[i-1] = periodicTask;
 	}
 
 	/**
@@ -348,7 +351,7 @@ public class Effect
 	 */
 	public AttackCalcObserver getAttackStatusObserver(int i)
 	{
-		return attackStatusObserver[i];
+		return attackStatusObserver[i-1];
 	}
 
 	/**
@@ -358,7 +361,7 @@ public class Effect
 	{
 		if(this.attackStatusObserver == null)
 			this.attackStatusObserver = new AttackCalcObserver[4];
-		this.attackStatusObserver[i] = attackStatusObserver;
+		this.attackStatusObserver[i-1] = attackStatusObserver;
 	}
 
 	/**
@@ -367,7 +370,7 @@ public class Effect
 	 */
 	public AttackCalcObserver getAttackShieldObserver(int i)
 	{
-		return attackShieldObserver[i];
+		return attackShieldObserver[i-1];
 	}
 
 	/**
@@ -377,7 +380,7 @@ public class Effect
 	{
 		if(this.attackShieldObserver == null)
 			this.attackShieldObserver = new AttackCalcObserver[4];
-		this.attackShieldObserver[i] = attackShieldObserver;
+		this.attackShieldObserver[i-1] = attackShieldObserver;
 	}
 
 	/**
@@ -606,10 +609,16 @@ public class Effect
 			checkTask = null;
 		}
 		
-		if(periodicTask != null)
+		if(periodicTasks != null)
 		{
-			periodicTask.cancel(true);
-			periodicTask = null;
+			for(Future<?> periodicTask : this.periodicTasks)
+			{
+				if(periodicTask != null)
+				{
+					periodicTask.cancel(true);
+					periodicTask = null;
+				}
+			}
 		}
 		
 		if(mpUseTask != null)
@@ -618,11 +627,25 @@ public class Effect
 			mpUseTask = null;
 		}
 	}
-
+	/**
+	 * Time till the effect end
+	 * 
+	 * @return
+	 */
 	public int getElapsedTime()
 	{
 		int elapsedTime = endTime - (int)System.currentTimeMillis();
 		return elapsedTime > 0 ? elapsedTime : 0;
+	}
+	
+	/**
+	 * Time effect is active
+	 * 
+	 * @return
+	 */
+	public int getCurrentTime()
+	{
+		return duration - getElapsedTime();
 	}
 	
 	/**
@@ -690,7 +713,7 @@ public class Effect
 	 */
 	public ActionObserver getActionObserver(int i)
 	{
-		return actionObserver[i];
+		return actionObserver[i-1];
 	}
 
 	/**
@@ -700,6 +723,6 @@ public class Effect
 	{
 		if(actionObserver == null)
 			actionObserver = new ActionObserver[4];
-		actionObserver[i] = observer;
+		actionObserver[i-1] = observer;
 	}
 }

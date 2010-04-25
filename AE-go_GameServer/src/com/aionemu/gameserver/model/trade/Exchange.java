@@ -45,9 +45,6 @@ public class Exchange
 		this.targetPlayer = targetPlayer;
 	}
 
-	/**
-	 * 
-	 */
 	public void confirm()
 	{
 		confirmed = true;

@@ -275,6 +275,7 @@ public class ItemTemplate extends VisibleObjectTemplate
 	/**
 	 * @return the description
 	 */
+	@Override
 	public int getNameId()
 	{
 		return Integer.parseInt(description);

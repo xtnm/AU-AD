@@ -19,4 +19,6 @@ package com.aionemu.gameserver;
 
 import junit.framework.TestCase;
 
-public class SomeTest extends TestCase {}
+public class SomeTest extends TestCase
+{
+}

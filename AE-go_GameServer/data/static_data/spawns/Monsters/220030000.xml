@@ -1,8 +1,23 @@
-<!-- Monsters spawns by Atomix from http://aion.atomixro.com
-Thanks to Matej for helping me.
-map npcid pool interval
-object x y z h
-Altgard -->
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+	This file is part of aion-unique <aion-unique.org>.
+
+	aion-unique is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	aion-unique is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
+	
+	Altgard
+	@author Atomix
+ -->
 <spawns>
 	<!-- Angolem Frangment (Monster Normal lvl:18)-->
 	<spawn map="220030000" npcid="280100" pool="18" interval="295">
@@ -1836,24 +1851,6 @@ Altgard -->
 	<spawn map="220030000" npcid="210620" pool="1" interval="295" time="NIGHT">
 		<object x="1533.89" y="233.51" z="285.625" h="9"/>
 	</spawn>
-	<!-- MuMu Secret Patrol (Monster Normal lvl:16)-->
-	<spawn map="220030000" npcid="210716" pool="15" interval="295">
-		<object x="1753.06" y="2024.72" z="248.43375" h="102"/>
-		<object x="1750.29" y="2028.69" z="248.56375" h="69"/>
-		<object x="1727.1" y="2054.13" z="249.14561" h="84"/>
-		<object x="1726.56" y="2054.17" z="249.08063" h="66"/>
-		<object x="1744.1" y="2036.1" z="249.35626" h="68"/>
-		<object x="1720.25" y="2051.75" z="248.89062" h="78"/>
-		<object x="1747.25" y="2047.75" z="249.85938" h="0"/>
-		<object x="1748.75" y="2047.75" z="249.84375" h="106"/>
-		<object x="1751.79" y="2017.66" z="248.36688" h="26"/>
-		<object x="1754.25" y="2020.39" z="248.375" h="75"/>
-		<object x="1745.14" y="2004.46" z="248.25" h="42"/>
-		<object x="1751.61" y="2018.89" z="248.42375" h="48"/>
-		<object x="1746.04" y="2018.41" z="248.89563" h="96"/>
-		<object x="1743.9" y="2030.89" z="249.51874" h="106"/>
-		<object x="1751.95" y="2021.21" z="248.45375" h="65"/>
-	</spawn>
 	<!-- MuMu Worker (Monster Normal lvl:15)-->
 	<spawn map="220030000" npcid="210449" pool="32" interval="295">
 		<object x="1475.413" y="202.6159" z="292.7482" h="29"/>
@@ -2335,65 +2332,6 @@ Altgard -->
 		<object x="1394.058" y="856.0068" z="247.375" h="99"/>
 		<object x="1666.536" y="834.4788" z="248.80972" h="66"/>
 	</spawn>
-	<!-- Summoned Black Claw Patrol (Monster Normal lvl:11)-->
-	<spawn map="220030000" npcid="210627" pool="56" interval="295">
-		<object x="1674.33" y="1262.63" z="274.185" h="56"/>
-		<object x="1682.59" y="1262.56" z="274.48376" h="42"/>
-		<object x="1676.63" y="1255.01" z="273.89188" h="10"/>
-		<object x="1709.51" y="1333.72" z="294.5656" h="118"/>
-		<object x="1786.48" y="1364.85" z="287.34375" h="86"/>
-		<object x="1765.31" y="1273.35" z="272.2469" h="73"/>
-		<object x="1766.79" y="1251.22" z="270.9969" h="29"/>
-		<object x="1802.55" y="1385.09" z="293.69376" h="10"/>
-		<object x="1787.81" y="1226.73" z="276.2344" h="87"/>
-		<object x="1782.92" y="1282.41" z="276.18564" h="53"/>
-		<object x="1800.61" y="1383.19" z="293.18686" h="51"/>
-		<object x="1737.97" y="1307.29" z="279.92065" h="66"/>
-		<object x="1782.11" y="1259.23" z="274.11813" h="115"/>
-		<object x="1761.38" y="1356.07" z="280.20312" h="17"/>
-		<object x="1805.46" y="1289.47" z="278.3756" h="8"/>
-		<object x="1793.78" y="1287.86" z="277.1025" h="32"/>
-		<object x="1786.27" y="1283.55" z="276.6544" h="89"/>
-		<object x="1755.67" y="1356.6" z="277.9925" h="62"/>
-		<object x="1757.92" y="1141.29" z="271.57562" h="105"/>
-		<object x="1844.59" y="1106.08" z="262.71814" h="67"/>
-		<object x="1808.88" y="1092.67" z="264.7257" h="32"/>
-		<object x="1916.07" y="1034.14" z="261.15125" h="31"/>
-		<object x="1912.97" y="1036.29" z="260.08563" h="13"/>
-		<object x="1943.84" y="1042.95" z="271.40497" h="14"/>
-		<object x="1917.95" y="1028.35" z="260.91248" h="91"/>
-		<object x="1801.65" y="1111.54" z="264.1906" h="25"/>
-		<object x="1845.74" y="1091.2" z="264.59253" h="24"/>
-		<object x="1909.03" y="1010.83" z="257.7119" h="35"/>
-		<object x="1933.83" y="1033.42" z="266.0675" h="56"/>
-		<object x="1760.97" y="1169.55" z="269.86688" h="85"/>
-		<object x="1815.32" y="1101.84" z="263.5625" h="13"/>
-		<object x="1820.15" y="1100.62" z="263.66312" h="23"/>
-		<object x="1900.89" y="1038.21" z="257.18" h="111"/>
-		<object x="1912.81" y="1088.58" z="262.38562" h="9"/>
-		<object x="1904.19" y="1022.15" z="256.88937" h="0"/>
-		<object x="1911.95" y="1092.61" z="263.43683" h="111"/>
-		<object x="1474.59" y="204.01" z="292.71313" h="90"/>
-		<object x="1417.15" y="249.2" z="298.03125" h="13"/>
-		<object x="1481.66" y="208.25" z="291.74" h="19"/>
-		<object x="1392.39" y="273.93" z="301.07623" h="3"/>
-		<object x="1415.54" y="243.84" z="298.15375" h="78"/>
-		<object x="1469.18" y="224.94" z="291.69125" h="117"/>
-		<object x="1410.49" y="240.25" z="298.34436" h="47"/>
-		<object x="1408.99" y="244.13" z="298.4381" h="65"/>
-		<object x="1411.43" y="240.39" z="298.2856" h="68"/>
-		<object x="1406.95" y="243.38" z="298.63126" h="64"/>
-		<object x="1417.28" y="256.81" z="297.84" h="69"/>
-		<object x="1416.52" y="252.23" z="297.9675" h="96"/>
-		<object x="2453.05" y="2082.12" z="277.875" h="16"/>
-		<object x="2424.42" y="2090.72" z="279.5938" h="67"/>
-		<object x="1469.92" y="222.91" z="291.74506" h="10"/>
-		<object x="1467.12" y="223.71" z="291.64313" h="26"/>
-		<object x="1464.01" y="226.65" z="291.41626" h="108"/>
-		<object x="1465.06" y="222.82" z="291.515" h="54"/>
-		<object x="1469.07" y="227.86" z="291.50876" h="12"/>
-		<object x="1469.75" y="228.03" z="291.5" h="67"/>
-	</spawn>
 	<!-- Swamp Malodor (Monster Normal lvl:17)-->
 	<spawn map="220030000" npcid="210500" pool="6" interval="295">
 		<object x="1627.74" y="2177.853" z="259.04593" h="54"/>
@@ -2626,24 +2564,8 @@ Altgard -->
 		<object x="1471.69" y="764.32" z="265.8631" h="102"/>
 	</spawn>
 	<!-- Umkata the Restless (Monster Normal lvl:18)-->
-	<spawn map="220030000" npcid="210752" pool="17" interval="295">
-		<object x="2891.62" y="1738.52" z="254.75" h="33"/>
-		<object x="2900.98" y="1745.07" z="254.74689" h="56"/>
-		<object x="2894.23" y="1737.73" z="254.61063" h="79"/>
-		<object x="2893.04" y="1741.64" z="254.75" h="105"/>
-		<object x="2896.74" y="1744.0" z="255.85275" h="18"/>
-		<object x="2898.7466" y="1744.5819" z="254.75" h="28"/>
-		<object x="2899.87" y="1746.18" z="254.75" h="77"/>
-		<object x="2892.93" y="1743.65" z="254.64688" h="52"/>
-		<object x="2900.84" y="1740.82" z="254.57123" h="4"/>
-		<object x="2892.23" y="1745.97" z="254.625" h="80"/>
-		<object x="2892.66" y="1740.62" z="254.75" h="6"/>
-		<object x="2898.19" y="1747.16" z="254.75" h="101"/>
-		<object x="2900.01" y="1738.46" z="254.5275" h="116"/>
-		<object x="2896.31" y="1740.22" z="255.2416" h="9"/>
-		<object x="2893.42" y="1740.99" z="254.75" h="29"/>
-		<object x="2893.51" y="1742.1" z="254.74374" h="59"/>
-		<object x="2897.49" y="1740.93" z="254.75" h="15"/>
+	<spawn map="220030000" npcid="210752" pool="1" interval="295">
+		<object x="2900.01" y="1738.46" z="254.53" h="43"/>
 	</spawn>
 	<!-- Veteran MuMu Gatherer (Monster Normal lvl:13)-->
 	<spawn map="220030000" npcid="210572" pool="3" interval="295">
@@ -2717,28 +2639,6 @@ Altgard -->
 		<object x="1591.39" y="2569.63" z="284.53812" h="13"/>
 		<object x="1586.87" y="2569.54" z="284.72437" h="61"/>
 		<object x="1577.97" y="2565.62" z="285.2775" h="5"/>
-	</spawn>
-	<!-- Watch Bodyguard (Monster Normal lvl:17)-->
-	<spawn map="220030000" npcid="210528" pool="19" interval="295">
-		<object x="1672.846" y="2510.255" z="283.35242" h="3"/>
-		<object x="1691.176" y="2536.885" z="283.84167" h="47"/>
-		<object x="1679.896" y="2481.334" z="280.5" h="16"/>
-		<object x="1718.452" y="2541.954" z="288.83188" h="33"/>
-		<object x="1622.806" y="2592.697" z="279.83142" h="72"/>
-		<object x="1697.3" y="2510.021" z="285.91614" h="50"/>
-		<object x="1740.396" y="2524.545" z="291.1912" h="1"/>
-		<object x="1715.633" y="2510.362" z="288.06683" h="37"/>
-		<object x="1700.948" y="2543.807" z="284.30273" h="104"/>
-		<object x="1684.05" y="2520.348" z="285.28802" h="27"/>
-		<object x="1733.163" y="2548.122" z="291.7166" h="64"/>
-		<object x="1702.173" y="2591.161" z="285.90744" h="49"/>
-		<object x="1703.777" y="2618.836" z="288.87228" h="110"/>
-		<object x="1710.594" y="2584.842" z="286.68" h="4"/>
-		<object x="1693.878" y="2639.362" z="288.08514" h="32"/>
-		<object x="1674.971" y="2648.672" z="288.74377" h="109"/>
-		<object x="1704.43" y="2654.738" z="290.573" h="16"/>
-		<object x="1668.105" y="2605.168" z="282.261" h="7"/>
-		<object x="1719.126" y="2609.939" z="287.44537" h="85"/>
 	</spawn>
 	<!-- Watch Commander (Monster Normal lvl:17)-->
 	<spawn map="220030000" npcid="211296" pool="1" interval="295">

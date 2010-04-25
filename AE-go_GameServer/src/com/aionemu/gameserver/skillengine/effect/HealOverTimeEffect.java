@@ -83,6 +83,6 @@ public class HealOverTimeEffect extends EffectTemplate
 				onPeriodicAction(effect);
 			}
 		}, checktime, checktime);
-		effect.setPeriodicTask(task);	
+		effect.setPeriodicTask(task, position);	
 	}
 }

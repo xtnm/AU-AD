@@ -1,8 +1,23 @@
-<!-- Monsters spawns by Atomix from http://aion.atomixro.com
-Thanks to Matej for helping me.
-map npcid pool interval
-object x y z h
-Eltnen-->
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+	This file is part of aion-unique <aion-unique.org>.
+
+	aion-unique is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	aion-unique is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
+	
+	Eltnen
+	@author Atomix
+ -->
 <spawns>
 	<!-- Acheron Drake (Monster Normal lvl:26)-->
 	<spawn map="210020000" npcid="210799" pool="12" interval="295">
@@ -4833,7 +4848,7 @@ Eltnen-->
 		<object x="1250.808" y="2737.529" z="304.59558" h="108"/>
 	</spawn>
 	<!-- Treasure Box (Monster Normal lvl:9)-->
-	<spawn map="210020000" npcid="210596" pool="1" interval="295">
+	<spawn map="210020000" npcid="210596" pool="1" interval="3600">
 		<object x="513.94" y="2699.89" z="152.86436" h="52"/>
 		<object x="114.34" y="2676.92" z="152.97874" h="27"/>
 		<object x="506.37" y="2868.52" z="153.29688" h="60"/>

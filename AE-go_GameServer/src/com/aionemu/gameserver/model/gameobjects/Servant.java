@@ -92,6 +92,7 @@ public class Servant extends Npc
 	/**
 	 * @return the target
 	 */
+	@Override
 	public Creature getTarget()
 	{
 		return target;
@@ -143,6 +144,7 @@ public class Servant extends Npc
 	/**
 	 * @return NpcObjectType.TRAP
 	 */
+	@Override
 	public NpcObjectType getNpcObjectType()
 	{
 		return NpcObjectType.SERVANT;

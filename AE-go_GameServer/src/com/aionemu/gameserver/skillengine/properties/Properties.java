@@ -31,8 +31,8 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Properties")
-public class Properties {
-
+public class Properties 
+{
     @XmlElements({
         @XmlElement(name = "firsttarget", type = FirstTargetProperty.class),
         @XmlElement(name = "targetrange", type = TargetRangeProperty.class),
@@ -68,10 +68,13 @@ public class Properties {
      * 
      * 
      */
-    public List<Property> getProperties() {
-        if (properties == null) {
+    public List<Property> getProperties() 
+    {
+        if (properties == null) 
+        {
         	properties = new ArrayList<Property>();
         }
+        
         return this.properties;
     }
 

@@ -72,6 +72,9 @@ public class PlayerRestrictions extends AbstractRestrictions
 		if(skill.getSkillTemplate().getType() == SkillType.PHYSICAL
 			&& player.getEffectController().isAbnoramlSet(EffectId.BLOCKADE))
 			return false;
+		
+		if(player.isSkillDisabled(skill.getSkillTemplate().getSkillId()))
+			return false;
 
 		return true;
 	}

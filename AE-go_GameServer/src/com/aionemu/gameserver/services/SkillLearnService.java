@@ -126,7 +126,10 @@ public class SkillLearnService
 	 */
 	private boolean checkLearnIsPossible(SkillList playerSkillList, SkillLearnTemplate template)
 	{
-		if(CustomConfig.SKILL_AUTOLEARN || playerSkillList.isSkillPresent(template.getSkillId()))
+		if (playerSkillList.isSkillPresent(template.getSkillId()))
+			return true;
+
+		if ((CustomConfig.SKILL_AUTOLEARN && !template.isStigma()) || (CustomConfig.STIGMA_AUTOLEARN && template.isStigma()))
 			return true;
 		
 		if(template.isAutolearn())

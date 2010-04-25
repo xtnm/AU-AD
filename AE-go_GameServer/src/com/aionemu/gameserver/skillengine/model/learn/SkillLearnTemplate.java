@@ -46,6 +46,8 @@ public class SkillLearnTemplate
 	private int minLevel;
 	@XmlAttribute
 	private boolean autolearn;
+	@XmlAttribute
+	private boolean stigma = false;
 	
 	/**
 	 * @return the classId
@@ -102,5 +104,13 @@ public class SkillLearnTemplate
 	public boolean isAutolearn()
 	{
 		return autolearn;
+	}
+
+	/**
+	 * @return the stigma
+	 */
+	public boolean isStigma()
+	{
+		return stigma;
 	}
 }

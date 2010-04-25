@@ -144,7 +144,18 @@
 		<entrypoint mapid="220010000" x="378.9" y="1895.39" z="330.0"/>
 		<exitpoint mapid="320010000" x="457.65" y="426.8" z="230.4"/>
 	</portal>
-		
+	
+	<!-- Morai [A Sliver of Darkness quest] Elyos -->
+	<portal npcid="203164" instance="true" race="ELYOS">
+		<entrypoint mapid="210030000" x="2315.9" y="1800" z="195.2" race="ELYOS"/>
+		<exitpoint mapid="310070000" x="338" y="101" z="1191"/>
+	</portal>
+
+	<!-- Morai [No Escaping Destiny quest] Asmodians -->
+	<portal npcid="203546" instance="true" race="ASMODIANS">
+		<entrypoint mapid="220010000" x="1111.6" y="1716.6" z="270.6" race="ASMODIANS"/>
+		<exitpoint mapid="320070000" x="257.5292" y="245" z="129"/>
+	</portal>
 	<!-- ABYSS GATES -->
 	
 	<!-- Verteron to Abyss -->

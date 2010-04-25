@@ -21,6 +21,7 @@ import java.sql.Timestamp;
 import com.aionemu.gameserver.model.gameobjects.Letter;
 import com.aionemu.gameserver.model.gameobjects.player.Mailbox;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.model.gameobjects.player.PlayerCommonData;
 
 /**
  * @author kosyachok
@@ -41,4 +42,6 @@ public abstract class MailDAO implements IDFactoryAwareDAO
 	public abstract void storeMailbox(Player player);
 	
 	public abstract boolean deleteLetter(int letterId);
+
+	public abstract void updateOfflineMailCounter(PlayerCommonData recipientCommonData);
 }

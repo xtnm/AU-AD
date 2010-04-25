@@ -115,6 +115,7 @@ public class _2017TrespassersattheObservatory extends QuestHandler
 		return false;
 	}
 	
+	@Override
 	public boolean onKillEvent(QuestEnv env)
 	{
 		Player player = env.getPlayer();

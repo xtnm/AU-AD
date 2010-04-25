@@ -100,6 +100,7 @@ public class _2015TaketheInitiative extends QuestHandler
 		return false;
 	}
 
+	@Override
 	public boolean onKillEvent(QuestEnv env)
 	{
 		Player player = env.getPlayer();

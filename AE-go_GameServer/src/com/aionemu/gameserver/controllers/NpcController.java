@@ -51,6 +51,7 @@ import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.restrictions.RestrictionsManager;
 import com.aionemu.gameserver.utils.MathUtil;
 import com.aionemu.gameserver.utils.PacketSendUtility;
+import com.google.inject.internal.Nullable;
 
 /**
  * This class is for controlling Npc's
@@ -113,7 +114,7 @@ public class NpcController extends CreatureController<Npc>
 	}
 
 	@Override
-	public void onDie(Creature lastAttacker)
+	public void onDie(@Nullable Creature lastAttacker)
 	{
 		super.onDie(lastAttacker);
 		Npc owner = getOwner();
@@ -127,12 +128,15 @@ public class NpcController extends CreatureController<Npc>
 		if(lastAttacker == null)
 			lastAttacker = owner.getAggroList().getMostHated();// TODO based on damage;
 
-		this.doReward(lastAttacker);
-		
-		Creature master = lastAttacker.getMaster();
-		if(master instanceof Player)
+		if(lastAttacker != null)
 		{
-			this.doDrop((Player) master);
+			this.doReward(lastAttacker);
+			
+			Creature master = lastAttacker.getMaster();
+			if(master instanceof Player)
+			{
+				this.doDrop((Player) master);
+			}
 		}
 		
 		owner.getAi().handleEvent(Event.DIED);
@@ -174,6 +178,7 @@ public class NpcController extends CreatureController<Npc>
 	/**
 	 * Handle dialog
 	 */
+	@Override
 	public void onDialogSelect(int dialogId, final Player player, int questId)
 	{
 

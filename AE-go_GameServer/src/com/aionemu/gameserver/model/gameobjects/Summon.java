@@ -172,6 +172,7 @@ public class Summon extends Creature
 	/**
 	 * @return NpcObjectType.SUMMON
 	 */
+	@Override
 	public NpcObjectType getNpcObjectType()
 	{
 		return NpcObjectType.SUMMON;

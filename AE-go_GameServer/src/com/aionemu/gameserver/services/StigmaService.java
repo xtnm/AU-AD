@@ -55,6 +55,13 @@ public class StigmaService
 			}
 			
 			int skillId = stigmaInfo.getSkillid();
+			int shardCount = stigmaInfo.getShard();
+			if (player.getInventory().getItemCountByItemId(141000001) < shardCount)
+			{
+				log.info("[AUDIT]Possible client hack player: "+player.getName());
+				return;
+			}
+			player.getInventory().removeFromBagByItemId(141000001, shardCount);
 			SkillListEntry skill = new SkillListEntry(skillId, stigmaInfo.getSkilllvl(), PersistentState.NOACTION);
 			player.getSkillList().addSkill(skill);
 			PacketSendUtility.sendPacket(player, new SM_SKILL_LIST(skill, 1300401));
@@ -85,7 +92,21 @@ public class StigmaService
 		List<Item> equippedItems = player.getEquipment().getEquippedItems();
 		for(Item item : equippedItems)
 		{
-			notifyEquipAction(player, item);
+			if(item.getItemTemplate().isStigma())
+			{
+				Stigma stigmaInfo = item.getItemTemplate().getStigma();
+				
+				if(stigmaInfo == null)
+				{
+					log.warn("Stigma info missing for item: " + item.getItemTemplate().getTemplateId());
+					return;
+				}
+				
+				int skillId = stigmaInfo.getSkillid();
+				SkillListEntry skill = new SkillListEntry(skillId, stigmaInfo.getSkilllvl(), PersistentState.NOACTION);
+				player.getSkillList().addSkill(skill);
+				PacketSendUtility.sendPacket(player, new SM_SKILL_LIST(skill, 0));
+			}
 		}
 	}
 }

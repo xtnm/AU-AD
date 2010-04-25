@@ -165,6 +165,7 @@ public class PlayerLifeStats extends CreatureLifeStats<Player>
 	 * 
 	 * @return the currentFp
 	 */
+	@Override
 	public int getCurrentFp()
 	{
 		return this.currentFp;
@@ -192,6 +193,7 @@ public class PlayerLifeStats extends CreatureLifeStats<Player>
 	 * @param value
 	 * @return
 	 */
+	@Override
 	public int increaseFp(int value)
 	{
 		if(value == getMaxFp())

@@ -1,91 +1,93 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!--  Abysses d'Astéria by Salvator -->
+<!--
+	This file is part of aion-unique <aion-unique.org>.
+
+	aion-unique is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	aion-unique is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
+	
+	Asteria Chamber
+	
+ -->
 <spawns>
-    <!-- Dakaer Trooper -->
-    <spawn map="300050000" npcid="214753" pool="8" interval="105">
-        <object x="531.5824" y="558.0013" z="197.99992" h="65"/>
-        <object x="518.09766" y="573.60254" z="197.875" h="12"/>
-		<object x="528.2807" y="588.6446" z="199.49588" h="90"/>
-		<object x="532.9481" y="663.70886" z="190.3079" h="60"/>
-        <object x="532.5223" y="672.9156" z="190.30792" h="60"/>
-        <object x="516.7156" y="672.9285" z="190.30792" h="119"/>
-        <object x="516.572" y="663.2966" z="190.3079" h="0"/>
-		<object x="553.79944" y="568.7486" z="198.84357" h="61"/>
-    </spawn>
-	<!-- Dakaer Ambusher -->
-    <spawn map="300050000" npcid="214757" pool="7" interval="105">
-        <object x="517.5282" y="540.81537" z="198.85353" h="28"/>
-		<object x="525.5662" y="487.79202" z="198.16876" h="90"/>
-        <object x="518.49347" y="487.24368" z="198.16876" h="90"/>
-		<object x="530.55524" y="465.34906" z="198.16876" h="61"/>
-        <object x="530.1213" y="452.58752" z="198.16878" h="59"/>
-        <object x="605.38165" y="561.75" z="204.95428" h="0"/>
-		<object x="634.39386" y="580.1501" z="204.04141" h="65"/>		
-    </spawn>
-	<!-- Dakaer Sniper -->
-	<spawn map="300050000" npcid="214758" pool="6" interval="105">
-        <object x="517.6957" y="556.53217" z="198.0" h="44"/>
-		<object x="532.76276" y="571.63763" z="197.875" h="101"/>
-		<object x="521.18475" y="639.90906" z="190.3079" h="31"/>
-        <object x="527.3639" y="540.7499" z="198.875" h="33"/>
-		<object x="553.3151" y="561.5611" z="198.64038" h="66"/>
-		<object x="606.35114" y="568.5346" z="204.95428" h="0"/>		
-    </spawn> 
-    <!-- Dakaer Sentinel -->
-	<spawn map="300050000" npcid="214752" pool="5" interval="105">
-        <object x="505.7048" y="578.96484" z="198.82875" h="67"/>
-        <object x="509.7368" y="564.72076" z="197.98941" h="50"/>
-        <object x="502.12408" y="547.6026" z="198.875" h="42"/>
-		<object x="543.38434" y="583.223" z="199.28796" h="76"/>
-		<object x="543.0407" y="549.048" z="198.875" h="45"/>
-    </spawn>
-	<!-- Dakaer Sharpshooter -->
-	<spawn map="300050000" npcid="215441" pool="4" interval="105">
-        <object x="626.0431" y="571.7933" z="204.04141" h="94"/>
-        <object x="635.80896" y="571.96106" z="204.04143" h="89"/>
-        <object x="636.0115" y="557.9821" z="204.04143" h="30"/>
-        <object x="626.1488" y="557.70074" z="204.04141" h="30"/>
-    </spawn>
-	<!-- Dakaer Scout -->
-    <spawn map="300050000" npcid="214756" pool="3" interval="105">
-        <object x="521.8871" y="514.7583" z="199.17746" h="30"/>
-		<object x="504.60062" y="457.37155" z="198.88844" h="26"/>
-		<object x="576.0816" y="565.107" z="202.102" h="60"/>
-    </spawn>
-	<!--  Dakaer Bloodbinder -->
-    <spawn map="300050000" npcid="214759" pool="3" interval="105">
-        <object x="514.3051" y="465.39523" z="198.16876" h="0"/>
-        <object x="514.27313" y="452.0098" z="198.16878" h="0"/>
-        <object x="540.3107" y="458.1362" z="198.88841" h="35"/>
-    </spawn>
-	<!-- Dakaer Geomancer -->
-    <spawn map="300050000" npcid="214755" pool="3" interval="105">
-        <object x="521.17975" y="588.5441" z="199.57373" h="88"/>
-        <object x="528.0887" y="640.2188" z="190.3079" h="31"/>
-		<object x="634.46625" y="548.0594" z="204.04141" h="53"/>
-    </spawn>
-	<!-- Dakaer Chanter -->
-	<spawn map="300050000" npcid="214762" pool="1" interval="105">
-        <object x="524.6021" y="701.2533" z="191.8985" h="90"/>
-    </spawn>
-	<!-- Dakaer Drakemaster -->
-    <spawn map="300050000" npcid="214764" pool="1" interval="105">
-        <object x="522.46075" y="427.23508" z="199.75935" h="29"/>
-    </spawn>
-	<!-- Dakaer Tactician -->
-    <spawn map="300050000" npcid="214766" pool="1" interval="105">
-        <object x="662.0129" y="565.1052" z="206.14534" h="59"/>
-    </spawn>
-	<!-- Jeweled Abyss Crate -->
-    <spawn map="300050000" npcid="700476" pool="1" interval="105">
-        <object x="522.0227" y="419.94986" z="199.75935" h="28"/>
-    </spawn>
-	<!-- Golden Abyss Crate -->
-    <spawn map="300050000" npcid="700475" pool="1" interval="105">
-        <object x="670.0896" y="564.9886" z="206.14532" h="59"/>
-    </spawn>
-	<!-- Magic Abyss Crate -->
-    <spawn map="300050000" npcid="700477" pool="1" interval="105">
-        <object x="524.8056" y="706.62756" z="191.8985" h="89"/>
-    </spawn>
+	<!-- Dakaer Chanter (Monster Elite lvl:45)-->
+	<spawn map="300050000" npcid="214762" pool="1" interval="300">
+		<object x="524.54254" y="701.3567" z="193.20665" h="48"/>
+	</spawn>
+	<!-- Dakaer Geomancer (Monster Elite lvl:45)-->
+	<spawn map="300050000" npcid="214755" pool="1" interval="300">
+		<object x="512.4427" y="553.4877" z="198.875" h="72"/>
+	</spawn>
+	<!-- Dakaer Sentinel (Monster Elite lvl:45)-->
+	<spawn map="300050000" npcid="214754" pool="12" interval="300">
+		<object x="532.216" y="672.61945" z="190.30792" h="97"/>
+		<object x="500.65256" y="563.99567" z="198.875" h="90"/>
+		<object x="527.5166" y="588.95514" z="199.5151" h="43"/>
+		<object x="532.217" y="663.90875" z="190.31084" h="82"/>
+		<object x="547.05695" y="566.85297" z="198.88063" h="29"/>
+		<object x="521.6533" y="589.00385" z="199.56226" h="56"/>
+		<object x="516.8752" y="663.8446" z="190.3079" h="8"/>
+		<object x="524.75415" y="592.3328" z="199.54623" h="5"/>
+		<object x="536.012" y="578.6328" z="198.66013" h="47"/>
+		<object x="516.8742" y="672.5553" z="190.30792" h="18"/>
+		<object x="527.863" y="641.4331" z="190.3079" h="26"/>
+		<object x="521.35315" y="641.36896" z="190.3079" h="7"/>
+	</spawn>
+	<!-- Dakaer Sentinel (Monster Elite lvl:45)-->
+	<spawn map="300050000" npcid="214752" pool="1" interval="300">
+		<object x="536.1047" y="553.52094" z="198.875" h="77"/>
+	</spawn>
+	<!-- Dakaer Sharpshooter (Monster Elite lvl:50)-->
+	<spawn map="300050000" npcid="215441" pool="15" interval="300">
+		<object x="602.3681" y="565.21423" z="205.13014" h="116"/>
+		<object x="618.7636" y="571.35583" z="204.04141" h="63"/>
+		<object x="582.84717" y="566.9907" z="203.3649" h="93"/>
+		<object x="635.1524" y="584.8381" z="204.04141" h="84"/>
+		<object x="635.0763" y="545.7252" z="204.04141" h="0"/>
+		<object x="607.1604" y="561.81854" z="204.95428" h="3"/>
+		<object x="553.4766" y="562.0919" z="198.65771" h="4"/>
+		<object x="621.33765" y="550.1246" z="204.04141" h="64"/>
+		<object x="647.09906" y="559.10175" z="204.04143" h="87"/>
+		<object x="607.1955" y="568.49426" z="204.95428" h="4"/>
+		<object x="553.4002" y="568.16797" z="198.82498" h="12"/>
+		<object x="582.8422" y="562.19806" z="203.15746" h="45"/>
+		<object x="649.0004" y="551.08716" z="204.04141" h="31"/>
+		<object x="648.7005" y="579.8145" z="204.04143" h="59"/>
+		<object x="621.5512" y="580.5797" z="204.04141" h="62"/>
+	</spawn>
+	<!-- Dakaer Sniper (Monster Elite lvl:45)-->
+	<spawn map="300050000" npcid="214758" pool="11" interval="300">
+		<object x="518.42535" y="539.418" z="198.83862" h="96"/>
+		<object x="521.75" y="536.62164" z="199.15942" h="36"/>
+		<object x="514.46735" y="455.33246" z="198.16878" h="56"/>
+		<object x="524.76807" y="539.589" z="198.87494" h="53"/>
+		<object x="535.0434" y="441.706" z="198.88867" h="108"/>
+		<object x="509.53256" y="476.75595" z="198.88867" h="61"/>
+		<object x="529.98315" y="464.02164" z="198.16876" h="1"/>
+		<object x="518.9247" y="485.98087" z="198.16876" h="38"/>
+		<object x="529.94226" y="455.3204" z="198.16878" h="108"/>
+		<object x="525.4345" y="486.0281" z="198.16876" h="24"/>
+		<object x="514.50824" y="464.0337" z="198.16876" h="1"/>
+	</spawn>
+	<!-- Dakaer Tactician (Monster Hero lvl:45)-->
+	<spawn map="300050000" npcid="214766" pool="1" interval="14400">
+		<object x="522.30505" y="426.24008" z="199.75935" h="43"/>
+	</spawn>
+	<!-- Dakaer Trooper (Monster Elite lvl:45)-->
+	<spawn map="300050000" npcid="214753" pool="1" interval="300">
+		<object x="512.6229" y="578.61237" z="198.83673" h="114"/>
+	</spawn>
+	<!-- Ebonlord Kiriel (Named Mob Hero lvl:45)-->
+	<spawn map="300050000" npcid="215444" pool="1" interval="14400">
+		<object x="666.6549" y="565.21234" z="207.68857" h="101"/>
+	</spawn>
 </spawns>

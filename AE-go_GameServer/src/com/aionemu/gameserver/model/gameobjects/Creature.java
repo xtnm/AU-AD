@@ -16,6 +16,10 @@
  */
 package com.aionemu.gameserver.model.gameobjects;
 
+import java.util.Map;
+
+import javolution.util.FastMap;
+
 import org.apache.log4j.Logger;
 
 import com.aionemu.gameserver.ai.AI;
@@ -63,7 +67,7 @@ public abstract class Creature extends VisibleObject
 	private int seeState = CreatureSeeState.NORMAL.getId();
 	
 	private Skill castingSkill;
-	
+	private Map<Integer, Long> skillCoolDowns;
 	private int transformedModelId;
 	private ObserveController 	observeController;
 
@@ -483,5 +487,74 @@ public abstract class Creature extends VisibleObject
 	public Creature getMaster()
 	{
 		return this;
+	}
+	
+	/**
+	 * 
+	 * @param skillId
+	 * @return
+	 */
+	public boolean isSkillDisabled(int skillId)
+	{
+		if(skillCoolDowns == null)
+			return false;
+		
+		Long coolDown = skillCoolDowns.get(skillId);
+		if(coolDown == null)
+			return false;
+		
+		
+		if (coolDown < System.currentTimeMillis())
+		{
+			skillCoolDowns.remove(skillId);
+			return false;
+		}
+		
+		return true;
+	}
+	
+	/**
+	 * 
+	 * @param skillId
+	 * @return
+	 */
+	public long getCoolDown(int skillId)
+	{
+		if(skillCoolDowns == null || !skillCoolDowns.containsKey(skillId))
+			return 0;
+		
+		return skillCoolDowns.get(skillId);
+	}
+	
+	/**
+	 * 
+	 * @param skillId
+	 * @param time
+	 */
+	public void setCoolDown(int skillId, long time)
+	{
+		if(skillCoolDowns == null)
+			skillCoolDowns = new FastMap<Integer, Long>().shared();
+		
+		skillCoolDowns.put(skillId, time);
+	}
+
+	/**
+	 * @return the skillCoolDowns
+	 */
+	public Map<Integer, Long> getSkillCoolDowns()
+	{
+		return skillCoolDowns;
+	}
+	
+	/**
+	 * 
+	 * @param skillId
+	 */
+	public void removeCoolDown(int skillId)
+	{
+		if(skillCoolDowns == null)
+			return;
+		skillCoolDowns.remove(skillId);
 	}
 }

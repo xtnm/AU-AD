@@ -42,17 +42,17 @@ public class NpcGameStats extends CreatureGameStats<Npc>
 		NpcStatsTemplate nst = owner.getObjectTemplate().getStatsTemplate();
 
 		initStat(StatEnum.MAXHP, nst.getMaxHp()
-			+ Math.round((owner.getObjectTemplate().getHpGauge() * 1.5f) * (int) owner.getLevel()));
+			+ Math.round((owner.getObjectTemplate().getHpGauge() * 1.5f) * owner.getLevel()));
 		initStat(StatEnum.MAXMP, nst.getMaxMp());
 		// TODO: Npc Attack Speed
 		// initStat(StatEnum.ATTACK_SPEED, Math.round(nst.getAttackSpeed() * 1000));
 		initStat(StatEnum.ATTACK_SPEED, 2000);
-		initStat(StatEnum.PHYSICAL_DEFENSE, Math.round(((nst.getPdef() / (int) owner.getLevel()) - 1) * nst.getPdef()
-			+ 10 * (int) owner.getLevel()));
-		initStat(StatEnum.EVASION, Math.round(nst.getEvasion() * 2.3f + (int) owner.getLevel() * 10));
+		initStat(StatEnum.PHYSICAL_DEFENSE, Math.round(((nst.getPdef() / owner.getLevel()) - 1) * nst.getPdef()
+			+ 10 * owner.getLevel()));
+		initStat(StatEnum.EVASION, Math.round(nst.getEvasion() * 2.3f + owner.getLevel() * 10));
 		initStat(StatEnum.MAGICAL_RESIST, Math.round(nst.getMdef()));
 		initStat(StatEnum.MAIN_HAND_POWER, nst.getPower());
-		initStat(StatEnum.MAIN_HAND_ACCURACY, Math.round(nst.getAccuracy() * 2.3f + (int) owner.getLevel() * 10));
+		initStat(StatEnum.MAIN_HAND_ACCURACY, Math.round(nst.getAccuracy() * 2.3f + owner.getLevel() * 10));
 		initStat(StatEnum.MAIN_HAND_CRITICAL, Math.round(nst.getCrit()));
 		initStat(StatEnum.SPEED, Math.round(nst.getRunSpeedFight() * 1000));
 		

@@ -64,7 +64,7 @@ public class IteratorIteratorTest
 		IteratorIterator<Integer> it = new IteratorIterator<Integer>(map1.values());
 
 		int valNum = 0;
-		while (it.hasNext())
+		while(it.hasNext())
 		{
 			valNum++;
 			Integer v = it.next();
@@ -92,38 +92,39 @@ public class IteratorIteratorTest
 
 		List<String> li3 = new ArrayList<String>();
 		Collections.addAll(li3, "x");
-		
-		Collections.addAll(li, li1,li2,li3);
-		
-		
+
+		Collections.addAll(li, li1, li2, li3);
+
 		List<String> goodRes = new ArrayList<String>();
-		Collections.addAll(goodRes, "a","b","c","d","x");
-		
+		Collections.addAll(goodRes, "a", "b", "c", "d", "x");
+
 		List<String> res = new ArrayList<String>();
 		int count = 0;
 		IteratorIterator<String> it = new IteratorIterator<String>(li);
-		
+
 		while(it.hasNext())
 		{
 			count++;
 			res.add(it.next());
 		}
-		
+
 		Assert.assertTrue(goodRes.containsAll(res) && res.containsAll(goodRes));
 		Assert.assertEquals(count, 5);
 	}
+
 	@Test
 	public void nullTest()
 	{
 		List<List<String>> li = new ArrayList<List<String>>();
 		li.add(null);
-		
+
 		IteratorIterator<String> it = new IteratorIterator<String>(li);
-		
+
 		try
 		{
 			Assert.assertEquals(it.hasNext(), false);
-		}catch(Exception e)
+		}
+		catch(Exception e)
 		{
 			Assert.fail(e.getMessage());
 		}

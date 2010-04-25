@@ -66,10 +66,9 @@ public class EnchantItemAction extends AbstractItemAction
 				}
 				else
 				{
+					boolean result = xsp.getEnchantService().socketManastone(player, parentItem, targetItem);
 					PacketSendUtility.sendPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(), parentItem
-						.getObjectId(), parentItem.getItemTemplate().getTemplateId(), 0, 1, 0));
-					
-					xsp.getEnchantService().socketManastone(player, parentItem, targetItem);;
+						.getObjectId(), parentItem.getItemTemplate().getTemplateId(), 0, result ? 1 : 2, 0));
 				}
 			}
 		}, 5000);

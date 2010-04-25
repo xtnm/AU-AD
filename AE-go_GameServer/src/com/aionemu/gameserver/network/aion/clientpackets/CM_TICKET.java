@@ -16,6 +16,8 @@
  */
 package com.aionemu.gameserver.network.aion.clientpackets;
 
+import com.aionemu.commons.database.dao.DAOManager;
+import com.aionemu.gameserver.dao.TicketDAO;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.AionClientPacket;
@@ -73,6 +75,16 @@ public class CM_TICKET extends AionClientPacket
 	protected void runImpl()
 	{
 		Player player = getConnection().getActivePlayer();
-		PacketSendUtility.sendMessage(player, "Received ticket type=" + ticketType + " :: " + data);
+		String[] tckData = data.split("/", 3);
+		ticketTitle = tckData[0];
+		ticketMessage = tckData[1];
+		ticketAddData = tckData[2];
+		PacketSendUtility.sendMessage(player, "Votre requête a bien été enregistrée.");
+		DAOManager.getDAO(TicketDAO.class).insertTicket(ticketType, player, ticketTitle, ticketMessage, ticketAddData);
+		PacketSendUtility.sendMessage(player, "Type : " + ticketType);
+		PacketSendUtility.sendMessage(player, "Titre : " + ticketTitle);
+		PacketSendUtility.sendMessage(player, "Message : " + ticketMessage);
+		PacketSendUtility.sendMessage(player, "Info. supp. : " + ticketAddData);
+		
 	}
 }

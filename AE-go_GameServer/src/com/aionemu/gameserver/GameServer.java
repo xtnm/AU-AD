@@ -153,9 +153,7 @@ public class GameServer
 
 		SpawnEngine spawnEngine = injector.getInstance(SpawnEngine.class);
 		spawnEngine.setInjector(injector);
-		spawnEngine.spawnAll();
-		spawnEngine.addGameTimeHook();
-		
+		spawnEngine.spawnAll();	
 	}
 
 	private void initQuests()

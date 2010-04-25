@@ -1,8 +1,24 @@
-<!-- NPCs/Objects spawns by Atomix from http://aion.atomixro.com
-Thanks to Matej for helping me.
-map npcid pool interval
-object x y z h
-Reshanta -->
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+	This file is part of aion-unique <aion-unique.org>.
+
+	aion-unique is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	aion-unique is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
+	
+	Reshanta
+	@author Atomix (initial import)
+	@author_fix Youli (Based on Retail Spawn from last client)
+ -->
 <spawns>
 	<!-- "The History of Struggles Primum" (Object Normal lvl:1)-->
 	<spawn map="400010000" npcid="730129" pool="1" interval="295">
@@ -28,9 +44,9 @@ Reshanta -->
 	<spawn map="400010000" npcid="279023" pool="1" interval="295">
 		<object x="587.52057" y="1162.4762" z="2837.4785" h="0"/>
 	</spawn>
-	<!-- Ahin (NPC Elite lvl:50)-->
+	<!-- Ahin (NPC Elite lvl:50 Subtext: Soul Healer)-->
 	<spawn map="400010000" npcid="278004" pool="1" interval="295">
-		<object x="930.1859" y="3002.5618" z="1655.3525" h="0"/>
+		<object x="930.1859" y="3002.5618" z="1655.3525" h="44"/>
 	</spawn>
 	<!-- Ahsur (NPC Normal lvl:40)-->
 	<spawn map="400010000" npcid="263567" pool="1" interval="295">
@@ -52,25 +68,25 @@ Reshanta -->
 	<spawn map="400010000" npcid="278573" pool="1" interval="295">
 		<object x="2051.0" y="671.5" z="2842.6587" h="0"/>
 	</spawn>
-	<!-- Altak (NPC Elite lvl:50)-->
+	<!-- Altak (NPC Elite lvl:53 Subtext: Protector of Primum Legionary)-->
 	<spawn map="400010000" npcid="278041" pool="1" interval="295">
-		<object x="923.30774" y="2976.0676" z="1653.3513" h="0"/>
+		<object x="923.30774" y="2976.0676" z="1653.3513" h="14"/>
 	</spawn>
 	<!-- Altgard Teleport Device (Object Normal lvl:1)-->
 	<spawn map="400010000" npcid="730076" pool="1" interval="295">
 		<object x="1090.32" y="2963.23" z="1638.98" h="0"/>
 	</spawn>
-	<!-- Ammu (NPC Elite lvl:50)-->
+	<!-- Ammu (NPC Elite lvl:53 Subtext: Shadow Executor)-->
 	<spawn map="400010000" npcid="278068" pool="1" interval="295">
-		<object x="1110.8989" y="3125.7415" z="1613.5573" h="0"/>
+		<object x="1110.8989" y="3125.7415" z="1613.5573" h="76"/>
 	</spawn>
 	<!-- Amos (NPC Elite lvl:50)-->
 	<spawn map="400010000" npcid="278545" pool="1" interval="295">
 		<object x="2918.0027" y="947.50354" z="1539.6614" h="0"/>
 	</spawn>
-	<!-- Andraste (NPC Hero lvl:50)-->
+	<!-- Andraste (NPC Hero lvl:56)-->
 	<spawn map="400010000" npcid="278018" pool="1" interval="295">
-		<object x="1109.9662" y="2959.1184" z="1639.9261" h="0"/>
+		<object x="1109.9662" y="2959.1184" z="1639.9261" h="58"/>
 	</spawn>
 	<!-- Andros (NPC Elite lvl:50)-->
 	<spawn map="400010000" npcid="278063" pool="1" interval="295">
@@ -112,13 +128,17 @@ Reshanta -->
 	<spawn map="400010000" npcid="278548" pool="1" interval="295">
 		<object x="2879.88" y="1043.801" z="1527.9965" h="0"/>
 	</spawn>
-	<!-- Asmu (NPC Elite lvl:50)-->
+	<!-- Asmu (NPC Elite lvl:53 Subtext: Protector of Primum Legionary)-->
 	<spawn map="400010000" npcid="278043" pool="1" interval="295">
-		<object x="970.36017" y="2944.1387" z="1644.5327" h="0"/>
+		<object x="970.36017" y="2944.1387" z="1644.5327" h="104"/>
 	</spawn>
-	<!-- Bacht (NPC Normal lvl:45)-->
+	<!-- Bacht (NPC Normal lvl:45 Subtext: Armor)-->
 	<spawn map="400010000" npcid="278011" pool="1" interval="295">
-		<object x="971.6549" y="3030.1912" z="1641.6229" h="0"/>
+		<object x="971.78314" y="3029.9421" z="1641.6229" h="74"/>
+	</spawn>
+	<!-- Bakan (NPC Normal lvl:45 Subtext: Ancient Seal Administration Officer)-->
+	<spawn map="400010000" npcid="278145" pool="1" interval="295">
+		<object x="1030.0215" y="2867.6685" z="1636.1456" h="0"/>
 	</spawn>
 	<!-- Baoninerk (NPC Normal lvl:40)-->
 	<spawn map="400010000" npcid="279034" pool="1" interval="295">
@@ -140,21 +160,21 @@ Reshanta -->
 	<spawn map="400010000" npcid="730078" pool="1" interval="295">
 		<object x="953.91" y="2832.12" z="1639.48" h="0"/>
 	</spawn>
-	<!-- Bephax (NPC Normal lvl:45)-->
+	<!-- Bephax (NPC Normal lvl:45 Subtext: Accessry Distributor)-->
 	<spawn map="400010000" npcid="278135" pool="1" interval="295">
-		<object x="893.47906" y="2962.101" z="1641.652" h="0"/>
+		<object x="893.47906" y="2962.101" z="1641.652" h="16"/>
 	</spawn>
-	<!-- Berg (NPC Hero lvl:50)-->
+	<!-- Berg (NPC Hero lvl:53 Subtext: Shadow Judge)-->
 	<spawn map="400010000" npcid="278067" pool="1" interval="295">
-		<object x="1106.2758" y="3131.754" z="1613.3534" h="0"/>
+		<object x="1106.2758" y="3131.754" z="1613.3534" h="76"/>
 	</spawn>
 	<!-- Bihugud (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278021" pool="1" interval="295">
 		<object x="899.4045" y="2969.869" z="1653.4221" h="0"/>
 	</spawn>
-	<!-- Blir (NPC Elite lvl:50)-->
+	<!-- Blir (NPC Elite lvl:53 Subtext: Quatermaster)-->
 	<spawn map="400010000" npcid="278056" pool="1" interval="295">
-		<object x="963.1036" y="2844.232" z="1639.015" h="0"/>
+		<object x="963.1036" y="2844.232" z="1639.015" h="76"/>
 	</spawn>
 	<!-- Bokbor (NPC Elite lvl:50)-->
 	<spawn map="400010000" npcid="278046" pool="1" interval="295">
@@ -170,19 +190,27 @@ Reshanta -->
 	</spawn>
 	<!-- Bord (NPC Elite lvl:50)-->
 	<spawn map="400010000" npcid="278047" pool="1" interval="295">
-		<object x="1035.5076" y="2865.5676" z="1635.9048" h="0"/>
+		<object x="1035.4844" y="2862.1816" z="1635.9048" h="5"/>
 	</spawn>
 	<!-- Briallen (NPC Normal lvl:50)-->
 	<spawn map="400010000" npcid="278006" pool="1" interval="295">
 		<object x="1082.0891" y="2835.174" z="1636.7412" h="0"/>
 	</spawn>
-	<!-- Brinn (NPC Elite lvl:50)-->
+	<!-- Brinn (NPC Elite lvl:53)-->
 	<spawn map="400010000" npcid="278059" pool="1" interval="295">
 		<object x="1105.3967" y="2958.8337" z="1639.9261" h="0"/>
 	</spawn>
 	<!-- Brysa (NPC Normal lvl:50)-->
 	<spawn map="400010000" npcid="278130" pool="1" interval="295">
 		<object x="690.67377" y="2799.2156" z="1595.2247" h="0"/>
+	</spawn>
+	<!-- Buri (NPC Elite lvl:53 Subtext: Special Administration Officer)-->
+	<spawn map="400010000" npcid="279041" pool="1" interval="295">
+		<object x="1151.1495" y="2953.7239" z="1627.3613" h="4"/>
+	</spawn>
+	<!-- Byrgafa (NPC Normal lvl:45 Subtext: Ancient Icon Administration Officer)-->
+	<spawn map="400010000" npcid="278144" pool="1" interval="295">
+		<object x="1029.2314" y="2857.2805" z="1636.1456" h="11"/>
 	</spawn>
 	<!-- Calon (NPC Hero lvl:50)-->
 	<spawn map="400010000" npcid="278503" pool="1" interval="295">
@@ -292,9 +320,9 @@ Reshanta -->
 	<spawn map="400010000" npcid="278513" pool="1" interval="295">
 		<object x="2098.4836" y="754.39795" z="1568.9725" h="0"/>
 	</spawn>
-	<!-- Edvar (NPC Elite lvl:50)-->
+	<!-- Edvar (NPC Elite lvl:53 Subtext: Protector of Primum Legionary)-->
 	<spawn map="400010000" npcid="278028" pool="1" interval="295">
-		<object x="925.3237" y="2972.105" z="1646.3984" h="0"/>
+		<object x="925.3237" y="2972.105" z="1646.3984" h="14"/>
 	</spawn>
 	<!-- Elaione (NPC Elite lvl:48)-->
 	<spawn map="400010000" npcid="278572" pool="1" interval="295">
@@ -360,17 +388,21 @@ Reshanta -->
 	<spawn map="400010000" npcid="279038" pool="1" interval="295">
 		<object x="528.2805" y="1099.7347" z="2842.5654" h="0"/>
 	</spawn>
+	<!-- Fichte (NPC Normal lvl:50 Subtext: Greater Armor Distributor)-->
+	<spawn map="400010000" npcid="279051" pool="1" interval="295">
+		<object x="905.752" y="2960.3127" z="1641.652" h="44"/>
+	</spawn>
 	<!-- Flavius (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278512" pool="1" interval="295">
 		<object x="3011.4858" y="932.5121" z="1546.1272" h="0"/>
 	</spawn>
-	<!-- Fraiban (NPC Normal lvl:45)-->
+	<!-- Fraiban (NPC Normal lvl:45 Subtext: Weapons)-->
 	<spawn map="400010000" npcid="278010" pool="1" interval="295">
-		<object x="968.8937" y="3019.738" z="1641.6229" h="0"/>
+		<object x="969.22205" y="3019.7883" z="1641.6229" h="45"/>
 	</spawn>
-	<!-- Fyra (NPC Elite lvl:50)-->
+	<!-- Fyra (NPC Elite lvl:53 Subtext: Protector of Primum Legionary)-->
 	<spawn map="400010000" npcid="278055" pool="1" interval="295">
-		<object x="950.44366" y="2820.7634" z="1639.015" h="0"/>
+		<object x="950.44366" y="2820.7634" z="1639.015" h="30"/>
 	</spawn>
 	<!-- Gagrad (NPC Elite lvl:40)-->
 	<spawn map="400010000" npcid="278087" pool="1" interval="295">
@@ -380,17 +412,17 @@ Reshanta -->
 	<spawn map="400010000" npcid="278089" pool="1" interval="295">
 		<object x="2014.2562" y="3223.0188" z="1651.6461" h="0"/>
 	</spawn>
-	<!-- Ganud (NPC Elite lvl:50)-->
+	<!-- Ganud (NPC Elite lvl:53 Subtext: Protector of Primum Legionary)-->
 	<spawn map="400010000" npcid="278026" pool="1" interval="295">
-		<object x="949.0927" y="2971.6133" z="1646.3984" h="0"/>
+		<object x="949.0927" y="2971.6133" z="1646.3984" h="14"/>
 	</spawn>
 	<!-- Gaochinerk (NPC Normal lvl:40)-->
 	<spawn map="400010000" npcid="279024" pool="1" interval="295">
 		<object x="587.0" y="1155.0" z="2837.0" h="0"/>
 	</spawn>
-	<!-- Garantin (NPC Normal lvl:45)-->
+	<!-- Garantin (NPC Normal lvl:45 Subtext: Armor Distributor)-->
 	<spawn map="400010000" npcid="278133" pool="1" interval="295">
-		<object x="905.32306" y="2959.9514" z="1641.652" h="0"/>
+		<object x="904.8613" y="2959.5676" z="1641.652" h="44"/>
 	</spawn>
 	<!-- Garkbinerk (NPC Normal lvl:40)-->
 	<spawn map="400010000" npcid="279006" pool="1" interval="295">
@@ -436,9 +468,9 @@ Reshanta -->
 	<spawn map="400010000" npcid="278070" pool="1" interval="295">
 		<object x="2132.25" y="648.75" z="2843.1934" h="0"/>
 	</spawn>
-	<!-- Grunn (NPC Normal lvl:50)-->
+	<!-- Grunn (NPC Normal lvl:50 Subtext: Abyss Researcher)-->
 	<spawn map="400010000" npcid="278039" pool="1" interval="295">
-		<object x="908.9792" y="3017.65" z="1655.4409" h="0"/>
+		<object x="908.9792" y="3017.65" z="1655.4409" h="14"/>
 	</spawn>
 	<!-- Grus (NPC Normal lvl:50)-->
 	<spawn map="400010000" npcid="278540" pool="1" interval="295">
@@ -464,9 +496,9 @@ Reshanta -->
 	<spawn map="400010000" npcid="278571" pool="1" interval="295">
 		<object x="2847.4136" y="699.60187" z="1523.6433" h="0"/>
 	</spawn>
-	<!-- Haug (NPC Normal lvl:50)-->
+	<!-- Haug (NPC Normal lvl:50 Subtext: Daeva of Time and Space)-->
 	<spawn map="400010000" npcid="278040" pool="1" interval="295">
-		<object x="912.88184" y="3021.4285" z="1655.4788" h="0"/>
+		<object x="912.88184" y="3021.4285" z="1655.4788" h="76"/>
 	</spawn>
 	<!-- Heart Core (Object Normal lvl:1)-->
 	<spawn map="400010000" npcid="700310" pool="1" interval="295">
@@ -479,6 +511,10 @@ Reshanta -->
 	<!-- Heiron Teleport Tower (Object Normal lvl:1)-->
 	<spawn map="400010000" npcid="730075" pool="1" interval="295">
 		<object x="2970.3" y="1032.47" z="1534.02" h="26"/>
+	</spawn>
+	<!-- Henir (NPC Elite lvl:53 Subtext: Archon)-->
+	<spawn map="400010000" npcid="279042" pool="1" interval="295">
+		<object x="1150.5577" y="2957.363" z="1627.2649" h="4"/>
 	</spawn>
 	<!-- Hevonen (NPC Elite lvl:50)-->
 	<spawn map="400010000" npcid="278050" pool="1" interval="295">
@@ -496,13 +532,13 @@ Reshanta -->
 	<spawn map="400010000" npcid="278062" pool="1" interval="295">
 		<object x="1101.9111" y="2961.4758" z="1639.9261" h="0"/>
 	</spawn>
-	<!-- Hisui (NPC Hero lvl:50)-->
+	<!-- Hisui (NPC Hero lvl:58 Subtext: Red Hasia General)-->
 	<spawn map="400010000" npcid="278003" pool="1" interval="295">
-		<object x="934.6883" y="3004.787" z="1646.3984" h="0"/>
+		<object x="934.6883" y="3004.787" z="1646.3984" h="104"/>
 	</spawn>
-	<!-- Hogni (NPC Normal lvl:45)-->
+	<!-- Hogni (NPC Normal lvl:45 Subtext: Manastone Remover)-->
 	<spawn map="400010000" npcid="278022" pool="1" interval="295">
-		<object x="962.4991" y="3028.197" z="1653.3748" h="0"/>
+		<object x="962.44354" y="3028.1543" z="1653.3748" h="74"/>
 	</spawn>
 	<!-- Holm (NPC Elite lvl:50)-->
 	<spawn map="400010000" npcid="278034" pool="1" interval="295">
@@ -512,17 +548,21 @@ Reshanta -->
 	<spawn map="400010000" npcid="278569" pool="1" interval="295">
 		<object x="2872.9924" y="748.3974" z="1499.8989" h="0"/>
 	</spawn>
-	<!-- Huset (NPC Elite lvl:50)-->
+	<!-- Hubert (NPC Normal lvl:50 Subtext: Greater Weapon Distributor)-->
+	<spawn map="400010000" npcid="279050" pool="1" interval="295">
+		<object x="897.6812" y="2957.4314" z="1641.652" h="16"/>
+	</spawn>
+	<!-- Huset (NPC Elite lvl:53 Subtext: Protector of Primum Legionary)-->
 	<spawn map="400010000" npcid="278037" pool="1" interval="295">
-		<object x="919.61786" y="3006.424" z="1655.3525" h="0"/>
+		<object x="919.61786" y="3006.424" z="1655.3525" h="104"/>
 	</spawn>
 	<!-- Hwiath (NPC Hero lvl:50)-->
 	<spawn map="400010000" npcid="278015" pool="1" interval="295">
 		<object x="1596.6321" y="2951.1458" z="2943.2544" h="0"/>
 	</spawn>
-	<!-- Igla (NPC Elite lvl:50)-->
+	<!-- Igla (NPC Elite lvl:53 Subtext: Protector of Primum Legionary)-->
 	<spawn map="400010000" npcid="278027" pool="1" interval="295">
-		<object x="956.0651" y="2977.942" z="1646.3984" h="0"/>
+		<object x="956.0651" y="2977.942" z="1646.3984" h="76"/>
 	</spawn>
 	<!-- Ikarinerk (NPC Normal lvl:40)-->
 	<spawn map="400010000" npcid="279002" pool="1" interval="295">
@@ -540,9 +580,9 @@ Reshanta -->
 	<spawn map="400010000" npcid="278066" pool="1" interval="295">
 		<object x="1098.769" y="2965.5679" z="1639.9261" h="0"/>
 	</spawn>
-	<!-- Ivaldi (NPC Normal lvl:45)-->
+	<!-- Ivaldi (NPC Normal lvl:45 Subtext: Combat Administration Officer)-->
 	<spawn map="400010000" npcid="278138" pool="1" interval="295">
-		<object x="912.21594" y="3014.0835" z="1655.4788" h="0"/>
+		<object x="912.21594" y="3014.0835" z="1655.4788" h="14"/>
 	</spawn>
 	<!-- Jafnhar (NPC Normal lvl:40)-->
 	<spawn map="400010000" npcid="278137" pool="1" interval="295">
@@ -560,9 +600,9 @@ Reshanta -->
 	<spawn map="400010000" npcid="279009" pool="1" interval="295">
 		<object x="3393.4353" y="2435.5354" z="2767.624" h="0"/>
 	</spawn>
-	<!-- Jebal (NPC Hero lvl:50)-->
+	<!-- Jebal (NPC Hero lvl:58 Subtext: Thunder Shout General)-->
 	<spawn map="400010000" npcid="278002" pool="1" interval="295">
-		<object x="924.9031" y="2993.7935" z="1646.3984" h="0"/>
+		<object x="924.9031" y="2993.7935" z="1646.3984" h="104"/>
 	</spawn>
 	<!-- Jenirius (NPC Normal lvl:50)-->
 	<spawn map="400010000" npcid="278632" pool="1" interval="295">
@@ -571,6 +611,10 @@ Reshanta -->
 	<!-- Jielinlinerk (NPC Normal lvl:40)-->
 	<spawn map="400010000" npcid="279010" pool="1" interval="295">
 		<object x="3376.7114" y="2435.1123" z="2766.7607" h="0"/>
+	</spawn>
+	<!-- Juergen (NPC Elite lvl:50)-->
+	<spawn map="400010000" npcid="278147" pool="1" interval="295">
+		<object x="1061.7091" y="2891.2026" z="1636.1456" h="94"/>
 	</spawn>
 	<!-- Juimonmonerk (NPC Normal lvl:40)-->
 	<spawn map="400010000" npcid="279037" pool="1" interval="295">
@@ -594,39 +638,39 @@ Reshanta -->
 	</spawn>
 	<!-- Kirhenzar (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278009" pool="1" interval="295">
-		<object x="895.4948" y="3006.578" z="1646.4252" h="0"/>
+		<object x="895.4948" y="3006.578" z="1646.4252" h="104"/>
 	</spawn>
-	<!-- Kirten (NPC Elite lvl:50)-->
+	<!-- Kirten (NPC Elite lvl:53 Subtext: Protector of Primum Legionary)-->
 	<spawn map="400010000" npcid="278029" pool="1" interval="295">
-		<object x="911.5762" y="2987.0198" z="1646.3984" h="0"/>
+		<object x="911.521" y="2986.893" z="1646.3984" h="14"/>
 	</spawn>
 	<!-- Klasa (NPC Elite lvl:50)-->
 	<spawn map="400010000" npcid="278065" pool="1" interval="295">
 		<object x="1098.1178" y="2961.8928" z="1639.9261" h="0"/>
 	</spawn>
-	<!-- Koag (NPC Normal lvl:45)-->
+	<!-- Koag (NPC Normal lvl:45 Subtext: Potion Supplies)-->
 	<spawn map="400010000" npcid="278008" pool="1" interval="295">
-		<object x="967.02936" y="3023.4062" z="1653.3748" h="0"/>
+		<object x="966.8801" y="3023.2302" z="1653.3748" h="75"/>
 	</spawn>
-	<!-- Kohrunerk (NPC Normal lvl:40)-->
+	<!-- Kohrunerk (NPC Normal lvl:40 Subtext: Inventor)-->
 	<spawn map="400010000" npcid="279005" pool="1" interval="295">
-		<object x="3376.0156" y="2449.369" z="2766.7747" h="0"/>
+		<object x="3376.0156" y="2449.369" z="2766.7747" h="32"/>
 	</spawn>
-	<!-- Kolga (NPC Normal lvl:45)-->
+	<!-- Kolga (NPC Normal lvl:45 Subtext: Magical Administration Officer)-->
 	<spawn map="400010000" npcid="278139" pool="1" interval="295">
-		<object x="916.1186" y="3017.862" z="1655.4788" h="0"/>
+		<object x="916.1186" y="3017.862" z="1655.4788" h="76"/>
 	</spawn>
-	<!-- Konto (NPC Elite lvl:50)-->
+	<!-- Konto (NPC Elite lvl:53 Subtext: Abyss Messenger)-->
 	<spawn map="400010000" npcid="278035" pool="1" interval="295">
-		<object x="943.0" y="2999.0" z="1646.3984" h="0"/>
+		<object x="942.88947" y="2999.0703" z="1646.3984" h="76"/>
 	</spawn>
-	<!-- Koska (NPC Elite lvl:50)-->
+	<!-- Koska (NPC Elite lvl:53 Subtext: Shadow Executor)-->
 	<spawn map="400010000" npcid="278069" pool="1" interval="295">
-		<object x="1110.4987" y="3131.3577" z="1614.5654" h="0"/>
+		<object x="1110.4987" y="3131.3577" z="1614.5654" h="76"/>
 	</spawn>
-	<!-- Krog (NPC Elite lvl:50)-->
+	<!-- Krog (NPC Elite lvl:53 Subtext: Protector of Primum Legionary)-->
 	<spawn map="400010000" npcid="278030" pool="1" interval="295">
-		<object x="943.06976" y="3016.4524" z="1646.3984" h="0"/>
+		<object x="943.06976" y="3016.4524" z="1646.3984" h="76"/>
 	</spawn>
 	<!-- Kuenunerk (NPC Normal lvl:40)-->
 	<spawn map="400010000" npcid="279019" pool="1" interval="295">
@@ -644,17 +688,17 @@ Reshanta -->
 	<spawn map="400010000" npcid="279035" pool="1" interval="295">
 		<object x="549.881" y="1098.7899" z="2842.5654" h="0"/>
 	</spawn>
-	<!-- Lakadi (NPC Hero lvl:50)-->
+	<!-- Lakadi (NPC Hero lvl:56 Subtext: Thunder Shout Centurion)-->
 	<spawn map="400010000" npcid="278019" pool="1" interval="295">
-		<object x="1110.0995" y="2961.5269" z="1639.9261" h="0"/>
+		<object x="1110.0995" y="2961.5269" z="1639.9261" h="58"/>
 	</spawn>
 	<!-- Lamia (NPC Elite lvl:40)-->
 	<spawn map="400010000" npcid="278592" pool="1" interval="295">
 		<object x="3214.0" y="1837.0" z="1471.1229" h="0"/>
 	</spawn>
-	<!-- Larbig (NPC Elite lvl:50)-->
+	<!-- Larbig (NPC Elite lvl:53 Subtext: Protector of Primum Legionary)-->
 	<spawn map="400010000" npcid="278031" pool="1" interval="295">
-		<object x="957.23004" y="3001.7917" z="1646.3984" h="0"/>
+		<object x="957.23004" y="3001.7917" z="1646.3984" h="76"/>
 	</spawn>
 	<!-- Larentia (NPC Normal lvl:50)-->
 	<spawn map="400010000" npcid="278633" pool="1" interval="295">
@@ -668,15 +712,15 @@ Reshanta -->
 	<spawn map="400010000" npcid="278525" pool="1" interval="295">
 		<object x="2979.1462" y="859.82007" z="1546.1357" h="0"/>
 	</spawn>
-	<!-- Lawusan (NPC Normal lvl:45)-->
+	<!-- Lawusan (NPC Normal lvl:45 Subtext: Shield)-->
 	<spawn map="400010000" npcid="278012" pool="1" interval="295">
-		<object x="961.0129" y="3027.926" z="1641.6229" h="0"/>
+		<object x="961.42053" y="3027.9062" z="1641.6229" h="107"/>
 	</spawn>
-	<!-- Leban (NPC Normal lvl:50)-->
+	<!-- Leban (NPC Normal lvl:50 Subtext : Abyss Training Instructor)-->
 	<spawn map="400010000" npcid="278126" pool="1" interval="295">
 		<object x="747.73047" y="2817.9038" z="1594.2247" h="0"/>
 	</spawn>
-	<!-- Lisya (NPC Hero lvl:50)-->
+	<!-- Lisya (NPC Hero lvl:56 Subtext : Red Hasia Centurion)-->
 	<spawn map="400010000" npcid="278016" pool="1" interval="295">
 		<object x="746.47296" y="2833.6995" z="1594.2247" h="0"/>
 	</spawn>
@@ -696,9 +740,9 @@ Reshanta -->
 	<spawn map="400010000" npcid="279029" pool="1" interval="295">
 		<object x="2139.412" y="1949.8035" z="1595.7191" h="0"/>
 	</spawn>
-	<!-- Lukea (NPC Normal lvl:45)-->
+	<!-- Lukea (NPC Normal lvl:45 Subtext: Consumable Items Contibutor)-->
 	<spawn map="400010000" npcid="278134" pool="1" interval="295">
-		<object x="897.7615" y="2968.566" z="1641.652" h="0"/>
+		<object x="897.4988" y="2968.5684" z="1641.652" h="104"/>
 	</spawn>
 	<!-- Lycian (NPC Elite lvl:40)-->
 	<spawn map="400010000" npcid="278624" pool="1" interval="295">
@@ -837,6 +881,10 @@ Reshanta -->
 	<spawn map="400010000" npcid="278635" pool="1" interval="295">
 		<object x="2937.0774" y="883.9252" z="1539.1194" h="0"/>
 	</spawn>
+	<!-- Neurath (NPC Normal lvl:45 Subtext: Stigma Master)-->
+	<spawn map="400010000" npcid="279044" pool="1" interval="295">
+		<object x="952.8034" y="3024.2341" z="1653.3748" h="119"/>
+	</spawn>
 	<!-- Nidhoggr (NPC Elite lvl:48)-->
 	<spawn map="400010000" npcid="278078" pool="1" interval="295">
 		<object x="1593.1548" y="2947.6362" z="2943.2544" h="0"/>
@@ -857,7 +905,7 @@ Reshanta -->
 	<spawn map="400010000" npcid="278076" pool="1" interval="295">
 		<object x="1650.625" y="2887.5" z="1666.804" h="0"/>
 	</spawn>
-	<!-- Nug (NPC Elite lvl:50)-->
+	<!-- Nug (NPC Elite lvl:53)-->
 	<spawn map="400010000" npcid="278061" pool="1" interval="295">
 		<object x="1101.2759" y="2958.033" z="1639.9261" h="0"/>
 	</spawn>
@@ -871,32 +919,29 @@ Reshanta -->
 	<spawn map="400010000" npcid="278509" pool="1" interval="295">
 		<object x="2972.7554" y="859.0395" z="1546.1357" h="0"/>
 	</spawn>
-	<!-- Obelisk (Object Normal lvl:3)-->
+	<!-- Obelisk (Object Normal lvl:3 Elyos Side)-->
 	<spawn map="400010000" npcid="730071" pool="1" interval="295">
-		<object x="2984.6853" y="901.9103" z="1546.3339" h="0"/>
+		<object x="2984.6853" y="901.9103" z="1546.3339" h="105"/>
 	</spawn>
-	<!-- Obelisk (Object Normal lvl:3)-->
+	<!-- Obelisk (Object Normal lvl:3 Asmo side)-->
 	<spawn map="400010000" npcid="700401" pool="1" interval="295">
-		<object x="928.667" y="3000.3533" z="1656.4113" h="0"/>
+		<object x="928.667" y="3000.3533" z="1655.3849" h="44"/>
+	</spawn>
+	<!-- Ockham (NPC Elite lvl:53 Subtext: Special Administration Officer)-->
+	<spawn map="400010000" npcid="279054" pool="1" interval="295">
+		<object x="963.9701" y="2824.0989" z="1639.015" h="31"/>
 	</spawn>
 	<!-- Old Stone Statue (Object Normal lvl:1)-->
 	<spawn map="400010000" npcid="700479" pool="1" interval="295">
 		<object x="2712.53" y="757.89" z="2854.295" h="81"/>
 	</spawn>
-	<!-- Ozur (NPC Normal lvl:45)-->
+	<!-- Ozur (NPC Normal lvl:45 Subtext: Combat Administration Officer)-->
 	<spawn map="400010000" npcid="278023" pool="1" interval="295">
-		<object x="904.4367" y="3022.5898" z="1655.4788" h="0"/>
+		<object x="904.4367" y="3022.5898" z="1655.4788" h="14"/>
 	</spawn>
-	<!-- Pareten (NPC Elite lvl:50)-->
+	<!-- Pareten (NPC Elite lvl:53 Subtext: Protector of Primum Legionary)-->
 	<spawn map="400010000" npcid="278038" pool="1" interval="295">
-		<object x="923.2789" y="3009.7087" z="1655.3525" h="0"/>
-	</spawn>
-	<!-- Part of the Crashed Dredgion (Object Normal lvl:1)-->
-	<spawn map="400010000" npcid="700304" pool="4" interval="295">
-		<object x="1657.96" y="1815.41" z="2891.67" h="78"/>
-		<object x="1665.95" y="1833.47" z="2891.67" h="15"/>
-		<object x="1600.02" y="1842.4" z="2892.4" h="86"/>
-		<object x="1605.43" y="1842.15" z="2894.15" h="94"/>
+		<object x="923.2789" y="3009.7087" z="1655.3525" h="104"/>
 	</spawn>
 	<!-- Pellatino (NPC Elite lvl:50)-->
 	<spawn map="400010000" npcid="278563" pool="1" interval="295">
@@ -926,9 +971,9 @@ Reshanta -->
 	<spawn map="400010000" npcid="730143" pool="1" interval="295">
 		<object x="847.67" y="2732.66" z="1567.86" h="0"/>
 	</spawn>
-	<!-- Protector Agnar (NPC Hero lvl:50)-->
+	<!-- Protector Agnar (NPC Hero lvl:56)-->
 	<spawn map="400010000" npcid="278140" pool="1" interval="295">
-		<object x="925.0" y="3004.0" z="1655.3525" h="0"/>
+		<object x="925.0" y="3004.0" z="1655.3525" h="104"/>
 	</spawn>
 	<!-- Protector Galinthias (NPC Hero lvl:50)-->
 	<spawn map="400010000" npcid="278642" pool="1" interval="295">
@@ -938,13 +983,13 @@ Reshanta -->
 	<spawn map="400010000" npcid="278641" pool="1" interval="295">
 		<object x="2967.0" y="884.0" z="1546.0916" h="0"/>
 	</spawn>
-	<!-- Protector Lynia (NPC Hero lvl:50)-->
+	<!-- Protector Lynia (NPC Hero lvl:56)-->
 	<spawn map="400010000" npcid="278142" pool="1" interval="295">
-		<object x="915.0" y="2990.0" z="1653.3513" h="0"/>
+		<object x="915.0" y="2990.0" z="1653.3513" h="104"/>
 	</spawn>
-	<!-- Protector Skoegul (NPC Hero lvl:50)-->
+	<!-- Protector Skoegul (NPC Hero lvl:56)-->
 	<spawn map="400010000" npcid="278141" pool="1" interval="295">
-		<object x="939.0" y="3014.0" z="1653.3513" h="0"/>
+		<object x="939.0" y="3014.0" z="1653.3513" h="104"/>
 	</spawn>
 	<!-- Protector Uranos (NPC Hero lvl:50)-->
 	<spawn map="400010000" npcid="278640" pool="1" interval="295">
@@ -978,9 +1023,9 @@ Reshanta -->
 	<spawn map="400010000" npcid="278533" pool="1" interval="295">
 		<object x="2967.034" y="907.40356" z="1538.9121" h="0"/>
 	</spawn>
-	<!-- Rid (NPC Elite lvl:50)-->
+	<!-- Rid (NPC Elite lvl:53 Subtext: Protector of Primum Legionary)-->
 	<spawn map="400010000" npcid="278058" pool="1" interval="295">
-		<object x="964.9935" y="2842.6016" z="1639.015" h="0"/>
+		<object x="964.9935" y="2842.6016" z="1639.015" h="76"/>
 	</spawn>
 	<!-- Riudona (NPC Hero lvl:50)-->
 	<spawn map="400010000" npcid="278013" pool="1" interval="295">
@@ -989,6 +1034,10 @@ Reshanta -->
 	<!-- Rota (NPC Elite lvl:40)-->
 	<spawn map="400010000" npcid="278104" pool="1" interval="295">
 		<object x="2720.0552" y="484.20645" z="2884.883" h="0"/>
+	</spawn>
+	<!-- Rukbar (NPC Hero lvl:53 SubText: Special Administration Officer)-->
+	<spawn map="400010000" npcid="279055" pool="1" interval="295">
+		<object x="1075.8945" y="2955.1174" z="1638.5487" h="117"/>
 	</spawn>
 	<!-- Rupus (NPC Elite lvl:50)-->
 	<spawn map="400010000" npcid="278543" pool="1" interval="295">
@@ -1002,13 +1051,37 @@ Reshanta -->
 	<spawn map="400010000" npcid="278626" pool="1" interval="295">
 		<object x="2669.3872" y="792.3599" z="2728.2046" h="0"/>
 	</spawn>
-	<!-- Scoda (NPC Elite lvl:50)-->
+	<!-- Scoda (NPC Elite lvl:55 Subtext: Protector of Divinity)-->
 	<spawn map="400010000" npcid="278036" pool="1" interval="295">
-		<object x="903.51373" y="3027.7507" z="1655.4115" h="0"/>
+		<object x="903.51373" y="3027.7507" z="1655.4115" h="104"/>
 	</spawn>
 	<!-- Semotor (NPC Hero lvl:50)-->
 	<spawn map="400010000" npcid="278017" pool="1" interval="295">
 		<object x="938.90485" y="2833.043" z="1639.015" h="0"/>
+	</spawn>
+	<!-- Senior Guard Soldier (NPC Hero lvl:50 Subtext: Primum Special Guard)-->
+	<spawn map="400010000" npcid="277067" pool="1" interval="295">
+		<object x="1158.0682" y="2959.386" z="1626.3993" h="5"/>
+	</spawn>
+	<!-- Senior Guard Soldier (NPC Hero lvl:50 Subtext: Primum Special Guard)-->
+	<spawn map="400010000" npcid="277067" pool="1" interval="295">
+		<object x="1161.969" y="2950.0254" z="1626.323" h="85"/>
+	</spawn>
+	<!-- Senior Guard Soldier (NPC Hero lvl:50 Subtext: Primum Special Guard)-->
+	<spawn map="400010000" npcid="277067" pool="1" interval="295">
+		<object x="1152.9037" y="2943.4644" z="1627.6036" h="8"/>
+	</spawn>
+	<!-- Senior Guard Soldier (NPC Hero lvl:50 Subtext: Primum Special Guard)-->
+	<spawn map="400010000" npcid="277067" pool="1" interval="295">
+		<object x="1171.5554" y="2948.8323" z="1625.2598" h="23"/>
+	</spawn>
+	<!-- Senior Guard Soldier (NPC Hero lvl:50 Subtext: Primum Special Guard)-->
+	<spawn map="400010000" npcid="277067" pool="1" interval="295">
+		<object x="1168.9896" y="2938.1482" z="1626.1583" h="29"/>
+	</spawn>
+	<!-- Senior Guard Soldier (NPC Hero lvl:50 Subtext: Primum Special Guard)-->
+	<spawn map="400010000" npcid="277067" pool="1" interval="295">
+		<object x="1160.4937" y="2928.7766" z="1627.4735" h="31"/>
 	</spawn>
 	<!-- Septimus (NPC Hero lvl:50)-->
 	<spawn map="400010000" npcid="278515" pool="1" interval="295">
@@ -1023,9 +1096,9 @@ Reshanta -->
 		<object x="2552.7" y="1563.43" z="2976.12" h="0"/>
 		<object x="2534.92" y="1571.44" z="2955.87" h="0"/>
 	</spawn>
-	<!-- Shue (NPC Elite lvl:50)-->
+	<!-- Shue (NPC Elite lvl:53 Subtext: Protector of Primum Legionary)-->
 	<spawn map="400010000" npcid="278044" pool="1" interval="295">
-		<object x="982.1324" y="2955.1526" z="1644.658" h="0"/>
+		<object x="982.1324" y="2955.1526" z="1644.658" h="104"/>
 	</spawn>
 	<!-- Siana (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278007" pool="1" interval="295">
@@ -1051,6 +1124,10 @@ Reshanta -->
 	<spawn map="400010000" npcid="278608" pool="1" interval="295">
 		<object x="554.4413" y="3323.6592" z="2819.1716" h="0"/>
 	</spawn>
+	<!-- Sirr (NPC Normal lvl:45 Subtext: Combat class Stigma distributor)-->
+	<spawn map="400010000" npcid="279052" pool="1" interval="295">
+		<object x="910.11346" y="2964.0374" z="1641.652" h="44"/>
+	</spawn>
 	<!-- Siunatu (NPC Elite lvl:50)-->
 	<spawn map="400010000" npcid="278552" pool="1" interval="295">
 		<object x="2900.5396" y="1025.0577" z="1527.9968" h="0"/>
@@ -1063,17 +1140,17 @@ Reshanta -->
 	<spawn map="400010000" npcid="278519" pool="1" interval="295">
 		<object x="2973.7786" y="1054.5046" z="1534.853" h="0"/>
 	</spawn>
-	<!-- Spade (NPC Normal lvl:45)-->
+	<!-- Spade (NPC Normal lvl:45 Subtext: Magic class Stigma distributor)-->
 	<spawn map="400010000" npcid="278024" pool="1" interval="295">
-		<object x="908.6474" y="3026.2231" z="1655.4786" h="0"/>
+		<object x="908.6474" y="3026.2231" z="1655.4786" h="76"/>
 	</spawn>
 	<!-- Spyr (NPC Elite lvl:50)-->
 	<spawn map="400010000" npcid="278054" pool="1" interval="295">
 		<object x="938.98816" y="2830.067" z="1639.015" h="0"/>
 	</spawn>
-	<!-- Steinkel (NPC Normal lvl:45)-->
+	<!-- Steinkel (NPC Normal lvl:45 Subtext: Weapon Distributor)-->
 	<spawn map="400010000" npcid="278132" pool="1" interval="295">
-		<object x="898.0262" y="2957.0647" z="1641.652" h="0"/>
+		<object x="898.4749" y="2956.2773" z="1641.652" h="16"/>
 	</spawn>
 	<!-- Stone Gate (Object Normal lvl:1)-->
 	<spawn map="400010000" npcid="700456" pool="1" interval="295">
@@ -1085,9 +1162,21 @@ Reshanta -->
 		<object x="2698.18" y="667.48" z="2924.5" h="0"/>
 		<object x="2660.57" y="628.61" z="2926.62" h="0"/>
 	</spawn>
-	<!-- Svekk (NPC Elite lvl:50)-->
+	<!-- Svekk (NPC Elite lvl:53)-->
 	<spawn map="400010000" npcid="278060" pool="1" interval="295">
 		<object x="1105.926" y="2962.9172" z="1639.9261" h="0"/>
+	</spawn>
+	<!-- Tamed Worg (NPC Elite lvl:56 Near Semator)-->
+	<spawn map="400010000" npcid="203362" pool="1" interval="295">
+		<object x="938.87225" y="2834.487" z="1639.015" h="0"/>
+	</spawn>
+	<!-- Tamed worg (NPC Hero lvl:56 Near Andraste)-->
+	<spawn map="400010000" npcid="203362" pool="1" interval="295">
+		<object x="1110.008" y="2957.8389" z="1638.5487" h="58"/>
+	</spawn>
+	<!-- Tamed worg (NPC Hero lvl:56 Near Lisya)-->
+	<spawn map="400010000" npcid="203362" pool="1" interval="295">
+		<object x="746.4496" y="2834.5022" z="1594.2247" h="4"/>
 	</spawn>
 	<!-- Tellus (NPC Normal lvl:50)-->
 	<spawn map="400010000" npcid="278506" pool="1" interval="295">
@@ -1121,13 +1210,17 @@ Reshanta -->
 	<spawn map="400010000" npcid="278514" pool="1" interval="295">
 		<object x="2053.4148" y="663.0917" z="2843.2544" h="0"/>
 	</spawn>
+	<!-- Tiele (NPC Elite lvl:50)-->
+	<spawn map="400010000" npcid="278146" pool="1" interval="295">
+		<object x="1051.4071" y="2891.4111" z="1636.1456" h="90"/>
+	</spawn>
 	<!-- Tienshunerk (NPC Normal lvl:40)-->
 	<spawn map="400010000" npcid="279015" pool="1" interval="295">
 		<object x="3219.4438" y="1838.3135" z="1470.3427" h="0"/>
 	</spawn>
 	<!-- Tierunerk (NPC Normal lvl:40)-->
 	<spawn map="400010000" npcid="279004" pool="1" interval="295">
-		<object x="924.3342" y="3033.8494" z="1646.445" h="0"/>
+		<object x="924.3342" y="3033.8494" z="1646.445" h="104"/>
 	</spawn>
 	<!-- Tigraki Crystal (Object Normal lvl:1)-->
 	<spawn map="400010000" npcid="700307" pool="14" interval="295">
@@ -1154,21 +1247,21 @@ Reshanta -->
 	<spawn map="400010000" npcid="279000" pool="1" interval="295">
 		<object x="1647.69" y="1137.23" z="1497.8003" h="0"/>
 	</spawn>
-	<!-- Undran (NPC Elite lvl:50)-->
+	<!-- Undran (NPC Elite lvl:53 Subtext: Protector of Primum Legionary)-->
 	<spawn map="400010000" npcid="278057" pool="1" interval="295">
-		<object x="953.1041" y="2820.6255" z="1639.015" h="0"/>
+		<object x="953.1041" y="2820.6255" z="1639.015" h="30"/>
 	</spawn>
-	<!-- Valter (NPC Elite lvl:50)-->
+	<!-- Valter (NPC Elite lvl:53 Subtext: Protector of Primum Legionary)-->
 	<spawn map="400010000" npcid="278042" pool="1" interval="295">
-		<object x="953.2505" y="3003.9714" z="1653.3513" h="0"/>
+		<object x="953.2505" y="3003.9714" z="1653.3513" h="76"/>
 	</spawn>
 	<!-- Vanadis (NPC Normal lvl:41)-->
 	<spawn map="400010000" npcid="278125" pool="1" interval="295">
 		<object x="3394.1216" y="1278.3026" z="2682.9067" h="0"/>
 	</spawn>
-	<!-- Vare (NPC Elite lvl:50)-->
+	<!-- Vare (NPC Elite lvl:53)-->
 	<spawn map="400010000" npcid="278048" pool="1" interval="295">
-		<object x="1066.5555" y="2883.5437" z="1635.9315" h="0"/>
+		<object x="1057.1765" y="2886.4636" z="1635.9315" h="86"/>
 	</spawn>
 	<!-- Veden (NPC Elite lvl:50)-->
 	<spawn map="400010000" npcid="278049" pool="1" interval="295">
@@ -1180,7 +1273,7 @@ Reshanta -->
 	</spawn>
 	<!-- Vernio (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278025" pool="1" interval="295">
-		<object x="899.7809" y="3010.492" z="1646.4252" h="0"/>
+		<object x="899.7809" y="3010.492" z="1646.4252" h="104"/>
 	</spawn>
 	<!-- Verteron Teleport Tower (Object Normal lvl:1)-->
 	<spawn map="400010000" npcid="730073" pool="1" interval="295">
@@ -1198,9 +1291,13 @@ Reshanta -->
 	<spawn map="400010000" npcid="278051" pool="1" interval="295">
 		<object x="1036.4974" y="2845.4163" z="1635.9048" h="0"/>
 	</spawn>
-	<!-- Votan (NPC Hero lvl:50)-->
+	<!-- Votan (NPC Hero lvl:60 Subtext: Governor of Reshanta)-->
 	<spawn map="400010000" npcid="278001" pool="1" interval="295">
-		<object x="924.42926" y="3004.8965" z="1646.751" h="0"/>
+		<object x="924.42926" y="3004.8965" z="1646.751" h="104"/>
+	</spawn>
+	<!-- Warberg (NPC Normal lvl:45 Subtext: Magic Class Stigma Contributor)-->
+	<spawn map="400010000" npcid="279053" pool="1" interval="295">
+		<object x="900.9409" y="2973.0742" z="1641.652" h="104"/>
 	</spawn>
 	<!-- Wing Core (Object Normal lvl:1)-->
 	<spawn map="400010000" npcid="700311" pool="2" interval="295">
@@ -1209,7 +1306,7 @@ Reshanta -->
 	</spawn>
 	<!-- Yourunerk (NPC Normal lvl:40)-->
 	<spawn map="400010000" npcid="279003" pool="1" interval="295">
-		<object x="920.03235" y="3029.8052" z="1646.445" h="0"/>
+		<object x="920.03235" y="3029.8052" z="1646.445" h="104"/>
 	</spawn>
 	<!-- Yuditio (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278500" pool="1" interval="295">

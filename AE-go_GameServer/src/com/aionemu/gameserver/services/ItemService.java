@@ -425,6 +425,11 @@ public class ItemService
 				}
 			}
 
+			if(inventory.isFull() && count > 0)
+			{
+				PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.STR_MSG_DICE_INVEN_ERROR);
+			}
+
 			return count;
 		}
 	}
@@ -637,6 +642,36 @@ public class ItemService
 				break;
 			}
 			counter++;
+		}
+		
+		PacketSendUtility.sendPacket(player, new SM_UPDATE_ITEM(item));	
+	}
+
+	/**
+	 * @param player
+	 * @param item
+	 */
+	public void removeAllManastone(Player player, Item item)
+	{
+		if(item == null)
+		{
+			log.warn("Item not found during manastone remove");
+			return;
+		}
+		
+		if(!item.hasManaStones())
+		{
+			return;
+		}
+		
+		Set<ManaStone> itemStones = item.getItemStones();
+		Iterator<ManaStone> iterator = itemStones.iterator();
+		while(iterator.hasNext())
+		{
+			ManaStone manaStone = iterator.next();
+			manaStone.setPersistentState(PersistentState.DELETED);
+			iterator.remove();
+			DAOManager.getDAO(ItemStoneListDAO.class).store(Collections.singleton(manaStone));
 		}
 		
 		PacketSendUtility.sendPacket(player, new SM_UPDATE_ITEM(item));	

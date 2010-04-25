@@ -40,8 +40,7 @@ import com.aionemu.gameserver.world.World;
  *
  */
 public class MySQL5FriendListDAO extends FriendListDAO
-{
-	
+{	
 	public static final String LOAD_QUERY = "SELECT * FROM `friends` WHERE `player`=?";
 	
 	public static final String ADD_QUERY = "INSERT INTO `friends` (`player`,`friend`) VALUES (?, ?)";
@@ -71,7 +70,6 @@ public class MySQL5FriendListDAO extends FriendListDAO
 					Friend friend = new Friend(pcd);
 					friends.add(friend);
 				}
-				
 			}
 			
 			@Override
@@ -90,11 +88,9 @@ public class MySQL5FriendListDAO extends FriendListDAO
 	 */
 	@Override
 	public boolean addFriends(final Player player, final Player friend)
-	{
-		
+	{	
 		return DB.insertUpdate(ADD_QUERY, new IUStH()
-		{
-			
+		{		
 			@Override
 			public void handleInsertUpdate(PreparedStatement ps) throws SQLException
 			{
@@ -114,8 +110,7 @@ public class MySQL5FriendListDAO extends FriendListDAO
 	
 	@Override
 	public boolean delFriends(final int playerOid, final int friendOid) 
-	{
-		
+	{	
 		return DB.insertUpdate(DEL_QUERY, new IUStH() 
 		{
 				
@@ -143,6 +138,4 @@ public class MySQL5FriendListDAO extends FriendListDAO
 	{
 		return MySQL5DAOUtils.supports(s, i, i1);
 	}
-
-
 }

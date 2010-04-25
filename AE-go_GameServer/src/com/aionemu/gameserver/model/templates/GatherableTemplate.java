@@ -178,6 +178,7 @@ public class GatherableTemplate extends VisibleObjectTemplate
     /**
 	 * @return the nameId
 	 */
+	@Override
 	public int getNameId()
 	{
 		return nameId;
