@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
  */
-package quest.verteron;
+package quest.veteron;
 
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
@@ -26,13 +26,13 @@ import com.aionemu.gameserver.questEngine.model.QuestStatus;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 
 /**
- * @author MrPoke + Dune11
- *
+ * @author Rhys2002 + MrPoke for Original code i massacred..
+ * 
  */
 public class _1018MarkofVengeance extends QuestHandler
 {
-	private final static int	questId	= 1018;
-	
+	private final static int questId = 1018;
+
 	public _1018MarkofVengeance()
 	{
 		super(questId);
@@ -41,8 +41,8 @@ public class _1018MarkofVengeance extends QuestHandler
 	@Override
 	public void register()
 	{
-		qe.setNpcQuestData(203098).addOnTalkEvent(questId);
 		qe.addQuestLvlUp(questId);
+		qe.setNpcQuestData(203098).addOnTalkEvent(questId);
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class _1018MarkofVengeance extends QuestHandler
 	{
 		Player player = env.getPlayer();
 		QuestState qs = player.getQuestStateList().getQuestState(questId);
-		if(qs == null || player.getCommonData().getLevel() < 19 || qs.getStatus() != QuestStatus.LOCKED)
+		if(qs == null || player.getCommonData().getLevel() < 13 || qs.getStatus() != QuestStatus.LOCKED)
 			return false;
 		qs.setStatus(QuestStatus.START);
 		updateQuestStatus(player, qs);
@@ -60,8 +60,8 @@ public class _1018MarkofVengeance extends QuestHandler
 	@Override
 	public boolean onDialogEvent(QuestEnv env)
 	{
-		Player player = env.getPlayer();
-		QuestState qs = player.getQuestStateList().getQuestState(questId);
+		 Player player = env.getPlayer();
+		 QuestState qs = player.getQuestStateList().getQuestState(questId);
 		if(qs == null)
 			return false;
 
@@ -69,46 +69,31 @@ public class _1018MarkofVengeance extends QuestHandler
 		int targetId = 0;
 		if(env.getVisibleObject() instanceof Npc)
 			targetId = ((Npc) env.getVisibleObject()).getNpcId();
-
-		if(qs.getStatus() == QuestStatus.START)
+		
+		if(targetId == 203098 && qs.getStatus() == QuestStatus.START)
 		{
-			if(targetId == 203098)
+			switch(env.getDialogId())
 			{
-				switch(env.getDialogId())
-				{
-					case 25:
-						 if(var == 0)
+				case 25:
+					if(var == 0)
+						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1011);
+				case 33:
+					if(collectItemCheck(env))
 						{
-							int itemCount = player.getInventory().getItemCountByItemId(182200020);
-							if(itemCount >= 50)
-							{
-								if(env.getDialogId() == 33)
-								{
-									return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1694);
-								}
-								else
-								{
-									player.getInventory().removeFromBagByItemId(182200020, itemCount);
-									qs.setQuestVarById(0, var + 1);
-									qs.setStatus(QuestStatus.REWARD);
-									updateQuestStatus(player, qs);
-									PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject()
-										.getObjectId(), 10));
-									return true;
-								}
-							}
-							else
-								return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1779);
+						qs.setQuestVarById(0, var + 1);
+						qs.setStatus(QuestStatus.REWARD);
+						updateQuestStatus(player, qs);
+						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 5);
 						}
-						return true;
-				}
-			}
+					else
+						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1097);	
+			}		
 		}
 		else if(qs.getStatus() == QuestStatus.REWARD)
 		{
 			if(targetId == 203098)
 				return defaultQuestEndDialog(env);
 		}
-		return false;
-	}	
+		return false;		
+	}
 }

@@ -633,7 +633,7 @@
 	<!-- 1378 Supplies for Hylas -->
 	<report_to id="1378" start_npc_id="203948" end_npc_id="203995" item_id="182201339"/>
 
-	<!-- TODO: 1040 Scouting the Scouts -->
+	<!-- 1040 Scouting the Scouts handled by script -->
 
 	<!-- TODO: 1373 Water The rapy -->
 

@@ -132,7 +132,7 @@
 	
 	<!-- TODO: Krall Book -->
 	
-	<!-- TODO: Odium in the Dukaki Settlement -->
+	<!-- 1014 Odium in the Dukaki Settlement handled by script -->
 	
 	<!-- Retrieving Supplies -->
 	<item_collecting start_npc_id="203126" action_item_id="700117" id="1155"/>

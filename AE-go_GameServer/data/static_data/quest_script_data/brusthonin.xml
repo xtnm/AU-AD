@@ -18,7 +18,7 @@
         <!-- TODO: A Bloom in Brusthonin -->
         
         <!-- A Bribe for the Chieftain -->
-        <item_collecting id="4084" start_npc_id="205164" />
+        <item_collecting id="4084" start_npc_id="205170" end_npc_id="205164" />
         
         <!-- A Family's Memento -->
         <item_collecting id="4091" start_npc_id="205156" />
@@ -26,10 +26,12 @@
         <!-- TODO: A Light Through the Trees -->
         
         <!-- A Thing for Ginseng -->
-        <item_collecting id="4047" start_npc_id="205167" />
+    	<monster_hunt id="4047" start_npc_id="205167">
+            <monster_infos npc_id="214589" var_id="0" max_kill="1" />
+        </monster_hunt>
         
         <!-- Abandoned Mithril -->
-        <item_collecting id="4099" start_npc_id="205149" />
+        <item_collecting id="4099" start_npc_id="205149" action_item_id="700451" />
         
         <!-- TODO: Alas, Poor Groznak -->
         
@@ -44,10 +46,10 @@
         </monster_hunt>
         
         <!-- Brohum's Ornamental Bow //need test-->
-        <item_collecting id="4050" start_npc_id="205172" />
+        <item_collecting id="4050" start_npc_id="205166" end_npc_id="205172"/>
         
         <!-- BuBu Mep's Wedding Preparation -->
-        <item_collecting id="4046" start_npc_id="205172" />
+        <item_collecting id="4046" start_npc_id="205172" action_item_id="700386" />
         
         <!-- TODO: Bukmir's Old Friend -->
         
