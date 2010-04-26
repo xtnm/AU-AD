@@ -59,8 +59,10 @@ public class MySQL5PlayerEffectsDAO extends PlayerEffectsDAO
 					int skillId = rset.getInt("skill_id");
 					int skillLvl = rset.getInt("skill_lvl");
 					int currentTime = rset.getInt("current_time");
-					long reuseDelay = rset.getLong("reuse_delay");				
-					player.getEffectController().addSavedEffect(skillId, skillLvl, currentTime);
+					long reuseDelay = rset.getLong("reuse_delay");
+					
+					if(currentTime > 0)
+						player.getEffectController().addSavedEffect(skillId, skillLvl, currentTime);
 					
 					if(reuseDelay > System.currentTimeMillis())
 						player.setCoolDown(skillId, reuseDelay);
