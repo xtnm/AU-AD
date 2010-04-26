@@ -282,7 +282,7 @@ public class QuestService
 		return true;
 	}
 
-	public boolean collectItemCheck(QuestEnv env)
+	public boolean collectItemCheck(QuestEnv env, boolean removeItem)
 	{
 		Player player = env.getPlayer();
 		int id = env.getQuestId();
@@ -298,6 +298,13 @@ public class QuestService
 			int count = player.getInventory().getItemCountByItemId(collectItem.getItemId());
 			if(collectItem.getCount() > count)
 				return false;
+		}
+		if (removeItem)
+		{
+			for (CollectItem collectItem : collectItems.getCollectItem())
+			{
+				player.getInventory().removeFromBagByItemId(collectItem.getItemId(), collectItem.getCount());
+			}
 		}
 		return true;
 	}

@@ -78,7 +78,7 @@ public class _2003TreasureOfTheDeceased extends QuestHandler
 					case 33:
 						if(var == 1)
 						{
-							if(collectItemCheck(env))
+							if(questService.collectItemCheck(env, true))
 							{
 								qs.setStatus(QuestStatus.REWARD);
 								updateQuestStatus(player, qs);

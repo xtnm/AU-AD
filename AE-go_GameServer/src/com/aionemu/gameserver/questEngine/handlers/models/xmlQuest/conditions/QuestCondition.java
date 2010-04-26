@@ -14,43 +14,43 @@
  * You should have received a copy of the GNU General Public License
  * along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aionemu.gameserver.questEngine.handlers.models;
 
-import java.util.List;
+package com.aionemu.gameserver.questEngine.handlers.models.xmlQuest.conditions;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
-import javolution.util.FastMap;
-
-import com.aionemu.gameserver.questEngine.QuestEngine;
-import com.aionemu.gameserver.questEngine.handlers.template.MonsterHunt;
+import com.aionemu.gameserver.questEngine.model.ConditionOperation;
+import com.aionemu.gameserver.questEngine.model.QuestEnv;
 
 /**
- * @author MrPoke
+ * @author Mr. Poke
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "MonsterHuntData", propOrder = { "monsterInfos" })
-public class MonsterHuntData extends QuestScriptData
+@XmlType(name = "QuestCondition")
+@XmlSeeAlso( { NpcIdCondition.class, DialogIdCondition.class, PcInventoryCondition.class, QuestVarCondition.class,
+	QuestStatusCondition.class })
+public abstract class QuestCondition
 {
 
-	@XmlElement(name = "monster_infos", required = true)
-	protected List<MonsterInfo>	monsterInfos;
-	@XmlAttribute(name = "start_npc_id")
-	protected int					startNpcId;
+	@XmlAttribute(required = true)
+	protected ConditionOperation	op;
 
-	@Override
-	public void register(QuestEngine questEngine)
+	/**
+	 * Gets the value of the op property.
+	 * 
+	 * @return possible object is {@link ConditionOperation }
+	 * 
+	 */
+	public ConditionOperation getOp()
 	{
-		FastMap<Integer, MonsterInfo> monsterInfo = new FastMap<Integer, MonsterInfo>();
-		for(MonsterInfo mi : monsterInfos)
-			monsterInfo.put(mi.getNpcId(), mi);
-		MonsterHunt template = new MonsterHunt(id, startNpcId, monsterInfo);
-		questEngine.addQuestHandler(template);
+		return op;
 	}
+
+	public abstract boolean doCheck(QuestEnv env);
 
 }

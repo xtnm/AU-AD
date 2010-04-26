@@ -88,7 +88,7 @@ public class WorkOrders extends QuestHandler
 				return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 5);
 			else if (env.getDialogId() == 17)
 			{
-				if (collectItemCheck(env))
+				if (questService.collectItemCheck(env, true))
 				{
 					//TODO: Random rewards
 					qs.setStatus(QuestStatus.COMPLETE);

@@ -85,7 +85,7 @@ public class _2006HitThemWhereitHurts extends QuestHandler
 						case 33:
 							if(var == 1)
 							{
-								if(collectItemCheck(env))
+								if(questService.collectItemCheck(env, true))
 								{
 									qs.setStatus(QuestStatus.REWARD);
 									updateQuestStatus(player, qs);

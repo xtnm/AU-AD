@@ -16,6 +16,7 @@
  */
 package com.aionemu.gameserver.controllers;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.Future;
 
@@ -33,6 +34,7 @@ import com.aionemu.gameserver.model.gameobjects.player.SkillListEntry;
 import com.aionemu.gameserver.model.gameobjects.state.CreatureState;
 import com.aionemu.gameserver.model.gameobjects.state.CreatureVisualState;
 import com.aionemu.gameserver.model.gameobjects.stats.PlayerGameStats;
+import com.aionemu.gameserver.model.templates.quest.QuestItems;
 import com.aionemu.gameserver.model.templates.stats.PlayerStatsTemplate;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS;
@@ -616,5 +618,8 @@ public class PlayerController extends CreatureController<Player>
 		PacketSendUtility.broadcastPacket(master, new SM_EMOTION(summon, 30));
 	}
 	
-	
+	public boolean addItems(int itemId, int count)
+	{
+		return sp.getItemService().addItems(getOwner(), Collections.singletonList(new QuestItems(itemId, count)));
+	}
 }

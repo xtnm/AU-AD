@@ -157,7 +157,7 @@ public class _1002RequestoftheElim extends QuestHandler
 				case 33:
 					if(var == 6)
 					{
-						if(collectItemCheck(env))
+						if(questService.collectItemCheck(env, true))
 						{
 							qs.setQuestVarById(0, 12);
 							updateQuestStatus(player, qs);

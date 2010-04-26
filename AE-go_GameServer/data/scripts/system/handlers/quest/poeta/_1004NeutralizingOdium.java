@@ -169,7 +169,7 @@ public class _1004NeutralizingOdium extends QuestHandler
 						}
 					case 33:
 						{
-							if(collectItemCheck(env))
+							if(questService.collectItemCheck(env, true))
 							{
 								qs.setQuestVarById(0, 11);
 								updateQuestStatus(player, qs);

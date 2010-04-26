@@ -19,9 +19,6 @@ package com.aionemu.gameserver.questEngine.handlers;
 import com.aionemu.gameserver.dataholders.QuestsData;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
-import com.aionemu.gameserver.model.templates.QuestTemplate;
-import com.aionemu.gameserver.model.templates.quest.CollectItem;
-import com.aionemu.gameserver.model.templates.quest.CollectItems;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_DIALOG_WINDOW;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_QUEST_STEP;
 import com.aionemu.gameserver.questEngine.QuestEngine;
@@ -67,26 +64,6 @@ public class QuestHandler
 	{
 		PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(objId, dialogId, questId));
 		return true;
-	}
-	
-	public boolean collectItemCheck (QuestEnv env)
-	{
-		Player player = env.getPlayer();
-		if(questService.collectItemCheck(env))
-		{
-			QuestTemplate template = questsData.getQuestById(env.getQuestId());
-			CollectItems collectItems = template.getCollectItems();
-			if (collectItems != null)
-			{
-				for (CollectItem collectItem : collectItems.getCollectItem())
-				{
-					player.getInventory().removeFromBagByItemId(collectItem.getItemId(), collectItem.getCount());
-				}
-			}
-			return true;
-		}
-		else
-			return false;
 	}
 
 	public boolean defaultQuestStartDialog(QuestEnv env)

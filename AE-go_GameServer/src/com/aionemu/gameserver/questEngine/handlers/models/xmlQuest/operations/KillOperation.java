@@ -14,41 +14,37 @@
  * You should have received a copy of the GNU General Public License
  * along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aionemu.gameserver.questEngine.handlers.models;
+
+package com.aionemu.gameserver.questEngine.handlers.models.xmlQuest.operations;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
-import com.aionemu.gameserver.questEngine.QuestEngine;
+import com.aionemu.gameserver.model.gameobjects.Npc;
+import com.aionemu.gameserver.questEngine.model.QuestEnv;
+import com.aionemu.gameserver.services.QuestService;
 
 /**
- * @author MrPoke
+ * @author Mr. Poke
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "QuestScriptData")
-@XmlSeeAlso( {  ReportToData.class,
-				MonsterHuntData.class,
-				ItemCollectingData.class,
-				WorkOrdersData.class,
-				XmlQuestData.class })
-public abstract class QuestScriptData
+@XmlType(name = "KillOperation")
+public class KillOperation extends QuestOperation
 {
 
-	@XmlAttribute(required = true)
-	protected int	id;
-
-	/**
-	 * Gets the value of the id property.
-	 * 
+	/*
+	 * (non-Javadoc)
+	 * @seecom.aionemu.gameserver.questEngine.handlers.models.xmlQuest.operations.QuestOperation#doOperate(com.aionemu.
+	 * gameserver.services.QuestService, com.aionemu.gameserver.questEngine.model.QuestEnv)
 	 */
-	public int getId()
+	@Override
+	public void doOperate(QuestService questService, QuestEnv env)
 	{
-		return id;
+		if (env.getVisibleObject() instanceof Npc)
+			((Npc)env.getVisibleObject()).getController().onDie(env.getPlayer());
+
 	}
 
-	public abstract void register(QuestEngine questEngine);
 }

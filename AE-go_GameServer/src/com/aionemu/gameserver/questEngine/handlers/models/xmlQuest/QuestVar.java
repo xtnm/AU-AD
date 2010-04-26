@@ -14,43 +14,44 @@
  * You should have received a copy of the GNU General Public License
  * along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aionemu.gameserver.questEngine.handlers.models;
+
+package com.aionemu.gameserver.questEngine.handlers.models.xmlQuest;
 
 import java.util.List;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-import javolution.util.FastMap;
-
-import com.aionemu.gameserver.questEngine.QuestEngine;
-import com.aionemu.gameserver.questEngine.handlers.template.MonsterHunt;
+import com.aionemu.gameserver.questEngine.model.QuestEnv;
+import com.aionemu.gameserver.questEngine.model.QuestState;
+import com.aionemu.gameserver.services.QuestService;
 
 /**
- * @author MrPoke
+ * @author Mr. Poke
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "MonsterHuntData", propOrder = { "monsterInfos" })
-public class MonsterHuntData extends QuestScriptData
+@XmlType(name = "QuestVar", propOrder = { "npc" })
+public class QuestVar
 {
 
-	@XmlElement(name = "monster_infos", required = true)
-	protected List<MonsterInfo>	monsterInfos;
-	@XmlAttribute(name = "start_npc_id")
-	protected int					startNpcId;
+	protected List<QuestNpc>	npc;
+	@XmlAttribute(required = true)
+	protected int				value;
 
-	@Override
-	public void register(QuestEngine questEngine)
+	public boolean operate(QuestService questService, QuestEnv env, QuestState qs)
 	{
-		FastMap<Integer, MonsterInfo> monsterInfo = new FastMap<Integer, MonsterInfo>();
-		for(MonsterInfo mi : monsterInfos)
-			monsterInfo.put(mi.getNpcId(), mi);
-		MonsterHunt template = new MonsterHunt(id, startNpcId, monsterInfo);
-		questEngine.addQuestHandler(template);
+		int var = -1;
+		if (qs != null)
+			var = qs.getQuestVars().getQuestVars();
+		if (var != value)
+			return false;
+		for (QuestNpc questNpc : npc)
+		{
+			if (questNpc.operate(questService, env, qs))
+				return true;
+		}
+		return false;
 	}
-
 }

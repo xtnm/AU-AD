@@ -105,7 +105,7 @@ public class _2018ReconstructingImpetusium extends QuestHandler
 						case 33:
 							if (var == 7)
 							{
-								if(collectItemCheck(env))
+								if(questService.collectItemCheck(env, true))
 								{
 									qs.setStatus(QuestStatus.REWARD);
 									updateQuestStatus(player, qs);
@@ -125,7 +125,7 @@ public class _2018ReconstructingImpetusium extends QuestHandler
 					{
 						case -1:
 							env.setQuestId(questId);
-							if(var == 5 && questService.collectItemCheck(env))
+							if(var == 5 && questService.collectItemCheck(env, false))
 							{
 								final int targetObjectId = env.getVisibleObject().getObjectId();
 								PacketSendUtility.sendPacket(player, new SM_USE_OBJECT(player.getObjectId(), targetObjectId, 3000,
@@ -191,7 +191,7 @@ public class _2018ReconstructingImpetusium extends QuestHandler
 				break;
 			case 210752:
 				var = qs.getQuestVarById(0);
-				if (var == 5 && questService.collectItemCheck(env))
+				if (var == 5 && questService.collectItemCheck(env, false))
 				{
 					qs.setQuestVarById(0, 7);
 					updateQuestStatus(player, qs);

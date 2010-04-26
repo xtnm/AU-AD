@@ -128,7 +128,7 @@ public class _2016FearThis extends QuestHandler
 						case 33:
 							if(var == 8)
 							{
-								if(collectItemCheck(env))
+								if(questService.collectItemCheck(env, true))
 								{
 									qs.setQuestVarById(0, var + 1);
 									updateQuestStatus(player, qs);

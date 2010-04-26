@@ -68,7 +68,7 @@ public class _2332MeatyTreats extends QuestHandler
 			{
 				if(env.getDialogId() == 25)
 				{
-					if(collectItemCheck(env))
+					if(questService.collectItemCheck(env, true))
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1352);
 					else
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1693);

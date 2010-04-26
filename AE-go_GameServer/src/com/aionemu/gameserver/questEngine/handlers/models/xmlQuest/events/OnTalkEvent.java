@@ -14,43 +14,42 @@
  * You should have received a copy of the GNU General Public License
  * along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aionemu.gameserver.questEngine.handlers.models;
+
+package com.aionemu.gameserver.questEngine.handlers.models.xmlQuest.events;
 
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-import javolution.util.FastMap;
-
-import com.aionemu.gameserver.questEngine.QuestEngine;
-import com.aionemu.gameserver.questEngine.handlers.template.MonsterHunt;
+import com.aionemu.gameserver.questEngine.handlers.models.xmlQuest.QuestVar;
+import com.aionemu.gameserver.questEngine.model.QuestEnv;
+import com.aionemu.gameserver.questEngine.model.QuestState;
+import com.aionemu.gameserver.services.QuestService;
 
 /**
- * @author MrPoke
+ * @author Mr. Poke
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "MonsterHuntData", propOrder = { "monsterInfos" })
-public class MonsterHuntData extends QuestScriptData
+@XmlType(name = "OnTalkEvent", propOrder = { "var" })
+public class OnTalkEvent extends QuestEvent
 {
 
-	@XmlElement(name = "monster_infos", required = true)
-	protected List<MonsterInfo>	monsterInfos;
-	@XmlAttribute(name = "start_npc_id")
-	protected int					startNpcId;
+	protected List<QuestVar>	var;
 
-	@Override
-	public void register(QuestEngine questEngine)
+	public boolean operate(QuestService questService, QuestEnv env)
 	{
-		FastMap<Integer, MonsterInfo> monsterInfo = new FastMap<Integer, MonsterInfo>();
-		for(MonsterInfo mi : monsterInfos)
-			monsterInfo.put(mi.getNpcId(), mi);
-		MonsterHunt template = new MonsterHunt(id, startNpcId, monsterInfo);
-		questEngine.addQuestHandler(template);
+		if(conditions == null || conditions.checkConditionOfSet(env))
+		{
+			QuestState qs = env.getPlayer().getQuestStateList().getQuestState(env.getQuestId());
+			for (QuestVar questVar : var)
+			{
+				if (questVar.operate(questService, env, qs))
+					return true;
+			}
+		}
+		return false;
 	}
-
 }

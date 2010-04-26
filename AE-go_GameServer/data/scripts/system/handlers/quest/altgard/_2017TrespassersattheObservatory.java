@@ -90,7 +90,7 @@ public class _2017TrespassersattheObservatory extends QuestHandler
 						case 33:
 							if (var == 7)
 							{
-								if(collectItemCheck(env))
+								if(questService.collectItemCheck(env, true))
 								{
 									qs.setStatus(QuestStatus.REWARD);
 									updateQuestStatus(player, qs);

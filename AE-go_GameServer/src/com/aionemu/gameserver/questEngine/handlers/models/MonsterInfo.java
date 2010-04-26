@@ -16,41 +16,64 @@
  */
 package com.aionemu.gameserver.questEngine.handlers.models;
 
-import java.util.List;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-
-import javolution.util.FastMap;
-
-import com.aionemu.gameserver.questEngine.QuestEngine;
-import com.aionemu.gameserver.questEngine.handlers.template.MonsterHunt;
 
 /**
  * @author MrPoke
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "MonsterHuntData", propOrder = { "monsterInfos" })
-public class MonsterHuntData extends QuestScriptData
+@XmlType(name = "MonsterInfo")
+public class MonsterInfo
 {
 
-	@XmlElement(name = "monster_infos", required = true)
-	protected List<MonsterInfo>	monsterInfos;
-	@XmlAttribute(name = "start_npc_id")
-	protected int					startNpcId;
+	@XmlAttribute(name = "var_id", required = true)
+	protected int		varId;
+	@XmlAttribute(name = "min_var_value")
+	protected Integer	minVarValue;
+	@XmlAttribute(name = "max_kill", required = true)
+	protected int		maxKill;
+	@XmlAttribute(name = "npc_id", required = true)
+	protected int		npcId;
 
-	@Override
-	public void register(QuestEngine questEngine)
+	/**
+	 * Gets the value of the varId property.
+	 * 
+	 */
+	public int getVarId()
 	{
-		FastMap<Integer, MonsterInfo> monsterInfo = new FastMap<Integer, MonsterInfo>();
-		for(MonsterInfo mi : monsterInfos)
-			monsterInfo.put(mi.getNpcId(), mi);
-		MonsterHunt template = new MonsterHunt(id, startNpcId, monsterInfo);
-		questEngine.addQuestHandler(template);
+		return varId;
 	}
 
+	/**
+	 * Gets the value of the minVarValue property.
+	 * 
+	 * @return possible object is {@link Integer }
+	 * 
+	 */
+	public Integer getMinVarValue()
+	{
+		return minVarValue;
+	}
+
+	/**
+	 * Gets the value of the maxKill property.
+	 * 
+	 */
+	public int getMaxKill()
+	{
+		return maxKill;
+	}
+
+	/**
+	 * Gets the value of the npcId property.
+	 * 
+	 */
+	public int getNpcId()
+	{
+		return npcId;
+	}
 }

@@ -388,6 +388,8 @@ public class QuestEngine
 	{
 		injector.injectMembers(questHandler);
 		questHandler.register();
+		if (questHandlers.containsKey(questHandler.getQuestId()))
+			log.warn("Duplicate quest: "+questHandler.getQuestId());
 		questHandlers.put(questHandler.getQuestId(), questHandler);
 	}
 	

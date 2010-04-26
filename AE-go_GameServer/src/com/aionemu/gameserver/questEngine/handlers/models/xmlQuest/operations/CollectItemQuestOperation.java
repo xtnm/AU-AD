@@ -14,9 +14,8 @@
  * You should have received a copy of the GNU General Public License
  * along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aionemu.gameserver.questEngine.handlers.models;
 
-import java.util.List;
+package com.aionemu.gameserver.questEngine.handlers.models.xmlQuest.operations;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -24,33 +23,35 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
-import javolution.util.FastMap;
-
-import com.aionemu.gameserver.questEngine.QuestEngine;
-import com.aionemu.gameserver.questEngine.handlers.template.MonsterHunt;
+import com.aionemu.gameserver.questEngine.model.QuestEnv;
+import com.aionemu.gameserver.services.QuestService;
 
 /**
- * @author MrPoke
- * 
+ * @author Mr. Poke
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "MonsterHuntData", propOrder = { "monsterInfos" })
-public class MonsterHuntData extends QuestScriptData
+@XmlType(name = "CollectItemQuestOperation", propOrder = { "_true", "_false" })
+public class CollectItemQuestOperation extends QuestOperation
 {
 
-	@XmlElement(name = "monster_infos", required = true)
-	protected List<MonsterInfo>	monsterInfos;
-	@XmlAttribute(name = "start_npc_id")
-	protected int					startNpcId;
+	@XmlElement(name = "true", required = true)
+	protected QuestOperations	_true;
+	@XmlElement(name = "false", required = true)
+	protected QuestOperations	_false;
+	@XmlAttribute
+	protected Boolean			removeItems;
 
+	/* (non-Javadoc)
+	 * @see com.aionemu.gameserver.questEngine.handlers.models.xmlQuest.operations.QuestOperation#doOperate(com.aionemu.gameserver.questEngine.model.QuestEnv)
+	 */
 	@Override
-	public void register(QuestEngine questEngine)
+	public void doOperate(QuestService questService, QuestEnv env)
 	{
-		FastMap<Integer, MonsterInfo> monsterInfo = new FastMap<Integer, MonsterInfo>();
-		for(MonsterInfo mi : monsterInfos)
-			monsterInfo.put(mi.getNpcId(), mi);
-		MonsterHunt template = new MonsterHunt(id, startNpcId, monsterInfo);
-		questEngine.addQuestHandler(template);
+		if(questService.collectItemCheck(env, removeItems == null ? true : false))
+			_true.operate(questService, env);
+		else
+			_false.operate(questService, env);
 	}
-
+	
 }

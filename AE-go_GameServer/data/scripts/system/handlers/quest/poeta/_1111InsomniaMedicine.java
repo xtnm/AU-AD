@@ -95,7 +95,7 @@ public class _1111InsomniaMedicine extends QuestHandler
 			}
 			else if(env.getDialogId() == 33)
 			{
-				if(collectItemCheck(env))
+				if(questService.collectItemCheck(env, true))
 				{
 					qs.setQuestVarById(0, qs.getQuestVarById(0) + 1);
 					updateQuestStatus(player, qs);

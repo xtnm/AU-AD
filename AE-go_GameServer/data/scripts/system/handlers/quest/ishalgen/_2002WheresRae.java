@@ -137,7 +137,7 @@ public class _2002WheresRae extends QuestHandler
 						case 33:
 							if(var == 11)
 							{
-								if(collectItemCheck(env))
+								if(questService.collectItemCheck(env, true))
 								{
 									SkillEngine.getInstance().getSkill(player, 8343, 1, player).useSkill();
 									qs.setQuestVarById(0, 99);

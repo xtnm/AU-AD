@@ -81,7 +81,7 @@ public class _2232TheBrokenHoneyJar extends QuestHandler
 					return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2375);
 				else if(env.getDialogId() == 33)
 				{
-					if(collectItemCheck(env))
+					if(questService.collectItemCheck(env, true))
 					{
 						qs.setStatus(QuestStatus.REWARD);
 						updateQuestStatus(player, qs);
@@ -123,7 +123,7 @@ public class _2232TheBrokenHoneyJar extends QuestHandler
 								PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, 38, 0,
 									targetObjectId), true);
 								if (itemService.addItems(player, Collections.singletonList(new QuestItems(182203224, 1))))
-								((Npc)player.getTarget()).getController().onDie(null);
+									((Npc)player.getTarget()).getController().onDie(null);
 							}
 						}, 3000);
 					}
@@ -151,7 +151,6 @@ public class _2232TheBrokenHoneyJar extends QuestHandler
 			if(qs != null && qs.getStatus() == QuestStatus.START && qs.getQuestVarById(0) == 0 && env.getDialogId() == -1)
 				return true;
 		}
-		
 
 		return false;
 	}

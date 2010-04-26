@@ -14,53 +14,32 @@
  * You should have received a copy of the GNU General Public License
  * along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aionemu.gameserver.questEngine.handlers.models;
+
+package com.aionemu.gameserver.questEngine.handlers.models.xmlQuest.operations;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
+import com.aionemu.gameserver.questEngine.model.QuestEnv;
+import com.aionemu.gameserver.services.QuestService;
+
 /**
- * @author MrPoke
- * 
+ * @author Mr. Poke
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "MonsterInfos")
-public class MonsterInfos
+@XmlType(name = "QuestOperation")
+@XmlSeeAlso({
+    TakeItemOperation.class,
+    StartQuestOperation.class,
+    SetQuestVarOperation.class,
+    NpcDialogOperation.class,
+    GiveItemOperation.class,
+    SetQuestStatusOperation.class
+})
+public abstract class QuestOperation
 {
-
-	@XmlAttribute(name = "var_id", required = true)
-	protected int	varId;
-	@XmlAttribute(name = "max_kill", required = true)
-	protected int	maxKill;
-	@XmlAttribute(name = "npc_id", required = true)
-	protected int	npcId;
-
-	/**
-	 * Gets the value of the varId property.
-	 * 
-	 */
-	public int getVarId()
-	{
-		return varId;
-	}
-
-	/**
-	 * Gets the value of the maxKill property.
-	 * 
-	 */
-	public int getMaxKill()
-	{
-		return maxKill;
-	}
-
-	/**
-	 * Gets the value of the npcId property.
-	 * 
-	 */
-	public int getNpcId()
-	{
-		return npcId;
-	}
+	public abstract void doOperate(QuestService questService, QuestEnv env);
 }
