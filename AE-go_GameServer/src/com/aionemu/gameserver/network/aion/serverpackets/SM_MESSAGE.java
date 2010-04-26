@@ -34,6 +34,10 @@ import com.aionemu.gameserver.network.aion.AionServerPacket;
 public class SM_MESSAGE extends AionServerPacket
 {
 	/**
+	 * Player.
+	 */
+	private Player		player;
+	/**
 	 * Object that is saying smth or null.
 	 */
 	private int			senderObjectId;
@@ -61,9 +65,9 @@ public class SM_MESSAGE extends AionServerPacket
 	/**
 	 * Sender coordinates
 	 */
-	private float	x;
-	private float	y;
-	private float	z;
+	private float		x;
+	private float		y;
+	private float		z;
 
 	/**
 	 * Constructs new <tt>SM_MESSAGE </tt> packet
@@ -77,6 +81,7 @@ public class SM_MESSAGE extends AionServerPacket
 	 */
 	public SM_MESSAGE(Player player, String message, ChatType chatType)
 	{
+		this.player = player;
 		this.senderObjectId = player.getObjectId();
 		this.senderName = player.getName();
 		this.message = message;
@@ -117,16 +122,14 @@ public class SM_MESSAGE extends AionServerPacket
 
 		if(race != null)
 		{
-			canRead = chatType.isSysMsg() 
-				|| CustomConfig.FACTIONS_SPEAKING_MODE == 1;
+			canRead = chatType.isSysMsg() || CustomConfig.FACTIONS_SPEAKING_MODE == 1 || player.getAccessLevel() > 0
+				|| con.getActivePlayer().getAccessLevel() > 0;
 		}
 
 		writeC(buf, chatType.toInteger()); // type
 
 		/*
-		 * 0 : all
-		 * 1 : elyos
-		 * 2 : asmodians
+		 * 0 : all 1 : elyos 2 : asmodians
 		 */
 		writeC(buf, canRead ? 0 : race.getRaceId() + 1);
 		writeD(buf, senderObjectId); // sender object id
