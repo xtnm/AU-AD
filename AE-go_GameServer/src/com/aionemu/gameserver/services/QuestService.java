@@ -169,7 +169,7 @@ public class QuestService
 				}
 			}
 
-			qs.setStatus(QuestStatus.COMPLITE);
+			qs.setStatus(QuestStatus.COMPLETE);
 			qs.setCompliteCount(qs.getCompliteCount() + 1);
 			PacketSendUtility.sendPacket(player, new SM_QUEST_STEP(id, qs.getStatus(), qs.getQuestVars().getQuestVars()));
 			player.getController().updateNearbyQuests();
@@ -210,7 +210,7 @@ public class QuestService
 		for(int questId : template.getFinishedQuestConds())
 		{
 			QuestState qs = player.getQuestStateList().getQuestState(questId);
-			if(qs == null || qs.getStatus() != QuestStatus.COMPLITE)
+			if(qs == null || qs.getStatus() != QuestStatus.COMPLETE)
 				return false;
 		}
 		

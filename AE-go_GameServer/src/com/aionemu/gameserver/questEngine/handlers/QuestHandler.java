@@ -59,7 +59,7 @@ public class QuestHandler
 	public synchronized void updateQuestStatus(Player player, QuestState qs)
 	{
 		PacketSendUtility.sendPacket(player, new SM_QUEST_STEP(questId, qs.getStatus(), qs.getQuestVars().getQuestVars()));
-		if (qs.getStatus() == QuestStatus.COMPLITE)
+		if (qs.getStatus() == QuestStatus.COMPLETE)
 			player.getController().updateNearbyQuests();
 	}
 	

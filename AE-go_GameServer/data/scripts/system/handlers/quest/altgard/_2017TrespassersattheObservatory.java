@@ -151,7 +151,7 @@ public class _2017TrespassersattheObservatory extends QuestHandler
 		if(qs == null || qs.getStatus() != QuestStatus.LOCKED || player.getLevel() < 12)
 			return false;
 		QuestState qs2 = player.getQuestStateList().getQuestState(2015);
-		if(qs2 == null || qs2.getStatus() != QuestStatus.COMPLITE)
+		if(qs2 == null || qs2.getStatus() != QuestStatus.COMPLETE)
 			return false;
 		qs.setStatus(QuestStatus.START);
 		updateQuestStatus(player, qs);

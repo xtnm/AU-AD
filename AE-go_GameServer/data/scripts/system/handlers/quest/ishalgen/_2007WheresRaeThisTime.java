@@ -201,7 +201,7 @@ public class _2007WheresRaeThisTime extends QuestHandler
 		for (int id : quests)
 		{
 			QuestState qs2 = player.getQuestStateList().getQuestState(id);
-			if (qs2 == null || qs2.getStatus() != QuestStatus.COMPLITE)
+			if (qs2 == null || qs2.getStatus() != QuestStatus.COMPLETE)
 				return false;
 		}
 

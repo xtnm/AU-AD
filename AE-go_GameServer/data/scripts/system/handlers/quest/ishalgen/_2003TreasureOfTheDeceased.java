@@ -108,7 +108,7 @@ public class _2003TreasureOfTheDeceased extends QuestHandler
 			return false;
 
 		QuestState qs2 = player.getQuestStateList().getQuestState(2100);
-		if(qs2 == null || qs2.getStatus() != QuestStatus.COMPLITE)
+		if(qs2 == null || qs2.getStatus() != QuestStatus.COMPLETE)
 			return false;
 		qs.setStatus(QuestStatus.START);
 		updateQuestStatus(player, qs);

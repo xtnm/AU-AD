@@ -88,7 +88,7 @@ public class _2332MeatyTreats extends QuestHandler
 				questService.questFinish(env, qs.getQuestVarById(0));
 				return sendQuestDialog(player, env.getVisibleObject().getObjectId(),1008);			
 		}
-		else if(qs.getStatus() == QuestStatus.COMPLITE && targetId == 798084)
+		else if(qs.getStatus() == QuestStatus.COMPLETE && targetId == 798084)
 		{
 			return sendQuestDialog(player, env.getVisibleObject().getObjectId(),1008);			
 		}

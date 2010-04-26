@@ -64,9 +64,6 @@ public class _1040ScoutingtheScouts extends QuestHandler
 		if(qs == null || qs.getStatus() != QuestStatus.LOCKED  || player.getCommonData().getLevel() < 31)
 			return false;
 
-		QuestState qs2 = player.getQuestStateList().getQuestState(1300);
-		if(qs2 == null || qs2.getStatus() != QuestStatus.COMPLITE)
-			return false;
 		qs.setStatus(QuestStatus.START);
 		updateQuestStatus(player, qs);
 		return true;

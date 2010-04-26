@@ -80,7 +80,7 @@ public class _1002RequestoftheElim extends QuestHandler
 			return false;
 
 		QuestState qs2 = player.getQuestStateList().getQuestState(1001);
-		if(qs2 == null || qs2.getStatus() != QuestStatus.COMPLITE)
+		if(qs2 == null || qs2.getStatus() != QuestStatus.COMPLETE)
 			return false;
 		qs.setStatus(QuestStatus.START);
 		updateQuestStatus(player, qs);

@@ -27,7 +27,7 @@ public class QuestState
        private final int questId;
        private QuestVars questVars;
        private QuestStatus status;
-       private int compliteCount;
+       private int completeCount;
        private PersistentState persistentState;
 
        public QuestState(int questId)
@@ -35,16 +35,16 @@ public class QuestState
                this.questId = questId;
                status = QuestStatus.START;
                questVars = new QuestVars();
-               compliteCount = 0;
+               completeCount = 0;
                persistentState = PersistentState.NEW;
        }
 
-       public QuestState(int questId, QuestStatus status, int questVars, int compliteCount)
+       public QuestState(int questId, QuestStatus status, int questVars, int completeCount)
        {
                this.questId = questId;
                this.status = status;
                this.questVars = new QuestVars(questVars);
-               this.compliteCount = compliteCount;
+               this.completeCount = completeCount;
                this.persistentState = PersistentState.NEW;
        }
 
@@ -94,15 +94,15 @@ public class QuestState
     	   return questId;
        }
 
-       public void setCompliteCount(int compliteCount)
+       public void setCompliteCount(int completeCount)
        {
-    	   this.compliteCount = compliteCount;
+    	   this.completeCount = completeCount;
     	   setPersistentState(PersistentState.UPDATE_REQUIRED);
        }
 
        public int getCompliteCount()
        {
-    	   return compliteCount;
+    	   return completeCount;
        }
        
    	/**
