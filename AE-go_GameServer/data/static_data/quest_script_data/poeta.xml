@@ -61,7 +61,40 @@
 	<!-- A Book for Namus -->
 	<report_to id="1110" start_npc_id="203065" end_npc_id="203075" item_id="182200206"/>
 	
-	<!-- Insomnia Medicine handled by script -->
+	<!-- The Elim's Message -->
+	<xml_quest id="1115" start_npc_id="203075" end_npc_id="203058">
+		<on_talk_event ids="203072 203058">
+			<var value="0">
+				<npc id="203072">
+					<dialog id="25">
+						<operations>
+							<npc_dialog id="1352"/>
+						</operations>
+					</dialog>
+					<dialog id="10000">
+						<operations>
+							<set_quest_var var_id="0" value="1"/>
+							<npc_dialog id="1352" quest_id="0"/>
+						</operations>
+					</dialog>
+				</npc>
+			</var>
+			<var value="1">
+				<npc id="203058">
+					<dialog id="25">
+						<operations>
+							<npc_dialog id="2375"/>
+						</operations>
+					</dialog>
+					<dialog id="1009">
+						<operations override="false">
+							<set_quest_status status="REWARD"/>
+						</operations>
+					</dialog>
+				</npc>
+			</var>
+		</on_talk_event>
+	</xml_quest>
 	
 	<!-- Mushroom Thieves -->
 	<monster_hunt id="1113" start_npc_id="203076">
@@ -101,8 +134,51 @@
 		<monster_infos npc_id="210142"  var_id="0" max_kill="9"/>
 	</monster_hunt>
 	
-	<!-- Handle by Script Ancient Cube -->
-	
+	<!-- Ancient Cube -->
+	<xml_quest id="1127" start_npc_id="798008" end_npc_id="798008">
+		<on_talk_event ids="700001">
+			<conditions operate="AND">
+				<quest_status value="START" op="EQUAL"/>
+			</conditions>
+			<var value="0">
+				<npc id="700001">
+					<dialog id="-1">
+						<operations>
+							<npc_use>
+								<finish>
+									<give_item item_id="182200215" count="1"/>
+									<set_quest_var var_id="0" value="1"/>
+								</finish>
+							</npc_use>
+						</operations>
+					</dialog>
+				</npc>
+			</var>
+			<var value="1">
+				<npc id="798008">
+					<dialog id="25">
+						<operations>
+							<npc_dialog id="2375"/>
+						</operations>
+					</dialog>
+					<dialog id="33">
+						<operations>
+							<collect_items>
+								<true>
+									<set_quest_status status="REWARD"/>
+									<npc_dialog id="5"/>
+								</true>
+								<false>
+									<npc_dialog id="2716"/>
+								</false>
+							</collect_items>
+						</operations>
+					</dialog>
+				</npc>
+			</var>
+		</on_talk_event>
+	</xml_quest>
+
 	<!-- Avenging Tutty -->
 	<item_collecting id="1124" start_npc_id="790001" />
 	
