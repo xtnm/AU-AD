@@ -395,14 +395,7 @@ public class PlayerService
 	 */
 	public void playerLoggedOut(final Player player)
 	{
-		log.info("Player logged out: " + player.getName());
-		
-		if(player.getClientConnection() == null)
-		{
-			log.warn("CHECKPOINT: Player already logged out " + player.getName());
-			return;
-		}
-		
+		log.info("Player logged out: " + player.getName() + " Account: " + player.getClientConnection().getAccount().getName());
 		player.onLoggedOut();
 		
 		//store current effects
