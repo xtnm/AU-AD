@@ -70,11 +70,12 @@ public class Summon extends Creature
 	 * @param position
 	 */
 	public Summon(int objId, CreatureController<? extends Creature> controller, SpawnTemplate spawnTemplate,
-		VisibleObjectTemplate objectTemplate, SummonStatsTemplate statsTemplate)
+		VisibleObjectTemplate objectTemplate, SummonStatsTemplate statsTemplate, byte level)
 	{
 		super(objId, controller, spawnTemplate, objectTemplate, new WorldPosition());
 
 		controller.setOwner(this);
+		this.level = level;
 		super.setGameStats(new SummonGameStats(this, statsTemplate));
 		super.setLifeStats(new SummonLifeStats(this));
 		
@@ -112,14 +113,6 @@ public class Summon extends Creature
 	public byte getLevel()
 	{
 		return level;
-	}
-
-	/**
-	 * @param level the level to set
-	 */
-	public void setLevel(byte level)
-	{
-		this.level = level;
 	}
 
 	@Override

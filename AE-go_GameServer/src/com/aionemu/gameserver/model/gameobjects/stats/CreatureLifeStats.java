@@ -44,7 +44,7 @@ public abstract class CreatureLifeStats<T extends Creature>
 	private final ReentrantLock hpLock = new ReentrantLock();
 	private final ReentrantLock mpLock = new ReentrantLock();
 	
-	private Future<?> lifeRestoreTask;
+	protected Future<?> lifeRestoreTask;
 
 	public CreatureLifeStats(Creature owner, int currentHp, int currentMp)
 	{
@@ -270,7 +270,7 @@ public abstract class CreatureLifeStats<T extends Creature>
 	/**
 	 *  Will trigger restore task if not already
 	 */
-	public void triggerHpMpRestoreTask()
+	protected void triggerRestoreTask()
 	{
 		if(lifeRestoreTask == null && !alreadyDead)
 		{
@@ -297,6 +297,15 @@ public abstract class CreatureLifeStats<T extends Creature>
 	public boolean isFullyRestoredHpMp()
 	{
 		return getMaxHp() == currentHp && getMaxMp() == currentMp;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean isFullyRestoredHp()
+	{
+		return getMaxHp() == currentHp;
 	}
 	
 	/**
@@ -330,7 +339,7 @@ public abstract class CreatureLifeStats<T extends Creature>
 			currentMp = maxMp;
 		
 		if(!isFullyRestoredHpMp())
-			triggerHpMpRestoreTask();
+			triggerRestoreTask();
 	}
 	
 	/**
@@ -421,6 +430,9 @@ public abstract class CreatureLifeStats<T extends Creature>
 			
 			if(this.currentHp > 0)
 				this.alreadyDead = false;
+			
+			if(this.currentHp < getMaxHp())
+				onReduceHp();
 		}
 		finally
 		{
@@ -435,7 +447,7 @@ public abstract class CreatureLifeStats<T extends Creature>
 	 */
 	public void triggerRestoreOnRevive()
 	{
-		this.triggerHpMpRestoreTask();
+		this.triggerRestoreTask();
 	}
 	
 }

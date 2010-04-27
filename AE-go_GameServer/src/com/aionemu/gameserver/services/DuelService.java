@@ -202,7 +202,6 @@ public class DuelService
 	{
 		loseDuel(player);
 		player.getLifeStats().setCurrentHp(1);
-		player.getLifeStats().triggerHpMpRestoreTask();
 	}
 
 	/**

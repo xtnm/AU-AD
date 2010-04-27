@@ -17,6 +17,7 @@
 package com.aionemu.gameserver.model.gameobjects.stats;
 
 import com.aionemu.gameserver.model.gameobjects.Npc;
+import com.aionemu.gameserver.services.LifeStatsRestoreService;
 
 /**
  * @author ATracer
@@ -56,5 +57,14 @@ public class NpcLifeStats extends CreatureLifeStats<Npc>
 	protected void onReduceMp()
 	{
 		// nothing todo	
+	}
+	
+	@Override
+	protected void triggerRestoreTask()
+	{
+		if(lifeRestoreTask == null && !alreadyDead)
+		{
+			this.lifeRestoreTask = LifeStatsRestoreService.getInstance().scheduleHpRestoreTask(this);
+		}
 	}
 }
