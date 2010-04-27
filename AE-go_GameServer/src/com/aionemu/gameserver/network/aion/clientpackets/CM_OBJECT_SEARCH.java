@@ -29,7 +29,7 @@ import com.google.inject.Inject;
  */
 public class CM_OBJECT_SEARCH extends AionClientPacket
 {
-	private int objid;
+	private int npcId;
 
 	@Inject
 	private SpawnsData spawnsData;
@@ -49,7 +49,7 @@ public class CM_OBJECT_SEARCH extends AionClientPacket
 	@Override
 	protected void readImpl()
 	{
-		this.objid = readD();
+		this.npcId = readD();
 	}
 
 	/**
@@ -57,12 +57,12 @@ public class CM_OBJECT_SEARCH extends AionClientPacket
 	 */
 	@Override
 	protected void runImpl()
-	{		
-		SpawnTemplate spawnTemplate = spawnsData.getFirstSpawnByNpcId(objid);
+	{	
+		SpawnTemplate spawnTemplate = spawnsData.getFirstSpawnByNpcId(npcId);
 		if(spawnTemplate != null)
 		{
-			sendPacket(new SM_SHOW_NPC_ON_MAP(objid, spawnTemplate.getWorldId(),
-				spawnTemplate.getX(), spawnTemplate.getY(), spawnTemplate.getZ()));
+			sendPacket(new SM_SHOW_NPC_ON_MAP(npcId, spawnTemplate.getWorldId(), spawnTemplate.getX(), 
+				spawnTemplate.getY(), spawnTemplate.getZ()));
 		}
 	}
 }

@@ -21,6 +21,7 @@ import org.apache.log4j.Logger;
 import com.aionemu.gameserver.dataholders.BindPointData;
 import com.aionemu.gameserver.dataholders.PlayerInitialData;
 import com.aionemu.gameserver.dataholders.PortalData;
+import com.aionemu.gameserver.dataholders.SpawnsData;
 import com.aionemu.gameserver.dataholders.TeleLocationData;
 import com.aionemu.gameserver.dataholders.TeleporterData;
 import com.aionemu.gameserver.dataholders.PlayerInitialData.LocationData;
@@ -32,6 +33,7 @@ import com.aionemu.gameserver.model.gameobjects.state.CreatureState;
 import com.aionemu.gameserver.model.templates.BindPointTemplate;
 import com.aionemu.gameserver.model.templates.portal.ExitPoint;
 import com.aionemu.gameserver.model.templates.portal.PortalTemplate;
+import com.aionemu.gameserver.model.templates.spawn.SpawnTemplate;
 import com.aionemu.gameserver.model.templates.teleport.TelelocationTemplate;
 import com.aionemu.gameserver.model.templates.teleport.TeleportLocation;
 import com.aionemu.gameserver.model.templates.teleport.TeleporterTemplate;
@@ -77,6 +79,8 @@ public class TeleportService
 	private PlayerInitialData	playerInitialData;
 	@Inject
 	private PortalData			portalData;
+	@Inject
+	private SpawnsData			spawnsData;
 
 	/**
 	 * Schedules teleport animation
@@ -469,5 +473,19 @@ public class TeleportService
 		
 		ExitPoint exitPoint = template.getExitPoint();
 		teleportTo(player, worldId, exitPoint.getX(), exitPoint.getY(), exitPoint.getZ(), delay);
+	}
+	
+	public void teleportToNpc(Player player, int npcId)
+	{
+		int delay = 0;
+		SpawnTemplate template = spawnsData.getFirstSpawnByNpcId(npcId);
+		
+		if(template == null)
+		{
+			log.warn("No npc template found for : " + npcId);
+			return;
+		}
+		
+		teleportTo(player, template.getWorldId(), template.getX(), template.getY(), template.getZ(), delay);
 	}
 }
