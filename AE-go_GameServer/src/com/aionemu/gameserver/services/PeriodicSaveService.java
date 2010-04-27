@@ -52,8 +52,8 @@ public class PeriodicSaveService
 
 	private Future<?>			legionWhUpdateTask;
 	
-	private int DELAY_GENERAL = PeriodicSaveConfig.PLAYER_GENERAL * 1000;
-	private int DELAY_ITEM = PeriodicSaveConfig.PLAYER_ITEMS * 1000;
+	private static final int DELAY_GENERAL = PeriodicSaveConfig.PLAYER_GENERAL * 1000;
+	private static final int DELAY_ITEM = PeriodicSaveConfig.PLAYER_ITEMS * 1000;
 
 	@Inject
 	public PeriodicSaveService(LegionService legionService)
@@ -100,7 +100,6 @@ public class PeriodicSaveService
 		@Override
 		public void run()
 		{
-			log.info("Player update task started.");
 			try
 			{
 				DAOManager.getDAO(AbyssRankDAO.class).storeAbyssRank(player);
@@ -128,8 +127,6 @@ public class PeriodicSaveService
 		@Override
 		public void run()
 		{
-			log.info("Player item update task started.");
-
 			try
 			{
 				DAOManager.getDAO(InventoryDAO.class).store(player);

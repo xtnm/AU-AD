@@ -21,6 +21,7 @@ import com.aionemu.gameserver.ai.desires.AbstractDesire;
 import com.aionemu.gameserver.ai.events.Event;
 import com.aionemu.gameserver.ai.events.handler.EventHandler;
 import com.aionemu.gameserver.ai.state.AIState;
+import com.aionemu.gameserver.ai.state.handler.NoneNpcStateHandler;
 import com.aionemu.gameserver.ai.state.handler.StateHandler;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Trap;
@@ -46,6 +47,7 @@ public class TrapAi extends NpcAi
 		 * State handlers
 		 */
 		this.addStateHandler(new ActiveTrapStateHandler());
+		this.addStateHandler(new NoneNpcStateHandler());
 	}
 
 	public class SeeObjectEventHandler implements EventHandler

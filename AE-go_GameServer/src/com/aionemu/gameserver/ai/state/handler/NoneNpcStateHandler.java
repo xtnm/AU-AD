@@ -24,7 +24,7 @@ import com.aionemu.gameserver.model.gameobjects.Npc;
  * @author ATracer
  *
  */
-public class NoneMonsterStateHandler extends StateHandler
+public class NoneNpcStateHandler extends StateHandler
 {
 	@Override
 	public AIState getState()
@@ -34,8 +34,6 @@ public class NoneMonsterStateHandler extends StateHandler
 
 	/**
 	 * State NONE
-	 * AI MonsterAi
-	 * AI GuardAi
 	 */
 	@Override
 	public void handleState(AIState state, AI<?> ai)
