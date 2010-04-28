@@ -45,6 +45,7 @@ public class MySQL5ItemStoneListDAO extends ItemStoneListDAO
 	private static final Logger	log	= Logger.getLogger(MySQL5ItemStoneListDAO.class);
 
 	public static final String INSERT_QUERY = "INSERT INTO `item_stones` (`itemUniqueId`, `itemId`, `slot`, `category`) VALUES (?,?,?, ?)";
+	public static final String UPDATE_QUERY = "UPDATE `item_stones` SET `itemId`=? where `itemUniqueId`=? AND `category`=?";
 	public static final String DELETE_QUERY = "DELETE FROM `item_stones` WHERE `itemUniqueId`=? AND slot=? AND category=?";
 	public static final String SELECT_QUERY = "SELECT `itemId`, `slot` FROM `item_stones` WHERE `itemUniqueId`=? AND `category`=?";
 	
@@ -165,6 +166,9 @@ public class MySQL5ItemStoneListDAO extends ItemStoneListDAO
 				addGodStone(godstone.getItemObjId(), godstone.getItemId(),
 					godstone.getSlot());
 				break;
+			case UPDATE_REQUIRED:
+				updateGodStone(godstone.getItemObjId(), godstone.getItemId());
+				break;
 			case DELETED:
 				deleteGodStone(godstone.getItemObjId(), godstone.getSlot());
 				break;
@@ -212,6 +216,25 @@ public class MySQL5ItemStoneListDAO extends ItemStoneListDAO
 				stmt.setInt(2, itemId);
 				stmt.setInt(3, slot);
 				stmt.setInt(4, ItemStoneType.GODSTONE.ordinal());
+				stmt.execute();
+			}
+		});
+	}
+	
+	/**
+	 * 
+	 * @param itemObjId
+	 * @param itemId
+	 */
+	private void updateGodStone(final int itemObjId, final int itemId)
+	{
+		DB.insertUpdate(UPDATE_QUERY, new IUStH() {
+			@Override
+			public void handleInsertUpdate(PreparedStatement stmt) throws SQLException
+			{
+				stmt.setInt(1, itemId);
+				stmt.setInt(2, itemObjId);
+				stmt.setInt(3, ItemStoneType.GODSTONE.ordinal());
 				stmt.execute();
 			}
 		});
