@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <zones>
-    <zone mapid="400010000" name="PRIMUM_LANDING_400010000" priority="16">
+    <zone mapid="400010000" name="PRIMUM_LANDING_400010000" priority="16" fly="true">
         <points>
             <point x="525.88" y="2308.22"/>
             <point x="360.5696" y="2502.346"/>
@@ -15,7 +15,7 @@
             <point x="768.5374" y="2288.504"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="EASTERN_SHARD_OF_LATESRAN_1251_G_400010000" priority="16">
+    <zone mapid="400010000" name="EASTERN_SHARD_OF_LATESRAN_1251_G_400010000" priority="16" fly="true">
         <points>
             <point x="1371.6" y="2876.8"/>
             <point x="1454.8583" y="3227.998"/>
@@ -27,7 +27,7 @@
             <point x="1439.1635" y="2720.7146"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="ROAH_FORTRESS_400010000" priority="14">
+    <zone mapid="400010000" name="ROAH_FORTRESS_400010000" priority="14" fly="true">
         <points>
             <point x="2671.74" y="728.28"/>
             <point x="2600.0894" y="719.3237"/>
@@ -50,7 +50,7 @@
             <point x="2695.0266" y="710.3674"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="ISLE_OF_REPROACH_400010000" priority="15">
+    <zone mapid="400010000" name="ISLE_OF_REPROACH_400010000" priority="15" fly="true">
         <points>
             <point x="1523.93" y="941.9"/>
             <point x="1486.5135" y="1054.1495"/>
@@ -62,7 +62,7 @@
             <point x="1670.4779" y="867.067"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="MIREN_ISLAND_400010000" priority="15">
+    <zone mapid="400010000" name="MIREN_ISLAND_400010000" priority="15" fly="true">
         <points>
             <point x="1502.905" y="2119.895"/>
             <point x="1435.6827" y="2251.9224"/>
@@ -77,7 +77,7 @@
             <point x="1617.0358" y="2153.471"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="SIELS_LEFT_WING_1131_E_400010000" priority="14">
+    <zone mapid="400010000" name="SIELS_LEFT_WING_1131_E_400010000" priority="14" fly="true">
         <points>
             <point x="2657.4001" y="2462.3884"/>
             <point x="2636.9001" y="2443.8884"/>
@@ -86,7 +86,7 @@
             <point x="2767.9001" y="2464.3884"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="KYSIS_ISLE_400010000" priority="17">
+    <zone mapid="400010000" name="KYSIS_ISLE_400010000" priority="17" fly="true">
         <points>
             <point x="2317.36" y="1887.12"/>
             <point x="2146.5112" y="2096.2627"/>
@@ -100,7 +100,7 @@
             <point x="2550.0684" y="1863.5546"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="NORTHERN_RIDGE_400010000" priority="14">
+    <zone mapid="400010000" name="NORTHERN_RIDGE_400010000" priority="14" fly="true">
         <points>
             <point x="1152.82" y="1027.21"/>
             <point x="1174.4603" y="1125.674"/>
@@ -111,7 +111,7 @@
             <point x="1256.6938" y="995.8314"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="EYE_OF_RESHANTA_ENTRANCE_400010000" priority="14">
+    <zone mapid="400010000" name="EYE_OF_RESHANTA_ENTRANCE_400010000" priority="14" fly="true">
         <points>
             <point x="1985.875" y="1980.375"/>
             <point x="2001.0" y="1780.25"/>
@@ -122,7 +122,7 @@
             <point x="2010.125" y="2080.375"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="LAKE_ASTERIA_1251_B_400010000" priority="18">
+    <zone mapid="400010000" name="LAKE_ASTERIA_1251_B_400010000" priority="18" fly="true">
         <points>
             <point x="265.7527" y="2918.4763"/>
             <point x="324.65564" y="3392.3667"/>
@@ -134,7 +134,7 @@
             <point x="424.50156" y="2636.406"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="DIVINE_FORTRESS_400010000" priority="12">
+    <zone mapid="400010000" name="DIVINE_FORTRESS_400010000" priority="12" fly="true">
         <points>
             <point x="2042.75" y="2052.38"/>
             <point x="1979.375" y="1949.6299"/>
@@ -147,7 +147,7 @@
             <point x="2101.75" y="2115.755"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="TIGRAKI_ISLAND_400010000" priority="16">
+    <zone mapid="400010000" name="TIGRAKI_ISLAND_400010000" priority="16" fly="true">
         <points>
             <point x="475.38544" y="1203.6681"/>
             <point x="439.5854" y="1006.8607"/>
@@ -155,7 +155,7 @@
             <point x="619.5549" y="1181.32"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="RUSSET_PLAZA_400010000" priority="15">
+    <zone mapid="400010000" name="RUSSET_PLAZA_400010000" priority="15" fly="true">
         <points>
             <point x="990.3304" y="2881.466"/>
             <point x="1041.2427" y="2930.9238"/>
@@ -165,7 +165,7 @@
             <point x="1006.3314" y="2834.9177"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="TEMINON_TRAINING_CAMP_400010000" priority="16">
+    <zone mapid="400010000" name="TEMINON_TRAINING_CAMP_400010000" priority="16" fly="true">
         <points>
             <point x="3035.057" y="997.2559"/>
             <point x="3115.9282" y="918.9304"/>
@@ -175,7 +175,7 @@
             <point x="3036.0537" y="1066.7198"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="EASTERN_RIDGE_400010000" priority="14">
+    <zone mapid="400010000" name="EASTERN_RIDGE_400010000" priority="14" fly="true">
         <points>
             <point x="1210.95" y="1337.42"/>
             <point x="1242.1171" y="1454.8165"/>
@@ -187,7 +187,7 @@
             <point x="1258.7396" y="1306.2528"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="MIREN_FORTRESS_400010000" priority="14">
+    <zone mapid="400010000" name="MIREN_FORTRESS_400010000" priority="14" fly="true">
         <points>
             <point x="1689.5" y="2364.25"/>
             <point x="1689.5" y="2190.0"/>
@@ -195,7 +195,7 @@
             <point x="1868.875" y="2374.375"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="MUD_FALLS_400010000" priority="14">
+    <zone mapid="400010000" name="MUD_FALLS_400010000" priority="14" fly="true">
         <points>
             <point x="2846.5527" y="727.08765"/>
             <point x="2871.1733" y="683.4765"/>
@@ -203,7 +203,7 @@
             <point x="2896.4111" y="787.7758"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="KYSIS_FORTRESS_400010000" priority="16">
+    <zone mapid="400010000" name="KYSIS_FORTRESS_400010000" priority="16" fly="true">
         <points>
             <point x="2387.5" y="2167.0"/>
             <point x="2390.125" y="2025.625"/>
@@ -213,7 +213,7 @@
             <point x="2474.0" y="2240.375"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="RESHANTA_400010000" priority="25">
+    <zone mapid="400010000" name="RESHANTA_400010000" priority="25" fly="true">
         <points>
             <point x="171.75" y="248.88"/>
             <point x="200.75" y="3678.63"/>
@@ -221,7 +221,7 @@
             <point x="3987.625" y="196.255"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="GARDEN_OF_THE_DEAD_400010000" priority="13">
+    <zone mapid="400010000" name="GARDEN_OF_THE_DEAD_400010000" priority="13" fly="true">
         <points>
             <point x="3123.1548" y="598.48285"/>
             <point x="3129.1633" y="720.65485"/>
@@ -233,7 +233,7 @@
             <point x="3267.358" y="524.3785"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="LAKE_ASTERIA_Z_1250_400010000" priority="19">
+    <zone mapid="400010000" name="LAKE_ASTERIA_Z_1250_400010000" priority="19" fly="true">
         <points>
             <point x="273.88" y="3440.38"/>
             <point x="256.63" y="2697.505"/>
@@ -249,7 +249,7 @@
             <point x="749.005" y="3643.38"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="GARCIKHAN_STRONGHOLD_400010000" priority="15">
+    <zone mapid="400010000" name="GARCIKHAN_STRONGHOLD_400010000" priority="15" fly="true">
         <points>
             <point x="2622.45" y="1299.4697"/>
             <point x="2690.5457" y="1501.7545"/>
@@ -263,7 +263,7 @@
             <point x="2730.602" y="1237.3823"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="WEATHERED_CRAG_400010000" priority="15">
+    <zone mapid="400010000" name="WEATHERED_CRAG_400010000" priority="15" fly="true">
         <points>
             <point x="2719.8135" y="802.3091"/>
             <point x="2709.7993" y="850.3967"/>
@@ -273,7 +273,7 @@
             <point x="2770.2195" y="788.55646"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="ASTERIA_FORTRESS_400010000" priority="14">
+    <zone mapid="400010000" name="ASTERIA_FORTRESS_400010000" priority="14" fly="true">
         <points>
             <point x="584.75" y="3069.375"/>
             <point x="584.75" y="2896.875"/>
@@ -284,7 +284,7 @@
             <point x="677.0" y="3105.5"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="WESTERN_SHARD_OF_LATESRAN_1141_H_400010000" priority="16">
+    <zone mapid="400010000" name="WESTERN_SHARD_OF_LATESRAN_1141_H_400010000" priority="16" fly="true">
         <points>
             <point x="1782.85" y="543.71"/>
             <point x="1907.0131" y="894.8589"/>
@@ -295,7 +295,7 @@
             <point x="1857.2478" y="321.325"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="SHADE_ISLAND_400010000" priority="15">
+    <zone mapid="400010000" name="SHADE_ISLAND_400010000" priority="15" fly="true">
         <points>
             <point x="3070.8882" y="1496.8066"/>
             <point x="3072.0593" y="1428.8911"/>
@@ -306,7 +306,7 @@
             <point x="3117.7266" y="1562.3802"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="RUINS_OF_ROAH_Z_1211_400010000" priority="17">
+    <zone mapid="400010000" name="RUINS_OF_ROAH_Z_1211_400010000" priority="17" fly="true">
         <points>
             <point x="3062.592" y="202.83743"/>
             <point x="2749.477" y="215.40257"/>
@@ -326,7 +326,7 @@
             <point x="3200.777" y="291.93115"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="LATIS_PLAZA_400010000" priority="14">
+    <zone mapid="400010000" name="LATIS_PLAZA_400010000" priority="14" fly="true">
         <points>
             <point x="2842.2522" y="1065.6394"/>
             <point x="2827.472" y="1028.6029"/>
@@ -337,7 +337,7 @@
             <point x="2884.4958" y="1077.0731"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="WESTERN_SHARD_OF_LATESRAN_1211_H_400010000" priority="16">
+    <zone mapid="400010000" name="WESTERN_SHARD_OF_LATESRAN_1211_H_400010000" priority="16" fly="true">
         <points>
             <point x="1781.69" y="540.2"/>
             <point x="1876.5638" y="903.7607"/>
@@ -348,7 +348,7 @@
             <point x="1895.9753" y="345.24258"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="EASTERN_SHARD_OF_LATESRAN_1132_F_400010000" priority="12">
+    <zone mapid="400010000" name="EASTERN_SHARD_OF_LATESRAN_1132_F_400010000" priority="12" fly="true">
         <points>
             <point x="1317.685" y="2891.825"/>
             <point x="1305.2488" y="3228.9568"/>
@@ -359,7 +359,7 @@
             <point x="1397.0883" y="2701.7778"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="WESTERN_RIDGE_400010000" priority="14">
+    <zone mapid="400010000" name="WESTERN_RIDGE_400010000" priority="14" fly="true">
         <points>
             <point x="1399.52" y="964.46"/>
             <point x="1422.2424" y="1045.6116"/>
@@ -370,7 +370,7 @@
             <point x="1450.375" y="922.2612"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="TWILIGHT_BATTLEFIELD_400010000" priority="15">
+    <zone mapid="400010000" name="TWILIGHT_BATTLEFIELD_400010000" priority="15" fly="true">
         <points>
             <point x="3109.125" y="2409.5"/>
             <point x="2753.375" y="2073.25"/>
@@ -379,7 +379,7 @@
             <point x="3484.375" y="2354.0"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="CLOCKTOWER_PLAIN_400010000" priority="15">
+    <zone mapid="400010000" name="CLOCKTOWER_PLAIN_400010000" priority="15" fly="true">
         <points>
             <point x="359.22308" y="3183.7544"/>
             <point x="527.75226" y="3076.2588"/>
@@ -389,7 +389,7 @@
             <point x="416.57773" y="3319.1265"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="WINGS_OF_SIEL_ARCHIPELAGO_Z_1131_400010000" priority="16">
+    <zone mapid="400010000" name="WINGS_OF_SIEL_ARCHIPELAGO_Z_1131_400010000" priority="16" fly="true">
         <points>
             <point x="2879.66" y="1484.9329"/>
             <point x="2729.75" y="1915.505"/>
@@ -406,7 +406,7 @@
             <point x="3134.14" y="1335.1001"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="TEMINON_FORTRESS_400010000" priority="16">
+    <zone mapid="400010000" name="TEMINON_FORTRESS_400010000" priority="16" fly="true">
         <points>
             <point x="2907.4763" y="864.91656"/>
             <point x="2894.3594" y="929.8861"/>
@@ -419,7 +419,7 @@
             <point x="2953.9155" y="822.49054"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="COLLAPSED_ANCIENT_TEMPLE_400010000" priority="16">
+    <zone mapid="400010000" name="COLLAPSED_ANCIENT_TEMPLE_400010000" priority="16" fly="true">
         <points>
             <point x="2471.354" y="1209.7007"/>
             <point x="2501.8496" y="1123.2961"/>
@@ -429,7 +429,7 @@
             <point x="2537.428" y="1257.9856"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="TEMINON_WHARF_400010000" priority="15">
+    <zone mapid="400010000" name="TEMINON_WHARF_400010000" priority="15" fly="true">
         <points>
             <point x="2803.1877" y="962.31165"/>
             <point x="2803.1877" y="890.1629"/>
@@ -439,7 +439,7 @@
             <point x="2842.4265" y="978.76666"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="DRAKENFALL_400010000" priority="16">
+    <zone mapid="400010000" name="DRAKENFALL_400010000" priority="16" fly="true">
         <points>
             <point x="2116.75" y="2748.125"/>
             <point x="1997.75" y="2750.75"/>
@@ -451,7 +451,7 @@
             <point x="2273.875" y="2720.25"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="DRAKENWRECK_400010000" priority="17">
+    <zone mapid="400010000" name="DRAKENWRECK_400010000" priority="17" fly="true">
         <points>
             <point x="1463.625" y="2073.5"/>
             <point x="1380.0" y="1850.5"/>
@@ -466,7 +466,7 @@
             <point x="1691.625" y="2007.625"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="PRIMUM_PLAZA_400010000" priority="15">
+    <zone mapid="400010000" name="PRIMUM_PLAZA_400010000" priority="15" fly="true">
         <points>
             <point x="1053.5826" y="2999.7075"/>
             <point x="1053.5826" y="2944.7578"/>
@@ -476,7 +476,7 @@
             <point x="1095.8517" y="3020.842"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="ISLE_OF_SILENCE_400010000" priority="16">
+    <zone mapid="400010000" name="ISLE_OF_SILENCE_400010000" priority="16" fly="true">
         <points>
             <point x="2843.23" y="485.82"/>
             <point x="2830.6912" y="525.2279"/>
@@ -488,7 +488,7 @@
             <point x="2927.4197" y="446.41217"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="ISLAND_OF_EXILE_400010000" priority="13">
+    <zone mapid="400010000" name="ISLAND_OF_EXILE_400010000" priority="13" fly="true">
         <points>
             <point x="2931.38" y="3326.88"/>
             <point x="3004.005" y="3508.505"/>
@@ -498,7 +498,7 @@
             <point x="3097.13" y="3313.255"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="ISLE_OF_DISGRACE_400010000" priority="15">
+    <zone mapid="400010000" name="ISLE_OF_DISGRACE_400010000" priority="15" fly="true">
         <points>
             <point x="1230.0" y="1507.68"/>
             <point x="1400.8531" y="1595.3546"/>
@@ -512,7 +512,7 @@
             <point x="1281.7056" y="1466.0907"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="EYE_OF_RESHANTA_400010000" priority="13">
+    <zone mapid="400010000" name="EYE_OF_RESHANTA_400010000" priority="13" fly="true">
         <points>
             <point x="1769.84" y="1655.48"/>
             <point x="1783.8163" y="2140.4595"/>
@@ -524,7 +524,7 @@
             <point x="1997.6547" y="1505.9329"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="SWORDS_EDGE_400010000" priority="16">
+    <zone mapid="400010000" name="SWORDS_EDGE_400010000" priority="16" fly="true">
         <points>
             <point x="734.375" y="2191.5"/>
             <point x="591.375" y="2229.375"/>
@@ -534,7 +534,7 @@
             <point x="755.5" y="2044.25"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="RUINS_OF_ROAH_1211_B_400010000" priority="15">
+    <zone mapid="400010000" name="RUINS_OF_ROAH_1211_B_400010000" priority="15" fly="true">
         <points>
             <point x="2572.75" y="453.57"/>
             <point x="2406.162" y="647.02686"/>
@@ -548,7 +548,7 @@
             <point x="2660.5222" y="408.7884"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="MIRAGE_CAVE_400010000" priority="15">
+    <zone mapid="400010000" name="MIRAGE_CAVE_400010000" priority="15" fly="true">
         <points>
             <point x="746.0629" y="2559.3945"/>
             <point x="747.7012" y="2772.526"/>
@@ -559,7 +559,7 @@
             <point x="806.7637" y="2534.6948"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="WAREHOUSE_CONSTRUCTION_SITE_400010000" priority="16">
+    <zone mapid="400010000" name="WAREHOUSE_CONSTRUCTION_SITE_400010000" priority="16" fly="true">
         <points>
             <point x="2855.3816" y="790.2355"/>
             <point x="2817.531" y="690.6719"/>
@@ -570,7 +570,7 @@
             <point x="2904.7522" y="831.37744"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="SIELS_RIGHT_WING_1132_E_400010000" priority="13">
+    <zone mapid="400010000" name="SIELS_RIGHT_WING_1132_E_400010000" priority="13" fly="true">
         <points>
             <point x="2408.6519" y="2762.9187"/>
             <point x="2349.5269" y="2692.5437"/>
@@ -578,7 +578,7 @@
             <point x="2519.9019" y="2778.7937"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="PRIMUM_FORTRESS_400010000" priority="14">
+    <zone mapid="400010000" name="PRIMUM_FORTRESS_400010000" priority="14" fly="true">
         <points>
             <point x="861.52716" y="3107.5283"/>
             <point x="812.91675" y="3013.2537"/>
@@ -590,7 +590,7 @@
             <point x="979.37054" y="3098.69"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="ZEPHYR_STREAM_400010000" priority="15">
+    <zone mapid="400010000" name="ZEPHYR_STREAM_400010000" priority="15" fly="true">
         <points>
             <point x="629.0" y="2535.0"/>
             <point x="759.375" y="2143.75"/>
@@ -601,7 +601,7 @@
             <point x="818.25" y="2530.75"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="SIELS_WESTERN_FORTRESS_400010000" priority="14">
+    <zone mapid="400010000" name="SIELS_WESTERN_FORTRESS_400010000" priority="14" fly="true">
         <points>
             <point x="2726.12" y="2685.25"/>
             <point x="2705.62" y="2567.25"/>
@@ -612,7 +612,7 @@
             <point x="2784.995" y="2705.75"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="SULFUR_SWAMP_400010000" priority="15">
+    <zone mapid="400010000" name="SULFUR_SWAMP_400010000" priority="15" fly="true">
         <points>
             <point x="1075.57" y="1063.5"/>
             <point x="961.7615" y="1143.01"/>
@@ -627,7 +627,7 @@
             <point x="1180.0244" y="1066.618"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="NOBELIUM_FRAGMENT_400010000" priority="14">
+    <zone mapid="400010000" name="NOBELIUM_FRAGMENT_400010000" priority="14" fly="true">
         <points>
             <point x="1143.7821" y="2895.1035"/>
             <point x="1132.4971" y="2922.4512"/>
@@ -638,7 +638,7 @@
             <point x="1168.3912" y="2880.239"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="FORSAKEN_ISLE_400010000" priority="15">
+    <zone mapid="400010000" name="FORSAKEN_ISLE_400010000" priority="15" fly="true">
         <points>
             <point x="3369.875" y="3140.375"/>
             <point x="3342.375" y="3045.25"/>
@@ -648,7 +648,7 @@
             <point x="3520.0" y="3157.875"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="BROKEN_NOBELIUM_400010000" priority="15">
+    <zone mapid="400010000" name="BROKEN_NOBELIUM_400010000" priority="15" fly="true">
         <points>
             <point x="992.8756" y="3108.9077"/>
             <point x="1047.6107" y="3035.9275"/>
@@ -658,7 +658,7 @@
             <point x="1027.9622" y="3155.222"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="SOUL_STREAM_400010000" priority="15">
+    <zone mapid="400010000" name="SOUL_STREAM_400010000" priority="15" fly="true">
         <points>
             <point x="1082.875" y="3242.875"/>
             <point x="1210.875" y="2833.375"/>
@@ -675,7 +675,7 @@
             <point x="1215.125" y="3370.875"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="ISLE_OF_ROOTS_400010000" priority="16">
+    <zone mapid="400010000" name="ISLE_OF_ROOTS_400010000" priority="16" fly="true">
         <points>
             <point x="478.45" y="642.26"/>
             <point x="461.56955" y="1086.2161"/>
@@ -690,7 +690,7 @@
             <point x="665.8231" y="475.14346"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="SULFUR_FORTRESS_400010000" priority="13">
+    <zone mapid="400010000" name="SULFUR_FORTRESS_400010000" priority="13" fly="true">
         <points>
             <point x="1223.28" y="1208.85"/>
             <point x="1268.4911" y="1318.2317"/>
@@ -703,7 +703,7 @@
             <point x="1234.9474" y="1108.2189"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="TEMINONS_LEAP_400010000" priority="16">
+    <zone mapid="400010000" name="TEMINONS_LEAP_400010000" priority="16" fly="true">
         <points>
             <point x="2924.7178" y="1056.2478"/>
             <point x="2937.5674" y="1000.9946"/>
@@ -713,7 +713,7 @@
             <point x="2959.4116" y="1075.5222"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="KRAKONS_DISPUTE_400010000" priority="16">
+    <zone mapid="400010000" name="KRAKONS_DISPUTE_400010000" priority="16" fly="true">
         <points>
             <point x="747.88" y="1351.47"/>
             <point x="651.6614" y="1756.601"/>
@@ -727,7 +727,7 @@
             <point x="857.60297" y="1322.7732"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="SIELS_LEFT_WING_1131_B_400010000" priority="15">
+    <zone mapid="400010000" name="SIELS_LEFT_WING_1131_B_400010000" priority="15" fly="true">
         <points>
             <point x="2653.75" y="2654.5"/>
             <point x="2666.25" y="2464.375"/>
@@ -740,7 +740,7 @@
             <point x="2758.875" y="2772.125"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="THE_SHATTERED_TEMPLE_400010000" priority="14">
+    <zone mapid="400010000" name="THE_SHATTERED_TEMPLE_400010000" priority="14" fly="true">
         <points>
             <point x="3487.668" y="1201.3317"/>
             <point x="3361.4902" y="1039.1031"/>
@@ -756,7 +756,7 @@
             <point x="3469.6426" y="1275.4359"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="BLACK_CLOUD_ISLAND_400010000" priority="16">
+    <zone mapid="400010000" name="BLACK_CLOUD_ISLAND_400010000" priority="16" fly="true">
         <points>
             <point x="3336.675" y="2581.7412"/>
             <point x="3300.875" y="2384.9338"/>
@@ -764,7 +764,7 @@
             <point x="3480.8445" y="2559.393"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="SOUTHERN_RIDGE_400010000" priority="14">
+    <zone mapid="400010000" name="SOUTHERN_RIDGE_400010000" priority="14" fly="true">
         <points>
             <point x="1482.33" y="1262.2"/>
             <point x="1443.3772" y="1318.4651"/>
@@ -776,7 +776,7 @@
             <point x="1495.3142" y="1223.2472"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="SULFUR_ARCHIPELAGO_400010000" priority="17">
+    <zone mapid="400010000" name="SULFUR_ARCHIPELAGO_400010000" priority="17" fly="true">
         <points>
             <point x="638.62" y="448.62"/>
             <point x="374.745" y="666.62"/>
@@ -789,7 +789,7 @@
             <point x="1141.995" y="347.37"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="WINGS_OF_SIEL_ARCHIPELAGO_Z_1132_400010000" priority="15">
+    <zone mapid="400010000" name="WINGS_OF_SIEL_ARCHIPELAGO_Z_1132_400010000" priority="15" fly="true">
         <points>
             <point x="1930.768" y="2726.0593"/>
             <point x="1780.949" y="3291.6895"/>
@@ -802,7 +802,7 @@
             <point x="2484.375" y="2568.625"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="SIELS_RIGHT_WING_1132_B_400010000" priority="14">
+    <zone mapid="400010000" name="SIELS_RIGHT_WING_1132_B_400010000" priority="14" fly="true">
         <points>
             <point x="2454.38" y="2822.5"/>
             <point x="2592.88" y="2733.0"/>
@@ -815,7 +815,7 @@
             <point x="2505.505" y="3093.0"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="PRIMUM_WHARF_400010000" priority="14">
+    <zone mapid="400010000" name="PRIMUM_WHARF_400010000" priority="14" fly="true">
         <points>
             <point x="911.05383" y="2867.9524"/>
             <point x="913.8608" y="2796.3757"/>
@@ -825,7 +825,7 @@
             <point x="964.38544" y="2876.373"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="SULFUR_FLOW_400010000" priority="15">
+    <zone mapid="400010000" name="SULFUR_FLOW_400010000" priority="15" fly="true">
         <points>
             <point x="1157.56" y="689.34"/>
             <point x="1132.6157" y="929.42926"/>
@@ -837,7 +837,7 @@
             <point x="1495.8677" y="686.222"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="GRAVE_OF_STEEL_400010000" priority="14">
+    <zone mapid="400010000" name="GRAVE_OF_STEEL_400010000" priority="14" fly="true">
         <points>
             <point x="1906.75" y="3461.75"/>
             <point x="1908.875" y="3080.25"/>
@@ -846,7 +846,7 @@
             <point x="2173.125" y="3553.375"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="LEIBO_ISLAND_400010000" priority="15">
+    <zone mapid="400010000" name="LEIBO_ISLAND_400010000" priority="15" fly="true">
         <points>
             <point x="2074.912" y="2049.7305"/>
             <point x="2039.112" y="1852.9231"/>
@@ -854,7 +854,7 @@
             <point x="2219.0815" y="2027.3823"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="GRAVE_OF_CLAWS_400010000" priority="15">
+    <zone mapid="400010000" name="GRAVE_OF_CLAWS_400010000" priority="15" fly="true">
         <points>
             <point x="2235.625" y="1752.75"/>
             <point x="2418.0" y="1294.125"/>
@@ -865,7 +865,7 @@
             <point x="2359.75" y="1884.5"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="DRYROCK_400010000" priority="16">
+    <zone mapid="400010000" name="DRYROCK_400010000" priority="16" fly="true">
         <points>
             <point x="919.5" y="2115.75"/>
             <point x="991.0" y="1892.875"/>
@@ -874,7 +874,7 @@
             <point x="1138.125" y="2342.875"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="KROTAN_ROCK_400010000" priority="16">
+    <zone mapid="400010000" name="KROTAN_ROCK_400010000" priority="16" fly="true">
         <points>
             <point x="2049.91" y="1101.87"/>
             <point x="1910.5216" y="1137.2372"/>
@@ -888,7 +888,7 @@
             <point x="2308.3196" y="1320.1582"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="HEART_OF_SIEL_400010000" priority="13">
+    <zone mapid="400010000" name="HEART_OF_SIEL_400010000" priority="13" fly="true">
         <points>
             <point x="2839.25" y="2769.0"/>
             <point x="2817.25" y="2885.25"/>
@@ -899,7 +899,7 @@
             <point x="2928.0" y="2764.5"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="KROTAN_REFUGE_400010000" priority="15">
+    <zone mapid="400010000" name="KROTAN_REFUGE_400010000" priority="15" fly="true">
         <points>
             <point x="1916.875" y="1163.625"/>
             <point x="1962.0" y="1392.75"/>
@@ -908,7 +908,7 @@
             <point x="2094.25" y="1147.5"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="RED_HASIA_SCOUT_POST_400010000" priority="13">
+    <zone mapid="400010000" name="RED_HASIA_SCOUT_POST_400010000" priority="13" fly="true">
         <points>
             <point x="2694.057" y="496.3879"/>
             <point x="2693.8328" y="455.77875"/>
@@ -916,7 +916,7 @@
             <point x="2743.4858" y="497.50043"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="PRIMUM_TRAINING_CAMP_400010000" priority="15">
+    <zone mapid="400010000" name="PRIMUM_TRAINING_CAMP_400010000" priority="15" fly="true">
         <points>
             <point x="668.33606" y="2895.8516"/>
             <point x="621.23004" y="2817.9456"/>
@@ -930,7 +930,7 @@
             <point x="751.6775" y="2901.2869"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="TEMINON_LANDING_400010000" priority="17">
+    <zone mapid="400010000" name="TEMINON_LANDING_400010000" priority="17" fly="true">
         <points>
             <point x="2728.9048" y="413.6798"/>
             <point x="2448.5876" y="489.56342"/>
@@ -945,7 +945,7 @@
             <point x="2982.0298" y="393.6798"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="BLOODBURN_REACH_400010000" priority="18">
+    <zone mapid="400010000" name="BLOODBURN_REACH_400010000" priority="18" fly="true">
         <points>
             <point x="2502.0" y="2649.75"/>
             <point x="2208.75" y="2772.625"/>
@@ -961,7 +961,7 @@
             <point x="2848.25" y="2580.0"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="THE_FLINDERS_400010000" priority="16">
+    <zone mapid="400010000" name="THE_FLINDERS_400010000" priority="16" fly="true">
         <points>
             <point x="2916.8643" y="732.67175"/>
             <point x="2846.7656" y="872.86914"/>
@@ -976,7 +976,7 @@
             <point x="3017.0054" y="688.60974"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="SOLITARY_ISLAND_400010000" priority="15">
+    <zone mapid="400010000" name="SOLITARY_ISLAND_400010000" priority="15" fly="true">
         <points>
             <point x="900.1509" y="2524.516"/>
             <point x="900.1509" y="2346.4658"/>
@@ -987,7 +987,7 @@
             <point x="950.7731" y="2528.0073"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="ASTERIA_PLAIN_400010000" priority="16">
+    <zone mapid="400010000" name="ASTERIA_PLAIN_400010000" priority="16" fly="true">
         <points>
             <point x="562.0309" y="3054.5244"/>
             <point x="356.19476" y="3188.1084"/>
@@ -1005,7 +1005,7 @@
             <point x="562.0309" y="2927.3125"/>
         </points>
     </zone>
-    <zone mapid="400010000" name="SIELS_EASTERN_FORTRESS_400010000" priority="13">
+    <zone mapid="400010000" name="SIELS_EASTERN_FORTRESS_400010000" priority="13" fly="true">
         <points>
             <point x="2520.5" y="2900.625"/>
             <point x="2504.625" y="2828.875"/>
