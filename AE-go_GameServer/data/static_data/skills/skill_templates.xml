@@ -24795,6 +24795,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <petorderuseultraskill ultra_skill="16" e="1" hoptype="SKILLLV" hopb="2268"/>
+        </effects>
         <actions>
             <mpuse value="440" delta="0"/>
         </actions>
@@ -24812,6 +24815,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <petorderuseultraskill ultra_skill="17" e="1" hoptype="SKILLLV" hopb="2268"/>
+        </effects>
         <actions>
             <mpuse value="440" delta="0"/>
         </actions>
@@ -24850,6 +24856,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <petorderuseultraskill ultra_skill="14" e="1" hoptype="SKILLLV" hopb="2694"/>
+        </effects>
         <actions>
             <mpuse value="500" delta="0"/>
         </actions>
@@ -24867,6 +24876,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <petorderuseultraskill ultra_skill="15" e="1" hoptype="SKILLLV" hopb="2694"/>
+        </effects>
         <actions>
             <mpuse value="500" delta="0"/>
         </actions>
@@ -25889,6 +25901,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <petorderuseultraskill ultra_skill="5" e="1" hoptype="SKILLLV" hopb="1884"/>
+        </effects>
         <actions>
             <mpuse value="103" delta="0"/>
         </actions>
@@ -25900,6 +25915,9 @@
             <targetrange value="ONLYONE"/>
             <targetrelation value="FRIEND"/>
         </setproperties>
+        <effects>
+            <petorderuseultraskill ultra_skill="5" e="1"/>
+        </effects>
     </skill_template>
     <skill_template skill_id="1661" name="STR_SKILL_EL_Order_ElementalField_G1" nameId="572061" stack="SKILL_EL_ORDER_ELEMENTALFIELD" lvl="1" skilltype="MAGICAL" skillsubtype="NONE" tslot="NONE" activation="ACTIVE" cooldown="1200" duration="800">
         <startconditions>
@@ -25914,6 +25932,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <petorderuseultraskill ultra_skill="4" e="1" hoptype="SKILLLV" hopb="1537"/>
+        </effects>
         <actions>
             <mpuse value="220" delta="0"/>
         </actions>
@@ -26005,6 +26026,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <petorderuseultraskill ultra_skill="18" e="1" hoptype="SKILLLV" hopb="1949"/>
+        </effects>
         <actions>
             <mpuse value="200" delta="0"/>
         </actions>
@@ -26040,6 +26064,9 @@
             <targetrange value="ONLYONE"/>
             <targetrelation value="FRIEND"/>
         </setproperties>
+        <effects>
+            <petorderuseultraskill ultra_skill="6" e="1" hoptype="SKILLLV" hopb="1400"/>
+        </effects>
         <actions>
             <mpuse value="76" delta="1"/>
         </actions>
@@ -26057,6 +26084,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <petorderuseultraskill ultra_skill="7" e="1" hoptype="SKILLLV" hopb="744"/>
+        </effects>
         <actions>
             <mpuse value="32" delta="0"/>
         </actions>
@@ -26114,6 +26144,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <petorderuseultraskill ultra_skill="8" e="1" hoptype="SKILLLV" hopb="873"/>
+        </effects>
         <actions>
             <mpuse value="20" delta="0"/>
         </actions>
@@ -26165,6 +26198,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <petorderuseultraskill ultra_skill="9" e="1" hoptype="SKILLLV" hopb="1014"/>
+        </effects>
         <actions>
             <mpuse value="36" delta="0"/>
         </actions>
@@ -26465,6 +26501,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <petorderuseultraskill ultra_skill="4" e="1"/>
+        </effects>
     </skill_template>
     <skill_template skill_id="1692" name="STR_SKILL_EL_Pet_Shield_G3" nameId="573997" stack="SKILL_EL_PET_SHIELD" lvl="3" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="120" duration="0">
         <startconditions>
@@ -26789,6 +26828,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <petorderuseultraskill ultra_skill="3" e="1"/>
+        </effects>
     </skill_template>
     <skill_template skill_id="1710" name="STR_SKILL_EL_Light_Slave_GuardianSoul_G2" nameId="573925" stack="SKILL_EL_LIGHT_SLAVE_GUARDIANSOUL" lvl="2" skilltype="MAGICAL" skillsubtype="SUMMONTRAP" tslot="NONE" activation="ACTIVE" cooldown="150" duration="1000">
         <startconditions>
@@ -26891,6 +26933,9 @@
             <targetrange value="ONLYONE"/>
             <targetrelation value="FRIEND"/>
         </setproperties>
+        <effects>
+            <petorderuseultraskill ultra_skill="6" e="1" hoptype="SKILLLV" hopb="1400"/>
+        </effects>
         <actions>
             <mpuse value="84" delta="2"/>
         </actions>
@@ -27103,6 +27148,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <petorderuseultraskill ultra_skill="6" e="1"/>
+        </effects>
     </skill_template>
     <skill_template skill_id="1726" name="STR_SKILL_EL_Order_ElementalImpact_G1" nameId="573969" stack="SKILL_EL_ORDER_ELEMENTALIMPACT" lvl="1" skilltype="MAGICAL" skillsubtype="NONE" tslot="NONE" activation="ACTIVE" cooldown="300" duration="1000">
         <setproperties>
@@ -27114,6 +27162,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <petorderuseultraskill ultra_skill="7" e="1"/>
+        </effects>
     </skill_template>
     <skill_template skill_id="1727" name="STR_SKILL_EL_Light_Summon_TempestElemental_G1" nameId="573945" stack="SKILL_EL_LIGHT_SUMMON_TEMPESTELEMENTAL" lvl="1" skilltype="MAGICAL" skillsubtype="SUMMON" tslot="NONE" activation="ACTIVE" cooldown="36000" duration="4500">
         <startconditions>
@@ -27781,6 +27832,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <petorderuseultraskill ultra_skill="3" e="1" hoptype="SKILLLV" hopb="1761"/>
+        </effects>
         <actions>
             <mpuse value="37" delta="0"/>
         </actions>
@@ -27798,6 +27852,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <petorderuseultraskill ultra_skill="10" e="1" hoptype="SKILLLV" hopb="1104"/>
+        </effects>
         <actions>
             <mpuse value="62" delta="0"/>
         </actions>
@@ -28352,6 +28409,9 @@
             <targetrange value="ONLYONE"/>
             <targetrelation value="FRIEND"/>
         </setproperties>
+        <effects>
+            <petorderuseultraskill ultra_skill="11" e="1" hoptype="SKILLLV" hopb="2199"/>
+        </effects>
     </skill_template>
     <skill_template skill_id="1795" name="STR_SKILL_EL_AreaCage_G3" nameId="584627" stack="SKILL_EL_AREACAGE" lvl="3" skilltype="MAGICAL" skillsubtype="ATTACK" tslot="DEBUFF" activation="ACTIVE" cooldown="100" duration="1500">
         <startconditions>
@@ -28421,6 +28481,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <petorderuseultraskill ultra_skill="12" e="1" hoptype="SKILLLV" hopb="2268"/>
+        </effects>
         <actions>
             <mpuse value="440" delta="0"/>
         </actions>
@@ -28438,6 +28501,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <petorderuseultraskill ultra_skill="13" e="1" hoptype="SKILLLV" hopb="2268"/>
+        </effects>
         <actions>
             <mpuse value="440" delta="0"/>
         </actions>
@@ -46059,6 +46125,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <petorderuseultraskill ultra_skill="5" e="1" hoptype="SKILLLV" hopb="7425"/>
+        </effects>
         <actions>
             <mpuse value="639" delta="6"/>
             <dpuse value="200"/>

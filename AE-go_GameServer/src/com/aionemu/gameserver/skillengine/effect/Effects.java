@@ -110,7 +110,8 @@ public class Effects
 		@XmlElement(name = "boostskillcastingtime", type = BoostSkillCastingTimeEffect.class),
 		@XmlElement(name = "summontrap", type = SummonTrapEffect.class),
 		@XmlElement(name = "summonservant", type = SummonServantEffect.class),
-		@XmlElement(name = "skillatkdraininstant", type = SkillAtkDrainInstantEffect.class)
+		@XmlElement(name = "skillatkdraininstant", type = SkillAtkDrainInstantEffect.class),
+		@XmlElement(name = "petorderuseultraskilleffect", type = PetOrderUseUltraSkillEffect.class)
 	})
 	protected List<EffectTemplate> effects;
 	
