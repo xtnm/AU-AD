@@ -68,7 +68,7 @@
 	<report_to id="1515" start_npc_id="204502" end_npc_id="204549" />
 
 	<!-- Suspicious Spice Pot -->
-	<item_collecting id="1513" start_npc_id="204580" />
+	<report_to id="1513" start_npc_id="204580" end_npc_id="204549" item_id="182201708" />
 
 	<!-- TODO: The Ettin's Necklace -->
 
@@ -589,7 +589,7 @@
 	<report_to id="1615" start_npc_id="204573" end_npc_id="204832" />
 
 	<!-- TODO: [Spy/Group] Suspicious Scientists -->
-	<item_collecting id="1617" start_npc_id="204832" end_npc_id="204832" />
+	<item_collecting id="1616" start_npc_id="204832" end_npc_id="204832" />
 	
 	<!-- TODO: [Spy/Group] The Key is the Key -->
 	<item_collecting id="1617" start_npc_id="204832" end_npc_id="204832" />

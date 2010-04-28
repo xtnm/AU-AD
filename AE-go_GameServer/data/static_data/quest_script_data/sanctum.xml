@@ -25,8 +25,29 @@
 	<!-- A Song Of Praise handled by script -->
 	
 	
-	<!-- Delivery for the Outer Port -->
+  	<!-- Delivery for the Outer Port -->
+ 	<xml_quest id="1963" start_npc_id="203726" end_npc_id="203726">
+ 		<on_talk_event ids="203851">
+ 			<var value="0">
+ 				<npc id="203851">
+ 					<dialog id="25">
+ 						<operations>
+ 							<npc_dialog id="1352"/>
+ 						</operations>
+ 					</dialog>
+ 					<dialog id="10000">
+ 						<operations>
+ 							<set_quest_var var_id="0" value="1"/>
+ 							<set_quest_status status="REWARD"/>
+ 						</operations>
+ 					</dialog>
+ 				</npc>
+ 			</var>
+ 		</on_talk_event>
+ 	</xml_quest>
+	
 	<report_to id="1963" start_npc_id="203726" end_npc_id="203726"/>
+	
 	
 	<!-- Krallic Language Potion handled by script-->
 	
@@ -83,6 +104,26 @@
 	<!-- TODO: Teachings of Life -->
 	
 	<!-- TODO: A Souvenir For Noris -->
+	<xml_quest id="1964" start_npc_id="203726" end_npc_id="203726">
+		<on_talk_event ids="203776">
+			<var value="0">
+				<npc id="203776">
+					<dialog id="25">
+						<operations>
+							<npc_dialog id="1352"/>
+						</operations>
+					</dialog>
+					<dialog id="10000">
+						<operations>
+							<set_quest_var var_id="0" value="1"/>
+							<set_quest_status status="REWARD"/>
+						</operations>
+					</dialog>
+				</npc>
+			</var>
+		</on_talk_event>
+	</xml_quest>
+
 
 	<!-- A Costume on Consignment -->
 	<report_to id="1986" start_npc_id="798009" end_npc_id="203810" />
