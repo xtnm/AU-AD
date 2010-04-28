@@ -719,14 +719,14 @@
 	<!-- Leban (NPC Normal lvl:50 Subtext : Abyss Training Instructor)-->
 	<spawn map="400010000" npcid="278126" pool="1" interval="295">
 		<object x="747.73047" y="2817.9038" z="1594.2247" h="0"/>
-	</spawn>	
+	</spawn>
 	<!-- Leibo (NPC Normal lvl:40)-->
 	<spawn map="400010000" npcid="279030" pool="5" interval="295">
 		<object x="2130.438" y="1960.457" z="1595.6646" h="61"/>
-    <object x="2154.9949" y="1970.4503" z="1593.8021" h="20"/>
-    <object x="2171.8062" y="1959.1351" z="1593.7098" h="8"/>
-    <object x="2158.6416" y="1946.2247" z="1594.4584" h="115"/>
-    <object x="2139.057" y="1919.7657" z="1594.9678" h="61"/>
+		<object x="2154.9949" y="1970.4503" z="1593.8021" h="20"/>
+		<object x="2171.8062" y="1959.1351" z="1593.7098" h="8"/>
+		<object x="2158.6416" y="1946.2247" z="1594.4584" h="115"/>
+		<object x="2139.057" y="1919.7657" z="1594.9678" h="61"/>
 	</spawn>
 	<!-- Lisya (NPC Hero lvl:56 Subtext : Red Hasia Centurion)-->
 	<spawn map="400010000" npcid="278016" pool="1" interval="295">
