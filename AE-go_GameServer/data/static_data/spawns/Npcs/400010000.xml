@@ -406,7 +406,7 @@
 	</spawn>
 	<!-- Gagrad (NPC Elite lvl:40)-->
 	<spawn map="400010000" npcid="278087" pool="1" interval="295">
-		<object x="1172.7606" y="1970.446" z="1605.5911" h="0"/>
+		<object x="1172.7606" y="1970.446" z="1605.5911" h="75"/>
 	</spawn>
 	<!-- Ganglot (NPC Elite lvl:40)-->
 	<spawn map="400010000" npcid="278089" pool="1" interval="295">
@@ -442,7 +442,7 @@
 	</spawn>
 	<!-- Glati (NPC Elite lvl:40)-->
 	<spawn map="400010000" npcid="278088" pool="1" interval="295">
-		<object x="1181.928" y="1959.9672" z="1604.8182" h="0"/>
+		<object x="1181.928" y="1959.9672" z="1604.8182" h="75"/>
 	</spawn>
 	<!-- Glaucos (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278634" pool="1" interval="295">
@@ -719,6 +719,14 @@
 	<!-- Leban (NPC Normal lvl:50 Subtext : Abyss Training Instructor)-->
 	<spawn map="400010000" npcid="278126" pool="1" interval="295">
 		<object x="747.73047" y="2817.9038" z="1594.2247" h="0"/>
+	</spawn>	
+	<!-- Leibo (NPC Normal lvl:40)-->
+	<spawn map="400010000" npcid="279030" pool="5" interval="295">
+		<object x="2130.438" y="1960.457" z="1595.6646" h="61"/>
+    <object x="2154.9949" y="1970.4503" z="1593.8021" h="20"/>
+    <object x="2171.8062" y="1959.1351" z="1593.7098" h="8"/>
+    <object x="2158.6416" y="1946.2247" z="1594.4584" h="115"/>
+    <object x="2139.057" y="1919.7657" z="1594.9678" h="61"/>
 	</spawn>
 	<!-- Lisya (NPC Hero lvl:56 Subtext : Red Hasia Centurion)-->
 	<spawn map="400010000" npcid="278016" pool="1" interval="295">
@@ -1118,7 +1126,7 @@
 	</spawn>
 	<!-- Sinjah (NPC Elite lvl:40)-->
 	<spawn map="400010000" npcid="278086" pool="1" interval="295">
-		<object x="1172.8295" y="1959.8295" z="1605.3483" h="0"/>
+		<object x="1172.8295" y="1959.8295" z="1605.3483" h="75"/>
 	</spawn>
 	<!-- Sione (NPC Elite lvl:40)-->
 	<spawn map="400010000" npcid="278608" pool="1" interval="295">
@@ -1161,6 +1169,10 @@
 		<object x="2648.48" y="687.26" z="2901.46" h="17"/>
 		<object x="2698.18" y="667.48" z="2924.5" h="0"/>
 		<object x="2660.57" y="628.61" z="2926.62" h="0"/>
+	</spawn>
+	<!-- Sulfur Isle Guard Tower (NPC Elite lvl:40)-->
+	<spawn map="400010000" npcid="275413" pool="1" interval="295">
+		<object x="1179.5122" y="1969.2848" z="1605.2539" h="75"/>
 	</spawn>
 	<!-- Svekk (NPC Elite lvl:53)-->
 	<spawn map="400010000" npcid="278060" pool="1" interval="295">
