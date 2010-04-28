@@ -16,6 +16,7 @@
  */
 package com.aionemu.gameserver.model.gameobjects.player;
 
+import com.aionemu.gameserver.dataholders.DataManager;
 import com.aionemu.gameserver.model.gameobjects.PersistentState;
 
 /**
@@ -56,6 +57,15 @@ public class SkillListEntry
 	public int getSkillLevel()
 	{
 		return skillLvl;
+	}
+	
+	/**
+	 * 
+	 * @return the skill name
+	 */
+	public String getSkillName()
+	{
+		return DataManager.SKILL_DATA.getSkillTemplate(skillId).getName();
 	}
 
 	/**

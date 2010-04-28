@@ -102,6 +102,10 @@ public class Item extends AionObject
 		//item description should return probably string and not id
 		return String.valueOf(itemTemplate.getNameId());
 	}
+	public String getItemName()
+	{
+		return itemTemplate.getName();
+	}
 
 	/**
 	 * @return the itemTemplate

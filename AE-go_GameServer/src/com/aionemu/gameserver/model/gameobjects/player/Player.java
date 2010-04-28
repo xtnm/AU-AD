@@ -665,7 +665,10 @@ public class Player extends Creature
 	 */
 	public Legion getLegion()
 	{
-		return legionMember.getLegion();
+		if(legionMember != null)
+			return legionMember.getLegion();
+		else
+			return null;
 	}
 
 	/**
