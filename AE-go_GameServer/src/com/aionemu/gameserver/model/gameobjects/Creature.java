@@ -20,6 +20,7 @@ import java.util.Map;
 
 import javolution.util.FastMap;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
 import com.aionemu.gameserver.ai.AI;
@@ -433,6 +434,11 @@ public abstract class Creature extends VisibleObject
 	protected boolean isEnemyNpc(Npc npc)
 	{
 		return false;
+	}
+	
+	public String getTribe()
+	{
+		return StringUtils.EMPTY;
 	}
 	
 	/**

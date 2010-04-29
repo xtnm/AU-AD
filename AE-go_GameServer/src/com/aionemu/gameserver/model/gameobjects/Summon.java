@@ -185,4 +185,10 @@ public class Summon extends Creature
 	{
 		return master.isEnemySummon(summon);
 	}
+
+	@Override
+	public String getTribe()
+	{
+		return master.getTribe();
+	}
 }

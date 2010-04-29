@@ -27,6 +27,10 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.aionemu.gameserver.model.templates.tribe.AggroRelations;
+import com.aionemu.gameserver.model.templates.tribe.FriendlyRelations;
+import com.aionemu.gameserver.model.templates.tribe.HostileRelations;
+import com.aionemu.gameserver.model.templates.tribe.NeutralRelations;
+import com.aionemu.gameserver.model.templates.tribe.SupportRelations;
 import com.aionemu.gameserver.model.templates.tribe.Tribe;
 
 /**
@@ -59,6 +63,12 @@ public class TribeRelationsData
 		return tribeNameMap.size();
 	}
 	
+	/**
+	 * 
+	 * @param tribeName1
+	 * @param tribeName2
+	 * @return
+	 */
 	public boolean isAggressiveRelation(String tribeName1, String tribeName2)
 	{
 		Tribe tribe1 = tribeNameMap.get(tribeName1);
@@ -68,5 +78,115 @@ public class TribeRelationsData
 		if(aggroRelations == null)
 			return false;
 		return aggroRelations.getTo().contains(tribeName2);
+	}
+	
+	/**
+	 * 
+	 * @param tribeName1
+	 * @param tribeName2
+	 * @return
+	 */
+	public boolean isSupportRelation(String tribeName1, String tribeName2)
+	{
+		Tribe tribe1 = tribeNameMap.get(tribeName1);
+		if(tribe1 == null)
+			return false;
+		SupportRelations supportRelations = tribe1.getSupportRelations();
+		if(supportRelations == null)
+			return false;
+		return supportRelations.getTo().contains(tribeName2);
+	}
+	
+	/**
+	 * 
+	 * @param tribeName1
+	 * @param tribeName2
+	 * @return
+	 */
+	public boolean isFriendlyRelation(String tribeName1, String tribeName2)
+	{
+		Tribe tribe1 = tribeNameMap.get(tribeName1);
+		if(tribe1 == null)
+			return false;
+		FriendlyRelations friendlyRelations = tribe1.getFriendlyRelations();
+		if(friendlyRelations == null)
+			return false;
+		return friendlyRelations.getTo().contains(tribeName2);
+	}
+	
+	/**
+	 * 
+	 * @param tribeName1
+	 * @param tribeName2
+	 * @return
+	 */
+	public boolean isNeutralRelation(String tribeName1, String tribeName2)
+	{
+		Tribe tribe1 = tribeNameMap.get(tribeName1);
+		if(tribe1 == null)
+			return false;
+		NeutralRelations neutralRelations = tribe1.getNeutralRelations();
+		if(neutralRelations == null)
+			return false;
+		return neutralRelations.getTo().contains(tribeName2);
+	}
+	
+	/**
+	 * 
+	 * @param tribeName1
+	 * @param tribeName2
+	 * @return
+	 */
+	public boolean isHostileRelation(String tribeName1, String tribeName2)
+	{
+		Tribe tribe1 = tribeNameMap.get(tribeName1);
+		if(tribe1 == null)
+			return false;
+		HostileRelations hostileRelations = tribe1.getHostileRelations();
+		if(hostileRelations == null)
+			return false;
+		return hostileRelations.getTo().contains(tribeName2);
+	}
+	
+	/**
+	 * 
+	 * @param tribeName
+	 * @return
+	 */
+	public boolean isGuardDark(String tribeName)
+	{
+		Tribe tribe = tribeNameMap.get(tribeName);
+		if(tribe == null)
+			return false;
+		
+		if(Tribe.GUARD_DARK.equals(tribe.getName()))
+			return true;
+		
+		String baseTribe = tribe.getBase();
+		if(baseTribe != null)
+			return isGuardDark(baseTribe);
+		
+		return false;
+	}
+	
+	/**
+	 * 
+	 * @param tribeName
+	 * @return
+	 */
+	public boolean isGuardLight(String tribeName)
+	{
+		Tribe tribe = tribeNameMap.get(tribeName);
+		if(tribe == null)
+			return false;
+		
+		if(Tribe.GUARD_LIGHT.equals(tribe.getName()))
+			return true;
+		
+		String baseTribe = tribe.getBase();
+		if(baseTribe != null)
+			return isGuardLight(baseTribe);
+		
+		return false;
 	}
 }

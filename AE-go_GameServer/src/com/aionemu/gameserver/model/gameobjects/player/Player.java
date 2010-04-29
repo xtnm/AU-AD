@@ -997,6 +997,18 @@ public class Player extends Creature
 	}
 
 	@Override
+	public String getTribe()
+	{
+		switch(getCommonData().getRace())
+		{
+			case ELYOS:
+				return "PC";
+			default:
+				return "PC_DARK";
+		}
+	}
+
+	@Override
 	protected boolean canSeeNpc(Npc npc)
 	{
 		return true; //TODO

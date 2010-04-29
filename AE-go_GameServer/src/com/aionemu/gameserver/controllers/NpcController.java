@@ -391,7 +391,7 @@ public class NpcController extends CreatureController<Npc>
 
 		if(target == null || target.getLifeStats().isAlreadyDead())
 		{
-			ai.setAiState(AIState.THINKING);
+			ai.handleEvent(Event.MOST_HATED_CHANGED);
 			return;
 		}
 		
