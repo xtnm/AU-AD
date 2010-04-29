@@ -469,15 +469,22 @@
 
 	<!-- TODO: Quest Id: 1748  Threat of the Thunder Shout Legion -->
 
-	<!-- TODO: Quest Id: 1749  [Group] Decimate the East Garrison -->
+	<!-- 1749  [Group] Decimate the East Garrison -->
+	<item_collecting id="1749" start_npc_id="278600"/>
 
-	<!-- TODO: Quest Id: 1745  Destroying the Guard Tower -->
+	<!-- 1745  Destroying the Guard Tower -->
+	<monster_hunt start_npc_id="263266" id="1745">
+    	    <monster_infos var_id="0" npc_id="275116" max_kill="1"/>
+	</monster_hunt>
 
-	<!-- TODO: Quest Id: 1746  [Group] Decimate the West Garrison -->
+	<!-- 1746  [Group] Decimate the West Garrison -->
+	<item_collecting id="1746" start_npc_id="278595"/>
 
-	<!-- TODO: Quest Id: 1758  Destroying the Red Hasia Legion -->
+	<!-- 1758  Destroying the Red Hasia Legion -->
+	<item_collecting id="1758" start_npc_id="264768"/>
 
-	<!-- TODO: Quest Id: 1759  [Group] Decimate the Sulfur Garrison -->
+	<!-- 1759  [Group] Decimate the Sulfur Garrison -->
+	<item_collecting id="1759" start_npc_id="278590"/>
 
 	<!-- TODO: Quest Id: 1737  [Alliance] Defeat Lower Generals -->
 
@@ -487,15 +494,27 @@
 
 	<!-- TODO: Quest Id: 1076  Fragment of Memory 2 -->
 
-	<!-- TODO: Quest Id: 1794  Discerning Their Intentions -->
+	<!-- 1794  Discerning Their Intentions -->
+	<item_collecting id="1794" start_npc_id="270151"/>
 
 	<!-- TODO: Quest Id: 1798  Jakurerk's Shot at the Big Time -->
 
-	<!-- TODO: Quest Id: 1792  Vengeance for Baucis -->
+	<!-- 1792  Vengeance for Baucis -->
+	<monster_hunt start_npc_id="278616" id="1792">
+    	    <monster_infos var_id="0" npc_id="256177" max_kill="5"/>
+			<monster_infos var_id="1" npc_id="256181" max_kill="5"/>
+			<monster_infos var_id="2" npc_id="256185" max_kill="5"/>
+	</monster_hunt>
 
-	<!-- TODO: Quest Id: 1786  Protecting the Landing -->
+	<!-- 1786  Protecting the Landing -->
+	<item_collecting id="1786" start_npc_id="278620"/>
 
-	<!-- TODO: Quest Id: 1787  Preparing for Inspection -->
+	<!-- 1787  Preparing for Inspection -->
+	<monster_hunt start_npc_id="278621" id="1787">
+    	    <monster_infos var_id="0" npc_id="215196" max_kill="7"/>
+			<monster_infos var_id="1" npc_id="215197" max_kill="5"/>
+			<monster_infos var_id="2" npc_id="255614" max_kill="3"/>
+	</monster_hunt>
 
 	<!-- TODO: Quest Id: 1789  Seizing the Asmodian Supplies -->
 
@@ -751,9 +770,11 @@
 
 	<!-- TODO: Quest Id: 1795  [Group] Decimate the Miren Garrison -->
 
-	<!-- TODO: Quest Id: 1825  Four Great Protectors -->
+	<!-- 1825  Four Great Protectors -->
+	<item_collecting id="1825" start_npc_id="260235"/>
 
-	<!-- TODO: Quest Id: 1826  ...Plus Two More Great Protectors -->
+	<!-- 1826  ...Plus Two More Great Protectors -->
+	<item_collecting id="1826" start_npc_id="260235"/>
 
 
  </quest_scripts>
