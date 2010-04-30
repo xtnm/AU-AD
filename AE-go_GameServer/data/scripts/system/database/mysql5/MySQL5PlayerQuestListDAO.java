@@ -36,10 +36,10 @@ import com.aionemu.gameserver.questEngine.model.QuestStatus;
  */
 public class MySQL5PlayerQuestListDAO extends PlayerQuestListDAO
 {
-	public static final String	SELECT_QUERY	= "SELECT `quest_id`, `status`, `quest_vars`, `complite_count` FROM `player_quests` WHERE `player_id`=?";
-	public static final String	UPDATE_QUERY	= "UPDATE `player_quests` SET `status`=?, `quest_vars`=?, `complite_count`=? where `player_id`=? AND `quest_id`=?";
+	public static final String	SELECT_QUERY	= "SELECT `quest_id`, `status`, `quest_vars`, `complete_count` FROM `player_quests` WHERE `player_id`=?";
+	public static final String	UPDATE_QUERY	= "UPDATE `player_quests` SET `status`=?, `quest_vars`=?, `complete_count`=? where `player_id`=? AND `quest_id`=?";
 	public static final String	DELETE_QUERY	= "DELETE FROM `player_quests` WHERE `player_id`=? AND `quest_id`=?";
-	public static final String	INSERT_QUERY	= "INSERT INTO `player_quests` (`player_id`, `quest_id`, `status`, `quest_vars`, `complite_count`) VALUES (?,?,?,?,?)";
+	public static final String	INSERT_QUERY	= "INSERT INTO `player_quests` (`player_id`, `quest_id`, `status`, `quest_vars`, `complete_count`) VALUES (?,?,?,?,?)";
 
 	/*
 	 * (non-Javadoc)
@@ -64,9 +64,9 @@ public class MySQL5PlayerQuestListDAO extends PlayerQuestListDAO
 				{
 					int questId = rset.getInt("quest_id");
 					int questVars = rset.getInt("quest_vars");
-					int compliteCount = rset.getInt("complite_count");
+					int completeCount = rset.getInt("complete_count");
 					QuestStatus status = QuestStatus.valueOf(rset.getString("status"));
-					QuestState questState = new QuestState(questId, status, questVars, compliteCount);
+					QuestState questState = new QuestState(questId, status, questVars, completeCount);
 					questState.setPersistentState(PersistentState.UPDATED);
 					questStateList.addQuest(questId, questState);
 				}

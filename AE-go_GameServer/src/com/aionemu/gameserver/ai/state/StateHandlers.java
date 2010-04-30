@@ -20,7 +20,7 @@ import com.aionemu.gameserver.ai.state.handler.ActiveAggroStateHandler;
 import com.aionemu.gameserver.ai.state.handler.ActiveNpcStateHandler;
 import com.aionemu.gameserver.ai.state.handler.AttackingStateHandler;
 import com.aionemu.gameserver.ai.state.handler.MovingToHomeStateHandler;
-import com.aionemu.gameserver.ai.state.handler.NoneMonsterStateHandler;
+import com.aionemu.gameserver.ai.state.handler.NoneNpcStateHandler;
 import com.aionemu.gameserver.ai.state.handler.RestingStateHandler;
 import com.aionemu.gameserver.ai.state.handler.StateHandler;
 import com.aionemu.gameserver.ai.state.handler.TalkingStateHandler;
@@ -39,7 +39,7 @@ public enum StateHandlers
 	/**
 	 * AIState.NONE
 	 */
-	NONE_MONSTER_SH(new NoneMonsterStateHandler()),
+	NONE_MONSTER_SH(new NoneNpcStateHandler()),
 	/**
 	 * AIState.ATTACKING
 	 */

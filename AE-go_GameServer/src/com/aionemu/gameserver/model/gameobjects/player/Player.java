@@ -666,7 +666,10 @@ public class Player extends Creature
 	 */
 	public Legion getLegion()
 	{
-		return legionMember.getLegion();
+		if(legionMember != null)
+			return legionMember.getLegion();
+		else
+			return null;
 	}
 
 	/**
@@ -990,6 +993,18 @@ public class Player extends Creature
 	public boolean isFriend(Player player)
 	{
 		return player.getCommonData().getRace() == getCommonData().getRace() && !getController().isDueling(player);
+	}
+
+	@Override
+	public String getTribe()
+	{
+		switch(getCommonData().getRace())
+		{
+			case ELYOS:
+				return "PC";
+			default:
+				return "PC_DARK";
+		}
 	}
 
 	@Override

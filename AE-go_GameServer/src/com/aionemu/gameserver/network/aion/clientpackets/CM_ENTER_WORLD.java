@@ -59,6 +59,7 @@ import com.aionemu.gameserver.services.GroupService;
 import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.services.LegionService;
 import com.aionemu.gameserver.services.MailService;
+import com.aionemu.gameserver.services.PeriodicSaveService;
 import com.aionemu.gameserver.services.PlayerService;
 import com.aionemu.gameserver.services.PunishmentService;
 import com.aionemu.gameserver.services.StigmaService;
@@ -97,6 +98,8 @@ public class CM_ENTER_WORLD extends AionClientPacket
 	private ItemService			itemService;
 	@Inject
 	private StigmaService		stigmaService;
+	@Inject
+	private PeriodicSaveService periodicSaveService;
 
 	/**
 	 * Constructs new instance of <tt>CM_ENTER_WORLD </tt> packet
@@ -266,6 +269,11 @@ public class CM_ENTER_WORLD extends AionClientPacket
 			 * Notify mail service to load all mails
 			 */
 			mailService.onPlayerLogin(player);
+			/**
+			 * Schedule periodic saving of this player
+			 */
+			periodicSaveService.onPlayerLogin(player);
+			
 		}
 		else
 		{

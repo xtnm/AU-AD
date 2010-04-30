@@ -20,6 +20,7 @@ import java.util.List;
 
 import com.aionemu.gameserver.controllers.attack.AttackResult;
 import com.aionemu.gameserver.controllers.attack.AttackUtil;
+import com.aionemu.gameserver.model.TaskId;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Summon;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
@@ -35,6 +36,7 @@ import com.aionemu.gameserver.network.aion.serverpackets.SM_SUMMON_UPDATE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS.TYPE;
 import com.aionemu.gameserver.restrictions.RestrictionsManager;
+import com.aionemu.gameserver.services.LifeStatsRestoreService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
 
@@ -153,7 +155,15 @@ public class SummonController extends CreatureController<Summon>
 		getOwner().setMode(SummonMode.REST);
 		Player master = getOwner().getMaster();
 		PacketSendUtility.sendPacket(master, SM_SYSTEM_MESSAGE.SUMMON_RESTMODE(getOwner().getNameId()));
-		PacketSendUtility.sendPacket(master, new SM_SUMMON_UPDATE(getOwner()));
+		PacketSendUtility.sendPacket(master, new SM_SUMMON_UPDATE(getOwner()));		
+		checkCurrentHp();
+	}
+
+	private void checkCurrentHp()
+	{
+		if(!getOwner().getLifeStats().isFullyRestoredHp())
+			getOwner().getController().addNewTask(TaskId.RESTORE,
+				LifeStatsRestoreService.getInstance().scheduleHpRestoreTask(getOwner().getLifeStats()));
 	}
 
 	/**
@@ -165,6 +175,7 @@ public class SummonController extends CreatureController<Summon>
 		Player master = getOwner().getMaster();
 		PacketSendUtility.sendPacket(master, SM_SYSTEM_MESSAGE.SUMMON_GUARDMODE(getOwner().getNameId()));
 		PacketSendUtility.sendPacket(master, new SM_SUMMON_UPDATE(getOwner()));
+		checkCurrentHp();
 	}
 
 	/**
@@ -176,6 +187,7 @@ public class SummonController extends CreatureController<Summon>
 		Player master = getOwner().getMaster();
 		PacketSendUtility.sendPacket(master, SM_SYSTEM_MESSAGE.SUMMON_ATTACKMODE(getOwner().getNameId()));
 		PacketSendUtility.sendPacket(master, new SM_SUMMON_UPDATE(getOwner()));
+		getOwner().getController().cancelTask(TaskId.RESTORE);
 	}
 
 	@Override
@@ -233,6 +245,7 @@ public class SummonController extends CreatureController<Summon>
 	@Override
 	public void onDie(Creature lastAttacker)
 	{
+		super.onDie(lastAttacker);
 		release(UnsummonType.UNSPECIFIED);
 		Summon owner = getOwner();
 		PacketSendUtility.broadcastPacket(owner, new SM_EMOTION(owner, 13, 0, lastAttacker == null ? 0 : lastAttacker

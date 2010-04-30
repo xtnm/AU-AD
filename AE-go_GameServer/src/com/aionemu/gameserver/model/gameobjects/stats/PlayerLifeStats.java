@@ -51,7 +51,7 @@ public class PlayerLifeStats extends CreatureLifeStats<Player>
 	protected void onReduceHp()
 	{
 		sendHpPacketUpdate();
-		triggerHpMpRestoreTask();
+		triggerRestoreTask();
 		sendGroupPacketUpdate();	
 	}
 
@@ -59,7 +59,7 @@ public class PlayerLifeStats extends CreatureLifeStats<Player>
 	protected void onReduceMp()
 	{
 		sendMpPacketUpdate();		
-		triggerHpMpRestoreTask();
+		triggerRestoreTask();
 		sendGroupPacketUpdate();
 	}
 	

@@ -41,25 +41,20 @@ public class LifeStatsRestoreService
 	 * @param creature
 	 * @return Future<?>
 	 */
-	public Future<?> scheduleRestoreTask(final CreatureLifeStats<? extends Creature> lifeStats)
+	public Future<?> scheduleRestoreTask(CreatureLifeStats<? extends Creature> lifeStats)
 	{
-		return ThreadPoolManager.getInstance().scheduleAtFixedRate((new Runnable(){
-			@Override
-			public void run()
-			{
-				if(lifeStats.isAlreadyDead() || lifeStats.isFullyRestoredHpMp())
-				{
-					lifeStats.cancelRestoreTask();
-				}
-				else
-				{
-					lifeStats.restoreHp();
-					lifeStats.restoreMp();
-				}
-			}
-
-		}), 1700, DEFAULT_DELAY);
-
+		return ThreadPoolManager.getInstance().scheduleAtFixedRate(new HpMpRestoreTask(lifeStats), 1700, DEFAULT_DELAY);
+	}
+	
+	/**
+	 * HP restoring task
+	 * 
+	 * @param lifeStats
+	 * @return
+	 */
+	public Future<?> scheduleHpRestoreTask(CreatureLifeStats<? extends Creature> lifeStats)
+	{
+		return ThreadPoolManager.getInstance().scheduleAtFixedRate(new HpRestoreTask(lifeStats), 1700, DEFAULT_DELAY);
 	}
 
 	/**
@@ -69,31 +64,8 @@ public class LifeStatsRestoreService
 	 */
 	public Future<?> scheduleFpReduceTask(final PlayerLifeStats lifeStats)
 	{
-		return ThreadPoolManager.getInstance().scheduleAtFixedRate((new Runnable(){
-			@Override
-			public void run()
-			{
-				if(lifeStats.isAlreadyDead())
-					lifeStats.cancelFpReduce();
-			
-				if(lifeStats.getCurrentFp() == 0)
-				{
-					if(lifeStats.getOwner().getFlyState() > 0)
-					{
-						lifeStats.getOwner().getFlyController().endFly();
-					}
-					else
-					{
-						lifeStats.triggerFpRestore();
-					}
-				}
-				else
-				{
-					lifeStats.reduceFp(1);
-				}
-			}
-
-		}), 2000, DEFAULT_FPREDUCE_DELAY);
+		return ThreadPoolManager.getInstance().scheduleAtFixedRate(new FpReduceTask(lifeStats), 2000,
+			DEFAULT_FPREDUCE_DELAY);
 	}
 
 	/**
@@ -101,27 +73,117 @@ public class LifeStatsRestoreService
 	 * @param lifeStats
 	 * @return
 	 */
-	public Future<?> scheduleFpRestoreTask(final PlayerLifeStats lifeStats)
+	public Future<?> scheduleFpRestoreTask(PlayerLifeStats lifeStats)
 	{
-		return ThreadPoolManager.getInstance().scheduleAtFixedRate((new Runnable(){
-			@Override
-			public void run()
-			{
-				if(lifeStats.isAlreadyDead() || lifeStats.isFlyTimeFullyRestored())
-				{
-					lifeStats.cancelFpRestore();
-				}
-				else
-				{
-					lifeStats.restoreFp();
-				}
-			}
-
-		}), 2000, DEFAULT_FPRESTORE_DELAY);
+		return ThreadPoolManager.getInstance().scheduleAtFixedRate(new FpRestoreTask(lifeStats), 2000,
+			DEFAULT_FPRESTORE_DELAY);
 	}
 
 	public static LifeStatsRestoreService getInstance()
 	{
 		return instance;
+	}
+
+	private static class HpRestoreTask implements Runnable
+	{
+		private CreatureLifeStats<?>	lifeStats;
+
+		private HpRestoreTask(CreatureLifeStats<?> lifeStats)
+		{
+			this.lifeStats = lifeStats;
+		}
+
+		@Override
+		public void run()
+		{
+			if(lifeStats.isAlreadyDead() || lifeStats.isFullyRestoredHp())
+			{
+				lifeStats.cancelRestoreTask();
+			}
+			else
+			{
+				lifeStats.restoreHp();
+			}
+		}
+	}
+
+	private static class HpMpRestoreTask implements Runnable
+	{
+		private CreatureLifeStats<?>	lifeStats;
+
+		private HpMpRestoreTask(CreatureLifeStats<?> lifeStats)
+		{
+			this.lifeStats = lifeStats;
+		}
+
+		@Override
+		public void run()
+		{
+			if(lifeStats.isAlreadyDead() || lifeStats.isFullyRestoredHpMp())
+			{
+				lifeStats.cancelRestoreTask();
+			}
+			else
+			{
+				lifeStats.restoreHp();
+				lifeStats.restoreMp();
+			}
+		}
+	}
+
+	private static class FpReduceTask implements Runnable
+	{
+		private PlayerLifeStats	lifeStats;
+
+		private FpReduceTask(PlayerLifeStats lifeStats)
+		{
+			this.lifeStats = lifeStats;
+		}
+
+		@Override
+		public void run()
+		{
+			if(lifeStats.isAlreadyDead())
+				lifeStats.cancelFpReduce();
+
+			if(lifeStats.getCurrentFp() == 0)
+			{
+				if(lifeStats.getOwner().getFlyState() > 0)
+				{
+					lifeStats.getOwner().getFlyController().endFly();
+				}
+				else
+				{
+					lifeStats.triggerFpRestore();
+				}
+			}
+			else
+			{
+				lifeStats.reduceFp(1);
+			}
+		}
+	}
+
+	private static class FpRestoreTask implements Runnable
+	{
+		private PlayerLifeStats	lifeStats;
+
+		private FpRestoreTask(PlayerLifeStats lifeStats)
+		{
+			this.lifeStats = lifeStats;
+		}
+
+		@Override
+		public void run()
+		{
+			if(lifeStats.isAlreadyDead() || lifeStats.isFlyTimeFullyRestored())
+			{
+				lifeStats.cancelFpRestore();
+			}
+			else
+			{
+				lifeStats.restoreFp();
+			}
+		}
 	}
 }

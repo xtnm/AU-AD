@@ -268,7 +268,7 @@ public class _2009ACeremonyinPandaemonium extends QuestHandler
 			return false;
 
 		QuestState qs2 = player.getQuestStateList().getQuestState(2008);
-		if(qs2 == null || qs2.getStatus() != QuestStatus.COMPLITE)
+		if(qs2 == null || qs2.getStatus() != QuestStatus.COMPLETE)
 			return false;
 		env.setQuestId(questId);
 		questService.startQuest(env, QuestStatus.START);

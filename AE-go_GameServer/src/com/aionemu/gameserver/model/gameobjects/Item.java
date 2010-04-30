@@ -102,6 +102,10 @@ public class Item extends AionObject
 		//item description should return probably string and not id
 		return String.valueOf(itemTemplate.getNameId());
 	}
+	public String getItemName()
+	{
+		return itemTemplate.getName();
+	}
 
 	/**
 	 * @return the itemTemplate
@@ -275,7 +279,8 @@ public class Item extends AionObject
 	 */
 	public GodStone addGodStone(int itemId)
 	{
-		this.godStone = new GodStone(getObjectId(), itemId, PersistentState.NEW);
+		PersistentState state = this.godStone != null ? PersistentState.UPDATE_REQUIRED : PersistentState.NEW;
+		this.godStone = new GodStone(getObjectId(), itemId, state);
 		return this.godStone;
 	}
 	

@@ -123,6 +123,13 @@ public class Npc extends Creature
 	{
 		return isAggressiveTo(Race.ELYOS) || isAggressiveTo(Race.ASMODIANS);
 	}
+	
+	@Override
+	public String getTribe()
+	{
+		return this.getObjectTemplate().getTribe();
+	}
+
 	/**
 	 *  //TODO refactore to npc-npc interations
 	 *  
@@ -135,8 +142,12 @@ public class Npc extends Creature
 		switch(race)
 		{
 			case ELYOS:
+				if (DataManager.TRIBE_RELATIONS_DATA.isGuardDark(currentTribe))
+					return true;
 				return DataManager.TRIBE_RELATIONS_DATA.isAggressiveRelation(currentTribe, "PC");
 			case ASMODIANS:
+				if (DataManager.TRIBE_RELATIONS_DATA.isGuardLight(currentTribe))
+					return true;
 				return DataManager.TRIBE_RELATIONS_DATA.isAggressiveRelation(currentTribe, "PC_DARK");
 		}
 		return false;

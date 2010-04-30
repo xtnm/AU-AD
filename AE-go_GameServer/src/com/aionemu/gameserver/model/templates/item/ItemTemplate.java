@@ -155,6 +155,9 @@ public class ItemTemplate extends VisibleObjectTemplate
 	@XmlElement(name = "stigma")
 	private Stigma		stigma;
 	
+	@XmlAttribute(name = "name")
+	private String		name;
+	
 	/**
 	 * @return the mask
 	 */
@@ -464,7 +467,7 @@ public class ItemTemplate extends VisibleObjectTemplate
 	@Override
 	public String getName()
 	{
-		return "NONAME";
+		return name;
 	}
 
 	@Override

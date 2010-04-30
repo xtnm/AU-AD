@@ -106,7 +106,7 @@ public class _2013ADangerousCrop extends QuestHandler
 						case 33:
 							if(var == 9)
 							{
-								if(collectItemCheck(env))
+								if(questService.collectItemCheck(env, true))
 								{
 									qs.setStatus(QuestStatus.REWARD);
 									updateQuestStatus(player, qs);

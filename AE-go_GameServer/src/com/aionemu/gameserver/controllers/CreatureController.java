@@ -16,9 +16,9 @@
  */
 package com.aionemu.gameserver.controllers;
 
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Future;
+
+import javolution.util.FastMap;
 
 import com.aionemu.gameserver.controllers.movement.MovementType;
 import com.aionemu.gameserver.model.TaskId;
@@ -43,7 +43,7 @@ import com.aionemu.gameserver.utils.PacketSendUtility;
  */
 public abstract class CreatureController<T extends Creature> extends VisibleObjectController<Creature>
 {
-	private Map<Integer, Future<?>> tasks = new ConcurrentHashMap<Integer, Future<?>>();
+	private FastMap<Integer, Future<?>> tasks = new FastMap<Integer, Future<?>>().shared();
 	/**
 	 * {@inheritDoc}
 	 */
@@ -229,7 +229,7 @@ public abstract class CreatureController<T extends Creature> extends VisibleObje
 	}
 
 	/**
-	 * 
+	 *  If task already exist - it will be canceled
 	 * @param taskId
 	 * @param task
 	 */
@@ -237,6 +237,16 @@ public abstract class CreatureController<T extends Creature> extends VisibleObje
 	{
 		cancelTask(taskId);
 		tasks.put(taskId.ordinal(), task);
+	}
+	
+	/**
+	 *  If task already exist - it will not be replaced
+	 * @param taskId
+	 * @param task
+	 */
+	public void addNewTask(TaskId taskId, Future<?> task)
+	{
+		tasks.putIfAbsent(taskId.ordinal(), task);
 	}
 
 	/**

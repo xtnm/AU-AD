@@ -150,7 +150,7 @@ public class _2015TaketheInitiative extends QuestHandler
 		if(qs == null || qs.getStatus() != QuestStatus.LOCKED)
 			return false;
 		QuestState qs2 = player.getQuestStateList().getQuestState(2014);
-		if(qs2 == null || qs2.getStatus() != QuestStatus.COMPLITE)
+		if(qs2 == null || qs2.getStatus() != QuestStatus.COMPLETE)
 			return false;
 		qs.setStatus(QuestStatus.START);
 		updateQuestStatus(player, qs);

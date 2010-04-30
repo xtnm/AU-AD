@@ -61,6 +61,7 @@ import com.aionemu.gameserver.model.gameobjects.player.PlayerAppearance;
 import com.aionemu.gameserver.model.gameobjects.player.PlayerCommonData;
 import com.aionemu.gameserver.model.gameobjects.player.Storage;
 import com.aionemu.gameserver.model.gameobjects.player.StorageType;
+import com.aionemu.gameserver.model.gameobjects.player.FriendList.Status;
 import com.aionemu.gameserver.model.gameobjects.stats.PlayerGameStats;
 import com.aionemu.gameserver.model.gameobjects.stats.PlayerLifeStats;
 import com.aionemu.gameserver.model.gameobjects.stats.listeners.TitleChangeListener;
@@ -380,6 +381,7 @@ public class PlayerService
 		log.info("Player logged in: " + player.getName() + " Account: " + player.getClientConnection().getAccount().getName());
 		player.getCommonData().setOnline(true);
 		DAOManager.getDAO(PlayerDAO.class).onlinePlayer(player, true);
+		player.getFriendList().setStatus(Status.ONLINE);
 		player.onLoggedIn();
 	}
 
@@ -395,14 +397,7 @@ public class PlayerService
 	 */
 	public void playerLoggedOut(final Player player)
 	{
-		log.info("Player logged out: " + player.getName());
-		
-		if(player.getClientConnection() == null)
-		{
-			log.warn("CHECKPOINT: Player already logged out " + player.getName());
-			return;
-		}
-		
+		log.info("Player logged out: " + player.getName() + " Account: " + player.getClientConnection().getAccount().getName());
 		player.onLoggedOut();
 		
 		//store current effects

@@ -97,7 +97,7 @@ public class _2001ThinkingAhead extends QuestHandler
 					case 33:
 						if(var == 1)
 						{
-							if(collectItemCheck(env))
+							if(questService.collectItemCheck(env, true))
 							{
 								qs.setQuestVarById(0, var + 1);
 								updateQuestStatus(player, qs);

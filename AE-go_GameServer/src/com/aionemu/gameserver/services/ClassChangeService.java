@@ -170,12 +170,12 @@ public class ClassChangeService
 		QuestState qs = player.getQuestStateList().getQuestState(questId);
 		if(qs == null)
 		{
-			player.getQuestStateList().addQuest(questId, new QuestState(questId, QuestStatus.COMPLITE, 0, 0));
-			PacketSendUtility.sendPacket(player, new SM_QUEST_ACCEPTED(questId, QuestStatus.COMPLITE.value(), 0));
+			player.getQuestStateList().addQuest(questId, new QuestState(questId, QuestStatus.COMPLETE, 0, 0));
+			PacketSendUtility.sendPacket(player, new SM_QUEST_ACCEPTED(questId, QuestStatus.COMPLETE.value(), 0));
 		}
 		else
 		{
-			qs.setStatus(QuestStatus.COMPLITE);
+			qs.setStatus(QuestStatus.COMPLETE);
 			PacketSendUtility.sendPacket(player, new SM_QUEST_STEP(questId, qs.getStatus(), qs.getQuestVars()
 				.getQuestVars()));
 		}

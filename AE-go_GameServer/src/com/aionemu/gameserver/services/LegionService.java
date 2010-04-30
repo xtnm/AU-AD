@@ -971,7 +971,7 @@ public class LegionService
 	/**
 	 * @param legion
 	 */
-	private ArrayList<LegionMemberEx> loadLegionMemberExList(Legion legion)
+	public ArrayList<LegionMemberEx> loadLegionMemberExList(Legion legion)
 	{
 		ArrayList<LegionMemberEx> legionMembers = new ArrayList<LegionMemberEx>();
 		for(Integer memberObjId : legion.getLegionMembers())

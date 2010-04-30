@@ -20,6 +20,7 @@ import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Summon;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SUMMON_UPDATE;
+import com.aionemu.gameserver.services.LifeStatsRestoreService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 
 /**
@@ -69,5 +70,14 @@ public class SummonLifeStats extends CreatureLifeStats<Summon>
 	public Summon getOwner()
 	{
 		return (Summon) super.getOwner();
+	}
+	
+	@Override
+	protected void triggerRestoreTask()
+	{
+		if(lifeRestoreTask == null && !alreadyDead)
+		{
+			this.lifeRestoreTask = LifeStatsRestoreService.getInstance().scheduleHpRestoreTask(this);
+		}
 	}
 }

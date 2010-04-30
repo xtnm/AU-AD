@@ -23,6 +23,7 @@ import java.util.concurrent.Future;
 
 import org.apache.log4j.Logger;
 
+import com.aionemu.commons.callbacks.EnhancedObject;
 import com.aionemu.commons.database.dao.DAOManager;
 import com.aionemu.gameserver.configs.main.PeriodicSaveConfig;
 import com.aionemu.gameserver.dao.AbyssRankDAO;
@@ -33,11 +34,11 @@ import com.aionemu.gameserver.dao.PlayerQuestListDAO;
 import com.aionemu.gameserver.dao.PlayerSkillListDAO;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.model.gameobjects.player.listeners.PlayerLoggedOutListener;
 import com.aionemu.gameserver.model.items.GodStone;
 import com.aionemu.gameserver.model.items.ManaStone;
 import com.aionemu.gameserver.model.legion.Legion;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
-import com.aionemu.gameserver.world.World;
 import com.google.inject.Inject;
 
 /**
@@ -47,88 +48,99 @@ import com.google.inject.Inject;
 public class PeriodicSaveService
 {
 	private static final Logger	log	= Logger.getLogger(PeriodicSaveService.class);
-
-	private World				world;
 	private LegionService		legionService;
-	
+
 	private Future<?>			legionWhUpdateTask;
 	
+	private static final int DELAY_GENERAL = PeriodicSaveConfig.PLAYER_GENERAL * 1000;
+	private static final int DELAY_ITEM = PeriodicSaveConfig.PLAYER_ITEMS * 1000;
+
 	@Inject
-	public PeriodicSaveService(World world, LegionService legionService)
+	public PeriodicSaveService(LegionService legionService)
 	{
-		this.world = world;
 		this.legionService = legionService;
-		int DELAY_GENERAL = PeriodicSaveConfig.PLAYER_GENERAL * 1000;
-		int DELAY_ITEM = PeriodicSaveConfig.PLAYER_ITEMS * 1000;
+		
 		int DELAY_LEGION_ITEM = PeriodicSaveConfig.LEGION_ITEMS * 1000;
-		ThreadPoolManager.getInstance().scheduleAtFixedRate(new GeneralUpdateTask(), DELAY_GENERAL, DELAY_GENERAL);
-		ThreadPoolManager.getInstance().scheduleAtFixedRate(new ItemUpdateTask(), DELAY_ITEM, DELAY_ITEM);
+		
 		legionWhUpdateTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new LegionWhUpdateTask(),
 			DELAY_LEGION_ITEM, DELAY_LEGION_ITEM);
 	}
 
+	/**
+	 * 
+	 * @param player
+	 */
+	public void onPlayerLogin(Player player)
+	{
+		final Future<?> playerUpdateTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(
+			new GeneralUpdateTask(player), DELAY_GENERAL, DELAY_GENERAL);
+		final Future<?> playerItemUpdateTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(
+			new ItemUpdateTask(player), DELAY_ITEM, DELAY_ITEM);
+
+		((EnhancedObject) player).addCallback(new PlayerLoggedOutListener(){
+
+			@Override
+			protected void onLoggedOut(Player loggedOutPlayer)
+			{
+				playerUpdateTask.cancel(false);
+				playerItemUpdateTask.cancel(false);
+			}
+		});
+	}
+
 	private class GeneralUpdateTask implements Runnable
 	{
+		private Player	player;
+
+		private GeneralUpdateTask(Player player)
+		{
+			this.player = player;
+		}
+
 		@Override
 		public void run()
 		{
-			log.info("Player update task started.");
-			long startTime = System.currentTimeMillis();
-			Iterator<Player> playersIterator = world.getPlayersIterator();
-			int playersUpdated = 0;
-			while(playersIterator.hasNext())
+			try
 			{
-				Player player = playersIterator.next();
-				try
-				{
-					DAOManager.getDAO(AbyssRankDAO.class).storeAbyssRank(player);
-					DAOManager.getDAO(PlayerSkillListDAO.class).storeSkills(player);
-					DAOManager.getDAO(PlayerQuestListDAO.class).store(player);
-					DAOManager.getDAO(PlayerDAO.class).storePlayer(player);
-				}
-				catch(Exception ex)
-				{
-					log.error("Exception during periodic saving of player " + ex.getCause() != null ? ex.getCause()
-						.getMessage() : "null");
-				}
-
-				playersUpdated++;
+				DAOManager.getDAO(AbyssRankDAO.class).storeAbyssRank(player);
+				DAOManager.getDAO(PlayerSkillListDAO.class).storeSkills(player);
+				DAOManager.getDAO(PlayerQuestListDAO.class).store(player);
+				DAOManager.getDAO(PlayerDAO.class).storePlayer(player);
 			}
-			long workTime = System.currentTimeMillis() - startTime;
-			log.info("Player update: " + workTime + " ms, players: " + playersUpdated + ".");
+			catch(Exception ex)
+			{
+				log.error("Exception during periodic saving of player " + player.getName() + " " 
+					+ ex.getCause() != null ? ex.getCause().getMessage() : "null");
+			}
 		}
 	}
 
 	private class ItemUpdateTask implements Runnable
 	{
+		private Player	player;
+
+		private ItemUpdateTask(Player player)
+		{
+			this.player = player;
+		}
+
 		@Override
 		public void run()
 		{
-			log.info("Player item update task started.");
-			long startTime = System.currentTimeMillis();
-			Iterator<Player> playersIterator = world.getPlayersIterator();
-			int playersUpdated = 0;
-			while(playersIterator.hasNext())
+			try
 			{
-				Player player = playersIterator.next();
-				try
-				{
-					DAOManager.getDAO(InventoryDAO.class).store(player);
-					DAOManager.getDAO(ItemStoneListDAO.class).save(player);
-				}
-				catch(Exception ex)
-				{
-					log.error("Exception during periodic saving of player items " + ex.getCause() != null ? ex.getCause()
-						.getMessage() : "null");
-				}
-
-				playersUpdated++;
+				DAOManager.getDAO(InventoryDAO.class).store(player);
+				DAOManager.getDAO(ItemStoneListDAO.class).save(player);
 			}
-			long workTime = System.currentTimeMillis() - startTime;
-			log.info("Player item update: " + workTime + " ms, players: " + playersUpdated + ".");
+			catch(Exception ex)
+			{
+				log.error("Exception during periodic saving of player items " + player.getName() + " "
+					+ ex.getCause() != null ? ex.getCause().getMessage() : "null");
+			}
+
 		}
 	}
-	
+
 	private class LegionWhUpdateTask implements Runnable
 	{
 		@Override
@@ -151,7 +163,7 @@ public class PeriodicSaveService
 					{
 						DAOManager.getDAO(InventoryDAO.class).store(item, legion.getLegionId());
 					}
-					
+
 					/**
 					 * 2. save item stones
 					 */
@@ -160,7 +172,7 @@ public class PeriodicSaveService
 						if(item.hasManaStones())
 						{
 							Set<ManaStone> manaStones = item.getItemStones();
-							DAOManager.getDAO(ItemStoneListDAO.class).store(manaStones);	
+							DAOManager.getDAO(ItemStoneListDAO.class).store(manaStones);
 						}
 						GodStone godStone = item.getGodStone();
 						if(godStone != null)
@@ -181,7 +193,7 @@ public class PeriodicSaveService
 			log.info("Legion WH update: " + workTime + " ms, legions: " + legionWhUpdated + ".");
 		}
 	}
-	
+
 	/**
 	 * Save data on shutdown
 	 */
@@ -192,5 +204,4 @@ public class PeriodicSaveService
 		new LegionWhUpdateTask().run();
 		log.info("Data successfully saved.");
 	}
-
 }

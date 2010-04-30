@@ -16,9 +16,11 @@
  */
 package com.aionemu.gameserver.controllers;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.Future;
 
+import com.aionemu.gameserver.controllers.SummonController.UnsummonType;
 import com.aionemu.gameserver.controllers.attack.AttackResult;
 import com.aionemu.gameserver.controllers.attack.AttackUtil;
 import com.aionemu.gameserver.model.TaskId;
@@ -33,6 +35,7 @@ import com.aionemu.gameserver.model.gameobjects.player.SkillListEntry;
 import com.aionemu.gameserver.model.gameobjects.state.CreatureState;
 import com.aionemu.gameserver.model.gameobjects.state.CreatureVisualState;
 import com.aionemu.gameserver.model.gameobjects.stats.PlayerGameStats;
+import com.aionemu.gameserver.model.templates.quest.QuestItems;
 import com.aionemu.gameserver.model.templates.stats.PlayerStatsTemplate;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS;
@@ -238,6 +241,13 @@ public class PlayerController extends CreatureController<Player>
 			if(player.getLevel() > 4)
 				player.getCommonData().calculateExpLoss();
 		}
+		
+		/**
+		 * Release summon
+		 */
+		Summon summon = player.getSummon();
+		if(summon != null)
+			summon.getController().release(UnsummonType.UNSPECIFIED);
 
 		PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, 13, 0, lastAttacker == null ? 0 : lastAttacker
 			.getObjectId()), true);
@@ -614,5 +624,8 @@ public class PlayerController extends CreatureController<Player>
 		PacketSendUtility.broadcastPacket(master, new SM_EMOTION(summon, 30));
 	}
 	
-	
+	public boolean addItems(int itemId, int count)
+	{
+		return sp.getItemService().addItems(getOwner(), Collections.singletonList(new QuestItems(itemId, count)));
+	}
 }

@@ -64,7 +64,7 @@ public class WorkOrders extends QuestHandler
 		if(targetId != workOrdersData.getStartNpcId())
 			return false;
 		QuestState qs = player.getQuestStateList().getQuestState(workOrdersData.getId());
-		if(qs == null || qs.getStatus() == QuestStatus.NONE || qs.getStatus() == QuestStatus.COMPLITE)
+		if(qs == null || qs.getStatus() == QuestStatus.NONE || qs.getStatus() == QuestStatus.COMPLETE)
 		{
 			switch(env.getDialogId())
 			{
@@ -88,10 +88,10 @@ public class WorkOrders extends QuestHandler
 				return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 5);
 			else if (env.getDialogId() == 17)
 			{
-				if (collectItemCheck(env))
+				if (questService.collectItemCheck(env, true))
 				{
 					//TODO: Random rewards
-					qs.setStatus(QuestStatus.COMPLITE);
+					qs.setStatus(QuestStatus.COMPLETE);
 					qs.setCompliteCount(qs.getCompliteCount() + 1);
 					updateQuestStatus(player, qs);
 					PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 0));

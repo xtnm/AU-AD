@@ -199,6 +199,8 @@
 				minOccurs="0" maxOccurs="1" />
 			<xs:element name="skillatkdraininstant" type="SkillAtkDrainInstantEffect"
 				minOccurs="0" maxOccurs="1" />
+			<xs:element name="petorderuseultraskill" type="PetOrderUseUltraSkillEffect"
+				minOccurs="0" maxOccurs="1" />
 		</xs:sequence>
 		<xs:attribute name="food" type="xs:boolean"/>
 	</xs:complexType>
@@ -993,6 +995,14 @@
 			<xs:extension base="DamageEffect">				
 				<xs:attribute name="percent" type="xs:int" />	
 				<xs:attribute name="heal_type" type="HealType" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="PetOrderUseUltraSkillEffect">
+		<xs:complexContent>
+			<xs:extension base="Effect">
+				<xs:attribute name="ultra_skill" type="xs:int" />
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>

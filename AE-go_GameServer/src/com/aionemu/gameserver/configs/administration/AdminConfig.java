@@ -161,6 +161,9 @@ public class AdminConfig
     @Property(key = "gameserver.administration.command.remove", defaultValue = "3")
     public static int	COMMAND_REMOVE;
     
+	@Property(key = "gameserver.administration.command.playerinfo", defaultValue = "3")
+	public static int	COMMAND_PLAYERINFO;
+
 	@Property(key = "gameserver.administration.command.prison", defaultValue = "3")
 	public static int	COMMAND_PRISON;
 	

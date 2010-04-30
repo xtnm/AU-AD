@@ -30,10 +30,23 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "Tribe")
 public class Tribe
 {
+	public static final String GUARD_DARK = "GUARD_DARK";
+	public static final String GUARD_LIGHT = "GUARD";
+	
 	@XmlElement(name = "aggro")
 	protected AggroRelations aggroRelations;
+	@XmlElement(name = "friend")
+	protected FriendlyRelations friendlyRelations;
+	@XmlElement(name = "support")
+	protected SupportRelations supportRelations;
+	@XmlElement(name = "neutral")
+	protected NeutralRelations neutralRelations;
+	@XmlElement(name = "hostile")
+	protected HostileRelations hostileRelations;
 	@XmlAttribute(required = true)
 	protected String name;
+	@XmlAttribute
+	protected String base;
 	/**
 	 * @return the aggroRelations
 	 */
@@ -42,10 +55,46 @@ public class Tribe
 		return aggroRelations;
 	}
 	/**
+	 * @return the sypportRelations
+	 */
+	public SupportRelations getSupportRelations()
+	{
+		return supportRelations;
+	}
+	/**
+	 * @return the friendlyRelations
+	 */
+	public FriendlyRelations getFriendlyRelations()
+	{
+		return friendlyRelations;
+	}
+
+	/**
+	 * @return the neutralRelations
+	 */
+	public NeutralRelations getNeutralRelations()
+	{
+		return neutralRelations;
+	}
+	/**
+	 * @return the hostileRelations
+	 */
+	public HostileRelations getHostileRelations()
+	{
+		return hostileRelations;
+	}
+	/**
 	 * @return the name
 	 */
 	public String getName()
 	{
 		return name;
+	}
+	/**
+	 * @return the base
+	 */
+	public String getBase()
+	{
+		return base;
 	}
 }

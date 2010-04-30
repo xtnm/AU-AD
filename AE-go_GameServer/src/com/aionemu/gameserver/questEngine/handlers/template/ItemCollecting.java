@@ -90,7 +90,7 @@ public class ItemCollecting extends QuestHandler
 					return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2375);
 				else if(env.getDialogId() == 33)
 				{
-					if(collectItemCheck(env))
+					if(questService.collectItemCheck(env, true))
 					{
 						qs.setQuestVarById(0, qs.getQuestVarById(0) + 1);
 						qs.setStatus(QuestStatus.REWARD);

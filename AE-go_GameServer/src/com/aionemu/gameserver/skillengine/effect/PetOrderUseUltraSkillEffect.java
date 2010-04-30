@@ -14,34 +14,32 @@
  *  You should have received a copy of the GNU General Public License
  *  along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aionemu.gameserver.ai.state.handler;
+package com.aionemu.gameserver.skillengine.effect;
 
-import com.aionemu.gameserver.ai.AI;
-import com.aionemu.gameserver.ai.state.AIState;
-import com.aionemu.gameserver.model.gameobjects.Npc;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
+
+import com.aionemu.gameserver.skillengine.model.Effect;
 
 /**
  * @author ATracer
  *
  */
-public class NoneMonsterStateHandler extends StateHandler
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "PetOrderUseUltraSkillEffect")
+public class PetOrderUseUltraSkillEffect extends EffectTemplate
 {
+
 	@Override
-	public AIState getState()
+	public void applyEffect(Effect effect)
 	{
-		return AIState.NONE;
+		// TODO Auto-generated method stub
 	}
 
-	/**
-	 * State NONE
-	 * AI MonsterAi
-	 * AI GuardAi
-	 */
 	@Override
-	public void handleState(AIState state, AI<?> ai)
+	public void calculate(Effect effect)
 	{
-		ai.clearDesires();
-		((Npc) ai.getOwner()).getAggroList().clear();
-		ai.stop();
+		// TODO Auto-generated method stub
 	}
 }

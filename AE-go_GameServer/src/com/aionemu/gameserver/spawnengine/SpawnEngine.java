@@ -269,8 +269,7 @@ public class SpawnEngine
 		byte level = (byte) (npcTemplate.getLevel() + skillLvl - 1);
 		SummonStatsTemplate statsTemplate = summonStatsData.getSummonTemplate(npcId, level);
 		Summon summon = new Summon(aionObjectsIDFactory.nextId(), injector.getInstance(SummonController.class), spawn,
-			npcTemplate, statsTemplate);
-		summon.setLevel(level);
+			npcTemplate, statsTemplate, level);
 		summon.setKnownlist(new KnownList(summon));
 		summon.setEffectController(new EffectController(summon));
 		summon.setMaster(creator);

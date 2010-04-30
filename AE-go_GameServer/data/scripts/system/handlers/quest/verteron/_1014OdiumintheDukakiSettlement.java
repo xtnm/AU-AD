@@ -222,7 +222,6 @@ public class _1014OdiumintheDukakiSettlement extends QuestHandler
 		final int id = item.getItemTemplate().getTemplateId();
 		final int itemObjId = item.getObjectId();
 		final QuestState qs = player.getQuestStateList().getQuestState(questId);
-		final int var = qs.getQuestVarById(0); 
 		
 		if(id != 182200012 || qs.getQuestVarById(0) != 11)
 			return false;

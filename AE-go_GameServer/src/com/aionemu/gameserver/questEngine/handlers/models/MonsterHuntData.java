@@ -28,7 +28,6 @@ import javolution.util.FastMap;
 
 import com.aionemu.gameserver.questEngine.QuestEngine;
 import com.aionemu.gameserver.questEngine.handlers.template.MonsterHunt;
-import com.aionemu.gameserver.questEngine.handlers.template.MonsterHunt.MonsterInfo;
 
 /**
  * @author MrPoke
@@ -40,7 +39,7 @@ public class MonsterHuntData extends QuestScriptData
 {
 
 	@XmlElement(name = "monster_infos", required = true)
-	protected List<MonsterInfos>	monsterInfos;
+	protected List<MonsterInfo>	monsterInfos;
 	@XmlAttribute(name = "start_npc_id")
 	protected int					startNpcId;
 
@@ -48,8 +47,8 @@ public class MonsterHuntData extends QuestScriptData
 	public void register(QuestEngine questEngine)
 	{
 		FastMap<Integer, MonsterInfo> monsterInfo = new FastMap<Integer, MonsterInfo>();
-		for(MonsterInfos mi : monsterInfos)
-			monsterInfo.put(mi.getNpcId(), new MonsterInfo(mi.getVarId(), mi.getMaxKill()));
+		for(MonsterInfo mi : monsterInfos)
+			monsterInfo.put(mi.getNpcId(), mi);
 		MonsterHunt template = new MonsterHunt(id, startNpcId, monsterInfo);
 		questEngine.addQuestHandler(template);
 	}

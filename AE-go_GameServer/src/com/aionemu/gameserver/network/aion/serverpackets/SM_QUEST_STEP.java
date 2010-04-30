@@ -1,5 +1,5 @@
 /*
- * This file is part of aion-unique <aion-unique.smfnew.com>.
+ * This file is part of aion-unique <aionu-unique.org>.
  *
  *  aion-unique is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -24,20 +24,21 @@ import com.aionemu.gameserver.questEngine.model.QuestStatus;
 
 /**
  * @author MrPoke
- *
+ * 
  */
 public class SM_QUEST_STEP extends AionServerPacket
 {
-	private int questId;
-	private int status;
-	private int vars;
-	
+	private int	questId;
+	private int	status;
+	private int	vars;
+
 	public SM_QUEST_STEP(int questId, QuestStatus status, int vars)
 	{
 		this.questId = questId;
 		this.status = status.value();
 		this.vars = vars;
 	}
+
 	/**
 	 * {@inheritDoc}
 	 */

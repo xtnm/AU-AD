@@ -20,7 +20,6 @@ import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_DIALOG_WINDOW;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_PLAY_MOVIE;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_PLAYER_SPAWN;
 import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
@@ -65,9 +64,6 @@ public class _1040ScoutingtheScouts extends QuestHandler
 		if(qs == null || qs.getStatus() != QuestStatus.LOCKED  || player.getCommonData().getLevel() < 31)
 			return false;
 
-		QuestState qs2 = player.getQuestStateList().getQuestState(1300);
-		if(qs2 == null || qs2.getStatus() != QuestStatus.COMPLITE)
-			return false;
 		qs.setStatus(QuestStatus.START);
 		updateQuestStatus(player, qs);
 		return true;

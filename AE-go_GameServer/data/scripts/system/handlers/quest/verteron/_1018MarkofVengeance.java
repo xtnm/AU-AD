@@ -18,12 +18,10 @@ package quest.verteron;
 
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_DIALOG_WINDOW;
 import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
-import com.aionemu.gameserver.utils.PacketSendUtility;
 
 /**
  * @author Rhys2002 + MrPoke for Original code i massacred..
@@ -78,7 +76,7 @@ public class _1018MarkofVengeance extends QuestHandler
 					if(var == 0)
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1011);
 				case 33:
-					if(collectItemCheck(env))
+					if(questService.collectItemCheck(env, true))
 						{
 						qs.setQuestVarById(0, var + 1);
 						qs.setStatus(QuestStatus.REWARD);

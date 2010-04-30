@@ -105,7 +105,7 @@ public class _2020KeepingtheBlackClawTribeinCheck extends QuestHandler
 						case 33:
 							if (var == 6)
 							{
-								if(collectItemCheck(env))
+								if(questService.collectItemCheck(env, true))
 								{
 									qs.setStatus(QuestStatus.REWARD);
 									updateQuestStatus(player, qs);

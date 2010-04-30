@@ -21,6 +21,7 @@ import javolution.util.FastMap;
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
+import com.aionemu.gameserver.questEngine.handlers.models.MonsterInfo;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
@@ -119,40 +120,8 @@ public class MonsterHunt extends QuestHandler
 		if(mi.getMaxKill() <= qs.getQuestVarById(mi.getVarId()))
 			return false;
 
-		qs.setQuestVarById(mi.getVarId(), qs.getQuestVarById(mi.varId) + 1);
+		qs.setQuestVarById(mi.getVarId(), qs.getQuestVarById(mi.getVarId()) + 1);
 		updateQuestStatus(player, qs);
 		return true;
-	}
-
-	public static class MonsterInfo
-	{
-		private final int	varId;
-		private final int	maxKill;
-
-		/**
-		 * @param varId
-		 * @param maxKill
-		 */
-		public MonsterInfo(int varId, int maxKill)
-		{
-			this.varId = varId;
-			this.maxKill = maxKill;
-		}
-
-		/**
-		 * @return the varId
-		 */
-		public int getVarId()
-		{
-			return varId;
-		}
-
-		/**
-		 * @return the maxKill
-		 */
-		public int getMaxKill()
-		{
-			return maxKill;
-		}
 	}
 }
