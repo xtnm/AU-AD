@@ -29,7 +29,9 @@ import com.aionemu.gameserver.model.Race;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_MESSAGE;
+import com.aionemu.gameserver.services.TeleportService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
+import com.google.inject.Inject;
 
 /**
  * This chat handler is responsible for handling admin commands, starting with //
@@ -43,6 +45,9 @@ public class AdminCommandChatHandler implements ChatHandler
 	private static final Logger			log			= Logger.getLogger(AdminCommandChatHandler.class);
 
 	private Map<String, AdminCommand>	commands	= new HashMap<String, AdminCommand>();
+	
+	@Inject
+	private TeleportService teleportService;
 
 	AdminCommandChatHandler()
 	{
