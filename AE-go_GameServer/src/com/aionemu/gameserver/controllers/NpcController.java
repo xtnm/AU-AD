@@ -24,7 +24,6 @@ import org.apache.log4j.Logger;
 import com.aionemu.gameserver.ai.AI;
 import com.aionemu.gameserver.ai.events.Event;
 import com.aionemu.gameserver.ai.npcai.DummyAi;
-import com.aionemu.gameserver.ai.state.AIState;
 import com.aionemu.gameserver.controllers.attack.AttackResult;
 import com.aionemu.gameserver.controllers.attack.AttackUtil;
 import com.aionemu.gameserver.model.ChatType;
