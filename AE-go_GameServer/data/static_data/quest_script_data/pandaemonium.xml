@@ -384,9 +384,6 @@
         <!-- [Top Expert] Cooking Expert Qualification -->
         <item_collecting start_npc_id="204100" id="4955" />
         
-        <!-- [Top Expert] Cooking Expertise -->
-        <item_collecting start_npc_id="204100" id="4954" />
-        
         <!-- [Top Expert] Handicrafting Expert -->
         <report_to start_npc_id="204108" end_npc_id="204052" id="3949"/>
         

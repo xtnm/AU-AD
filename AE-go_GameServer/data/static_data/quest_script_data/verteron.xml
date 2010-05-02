@@ -143,8 +143,7 @@
 	<!-- Stolen Jewelry -->
 	<item_collecting start_npc_id="203127" id="1160"/>
 	
-	<!-- Stolen Village Seal -->
-	<report_to start_npc_id="203128" end_npc_id="798003" id="1156"/>
+	<!-- Stolen Village Seal handled by script -->
 	
 	<!-- TODO: The Potion Maker's Mistake -->
 	
