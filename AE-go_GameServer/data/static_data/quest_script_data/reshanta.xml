@@ -421,29 +421,41 @@
 
 	<!-- TODO: Quest Id: 1715  [Coin] Dousing the Flame Tribe -->
 
-	<!-- TODO: Quest Id: 1822  Fire-Resistant Weapons -->
+	<!-- 1822  Fire-Resistant Weapons -->
+	<item_collecting id="1822" start_npc_id="268051"/>
 
-	<!-- TODO: Quest Id: 1823  Our Weapons Are Melting -->
+	<!-- 1823  Our Weapons Are Melting -->
+	<item_collecting id="1823" start_npc_id="269251"/>
 
-	<!-- TODO: Quest Id: 1824  Hunting Ravenous Beasts -->
+	<!-- 1824  Hunting Ravenous Beasts -->
+	<item_collecting id="1824" start_npc_id="270151"/>
 
-	<!-- TODO: Quest Id: 1791  Drake Raiders -->
+	<!-- 1791  Drake Raiders -->
+	<monster_hunt start_npc_id="278615" id="1791">
+    	    <monster_infos var_id="0" npc_id="255702" max_kill="9"/>
+    	    <monster_infos var_id="1" npc_id="256200" max_kill="9"/>
+	</monster_hunt>
 
 	<!-- TODO: Quest Id: 2715  [Coin] Eliminating the Flame Tribe -->
 
 	<!-- TODO: Quest Id: 2075  Putting on the Speed -->
 
-	<!-- TODO: Quest Id: 2822  Deformed Weapon -->
+	<!-- 2822  Deformed Weapon -->
+	<item_collecting id="2822" start_npc_id="268052"/>
 
 	<!-- TODO: Quest Id: 2823  Ravenous Hearts -->
 
-	<!-- TODO: Quest Id: 2824  Protect the Weapons -->
+	<!-- 2824  Protect the Weapons -->
+	<item_collecting id="2824" start_npc_id="270152"/>
 
-	<!-- TODO: Quest Id: 2791  Fireproof Swords -->
+	<!-- 2791  Fireproof Swords -->
+	<item_collecting id="2791" start_npc_id="278115"/>
 
-	<!-- TODO: Quest Id: 2793  Dredgion Salvage -->
+	<!-- 2793  Dredgion Salvage -->
+	<item_collecting id="2793" start_npc_id="278117"/>
 
-	<!-- TODO: Quest Id: 2796  Crystal Recovery -->
+	<!-- 2796  Crystal Recovery -->
+	<item_collecting id="2796" start_npc_id="279028"/>
 
 	<!-- TODO: Quest Id: 2716  [Coin] Klaw of the Nebula of Blood -->
 
@@ -718,9 +730,11 @@
 
 	<!-- TODO: Quest Id: 2795  [Group] Defeat the Miren Garrison -->
 
-	<!-- TODO: Quest Id: 2825  Core Competency -->
+	<!-- 2825  Core Competency -->
+	<item_collecting id="2825" start_npc_id="260236"/>
 
-	<!-- TODO: Quest Id: 2826  Muelina's Forgetfulness -->
+	<!-- 2826  Muelina's Forgetfulness -->
+	<item_collecting id="2826" start_npc_id="260236"/>
 
 	<!-- TODO: Quest Id: 2808  [Group] Attack Asteria Elites -->
 
