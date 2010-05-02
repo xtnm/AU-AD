@@ -403,8 +403,7 @@
 		
 	</monster_hunt>
 
-	<!-- 1422 A Better Sword -->
-	<item_collecting id="1422" start_npc_id="203912" />
+	<!-- 1422 A Better Sword handled by script -->
 
 	<!-- TODO: 1037 Secrets of the Temple -->
 
@@ -553,8 +552,7 @@
 		<monster_infos npc_id="210970"  var_id="0" max_kill="1"/>
 	</monster_hunt>
 
-	<!-- TODO: 1371 Flowers for Isson -->
-	<item_collecting id="1371" start_npc_id="203949" />
+	<!-- 1371 Flowers for Isson handled by script -->
 
 	<!-- TODO: 1374 Warning to Laquepin -->
 	<report_to id="1374" start_npc_id="203946" end_npc_id="203992" />

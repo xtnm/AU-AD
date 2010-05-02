@@ -130,6 +130,7 @@ public class _1053TheKlawThreat extends QuestHandler
 		return false;
 	}
 	
+	@SuppressWarnings("static-access")
 	@Override
 	public boolean onKillEvent(QuestEnv env)
 	{

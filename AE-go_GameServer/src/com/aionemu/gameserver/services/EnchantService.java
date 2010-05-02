@@ -16,10 +16,10 @@
  */
 package com.aionemu.gameserver.services;
 
+import java.util.Set;
 import java.util.TreeSet;
 
 import javax.inject.Inject;
-import java.util.Set;
 
 import org.apache.log4j.Logger;
 
@@ -29,13 +29,13 @@ import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.PersistentState;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.player.Storage;
-import com.aionemu.gameserver.model.gameobjects.stats.listeners.ItemEquipmentListener;
-import com.aionemu.gameserver.model.items.ManaStone;
 import com.aionemu.gameserver.model.gameobjects.stats.StatEnum;
 import com.aionemu.gameserver.model.gameobjects.stats.id.EnchantStatEffectId;
+import com.aionemu.gameserver.model.gameobjects.stats.listeners.ItemEquipmentListener;
 import com.aionemu.gameserver.model.gameobjects.stats.modifiers.AddModifier;
 import com.aionemu.gameserver.model.gameobjects.stats.modifiers.RateModifier;
 import com.aionemu.gameserver.model.gameobjects.stats.modifiers.StatModifier;
+import com.aionemu.gameserver.model.items.ManaStone;
 import com.aionemu.gameserver.model.templates.item.ArmorType;
 import com.aionemu.gameserver.model.templates.item.ItemQuality;
 import com.aionemu.gameserver.model.templates.item.ItemTemplate;

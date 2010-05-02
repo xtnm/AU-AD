@@ -179,7 +179,6 @@ public class _1056LepharistPoisonResearch extends QuestHandler
 		int targetId = 0;
 		if(env.getVisibleObject() instanceof Npc)
 			targetId = ((Npc) env.getVisibleObject()).getNpcId();
-		Npc npc = (Npc)env.getVisibleObject();
 		
 		if(targetId == 212151 && qs.getQuestVarById(0) == 4)
 		{

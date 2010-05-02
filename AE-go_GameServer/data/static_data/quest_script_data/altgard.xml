@@ -149,8 +149,7 @@
 	  	<monster_infos var_id="0" npc_id="210440" max_kill="3"></monster_infos>
   	</monster_hunt>
   	
-  	<!-- A Fertile Field -->
-	<item_collecting start_npc_id="203629" action_item_id="700145" id="2237"/>
+  	<!-- 2237 A Fertile Field handled by script -->
   	
   	<!-- A Friendly Wager TODO: Need timer -->
   	<item_collecting start_npc_id="203621" id="2230"/>
@@ -292,17 +291,8 @@
   	
 	<!-- Trespassers at the Observatory handled by script -->
   	
-  	<!-- Urnir's Reasoning -->
-  	<monster_hunt start_npc_id="203656" id="2268">
-  		<monster_infos var_id="0" npc_id="210526" max_kill="5"/>
-  		<monster_infos var_id="0" npc_id="210527" max_kill="5"/>
-  	</monster_hunt>
-  	
   	<!-- A Bill Found in a Box -->
   	<report_to start_npc_id="203656" end_npc_id="798036" item_id="182203263" id="2296"/>
-  	
-  	<!-- A Change of Diet -->
-  	<item_collecting start_npc_id="203693" id="2275"/>
   	
   	<!-- TODO: A Secret Proposal -->
   	
@@ -312,9 +302,6 @@
   	<item_collecting start_npc_id="203693" id="2276"/>
   	
   	<!-- TODO: Chasing the Legend -->
-  	
-  	<!-- Order to Valurion -->
-  	<report_to start_npc_id="203557" end_npc_id="203558" item_id="182203260" id="2287"/>
   	
   	<!-- Rebuilding the Pillar -->
   	<item_collecting start_npc_id="203673" action_item_id="700144" id="2257"/>
