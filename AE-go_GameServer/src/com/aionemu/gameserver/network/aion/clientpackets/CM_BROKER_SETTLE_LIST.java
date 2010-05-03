@@ -14,24 +14,40 @@
  *  You should have received a copy of the GNU General Public License
  *  along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aionemu.gameserver.configs.main;
+package com.aionemu.gameserver.network.aion.clientpackets;
 
-import com.aionemu.commons.configuration.Property;
+import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.network.aion.AionClientPacket;
+import com.aionemu.gameserver.services.BrokerService;
+import com.google.inject.Inject;
 
 /**
- * @author ATracer
+ * @author kosyachok
+ *
  */
-public class PeriodicSaveConfig
+public class CM_BROKER_SETTLE_LIST extends AionClientPacket
 {
-	@Property(key = "gameserver.periodicsave.player.general", defaultValue = "900")
-	public static int	PLAYER_GENERAL;
-
-	@Property(key = "gameserver.periodicsave.player.items", defaultValue = "900")
-	public static int	PLAYER_ITEMS;
-
-	@Property(key = "gameserver.periodicsave.legion.items", defaultValue = "1200")
-	public static int	LEGION_ITEMS;
+	private int npcId;
 	
-	@Property(key = "gameserver.periodicsave.broker", defaultValue = "1500")
-	public static int	BROKER;
+	@Inject
+	BrokerService brokerService;
+	
+	public CM_BROKER_SETTLE_LIST(int opcode)
+	{
+		super(opcode);
+	}
+	
+	@Override
+	protected void readImpl()
+	{
+		npcId = readD();
+	}
+	
+	@Override
+	protected void runImpl()
+	{
+		Player player = getConnection().getActivePlayer();
+		
+		brokerService.showSettledItems(player);
+	}
 }

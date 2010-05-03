@@ -48,6 +48,7 @@ import com.aionemu.gameserver.network.aion.serverpackets.SM_STATS_INFO;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_TITLE_LIST;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_UI_SETTINGS;
 import com.aionemu.gameserver.network.aion.serverpackets.unk.SM_UNK5E;
+import com.aionemu.gameserver.services.BrokerService;
 import com.aionemu.gameserver.services.ClassChangeService;
 import com.aionemu.gameserver.services.GroupService;
 import com.aionemu.gameserver.services.LegionService;
@@ -91,6 +92,8 @@ public class CM_ENTER_WORLD extends AionClientPacket
 	private StigmaService		stigmaService;
 	@Inject
 	private PeriodicSaveService periodicSaveService;
+	@Inject
+	private BrokerService		brokerService;
 
 	/**
 	 * Constructs new instance of <tt>CM_ENTER_WORLD </tt> packet
@@ -235,7 +238,10 @@ public class CM_ENTER_WORLD extends AionClientPacket
 			 * Schedule periodic saving of this player
 			 */
 			periodicSaveService.onPlayerLogin(player);
-			
+			/**
+			 * Notify player if have broker settled items
+			 */
+			brokerService.onPlayerLogin(player);
 		}
 		else
 		{

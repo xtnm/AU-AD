@@ -72,6 +72,8 @@ public class ServiceProxy
 	@Inject
 	private QuestEngine				questEngine;
 	@Inject
+	private BrokerService			brokerService;
+	@Inject
 	private SpawnEngine				spawnEngine;
 	@Inject
 	private EnchantService			enchantService;
@@ -243,6 +245,11 @@ public class ServiceProxy
 	public QuestEngine getQuestEngine()
 	{
 		return questEngine;
+	}
+	
+	public BrokerService getBrokerService()
+	{
+		return brokerService;
 	}
 
 	/**

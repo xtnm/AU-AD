@@ -14,24 +14,26 @@
  *  You should have received a copy of the GNU General Public License
  *  along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aionemu.gameserver.configs.main;
-
-import com.aionemu.commons.configuration.Property;
+package com.aionemu.gameserver.model.templates.broker;
 
 /**
- * @author ATracer
+ * @author kosyachok
+ *
  */
-public class PeriodicSaveConfig
+public enum BrokerMessages
 {
-	@Property(key = "gameserver.periodicsave.player.general", defaultValue = "900")
-	public static int	PLAYER_GENERAL;
-
-	@Property(key = "gameserver.periodicsave.player.items", defaultValue = "900")
-	public static int	PLAYER_ITEMS;
-
-	@Property(key = "gameserver.periodicsave.legion.items", defaultValue = "1200")
-	public static int	LEGION_ITEMS;
+	NO_ENOUGHT_KINAH(1),
+	CANT_REGISTER_ITEM(2);
 	
-	@Property(key = "gameserver.periodicsave.broker", defaultValue = "1500")
-	public static int	BROKER;
+	private int id;
+	
+	private BrokerMessages(int id)
+	{
+		this.id = id;
+	}
+	
+	public int getId()
+	{
+		return id;
+	}
 }

@@ -19,6 +19,9 @@ package com.aionemu.gameserver.model.gameobjects.player;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import javolution.util.FastMap;
 
 import com.aionemu.commons.callbacks.Enhancable;
 import com.aionemu.gameserver.configs.administration.AdminConfig;
@@ -94,6 +97,10 @@ public class Player extends Creature
 	private int					flightTeleportId;
 	private int					flightDistance;
 	private Summon				summon;
+	private FastMap<Integer, Integer> brokerListCache = new FastMap<Integer, Integer>();
+	private int					brokerMaskCache = 0;
+	private int					brokerSoftTypeCache = 0;
+	private int					brokerStartPageCache = 0;
 	/**
 	 * Static information for players
 	 */
@@ -1034,5 +1041,45 @@ public class Player extends Creature
 	public void setSummon(Summon summon)
 	{
 		this.summon = summon;
+	}
+	
+	public void setBrokerListCache(FastMap<Integer, Integer> brokerListCache)
+	{
+		this.brokerListCache = brokerListCache;
+	}
+	
+	public FastMap<Integer, Integer> getBrokerListCache()
+	{
+		return brokerListCache;
+	}
+	
+	public void setBrokerMaskCache(int mask)
+	{
+		this.brokerMaskCache = mask;
+	}
+	
+	public int getBrokerMaskCache()
+	{
+		return brokerMaskCache;
+	}
+	
+	public void setBrokerSortTypeCache(int sortType)
+	{
+		this.brokerSoftTypeCache = sortType;
+	}
+	
+	public int getBrokerSortTypeCache()
+	{
+		return brokerSoftTypeCache;
+	}
+	
+	public void setBrokerStartPageCache(int startPage)
+	{
+		this.brokerStartPageCache = startPage;
+	}
+	
+	public int getBrokerStartPageCache()
+	{
+		return brokerStartPageCache;
 	}
 }

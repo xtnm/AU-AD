@@ -34,6 +34,7 @@ import com.aionemu.gameserver.dao.PlayerDAO;
 import com.aionemu.gameserver.dataholders.loadingutils.XmlServiceProxy;
 import com.aionemu.gameserver.network.loginserver.LoginServer;
 import com.aionemu.gameserver.questEngine.QuestEngine;
+import com.aionemu.gameserver.services.BrokerService;
 import com.aionemu.gameserver.services.ServiceProxy;
 import com.aionemu.gameserver.spawnengine.SpawnEngine;
 import com.aionemu.gameserver.taskmanager.tasks.PacketBroadcaster;
@@ -101,6 +102,7 @@ public class GameServer
 		DAOManager.getDAO(PlayerDAO.class).setPlayersOffline(false);
 		gs.spawnMonsters();
 		gs.initQuests();
+		gs.initBroker();
 
 		Util.printSection("TaskManagers");
 		PacketBroadcaster.getInstance();
@@ -146,6 +148,12 @@ public class GameServer
 		QuestEngine questEngine = injector.getInstance(QuestEngine.class);
 		questEngine.setInjector(injector);
 		questEngine.load();
+	}
+	
+	private void initBroker()
+	{
+		BrokerService brService = injector.getInstance(BrokerService.class);
+		brService.initBrokerService();
 	}
 
 	/**

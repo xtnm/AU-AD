@@ -27,6 +27,7 @@ import com.aionemu.gameserver.configs.main.ShutdownConfig;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
 import com.aionemu.gameserver.network.loginserver.LoginServer;
+import com.aionemu.gameserver.services.BrokerService;
 import com.aionemu.gameserver.services.PeriodicSaveService;
 import com.aionemu.gameserver.services.PlayerService;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
@@ -50,6 +51,8 @@ public class ShutdownHook extends Thread
 	private LoginServer			loginServer;
 	@Inject
 	private PeriodicSaveService	playerUpdateService;
+	@Inject
+	private BrokerService brokerService;
 
 	@Override
 	public void run()
@@ -178,6 +181,8 @@ public class ShutdownHook extends Thread
 		
 		RunnableStatsManager.dumpClassStats(SortBy.AVG);
 		playerUpdateService.onShutdown();
+		
+		brokerService.storeBroker();
 		// Save game time.
 		GameTimeManager.saveTime();
 		// ThreadPoolManager shutdown
