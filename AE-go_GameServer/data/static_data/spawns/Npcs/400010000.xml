@@ -147,15 +147,15 @@
 	</spawn>
 	<!-- Barono (NPC Elite lvl:50)-->
 	<spawn map="400010000" npcid="278549" pool="1" interval="295">
-		<object x="2906.2898" y="1016.9225" z="1527.9968" h="0"/>
+		<object x="2905.1697" y="1015.36115" z="1527.9968" h="58"/>
 	</spawn>
 	<!-- Beautiful Landscape Painting (Object Normal lvl:1)-->
 	<spawn map="400010000" npcid="700460" pool="1" interval="295">
 		<object x="705.45" y="2921.74" z="2880.84" h="105"/>
 	</spawn>
-	<!-- Belita (NPC Elite lvl:50)-->
+	<!-- Belita (NPC Elite lvl:53)-->
 	<spawn map="400010000" npcid="278550" pool="1" interval="295">
-		<object x="2879.0059" y="990.5918" z="1527.9968" h="0"/>
+		<object x="2881.1348" y="993.4441" z="1527.9968" h="28"/>
 	</spawn>
 	<!-- Beluslan Teleport Device (Object Normal lvl:1)-->
 	<spawn map="400010000" npcid="730078" pool="1" interval="295">
@@ -168,6 +168,10 @@
 	<!-- Berg (NPC Hero lvl:53 Subtext: Shadow Judge)-->
 	<spawn map="400010000" npcid="278067" pool="1" interval="295">
 		<object x="1106.2758" y="3131.754" z="1613.3534" h="76"/>
+	</spawn>
+	<!-- Bergila (NPC Normal lvl:45)-->
+	<spawn map="400010000" npcid="278647" pool="1" interval="295">
+		<object x="2875.7456" y="989.25977" z="1527.9968" h="28"/>
 	</spawn>
 	<!-- Bihugud (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278021" pool="1" interval="295">
@@ -221,17 +225,21 @@
 	<spawn map="400010000" npcid="278553" pool="1" interval="295">
 		<object x="2880.1377" y="1019.111" z="1528.0334" h="0"/>
 	</spawn>
-	<!-- Cesilie (NPC Hero lvl:50)-->
+	<!-- Ceres (NPC Normal lvl:45)-->
+	<spawn map="400010000" npcid="278645" pool="1" interval="295">
+		<object x="2911.729" y="1008.58496" z="1527.9866" h="58"/>
+	</spawn>
+	<!-- Cesilie (NPC Hero lvl:56)-->
 	<spawn map="400010000" npcid="278520" pool="1" interval="295">
-		<object x="2971.0774" y="1054.766" z="1534.978" h="0"/>
+		<object x="2971.0774" y="1054.766" z="1534.978" h="86"/>
 	</spawn>
 	<!-- Chieninenerk (NPC Normal lvl:40)-->
 	<spawn map="400010000" npcid="279020" pool="1" interval="295">
 		<object x="3375.9946" y="2446.4165" z="2766.7727" h="0"/>
 	</spawn>
-	<!-- Chrioz (NPC Elite lvl:50)-->
+	<!-- Chrioz (NPC Elite lvl:53)-->
 	<spawn map="400010000" npcid="278559" pool="1" interval="295">
-		<object x="2972.219" y="1051.0922" z="1534.978" h="0"/>
+		<object x="2972.219" y="1051.0922" z="1534.978" h="28"/>
 	</spawn>
 	<!-- Clatanan (NPC Elite lvl:50)-->
 	<spawn map="400010000" npcid="278555" pool="1" interval="295">
@@ -265,9 +273,9 @@
 	<spawn map="400010000" npcid="278080" pool="1" interval="295">
 		<object x="2095.125" y="600.5" z="1566.7714" h="0"/>
 	</spawn>
-	<!-- Darios (NPC Elite lvl:50)-->
+	<!-- Darios (NPC Elite lvl:53)-->
 	<spawn map="400010000" npcid="278558" pool="1" interval="295">
-		<object x="2861.9214" y="917.5734" z="1533.6484" h="0"/>
+		<object x="2861.9214" y="917.5734" z="1533.6484" h="28"/>
 	</spawn>
 	<!-- Deidamia (NPC Elite lvl:40)-->
 	<spawn map="400010000" npcid="278591" pool="1" interval="295">
@@ -287,7 +295,7 @@
 	</spawn>
 	<!-- Denegos (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278507" pool="1" interval="295">
-		<object x="3009.778" y="947.032" z="1539.0828" h="0"/>
+		<object x="3009.778" y="947.032" z="1539.0828" h="75"/>
 	</spawn>
 	<!-- Deucalion (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278636" pool="1" interval="295">
@@ -337,13 +345,13 @@
 	<spawn map="400010000" npcid="278582" pool="1" interval="295">
 		<object x="1688.084" y="2949.385" z="2942.69" h="0"/>
 	</spawn>
-	<!-- Elintos (NPC Elite lvl:50)-->
+	<!-- Elintos (NPC Elite lvl:53)-->
 	<spawn map="400010000" npcid="278561" pool="1" interval="295">
-		<object x="2974.6785" y="1047.9119" z="1534.978" h="0"/>
+		<object x="2974.6785" y="1047.9119" z="1534.978" h="28"/>
 	</spawn>
-	<!-- Elsana (NPC Elite lvl:50)-->
+	<!-- Elsana (NPC Elite lvl:53)-->
 	<spawn map="400010000" npcid="278562" pool="1" interval="295">
-		<object x="2970.1648" y="1046.1912" z="1534.978" h="0"/>
+		<object x="2970.1648" y="1046.1912" z="1534.978" h="28"/>
 	</spawn>
 	<!-- Eltnen Teleport Tower (Object Normal lvl:1)-->
 	<spawn map="400010000" npcid="730074" pool="1" interval="295">
@@ -395,7 +403,7 @@
 	</spawn>
 	<!-- Flavius (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278512" pool="1" interval="295">
-		<object x="3011.4858" y="932.5121" z="1546.1272" h="0"/>
+		<object x="3011.4858" y="932.5121" z="1546.1272" h="45"/>
 	</spawn>
 	<!-- Fraiban (NPC Normal lvl:45 Subtext: Weapons)-->
 	<spawn map="400010000" npcid="278010" pool="1" interval="295">
@@ -457,9 +465,9 @@
 	<spawn map="400010000" npcid="278105" pool="1" interval="295">
 		<object x="569.1104" y="2603.7988" z="2887.406" h="0"/>
 	</spawn>
-	<!-- Grania (NPC Elite lvl:50)-->
+	<!-- Grania (NPC Elite lvl:53)-->
 	<spawn map="400010000" npcid="278565" pool="1" interval="295">
-		<object x="2971.5508" y="1044.0536" z="1534.978" h="0"/>
+		<object x="2971.5508" y="1044.0536" z="1534.978" h="28"/>
 	</spawn>
 	<!-- Greip (NPC Elite lvl:40)-->
 	<spawn map="400010000" npcid="278103" pool="1" interval="295">
@@ -561,13 +569,17 @@
 	<spawn map="400010000" npcid="278015" pool="1" interval="295">
 		<object x="1596.6321" y="2951.1458" z="2943.2544" h="0"/>
 	</spawn>
+	<!-- Iacchus (NPC Normal lvl:45)-->
+	<spawn map="400010000" npcid="278644" pool="1" interval="295">
+		<object x="2912.3267" y="1018.9455" z="1528.0039" h="58"/>
+	</spawn>
 	<!-- Igla (NPC Elite lvl:53 Subtext: Protector of Primum Legionary)-->
 	<spawn map="400010000" npcid="278027" pool="1" interval="295">
 		<object x="956.0651" y="2977.942" z="1646.3984" h="76"/>
 	</spawn>
 	<!-- Ikarinerk (NPC Normal lvl:40)-->
 	<spawn map="400010000" npcid="279002" pool="1" interval="295">
-		<object x="3027.9983" y="902.44073" z="1546.1272" h="0"/>
+		<object x="3027.9983" y="902.44073" z="1546.1272" h="55"/>
 	</spawn>
 	<!-- Ineias (NPC Elite lvl:48)-->
 	<spawn map="400010000" npcid="278578" pool="1" interval="295">
@@ -711,11 +723,11 @@
 	</spawn>
 	<!-- Lasendi (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278522" pool="1" interval="295">
-		<object x="2943.0295" y="875.2391" z="1546.1272" h="0"/>
+		<object x="2943.0295" y="875.2391" z="1546.1272" h="14"/>
 	</spawn>
 	<!-- Lavinia (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278525" pool="1" interval="295">
-		<object x="2979.1462" y="859.82007" z="1546.1357" h="0"/>
+		<object x="2979.1462" y="859.82007" z="1546.1357" h="32"/>
 	</spawn>
 	<!-- Lawusan (NPC Normal lvl:45 Subtext: Shield)-->
 	<spawn map="400010000" npcid="278012" pool="1" interval="295">
@@ -747,7 +759,7 @@
 	</spawn>
 	<!-- Lucius (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278510" pool="1" interval="295">
-		<object x="3003.9465" y="940.94574" z="1546.1272" h="0"/>
+		<object x="3003.9465" y="940.94574" z="1546.1272" h="104"/>
 	</spawn>
 	<!-- Lugbug (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="279029" pool="1" interval="295">
@@ -824,7 +836,7 @@
 	</spawn>
 	<!-- Minon (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278511" pool="1" interval="295">
-		<object x="3014.4817" y="942.7463" z="1546.1272" h="0"/>
+		<object x="3014.4817" y="942.7463" z="1546.1272" h="75"/>
 	</spawn>
 	<!-- Minonerk (NPC Normal lvl:40)-->
 	<spawn map="400010000" npcid="279017" pool="1" interval="295">
@@ -884,7 +896,7 @@
 	</spawn>
 	<!-- Nayorinerk (NPC Normal lvl:40)-->
 	<spawn map="400010000" npcid="279001" pool="1" interval="295">
-		<object x="3029.4453" y="908.9396" z="1546.1272" h="0"/>
+		<object x="3029.4453" y="908.9396" z="1546.1272" h="55"/>
 	</spawn>
 	<!-- Nemea (NPC Elite lvl:40)-->
 	<spawn map="400010000" npcid="278588" pool="1" interval="295">
@@ -910,6 +922,10 @@
 	<spawn map="400010000" npcid="278077" pool="1" interval="295">
 		<object x="2143.875" y="660.875" z="2842.9504" h="0"/>
 	</spawn>
+	<!-- Nobus (NPC Normal lvl:45)-->
+	<spawn map="400010000" npcid="279043" pool="1" interval="295">
+		<object x="2952.5894" y="877.81665" z="1546.1272" h="45"/>
+	</spawn>
 	<!-- Noiman (NPC Normal lvl:50)-->
 	<spawn map="400010000" npcid="278136" pool="1" interval="295">
 		<object x="732.51733" y="2802.6636" z="1595.2247" h="0"/>
@@ -934,7 +950,7 @@
 	</spawn>
 	<!-- Obel (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278509" pool="1" interval="295">
-		<object x="2972.7554" y="859.0395" z="1546.1357" h="0"/>
+		<object x="2972.7554" y="859.0395" z="1546.1357" h="32"/>
 	</spawn>
 	<!-- Obelisk (Object Normal lvl:3 Elyos Side)-->
 	<spawn map="400010000" npcid="730071" pool="1" interval="295">
@@ -960,17 +976,21 @@
 	<spawn map="400010000" npcid="278038" pool="1" interval="295">
 		<object x="923.2789" y="3009.7087" z="1655.3525" h="104"/>
 	</spawn>
-	<!-- Pellatino (NPC Elite lvl:50)-->
+	<!-- Pellatino (NPC Elite lvl:53)-->
 	<spawn map="400010000" npcid="278563" pool="1" interval="295">
-		<object x="2973.4617" y="1045.837" z="1534.978" h="0"/>
+		<object x="2973.4617" y="1045.837" z="1534.978" h="28"/>
 	</spawn>
 	<!-- Peroniad (NPC Hero lvl:50)-->
 	<spawn map="400010000" npcid="278000" pool="1" interval="295">
 		<object x="2100.5393" y="593.388" z="1567.1447" h="0"/>
 	</spawn>
-	<!-- Pleta (NPC Elite lvl:50)-->
+	<!-- Philemon (NPC Normal lvl:45)-->
+	<spawn map="400010000" npcid="278646" pool="1" interval="295">
+		<object x="2884.8442" y="988.28784" z="1527.9968" h="28"/>
+	</spawn>
+	<!-- Pleta (NPC Elite lvl:53)-->
 	<spawn map="400010000" npcid="278564" pool="1" interval="295">
-		<object x="2967.0688" y="1044.4204" z="1533.6783" h="0"/>
+		<object x="2967.0688" y="1044.4204" z="1533.6783" h="28"/>
 	</spawn>
 	<!-- Poma (NPC Normal lvl:40)-->
 	<spawn map="400010000" npcid="278570" pool="1" interval="295">
@@ -1016,9 +1036,9 @@
 	<spawn map="400010000" npcid="278531" pool="1" interval="295">
 		<object x="2950.1545" y="906.3184" z="1539.0827" h="14"/>
 	</spawn>
-	<!-- Radone (NPC Elite lvl:50)-->
+	<!-- Radone (NPC Elite lvl:53)-->
 	<spawn map="400010000" npcid="278560" pool="1" interval="295">
-		<object x="2969.2083" y="1048.4207" z="1534.978" h="0"/>
+		<object x="2969.2083" y="1048.4207" z="1534.978" h="28"/>
 	</spawn>
 	<!-- Raithor (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278643" pool="1" interval="295">
@@ -1153,9 +1173,9 @@
 	<spawn map="400010000" npcid="279014" pool="1" interval="295">
 		<object x="554.1045" y="3331.8196" z="2818.6301" h="0"/>
 	</spawn>
-	<!-- Soniksius (NPC Hero lvl:50)-->
+	<!-- Soniksius (NPC Hero lvl:56)-->
 	<spawn map="400010000" npcid="278519" pool="1" interval="295">
-		<object x="2973.7786" y="1054.5046" z="1534.853" h="0"/>
+		<object x="2973.7786" y="1054.5046" z="1534.853" h="86"/>
 	</spawn>
 	<!-- Spade (NPC Normal lvl:45 Subtext: Magic class Stigma distributor)-->
 	<spawn map="400010000" npcid="278024" pool="1" interval="295">
@@ -1191,6 +1211,10 @@
 	<spawn map="400010000" npcid="203355" pool="1" interval="295">
 		<object x="2972.8992" y="902.43915" z="1540.0504" h="42"/>
 	</spawn>
+	<!-- Tamed Griffon (NPC Elite lvl:56 Near Soniksius)-->
+	<spawn map="400010000" npcid="203355" pool="1" interval="295">
+		<object x="2972.8464" y="1054.6332" z="1533.6788" h="86"/>
+	</spawn>
 	<!-- Tamed Worg (NPC Elite lvl:56 Near Semator)-->
 	<spawn map="400010000" npcid="203362" pool="1" interval="295">
 		<object x="938.87225" y="2834.487" z="1639.015" h="0"/>
@@ -1213,11 +1237,11 @@
 	</spawn>
 	<!-- Tenoeril (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278521" pool="1" interval="295">
-		<object x="3005.5928" y="951.92303" z="1539.0828" h="0"/>
+		<object x="3005.5928" y="951.92303" z="1539.0828" h="75"/>
 	</spawn>
-	<!-- Teres (NPC Elite lvl:50)-->
+	<!-- Teres (NPC Elite lvl:53)-->
 	<spawn map="400010000" npcid="278566" pool="1" interval="295">
-		<object x="2976.0754" y="1043.6946" z="1534.978" h="0"/>
+		<object x="2976.0754" y="1043.6946" z="1534.978" h="28"/>
 	</spawn>
 	<!-- Terita (NPC Elite lvl:50)-->
 	<spawn map="400010000" npcid="278534" pool="1" interval="295">
@@ -1302,7 +1326,7 @@
 	</spawn>
 	<!-- Ventus (NPC Elite lvl:53)-->
 	<spawn map="400010000" npcid="278532" pool="1" interval="295">
-		<object x="2981.465" y="920.55914" z="1539.0827" h="45"/>
+		<object x="2981.5095" y="920.5532" z="1538.9125" h="45"/>
 	</spawn>
 	<!-- Vernio (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278025" pool="1" interval="295">
@@ -1347,6 +1371,6 @@
 	</spawn>
 	<!-- Zeth (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278508" pool="1" interval="295">
-		<object x="2938.8984" y="879.9779" z="1546.1272" h="0"/>
+		<object x="2938.8984" y="879.9779" z="1546.1272" h="14"/>
 	</spawn>
 </spawns>
