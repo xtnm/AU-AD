@@ -143,6 +143,7 @@ public class AionPacketHandlerFactory
 		addPacket(new CM_SUMMON_COMMAND(0x6F), State.IN_GAME);
 		addPacket(new CM_SUMMON_EMOTION(0x30), State.IN_GAME);
 		addPacket(new CM_SUMMON_ATTACK(0x31), State.IN_GAME);
+		addPacket(new CM_SUMMON_CASTSPELL(0x33), State.IN_GAME);
 	}
 
 	public AionPacketHandler getPacketHandler()
