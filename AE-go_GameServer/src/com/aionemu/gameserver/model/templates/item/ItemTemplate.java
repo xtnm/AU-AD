@@ -26,6 +26,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.aionemu.gameserver.dataholders.DataManager;
 import com.aionemu.gameserver.itemengine.actions.ItemActions;
 import com.aionemu.gameserver.model.gameobjects.stats.modifiers.StatModifier;
@@ -467,7 +469,7 @@ public class ItemTemplate extends VisibleObjectTemplate
 	@Override
 	public String getName()
 	{
-		return name;
+		return name != null ? name : StringUtils.EMPTY;
 	}
 
 	@Override

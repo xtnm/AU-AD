@@ -52,6 +52,7 @@ public class PeriodicSaveService
 	private BrokerService		brokerService;
 	
 	private Future<?>			legionWhUpdateTask;
+	private Future<?>			brokerUpdateTask;
 	
 	private static final int DELAY_GENERAL = PeriodicSaveConfig.PLAYER_GENERAL * 1000;
 	private static final int DELAY_ITEM = PeriodicSaveConfig.PLAYER_ITEMS * 1000;
@@ -67,7 +68,7 @@ public class PeriodicSaveService
 		
 		legionWhUpdateTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new LegionWhUpdateTask(),
 			DELAY_LEGION_ITEM, DELAY_LEGION_ITEM);
-		ThreadPoolManager.getInstance().scheduleAtFixedRate(new brokerUpdateTask(), DELAY_BROKER, DELAY_BROKER);
+		brokerUpdateTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new BrokerUpdateTask(), DELAY_BROKER, DELAY_BROKER);
 	}
 
 	/**
@@ -198,7 +199,7 @@ public class PeriodicSaveService
 		}
 	}
 	
-	private class brokerUpdateTask implements Runnable
+	private class BrokerUpdateTask implements Runnable
 	{
 		@Override
 		public void run()
@@ -219,8 +220,12 @@ public class PeriodicSaveService
 	public void onShutdown()
 	{
 		log.info("Starting data save on shutdown.");
+		//save legion warehouse
 		legionWhUpdateTask.cancel(false);
 		new LegionWhUpdateTask().run();
+		//save broker data
+		brokerUpdateTask.cancel(false);
+		new BrokerUpdateTask().run();
 		log.info("Data successfully saved.");
 	}
 }

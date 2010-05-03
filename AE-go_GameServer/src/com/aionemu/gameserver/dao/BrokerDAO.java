@@ -3,7 +3,6 @@ package com.aionemu.gameserver.dao;
 import java.util.List;
 
 import com.aionemu.gameserver.model.gameobjects.BrokerItem;
-import com.aionemu.gameserver.model.gameobjects.player.Player;
 
 public abstract class BrokerDAO implements IDFactoryAwareDAO
 {

@@ -115,6 +115,13 @@ public class MySQL5BrokerDAO extends BrokerDAO
 		for(BrokerItem item : brokerItems)
 		{
 			boolean result = false;
+			
+			if(item == null)
+			{
+				log.warn("Null broker item on save");
+				continue;
+			}
+
 			switch(item.getPersistentState())
 			{
 				case NEW:

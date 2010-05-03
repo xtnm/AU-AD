@@ -18,15 +18,15 @@ package com.aionemu.gameserver.model.gameobjects;
 
 import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.Comparator;
 
 import com.aionemu.gameserver.model.templates.broker.BrokerRace;
-import com.mysql.jdbc.Util;
 
 /**
  * @author kosyachok
  *
  */
-public class BrokerItem
+public class BrokerItem implements Comparable<BrokerItem>
 {
 	private Item item;
 	private int itemId;
@@ -88,6 +88,7 @@ public class BrokerItem
 		this.seller = seller;
 		this.sellerId = sellerId;
 		this.itemBrokerRace = itemBrokerRace;
+		this.itemCount = itemCount;
 		if(item == null)
 		{
 			this.isSold = true;
@@ -222,5 +223,198 @@ public class BrokerItem
 	public int getItemCount()
 	{
 		return itemCount;
+	}
+	
+	/**
+	 * @return item level according to template
+	 */
+	private int getItemLevel()
+	{
+		return item.getItemTemplate().getLevel();
+	}
+	
+	/**
+	 * @return price for one piece
+	 */
+	private int getPiecePrice()
+	{
+		return getPrice() / getItemCount();
+	}
+	
+	/**
+	 * @return name of the item
+	 */
+	private String getItemName()
+	{
+		return item.getItemName();
+	}
+
+	/**
+	 * Default sorting: using itemUniqueId
+	 */
+	@Override
+	public int compareTo(BrokerItem o)
+	{
+		return itemUniqueId > o.getItemUniqueId() ? 1 : -1;
+	}
+	
+	/**
+	 * Sorting using price of item
+	 */
+	static Comparator<BrokerItem> NAME_SORT_ASC = new Comparator<BrokerItem>()
+	{
+		@Override
+		public int compare(BrokerItem o1, BrokerItem o2)
+		{
+			if(o1 == null || o2 == null)
+				return comparePossiblyNull(o1, o2);		
+			return o1.getItemName().compareTo(o2.getItemName());		
+		}		
+	};
+	
+	static Comparator<BrokerItem> NAME_SORT_DESC = new Comparator<BrokerItem>()
+	{
+		@Override
+		public int compare(BrokerItem o1, BrokerItem o2)
+		{
+			if(o1 == null || o2 == null)
+				return comparePossiblyNull(o1, o2);
+			return o1.getItemName().compareTo(o2.getItemName());		
+		}		
+	};
+	
+	/**
+	 * Sorting using price of item
+	 */
+	static Comparator<BrokerItem> PRICE_SORT_ASC = new Comparator<BrokerItem>()
+	{
+		@Override
+		public int compare(BrokerItem o1, BrokerItem o2)
+		{
+			if(o1 == null || o2 == null)
+				return comparePossiblyNull(o1, o2);
+			if(o1.getPrice() == o2.getPrice())
+				return 0;
+			return o1.getPrice() > o2.getPrice() ? 1 : -1;			
+		}		
+	};
+	
+	static Comparator<BrokerItem> PRICE_SORT_DESC = new Comparator<BrokerItem>()
+	{
+		@Override
+		public int compare(BrokerItem o1, BrokerItem o2)
+		{
+			if(o1 == null || o2 == null)
+				return comparePossiblyNull(o1, o2);
+			if(o1.getPrice() == o2.getPrice())
+				return 0;
+			return o1.getPrice() > o2.getPrice() ? -1 : 1;			
+		}		
+	};
+	
+	/**
+	 * Sorting using piece price of item
+	 */
+	static Comparator<BrokerItem> PIECE_PRICE_SORT_ASC = new Comparator<BrokerItem>()
+	{
+		@Override
+		public int compare(BrokerItem o1, BrokerItem o2)
+		{
+			if(o1 == null || o2 == null)
+				return comparePossiblyNull(o1, o2);
+			if(o1.getPiecePrice() == o2.getPiecePrice())
+				return 0;
+			return o1.getPiecePrice() > o2.getPiecePrice() ? 1 : -1;			
+		}		
+	};
+	
+	static Comparator<BrokerItem> PIECE_PRICE_SORT_DESC = new Comparator<BrokerItem>()
+	{
+		@Override
+		public int compare(BrokerItem o1, BrokerItem o2)
+		{
+			if(o1 == null || o2 == null)
+				return comparePossiblyNull(o1, o2);
+			if(o1.getPiecePrice() == o2.getPiecePrice())
+				return 0;
+			return o1.getPiecePrice() > o2.getPiecePrice() ? -1 : 1;			
+		}		
+	};
+	
+	/**
+	 * Sorting using level of item
+	 */
+	static Comparator<BrokerItem> LEVEL_SORT_ASC = new Comparator<BrokerItem>()
+	{
+		@Override
+		public int compare(BrokerItem o1, BrokerItem o2)
+		{
+			if(o1 == null || o2 == null)
+				return comparePossiblyNull(o1, o2);
+			if(o1.getItemLevel() == o2.getItemLevel())
+				return 0;
+			return o1.getItemLevel() > o2.getItemLevel() ? 1 : -1;			
+		}		
+	};
+	
+	static Comparator<BrokerItem> LEVEL_SORT_DESC = new Comparator<BrokerItem>()
+	{
+		@Override
+		public int compare(BrokerItem o1, BrokerItem o2)
+		{
+			if(o1 == null || o2 == null)
+				return comparePossiblyNull(o1, o2);
+			if(o1.getItemLevel() == o2.getItemLevel())
+				return 0;
+			return o1.getItemLevel() > o2.getItemLevel() ? -1 : 1;			
+		}		
+	};
+	
+	private static <T extends Comparable<T>> int comparePossiblyNull(T aThis, T aThat)
+	{
+		int result = 0;
+		if(aThis == null && aThat != null)
+		{
+			result = -1;
+		}
+		else if(aThis != null && aThat == null)
+		{
+			result = 1;
+		}
+		return result;
+	}
+	
+	/**
+	 * 1 - by name;<br>
+	 * 2 - by level;<br>
+	 * 4 - by totalPrice;<br>
+	 * 6 - by price for piece (Math.round(item.getPrice() / item.getItemCount))<br>
+	 * 
+	 * @param sortType
+	 * @return
+	 */
+	public static Comparator<BrokerItem> getComparatoryByType(int sortType)
+	{
+		switch(sortType)
+		{
+			case 0:
+				return NAME_SORT_ASC;
+			case 1:
+				return NAME_SORT_DESC;
+			case 2:
+				return LEVEL_SORT_ASC;
+			case 3:
+				return LEVEL_SORT_DESC;
+			case 4:
+				return PRICE_SORT_ASC;
+			case 5:
+				return PRICE_SORT_DESC;
+			case 6:
+				return PIECE_PRICE_SORT_ASC;
+			case 7:
+				return PIECE_PRICE_SORT_DESC;
+			default:
+				throw new IllegalArgumentException("Illegal sort type for broker items");
+		}
 	}
 }
