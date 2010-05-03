@@ -131,7 +131,7 @@ public final class DataManager
 	
 	public NpcSkillData					NPC_SKILL_DATA;
 	
-	public PetSkillData					PET_SKILL_DATA;
+	public static PetSkillData			PET_SKILL_DATA;
 	
 	private XmlDataLoader loader;
 
