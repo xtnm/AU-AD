@@ -20,7 +20,10 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
+import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_SUMMON_USESKILL;
 import com.aionemu.gameserver.skillengine.model.Effect;
+import com.aionemu.gameserver.utils.PacketSendUtility;
 
 /**
  * @author ATracer
@@ -30,16 +33,24 @@ import com.aionemu.gameserver.skillengine.model.Effect;
 @XmlType(name = "PetOrderUseUltraSkillEffect")
 public class PetOrderUseUltraSkillEffect extends EffectTemplate
 {
-
 	@Override
 	public void applyEffect(Effect effect)
 	{
-		// TODO Auto-generated method stub
+		Player effector = (Player) effect.getEffector();
+		int effectorId = effector.getSummon().getObjectId();
+		// temp hardcoded
+		int skillId = 17607;
+		int skillLvl = 1;
+		int targetId = effect.getEffected().getObjectId();
+
+		PacketSendUtility.sendPacket(effector, new SM_SUMMON_USESKILL(effectorId, skillId,
+			skillLvl, targetId));
 	}
 
 	@Override
 	public void calculate(Effect effect)
 	{
-		// TODO Auto-generated method stub
+		if(effect.getEffector() instanceof Player && effect.getEffected() != null)
+			effect.increaseSuccessEffect();
 	}
 }

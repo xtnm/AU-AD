@@ -177,6 +177,7 @@
 	<monster_hunt id="1565" start_npc_id="204588">
            <monster_infos npc_id="211136" var_id="0" max_kill="7" />
 	   <monster_infos npc_id="211104" var_id="1" max_kill="5" />
+	   <monster_infos npc_id="211137" var_id="1" max_kill="5" />	   
         </monster_hunt>
 
 	<!-- TODO: Crossed Destiny -->
@@ -190,6 +191,7 @@
 	   <monster_infos npc_id="211112" var_id="1" max_kill="5" />
 	   <monster_infos npc_id="212099" var_id="2" max_kill="5" />
 	   <monster_infos npc_id="211946" var_id="3" max_kill="5" />
+	   <monster_infos npc_id="211947" var_id="3" max_kill="5" />	   
         </monster_hunt>
 
 	<!-- Jaiorunerk's Diary -->
@@ -221,6 +223,7 @@
 	<!-- Outlaw of the Jungle -->
 	<monster_hunt id="1542" start_npc_id="204585">
            <monster_infos npc_id="211879" var_id="0" max_kill="10" />
+           <monster_infos npc_id="211880" var_id="0" max_kill="10" />           
         </monster_hunt>
 
 	<!-- Sillen's Spirit Samples -->
@@ -318,8 +321,11 @@
            <monster_infos npc_id="211145" var_id="0" max_kill="10" />
            <monster_infos npc_id="211160" var_id="0" max_kill="10" />           
 	   <monster_infos npc_id="211146" var_id="1" max_kill="10" />
+	   <monster_infos npc_id="211161" var_id="1" max_kill="10" />	   
 	   <monster_infos npc_id="211118" var_id="2" max_kill="10" />
+	   <monster_infos npc_id="211147" var_id="2" max_kill="10" />
 	   <monster_infos npc_id="211119" var_id="3" max_kill="10" />
+	   <monster_infos npc_id="211148" var_id="3" max_kill="10" />	   
         </monster_hunt>
 
 	<!-- TODO: The Lepharist Situation -->

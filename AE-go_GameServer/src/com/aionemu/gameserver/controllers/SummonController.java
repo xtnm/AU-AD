@@ -37,6 +37,8 @@ import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS.TYPE;
 import com.aionemu.gameserver.restrictions.RestrictionsManager;
 import com.aionemu.gameserver.services.LifeStatsRestoreService;
+import com.aionemu.gameserver.skillengine.SkillEngine;
+import com.aionemu.gameserver.skillengine.model.Skill;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
 
@@ -250,6 +252,17 @@ public class SummonController extends CreatureController<Summon>
 		Summon owner = getOwner();
 		PacketSendUtility.broadcastPacket(owner, new SM_EMOTION(owner, 13, 0, lastAttacker == null ? 0 : lastAttacker
 			.getObjectId()));
+	}
+	
+	public void useSkill(int skillId, Creature target)
+	{
+		Creature creature = getOwner();
+
+		Skill skill = SkillEngine.getInstance().getSkill(creature, skillId, 1, target);
+		if(skill != null)
+		{
+			skill.useSkill();
+		}
 	}
 
 	public static enum UnsummonType

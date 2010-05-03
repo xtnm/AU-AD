@@ -91,6 +91,8 @@ echo DROP OF MONSTERS                                                 PROCESSING
 mysql -h %gshost% -u %gsuser% --password=%gspass% -D %gsdb% < drops/droplist.sql
 echo SERVER VARIABLES                                                 PROCESSING...
 mysql -h %gshost% -u %gsuser% --password=%gspass% -D %gsdb% < server_datatables/server_variables.sql
+echo BROKER                                                 	      PROCESSING...
+mysql -h %gshost% -u %gsuser% --password=%gspass% -D %gsdb% < server_datatables/broker.sql
 
 goto upgrade
 REM --------------------------------------------------------------------------------------------

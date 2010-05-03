@@ -100,7 +100,7 @@ public class PlayerInfo extends AdminCommand
 				{
 					
 					Item act = (Item)it.next();
-					strbld.append("    " + act.getItemCount() + "(s) of " + act.getItemName() + "\n");
+					strbld.append("    " + act.getItemCount() + "(s) of " + "[item:"+act.getItemTemplate().getTemplateId() + "]" + "\n");
 				}
 			}
 			items.clear();
@@ -114,7 +114,7 @@ public class PlayerInfo extends AdminCommand
 				while(it.hasNext())
 				{
 					Item act = (Item)it.next();
-					strbld.append("    " + act.getItemCount() + "(s) of " + act.getItemName() + "\n");
+					strbld.append("    " + act.getItemCount() + "(s) of " + "[item:"+act.getItemTemplate().getTemplateId() + "]" + "\n");
 				}
 			}
 			
@@ -129,7 +129,7 @@ public class PlayerInfo extends AdminCommand
 				while(it.hasNext())
 				{
 					Item act = (Item)it.next();
-					strbld.append("    " + act.getItemCount() + "(s) of " + act.getItemName() + "\n");
+					strbld.append("    " + act.getItemCount() + "(s) of " + "[item:"+act.getItemTemplate().getTemplateId() + "]" + "\n");
 				}
 			}
 			showAllLines(admin, strbld.toString());

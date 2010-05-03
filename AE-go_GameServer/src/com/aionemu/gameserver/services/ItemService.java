@@ -334,18 +334,19 @@ public class ItemService
 	{
 		log.info(String.format("[ITEM] ID/Count - %d/%d to player %s.", itemId, count, player.getName()));
 		
-		return this.addItemWithStones(player, itemId, count, null, null);
+		return this.addFullItem(player, itemId, count, null, null, 0);
 	}
-	
+
 	/**
-	 * @param buyer
+	 * @param player
 	 * @param itemId
 	 * @param count
 	 * @param isQuestItem
 	 * @param manastones
-	 * @param godStone 
+	 * @param godStone
+ 	 * @param enchantLevel
 	 */
-	public int addItemWithStones(Player player, int itemId, int count, Set<ManaStone> manastones, GodStone godStone)
+	public int addFullItem(Player player, int itemId, int count, Set<ManaStone> manastones, GodStone godStone, int enchantLevel)
 	{
 		Storage inventory = player.getInventory();
 
@@ -418,7 +419,11 @@ public class ItemService
 					{
 						item.addGodStone(godStone.getItemId());
 					}
-					
+					//3. enchantLevel
+					if(enchantLevel > 0)
+					{
+						item.setEchantLevel(enchantLevel);
+					}
 					inventory.putToBag(item);
 					updateItem(player, item, true);
 					count = 0;

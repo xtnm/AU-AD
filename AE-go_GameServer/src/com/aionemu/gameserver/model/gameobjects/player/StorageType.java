@@ -15,6 +15,7 @@ public enum StorageType
 	REGULAR_WAREHOUSE(1),
 	ACCOUNT_WAREHOUSE(2),
 	LEGION_WAREHOUSE(3),
+	BROKER(126),
 	MAILBOX(127);
 
 	private int id;

@@ -31,4 +31,7 @@ public class PeriodicSaveConfig
 
 	@Property(key = "gameserver.periodicsave.legion.items", defaultValue = "1200")
 	public static int	LEGION_ITEMS;
+	
+	@Property(key = "gameserver.periodicsave.broker", defaultValue = "1500")
+	public static int	BROKER;
 }

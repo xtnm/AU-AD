@@ -48,6 +48,7 @@ import com.aionemu.gameserver.dataholders.loadingutils.XmlServiceProxy;
 import com.aionemu.gameserver.questEngine.QuestEngine;
 import com.aionemu.gameserver.services.AbyssService;
 import com.aionemu.gameserver.services.AccountService;
+import com.aionemu.gameserver.services.BrokerService;
 import com.aionemu.gameserver.services.CraftService;
 import com.aionemu.gameserver.services.CraftSkillUpdateService;
 import com.aionemu.gameserver.services.CubeExpandService;
@@ -145,6 +146,7 @@ public class DataInjectionModule extends AbstractModule
 		bind(DebugService.class).asEagerSingleton();
 		bind(StigmaService.class).in(Scopes.SINGLETON);
 		bind(GameTimeService.class).asEagerSingleton();
+		bind(BrokerService.class).asEagerSingleton();
 	}
 	
 	@Provides

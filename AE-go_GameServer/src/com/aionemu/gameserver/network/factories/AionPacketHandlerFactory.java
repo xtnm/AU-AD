@@ -85,14 +85,21 @@ public class AionPacketHandlerFactory
 		addPacket(new CM_DUEL_REQUEST(0x58), State.IN_GAME);
 		addPacket(new CM_DELETE_ITEM(0x5A), State.IN_GAME);
 		addPacket(new CM_PING_REQUEST(0x5D), State.IN_GAME); // 1.5.x
+		addPacket(new CM_BROKER_LIST(0x61), State.IN_GAME);
+		addPacket(new CM_BROKER_REGISTERED(0x63), State.IN_GAME);
 		addPacket(new CM_SHOW_FRIENDLIST(0x64), State.IN_GAME);
 		addPacket(new CM_FRIEND_ADD(0x65), State.IN_GAME);// 1.5.x
 		addPacket(new CM_FRIEND_DEL(0x66), State.IN_GAME);
+		addPacket(new CM_BROKER_SETTLE_ACCOUNT(0x68), State.IN_GAME);
 		addPacket(new CM_SEND_MAIL(0x6A), State.IN_GAME);
 		addPacket(new CM_PRIVATE_STORE(0x6D), State.IN_GAME);
 		addPacket(new CM_PRIVATE_STORE_NAME(0x6E), State.IN_GAME);
 		addPacket(new CM_TITLE_SET(0x71), State.IN_GAME);
 		addPacket(new CM_CRAFT(0x73), State.IN_GAME);
+		addPacket(new CM_BUY_BROKER_ITEM(0x74), State.IN_GAME);
+		addPacket(new CM_REGISTER_BROKER_ITEM(0x75), State.IN_GAME);
+		addPacket(new CM_BROKER_CANCEL_REGISTERED(0x76), State.IN_GAME);
+		addPacket(new CM_BROKER_SETTLE_LIST(0x77), State.IN_GAME);
 		addPacket(new CM_TELEPORT_SELECT(0x7A), State.IN_GAME);
 		addPacket(new CM_L2AUTH_LOGIN_CHECK(0x7B), State.CONNECTED);
 		addPacket(new CM_READ_MAIL(0x7C), State.IN_GAME);
@@ -147,6 +154,7 @@ public class AionPacketHandlerFactory
 		addPacket(new CM_SUMMON_COMMAND(0x6F), State.IN_GAME);
 		addPacket(new CM_SUMMON_EMOTION(0x30), State.IN_GAME);
 		addPacket(new CM_SUMMON_ATTACK(0x31), State.IN_GAME);
+		addPacket(new CM_SUMMON_CASTSPELL(0x33), State.IN_GAME);
 	}
 
 	public AionPacketHandler getPacketHandler()

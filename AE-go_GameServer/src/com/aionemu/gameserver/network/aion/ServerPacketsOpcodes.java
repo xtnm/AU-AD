@@ -135,6 +135,9 @@ public class ServerPacketsOpcodes
 		addPacketOpcode(SM_PRIVATE_STORE.class, 0xA6, idSet);
 		addPacketOpcode(SM_ABYSS_RANK_UPDATE.class, 0xA8, idSet);
 		addPacketOpcode(SM_MAY_LOGIN_INTO_GAME.class, 0xA9, idSet);
+		addPacketOpcode(SM_BROKER_ITEMS.class, 0xAA, idSet);
+		addPacketOpcode(SM_BROKER_REGISTERED_LIST.class, 0xAB, idSet);
+		addPacketOpcode(SM_BROKER_REGISTRATION_SERVICE.class, 0xAD, idSet);
 		addPacketOpcode(SM_PONG.class, 0xAE, idSet);
 		addPacketOpcode(SM_PRIVATE_STORE_NAME.class, 0xB1, idSet);
 		addPacketOpcode(SM_ITEM_USAGE_ANIMATION.class, 0xB7, idSet);
@@ -185,7 +188,9 @@ public class ServerPacketsOpcodes
 		addPacketOpcode(SM_SUMMON_PANEL_REMOVE.class, 0x92, idSet);
 		addPacketOpcode(SM_SUMMON_UPDATE.class, 0x93, idSet);
 		addPacketOpcode(SM_SUMMON_OWNER_REMOVE.class, 0x94, idSet);
+		addPacketOpcode(SM_SUMMON_USESKILL.class, 0x9A, idSet);
 		addPacketOpcode(SM_SKILL_COOLDOWN.class, 0x4B, idSet);
+		addPacketOpcode(SM_BROKER_SETTLED_LIST.class, 0x97, idSet);
 		// Unrecognized Opcodes from 1.5.4:
 		// addPacketOpcode(SM_BUY_LIST.class, 0x7E, idSet);
 
