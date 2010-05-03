@@ -12,4 +12,4 @@ CREATE TABLE `broker` (
   `isSold` tinyint(1) NOT NULL,
   `isSettled` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=130 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
