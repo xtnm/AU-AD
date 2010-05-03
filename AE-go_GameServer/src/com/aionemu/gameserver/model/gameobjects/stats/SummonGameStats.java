@@ -42,5 +42,6 @@ public class SummonGameStats extends CreatureGameStats<Summon>
 		initStat(StatEnum.ATTACK_SPEED, 2000);
 		initStat(StatEnum.SPEED, Math.round(statsTemplate.getRunSpeed() * 1000));
 		initStat(StatEnum.REGEN_HP, owner.getLevel() + 3);
+		initStat(StatEnum.KNOWLEDGE, 100);
 	}
 }
