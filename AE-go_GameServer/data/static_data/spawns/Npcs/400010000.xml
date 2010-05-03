@@ -18,6 +18,7 @@
 	Reshanta
 	@author Atomix (initial import)
 	@author_fix Youli (Based on Retail Spawn from last client)
+	@contributors : HeTuLa
  -->
 <spawns>
 	<!-- "The History of Struggles Primum" (Object Normal lvl:1)-->
@@ -290,7 +291,7 @@
 	</spawn>
 	<!-- Deucalion (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278636" pool="1" interval="295">
-		<object x="2933.3748" y="888.05536" z="1539.1194" h="0"/>
+		<object x="2933.3748" y="888.05536" z="1539.1194" h="14"/>
 	</spawn>
 	<!-- Dort (NPC Elite lvl:50)-->
 	<spawn map="400010000" npcid="278053" pool="1" interval="295">
@@ -446,7 +447,7 @@
 	</spawn>
 	<!-- Glaucos (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278634" pool="1" interval="295">
-		<object x="2945.477" y="887.42993" z="1539.1194" h="0"/>
+		<object x="2945.0823" y="887.0413" z="1539.1194" h="45"/>
 	</spawn>
 	<!-- Glen (NPC Elite lvl:48)-->
 	<spawn map="400010000" npcid="278071" pool="1" interval="295">
@@ -644,6 +645,10 @@
 	<spawn map="400010000" npcid="278029" pool="1" interval="295">
 		<object x="911.521" y="2986.893" z="1646.3984" h="14"/>
 	</spawn>
+	<!-- Kizelmanon (NPC Normal lvl:50)-->
+	<spawn map="400010000" npcid="279047" pool="1" interval="295">
+		<object x="2936.8345" y="884.2177" z="1539.1194" h="14"/>
+	</spawn>
 	<!-- Klasa (NPC Elite lvl:50)-->
 	<spawn map="400010000" npcid="278065" pool="1" interval="295">
 		<object x="1098.1178" y="2961.8928" z="1639.9261" h="0"/>
@@ -799,7 +804,7 @@
 	</spawn>
 	<!-- Menoetios (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278637" pool="1" interval="295">
-		<object x="2938.062" y="895.91425" z="1539.1194" h="0"/>
+		<object x="2938.062" y="895.91425" z="1539.1194" h="103"/>
 	</spawn>
 	<!-- Mercus (NPC Elite lvl:40)-->
 	<spawn map="400010000" npcid="278605" pool="1" interval="295">
@@ -836,6 +841,10 @@
 	<!-- Mokkurkalfi (NPC Hero lvl:27)-->
 	<spawn map="400010000" npcid="278091" pool="1" interval="295">
 		<object x="1004.3251" y="2439.1738" z="1487.6909" h="0"/>
+	</spawn>
+	<!-- Monitan (NPC Normal lvl:45)-->
+	<spawn map="400010000" npcid="279049" pool="1" interval="295">
+		<object x="2941.2788" y="898.1483" z="1539.1194" h="103"/>
 	</spawn>
 	<!-- Mont (NPC Normal lvl:50)-->
 	<spawn map="400010000" npcid="278128" pool="1" interval="295">
@@ -887,7 +896,7 @@
 	</spawn>
 	<!-- Nerites (NPC Normal lvl:45)-->
 	<spawn map="400010000" npcid="278635" pool="1" interval="295">
-		<object x="2937.0774" y="883.9252" z="1539.1194" h="0"/>
+		<object x="2937.5435" y="883.4045" z="1539.1194" h="14"/>
 	</spawn>
 	<!-- Neurath (NPC Normal lvl:45 Subtext: Stigma Master)-->
 	<spawn map="400010000" npcid="279044" pool="1" interval="295">
@@ -1213,6 +1222,14 @@
 	<!-- Tern (NPC Elite lvl:50)-->
 	<spawn map="400010000" npcid="278045" pool="1" interval="295">
 		<object x="981.3527" y="2923.5312" z="1642.3328" h="0"/>
+	</spawn>
+	<!-- Teucer (NPC Normal lvl:45)-->
+	<spawn map="400010000" npcid="279048" pool="1" interval="295">
+		<object x="2948.463" y="890.3134" z="1539.1194" h="45"/>
+	</spawn>
+	<!-- Thea (NPC Normal lvl:50)-->
+	<spawn map="400010000" npcid="279046" pool="1" interval="295">
+		<object x="2945.932" y="887.8595" z="1539.1194" h="45"/>
 	</spawn>
 	<!-- Theon (NPC Hero lvl:50)-->
 	<spawn map="400010000" npcid="278516" pool="1" interval="295">
