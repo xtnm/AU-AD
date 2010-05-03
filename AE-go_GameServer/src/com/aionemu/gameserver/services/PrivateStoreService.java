@@ -157,7 +157,7 @@ public class PrivateStoreService
 		/**
 		 * Check if player has enough kinah and remove it
 		 */
-		if(getKinahAmount(buyer) > price)
+		if(getKinahAmount(buyer) >= price)
 		{
 			/**
 			 * Decrease kinah for buyer and Increase kinah for seller
@@ -179,7 +179,7 @@ public class PrivateStoreService
 					
 					GodStone godStone = item.getGodStone();
 					decreaseItemFromPlayer(seller, item, tradeItem);
-					itemService.addItemWithStones(buyer, item.getItemTemplate().getTemplateId(), tradeItem.getCount(), manaStones, godStone);
+					itemService.addFullItem(buyer, item.getItemTemplate().getTemplateId(), tradeItem.getCount(), manaStones, godStone, item.getEchantLevel());
 					if(storeItem.getCount() == tradeItem.getCount())
 						store.removeItem(storeItem.getItemObjId());
 				}

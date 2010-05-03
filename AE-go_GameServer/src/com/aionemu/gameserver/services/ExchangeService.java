@@ -173,6 +173,8 @@ public class ExchangeService
 			{
 				newItem.addGodStone(item.getGodStone().getItemId());
 			}
+			if(item.getEchantLevel() > 0)
+				newItem.setEchantLevel(item.getEchantLevel());
 			actuallAddCount = itemCount;
 		}
 		//item was already added
