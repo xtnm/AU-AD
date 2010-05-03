@@ -115,6 +115,9 @@ public class StaticData
 
 	@XmlElement(name = "npc_skill_templates")
 	public NpcSkillData				npcSkillData;
+	
+	@XmlElement(name = "pet_skill_templates")
+	public PetSkillData				petSkillData;
 
 	// JAXB callback
 	@SuppressWarnings("unused")
@@ -147,5 +150,6 @@ public class StaticData
 		DataManager.log.info("Loaded " + portalData.size() + " portal entries");
 		DataManager.log.info("Loaded " + itemSetData.size() + " item set entries");
 		DataManager.log.info("Loaded " + npcSkillData.size() + " npc skill list entries");
+		DataManager.log.info("Loaded " + petSkillData.size() + " pet skill list entries");
 	}
 }
