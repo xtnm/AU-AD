@@ -149,5 +149,9 @@
 	<npc_skill_templates>
 		<import file="npc_skills" skipRoot="true"/>
 	</npc_skill_templates>
+	
+	<pet_skill_templates>
+		<import file="pet_skills" skipRoot="true"/>
+	</pet_skill_templates>
 
 </ae_static_data>

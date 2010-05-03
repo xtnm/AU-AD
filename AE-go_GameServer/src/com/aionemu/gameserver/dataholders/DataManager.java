@@ -131,6 +131,8 @@ public final class DataManager
 	
 	public NpcSkillData					NPC_SKILL_DATA;
 	
+	public PetSkillData					PET_SKILL_DATA;
+	
 	private XmlDataLoader loader;
 
 	/**
@@ -177,6 +179,7 @@ public final class DataManager
 		PORTAL_DATA = data.portalData;
 		ITEM_SET_DATA  = data.itemSetData;
 		NPC_SKILL_DATA = data.npcSkillData;
+		PET_SKILL_DATA = data.petSkillData;
 		
 		// some sexy time message
 		long seconds = time / 1000;
