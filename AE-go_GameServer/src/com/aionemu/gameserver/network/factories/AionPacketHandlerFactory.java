@@ -147,9 +147,7 @@ public class AionPacketHandlerFactory
 		addPacket(new CM_ENTER_WORLD(0xFE), State.AUTHED);
 		addPacket(new CM_LEVEL_READY(0xFF), State.IN_GAME);
 		addPacket(new CM_INSTANCE_GATE_OPEN(0x8D), State.IN_GAME);
-		addPacket(new CM_AUCTION_SELL(0x75), State.IN_GAME);
 		addPacket(new CM_TICKET(0x80), State.IN_GAME);
-		addPacket(new CM_AUCTION_SHOW_CATEGORY(0x61), State.IN_GAME);
 		addPacket(new CM_SUMMON_MOVE(0x3F), State.IN_GAME);
 		addPacket(new CM_SUMMON_COMMAND(0x6F), State.IN_GAME);
 		addPacket(new CM_SUMMON_EMOTION(0x30), State.IN_GAME);
