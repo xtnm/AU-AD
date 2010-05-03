@@ -49,31 +49,28 @@ import com.google.inject.Inject;
 
 /**
  * @author kosyachok
- *
+ * 
  */
 public class BrokerService
 {
-	private List<BrokerItem> elyosBrokerItems = new ArrayList<BrokerItem>();
-	
-	private List<BrokerItem> elyosSettledItems = new ArrayList<BrokerItem>();
-	
-	private List<BrokerItem> asmodianBrokerItems = new ArrayList<BrokerItem>();
-	
-	private List<BrokerItem> asmodianSettledItems = new ArrayList<BrokerItem>();
-	
-	private List<BrokerItem> itemsToDelete = new ArrayList<BrokerItem>();
-	
-	private static final Logger	log	= Logger.getLogger(BrokerService.class);
+	private List<BrokerItem>	elyosBrokerItems		= new ArrayList<BrokerItem>();
+	private List<BrokerItem>	elyosSettledItems		= new ArrayList<BrokerItem>();
+	private List<BrokerItem>	asmodianBrokerItems		= new ArrayList<BrokerItem>();
+	private List<BrokerItem>	asmodianSettledItems	= new ArrayList<BrokerItem>();
+
+	private List<BrokerItem>	itemsToDelete			= new ArrayList<BrokerItem>();
+
+	private static final Logger	log						= Logger.getLogger(BrokerService.class);
 
 	@Inject
-	World world;
-	
+	private World				world;
+
 	public void initBrokerService()
 	{
 		log.info("Loading broker...");
 		int loadedBrokerItemsCount = 0;
 		int loadedSettledItemsCount = 0;
-		
+
 		List<BrokerItem> brokerItems = DAOManager.getDAO(BrokerDAO.class).loadBroker();
 
 		for(BrokerItem item : brokerItems)
@@ -107,29 +104,28 @@ public class BrokerService
 			else
 				continue;
 		}
-		
-		log.info("Broker loaded with "+ loadedBrokerItemsCount +" broker items, "+ loadedSettledItemsCount +" settled items.");
+
+		log.info("Broker loaded with " + loadedBrokerItemsCount + " broker items, " + loadedSettledItemsCount
+			+ " settled items.");
 	}
-	
-	
+
 	public void storeBroker()
-	{		
+	{
 		checkExpiredItems();
 		clearPlayersCache();
 		brokerGarbageCleaner();
-		
+
 		boolean result = DAOManager.getDAO(BrokerDAO.class).storeBroker(itemsToDelete);
-		
+
 		DAOManager.getDAO(BrokerDAO.class).storeBroker(asmodianBrokerItems);
 		DAOManager.getDAO(BrokerDAO.class).storeBroker(asmodianSettledItems);
 		DAOManager.getDAO(BrokerDAO.class).storeBroker(elyosBrokerItems);
 		DAOManager.getDAO(BrokerDAO.class).storeBroker(elyosSettledItems);
-		
+
 		if(result)
 			itemsToDelete.clear();
 	}
-	
-	
+
 	private void brokerGarbageCleaner()
 	{
 		for(int i = 0; i < asmodianBrokerItems.size(); i++)
@@ -137,107 +133,104 @@ public class BrokerService
 			if(asmodianBrokerItems.get(i) == null)
 				asmodianBrokerItems.remove(i);
 		}
-		
+
 		for(int i = 0; i < elyosBrokerItems.size(); i++)
 		{
 			if(elyosBrokerItems.get(i) == null)
 				elyosBrokerItems.remove(i);
 		}
 	}
-	
-	
+
 	private void clearPlayersCache()
 	{
 		Iterator<Player> players = world.getPlayersIterator();
-		
+
 		while(players.hasNext())
 		{
 			Player player = players.next();
-			
+
 			player.getBrokerListCache().clear();
 		}
 	}
-	
 
 	public void showRequestedItems(Player player, int mask, int sortType, int startPage)
-	{		
+	{
 		List<BrokerItem> searchItems = new ArrayList<BrokerItem>();
-		
+
 		if(player.getBrokerListCache().size() == 0 || player.getBrokerMaskCache() != mask)
-			searchItems = getItemsByMask(player, mask);			
+			searchItems = getItemsByMask(player, mask);
 		else
 			searchItems = getItemsFromCache(player);
-		
+
 		if(searchItems == null || searchItems.size() < 0)
 			return;
-		
+
 		int totalSearchItemsCount = searchItems.size();
-		
+
 		player.setBrokerSortTypeCache(sortType);
 		player.setBrokerStartPageCache(startPage);
-		
-		searchItems = sortBrokerItems(searchItems, sortType);
+
+		sortBrokerItems(searchItems, sortType);
 		searchItems = getRequestedPage(searchItems, startPage);
-		
+
 		PacketSendUtility.sendPacket(player, new SM_BROKER_ITEMS(searchItems, totalSearchItemsCount, startPage));
 	}
-	
-	
+
 	private List<BrokerItem> getItemsByMask(Player player, int mask)
-	{		
+	{
 		List<BrokerItem> brokerItems = getRaceBrokerItems(player.getCommonData().getRace());
 		if(brokerItems == null)
 			return null;
-		
+
 		List<BrokerItem> searchItems = new ArrayList<BrokerItem>();
 		FastMap<Integer, Integer> brokerListCache = new FastMap<Integer, Integer>();
-		
+
 		int itemIdModifier = 100000;
 		int secondMask = 0;
 		int thirdMask = 0;
 		int fourthMask = 0;
 		int fifthMask = 0;
-		
+
 		if(mask > 2000)
 		{
-			switch (mask)
+			switch(mask)
 			{
 				case 9010:
 					itemIdModifier = 10000000;
 					mask = 10;
 					break;
-				
+
 				case 9020:
 					itemIdModifier = 10000000;
 					mask = 11;
 					break;
-					
+
 				case 9030:
 					itemIdModifier = 10000000;
 					mask = 12;
 					break;
-					
+
 				case 9040:
 					mask = 1400;
 					secondMask = 1695;
 					break;
-					
+
 				case 9050:
 					itemIdModifier = 1000000;
 					mask = 152;
 					break;
-					
+
 				case 9060:
 					itemIdModifier = 10000000;
 					mask = 16;
 					secondMask = 14;
 					break;
-					
+
 				case 8010:
 					itemIdModifier = 100000;
 					mask = 1109;
 					break;
-					
+
 				case 8020:
 					itemIdModifier = 100000;
 					mask = 1101;
@@ -246,7 +239,7 @@ public class BrokerService
 					fourthMask = 1131;
 					fifthMask = 1141;
 					break;
-					
+
 				case 8030:
 					itemIdModifier = 100000;
 					mask = 1103;
@@ -255,7 +248,7 @@ public class BrokerService
 					fourthMask = 1133;
 					fifthMask = 1143;
 					break;
-					
+
 				case 8040:
 					itemIdModifier = 100000;
 					mask = 1105;
@@ -264,7 +257,7 @@ public class BrokerService
 					fourthMask = 1135;
 					fifthMask = 1145;
 					break;
-					
+
 				case 8050:
 					itemIdModifier = 100000;
 					mask = 1106;
@@ -272,13 +265,13 @@ public class BrokerService
 					thirdMask = 1126;
 					fourthMask = 1136;
 					fifthMask = 1146;
-					break;					
-					
+					break;
+
 				case 7070:
 					itemIdModifier = 10000000;
 					mask = 18;
 					break;
-					
+
 				case 7062:
 					itemIdModifier = 100000;
 					mask = 1690;
@@ -286,84 +279,90 @@ public class BrokerService
 					thirdMask = 1630;
 					fourthMask = 1693;
 					break;
-					
+
 				default:
 					return null;
-					
-					//TODO: Other masks
+
+					// TODO: Other masks
 			}
 		}
-		
-		
-		
+
 		for(int i = 0; i < brokerItems.size(); i++)
 		{
 			if(brokerItems.get(i) == null || brokerItems.get(i).getItem() == null)
 				continue;
-		
+
 			int itemMask = brokerItems.get(i).getItemId() / itemIdModifier;
-			if(itemMask == mask || itemMask == secondMask || itemMask == thirdMask || itemMask == fourthMask || itemMask == fifthMask)
+			if(itemMask == mask || itemMask == secondMask || itemMask == thirdMask || itemMask == fourthMask
+				|| itemMask == fifthMask)
 			{
 				searchItems.add(brokerItems.get(i));
 				brokerListCache.put(brokerItems.get(i).getItemUniqueId(), i);
 			}
 		}
-		
+
 		player.setBrokerListCache(brokerListCache);
 		player.setBrokerMaskCache(mask);
-		
+
 		return searchItems;
 	}
-	
-	
+
 	private List<BrokerItem> getItemsFromCache(Player player)
 	{
 		List<BrokerItem> brokerItems = new ArrayList<BrokerItem>();
-		
+
 		if(player.getCommonData().getRace() == Race.ASMODIANS)
 			brokerItems = asmodianBrokerItems;
 		else if(player.getCommonData().getRace() == Race.ELYOS)
 			brokerItems = elyosBrokerItems;
 		else
 			return null;
-		
+
 		List<BrokerItem> cacheItems = new ArrayList<BrokerItem>();
-		
+
 		for(int i : player.getBrokerListCache().values())
 		{
 			BrokerItem item = brokerItems.get(i);
-			
+
 			if(item == null)
 				continue;
-			
+
 			cacheItems.add(item);
 		}
-		
+
 		return cacheItems;
 	}
-	
-	
-	private List<BrokerItem> sortBrokerItems(List<BrokerItem> brokerItems, int sortType)
+
+	/**
+	 * Perform sorting according to sort type
+	 * 
+	 * @param brokerItems
+	 * @param sortType
+	 */
+	private void sortBrokerItems(List<BrokerItem> brokerItems, int sortType)
 	{
-		return brokerItems; //TODO: Sorting
-							// 1 - by name; 2 - by level; 4 - by totalPrice; 6 - by price for piece (Math.round(item.getPrice() / item.getItemCount))
+		Collections.sort(brokerItems, BrokerItem.getComparatoryByType(sortType));
 	}
 	
-	
+	/**
+	 * 
+	 * @param brokerItems
+	 * @param startPage
+	 * @return
+	 */
 	private List<BrokerItem> getRequestedPage(List<BrokerItem> brokerItems, int startPage)
 	{
 		List<BrokerItem> page = new ArrayList<BrokerItem>();
 		int startingElement = startPage * 9;
-		
+
 		for(int i = startingElement, limit = 0; i < brokerItems.size() && limit < 45; i++, limit++)
 		{
 			page.add(brokerItems.get(i));
 		}
-		
+
 		return page;
 	}
-	
-	
+
 	private List<BrokerItem> getRaceBrokerItems(Race race)
 	{
 		switch(race)
@@ -373,13 +372,12 @@ public class BrokerService
 
 			case ASMODIANS:
 				return asmodianBrokerItems;
-				
+
 			default:
 				return null;
 		}
 	}
-	
-	
+
 	private List<BrokerItem> getRaceBrokerSettledItems(Race race)
 	{
 		switch(race)
@@ -389,13 +387,12 @@ public class BrokerService
 
 			case ASMODIANS:
 				return asmodianSettledItems;
-				
+
 			default:
 				return null;
 		}
 	}
-	
-	
+
 	public void buyBrokerItem(Player player, int itemUniqueId)
 	{
 		if(player.getInventory().isFull())
@@ -403,152 +400,150 @@ public class BrokerService
 			PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.MSG_FULL_INVENTORY);
 			return;
 		}
-		
+
 		BrokerItem buyingItem = null;
 		int listIndex;
 		boolean isEmptyCache = player.getBrokerListCache().size() == 0;
 		Race playerRace = player.getCommonData().getRace();
-		
+
 		if(!isEmptyCache)
 		{
 			listIndex = player.getBrokerListCache().get(itemUniqueId);
 			buyingItem = getRaceBrokerItems(playerRace).get(listIndex);
 		}
 		else
+		{
+			List<BrokerItem> brokerItems = getRaceBrokerItems(playerRace);
+			listIndex = 0;
+			for(BrokerItem item : brokerItems)
 			{
-				List<BrokerItem> brokerItems = getRaceBrokerItems(playerRace);
-				listIndex = 0;
-				for(BrokerItem item : brokerItems)
+				if(item.getItemUniqueId() == itemUniqueId)
 				{
-					if(item.getItemUniqueId() == itemUniqueId)
-					{
-						buyingItem = item;
-						break;
-					}
-					listIndex++;
+					buyingItem = item;
+					break;
 				}
+				listIndex++;
 			}
-		
+		}
+
 		if(buyingItem == null)
-			return;	//TODO: Message "this item has already been bought, refresh page please."
-		
+			return; // TODO: Message "this item has already been bought, refresh page please."
+
 		Item item = buyingItem.getItem();
 		int price = buyingItem.getPrice();
-		
+
 		if(player.getInventory().getKinahItem().getItemCount() < price)
 			return;
-		
+
 		getRaceBrokerItems(playerRace).set(listIndex, null);
 		putToSettled(playerRace, buyingItem, true);
-		
+
 		if(!isEmptyCache)
 			player.getBrokerListCache().remove(itemUniqueId);
-		
-		player.getInventory().decreaseKinah(price);		
-		Item boughtItem = player.getInventory().putToBag(item);		
+
+		player.getInventory().decreaseKinah(price);
+		Item boughtItem = player.getInventory().putToBag(item);
 		PacketSendUtility.sendPacket(player, new SM_INVENTORY_UPDATE(Collections.singletonList(boughtItem)));
-		
-		showRequestedItems(player, player.getBrokerMaskCache(), player.getBrokerSortTypeCache(), player.getBrokerStartPageCache());
+
+		showRequestedItems(player, player.getBrokerMaskCache(), player.getBrokerSortTypeCache(), player
+			.getBrokerStartPageCache());
 	}
-	
-	
+
 	private void putToSettled(Race race, BrokerItem brokerItem, boolean isSold)
 	{
 		if(isSold)
 			brokerItem.removeItem();
 		else
 			brokerItem.setSettled();
-		
+
 		brokerItem.setPersistentState(PersistentState.UPDATE_REQUIRED);
-		
+
 		switch(race)
 		{
 			case ASMODIANS:
 				asmodianSettledItems.add(brokerItem);
 				break;
-				
+
 			case ELYOS:
 				elyosSettledItems.add(brokerItem);
 				break;
 		}
-		
+
 		Player seller = world.findPlayer(brokerItem.getSellerId());
-		
+
 		if(seller != null)
 		{
 			PacketSendUtility.sendPacket(seller, new SM_BROKER_SETTLED_LIST(true));
-			//TODO: Retail system message
+			// TODO: Retail system message
 		}
 	}
-	
-	
+
 	public void registerItem(Player player, int itemUniqueId, int price)
 	{
 		Item itemToRegister = player.getInventory().getItemByObjId(itemUniqueId);
 		Race playerRace = player.getCommonData().getRace();
-		
+
 		if(itemToRegister == null)
 			return;
-		
+
 		BrokerRace brRace;
-		
+
 		if(playerRace == Race.ASMODIANS)
 			brRace = BrokerRace.ASMODIAN;
 		else if(playerRace == Race.ELYOS)
 			brRace = BrokerRace.ELYOS;
 		else
 			return;
-		
+
 		int registrationCommition = Math.round(price * 0.02f);
-		
+
 		if(registrationCommition < 10)
 			registrationCommition = 10;
-		
+
 		if(player.getInventory().getKinahItem().getItemCount() < registrationCommition)
 		{
-			PacketSendUtility.sendPacket(player, new SM_BROKER_REGISTRATION_SERVICE(BrokerMessages.NO_ENOUGHT_KINAH.getId()));
+			PacketSendUtility.sendPacket(player, new SM_BROKER_REGISTRATION_SERVICE(BrokerMessages.NO_ENOUGHT_KINAH
+				.getId()));
 		}
-		
+
 		player.getInventory().decreaseKinah(registrationCommition);
 
-		player.getInventory().removeFromBag(itemToRegister, false);		
+		player.getInventory().removeFromBag(itemToRegister, false);
 		PacketSendUtility.sendPacket(player, new SM_DELETE_ITEM(itemToRegister.getObjectId()));
-		
+
 		itemToRegister.setItemLocation(126);
-		
+
 		BrokerItem newBrokerItem = new BrokerItem(itemToRegister, price, player.getName(), player.getObjectId(), brRace);
-		
+
 		switch(brRace)
 		{
 			case ASMODIAN:
 				asmodianBrokerItems.add(newBrokerItem);
 				break;
-				
+
 			case ELYOS:
 				elyosBrokerItems.add(newBrokerItem);
 				break;
 		}
-		
+
 		PacketSendUtility.sendPacket(player, new SM_BROKER_REGISTRATION_SERVICE(newBrokerItem));
 	}
-	
-	
+
 	public void showRegisteredItems(Player player)
 	{
 		List<BrokerItem> brokerItems = getRaceBrokerItems(player.getCommonData().getRace());
 		List<BrokerItem> registeredItems = new ArrayList<BrokerItem>();
 		int playerId = player.getObjectId();
-		
+
 		for(BrokerItem item : brokerItems)
 		{
 			if(item != null && item.getItem() != null && playerId == item.getSellerId())
 				registeredItems.add(item);
 		}
-		
+
 		PacketSendUtility.sendPacket(player, new SM_BROKER_REGISTERED_LIST(registeredItems));
 	}
-	
-	
+
 	public void cancelRegisteredItem(Player player, int brokerItemId)
 	{
 		List<BrokerItem> brokerItems = getRaceBrokerItems(player.getCommonData().getRace());
@@ -556,45 +551,43 @@ public class BrokerService
 		{
 			BrokerItem brokerItem = brokerItems.get(i);
 			if(brokerItem != null && brokerItem.getItemUniqueId() == brokerItemId)
-			{				
+			{
 				Item item = player.getInventory().putToBag(brokerItem.getItem());
 				PacketSendUtility.sendPacket(player, new SM_INVENTORY_UPDATE(Collections.singletonList(item)));
 				brokerItem.setPersistentState(PersistentState.DELETED);
 				itemsToDelete.add(brokerItem);
 
 				getRaceBrokerItems(player.getCommonData().getRace()).set(i, null);
-				
+
 				break;
 			}
 		}
-		
+
 		showRegisteredItems(player);
 	}
-	
-	
+
 	public void showSettledItems(Player player)
 	{
 		List<BrokerItem> brokerSettledItems = getRaceBrokerSettledItems(player.getCommonData().getRace());
 		List<BrokerItem> settledItems = new ArrayList<BrokerItem>();
-		
+
 		int playerId = player.getObjectId();
 		int totalKinah = 0;
-		
+
 		for(BrokerItem item : brokerSettledItems)
 		{
 			if(item != null && playerId == item.getSellerId())
 			{
 				settledItems.add(item);
-				
+
 				if(item.isSold())
 					totalKinah += item.getPrice();
 			}
 		}
-		
+
 		PacketSendUtility.sendPacket(player, new SM_BROKER_SETTLED_LIST(settledItems, totalKinah));
 	}
-	
-	
+
 	public void settleAccount(Player player)
 	{
 		Race playerRace = player.getCommonData().getRace();
@@ -603,80 +596,80 @@ public class BrokerService
 		int playerId = player.getObjectId();
 		int kinahCollect = 0;
 		boolean itemsLeft = false;
-		
+
 		for(BrokerItem item : brokerSettledItems)
 		{
 			if(item.getSellerId() == playerId)
 				collectedItems.add(item);
 		}
-		
+
 		for(BrokerItem item : collectedItems)
 		{
-				if(item.isSold())
+			if(item.isSold())
+			{
+				boolean result = false;
+				switch(playerRace)
 				{
-					boolean result = false;
-					switch(playerRace)
-					{
-						case ASMODIANS:
-							result = asmodianSettledItems.remove(item);
-							break;
-						case ELYOS:
-							result = elyosSettledItems.remove(item);
-							break;
-					}
-					
-					if(result)
-					{
-						item.setPersistentState(PersistentState.DELETED);
-						itemsToDelete.add(item);
-						kinahCollect += item.getPrice();
-					}
+					case ASMODIANS:
+						result = asmodianSettledItems.remove(item);
+						break;
+					case ELYOS:
+						result = elyosSettledItems.remove(item);
+						break;
 				}
-				else
+
+				if(result)
 				{
-					if(item.getItem() != null)
-					{						
-						Item resultItem = player.getInventory().putToBag(item.getItem());
-						if(resultItem != null)
+					item.setPersistentState(PersistentState.DELETED);
+					itemsToDelete.add(item);
+					kinahCollect += item.getPrice();
+				}
+			}
+			else
+			{
+				if(item.getItem() != null)
+				{
+					Item resultItem = player.getInventory().putToBag(item.getItem());
+					if(resultItem != null)
+					{
+						switch(playerRace)
 						{
-							switch(playerRace)
-							{
-								case ASMODIANS:
-									asmodianSettledItems.remove(item);
-									break;
-								case ELYOS:
-									elyosSettledItems.remove(item);
-									break;
-							}
-							
-							PacketSendUtility.sendPacket(player, new SM_INVENTORY_UPDATE(Collections.singletonList(resultItem)));
+							case ASMODIANS:
+								asmodianSettledItems.remove(item);
+								break;
+							case ELYOS:
+								elyosSettledItems.remove(item);
+								break;
 						}
-						else
-							itemsLeft = true;
-						
+
+						PacketSendUtility.sendPacket(player, new SM_INVENTORY_UPDATE(Collections
+							.singletonList(resultItem)));
 					}
 					else
-						log.warn("Broker settled item missed. ObjID: "+ item.getItemUniqueId());
-				}			
+						itemsLeft = true;
+
+				}
+				else
+					log.warn("Broker settled item missed. ObjID: " + item.getItemUniqueId());
+			}
 		}
-		
+
 		player.getInventory().increaseKinah(kinahCollect);
 
 		showSettledItems(player);
-		
+
 		if(!itemsLeft)
 			PacketSendUtility.sendPacket(player, new SM_BROKER_SETTLED_LIST(false));
-			
+
 	}
-	
-	
+
 	private void checkExpiredItems()
 	{
 		List<BrokerItem> asmoBrokerItems = getRaceBrokerItems(Race.ASMODIANS);
 		List<BrokerItem> elyosBrokerItems = getRaceBrokerItems(Race.ELYOS);
-		
+
 		Timestamp currentTime = new Timestamp(Calendar.getInstance().getTimeInMillis());
-		
+
 		for(int i = 0; i < asmoBrokerItems.size(); i++)
 		{
 			BrokerItem item = asmoBrokerItems.get(i);
@@ -686,7 +679,7 @@ public class BrokerService
 				this.asmodianBrokerItems.set(i, null);
 			}
 		}
-		
+
 		for(int i = 0; i < elyosBrokerItems.size(); i++)
 		{
 			BrokerItem item = elyosBrokerItems.get(i);
@@ -697,13 +690,13 @@ public class BrokerService
 			}
 		}
 	}
-	
+
 	public void onPlayerLogin(Player player)
 	{
 		List<BrokerItem> brokerSettledItems = getRaceBrokerSettledItems(player.getCommonData().getRace());
-		
+
 		int playerId = player.getObjectId();
-		
+
 		for(BrokerItem item : brokerSettledItems)
 		{
 			if(item != null && playerId == item.getSellerId())
