@@ -566,25 +566,52 @@
 
 	<!-- TODO: Quest Id: 1850  [Relic Reward] Ancient Crown_Elyoses and Asmodians -->
 
-	<!-- TODO: Quest Id: 2782  It's always Moinn, Moinn, Moinn -->
+	<!-- 2782  It's always Moinn, Moinn, Moinn -->
+	<monster_hunt start_npc_id="278111" id="2782">
+    	    <monster_infos var_id="0" npc_id="213598" max_kill="10"/>
+	</monster_hunt>
 
-	<!-- TODO: Quest Id: 2783  Giant's Core Weapon -->
+	<!-- 2783  Giant's Core Weapon -->
+	<item_collecting id="2783" start_npc_id="278109" end_npc_id="204170"/>
 
-	<!-- TODO: Quest Id: 2784  Wipe out the Guardians -->
+	<!-- 2784  Wipe out the Guardians -->
+	<item_collecting id="2784" start_npc_id="268052"/>
 
-	<!-- TODO: Quest Id: 2786  Bloody Flame Spirit -->
+	<!-- 2786  Bloody Flame Spirit -->
+	<monster_hunt start_npc_id="278121" id="2786">
+    	    <monster_infos var_id="0" npc_id="255664" max_kill="10"/>
+	</monster_hunt>
 
-	<!-- TODO: Quest Id: 2787  Murderous Naga and Nagarant -->
+	<!-- 2787  Murderous Naga and Nagarant -->
+	<monster_hunt start_npc_id="278120" id="2787">
+    	    <monster_infos var_id="0" npc_id="215196" max_kill="10"/>
+			<monster_infos var_id="1" npc_id="255614" max_kill="5"/>
+	</monster_hunt>
 
-	<!-- TODO: Quest Id: 2788  Drake Leather -->
+	<!-- 2788  Drake Leather -->
+	<item_collecting id="2788" start_npc_id="279028"/>
 
-	<!-- TODO: Quest Id: 2789  Cloak and Dagger -->
+	<!-- 2789  Cloak and Dagger -->
+	<item_collecting id="2789" start_npc_id="269252"/>
 
-	<!-- TODO: Quest Id: 2779  Hair Apparent -->
+	<!-- 2779  Hair Apparent -->
+	<item_collecting id="2779" start_npc_id="266554"/>
 
-	<!-- TODO: Quest Id: 2769  Thwart the Elyos Sabotage -->
+	<!-- 2769  Thwart the Elyos Sabotage -->
+	<monster_hunt start_npc_id="271054" id="2769">
+    	    <monster_infos var_id="0" npc_id="278606" max_kill="1"/>
+			<monster_infos var_id="1" npc_id="278607" max_kill="1"/>
+			<monster_infos var_id="2" npc_id="278608" max_kill="1"/>
+			<monster_infos var_id="3" npc_id="279013" max_kill="1"/>
+			<monster_infos var_id="4" npc_id="279014" max_kill="1"/>
+	</monster_hunt>
 
-	<!-- TODO: Quest Id: 2759  Tenacious Guardian -->
+	<!-- 2759  Tenacious Guardian -->
+	<monster_hunt start_npc_id="264769" id="2759">
+    	    <monster_infos var_id="0" npc_id="278588" max_kill="1"/>
+			<monster_infos var_id="0" npc_id="278589" max_kill="1"/>
+			<monster_infos var_id="0" npc_id="278590" max_kill="1"/>
+	</monster_hunt>
 
 	<!-- TODO: Quest Id: 2760  [Group] Recovering Souvenirs -->
 
