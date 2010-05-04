@@ -405,6 +405,15 @@ public class PlayerController extends CreatureController<Player>
 		super.onRestore(healType, value);
 		switch(healType)
 		{
+			case HP:
+				PacketSendUtility.sendPacket(getOwner(), new SM_ATTACK_STATUS(getOwner(), TYPE.HP, 0, value));
+				break;
+			case MP:
+				PacketSendUtility.sendPacket(getOwner(), new SM_ATTACK_STATUS(getOwner(), TYPE.MP, 0, value));
+				break;
+			case FP:
+				PacketSendUtility.sendPacket(getOwner(), new SM_ATTACK_STATUS(getOwner(), TYPE.FP, 0, value));
+				break;
 			case DP:
 				getOwner().getCommonData().addDp(value);
 				break;
