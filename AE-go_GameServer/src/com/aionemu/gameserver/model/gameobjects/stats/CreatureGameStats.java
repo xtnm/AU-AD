@@ -60,8 +60,8 @@ public class CreatureGameStats<T extends Creature>
 	protected CreatureGameStats(T owner)
 	{
 		this.owner = owner;
-		this.stats = new FastMap<StatEnum,Stat> ();
-		this.statsModifiers = new FastMap<StatEffectId, TreeSet<StatModifier>>();
+		this.stats = new FastMap<StatEnum,Stat>();
+		this.statsModifiers = new FastMap<StatEffectId, TreeSet<StatModifier>>().shared();
 	}
 	
 	/**
@@ -196,20 +196,16 @@ public class CreatureGameStats<T extends Creature>
 	public void addModifiers(StatEffectId id, TreeSet<StatModifier> modifiers)
 	{
 		if (modifiers==null)
-		{
 			return;
-		}
 
 		if (statsModifiers.containsKey(id))
-		{
 			throw new IllegalArgumentException("Effect "+id+" already active");
-		}
 
 		statsModifiers.put(id, modifiers);
 		recomputeStats();
 	}
 	
-	/*
+	/**
 	 * @return True if the StatEffectId is already added
 	 */
 	public boolean effectAlreadyAdded(StatEffectId id)
