@@ -196,6 +196,12 @@
 	<spawn map="220040000" npcid="204762" pool="1" interval="295">
 		<object x="554.2071" y="1921.1923" z="261.07507" h="0"/>
 	</spawn>
+	<!-- Defense Commander (NPC Hero lvl:45)-->
+	<spawn map="220040000" npcid="207862" pool="3" interval="295">
+		<object x="2320.0115" y="1124.4219" z="472.44727" h="108"/>
+		<object x="2324.032" y="1166.9886" z="484.08417" h="83"/>
+		<object x="2379.4065" y="1343.0055" z="483.09326" h="23"/>
+	</spawn>
 	<!-- Defense Commander (NPC Hero lvl:50)-->
 	<spawn map="220040000" npcid="207599" pool="2" interval="295">
 		<object x="405.42303" y="453.83493" z="222.77713" h="24"/>
@@ -254,7 +260,7 @@
 	</spawn>
 	<!-- Epona (NPC Elite lvl:50)-->
 	<spawn map="220040000" npcid="204764" pool="1" interval="295">
-		<object x="2305.7947" y="1231.009" z="499.00308" h="0"/>
+		<object x="2305.7947" y="1231.009" z="499.00308" h="68"/>
 	</spawn>
 	<!-- Esnu (NPC Normal lvl:47)-->
 	<spawn map="220040000" npcid="204808" pool="1" interval="295">
@@ -330,16 +336,39 @@
 		<object x="304.0" y="1167.0" z="269.0" h="0"/>
 	</spawn>
 	<!-- Garrison Patrol - Archer (NPC Elite lvl:50)-->
-	<spawn map="220040000" npcid="207786" pool="1" interval="295">
+	<spawn map="220040000" npcid="207786" pool="4" interval="295">
 		<object x="478.40094" y="528.16534" z="215.79631" h="48"/>
+		<object x="2304.8074" y="1275.9961" z="487.915" h="29"/>
+		<object x="2346.4934" y="1266.3558" z="467.42822" h="106"/>
+		<object x="2315.6282" y="1237.6365" z="469.54498" h="111"/>
 	</spawn>
 	<!-- Garrison Patrol - Assassin (NPC Elite lvl:50)-->
-	<spawn map="220040000" npcid="207793" pool="1" interval="295">
+	<spawn map="220040000" npcid="207793" pool="2" interval="295">
 		<object x="477.92725" y="531.3005" z="215.57834" h="79"/>
+		<object x="2301.6394" y="1222.0781" z="496.8881" h="46"/>
 	</spawn>
 	<!-- Garrison Patrol - Templar (NPC Elite lvl:50)-->
 	<spawn map="220040000" npcid="207807" pool="1" interval="295">
 		<object x="469.17096" y="533.9101" z="216.54509" h="101"/>
+	</spawn>
+	<!-- Garrison Patrol Leader (NPC Hero lvl:50)-->
+	<spawn map="220040000" npcid="207804" pool="1" interval="295">
+		<object x="2359.7834" y="1246.348" z="469.61157" h="90"/>
+	</spawn>
+	<!-- Garrison Senior Patrol - Archer (NPC Hero lvl:50)-->
+	<spawn map="220040000" npcid="207789" pool="2" interval="295">
+		<object x="2298.6895" y="1221.7817" z="496.57016" h="46"/>
+		<object x="2354.7856" y="1323.1176" z="491.73486" h="100"/>
+	</spawn>
+	<!-- Garrison Senior Patrol - Sorcerer (NPC Hero lvl:50)-->
+	<spawn map="220040000" npcid="207803" pool="2" interval="295">
+		<object x="2319.254" y="1238.0107" z="469.2669" h="111"/>
+		<object x="2252.5232" y="1202.08" z="471.875" h="113"/>
+	</spawn>
+	<!-- Garrison Senior Patrol - Warrior (NPC Hero lvl:50)-->
+	<spawn map="220040000" npcid="207789" pool="2" interval="295">
+		<object x="2308.5347" y="1282.5668" z="486.14188" h="88"/>
+		<object x="2358.3765" y="1246.5463" z="469.32968" h="85"/>
 	</spawn>
 	<!-- Geirod (NPC Elite lvl:50)-->
 	<spawn map="220040000" npcid="204760" pool="1" interval="295">
@@ -572,6 +601,19 @@
 	<spawn map="220040000" npcid="204766" pool="1" interval="295">
 		<object x="2295.4468" y="1315.3473" z="474.996" h="0"/>
 	</spawn>
+	<!-- Mau Hunter (NPC Elite lvl:50)-->
+	<spawn map="220040000" npcid="207841" pool="3" interval="295">
+		<object x="2332.6018" y="1135.367" z="471.93622" h="110"/>
+		<object x="2381.2825" y="1342.9725" z="483.93387" h="23"/>
+		<object x="2372.698" y="1268.2123" z="467.77982" h="71"/>
+	</spawn>
+	<!-- Mau Warrior (NPC Elite lvl:50)-->
+	<spawn map="220040000" npcid="207840" pool="4" interval="295">
+		<object x="2323.1138" y="1125.2994" z="472.3634" h="108"/>
+		<object x="2386.7502" y="1342.5826" z="484.22287" h="23"/>
+		<object x="2379.1384" y="1266.9702" z="467.23642" h="69"/>
+		<object x="2377.2935" y="1260.3835" z="467.9319" h="69"/>
+	</spawn>
 	<!-- Medic Leader (NPC Hero lvl:50)-->
 	<spawn map="220040000" npcid="207611" pool="1" interval="295">
 		<object x="350.31244" y="354.9237" z="229.60413" h="20"/>
@@ -602,7 +644,7 @@
 	</spawn>
 	<!-- Mostin (NPC Elite lvl:50)-->
 	<spawn map="220040000" npcid="204783" pool="1" interval="295">
-		<object x="2289.3918" y="1219.3584" z="496.00308" h="0"/>
+		<object x="2289.3918" y="1219.3584" z="496.00308" h="32"/>
 	</spawn>
 	<!-- Mukaditan (NPC Normal lvl:45)-->
 	<spawn map="220040000" npcid="204833" pool="1" interval="295">
@@ -775,6 +817,14 @@
 	<spawn map="220040000" npcid="700359" pool="1" interval="295">
 		<object x="1654.75" y="1499.61" z="333.51" h="57"/>
 	</spawn>
+	<!-- Sentinel Leader (NPC Hero lvl:45)-->
+	<spawn map="220040000" npcid="207865" pool="1" interval="295">
+		<object x="2333.3884" y="1138.0077" z="471.61865" h="110"/>
+	</spawn>
+	<!-- Sentinel Leader (NPC Hero lvl:50)-->
+	<spawn map="220040000" npcid="207602" pool="1" interval="295">
+		<object x="2278.9307" y="1196.584" z="466.1275" h="117"/>
+	</spawn>
 	<!-- Seiren and the Golden Trumpet Temple (Object Normal lvl:1)-->
 	<spawn map="220040000" npcid="730135" pool="1" interval="295">
 		<object x="507.21" y="2208.34" z="382.92" h="0"/>
@@ -790,12 +840,24 @@
 		<object x="401.33093" y="364.5541" z="227.07709" h="25"/>
 	</spawn>
 	<!-- Senior Soldier - Assassin (NPC Elite lvl:50)-->
-	<spawn map="220040000" npcid="207604" pool="2" interval="295">
+	<spawn map="220040000" npcid="207604" pool="6" interval="295">
 		<object x="329.54337" y="402.9764" z="231.74878" h="97"/>
 		<object x="323.23218" y="399.0085" z="231.74878" h="101"/>
+		<object x="2262.512" y="1186.7915" z="492.598" h="110"/>
+		<object x="2352.789" y="1237.0382" z="468.0784" h="98"/>
+		<object x="2319.8857" y="1241.7278" z="469.63928" h="111"/>
+		<object x="2249.842" y="1205.7028" z="471.91333" h="7"/>
 	</spawn>
-	<!-- Senior Soldier - Templar (NPC Elite lvl:50)-->
-	<spawn map="220040000" npcid="207598" pool="8" interval="295">
+	<!-- Senior Soldier - Sorcerer (NPC Elite lvl:50)-->
+	<spawn map="220040000" npcid="207607" pool="1" interval="295">
+		<object x="2302.8499" y="1282.5548" z="486.1462" h="44"/>
+	</spawn>
+	<!-- Senior Soldier - Templar Female (NPC Elite lvl:50)-->
+	<spawn map="220040000" npcid="207610" pool="1" interval="295">
+		<object x="2351.46" y="1321.9017" z="491.07123" h="100"/>
+	</spawn>
+	<!-- Senior Soldier - Templar Male (NPC Elite lvl:50)-->
+	<spawn map="220040000" npcid="207598" pool="15" interval="295">
 		<object x="368.45853" y="386.0183" z="229.18268" h="20"/>
 		<object x="363.6553" y="388.94635" z="229.18288" h="20"/>
 		<object x="376.02216" y="415.9885" z="222.11166" h="78"/>
@@ -804,6 +866,13 @@
 		<object x="394.35156" y="323.00595" z="230.76694" h="50"/>
 		<object x="335.0936" y="310.54697" z="231.0586" h="21"/>
 		<object x="318.5882" y="320.0966" z="231.0592" h="21"/>
+		<object x="2329.8572" y="1205.8607" z="479.78146" h="79"/>
+		<object x="2289.9114" y="1235.0618" z="497.06454" h="99"/>
+		<object x="2315.395" y="1265.6172" z="489.21378" h="45"/>
+		<object x="2345.9282" y="1264.3448" z="467.67102" h="106"/>
+		<object x="2308.7876" y="1265.1469" z="466.3342" h="70"/>
+		<object x="2308.7722" y="1262.4906" z="466.8291" h="72"/>
+		<object x="2266.243" y="1192.1318" z="469.52014" h="28"/>
 	</spawn>
 	<!-- Siegfried (NPC Elite lvl:50)-->
 	<spawn map="220040000" npcid="204799" pool="1" interval="295">
@@ -837,14 +906,22 @@
 	<spawn map="220040000" npcid="204726" pool="1" interval="295">
 		<object x="252.92116" y="408.50604" z="237.78409" h="0"/>
 	</spawn>
+	<!-- Support Leader (NPC Hero lvl:45)-->
+	<spawn map="220040000" npcid="207871" pool="2" interval="295">
+		<object x="2318.542" y="1168.5873" z="483.49332" h="89"/>
+		<object x="2388.324" y="1341.66" z="483.48532" h="23"/>
+	</spawn>
 	<!-- Support Leader (NPC Hero lvl:50)-->
-	<spawn map="220040000" npcid="207608" pool="6" interval="295">
+	<spawn map="220040000" npcid="207608" pool="9" interval="295">
 		<object x="406.5701" y="404.7751" z="222.11166" h="51"/>
 		<object x="322.5411" y="357.63486" z="229.26157" h="1"/>
 		<object x="336.51224" y="331.14142" z="229.26157" h="19"/>
 		<object x="366.56912" y="332.38486" z="229.26157" h="41"/>
 		<object x="375.8138" y="371.80725" z="229.26157" h="70"/>
 		<object x="352.31516" y="385.1641" z="229.26157" h="91"/>
+		<object x="2316.1592" y="1279.6937" z="466.9177" h="4"/>
+		<object x="2317.478" y="1283.0607" z="467.8771" h="108"/>
+		<object x="2267.9932" y="1191.6709" z="469.5426" h="29"/>
 	</spawn>
 	<!-- Surviving Hoarfrost Hunter (NPC Elite lvl:50)-->
 	<spawn map="220040000" npcid="204820" pool="5" interval="295">
@@ -877,6 +954,10 @@
 	<!-- Tafi (NPC Elite lvl:50)-->
 	<spawn map="220040000" npcid="204754" pool="1" interval="295">
 		<object x="1903.9913" y="488.094" z="413.00177" h="0"/>
+	</spawn>
+	<!-- Tamed Worg (NPC Elite lvl:43)-->
+	<spawn map="220040000" npcid="203358" pool="1" interval="295">
+		<object x="2327.678" y="1251.371" z="469.08142" h="111"/>
 	</spawn>
 	<!-- Tartu (NPC Normal lvl:50)-->
 	<spawn map="220040000" npcid="204716" pool="1" interval="295">
