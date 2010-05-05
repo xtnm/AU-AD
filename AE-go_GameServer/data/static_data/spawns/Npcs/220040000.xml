@@ -250,6 +250,10 @@
 	<spawn map="220040000" npcid="204724" pool="1" interval="295">
 		<object x="401.07007" y="400.9682" z="223.0" h="20"/>
 	</spawn>
+	<!-- Eitri (NPC Elite lvl:50)-->
+	<spawn map="220040000" npcid="204838" pool="1" interval="295">
+		<object x="2425.2354" y="2057.695" z="580.23065" h="23"/>
+	</spawn>
 	<!-- Eldir (NPC Normal lvl:50)-->
 	<spawn map="220040000" npcid="204825" pool="1" interval="295">
 		<object x="827.8217" y="1825.3228" z="242.54233" h="0"/>
@@ -351,9 +355,14 @@
 	<spawn map="220040000" npcid="207807" pool="1" interval="295">
 		<object x="469.17096" y="533.9101" z="216.54509" h="101"/>
 	</spawn>
-	<!-- Garrison Patrol Leader (NPC Hero lvl:50)-->
-	<spawn map="220040000" npcid="207804" pool="1" interval="295">
+	<!-- Garrison Patrol Leader - Sorerer (NPC Hero lvl:50)-->
+	<spawn map="220040000" npcid="207804" pool="2" interval="295">
 		<object x="2359.7834" y="1246.348" z="469.61157" h="90"/>
+		<object x="2472.3845" y="2076.3374" z="577.1731" h="52"/>
+	</spawn>
+	<!-- Garrison Patrol Leader - Archer (NPC Hero lvl:50)-->
+	<spawn map="220040000" npcid="207790" pool="1" interval="295">
+		<object x="2468.0518" y="2067.43" z="577.17035" h="38"/>
 	</spawn>
 	<!-- Garrison Senior Patrol - Archer (NPC Hero lvl:50)-->
 	<spawn map="220040000" npcid="207789" pool="2" interval="295">
@@ -424,7 +433,7 @@
 	</spawn>
 	<!-- Hikan (NPC Elite lvl:46)-->
 	<spawn map="220040000" npcid="204797" pool="1" interval="295">
-		<object x="2462.7502" y="2070.9885" z="578.0" h="0"/>
+		<object x="2462.7502" y="2070.9885" z="578.0" h="27"/>
 	</spawn>
 	<!-- Hild (NPC Normal lvl:17)-->
 	<spawn map="220040000" npcid="204827" pool="1" interval="295">
@@ -440,7 +449,7 @@
 	</spawn>
 	<!-- Hresvelgr (NPC Elite lvl:50)-->
 	<spawn map="220040000" npcid="204837" pool="1" interval="295">
-		<object x="2423" y="2059" z="579.8773" h="12"/>
+		<object x="2423" y="2059" z="579.8773" h="23"/>
 	</spawn>
 	<!-- Huarinrinerk (NPC Normal lvl:50)-->
 	<spawn map="220040000" npcid="798119" pool="1" interval="295">
@@ -456,7 +465,7 @@
 	</spawn>
 	<!-- Idraden (NPC Elite lvl:50)-->
 	<spawn map="220040000" npcid="204367" pool="1" interval="295">
-		<object x="2471.0" y="2073.0" z="579.0" h="0"/>
+		<object x="2471.0" y="2073.0" z="579.0" h="52"/>
 	</spawn>
 	<!-- Jikurunerk (NPC Normal lvl:50)-->
 	<spawn map="220040000" npcid="798092" pool="1" interval="295">
@@ -632,7 +641,7 @@
 	</spawn>
 	<!-- Molota (NPC Elite lvl:46)-->
 	<spawn map="220040000" npcid="204798" pool="1" interval="295">
-		<object x="2458.2002" y="2075.1323" z="578.0" h="0"/>
+		<object x="2458.2002" y="2075.1323" z="578.0" h="27"/>
 	</spawn>
 	<!-- Morhen (NPC Normal lvl:50)-->
 	<spawn map="220040000" npcid="204744" pool="1" interval="295">
@@ -907,25 +916,25 @@
 		<object x="252.92116" y="408.50604" z="237.78409" h="0"/>
 	</spawn>
 	<!-- Support Leader (NPC Hero lvl:45)-->
-	<spawn map="220040000" npcid="207871" pool="2" interval="295">
+	<spawn map="220040000" npcid="207871" pool="4" interval="295">
 		<object x="2318.542" y="1168.5873" z="483.49332" h="89"/>
 		<object x="2388.324" y="1341.66" z="483.48532" h="23"/>
+		<object x="2317.478" y="1283.0607" z="467.8771" h="108"/>
+		<object x="2316.1592" y="1279.6937" z="466.9177" h="4"/>
 	</spawn>
 	<!-- Support Leader (NPC Hero lvl:50)-->
-	<spawn map="220040000" npcid="207608" pool="9" interval="295">
+	<spawn map="220040000" npcid="207608" pool="7" interval="295">
 		<object x="406.5701" y="404.7751" z="222.11166" h="51"/>
 		<object x="322.5411" y="357.63486" z="229.26157" h="1"/>
 		<object x="336.51224" y="331.14142" z="229.26157" h="19"/>
 		<object x="366.56912" y="332.38486" z="229.26157" h="41"/>
 		<object x="375.8138" y="371.80725" z="229.26157" h="70"/>
 		<object x="352.31516" y="385.1641" z="229.26157" h="91"/>
-		<object x="2316.1592" y="1279.6937" z="466.9177" h="4"/>
-		<object x="2317.478" y="1283.0607" z="467.8771" h="108"/>
 		<object x="2267.9932" y="1191.6709" z="469.5426" h="29"/>
 	</spawn>
 	<!-- Surviving Hoarfrost Hunter (NPC Elite lvl:50)-->
 	<spawn map="220040000" npcid="204820" pool="5" interval="295">
-		<object x="2458.3984" y="2041.6372" z="591.0" h="0"/>
+		<object x="2458.3984" y="2041.6372" z="591.0" h="78"/>
 		<object x="2478.3967" y="2096.15" z="575.0" h="0"/>
 		<object x="2475.2732" y="2100.2234" z="572.8313" h="0"/>
 		<object x="2428.7708" y="2087.3108" z="579.0" h="0"/>
@@ -945,7 +954,7 @@
 	</spawn>
 	<!-- Svafnir (NPC Elite lvl:50)-->
 	<spawn map="220040000" npcid="204817" pool="1" interval="295">
-		<object x="2427.232" y="2095.939" z="577.71716" h="0"/>
+		<object x="2427.232" y="2095.939" z="577.71716" h="119"/>
 	</spawn>
 	<!-- Svera (NPC Elite lvl:50)-->
 	<spawn map="220040000" npcid="204802" pool="1" interval="295">
@@ -956,8 +965,9 @@
 		<object x="1903.9913" y="488.094" z="413.00177" h="0"/>
 	</spawn>
 	<!-- Tamed Worg (NPC Elite lvl:43)-->
-	<spawn map="220040000" npcid="203358" pool="1" interval="295">
+	<spawn map="220040000" npcid="203358" pool="2" interval="295">
 		<object x="2327.678" y="1251.371" z="469.08142" h="111"/>
+		<object x="2427.6128" y="2097.0002" z="577.6734" h="119"/>
 	</spawn>
 	<!-- Tartu (NPC Normal lvl:50)-->
 	<spawn map="220040000" npcid="204716" pool="1" interval="295">
