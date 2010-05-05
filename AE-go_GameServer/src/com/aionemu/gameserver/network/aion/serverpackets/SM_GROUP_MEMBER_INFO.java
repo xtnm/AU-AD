@@ -17,6 +17,7 @@
 package com.aionemu.gameserver.network.aion.serverpackets;
 
 import java.nio.ByteBuffer;
+import java.util.List;
 
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.player.PlayerCommonData;
@@ -25,6 +26,7 @@ import com.aionemu.gameserver.model.group.GroupEvent;
 import com.aionemu.gameserver.model.group.PlayerGroup;
 import com.aionemu.gameserver.network.aion.AionConnection;
 import com.aionemu.gameserver.network.aion.AionServerPacket;
+import com.aionemu.gameserver.skillengine.model.Effect;
 import com.aionemu.gameserver.world.WorldPosition;
 
 /**
@@ -35,12 +37,10 @@ public class SM_GROUP_MEMBER_INFO extends AionServerPacket
 {
 	private PlayerGroup group;
 	private Player player;
-	private int abstatescount;
 	private GroupEvent event;
 	
 	public SM_GROUP_MEMBER_INFO(PlayerGroup group, Player player, GroupEvent event)
 	{
-		this.abstatescount = 0;
 		this.group = group;
 		this.player = player;
 		this.event = event;
@@ -59,8 +59,8 @@ public class SM_GROUP_MEMBER_INFO extends AionServerPacket
 		writeD(buf, pls.getCurrentHp());
 		writeD(buf, pls.getMaxMp());
 		writeD(buf, pls.getCurrentMp());
-		writeD(buf, 0x00); //maxflighttime - i think must write in playergamestats
-		writeD(buf, 0x00); //currentflighttime
+		writeD(buf, pls.getMaxFp()); //maxflighttime
+		writeD(buf, pls.getCurrentFp()); //currentflighttime
 		writeD(buf, wp.getMapId());
 		writeD(buf, wp.getMapId());
 		writeF(buf, wp.getX());
@@ -74,14 +74,16 @@ public class SM_GROUP_MEMBER_INFO extends AionServerPacket
 		writeS(buf, pcd.getName()); //name
 		writeH(buf, 0x00); //unk
 		writeH(buf, 0x00); //unk
-		writeD(buf, this.abstatescount); //Abnormal states - i think need store the player abnormal states and count
-		for(int i = 0; i < this.abstatescount; i++)
+		
+		List<Effect> abnormalEffects = player.getEffectController().getAbnormalEffects();
+		writeH(buf, abnormalEffects.size()); //Abnormal effects
+		for(Effect effect : abnormalEffects)
 		{
-			writeD(buf, 0x00); //casterid
-			writeH(buf, 0x00); //spellid
-			writeC(buf, 0x00); //spell level
-			writeC(buf, 0x00); //unk
-			writeD(buf, 0x00); //estimatedtime
+			writeD(buf, effect.getEffectorId()); //casterid
+			writeH(buf, effect.getSkillId()); //spellid
+			writeC(buf, effect.getSkillLevel()); //spell level
+			writeC(buf, effect.getTargetSlot()); //unk ?
+			writeD(buf, effect.getElapsedTime()); //estimatedtime
 		}
 		writeD(buf, 0x25F7); //unk 9719
 	}

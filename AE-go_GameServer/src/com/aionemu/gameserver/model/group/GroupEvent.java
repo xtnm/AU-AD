@@ -27,6 +27,7 @@ public enum GroupEvent
 	LEAVE(0),
 	UNK(1),
 	ENTER(13),
+	UPDATE(13),
 	CHANGELEADER(13);//i dont know the id
 	
 	private int id;
