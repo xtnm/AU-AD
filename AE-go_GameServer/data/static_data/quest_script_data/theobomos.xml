@@ -20,8 +20,10 @@
 
 	<!-- Kerubar Interference -->
 	<monster_hunt id="3002" start_npc_id="798132">
-		<monster_infos npc_id="213814"  var_id="0" max_kill="5"/>
-		<monster_infos npc_id="213816"  var_id="1" max_kill="7"/>
+		<monster_infos var_id="0" npc_id="213814" max_kill="5"/>
+		<monster_infos var_id="0" npc_id="213815" max_kill="5"/>		
+		<monster_infos var_id="1" npc_id="213816" max_kill="7"/>
+		<monster_infos var_id="1" npc_id="213817" max_kill="7"/>
 	</monster_hunt>
 
 	<!-- Kuomonerk's Side Job -->
@@ -37,7 +39,9 @@
 	<!-- Pests Among the Vegetables -->
 	<monster_hunt start_npc_id="798138" id="3005">
 		<monster_infos var_id="0" npc_id="213812" max_kill="7"/>
+		<monster_infos var_id="0" npc_id="213813" max_kill="7"/>
 		<monster_infos var_id="1" npc_id="213810" max_kill="11"/>
+		<monster_infos var_id="1" npc_id="213811" max_kill="11"/>
 	</monster_hunt>
 
 	<!-- TODO: The Shugo Fugitive -->
@@ -56,7 +60,8 @@
 
 	<!-- Suffering Elim -->
 	<monster_hunt id="3011" start_npc_id="798149">
-		<monster_infos npc_id="213824"  var_id="0" max_kill="11"/>
+		<monster_infos var_id="0" npc_id="213824" max_kill="11"/>
+		<monster_infos var_id="0" npc_id="213825" max_kill="11"/>
 	</monster_hunt>
 
 	<!-- Wanted: Fork Ear Rokes -->
@@ -66,20 +71,26 @@
 
 	<!-- A Hair-Raising Sound -->
 	<monster_hunt id="3015" start_npc_id="798135">
-		<monster_infos npc_id="213830"  var_id="0" max_kill="13"/>
-		<monster_infos npc_id="213834"  var_id="1" max_kill="11"/>
+		<monster_infos var_id="0" npc_id="213830" max_kill="13"/>
+		<monster_infos var_id="0" npc_id="213831" max_kill="13"/>
+		<monster_infos var_id="1" npc_id="213834" max_kill="11"/>
+		<monster_infos var_id="1" npc_id="213835" max_kill="11"/>
 	</monster_hunt>
 
 	<!-- Preparing a New Site -->
 	<monster_hunt id="3014" start_npc_id="798144">
-		<monster_infos npc_id="213832"  var_id="0" max_kill="11"/>
-		<monster_infos npc_id="213836"  var_id="1" max_kill="11"/>
+		<monster_infos var_id="0" npc_id="213832" max_kill="11"/>
+		<monster_infos var_id="0" npc_id="213833" max_kill="11"/>
+		<monster_infos var_id="1" npc_id="213836" max_kill="11"/>
+		<monster_infos var_id="1" npc_id="213837" max_kill="11"/>
 	</monster_hunt>
 
 	<!-- Selfish Guruminerk -->
 	<monster_hunt id="3021" start_npc_id="798133">
-		<monster_infos npc_id="213838"  var_id="0" max_kill="20"/>
-		<monster_infos npc_id="213840"  var_id="1" max_kill="15"/>
+		<monster_infos var_id="0" npc_id="213838" max_kill="20"/>
+		<monster_infos var_id="0" npc_id="213839" max_kill="20"/>
+		<monster_infos var_id="1" npc_id="213840" max_kill="15"/>
+		<monster_infos var_id="1" npc_id="213841" max_kill="15"/>
 	</monster_hunt>
 
 	<!-- Wanted: Black Widow -->
@@ -103,8 +114,9 @@
 
 	<!-- Clearing the Barrens -->
 	<monster_hunt id="3075" start_npc_id="798222">
-		<monster_infos npc_id="210779"  var_id="0" max_kill="20"/>
-		<monster_infos npc_id="214182"  var_id="1" max_kill="15"/>
+		<monster_infos var_id="0" npc_id="210779" max_kill="20"/>
+		<monster_infos var_id="1" npc_id="214182" max_kill="15"/>
+		<monster_infos var_id="1" npc_id="214183" max_kill="15"/>
 	</monster_hunt>
 	
 	<!-- TODO: [Coin Reward] Dangerous Probability -->
@@ -127,13 +139,16 @@
 
 	<!-- A Sentinel's Predicament -->
 	<monster_hunt id="3042" start_npc_id="798159">
-		<monster_infos npc_id="214229"  var_id="0" max_kill="28"/>
+		<monster_infos var_id="0" npc_id="214229" max_kill="28"/>
+		<monster_infos var_id="0" npc_id="214230" max_kill="28"/>	
 	</monster_hunt>
 
 	<!-- Clearing the Beach -->
 	<monster_hunt id="3105" start_npc_id="798158">
-		<monster_infos npc_id="214202"  var_id="0" max_kill="20"/>
-		<monster_infos npc_id="214194"  var_id="1" max_kill="20"/>
+		<monster_infos var_id="0" npc_id="214202" max_kill="20"/>
+		<monster_infos var_id="0" npc_id="214203" max_kill="20"/>
+		<monster_infos var_id="1" npc_id="214194" max_kill="20"/>
+		<monster_infos var_id="1" npc_id="214195" max_kill="20"/>
 	</monster_hunt>
 
 	<!-- Hunting the Long Tongue -->
@@ -173,8 +188,10 @@
 
 	<!-- Culling the Calydons -->
 	<monster_hunt id="3046" start_npc_id="798208">
-		<monster_infos npc_id="214298"  var_id="0" max_kill="30"/>
-		<monster_infos npc_id="214304"  var_id="1" max_kill="15"/>
+		<monster_infos var_id="0" npc_id="214298" max_kill="30"/>
+		<monster_infos var_id="0" npc_id="214299" max_kill="30"/>
+		<monster_infos var_id="1" npc_id="214304" max_kill="15"/>
+		<monster_infos var_id="1" npc_id="214305" max_kill="15"/>
 	</monster_hunt>
 
 	<!-- TODO: Enhancing the Stone -->
@@ -184,9 +201,10 @@
 
 	<!-- Kerubiels on the Coast -->
 	<monster_hunt id="3033" start_npc_id="798155">
-		<monster_infos npc_id="214235"  var_id="0" max_kill="13"/>
-		<monster_infos npc_id="211056"  var_id="0" max_kill="13"/>
-		<monster_infos npc_id="214238"  var_id="1" max_kill="10"/>
+		<monster_infos var_id="0" npc_id="214235" max_kill="13"/>
+		<monster_infos var_id="0" npc_id="211056" max_kill="13"/>
+		<monster_infos var_id="1" npc_id="214239" max_kill="10"/>
+		<monster_infos var_id="1" npc_id="214238" max_kill="10"/>
 	</monster_hunt>
 
 	<!-- TODO: Let's See What It Does -->
@@ -198,8 +216,10 @@
 
 	<!-- The Spreading Flame of Fregion -->
 	<monster_hunt id="3079" start_npc_id="798155">
-		<monster_infos npc_id="214240"  var_id="0" max_kill="13"/>
-		<monster_infos npc_id="214295"  var_id="1" max_kill="15"/>
+		<monster_infos var_id="0" npc_id="214240" max_kill="13"/>
+		<monster_infos var_id="0" npc_id="214241" max_kill="13"/>
+		<monster_infos var_id="1" npc_id="214295" max_kill="15"/>
+		<monster_infos var_id="1" npc_id="214296" max_kill="15"/>
 	</monster_hunt>
 
 	<!-- TODO: Visiting the Library -->
@@ -239,8 +259,10 @@
 
 	<!-- The Statue in Port Anangke -->
 	<monster_hunt id="3080" start_npc_id="798201">
-		<monster_infos npc_id="214265"  var_id="0" max_kill="17"/>
-		<monster_infos npc_id="214263"  var_id="1" max_kill="21"/>
+		<monster_infos var_id="0" npc_id="214265" max_kill="17"/>
+		<monster_infos var_id="0" npc_id="214266" max_kill="17"/>
+		<monster_infos var_id="1" npc_id="214263" max_kill="21"/>
+		<monster_infos var_id="1" npc_id="214264" max_kill="21"/>
 	</monster_hunt>
 
 	<!-- [Coin] Calydon Eradication -->
@@ -265,13 +287,19 @@
 
 	<!-- Koreumtor's Request -->
 	<monster_hunt id="3094" start_npc_id="798215">
-		<monster_infos npc_id="214545"  var_id="0" max_kill="30"/>
+		<monster_infos var_id="0" npc_id="214545" max_kill="30"/>
+		<monster_infos var_id="0" npc_id="214546" max_kill="30"/>
 	</monster_hunt>
 
 	<!-- Oileus Hires a Ringer -->
 	<monster_hunt id="3052" start_npc_id="798189">
-		<monster_infos npc_id="214301"  var_id="0" max_kill="10"/>
-		<monster_infos npc_id="214307"  var_id="1" max_kill="8"/>
+		<monster_infos var_id="0" npc_id="214301" max_kill="10"/>
+		<monster_infos var_id="0" npc_id="214705" max_kill="10"/>
+		<monster_infos var_id="0" npc_id="214702" max_kill="10"/>
+		<monster_infos var_id="0" npc_id="214703" max_kill="10"/>
+		<monster_infos var_id="0" npc_id="214302" max_kill="10"/>
+		<monster_infos var_id="1" npc_id="214307" max_kill="8"/>
+		<monster_infos var_id="1" npc_id="214308" max_kill="8"/>
 	</monster_hunt>
 
 	<!-- TODO: Searching for the Elder of Wisdom -->
