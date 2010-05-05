@@ -185,7 +185,7 @@
 	<!-- Abyss to Heiron -->
 	<portal npcid="730075" minlevel="25" maxlevel="50" instance="false" group="false" race="ELYOS">
 		<entrypoint mapid="400010000" x="0" y="0" z="0" race="ELYOS"/>
-		<exitpoint mapid="210020000" x="2540" y="343" z="411"/>
+		<exitpoint mapid="210020000" x="2542" y="339" z="412"/>
 	</portal>
 	
 	<!-- Morheim to Abyss -->
