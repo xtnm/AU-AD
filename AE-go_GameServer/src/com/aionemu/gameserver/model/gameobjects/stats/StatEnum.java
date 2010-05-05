@@ -104,6 +104,7 @@ public enum StatEnum
 	BOOST_MAGICAL_SKILL(104, "magicalskillboost"),
 	BOOST_CASTING_TIME(0, "boostcastingtime",-1),
 	BOOST_HATE(109, "boosthate"),
+	BOOST_HEAL(0, "boostheal"),
 
 	FLY_TIME(23, "maxfp"),
 	FLY_SPEED(37, "flyspeed"),
