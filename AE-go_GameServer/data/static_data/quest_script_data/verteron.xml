@@ -94,7 +94,7 @@
 	
 	<!-- Nola's Request -->
 	<monster_hunt start_npc_id="730001" id="1143">
-		<monster_infos var_id="0" npc_id="212883" max_kill="15"/>
+		<monster_infos var_id="0" npc_id="210698" max_kill="15"/>		
 		<monster_infos var_id="0" npc_id="210077" max_kill="15"/>
 	</monster_hunt>
 	
@@ -330,7 +330,7 @@
 	<!-- Flotsam -->
 	<monster_hunt start_npc_id="203184" id="1217">
 		<monster_infos var_id="0" npc_id="210299" max_kill="12"/>
-		<monster_infos var_id="0" npc_id="210197" max_kill="12"/>
+		<monster_infos var_id="0" npc_id="210085" max_kill="12"/>		
 	</monster_hunt>
 	
 	<!-- TODO: Flying Reconnaissance -->
