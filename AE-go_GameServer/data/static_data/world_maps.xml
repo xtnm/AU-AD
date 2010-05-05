@@ -17,7 +17,7 @@
 	<map id="320130000" name="Admastronghold" instance="true" death_level="0" water_level="16" destroy_time="14400" />
 	<map id="300020000" name="IDTest_Dungeon" death_level="0" water_level="16"/>
 	<map id="300030000" name="NochsanaTrainingCamp" instance="true" death_level="0" water_level="16"/>
-	<map id="300040000" name="DarkPoeta" instance="true" death_level="0" water_level="16" destroy_time="7200"/>
+	<map id="300040000" name="DarkPoeta" instance="true" death_level="0" water_level="16" destroy_time="14400"/>
 	<map id="300050000" name="AstreiaChamber" instance="true" death_level="0" water_level="16"/>
 	<map id="300060000" name="SulfurTreeNest" instance="true" death_level="0" water_level="16"/>
 	<map id="300070000" name="ChamberOfRoah" instance="true" death_level="0" water_level="16"/>
