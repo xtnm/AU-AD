@@ -17,6 +17,9 @@
 
 package com.aionemu.gameserver.model.account;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -179,6 +182,23 @@ public class Account implements Iterable<PlayerAccountData>
 	public int size()
 	{
 		return players.size();
+	}
+
+	/**
+	 * Sorts the accounts on last online.
+	 */
+	public ArrayList<PlayerAccountData> getSortedAccountsList()
+	{
+		ArrayList<PlayerAccountData> list = new ArrayList<PlayerAccountData>();
+		list.addAll(players.values());
+		Collections.sort(list, new Comparator<PlayerAccountData>(){
+			@Override
+			public int compare(PlayerAccountData x, PlayerAccountData y)
+			{
+				return y.getPlayerCommonData().getLastOnline().compareTo(x.getPlayerCommonData().getLastOnline());
+			}
+		});
+		return list;
 	}
 
 	/**

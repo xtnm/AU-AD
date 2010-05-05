@@ -243,6 +243,14 @@ public abstract class Creature extends VisibleObject
 	{
 		this.state |= state.getId();
 	}
+	
+	/** 
+	 * @param state taken usually from templates
+	 */
+	public void setState(int state)
+	{
+		this.state = state;
+	}
 
 	public void unsetState(CreatureState state)
 	{
