@@ -93,7 +93,13 @@ public class NpcController extends CreatureController<Npc>
 		cancelTask(TaskId.DECAY);
 		Npc owner = getOwner();
 		owner.unsetState(CreatureState.DEAD);
-		owner.setState(CreatureState.NPC_IDLE);
+		
+		//set state from npc templates
+		if(owner.getObjectTemplate().getState() != 0)
+			owner.setState(owner.getObjectTemplate().getState());
+		else
+			owner.setState(CreatureState.NPC_IDLE);
+		
 		owner.getLifeStats().setCurrentHpPercent(100);
 		owner.getAggroList().clear();
 		owner.getAi().handleEvent(Event.RESPAWNED);

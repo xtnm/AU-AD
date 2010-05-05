@@ -74,6 +74,8 @@ public class NpcTemplate extends VisibleObjectTemplate
 	private String				tribe;
 	@XmlAttribute
 	private Race				race;
+	@XmlAttribute
+	private int					state;
 	
 	@Override
 	public int getTemplateId()
@@ -211,5 +213,13 @@ public class NpcTemplate extends VisibleObjectTemplate
 	public Race getRace()
 	{
 		return race;
+	}
+
+	/**
+	 * @return the state
+	 */
+	public int getState()
+	{
+		return state;
 	}
 }
