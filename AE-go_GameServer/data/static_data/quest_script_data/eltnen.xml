@@ -23,7 +23,8 @@
 
     	<!-- Nature's Balance -->
     	<monster_hunt id="1304" start_npc_id="203917">
-        	<monster_infos npc_id="211682" var_id="0" max_kill="10"/>
+        	<monster_infos var_id="0" npc_id="211682" max_kill="10"/>
+			<monster_infos var_id="0" npc_id="211683" max_kill="10"/>
     	</monster_hunt>
 
     	<!-- The River Predators -->
@@ -43,8 +44,9 @@
 
     	<!-- Violent Frillneck -->
     	<monster_hunt id="1476" start_npc_id="203997">
-		<monster_infos npc_id="211690" var_id="0" max_kill="7"/>
-   	 </monster_hunt>
+			<monster_infos var_id="0" npc_id="211690" max_kill="7"/>
+			<monster_infos var_id="0" npc_id="211691" max_kill="7"/>
+		</monster_hunt>
 
     	<!-- Ferenna's Test -->
     	<item_collecting id="1419" start_npc_id="203931" />
@@ -54,36 +56,42 @@
 
 	<!-- [Coin] Fortress Beasts -->
 	<monster_hunt id="1418" start_npc_id="203931">
-		<monster_infos npc_id="211684"  var_id="0" max_kill="10"/>
-		<monster_infos npc_id="210758"  var_id="1" max_kill="13"/>
-		<monster_infos npc_id="210759"  var_id="2" max_kill="13"/>
+		<monster_infos var_id="0" npc_id="211684" max_kill="10"/>
+		<monster_infos var_id="0" npc_id="211685" max_kill="10"/>
+		<monster_infos var_id="1" npc_id="210758" max_kill="13"/>
+		<monster_infos var_id="1" npc_id="210763" max_kill="13"/>
+		<monster_infos var_id="2" npc_id="210759" max_kill="13"/>
+		<monster_infos var_id="2" npc_id="210764" max_kill="13"/>
 	</monster_hunt>
 
 	<!-- Cleansing The Forest -->
 	<monster_hunt id="1427" start_npc_id="203935">
-		<monster_infos npc_id="210755"  var_id="0" max_kill="7"/>
-		<monster_infos npc_id="210756"  var_id="1" max_kill="7"/>
+		<monster_infos var_id="0" npc_id="210755" max_kill="7"/>
+		<monster_infos var_id="1" npc_id="210756" max_kill="7"/>
+		<monster_infos var_id="1" npc_id="210761" max_kill="7"/>
 	</monster_hunt>
 	
 	<!-- Cleansing The Forest -->
 	<monster_hunt id="1306" start_npc_id="203935">
-		<monster_infos npc_id="210755"  var_id="0" max_kill="7"/>
-        <monster_infos npc_id="210756"  var_id="1" max_kill="9"/>
+		<monster_infos var_id="0" npc_id="210755" max_kill="7"/>
+        <monster_infos var_id="1" npc_id="210756" max_kill="9"/>
+		<monster_infos var_id="1" npc_id="210761" max_kill="9"/>		
 	</monster_hunt>
 
-        <!-- More Manduri Frillnecks -->
-        <monster_hunt id="1305" start_npc_id="203935">
-           <monster_infos npc_id="211687" var_id="0" max_kill="15"/>
-        </monster_hunt>
+    <!-- More Manduri Frillnecks -->
+    <monster_hunt id="1305" start_npc_id="203935">
+        <monster_infos var_id="0" npc_id="211687" max_kill="15"/>
+		<monster_infos var_id="0" npc_id="211688" max_kill="15"/>		
+    </monster_hunt>
 
 	<!-- Seeds of Restoration -->
 	<report_to id="1310" start_npc_id="203932" end_npc_id="203997"/>
 
-        <!-- Stolen Goods -->
-        <item_collecting id="1307" start_npc_id="203936" />
+    <!-- Stolen Goods -->
+    <item_collecting id="1307" start_npc_id="203936" />
 
-        <!-- The Price of Titanium -->
-        <item_collecting id="1435" start_npc_id="203922" />
+    <!-- The Price of Titanium -->
+    <item_collecting id="1435" start_npc_id="203922" />
 
 	<!-- A Treat For Adelphie -->
 	<item_collecting id="1486" start_npc_id="203923" action_item_id="700312" />
@@ -93,8 +101,10 @@
 
 	<!-- Preserving Forest Soil -->
 	<monster_hunt id="1313" start_npc_id="204030">
-		<monster_infos npc_id="210766"  var_id="0" max_kill="5"/>
-		<monster_infos npc_id="210760"  var_id="1" max_kill="12"/>
+		<monster_infos var_id="0" npc_id="210766" max_kill="5"/>
+		<monster_infos var_id="0" npc_id="210773" max_kill="5"/>
+		<monster_infos var_id="1" npc_id="210760" max_kill="12"/>
+		<monster_infos var_id="1" npc_id="210768" max_kill="12"/>
 	</monster_hunt>
 
 	<!-- The Manduri Polluters -->
@@ -114,13 +124,13 @@
 	</monster_hunt>
 
 	<!-- Plant Poison Antidote -->
-        <item_collecting id="1461" start_npc_id="204030" />
+    <item_collecting id="1461" start_npc_id="204030" />
 
 	<!-- The Strongest Spear -->
-        <item_collecting id="1439" start_npc_id="203334" />
+    <item_collecting id="1439" start_npc_id="203334" />
 
 	<!-- A Feast for Phomona -->
-        <item_collecting id="1478" start_npc_id="730019" />
+    <item_collecting id="1478" start_npc_id="730019" />
 
 	<!-- 1487 Balaur Bones -->
 	<item_collecting id="1487" start_npc_id="798126" action_item_id="700313" />
@@ -129,8 +139,9 @@
 
 	<!-- Killing Crestliches -->
 	<monster_hunt id="1326" start_npc_id="203940">
-		<monster_infos npc_id="210775"  var_id="0" max_kill="7"/>
-		<monster_infos npc_id="210784"  var_id="1" max_kill="14"/>
+		<monster_infos var_id="0" npc_id="210775" max_kill="7"/>
+		<monster_infos var_id="1" npc_id="210784" max_kill="14"/>
+		<monster_infos var_id="1" npc_id="210790" max_kill="14"/>	
 	</monster_hunt>
 
 	<!-- Three Kurin Brothers -->
@@ -143,6 +154,7 @@
 	<!-- Plague of the Elim -->
 	<monster_hunt id="1316" start_npc_id="730021">
 		<monster_infos var_id="0" npc_id="211285" max_kill="10"/>
+		<monster_infos var_id="0" npc_id="211286" max_kill="10"/>		
 	</monster_hunt>
 
 	<!-- Revenge of the Elim -->
@@ -151,6 +163,7 @@
 	<!-- Scourge of the Elim -->
 	<monster_hunt start_npc_id="730021" id="1315">
 		<monster_infos var_id="0" npc_id="210772" max_kill="10"/>
+		<monster_infos var_id="0" npc_id="210780" max_kill="10"/>		
 	</monster_hunt>
 
 	<!-- Acheron Drake Research -->
@@ -170,6 +183,7 @@
 	<!-- Basilisk Purge -->
 	<monster_hunt start_npc_id="204008" id="1340">
 		<monster_infos var_id="0" npc_id="210809" max_kill="7"/>
+		<monster_infos var_id="0" npc_id="210820" max_kill="7"/>		
 	</monster_hunt>
 
 	<!-- Eating Better -->
@@ -181,6 +195,7 @@
 	<!-- The Frillneck Threat -->
 	<monster_hunt start_npc_id="203935" id="1421">
 		<monster_infos var_id="0" npc_id="211687" max_kill="11"/>
+		<monster_infos var_id="0" npc_id="211688" max_kill="11"/>		
 	</monster_hunt>	
 	
 	<!-- Spiner Pincers -->
@@ -192,6 +207,7 @@
 	<!-- Maeki Attack -->
 	<monster_hunt start_npc_id="203939" id="1328">
 		<monster_infos var_id="0" npc_id="210803" max_kill="24"/>
+		<monster_infos var_id="0" npc_id="210813" max_kill="24"/>		
 	</monster_hunt>
 	
 	<!-- [Coin] Sataloca's Heartbeat -->
@@ -206,6 +222,7 @@
 	<!-- The Scolopen Sting -->
 	<monster_hunt start_npc_id="204008" id="1339">
 		<monster_infos var_id="0" npc_id="210801" max_kill="10"/>
+		<monster_infos var_id="0" npc_id="210810" max_kill="10"/>		
 	</monster_hunt>
 	
 	<!-- Trinkets For Children -->
@@ -220,6 +237,7 @@
 	<!-- Drake Hunt -->
 	<monster_hunt start_npc_id="203993" id="1379">
 		<monster_infos var_id="0" npc_id="210832" max_kill="8"/>
+		<monster_infos var_id="0" npc_id="210853" max_kill="8"/>		
 		<monster_infos var_id="1" npc_id="210889" max_kill="4"/>
 	</monster_hunt>
 	
@@ -281,12 +299,14 @@
 	<!-- Kurin Hunt -->
 	<monster_hunt start_npc_id="730019" id="1320">
 		<monster_infos var_id="0" npc_id="210776" max_kill="12"/>
+		<monster_infos var_id="0" npc_id="210785" max_kill="12"/>	
 	</monster_hunt>
 
 	<!-- The Elim Tragedy -->
 	<monster_hunt start_npc_id="730019" id="1321">
- 		<monster_infos var_id="0" npc_id="210786" max_kill="13"/>
-    </monster_hunt>
+		<monster_infos var_id="0" npc_id="210786" max_kill="13"/>
+		<monster_infos var_id="0" npc_id="210793" max_kill="13"/>		
+	</monster_hunt>
 
 
 	<!-- Confidential Orders -->
@@ -362,8 +382,9 @@
 	<!-- Enemy Miner -->
 	<monster_hunt start_npc_id="204045" id="1497">
 		<monster_infos var_id="0" npc_id="211831" max_kill="7"/>
+		<monster_infos var_id="0" npc_id="211830" max_kill="7"/>
 		<monster_infos var_id="1" npc_id="212070" max_kill="7"/>
-		
+		<monster_infos var_id="1" npc_id="212071" max_kill="7"/>		
 	</monster_hunt>
 
 	<!-- [Group] Geologist in Jeopardy -->
@@ -384,8 +405,8 @@
 
 	<!-- Drakie Hunt -->
 	<monster_hunt start_npc_id="203993" id="1380">
-		<monster_infos var_id="0" npc_id="210851" max_kill="8"/>
-		
+		<monster_infos var_id="0" npc_id="210833" max_kill="8"/>
+		<monster_infos var_id="0" npc_id="210851" max_kill="8"/>		
 	</monster_hunt>
 
 	<!-- Gimme Shelter -->
@@ -400,7 +421,6 @@
 	<monster_hunt start_npc_id="204020" id="1365">
 		<monster_infos var_id="0" npc_id="211633" max_kill="5"/>
 		<monster_infos var_id="1" npc_id="210913" max_kill="5"/>
-		
 	</monster_hunt>
 
 	<!-- 1422 A Better Sword handled by script -->
@@ -410,11 +430,12 @@
 	<!-- A Pain in the Nyerk -->
 	<report_to id="1359" start_npc_id="798055" end_npc_id="798051" item_id="182201324" />
 
-	<!-- Killing for Castor -->
-	<monster_hunt start_npc_id="203966" id="1467">
+	<!-- 1346 Killing for Castor -->
+	<monster_hunt id="1346" start_npc_id="203966">
 		<monster_infos var_id="0" npc_id="210844" max_kill="15"/>
+		<monster_infos var_id="0" npc_id="210872" max_kill="15"/>		
 		<monster_infos var_id="1" npc_id="210878" max_kill="20"/>
-		
+		<monster_infos var_id="1" npc_id="210898" max_kill="20"/>
 	</monster_hunt>
 
 	<!-- [Group] The Four Leaders -->
@@ -448,7 +469,7 @@
 	<monster_hunt start_npc_id="203983" id="3311">
 		<monster_infos var_id="0" npc_id="211738" max_kill="7"/>
 		<monster_infos var_id="1" npc_id="211751" max_kill="4"/>
-		
+		<monster_infos var_id="1" npc_id="211752" max_kill="4"/>	
 	</monster_hunt>
 
 	<!-- Seeking the Seekers -->
@@ -464,19 +485,23 @@
 	<!-- [Coin] Desert Dangers -->
 	<monster_hunt start_npc_id="204011" id="1350">
 		<monster_infos var_id="0" npc_id="210880" max_kill="10"/>
+		<monster_infos var_id="0" npc_id="210901" max_kill="10"/>		
 		<monster_infos var_id="1" npc_id="210897" max_kill="9"/>
+		<monster_infos var_id="1" npc_id="210936" max_kill="9"/>		
 		<monster_infos var_id="2" npc_id="210902" max_kill="9"/>
+		<monster_infos var_id="2" npc_id="210920" max_kill="9"/>
 	</monster_hunt>
 
 
 	<!-- [Group] Earning Marana's Respect -->
 	<item_collecting id="1351" start_npc_id="203965" end_npc_id="203983" />
 
-
 	<!-- [Group] Siren Song -->
 		<monster_hunt start_npc_id="203965" id="1352">
 		<monster_infos var_id="0" npc_id="211746" max_kill="5"/>
+		<monster_infos var_id="0" npc_id="211747" max_kill="5"/>	
 		<monster_infos var_id="1" npc_id="211748" max_kill="3"/>
+		<monster_infos var_id="1" npc_id="211749" max_kill="3"/>
 	</monster_hunt>
 
 	<!-- TODO: 1354 Practical Aerobatics -->
@@ -502,7 +527,8 @@
 
 	<!-- Griffon's Threat -->
 	<monster_hunt id="1383" start_npc_id="204039">
-		<monster_infos npc_id="210940"  var_id="0" max_kill="7"/>
+		<monster_infos var_id="0" npc_id="210940" max_kill="7"/>
+		<monster_infos var_id="0" npc_id="210951" max_kill="7"/>
 	</monster_hunt>
 
 	<!-- Fire Feather -->
@@ -541,7 +567,8 @@
 
 	<!-- TODO: 1387 Corpse-Hunting Viragos -->
 	<monster_hunt id="1387" start_npc_id="204040">
-		<monster_infos npc_id="210953"  var_id="0" max_kill="12"/>
+		<monster_infos var_id="0" npc_id="210953" max_kill="12"/>
+		<monster_infos var_id="0" npc_id="210958" max_kill="12"/>		
 	</monster_hunt>
 
 	<!-- TODO: 1388 Shumerunerk's Trade -->
@@ -601,17 +628,21 @@
 
 	<!-- TODO: 1377 [Coin] Kerubsin Kuriullu -->
 	<monster_hunt id="1377" start_npc_id="203964">
-		<monster_infos npc_id="210976"  var_id="0" max_kill="12"/>
-		<monster_infos npc_id="210977"  var_id="1" max_kill="17"/>
+		<monster_infos var_id="0" npc_id="210976" max_kill="12"/>
+		<monster_infos var_id="0" npc_id="210986" max_kill="12"/>		
+		<monster_infos var_id="1" npc_id="210977" max_kill="17"/>
+		<monster_infos var_id="1" npc_id="210987" max_kill="17"/>
 	</monster_hunt>
 
 	<!-- Trespassersat the Observatory -->
 	<item_collecting start_npc_id="285972" id="1420"/>
 
-	<!-- TODO: 1400 Paion's Worry -->
-		<monster_hunt id="1400" start_npc_id="203941">
-		<monster_infos npc_id="210979"  var_id="0" max_kill="7"/>
-		<monster_infos npc_id="211671"  var_id="1" max_kill="3"/>
+	<!-- 1400 Paion's Worry -->
+	<monster_hunt id="1400" start_npc_id="203941">
+		<monster_infos var_id="0" npc_id="210979" max_kill="7"/>
+		<monster_infos var_id="0" npc_id="210990" max_kill="7"/>		
+		<monster_infos var_id="1" npc_id="211671" max_kill="3"/>
+		<monster_infos var_id="1" npc_id="211672" max_kill="3"/>
 	</monster_hunt>
 
 	<!-- TODO: 1402 Specialty Hides -->
@@ -622,8 +653,9 @@
 
 	<!-- TODO: 1404 A Head Starton Hylas -->
 	<monster_hunt id="1404" start_npc_id="203995">
- 		<monster_infos npc_id="210982"  var_id="0" max_kill="9"/>
- 	</monster_hunt>
+		<monster_infos var_id="0" npc_id="210982" max_kill="9"/>
+		<monster_infos var_id="0" npc_id="210992" max_kill="9"/>		
+	</monster_hunt>
 
 	<!-- Trespassersat the Observatory -->
 	<item_collecting start_npc_id="285972" id="1408"/>
@@ -633,7 +665,8 @@
 
 	<!-- Tigrics of IllOmen -->
 	<monster_hunt id="1406" start_npc_id="203990">
-		<monster_infos npc_id="210998"  var_id="0" max_kill="7"/>
+		<monster_infos var_id="0" npc_id="210989" max_kill="7"/>
+		<monster_infos var_id="0" npc_id="210998" max_kill="7"/>
 	</monster_hunt>
 
 	<!-- Encountering Akeras -->
@@ -656,9 +689,13 @@
 
 	<!-- [Group] Mamaki Patrol -->
 	<monster_hunt id="1409" start_npc_id="203990">
-		<monster_infos npc_id="211005"  var_id="0" max_kill="7"/>
-		<monster_infos npc_id="211006"  var_id="1" max_kill="7"/>
-		<monster_infos npc_id="211004"  var_id="2" max_kill="5"/>
+		<monster_infos var_id="0" npc_id="211005" max_kill="7"/>
+		<monster_infos var_id="0" npc_id="211009" max_kill="7"/>	
+		<monster_infos var_id="0" npc_id="211824" max_kill="7"/>		
+		<monster_infos var_id="0" npc_id="211825" max_kill="7"/>	
+		<monster_infos var_id="1" npc_id="211006" max_kill="7"/>
+		<monster_infos var_id="1" npc_id="211010" max_kill="7"/>	
+		<monster_infos var_id="2" npc_id="211004" max_kill="5"/>
 	</monster_hunt>
 
 	<!-- Tumblusen's Call -->

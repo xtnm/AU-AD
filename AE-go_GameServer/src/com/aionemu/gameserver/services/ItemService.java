@@ -27,6 +27,7 @@ import org.apache.log4j.Logger;
 import com.aionemu.commons.database.dao.DAOManager;
 import com.aionemu.gameserver.dao.ItemStoneListDAO;
 import com.aionemu.gameserver.dataholders.DataManager;
+import com.aionemu.gameserver.model.DescriptionId;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.PersistentState;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
@@ -694,6 +695,12 @@ public class ItemService
 			return;
 		
 		Item weaponItem = player.getInventory().getItemByObjId(weaponId);
+		if ( weaponItem == null)
+		{
+			PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.STR_GIVE_ITEM_PROC_CANNOT_GIVE_PROC_TO_EQUIPPED_ITEM);
+			return;
+		}
+
 		Item godstone = player.getInventory().getItemByObjId(stoneId);
 		
 		int godStoneItemId = godstone.getItemTemplate().getTemplateId();
@@ -702,12 +709,13 @@ public class ItemService
 		
 		if(godstoneInfo == null)
 		{
-			PacketSendUtility.sendMessage(player, "Cannot socket this godstone");
+			PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.STR_GIVE_ITEM_PROC_NO_PROC_GIVE_ITEM);
 			log.warn("Godstone info missing for itemid " + godStoneItemId);
 			return;
 		}
 		
 		weaponItem.addGodStone(godStoneItemId);
+		PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.STR_GIVE_ITEM_PROC_ENCHANTED_TARGET_ITEM(new DescriptionId(Integer.parseInt(weaponItem.getName()))));
 		player.getInventory().removeFromBagByObjectId(stoneId, 1);
 		
 		player.getInventory().decreaseKinah(100000);
