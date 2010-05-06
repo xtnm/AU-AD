@@ -261,7 +261,7 @@
 	</spawn>
 	<!-- Favyr (NPC Normal lvl:25)-->
 	<spawn map="220020000" npcid="204378" pool="1" interval="295">
-		<object x="848.19476" y="2216.4578" z="337.0" h="0"/>
+		<object x="848.5063" y="2216.5845" z="336.625" h="67"/>
 	</spawn>
 	<!-- Feimdal (NPC Normal lvl:45)-->
 	<spawn map="220020000" npcid="204323" pool="1" interval="295">
