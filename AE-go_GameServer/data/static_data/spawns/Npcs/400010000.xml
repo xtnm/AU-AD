@@ -828,7 +828,7 @@
 	</spawn>
 	<!-- Michalis (NPC Hero lvl:60)-->
 	<spawn map="400010000" npcid="278501" pool="1" interval="295">
-		<object x="2982.5322" y="904.0564" z="1540.167" h="45"/>
+		<object x="2982.5833" y="904.01105" z="1540.167" h="104"/>
 	</spawn>
 	<!-- Midori (NPC Normal lvl:40)-->
 	<spawn map="400010000" npcid="278020" pool="1" interval="295">
@@ -1350,7 +1350,7 @@
 	</spawn>
 	<!-- Votan (NPC Hero lvl:60 Subtext: Governor of Reshanta)-->
 	<spawn map="400010000" npcid="278001" pool="1" interval="295">
-		<object x="924.42926" y="3004.8965" z="1646.751" h="104"/>
+		<object x="924.2855" y="3005.126" z="1646.7515" h="45"/>
 	</spawn>
 	<!-- Warberg (NPC Normal lvl:45 Subtext: Magic Class Stigma Contributor)-->
 	<spawn map="400010000" npcid="279053" pool="1" interval="295">
