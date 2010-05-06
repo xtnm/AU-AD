@@ -203,6 +203,8 @@
 				minOccurs="0" maxOccurs="1" />
 			<xs:element name="boostheal" type="BoostHealEffect"
 				minOccurs="0" maxOccurs="1" />
+			<xs:element name="dispelbuff" type="DispelBuffEffect"
+				minOccurs="0" maxOccurs="1" />
 		</xs:sequence>
 		<xs:attribute name="food" type="xs:boolean"/>
 	</xs:complexType>
@@ -900,6 +902,14 @@
 	<xs:complexType name="DispelDebuffEffect">
 		<xs:complexContent>
 			<xs:extension base="Effect">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="DispelBuffEffect">
+		<xs:complexContent>
+			<xs:extension base="Effect">
+				<xs:attribute name="count" type="xs:int" />
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>

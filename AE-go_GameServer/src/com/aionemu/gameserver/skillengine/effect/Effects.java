@@ -112,7 +112,8 @@ public class Effects
 		@XmlElement(name = "summonservant", type = SummonServantEffect.class),
 		@XmlElement(name = "skillatkdraininstant", type = SkillAtkDrainInstantEffect.class),
 		@XmlElement(name = "petorderuseultraskill", type = PetOrderUseUltraSkillEffect.class),
-		@XmlElement(name = "boostheal", type = BoostHealEffect.class)
+		@XmlElement(name = "boostheal", type = BoostHealEffect.class),
+		@XmlElement(name = "dispelbuff", type = DispelBuffEffect.class)
 	})
 	protected List<EffectTemplate> effects;
 	
