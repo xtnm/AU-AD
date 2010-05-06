@@ -597,7 +597,7 @@
 	</spawn>
 	<!-- Suthran (NPC Normal lvl:27)-->
 	<spawn map="220030000" npcid="203557" pool="1" interval="295">
-		<object x="1662.6785" y="1748.6877" z="260.23566" h="0"/>
+		<object x="1662.6332" y="1748.558" z="260.23563" h="68"/>
 	</spawn>
 	<!-- Taora (NPC Normal lvl:20)-->
 	<spawn map="220030000" npcid="203669" pool="1" interval="295">
@@ -706,6 +706,6 @@
 	<!-- Zemurru's Spirit (NPC Hero lvl:20)-->
 	<spawn map="220030000" npcid="203682" pool="2" interval="295">
 		<object x="1657.6" y="2174.5" z="257.2125" h="0"/>
-		<object x="1591.21" y="2201.12" z="248.40125" h="0"/>		
+		<object x="1591.21" y="2201.12" z="248.40125" h="0"/>
 	</spawn>
 </spawns>

@@ -83,6 +83,7 @@
 			<xs:enumeration value="BOOST_MAGICAL_SKILL" />
 			<xs:enumeration value="BOOST_CASTING_TIME" />
 			<xs:enumeration value="BOOST_HATE" />
+			<xs:enumeration value="BOOST_HEAL" />
 			<xs:enumeration value="FLY_TIME" />
 			<xs:enumeration value="FLY_SPEED" />
 			<xs:enumeration value="PVP_ATTACK_RATIO" />

@@ -21,6 +21,7 @@ import java.util.Collections;
 import com.aionemu.gameserver.dataholders.DataManager;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.model.group.GroupEvent;
 import com.aionemu.gameserver.model.templates.item.ArmorType;
 import com.aionemu.gameserver.model.templates.item.WeaponType;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ABNORMAL_STATE;
@@ -65,6 +66,7 @@ public class PlayerEffectController extends EffectController
 			return;
 		
 		super.addEffect(effect);
+		updatePlayerIconsAndGroup(effect);
 	}
 	
 	@Override
@@ -74,8 +76,8 @@ public class PlayerEffectController extends EffectController
 			foodEffect = null;
 	
 		super.clearEffect(effect);
+		updatePlayerIconsAndGroup(effect);
 	}
-	
 
 	@Override
 	public Player getOwner()
@@ -83,6 +85,19 @@ public class PlayerEffectController extends EffectController
 		return (Player) super.getOwner();
 	}
 
+	/**
+	 * @param effect
+	 */
+	private void updatePlayerIconsAndGroup(Effect effect)
+	{
+		if(!effect.isPassive())
+		{
+			updatePlayerEffectIcons();		
+			if(getOwner().getPlayerGroup() != null)
+				getOwner().getPlayerGroup().updateGroupUIToEvent(getOwner(), GroupEvent.UPDATE);
+		}
+	}
+	
 	/**
 	 * Effect of DEBUFF should not be added if duel ended (friendly unit)
 	 * @param effect

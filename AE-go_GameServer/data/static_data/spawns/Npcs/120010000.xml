@@ -153,7 +153,7 @@
 	</spawn>
 	<!-- Daskair (NPC Normal lvl:40)-->
 	<spawn map="120010000" npcid="204261" pool="1" interval="295">
-		<object x="1102.5519" y="1481.2698" z="213.83382" h="5"/>
+		<object x="1102.373" y="1481.1943" z="213.83382" h="65"/>
 	</spawn>
 	<!-- Dedication to Asmodians (Object Normal lvl:1)-->
 	<spawn map="120010000" npcid="730123" pool="1" interval="295">
@@ -333,7 +333,7 @@
 	</spawn>
 	<!-- Garm (NPC Normal lvl:10)-->
 	<spawn map="120010000" npcid="204089" pool="1" interval="295">
-		<object x="1001.3755" y="1528.272" z="222.56401" h="112"/>
+		<object x="1001.20734" y="1528.3871" z="222.19403" h="50"/>
 	</spawn>
 	<!-- Garun (NPC Normal lvl:40)-->
 	<spawn map="120010000" npcid="204116" pool="1" interval="295">
@@ -742,7 +742,7 @@
 	</spawn>
 	<!-- Namiya (NPC Normal lvl:47)-->
 	<spawn map="120010000" npcid="204136" pool="1" interval="295">
-		<object x="1119.7423" y="1498.0488" z="213.83382" h="75"/>
+		<object x="1120.0332" y="1498.1091" z="213.83382" h="22"/>
 	</spawn>
 	<!-- Narvi (NPC Normal lvl:40)-->
 	<spawn map="120010000" npcid="204076" pool="1" interval="295">
@@ -882,7 +882,7 @@
 	</spawn>
 	<!-- Selesti (NPC Normal lvl:40)-->
 	<spawn map="120010000" npcid="204127" pool="1" interval="295">
-		<object x="1118.1033" y="1493.087" z="213.83382" h="33"/>
+		<object x="1118.0653" y="1493.0708" z="213.83382" h="93"/>
 	</spawn>
 	<!-- Selod (NPC Normal lvl:10)-->
 	<spawn map="120010000" npcid="204156" pool="1" interval="295">
@@ -1076,7 +1076,7 @@
 	</spawn>
 	<!-- Vidar (NPC Normal lvl:50)-->
 	<spawn map="120010000" npcid="204052" pool="1" interval="295">
-		<object x="1275.3704" y="1168.6113" z="215.21492" h="30"/>
+		<object x="1275.5079" y="1168.5071" z="215.21492" h="91"/>
 	</spawn>
 	<!-- Vidarini (NPC Normal lvl:40)-->
 	<spawn map="120010000" npcid="204084" pool="1" interval="295">

@@ -56,7 +56,8 @@ public abstract class AbstractHealEffect extends EffectTemplate
 			int possibleHealValue = maxValue * valueWithDelta / 100;
 			healValue = maxValue - currentValue < possibleHealValue ? maxValue - currentValue : possibleHealValue;
 		}
-		effect.setReserved1(-healValue);
+		int boostHeal = effect.getEffector().getGameStats().getCurrentStat(StatEnum.BOOST_HEAL);
+		effect.setReserved1(Math.round(-healValue * boostHeal / 100f));
 	}
 	
 	/**

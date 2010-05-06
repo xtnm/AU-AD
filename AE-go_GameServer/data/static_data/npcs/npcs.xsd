@@ -35,7 +35,8 @@
 		<xs:attribute name="race" type="Race" />
 		<xs:attribute name="hpgauge" type="xs:int"/>
 		<xs:attribute name="arank" type="xs:int"/>
-		<xs:attribute name="arange" type="xs:int"/>	
+		<xs:attribute name="arange" type="xs:int"/>
+		<xs:attribute name="state" type="xs:int"/>
 	</xs:complexType>
 
 	<xs:complexType name="npcStatsTemplate">

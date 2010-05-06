@@ -96,11 +96,6 @@ public class EffectController
 
 		if(!effect.isPassive())
 		{
-			// effect icon updates
-			if(owner instanceof Player)
-			{
-				updatePlayerEffectIcons();
-			}
 			broadCastEffects();
 		}
 	}
@@ -160,12 +155,7 @@ public class EffectController
 	public void clearEffect(Effect effect)
 	{
 		abnormalEffectMap.remove(effect.getStack());
-
 		broadCastEffects();
-		if(owner instanceof Player)
-		{
-			updatePlayerEffectIcons();
-		}
 	}
 
 	/**
@@ -181,12 +171,6 @@ public class EffectController
 				abnormalEffectMap.remove(effect.getStack());
 			}
 		}
-
-		broadCastEffects();
-		if(owner instanceof Player)
-		{
-			updatePlayerEffectIcons();
-		}
 	}
 
 	/**
@@ -200,12 +184,6 @@ public class EffectController
 				effect.endEffect();
 				abnormalEffectMap.remove(effect.getStack());
 			}
-		}
-
-		broadCastEffects();
-		if(owner instanceof Player)
-		{
-			updatePlayerEffectIcons();
 		}
 	}
 
@@ -228,12 +206,6 @@ public class EffectController
 				abnormalEffectMap.remove(effect.getStack());
 				value--;
 			}
-		}
-
-		broadCastEffects();
-		if(owner instanceof Player)
-		{
-			updatePlayerEffectIcons();
 		}
 	}
 
@@ -311,7 +283,10 @@ public class EffectController
 			new SM_ABNORMAL_STATE(effects, abnormals));
 	}
 
-	private List<Effect> getAbnormalEffects()
+	/**
+	 * @return copy of anbornals list
+	 */
+	public List<Effect> getAbnormalEffects()
 	{
 		List<Effect> effects = new ArrayList<Effect>();
 		Iterator<Effect> iterator = iterator();

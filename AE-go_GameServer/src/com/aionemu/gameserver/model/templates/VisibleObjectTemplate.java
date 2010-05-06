@@ -40,4 +40,12 @@ public abstract class VisibleObjectTemplate
 	 * @return int
 	 */
 	public abstract int getNameId();
+	
+	/**
+	 * @return default state
+	 */
+	public int getState()
+	{
+		return 0;
+	}
 }

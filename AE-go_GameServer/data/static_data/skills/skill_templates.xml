@@ -1008,6 +1008,11 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <boostheal effectid="107011" e="1">
+                <change stat="BOOST_HEAL" func="PERCENT" delta="0" value="5"/>
+            </boostheal>
+        </effects>
     </skill_template>
     <skill_template skill_id="109" name="STR_SKILL_P_RemainTime_G1" nameId="564763" stack="SKILL_P_REMAINTIME" lvl="1" skilltype="MAGICAL" skillsubtype="NONE" tslot="NOSHOW" activation="PASSIVE" cooldown="0" duration="0">
         <setproperties>
@@ -1341,6 +1346,11 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <boostheal effectid="107011" e="1">
+                <change stat="BOOST_HEAL" func="PERCENT" delta="0" value="10"/>
+            </boostheal>
+        </effects>
     </skill_template>
     <skill_template skill_id="137" name="STR_SKILL_P_HealMastery_G3" nameId="582457" stack="SKILL_P_HEALMASTERY" lvl="3" skilltype="MAGICAL" skillsubtype="NONE" tslot="NOSHOW" activation="PASSIVE" cooldown="0" duration="0">
         <setproperties>
@@ -1349,6 +1359,11 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <boostheal effectid="107011" e="1">
+                <change stat="BOOST_HEAL" func="PERCENT" delta="0" value="15"/>
+            </boostheal>
+        </effects>
     </skill_template>
     <skill_template skill_id="138" name="STR_SKILL_P_StatBoostPhysicalOffense_G4" nameId="583051" stack="SKILL_P_STATBOOSTPHYSICALOFFENSE" lvl="4" skilltype="PHYSICAL" skillsubtype="NONE" tslot="NOSHOW" activation="PASSIVE" cooldown="0" duration="0">
         <setproperties>
@@ -17274,6 +17289,11 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <boostheal effectid="111461" e="1">
+                <change stat="BOOST_HEAL" func="PERCENT" delta="0" value="10"/>
+            </boostheal>
+        </effects>
     </skill_template>
     <skill_template skill_id="1147" name="STR_SKILL_PR_SeraphicAffection_G2" nameId="576957" stack="SKILL_PR_SERAPHICAFFECTION" lvl="2" skilltype="PHYSICAL" skillsubtype="NONE" tslot="NOSHOW" activation="PASSIVE" cooldown="0" duration="0">
         <setproperties>
@@ -17282,6 +17302,11 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <boostheal effectid="111461" e="1">
+                <change stat="BOOST_HEAL" func="PERCENT" delta="0" value="200"/>
+            </boostheal>
+        </effects>
     </skill_template>
     <skill_template skill_id="1148" name="STR_SKILL_PR_SeraphicAffection_G3" nameId="576961" stack="SKILL_PR_SERAPHICAFFECTION" lvl="3" skilltype="PHYSICAL" skillsubtype="NONE" tslot="NOSHOW" activation="PASSIVE" cooldown="0" duration="0">
         <setproperties>
@@ -17290,6 +17315,11 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <boostheal effectid="111461" e="1">
+                <change stat="BOOST_HEAL" func="PERCENT" delta="0" value="200"/>
+            </boostheal>
+        </effects>
     </skill_template>
     <skill_template skill_id="1149" name="STR_SKILL_PR_ArealField_G1" nameId="576965" stack="SKILL_PR_AREALFIELD" lvl="1" skilltype="PHYSICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="10" duration="2000">
         <setproperties>
@@ -17697,6 +17727,11 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <boostheal effectid="107011" e="1">
+                <change stat="BOOST_HEAL" func="PERCENT" delta="0" value="20"/>
+            </boostheal>
+        </effects>
     </skill_template>
     <skill_template skill_id="1175" name="STR_SKILL_P_EQUIP_Staff_G4" nameId="584179" stack="SKILL_P_EQUIP_STAFF" lvl="4" skilltype="PHYSICAL" skillsubtype="NONE" tslot="NOSHOW" activation="PASSIVE" cooldown="0" duration="0">
         <setproperties>

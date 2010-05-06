@@ -73,6 +73,7 @@ public class AionPacketHandlerFactory
 		addPacket(new CM_SHOW_MAP(0x2A), State.IN_GAME);
 		addPacket(new CM_RECONNECT_AUTH(0x2D), State.AUTHED);
 		addPacket(new CM_DISTRIBUTION_SETTINGS(0x2F), State.IN_GAME);
+		addPacket(new CM_REPORT_PLAYER(0x35), State.IN_GAME);
 		addPacket(new CM_GROUP_RESPONSE(0x36), State.IN_GAME);
 		addPacket(new CM_GODSTONE_SOCKET(0x41), State.IN_GAME);
 		addPacket(new CM_DELETE_QUEST(0x46), State.IN_GAME);

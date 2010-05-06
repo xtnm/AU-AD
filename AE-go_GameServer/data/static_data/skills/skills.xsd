@@ -201,6 +201,8 @@
 				minOccurs="0" maxOccurs="1" />
 			<xs:element name="petorderuseultraskill" type="PetOrderUseUltraSkillEffect"
 				minOccurs="0" maxOccurs="1" />
+			<xs:element name="boostheal" type="BoostHealEffect"
+				minOccurs="0" maxOccurs="1" />
 		</xs:sequence>
 		<xs:attribute name="food" type="xs:boolean"/>
 	</xs:complexType>
@@ -594,6 +596,13 @@
 	</xs:complexType>
 	
 	<xs:complexType name="BoostSkillCastingTimeEffect">
+		<xs:complexContent>
+			<xs:extension base="BufEffect">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="BoostHealEffect">
 		<xs:complexContent>
 			<xs:extension base="BufEffect">
 			</xs:extension>
