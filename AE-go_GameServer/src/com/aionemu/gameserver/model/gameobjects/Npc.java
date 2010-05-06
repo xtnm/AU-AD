@@ -22,7 +22,6 @@ import com.aionemu.gameserver.configs.main.CustomConfig;
 import com.aionemu.gameserver.controllers.NpcController;
 import com.aionemu.gameserver.controllers.attack.AggroList;
 import com.aionemu.gameserver.dataholders.DataManager;
-import com.aionemu.gameserver.model.Race;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.state.CreatureState;
 import com.aionemu.gameserver.model.gameobjects.stats.NpcGameStats;
@@ -119,38 +118,43 @@ public class Npc extends Creature
 		return getSpawn().getWalkerId() > 0;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean isAggressive()
 	{
-		return isAggressiveTo(Race.ELYOS) || isAggressiveTo(Race.ASMODIANS);
+		String currentTribe = getObjectTemplate().getTribe();
+		return DataManager.TRIBE_RELATIONS_DATA.hasAggressiveRelations(currentTribe) || isGuard();
+	}
+	
+	@Override
+	public boolean isAggressiveTo(Creature creature)
+	{
+		return creature.isAggroFrom(this);
+	}
+	
+	@Override
+	public boolean isAggroFrom(Npc npc)
+	{
+		return DataManager.TRIBE_RELATIONS_DATA.isAggressiveRelation(npc.getTribe(), getTribe());
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean isGuard()
+	{
+		String currentTribe = getObjectTemplate().getTribe();
+		return DataManager.TRIBE_RELATIONS_DATA.isGuardDark(currentTribe)
+			|| DataManager.TRIBE_RELATIONS_DATA.isGuardLight(currentTribe);
 	}
 	
 	@Override
 	public String getTribe()
 	{
 		return this.getObjectTemplate().getTribe();
-	}
-
-	/**
-	 *  //TODO refactore to npc-npc interations
-	 *  
-	 * @param tribe
-	 * @return true or false
-	 */
-	public boolean isAggressiveTo(Race race)
-	{
-		String currentTribe = getObjectTemplate().getTribe();
-		switch(race)
-		{
-			case ELYOS:
-				if (DataManager.TRIBE_RELATIONS_DATA.isGuardDark(currentTribe))
-					return true;
-				return DataManager.TRIBE_RELATIONS_DATA.isAggressiveRelation(currentTribe, "PC");
-			case ASMODIANS:
-				if (DataManager.TRIBE_RELATIONS_DATA.isGuardLight(currentTribe))
-					return true;
-				return DataManager.TRIBE_RELATIONS_DATA.isAggressiveRelation(currentTribe, "PC_DARK");
-		}
-		return false;
 	}
 	
 	public int getAggroRange()

@@ -197,7 +197,7 @@ public class Account implements Iterable<PlayerAccountData>
 			public int compare(PlayerAccountData x, PlayerAccountData y)
 			{
 				Timestamp t1 = x.getPlayerCommonData().getLastOnline();
-				Timestamp t2 = x.getPlayerCommonData().getLastOnline();
+				Timestamp t2 = y.getPlayerCommonData().getLastOnline();
 				if(t2 == null)
 					return 1;
 				else if(t1 == null)

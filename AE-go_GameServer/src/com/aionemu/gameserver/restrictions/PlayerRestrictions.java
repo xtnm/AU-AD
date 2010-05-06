@@ -148,7 +148,7 @@ public class PlayerRestrictions extends AbstractRestrictions
 		if(creature instanceof Npc)
 		{
 			Npc npc = (Npc) creature;
-			if(!npc.isAggressiveTo(player.getCommonData().getRace()))
+			if(!npc.isAggressiveTo(player))
 				return false;
 		}
 		return true;

@@ -19,7 +19,6 @@ package com.aionemu.gameserver.model.gameobjects.player;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javolution.util.FastMap;
 
@@ -28,6 +27,7 @@ import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.controllers.FlyController;
 import com.aionemu.gameserver.controllers.PlayerController;
 import com.aionemu.gameserver.controllers.effect.PlayerEffectController;
+import com.aionemu.gameserver.dataholders.DataManager;
 import com.aionemu.gameserver.model.Gender;
 import com.aionemu.gameserver.model.PlayerClass;
 import com.aionemu.gameserver.model.gameobjects.Creature;
@@ -962,7 +962,7 @@ public class Player extends Creature
 	@Override
 	public boolean isEnemyNpc(Npc npc)
 	{
-		return npc instanceof Monster || npc.isAggressiveTo(getCommonData().getRace());
+		return npc instanceof Monster || npc.isAggressiveTo(this);
 	}
 	
 	/**
@@ -1013,6 +1013,45 @@ public class Player extends Creature
 			default:
 				return "PC_DARK";
 		}
+	}
+	
+	@Override
+	public boolean isAggressiveTo(Creature creature)
+	{
+		return creature.isAggroFrom(this);
+	}
+
+	@Override
+	public boolean isAggroFrom(Npc npc)
+	{
+		String currentTribe = npc.getTribe();
+		//npc's wich are lower 10 levels dont have aggro on players
+		if(npc.getLevel() + 10 < getLevel())
+			return false;
+		
+		return isAggroIconTo(currentTribe);
+	}
+
+	/**
+	 * Used in SM_NPC_INFO to check aggro irrespective to level
+	 * 
+	 * @param npcTribe
+	 * @return
+	 */
+	public boolean isAggroIconTo(String npcTribe)
+	{
+		switch(getCommonData().getRace())
+		{
+			case ELYOS:
+				if (DataManager.TRIBE_RELATIONS_DATA.isGuardDark(npcTribe))
+					return true;
+				return DataManager.TRIBE_RELATIONS_DATA.isAggressiveRelation(npcTribe, "PC");
+			case ASMODIANS:
+				if (DataManager.TRIBE_RELATIONS_DATA.isGuardLight(npcTribe))
+					return true;
+				return DataManager.TRIBE_RELATIONS_DATA.isAggressiveRelation(npcTribe, "PC_DARK");
+		}
+		return false;
 	}
 
 	@Override

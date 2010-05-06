@@ -65,6 +65,20 @@ public class TribeRelationsData
 	
 	/**
 	 * 
+	 * @param tribeName
+	 * @return
+	 */
+	public boolean hasAggressiveRelations(String tribeName)
+	{
+		Tribe tribe = tribeNameMap.get(tribeName);
+		if(tribe == null)
+			return false;
+		AggroRelations aggroRelations = tribe.getAggroRelations();
+		return aggroRelations != null && !aggroRelations.getTo().isEmpty();
+	}
+	
+	/**
+	 * 
 	 * @param tribeName1
 	 * @param tribeName2
 	 * @return

@@ -451,6 +451,45 @@ public abstract class Creature extends VisibleObject
 	
 	/**
 	 * 
+	 * @param creature
+	 * @return
+	 */
+	public boolean isAggressiveTo(Creature creature)
+	{
+		return false;
+	}
+	
+	/**
+	 * 
+	 * @param npc
+	 * @return
+	 */
+	public boolean isAggroFrom(Npc npc)
+	{
+		return false;
+	}
+	
+	/**
+	 * 
+	 * @param player
+	 * @return
+	 */
+	public boolean isAggroFrom(Player player)
+	{
+		return false;
+	}
+	
+	/**
+	 * 
+	 * @param summon
+	 * @return
+	 */
+	public boolean isAggroFrom(Summon summon)
+	{
+		return isAggroFrom(summon.getMaster());
+	}
+	/**
+	 * 
 	 * @param visibleObject
 	 * @return
 	 */

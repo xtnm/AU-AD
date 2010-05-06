@@ -21,10 +21,9 @@ import com.aionemu.gameserver.ai.desires.impl.AggressionDesire;
 import com.aionemu.gameserver.ai.desires.impl.WalkDesire;
 import com.aionemu.gameserver.ai.events.Event;
 import com.aionemu.gameserver.ai.state.AIState;
-import com.aionemu.gameserver.model.Race;
+import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
-import com.aionemu.gameserver.model.gameobjects.player.Player;
 
 /**
  * @author ATracer
@@ -54,20 +53,16 @@ public class ActiveAggroStateHandler extends StateHandler
 		}
 		
 		//if there are players visible - add AggressionDesire filter
-		int playerCount = 0;
+		int creatureCount = 0;
 		for(VisibleObject visibleObject : owner.getKnownList())
 		{
-			if (visibleObject instanceof Player)
+			if (visibleObject instanceof Creature)
 			{
-				Race playerRace = ((Player) visibleObject).getCommonData().getRace();
-				int playerLevel = ((Player) visibleObject).getCommonData().getLevel();
-				
-				if(owner.isAggressiveTo(playerRace) 
-					&& (owner.getLevel() + 10 > playerLevel))
-					playerCount++;
+				if(owner.isAggressiveTo((Creature) visibleObject))
+					creatureCount++;
 			}
 		}
-		if(playerCount > 0)
+		if(creatureCount > 0)
 		{
 			ai.addDesire(new AggressionDesire(owner, AIState.ACTIVE.getPriority()));
 		}
