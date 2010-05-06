@@ -205,6 +205,8 @@
 				minOccurs="0" maxOccurs="1" />
 			<xs:element name="dispelbuff" type="DispelBuffEffect"
 				minOccurs="0" maxOccurs="1" />
+			<xs:element name="skilllauncher" type="SkillLauncherEffect"
+				minOccurs="0" maxOccurs="1" />
 		</xs:sequence>
 		<xs:attribute name="food" type="xs:boolean"/>
 	</xs:complexType>
@@ -945,6 +947,15 @@
 			<xs:extension base="SummonEffect">
 				<xs:attribute name="skill_id" type="xs:int" />
 				<xs:attribute name="hp_ratio" type="xs:int" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:complexType name="SkillLauncherEffect">
+		<xs:complexContent>
+			<xs:extension base="Effect">
+				<xs:attribute name="skill_id" type="xs:int" />
+				<xs:attribute name="value" type="xs:int" />
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
