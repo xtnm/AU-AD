@@ -232,7 +232,6 @@ public class _1057CreatingaMonster extends QuestHandler
 		int targetId = 0;
 		if(env.getVisibleObject() instanceof Npc)
 			targetId = ((Npc) env.getVisibleObject()).getNpcId();
-		Npc npc = (Npc)env.getVisibleObject();
 		
 		if(targetId == 700219 && qs.getQuestVarById(0) < 8)
 		{

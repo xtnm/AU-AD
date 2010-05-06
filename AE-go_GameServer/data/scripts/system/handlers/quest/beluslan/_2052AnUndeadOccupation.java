@@ -215,7 +215,7 @@ public class _2052AnUndeadOccupation extends QuestHandler
 		final int itemObjId = item.getObjectId();
 		final QuestState qs = player.getQuestStateList().getQuestState(questId);
 
-		if(qs == null && qs.getQuestVarById(0) != 15 && id != 182204304)
+		if(qs == null || qs.getQuestVarById(0) != 15 || id != 182204304)
 			return false;
 		if(!zoneService.isInsideZone(player, ZoneName.BERITRAS_WEAPON_220040000))
 			return false;

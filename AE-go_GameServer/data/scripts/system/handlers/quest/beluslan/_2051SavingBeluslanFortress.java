@@ -218,7 +218,7 @@ public class _2051SavingBeluslanFortress extends QuestHandler
 			return false;
 
 		final QuestState qs = player.getQuestStateList().getQuestState(questId);
-		if(qs == null && qs.getQuestVarById(0) != 7)
+		if(qs == null || qs.getQuestVarById(0) != 7)
 			return false;
 		PacketSendUtility.broadcastPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(), itemObjId, id, 3000, 0, 0), true);
 		ThreadPoolManager.getInstance().schedule(new Runnable(){
