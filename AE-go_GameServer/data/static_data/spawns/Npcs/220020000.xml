@@ -25,7 +25,7 @@
 	</spawn>
 	<!-- Aegir (NPC Legendary lvl:45)-->
 	<spawn map="220020000" npcid="204301" pool="1" interval="295">
-		<object x="225.33301" y="2415.4636" z="454.1092" h="0"/>
+		<object x="225.22462" y="2415.4717" z="454.1092" h="48"/>
 	</spawn>
 	<!-- Aknanti (NPC Normal lvl:35)-->
 	<spawn map="220020000" npcid="204411" pool="1" interval="295">
@@ -584,7 +584,7 @@
 	</spawn>
 	<!-- Neior (NPC Normal lvl:45)-->
 	<spawn map="220020000" npcid="204320" pool="1" interval="295">
-		<object x="365.7122" y="2434.499" z="452.1977" h="0"/>
+		<object x="365.54312" y="2434.5952" z="452.19272" h="102"/>
 	</spawn>
 	<!-- Nina (NPC Hero lvl:50)-->
 	<spawn map="220020000" npcid="204303" pool="1" interval="295">
