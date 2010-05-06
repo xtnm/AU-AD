@@ -48,9 +48,11 @@
 
 	<!-- Vaizel Worg Hunt -->
 	<monster_hunt id="1507" start_npc_id="204507">
-           <monster_infos npc_id="211051" var_id="0" max_kill="3" />
-	   <monster_infos npc_id="211875" var_id="1" max_kill="5" />
-        </monster_hunt>
+        <monster_infos var_id="0" npc_id="211051" max_kill="3"/>
+		<monster_infos var_id="0" npc_id="211053" max_kill="3"/>
+	    <monster_infos var_id="1" npc_id="211875" max_kill="5"/>
+		<monster_infos var_id="1" npc_id="212082" max_kill="5"/>
+    </monster_hunt>
 
 	<!-- TODO: [Spend Coin] Gold or Silver (Mage/Priest) -->
 
@@ -58,8 +60,9 @@
 
 	<!-- Killing Kerubiels -->
 	<monster_hunt id="1521" start_npc_id="204552">
-           <monster_infos npc_id="211056" var_id="0" max_kill="7" />
-        </monster_hunt>
+        <monster_infos var_id="0" npc_id="211056" max_kill="7" />
+		<monster_infos var_id="0" npc_id="211061" max_kill="7"/>
+    </monster_hunt>
 
 	<!-- Stolen Relic -->
 	<item_collecting id="1512" start_npc_id="204581" />
@@ -89,16 +92,18 @@
 
 	<!-- Kerubiels on the Move -->
 	<monster_hunt id="1522" start_npc_id="204552">
-           <monster_infos npc_id="211062" var_id="0" max_kill="7" />
-        </monster_hunt>
+        <monster_infos var_id="0" npc_id="211062" max_kill="7"/>
+		<monster_infos var_id="0" npc_id="211073" max_kill="7"/>   
+    </monster_hunt>
 
 	<!-- The Cold, Cold Ground -->
 	<item_collecting id="1535" start_npc_id="204580" />
 
 	<!-- Agrint Aggro -->
 	<monster_hunt id="1525" start_npc_id="204555">
-           <monster_infos npc_id="211078" var_id="0" max_kill="12" />
-        </monster_hunt>
+        <monster_infos var_id="0" npc_id="211078" max_kill="12"/>
+		<monster_infos var_id="0" npc_id="211087" max_kill="12"/>   
+    </monster_hunt>
 
 	<!-- Angling Advice -->
 	<report_to id="1538" start_npc_id="204588" end_npc_id="203073" />
@@ -118,8 +123,9 @@
 
 	<!-- Returned Tartaron Residents -->
 	<monster_hunt id="1529" start_npc_id="204550">
-           <monster_infos npc_id="212092" var_id="0" max_kill="5" />
-        </monster_hunt>
+        <monster_infos var_id="0" npc_id="212092" max_kill="5" />
+		<monster_infos var_id="0" npc_id="212093" max_kill="5"/>   
+    </monster_hunt>
 
 	<!-- Sample Skulls -->
 	<item_collecting id="1530" start_npc_id="204550" />
@@ -144,19 +150,23 @@
 
 	<!-- Deathsong Dangers -->
 	<monster_hunt id="1575" start_npc_id="730025">
-           <monster_infos npc_id="211951" var_id="0" max_kill="7" />
-	   <monster_infos npc_id="211953" var_id="1" max_kill="15" />
-        </monster_hunt>
+        <monster_infos var_id="0" npc_id="211951" max_kill="7"/>
+		<monster_infos var_id="0" npc_id="211952" max_kill="7"/>
+	    <monster_infos var_id="1" npc_id="211953" max_kill="15"/>
+		<monster_infos var_id="1" npc_id="211954" max_kill="15"/>
+    </monster_hunt>
 
 	<!-- Helping Kravis -->
 	<monster_hunt id="1571" start_npc_id="204557">
-           <monster_infos npc_id="211079" var_id="0" max_kill="12" />
-        </monster_hunt>
+        <monster_infos var_id="0" npc_id="211079" max_kill="12"/>
+		<monster_infos var_id="0" npc_id="211089" max_kill="12"/>   
+    </monster_hunt>
 
 	<!-- Late of Heiron -->
 	<monster_hunt id="1531" start_npc_id="204613">
-           <monster_infos npc_id="211924" var_id="0" max_kill="7" />
-        </monster_hunt>
+        <monster_infos var_id="0" npc_id="211924" max_kill="7"/>
+		<monster_infos var_id="0" npc_id="211925" max_kill="7"/>   
+    </monster_hunt>
 
 	<!-- TODO: Rotten Rotrons -->
 
@@ -175,10 +185,11 @@
 
 	<!-- Banshee Farming -->
 	<monster_hunt id="1565" start_npc_id="204588">
-           <monster_infos npc_id="211136" var_id="0" max_kill="7" />
-	   <monster_infos npc_id="211104" var_id="1" max_kill="5" />
-	   <monster_infos npc_id="211137" var_id="1" max_kill="5" />	   
-        </monster_hunt>
+        <monster_infos var_id="0" npc_id="211136" max_kill="7"/>
+		<monster_infos var_id="0" npc_id="211142" max_kill="7"/>   
+	    <monster_infos var_id="1" npc_id="211104" max_kill="5"/>
+	    <monster_infos var_id="1" npc_id="211137" max_kill="5"/>
+    </monster_hunt>
 
 	<!-- TODO: Crossed Destiny -->
 
@@ -187,12 +198,13 @@
 
 	<!-- Gray Fog Monsters -->
 	<monster_hunt id="1577" start_npc_id="204557">
-           <monster_infos npc_id="211948" var_id="0" max_kill="5" />
-	   <monster_infos npc_id="211112" var_id="1" max_kill="5" />
-	   <monster_infos npc_id="212099" var_id="2" max_kill="5" />
-	   <monster_infos npc_id="211946" var_id="3" max_kill="5" />
-	   <monster_infos npc_id="211947" var_id="3" max_kill="5" />	   
-        </monster_hunt>
+        <monster_infos npc_id="211948" var_id="0" max_kill="5"/>
+		<monster_infos npc_id="211949" var_id="0" max_kill="5"/>
+	    <monster_infos npc_id="211112" var_id="1" max_kill="5"/>
+		<monster_infos npc_id="211127" var_id="1" max_kill="5"/>
+	    <monster_infos npc_id="212099" var_id="2" max_kill="5"/>
+	    <monster_infos npc_id="211946" var_id="3" max_kill="5"/>
+	    <monster_infos npc_id="211947" var_id="3" max_kill="5"/>	</monster_hunt>
 
 	<!-- Jaiorunerk's Diary -->
 	<report_to id="1564" start_npc_id="798096" end_npc_id="798012" item_id="182201731" />
@@ -235,10 +247,12 @@
 
 	<!-- [Coin] Deathsong Corruption -->
 	<monster_hunt id="1567" start_npc_id="204571">
-           <monster_infos npc_id="211101" var_id="0" max_kill="8" />
-	   <monster_infos npc_id="211111" var_id="1" max_kill="8" />
-	   <monster_infos npc_id="212104" var_id="2" max_kill="12" />
-        </monster_hunt>
+        <monster_infos npc_id="211101" var_id="0" max_kill="8" />
+		<monster_infos npc_id="211131" var_id="0" max_kill="8" />
+	    <monster_infos npc_id="211111" var_id="1" max_kill="8" />
+		<monster_infos npc_id="211126" var_id="1" max_kill="8" />
+	    <monster_infos npc_id="212104" var_id="2" max_kill="12"/>
+    </monster_hunt>
 
 	<!-- Contemplating Klaw Hearts -->
 	<item_collecting id="1547" start_npc_id="204583" />
@@ -255,24 +269,26 @@
 
 	<!-- Gluttonous Manduris -->
 	<monster_hunt id="1551" start_npc_id="204586">
-           <monster_infos npc_id="211157" var_id="0" max_kill="10" />
-	   <monster_infos npc_id="211158" var_id="1" max_kill="10" />
-        </monster_hunt>
+        <monster_infos var_id="0" npc_id="211157" max_kill="10"/>
+		<monster_infos var_id="0" npc_id="211898" max_kill="10"/>
+	    <monster_infos var_id="1" npc_id="211158" max_kill="10"/>
+		<monster_infos var_id="1" npc_id="211899" max_kill="10"/>
+    </monster_hunt>
 
 	<!-- Klaw Control -->
 	<monster_hunt id="1548" start_npc_id="204583">
-           <monster_infos npc_id="700169" var_id="0" max_kill="5" />
-        </monster_hunt>
+        <monster_infos npc_id="700169" var_id="0" max_kill="5" />
+    </monster_hunt>
 
 	<!-- Picking off the Undead -->
 	<item_collecting id="1580" start_npc_id="204612" />
 
 	<!-- Stopping the Spread of Klaw -->
 	<monster_hunt id="1546" start_npc_id="204607">
-           <monster_infos npc_id="211145" var_id="0" max_kill="10" />
-           <monster_infos npc_id="211160" var_id="0" max_kill="10" />           
-	   <monster_infos npc_id="211118" var_id="1" max_kill="10" />
-        </monster_hunt>
+        <monster_infos npc_id="211145" var_id="0" max_kill="10" />
+        <monster_infos npc_id="211160" var_id="0" max_kill="10" />        <monster_infos npc_id="211118" var_id="1" max_kill="10" />
+	    <monster_infos npc_id="211147" var_id="1" max_kill="10" />
+    </monster_hunt>
 
 	<!-- TODO: The Priest's Nightmare -->
 
@@ -303,8 +319,9 @@
 
 	<!-- Looting the Tigrics -->
 	<monster_hunt id="1613" start_npc_id="204575">
-           <monster_infos npc_id="211169" var_id="0" max_kill="15" />
-        </monster_hunt>
+        <monster_infos var_id="0" npc_id="211169" max_kill="15"/>
+  	    <monster_infos var_id="0" npc_id="211170" max_kill="15"/>
+    </monster_hunt>
 
 	<!-- TODO: Mapping the Revolutionaries -->
 
@@ -318,15 +335,12 @@
 
 	<!-- The Agrint Problem -->
 	<monster_hunt id="1557" start_npc_id="204583">
-           <monster_infos npc_id="211145" var_id="0" max_kill="10" />
-           <monster_infos npc_id="211160" var_id="0" max_kill="10" />           
-	   <monster_infos npc_id="211146" var_id="1" max_kill="10" />
-	   <monster_infos npc_id="211161" var_id="1" max_kill="10" />	   
-	   <monster_infos npc_id="211118" var_id="2" max_kill="10" />
-	   <monster_infos npc_id="211147" var_id="2" max_kill="10" />
-	   <monster_infos npc_id="211119" var_id="3" max_kill="10" />
-	   <monster_infos npc_id="211148" var_id="3" max_kill="10" />	   
-        </monster_hunt>
+        <monster_infos npc_id="211145" var_id="0" max_kill="10" />
+        <monster_infos npc_id="211160" var_id="0" max_kill="10" />        <monster_infos npc_id="211146" var_id="1" max_kill="10" />
+	    <monster_infos npc_id="211161" var_id="1" max_kill="10" />	    <monster_infos npc_id="211118" var_id="2" max_kill="10" />
+	    <monster_infos npc_id="211147" var_id="2" max_kill="10" />
+	    <monster_infos npc_id="211119" var_id="3" max_kill="10" />
+	    <monster_infos npc_id="211148" var_id="3" max_kill="10" />	</monster_hunt>
 
 	<!-- TODO: The Lepharist Situation -->
 
@@ -339,23 +353,25 @@
 
 	<!-- [Group] Krall to the Wall -->
 	<monster_hunt id="1662" start_npc_id="204602">
-           <monster_infos npc_id="212212" var_id="0" max_kill="5" />
-	   <monster_infos npc_id="212213" var_id="1" max_kill="5" />
-	   <monster_infos npc_id="212265" var_id="2" max_kill="5" />
-        </monster_hunt>
+        <monster_infos npc_id="212212" var_id="0" max_kill="5" />
+	    <monster_infos npc_id="212213" var_id="1" max_kill="5" />
+	    <monster_infos npc_id="212265" var_id="2" max_kill="5" />
+    </monster_hunt>
 
 	<!-- [Spend Coin] Silver (Warriors and Scouts) -->
 	<monster_hunt id="1558" start_npc_id="204585">
-           <monster_infos npc_id="211887" var_id="0" max_kill="5" />
-	   <monster_infos npc_id="211889" var_id="1" max_kill="5" />
-	   <monster_infos npc_id="211891" var_id="2" max_kill="5" />
-        </monster_hunt>
+        <monster_infos npc_id="211887" var_id="0" max_kill="5"/>
+	    <monster_infos npc_id="211889" var_id="1" max_kill="5"/>
+	    <monster_infos npc_id="211891" var_id="2" max_kill="5"/>
+		<monster_infos npc_id="211892" var_id="2" max_kill="5"/>
+    </monster_hunt>
 
 	<!-- Amalen the Forlorn -->
 	<monster_hunt id="1583" start_npc_id="204625">
-           <monster_infos npc_id="211930" var_id="0" max_kill="7" />
-	   <monster_infos npc_id="212129" var_id="1" max_kill="1" />
-        </monster_hunt>
+        <monster_infos npc_id="211930" var_id="0" max_kill="7" />
+		<monster_infos npc_id="211967" var_id="0" max_kill="7" />
+	    <monster_infos npc_id="212129" var_id="1" max_kill="1" />
+    </monster_hunt>
 
 	<!-- Fangs for the Kinah -->
 	<item_collecting id="1594" start_npc_id="798071" />
@@ -370,8 +386,8 @@
 
 	<!-- Specter's Wall of Sound -->
 	<monster_hunt id="1627" start_npc_id="204547">
-           <monster_infos npc_id="212111" var_id="0" max_kill="9" />
-        </monster_hunt>
+        <monster_infos npc_id="212111" var_id="0" max_kill="9" />
+    </monster_hunt>
 
 	<!-- Starturtle Oil -->
 	<item_collecting id="1625" start_npc_id="204592" />
@@ -383,8 +399,8 @@
 	
 	<!-- The Case of the Wailing Windwisps -->
 	<monster_hunt id="1621" start_npc_id="204531">
-           <monster_infos npc_id="211172" var_id="0" max_kill="10" />
-        </monster_hunt>
+        <monster_infos npc_id="211172" var_id="0" max_kill="10" />
+    </monster_hunt>
 
 	<!-- TODO: Weapons of the Ancient Warriors -->
 
@@ -393,8 +409,9 @@
 
 	<!-- [Coin] The Aggressive Undead -->
 	<monster_hunt id="1637" start_npc_id="204548">
-           <monster_infos npc_id="211986" var_id="0" max_kill="34" />
-        </monster_hunt>
+        <monster_infos var_id="0" npc_id="211986" max_kill="34"/>
+		<monster_infos var_id="0" npc_id="211987" max_kill="34"/>
+    </monster_hunt>
 
 	<!-- [Group] Hokuna Matata -->
 	<item_collecting id="1664" start_npc_id="204618" />
@@ -408,33 +425,36 @@
 	<!-- Breaking Things Up -->
 	<monster_hunt id="1608" start_npc_id="204574">
            <monster_infos npc_id="700197" var_id="0" max_kill="6" />
-        </monster_hunt>
+    </monster_hunt>
 
 	<!-- Dignity and Bluster -->
 	<monster_hunt id="1570" start_npc_id="204557">
-           <monster_infos npc_id="211933" var_id="0" max_kill="7" />
-	   <monster_infos npc_id="211930" var_id="1" max_kill="10" />
-        </monster_hunt>
+        <monster_infos npc_id="211933" var_id="0" max_kill="7" />
+	    <monster_infos npc_id="211930" var_id="1" max_kill="10" />
+	    <monster_infos npc_id="211967" var_id="1" max_kill="10" />
+    </monster_hunt>
 
 	<!-- Give Me Some Skin -->
 	<item_collecting id="1629" start_npc_id="204544" />
 
 	<!-- Kalione's Choice -->
 	<monster_hunt id="1593" start_npc_id="204577">
-           <monster_infos npc_id="212162" var_id="0" max_kill="2" />
+       <monster_infos npc_id="212162" var_id="0" max_kill="2" />
 	   <monster_infos npc_id="212166" var_id="1" max_kill="1" />
 	   <monster_infos npc_id="212165" var_id="2" max_kill="1" />
 	   <monster_infos npc_id="212149" var_id="3" max_kill="1" />
 	   <monster_infos npc_id="212163" var_id="4" max_kill="1" />
-        </monster_hunt>
+    </monster_hunt>
 
 	<!-- TODO: Message to Arbolu's Haven -->
 
 	<!-- Mutant Pretors -->
 	<monster_hunt id="1651" start_npc_id="204578">
-           <monster_infos npc_id="211918" var_id="0" max_kill="30" />
-	   <monster_infos npc_id="211920" var_id="1" max_kill="25" />
-        </monster_hunt>
+        <monster_infos var_id="0" npc_id="211918" max_kill="30" />
+		<monster_infos var_id="0" npc_id="211919" max_kill="30" />
+	    <monster_infos var_id="1" npc_id="211920" max_kill="25" />
+		<monster_infos var_id="1" npc_id="211921" max_kill="25" />
+    </monster_hunt>
 
 	<!-- TODO: News from Arbolu's Haven -->
 
@@ -454,9 +474,12 @@
 
 	<!-- The Undead Orphanage -->
 	<monster_hunt id="1584" start_npc_id="204612">
-           <monster_infos npc_id="211979" var_id="0" max_kill="2" />
-	   <monster_infos npc_id="211982" var_id="1" max_kill="2" />
-        </monster_hunt>
+        <monster_infos var_id="0" npc_id="211979" max_kill="2" />
+		<monster_infos var_id="0" npc_id="211980" max_kill="2" />  
+		<monster_infos var_id="0" npc_id="212004" max_kill="2" />
+		<monster_infos var_id="0" npc_id="212005" max_kill="2" />
+	    <monster_infos var_id="1" npc_id="211982" max_kill="2" />
+    </monster_hunt>
 
 	<!-- The Undutiful Daughter -->
 	<report_to id="1671" start_npc_id="798095" end_npc_id="798027" item_id="182201771"/>
@@ -471,21 +494,25 @@
 	   <monster_infos npc_id="212178" var_id="1" max_kill="1" />
 	   <monster_infos npc_id="212183" var_id="2" max_kill="1" />
 	   <monster_infos npc_id="212184" var_id="3" max_kill="1" />
-        </monster_hunt>
+    </monster_hunt>
 
 	<!-- [Repeat] Rest for the Undead -->
 	<monster_hunt id="1590" start_npc_id="204569">
-           <monster_infos npc_id="211977" var_id="0" max_kill="20" />
-        </monster_hunt>
+        <monster_infos var_id="0" npc_id="211977" max_kill="20" />
+		<monster_infos var_id="0" npc_id="211978" max_kill="20" />
+    </monster_hunt>
 
 	<!-- Ancient Pot -->
 	<item_collecting id="1630" start_npc_id="204546" action_item_id="700205" />
 
 	<!-- Eternal Servants -->
 	<monster_hunt id="1598" start_npc_id="204625">
-           <monster_infos npc_id="211970" var_id="0" max_kill="16" />
-	   <monster_infos npc_id="211972" var_id="1" max_kill="13" />
-        </monster_hunt>
+        <monster_infos var_id="0" npc_id="211970" max_kill="16" />
+		<monster_infos var_id="0" npc_id="212107" max_kill="16" />   
+	    <monster_infos var_id="1" npc_id="211972" max_kill="13" />
+	    <monster_infos var_id="1" npc_id="212106" max_kill="13" />
+		<monster_infos var_id="1" npc_id="211938" max_kill="13" />
+    </monster_hunt>
 
 	<!-- Give Me a Break -->
 	<monster_hunt id="1597" start_npc_id="204579">
@@ -493,15 +520,16 @@
 	   <monster_infos npc_id="212157" var_id="1" max_kill="15" />
 	   <monster_infos npc_id="211208" var_id="2" max_kill="12" />
 	   <monster_infos npc_id="211914" var_id="3" max_kill="18" />
-        </monster_hunt>
+    </monster_hunt>
 
 	<!-- Medicinal Clodworms -->
 	<item_collecting id="1645" start_npc_id="798076" />
 
 	<!-- Trouble at Changarnerk's Campsite -->
 	<monster_hunt id="1631" start_npc_id="204531">
-           <monster_infos npc_id="211198" var_id="0" max_kill="7" />
-        </monster_hunt>
+        <monster_infos var_id="0" npc_id="211198" max_kill="7"/>
+		<monster_infos var_id="0" npc_id="212112" max_kill="7"/>   
+    </monster_hunt>
 
 	<!-- Whip it Profitably -->
 	<item_collecting id="1595" start_npc_id="798071" />
@@ -536,29 +564,46 @@
 
 	<!-- [Coin] Eradicating Undead -->
 	<monster_hunt id="1667" start_npc_id="204638">
-           <monster_infos npc_id="211231" var_id="0" max_kill="10" />
-	   <monster_infos npc_id="212000" var_id="1" max_kill="20" />
-        </monster_hunt>
+        <monster_infos var_id="0" npc_id="211231" max_kill="10" />
+		<monster_infos var_id="0" npc_id="211246" max_kill="10"/>   
+	    <monster_infos var_id="1" npc_id="212000" max_kill="20" />
+		<monster_infos var_id="1" npc_id="212001" max_kill="20"/>
+    </monster_hunt>
 
 	<!-- [Group] Monitoring -->
 	<monster_hunt id="1665" start_npc_id="204610">
            <monster_infos npc_id="212280" var_id="0" max_kill="1" />
-        </monster_hunt>
+    </monster_hunt>
 
 	<!-- [Group] Taking it to the Indratu -->
 	<monster_hunt id="1666" start_npc_id="204601">
-           <monster_infos npc_id="213962" var_id="0" max_kill="15" />
-	   <monster_infos npc_id="213985" var_id="1" max_kill="15" />
-        </monster_hunt>	
+       <monster_infos var_id="0" npc_id="213962" max_kill="15"/>
+	   <monster_infos var_id="0" npc_id="213963" max_kill="15"/>
+	   <monster_infos var_id="0" npc_id="214042" max_kill="15"/>
+	   <monster_infos var_id="0" npc_id="214043" max_kill="15"/>
+	   <monster_infos var_id="0" npc_id="214040" max_kill="15"/>
+	   <monster_infos var_id="0" npc_id="214041" max_kill="15"/>
+	   <monster_infos var_id="1" npc_id="213985" max_kill="15"/>
+	   <monster_infos var_id="1" npc_id="213986" max_kill="15"/>
+	   <monster_infos var_id="1" npc_id="214057" max_kill="15"/>
+       <monster_infos var_id="1" npc_id="214056" max_kill="15"/>
+	   <monster_infos var_id="1" npc_id="214059" max_kill="15"/>
+       <monster_infos var_id="1" npc_id="214058" max_kill="15"/>	   
+    </monster_hunt>	
 
 	<!-- A Message to Trajanus -->
 	<report_to id="1588" start_npc_id="204612" end_npc_id="730024" />
 
 	<!-- Kishar Balaur -->
 	<monster_hunt id="1654" start_npc_id="204600">
-           <monster_infos npc_id="213966" var_id="0" max_kill="60" />
-	   <monster_infos npc_id="214162" var_id="1" max_kill="30" />
-        </monster_hunt>	
+        <monster_infos var_id="0" npc_id="213966" max_kill="60"/>
+		<monster_infos var_id="0" npc_id="213967" max_kill="60"/>
+		<monster_infos var_id="0" npc_id="214049" max_kill="60"/>
+		<monster_infos var_id="0" npc_id="214048" max_kill="60"/>
+		<monster_infos var_id="0" npc_id="214050" max_kill="60"/>
+		<monster_infos var_id="0" npc_id="214047" max_kill="60"/>
+   	    <monster_infos var_id="1" npc_id="214162" max_kill="30"/>
+    </monster_hunt>	
 
 	<!-- Stealing Stigma -->
 	<item_collecting id="1632" start_npc_id="204590" />
@@ -576,10 +621,22 @@
 
 	<!-- [Coin] Reducing Balaur Numbers -->
 	<monster_hunt id="1668" start_npc_id="204515">
-           <monster_infos npc_id="213968" var_id="0" max_kill="10" />
-	   <monster_infos npc_id="213987" var_id="1" max_kill="10" />
-	   <monster_infos npc_id="213964" var_id="2" max_kill="10" />
-        </monster_hunt>
+        <monster_infos var_id="0" npc_id="213968" max_kill="10"/>
+        <monster_infos var_id="0" npc_id="213969" max_kill="10"/>
+        <monster_infos var_id="0" npc_id="214053" max_kill="10"/>
+        <monster_infos var_id="0" npc_id="214052" max_kill="10"/>
+        <monster_infos var_id="0" npc_id="214051" max_kill="10"/>		
+ 	    <monster_infos var_id="1" npc_id="213987" max_kill="10"/>
+        <monster_infos var_id="1" npc_id="213988" max_kill="10"/>
+        <monster_infos var_id="1" npc_id="214061" max_kill="10"/>
+        <monster_infos var_id="1" npc_id="214060" max_kill="10"/>
+		<monster_infos var_id="1" npc_id="214062" max_kill="10"/>		
+	    <monster_infos var_id="2" npc_id="213964" max_kill="10"/>
+		<monster_infos var_id="2" npc_id="213965" max_kill="10"/>
+		<monster_infos var_id="2" npc_id="214046" max_kill="10"/>
+		<monster_infos var_id="2" npc_id="214044" max_kill="10"/>
+		<monster_infos var_id="2" npc_id="214045" max_kill="10"/>
+    </monster_hunt>
 
 	<!-- [Group] RM-114c -->
 	<item_collecting id="1619" start_npc_id="203833" />
@@ -589,9 +646,10 @@
 
 	<!-- [Group] Weakening Bollvig's Forces -->
 	<monster_hunt id="1587" start_npc_id="204612">
-           <monster_infos npc_id="211254" var_id="0" max_kill="30" />
+       <monster_infos npc_id="211254" var_id="0" max_kill="30" />
+	   <monster_infos npc_id="212009" var_id="0" max_kill="30" />
 	   <monster_infos npc_id="211259" var_id="1" max_kill="1" />
-        </monster_hunt>
+    </monster_hunt>
 
 	<!-- TODO: [Spy/Group] A Suspicious Box -->
 	<report_to id="1615" start_npc_id="204573" end_npc_id="204832" />
@@ -613,10 +671,13 @@
 
 	<!-- [Group] It's for Your Own Good -->
 	<monster_hunt id="1652" start_npc_id="204533">
-           <monster_infos npc_id="212600" var_id="0" max_kill="15" />
-	   <monster_infos npc_id="212603" var_id="1" max_kill="15" />
-	   <monster_infos npc_id="212596" var_id="2" max_kill="25" />
-        </monster_hunt>
+       <monster_infos var_id="0" npc_id="212600" max_kill="15" />
+	   <monster_infos var_id="0" npc_id="212601" max_kill="15" />
+	   <monster_infos var_id="1" npc_id="212603" max_kill="15" />
+	   <monster_infos var_id="1" npc_id="212604" max_kill="15" />
+	   <monster_infos var_id="2" npc_id="212596" max_kill="25" />
+	   <monster_infos var_id="2" npc_id="212597" max_kill="25" />
+    </monster_hunt>
 
 	<!-- [Group] Strategically Important Mucus -->
 	<item_collecting id="1653" start_npc_id="204602" />
