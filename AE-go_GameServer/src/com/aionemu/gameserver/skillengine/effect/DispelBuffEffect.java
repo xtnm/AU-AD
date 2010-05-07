@@ -18,9 +18,11 @@ package com.aionemu.gameserver.skillengine.effect;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
 import com.aionemu.gameserver.skillengine.model.Effect;
+import com.aionemu.gameserver.skillengine.model.SkillTargetSlot;
 
 /**
  * @author ATracer
@@ -30,11 +32,13 @@ import com.aionemu.gameserver.skillengine.model.Effect;
 @XmlType(name = "DispelBuffEffect")
 public class DispelBuffEffect extends EffectTemplate
 {
-
+	@XmlAttribute
+	protected int count;
+	
 	@Override
 	public void applyEffect(Effect effect)
 	{
-		// TODO Auto-generated method stub
+		effect.getEffected().getEffectController().removeEffectByTargetSlot(SkillTargetSlot.BUFF, count);
 	}
 
 	@Override

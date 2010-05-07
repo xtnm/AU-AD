@@ -186,6 +186,27 @@ public class EffectController
 			}
 		}
 	}
+	
+	/**
+	 * 
+	 * @param targetSlot
+	 * @param count
+	 */
+	public void removeEffectByTargetSlot(SkillTargetSlot targetSlot, int count)
+	{
+		for(Effect effect : abnormalEffectMap.values())
+		{
+			if(count == 0)
+				break;
+			
+			if(effect.getTargetSlot() == targetSlot.ordinal())
+			{
+				effect.endEffect();
+				abnormalEffectMap.remove(effect.getStack());
+				count--;
+			}
+		}
+	}
 
 	/**
 	 * @param skillType
