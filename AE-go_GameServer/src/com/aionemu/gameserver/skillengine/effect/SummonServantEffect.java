@@ -76,7 +76,7 @@ public class SummonServantEffect extends SummonEffect
 	@Override
 	public void calculate(Effect effect)
 	{
-		super.calculate(effect);
+		effect.increaseSuccessEffect();
 	}
 
 	/**

@@ -365,8 +365,10 @@ public class NpcController extends CreatureController<Npc>
 		super.onAttack(creature, skillId, type, damage);
 
 		Npc npc = getOwner();
-		if(creature instanceof Player)
-			if(sp.getQuestEngine().onAttack(new QuestEnv(npc, (Player) creature, 0, 0)))
+		
+		Creature actingCreature = creature.getActingCreature();
+		if(actingCreature instanceof Player)
+			if(sp.getQuestEngine().onAttack(new QuestEnv(npc, (Player) actingCreature, 0, 0)))
 				return;
 
 		AI<?> ai = npc.getAi();
@@ -376,8 +378,8 @@ public class NpcController extends CreatureController<Npc>
 			return;
 		}
 
-		npc.getAggroList().addDamage(creature, damage);
-		npc.getLifeStats().reduceHp(damage, creature);
+		npc.getAggroList().addDamage(actingCreature, damage);
+		npc.getLifeStats().reduceHp(damage, actingCreature);
 
 		PacketSendUtility.broadcastPacket(npc, new SM_ATTACK_STATUS(npc, type, skillId, damage));
 	}

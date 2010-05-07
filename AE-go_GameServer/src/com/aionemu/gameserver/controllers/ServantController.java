@@ -17,6 +17,7 @@
 package com.aionemu.gameserver.controllers;
 
 import com.aionemu.gameserver.model.gameobjects.Creature;
+import com.aionemu.gameserver.model.gameobjects.Servant;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 
 /**
@@ -25,10 +26,11 @@ import com.aionemu.gameserver.model.gameobjects.player.Player;
  */
 public class ServantController extends NpcController
 {
+
 	@Override
 	public void onDie(Creature lastAttacker)
 	{
-		return;
+		super.onDespawn(false);
 	}
 
 	@Override
@@ -37,4 +39,9 @@ public class ServantController extends NpcController
 		return;
 	}
 
+	@Override
+	public Servant getOwner()
+	{
+		return  (Servant) super.getOwner();
+	}
 }

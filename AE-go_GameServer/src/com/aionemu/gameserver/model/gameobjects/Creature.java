@@ -538,6 +538,14 @@ public abstract class Creature extends VisibleObject
 	}
 	
 	/**
+	 * @return acting master - player in case of servants
+	 */
+	public Creature getActingCreature()
+	{
+		return this;
+	}
+	
+	/**
 	 * 
 	 * @param skillId
 	 * @return
