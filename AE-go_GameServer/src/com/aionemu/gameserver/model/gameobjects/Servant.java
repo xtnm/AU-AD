@@ -141,6 +141,12 @@ public class Servant extends Npc
 		return this.creator.isEnemyPlayer(visibleObject);
 	}
 	
+	@Override
+	protected boolean isEnemySummon(Summon summon)
+	{
+		return this.creator.isEnemySummon(summon);
+	}
+
 	/**
 	 * @return NpcObjectType.TRAP
 	 */
@@ -149,4 +155,11 @@ public class Servant extends Npc
 	{
 		return NpcObjectType.SERVANT;
 	}
+
+	@Override
+	public Creature getActingCreature()
+	{
+		return this.creator;
+	}
+	
 }

@@ -17,6 +17,7 @@
 
 package com.aionemu.gameserver.model.account;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -193,6 +194,12 @@ public class Account implements Iterable<PlayerAccountData>
 			@Override
 			public int compare(PlayerAccountData x, PlayerAccountData y)
 			{
+				Timestamp t1 = x.getPlayerCommonData().getLastOnline();
+				Timestamp t2 = y.getPlayerCommonData().getLastOnline();
+				if(t2 == null)
+					return 1;
+				else if(t1 == null)
+					return -1;
 				return y.getPlayerCommonData().getLastOnline().compareTo(x.getPlayerCommonData().getLastOnline());
 			}
 		});

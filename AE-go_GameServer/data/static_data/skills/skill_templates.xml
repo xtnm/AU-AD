@@ -25336,6 +25336,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <dispelbuff count="3" e="1" element="EARTH" hoptype="SKILLLV" hopb="2561"/>
+        </effects>
         <actions>
             <dpuse value="3000"/>
         </actions>
@@ -25353,6 +25356,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <dispelbuff count="1" e="1" element="EARTH" hoptype="SKILLLV" hopb="1638"/>
+        </effects>
         <actions>
             <mpuse value="114" delta="0"/>
         </actions>
@@ -25370,6 +25376,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <dispelbuff count="1" e="1" element="EARTH" hoptype="SKILLLV" hopb="2334"/>
+        </effects>
         <actions>
             <mpuse value="380" delta="0"/>
         </actions>
@@ -25387,6 +25396,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <dispelbuff count="1" e="1" element="EARTH" hoptype="SKILLLV" hopb="3140"/>
+        </effects>
         <actions>
             <mpuse value="488" delta="0"/>
         </actions>
@@ -26783,6 +26795,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <dispelbuff count="1" e="1" element="EARTH"/>
+        </effects>
         <actions>
             <mpuse value="643" delta="0"/>
         </actions>
@@ -26917,6 +26932,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <dispelbuff count="3" e="1" element="EARTH"/>
+        </effects>
     </skill_template>
     <skill_template skill_id="1713" name="STR_SKILL_EL_Light_Summon_EarthElemental_G4" nameId="573937" stack="SKILL_EL_LIGHT_SUMMON_EARTHELEMENTAL" lvl="4" skilltype="MAGICAL" skillsubtype="SUMMON" tslot="NONE" activation="ACTIVE" cooldown="50" duration="4500">
         <startconditions>
@@ -42942,10 +42960,11 @@
             <playermove allow="false"/>
         </useconditions>
         <effects>
-            <statup duration="1800000" effectid="10013" e="2">
+            <skilllauncher skill_id="8581" value="2" e="1" element="FIRE"/>
+            <statup duration="1800000" effectid="10013" e="2" element="FIRE">
                 <change stat="REGEN_HP" func="ADD" delta="2" value="0"/>
             </statup>
-            <statup duration="1800000" effectid="10013" e="3">
+            <statup duration="1800000" effectid="10013" e="3" element="FIRE">
                 <change stat="REGEN_MP" func="ADD" delta="3" value="0"/>
             </statup>
         </effects>
@@ -42960,10 +42979,11 @@
             <playermove allow="false"/>
         </useconditions>
         <effects>
-            <statup duration="2700000" effectid="10013" e="2">
+            <skilllauncher skill_id="8581" value="1" e="1" element="FIRE"/>
+            <statup duration="2700000" effectid="10013" e="2" element="FIRE">
                 <change stat="REGEN_HP" func="ADD" delta="2" value="0"/>
             </statup>
-            <statup duration="2700000" effectid="10013" e="3">
+            <statup duration="2700000" effectid="10013" e="3" element="FIRE">
                 <change stat="REGEN_MP" func="ADD" delta="3" value="0"/>
             </statup>
         </effects>
@@ -43156,7 +43176,8 @@
             <playermove allow="false"/>
         </useconditions>
         <effects food="true">
-            <statup duration="900000" effectid="10012" e="2">
+            <skilllauncher skill_id="8629" value="5" e="1" element="FIRE"/>
+            <statup duration="900000" effectid="10012" e="2" element="FIRE">
                 <change stat="PHYSICAL_ATTACK" func="ADD" delta="2" value="0"/>
             </statup>
         </effects>
@@ -43171,7 +43192,8 @@
             <playermove allow="false"/>
         </useconditions>
         <effects food="true">
-            <statup duration="900000" effectid="10012" e="2">
+            <skilllauncher skill_id="8630" value="5" e="1" element="FIRE"/>
+            <statup duration="900000" effectid="10012" e="2" element="FIRE">
                 <change stat="BOOST_MAGICAL_SKILL" func="ADD" delta="10" value="0"/>
             </statup>
         </effects>
@@ -43186,7 +43208,8 @@
             <playermove allow="false"/>
         </useconditions>
         <effects food="true">
-            <statup duration="900000" effectid="10012" e="2">
+            <skilllauncher skill_id="8631" value="5" e="1" element="FIRE"/>
+            <statup duration="900000" effectid="10012" e="2" element="FIRE">
                 <change stat="MAXHP" func="ADD" delta="40" value="0"/>
             </statup>
         </effects>
@@ -43489,7 +43512,8 @@
             <playermove allow="false"/>
         </useconditions>
         <effects>
-            <shield value="10000000" delta="0" percent="true" hitvalue="50" hitdelta="0" duration="600000" effectid="154" e="2"/>
+            <skilllauncher skill_id="8644" value="0" e="1" element="EARTH"/>
+            <shield value="10000000" delta="0" percent="true" hitvalue="50" hitdelta="0" duration="600000" effectid="154" e="2" element="EARTH"/>
         </effects>
     </skill_template>
     <skill_template skill_id="9203" name="STR_DARK_AVATAR_BUFF_SHIELD_01" nameId="591295" stack="DARK_AVATAR_BUFF_SHIELD_01" lvl="1" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="0" duration="0">
@@ -43503,7 +43527,8 @@
             <playermove allow="false"/>
         </useconditions>
         <effects>
-            <shield value="10000000" delta="0" percent="true" hitvalue="50" hitdelta="0" duration="600000" effectid="154" e="2"/>
+            <skilllauncher skill_id="8645" value="0" e="1" element="EARTH"/>
+            <shield value="10000000" delta="0" percent="true" hitvalue="50" hitdelta="0" duration="600000" effectid="154" e="2" element="EARTH"/>
         </effects>
     </skill_template>
     <skill_template skill_id="9204" name="STR_EVENT_DISH_CAKE_01" nameId="1505601" stack="EVENT_DISH_CAKE_01" lvl="1" skilltype="MAGICAL" skillsubtype="NONE" tslot="SPEC" activation="ACTIVE" cooldown="0" duration="0">
@@ -44345,6 +44370,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <dispelbuff count="1" e="1" element="EARTH" hoptype="SKILLLV"/>
+        </effects>
         <actions>
             <mpuse value="343" delta="0"/>
         </actions>
@@ -46050,6 +46078,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <dispelbuff count="1" e="1" element="EARTH" hoptype="SKILLLV" hopb="2325"/>
+        </effects>
         <actions>
             <mpuse value="246" delta="0"/>
         </actions>
@@ -46142,6 +46173,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <dispelbuff count="1" e="1" element="EARTH" hoptype="SKILLLV" hopb="6610"/>
+        </effects>
         <actions>
             <mpuse value="610" delta="0"/>
         </actions>
@@ -46415,6 +46449,7 @@
             <playermove allow="false"/>
         </useconditions>
         <effects>
+            <skilllauncher skill_id="9764" value="1" e="1"/>
             <transform model="202502" duration="600000" effectid="175" e="2"/>
             <statup duration="600000" effectid="197373" e="3">
                 <change stat="SPEED" func="ADD" delta="0" value="10"/>
@@ -46435,6 +46470,7 @@
             <playermove allow="false"/>
         </useconditions>
         <effects>
+            <skilllauncher skill_id="9765" value="1" e="1"/>
             <transform model="202503" duration="600000" effectid="175" e="2"/>
             <statup duration="600000" effectid="197373" e="3">
                 <change stat="SPEED" func="ADD" delta="0" value="10"/>
@@ -46455,6 +46491,7 @@
             <playermove allow="false"/>
         </useconditions>
         <effects>
+            <skilllauncher skill_id="9766" value="1" e="1"/>
             <transform model="202504" duration="600000" effectid="175" e="2"/>
             <statup duration="600000" effectid="197373" e="3">
                 <change stat="SPEED" func="ADD" delta="0" value="20"/>
@@ -46475,6 +46512,7 @@
             <playermove allow="false"/>
         </useconditions>
         <effects>
+            <skilllauncher skill_id="9767" value="1" e="1"/>
             <transform model="202505" duration="600000" effectid="175" e="2"/>
             <statup duration="600000" effectid="197373" e="3">
                 <change stat="SPEED" func="ADD" delta="0" value="30"/>
@@ -46495,6 +46533,7 @@
             <playermove allow="false"/>
         </useconditions>
         <effects>
+            <skilllauncher skill_id="9768" value="1" e="1"/>
             <transform model="202506" duration="600000" effectid="175" e="2"/>
             <statup duration="600000" effectid="197373" e="3">
                 <change stat="SPEED" func="ADD" delta="0" value="30"/>
@@ -46515,6 +46554,7 @@
             <playermove allow="false"/>
         </useconditions>
         <effects>
+            <skilllauncher skill_id="9759" value="1" e="1"/>
             <transform model="202507" duration="600000" effectid="175" e="2"/>
             <statup duration="600000" effectid="197423" e="3">
                 <change stat="SPEED" func="ADD" delta="0" value="10"/>
@@ -46535,6 +46575,7 @@
             <playermove allow="false"/>
         </useconditions>
         <effects>
+            <skilllauncher skill_id="9760" value="1" e="1"/>
             <transform model="202508" duration="600000" effectid="175" e="2"/>
             <statup duration="600000" effectid="197423" e="3">
                 <change stat="SPEED" func="ADD" delta="0" value="10"/>
@@ -46555,6 +46596,7 @@
             <playermove allow="false"/>
         </useconditions>
         <effects>
+            <skilllauncher skill_id="9761" value="1" e="1"/>
             <transform model="202509" duration="600000" effectid="175" e="2"/>
             <statup duration="600000" effectid="197423" e="3">
                 <change stat="SPEED" func="ADD" delta="0" value="20"/>
@@ -46575,6 +46617,7 @@
             <playermove allow="false"/>
         </useconditions>
         <effects>
+            <skilllauncher skill_id="9762" value="1" e="1"/>
             <transform model="202510" duration="600000" effectid="175" e="2"/>
             <statup duration="600000" effectid="197423" e="3">
                 <change stat="SPEED" func="ADD" delta="0" value="30"/>
@@ -46595,6 +46638,7 @@
             <playermove allow="false"/>
         </useconditions>
         <effects>
+            <skilllauncher skill_id="9763" value="1" e="1"/>
             <transform model="202511" duration="600000" effectid="175" e="2"/>
             <statup duration="600000" effectid="197423" e="3">
                 <change stat="SPEED" func="ADD" delta="0" value="30"/>
@@ -48328,6 +48372,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <dispelbuff count="12" e="1" element="WATER"/>
+        </effects>
     </skill_template>
     <skill_template skill_id="16392" name="STR_GNWI_Reflector_Nr" nameId="573319" stack="GNWI_REFLECTOR_NR" lvl="1" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="0" duration="2500">
         <setproperties>
@@ -51412,6 +51459,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <dispelbuff count="3" e="1" element="WATER" hoptype="DAMAGE"/>
+        </effects>
     </skill_template>
     <skill_template skill_id="16585" name="STR_NEL_Curse_Nr" nameId="568917" stack="NEL_CURSE_NR" lvl="1" skilltype="MAGICAL" skillsubtype="DEBUFF" tslot="DEBUFF" activation="ACTIVE" cooldown="0" duration="4000">
         <startconditions>
@@ -61497,6 +61547,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <dispelbuff count="3" e="1" element="EARTH" hoptype="DAMAGE"/>
+        </effects>
     </skill_template>
     <skill_template skill_id="17204" name="STR_GWI_SilenceTA_Commander" nameId="579227" stack="GWI_SILENCETA_COMMANDER" lvl="1" skilltype="MAGICAL" skillsubtype="DEBUFF" tslot="DEBUFF" activation="ACTIVE" cooldown="0" duration="3000">
         <setproperties>
@@ -62806,6 +62859,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <dispelbuff count="2" e="1" element="EARTH" hoptype="DAMAGE"/>
+        </effects>
     </skill_template>
     <skill_template skill_id="17287" name="STR_GWI_IceSpellBig_TA" nameId="580065" stack="GWI_ICESPELLBIG_TA" lvl="1" skilltype="MAGICAL" skillsubtype="ATTACK" tslot="NONE" activation="ACTIVE" cooldown="0" duration="3500">
         <setproperties>
@@ -63698,6 +63754,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <dispelbuff count="1" e="1" element="EARTH" hoptype="DAMAGE"/>
+        </effects>
     </skill_template>
     <skill_template skill_id="17345" name="STR_DGWI_Dispel2_TA" nameId="580309" stack="DGWI_DISPEL2_TA" lvl="1" skilltype="MAGICAL" skillsubtype="DEBUFF" tslot="NONE" activation="ACTIVE" cooldown="0" duration="1500">
         <setproperties>
@@ -63709,6 +63768,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <dispelbuff count="2" e="1" element="EARTH" hoptype="DAMAGE"/>
+        </effects>
     </skill_template>
     <skill_template skill_id="17346" name="STR_DGWI_Dispel3_TA" nameId="580311" stack="DGWI_DISPEL3_TA" lvl="1" skilltype="MAGICAL" skillsubtype="DEBUFF" tslot="NONE" activation="ACTIVE" cooldown="0" duration="2000">
         <setproperties>
@@ -63720,6 +63782,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <dispelbuff count="3" e="1" element="EARTH" hoptype="DAMAGE"/>
+        </effects>
     </skill_template>
     <skill_template skill_id="17347" name="STR_DGWI_TriggerPetSpell_Nr" nameId="580313" stack="DGWI_TRIGGERPETSPELL_NR" lvl="1" skilltype="MAGICAL" skillsubtype="DEBUFF" tslot="DEBUFF" activation="ACTIVE" cooldown="0" duration="2000">
         <setproperties>
@@ -64533,6 +64598,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <dispelbuff count="1" e="1" element="EARTH" hoptype="DAMAGE"/>
+        </effects>
     </skill_template>
     <skill_template skill_id="17398" name="STR_DGPR_Root_Nr" nameId="580615" stack="DGPR_ROOT_NR" lvl="1" skilltype="MAGICAL" skillsubtype="DEBUFF" tslot="DEBUFF" activation="ACTIVE" cooldown="0" duration="1000">
         <setproperties>
@@ -69238,6 +69306,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <dispelbuff count="2" e="1" element="EARTH" hoptype="DAMAGE"/>
+        </effects>
     </skill_template>
     <skill_template skill_id="17687" name="STR_DGAS_H_SDownPyDef_Nr" nameId="581541" stack="DGAS_H_SDOWNPYDEF_NR" lvl="1" skilltype="PHYSICAL" skillsubtype="DEBUFF" tslot="DEBUFF" activation="ACTIVE" cooldown="0" duration="2000">
         <setproperties>
@@ -71459,8 +71530,9 @@
             <playermove allow="false"/>
         </useconditions>
         <effects>
-            <sleep duration="120000" effectid="20106" e="2"/>
-            <statdown duration="120000" effectid="10178263" e="3">
+            <dispelbuff count="30" e="1" element="WATER"/>
+            <sleep duration="120000" effectid="20106" e="2" element="WATER" hoptype="SKILLLV" hopb="60" hopa="60"/>
+            <statdown duration="120000" effectid="10178263" e="3" element="WATER" hoptype="SKILLLV" hopb="60" hopa="60">
                 <change stat="PHYSICAL_DEFENSE" func="PERCENT" delta="0" value="-20"/>
                 <change stat="MAGICAL_RESIST" func="PERCENT" delta="0" value="-20"/>
             </statdown>
@@ -83288,6 +83360,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <dispelbuff count="12" e="1" element="WATER"/>
+        </effects>
     </skill_template>
     <skill_template skill_id="18579" name="STR_NTRAP_SpellSA_Nr" nameId="569241" stack="NTRAP_SPELLSA_NR" lvl="1" skilltype="MAGICAL" skillsubtype="ATTACK" tslot="NONE" activation="ACTIVE" cooldown="0" duration="0">
         <setproperties>

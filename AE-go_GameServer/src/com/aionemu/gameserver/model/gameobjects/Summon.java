@@ -216,4 +216,19 @@ public class Summon extends Creature
 	{
 		return master.getTribe();
 	}
+
+	@Override
+	public boolean isAggressiveTo(Creature creature)
+	{
+		return creature.isAggroFrom(this);
+	}
+	
+	@Override
+	public boolean isAggroFrom(Npc npc)
+	{
+		if(getMaster() == null)
+			return false;
+		
+		return getMaster().isAggroFrom(npc);
+	}
 }

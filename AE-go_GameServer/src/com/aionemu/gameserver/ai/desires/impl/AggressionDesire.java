@@ -22,9 +22,9 @@ import com.aionemu.gameserver.ai.desires.AbstractDesire;
 import com.aionemu.gameserver.ai.state.AIState;
 import com.aionemu.gameserver.controllers.attack.AttackResult;
 import com.aionemu.gameserver.controllers.attack.AttackStatus;
+import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
-import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK;
 import com.aionemu.gameserver.utils.MathUtil;
 import com.aionemu.gameserver.utils.PacketSendUtility;
@@ -55,28 +55,30 @@ public final class AggressionDesire extends AbstractDesire
 			if (visibleObject == null)
 				continue;
 			
-			if (visibleObject instanceof Player)
+			if (visibleObject instanceof Creature)
 			{
-				final Player player = (Player) visibleObject;
+				final Creature creature = (Creature) visibleObject;
 				
-				if(!player.getLifeStats().isAlreadyDead() && MathUtil.isInRange(npc, player, npc.getAggroRange())
-					&& (Math.abs(player.getZ() - npc.getZ()) < 30))
+				if(!creature.getLifeStats().isAlreadyDead() && MathUtil.isInRange(npc, creature, npc.getAggroRange())
+					&& (Math.abs(creature.getZ() - npc.getZ()) < 30))
 				{
 
 					if(!npc.canSee(visibleObject))
 						continue;
-					if(!npc.isAggressiveTo(player.getCommonData().getRace()))
+					
+					if(!npc.isAggressiveTo(creature))
 						continue;
+					
 
 					npc.getAi().setAiState(AIState.NONE); // TODO: proper aggro emotion on aggro range enter
-					PacketSendUtility.broadcastPacket(npc, new SM_ATTACK(npc, player, 0,
+					PacketSendUtility.broadcastPacket(npc, new SM_ATTACK(npc, creature, 0,
 						633, 0, Collections.singletonList(new AttackResult(0, AttackStatus.NORMALHIT))));
 
 					ThreadPoolManager.getInstance().schedule(new Runnable(){
 						@Override
 						public void run()
 						{
-							npc.getAggroList().addHate(player, 1);
+							npc.getAggroList().addHate(creature, 1);
 						}
 					}, 1000);
 					break;

@@ -38,14 +38,14 @@ import com.google.inject.Inject;
  * @author Nephis
  * 
  */
-public class _1035RefreshingTheSprings extends QuestHandler
+public class _1035RefreshingtheSprings extends QuestHandler
 {
 	@Inject
 	ItemService itemService;
 
 	private final static int	questId	= 1035;
 
-	public _1035RefreshingTheSprings()
+	public _1035RefreshingtheSprings()
 	{
 		super(questId);
 	}

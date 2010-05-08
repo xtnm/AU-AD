@@ -30,6 +30,7 @@ import com.aionemu.gameserver.model.ChatType;
 import com.aionemu.gameserver.model.TaskId;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Npc;
+import com.aionemu.gameserver.model.gameobjects.Summon;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.player.RequestResponseHandler;
@@ -67,8 +68,8 @@ public class NpcController extends CreatureController<Npc>
 		super.notSee(object, isOutOfRange);
 		if(object instanceof Creature)
 			getOwner().getAggroList().remove((Creature) object);
-		if(object instanceof Player)
-			getOwner().getAi().handleEvent(Event.NOT_SEE_PLAYER);
+		if(object instanceof Player || object instanceof Summon)
+			getOwner().getAi().handleEvent(Event.NOT_SEE_PLAYER);			
 	}
 
 	@Override
@@ -84,7 +85,11 @@ public class NpcController extends CreatureController<Npc>
 			// with some state etc.
 			if(owner.getMoveController().isWalking())
 				PacketSendUtility.sendPacket((Player) object, new SM_EMOTION(owner, 21));
-		}		
+		}	
+		else if(object instanceof Summon)
+		{
+			owner.getAi().handleEvent(Event.SEE_PLAYER);
+		}
 	}
 
 	@Override
@@ -360,8 +365,10 @@ public class NpcController extends CreatureController<Npc>
 		super.onAttack(creature, skillId, type, damage);
 
 		Npc npc = getOwner();
-		if(creature instanceof Player)
-			if(sp.getQuestEngine().onAttack(new QuestEnv(npc, (Player) creature, 0, 0)))
+		
+		Creature actingCreature = creature.getActingCreature();
+		if(actingCreature instanceof Player)
+			if(sp.getQuestEngine().onAttack(new QuestEnv(npc, (Player) actingCreature, 0, 0)))
 				return;
 
 		AI<?> ai = npc.getAi();
@@ -371,8 +378,8 @@ public class NpcController extends CreatureController<Npc>
 			return;
 		}
 
-		npc.getAggroList().addDamage(creature, damage);
-		npc.getLifeStats().reduceHp(damage, creature);
+		npc.getAggroList().addDamage(actingCreature, damage);
+		npc.getLifeStats().reduceHp(damage, actingCreature);
 
 		PacketSendUtility.broadcastPacket(npc, new SM_ATTACK_STATUS(npc, type, skillId, damage));
 	}

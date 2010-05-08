@@ -63,7 +63,7 @@ public class SM_NPC_INFO extends AionServerPacket
 	public SM_NPC_INFO(Npc npc, Player player)
 	{
 		this.npc = npc;
-		isAggressive = npc.isAggressiveTo(player.getCommonData().getRace());
+		isAggressive = player.isAggroIconTo(npc.getTribe());
 		npcTemplate = npc.getObjectTemplate();
 		npcId = npc.getNpcId();
 		

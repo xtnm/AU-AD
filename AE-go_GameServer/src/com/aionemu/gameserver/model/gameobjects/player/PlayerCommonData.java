@@ -125,7 +125,7 @@ public class PlayerCommonData extends VisibleObjectTemplate
 		{
 			this.exp = this.exp - this.getExpShown();
 		}
-		if(this.getExpShown() > allExpLost)
+		if(this.getExpShown() > recoverable)
 		{
 			this.expRecoverable = allExpLost;
 			this.exp = this.exp - recoverable;

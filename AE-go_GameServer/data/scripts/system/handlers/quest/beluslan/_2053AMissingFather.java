@@ -238,7 +238,7 @@ public class _2053AMissingFather extends QuestHandler
 			return false;
 
 		final QuestState qs = player.getQuestStateList().getQuestState(questId);
-		if(qs == null && qs.getQuestVarById(0) != 2)
+		if(qs == null || qs.getQuestVarById(0) != 2)
 			return false;
 		PacketSendUtility.broadcastPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(), itemObjId, id, 1000, 0, 0), true);
 		ThreadPoolManager.getInstance().schedule(new Runnable(){

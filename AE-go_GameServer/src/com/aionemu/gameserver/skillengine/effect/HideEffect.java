@@ -36,7 +36,7 @@ import com.aionemu.gameserver.utils.PacketSendUtility;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "HideEffect")
-public class HideEffect extends EffectTemplate
+public class HideEffect extends BufEffect
 {
 	@XmlAttribute
 	protected int value;
@@ -57,6 +57,8 @@ public class HideEffect extends EffectTemplate
 	@Override
 	public void endEffect(Effect effect)
 	{
+		super.endEffect(effect);
+		
 		Creature effected = effect.getEffected();
 		effected.getEffectController().unsetAbnormal(EffectId.INVISIBLE_RELATED.getEffectId());
 
@@ -97,6 +99,8 @@ public class HideEffect extends EffectTemplate
 	@Override
 	public void startEffect(final Effect effect)
 	{
+		super.startEffect(effect);
+		
 		final Creature effected = effect.getEffected();
 		effected.getEffectController().setAbnormal(EffectId.INVISIBLE_RELATED.getEffectId());
 

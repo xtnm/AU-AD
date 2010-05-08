@@ -180,7 +180,7 @@ public class SpawnEngine
 				default: // NON_ATTACKABLE
 					npc = new Npc(aionObjectsIDFactory.nextId(), injector.getInstance(NpcController.class), spawn,
 						template);
-					npc.setKnownlist(new StaticObjectKnownList(npc));
+					npc.setKnownlist(new KnownList(npc));
 
 			}
 
