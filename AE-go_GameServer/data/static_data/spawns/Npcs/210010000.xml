@@ -267,10 +267,6 @@
 	<spawn map="210010000" npcid="203059" pool="1" interval="295">
 		<object x="825.4364" y="1241.9847" z="118.83882" h="90"/>
 	</spawn>
-	<!-- Porgus (NPC Normal lvl:10)-->
-	<spawn map="210010000" npcid="203192" pool="1" interval="295">
-		<object x="1043.9404" y="1140.8762" z="119.220215" h="86"/>
-	</spawn>
 	<!-- Pranoa (NPC Normal lvl:10)-->
 	<spawn map="210010000" npcid="203074" pool="1" interval="295">
 		<object x="692.0093" y="1205.8406" z="108.62384" h="4"/>
