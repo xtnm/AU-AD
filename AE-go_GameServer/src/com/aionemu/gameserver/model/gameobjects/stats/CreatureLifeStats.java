@@ -441,6 +441,25 @@ public abstract class CreatureLifeStats<T extends Creature>
 	}
 	
 	/**
+	 * This method can be used for Npc's to fully restore its MP
+	 * 
+	 * @param mpPercent
+	 */
+	public void setCurrentMpPercent(int mpPercent)
+	{
+		mpLock.lock();
+		try
+		{
+			int maxMp = getMaxMp();
+			this.currentMp = maxMp * mpPercent / 100;
+		}
+		finally
+		{
+			mpLock.unlock();
+		}
+	}
+
+	/**
 	 * This method should be called after creature's revival
 	 * For creatures - trigger hp regeneration
 	 * For players - trigger hp/mp/fp regeneration (in overriding method)
