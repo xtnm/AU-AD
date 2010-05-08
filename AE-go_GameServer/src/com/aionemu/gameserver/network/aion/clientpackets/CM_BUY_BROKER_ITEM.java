@@ -28,8 +28,10 @@ import com.google.inject.Inject;
 public class CM_BUY_BROKER_ITEM extends AionClientPacket
 {
 
+	@SuppressWarnings("unused")
 	private int brokerId;
 	private int itemUniqueId;
+	@SuppressWarnings("unused")
 	private int itemCount;
 	
 	@Inject

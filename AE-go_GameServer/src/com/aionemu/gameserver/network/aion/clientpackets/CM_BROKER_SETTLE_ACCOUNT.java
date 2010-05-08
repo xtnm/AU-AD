@@ -27,6 +27,7 @@ import com.google.inject.Inject;
  */
 public class CM_BROKER_SETTLE_ACCOUNT extends AionClientPacket
 {
+	@SuppressWarnings("unused")
 	private int npcId;
 	
 	@Inject
