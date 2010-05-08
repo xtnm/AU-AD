@@ -24,9 +24,13 @@ import java.util.concurrent.Future;
 
 import javolution.util.FastMap;
 
+import com.aionemu.commons.utils.Rnd;
 import com.aionemu.gameserver.model.gameobjects.AionObject;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.model.group.PlayerGroup;
+import com.aionemu.gameserver.services.InstanceService;
+import com.aionemu.gameserver.utils.ThreadPoolManager;
 import com.aionemu.gameserver.world.exceptions.DuplicateAionObjectException;
 
 /**
@@ -66,14 +70,15 @@ public class WorldMapInstance
 
 	private final Set<Integer>					registeredObjects	= Collections.newSetFromMap(new FastMap<Integer, Boolean>().shared());
 
+	private PlayerGroup							registeredGroup		= null;
+
+	private Future<?>							emptyInstanceTask	= null;
+
 	/**
 	 * Id of this instance (channel)
 	 */
 	private int									instanceId;
-	/**
-	 * Destroy task of this instance
-	 */
-	private Future<?>							destroyTask;
+
 	/**
 	 * Constructor.
 	 *
@@ -238,22 +243,6 @@ public class WorldMapInstance
 	{
 		return worldMapPlayers.containsKey(objId);
 	}
-
-	/**
-	 * @return the destroyTask
-	 */
-	public Future<?> getDestroyTask()
-	{
-		return destroyTask;
-	}
-
-	/**
-	 * @param destroyTask the destroyTask to set
-	 */
-	public void setDestroyTask(Future<?> destroyTask)
-	{
-		this.destroyTask = destroyTask;
-	}
 	
 	/**
 	 * @return
@@ -270,7 +259,12 @@ public class WorldMapInstance
 	{
 		return worldMapPlayers.values().iterator();
 	}
-	
+
+	public void registerGroup(PlayerGroup group) {
+		registeredGroup = group;
+		register(group.getGroupId());
+	}
+
 	/**
 	 * @param objectId
 	 */
@@ -287,4 +281,38 @@ public class WorldMapInstance
 	{
 		return registeredObjects.contains(objectId);
 	}
+	
+	/**
+	 * @return the emptyInstanceTask
+	 */
+	public Future<?> getEmptyInstanceTask()
+	{
+		return emptyInstanceTask;
+	}
+
+	/**
+	 * @param emptyInstanceTask the emptyInstanceTask to set
+	 */
+	public void setEmptyInstanceTask(Future<?> emptyInstanceTask)
+	{
+		this.emptyInstanceTask = emptyInstanceTask;
+	}
+
+	/**
+	 * @return the registeredGroup
+	 */
+	public PlayerGroup getRegisteredGroup()
+	{
+		return registeredGroup;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public int playersCount()
+	{
+		return worldMapPlayers.size();
+	}
+	
 }

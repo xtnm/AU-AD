@@ -157,6 +157,10 @@ public class PlayerGroup
 		});
 	}
 
+	public void disband() {
+		this.groupMembers.clear();
+	}
+
 	public void onGroupMemberLogIn(Player player)
 	{
 		groupMembers.remove(player.getObjectId());

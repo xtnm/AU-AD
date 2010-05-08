@@ -186,7 +186,7 @@ public class _2900NoEscapingDestiny extends QuestHandler
 								qs.setQuestVarById(0, 95);
 								updateQuestStatus(player, qs);
 								PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 0));
-								WorldMapInstance newInstance = instanceService.getNextAvailableInstance(320070000, 60 * 20);
+								WorldMapInstance newInstance = instanceService.getNextAvailableInstance(320070000);
 								instanceService.registerPlayerWithInstance(newInstance, player);
 								teleportService.teleportTo(player, 320070000, newInstance.getInstanceId(), 257.5f, 245f, 129f, 0);
 								return true;

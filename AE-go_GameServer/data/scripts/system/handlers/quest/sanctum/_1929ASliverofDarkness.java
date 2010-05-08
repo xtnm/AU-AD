@@ -147,7 +147,7 @@ public class _1929ASliverofDarkness extends QuestHandler
 								qs.setQuestVarById(0, 93);
 								updateQuestStatus(player, qs);
 								PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 0));
-								WorldMapInstance newInstance = instanceService.getNextAvailableInstance(310070000, 60 * 20);
+								WorldMapInstance newInstance = instanceService.getNextAvailableInstance(310070000);
 								instanceService.registerPlayerWithInstance(newInstance, player);
 								teleportService.teleportTo(player, 310070000, newInstance.getInstanceId(), 338, 101, 1191, 0);
 								return true;

@@ -18,10 +18,10 @@ package com.aionemu.gameserver.services;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.Future;
 
 import org.apache.log4j.Logger;
 
+import com.aionemu.commons.utils.Rnd;
 import com.aionemu.gameserver.dataholders.PortalData;
 import com.aionemu.gameserver.dataholders.WorldMapsData;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
@@ -60,7 +60,7 @@ public class InstanceService
 	 * @param destroyTime
 	 * @return
 	 */
-	public synchronized WorldMapInstance getNextAvailableInstance(int worldId, int destroyTime)
+	public synchronized WorldMapInstance getNextAvailableInstance(int worldId)
 	{
 		WorldMap map = world.getWorldMap(worldId);
 
@@ -72,45 +72,11 @@ public class InstanceService
 		log.info("Creating new instance: " + worldId + " " + nextInstanceId);
 
 		WorldMapInstance worldMapInstance = new WorldMapInstance(map, nextInstanceId);
+		startInstanceChecker(worldMapInstance);
 		map.addInstance(nextInstanceId, worldMapInstance);
 		spawnEngine.spawnInstance(worldId, worldMapInstance.getInstanceId());
 		
-		if(destroyTime == 0)
-			destroyTime = 60 * 30;//TODO take from template
-		
-		setDestroyTime(worldMapInstance, destroyTime);
 		return worldMapInstance;
-	}
-
-	/**
-	 * Will create new instance if there are not free yet and spawn according to xml data
-	 * 
-	 * @param worldId
-	 * @return WorldMapInstance
-	 */
-	public WorldMapInstance getNextAvailableInstance(int worldId)
-	{
-		return getNextAvailableInstance(worldId, 0);
-	}
-
-	/**
-	 * 
-	 * @param sec
-	 */
-	private void setDestroyTime(final WorldMapInstance instance, int sec)
-	{
-		Future<?> destroyTask = instance.getDestroyTask();
-		if(destroyTask != null)
-			destroyTask.cancel(true);
-
-		destroyTask = ThreadPoolManager.getInstance().schedule(new Runnable(){
-			@Override
-			public void run()
-			{
-				destroyInstance(instance);
-			}
-		}, sec * 1000);
-		instance.setDestroyTask(destroyTask);
 	}
 
 	/**
@@ -118,6 +84,8 @@ public class InstanceService
 	 */
 	public void destroyInstance(WorldMapInstance instance)
 	{
+		instance.getEmptyInstanceTask().cancel(false);
+		
 		int worldId = instance.getMapId();
 		int instanceId = instance.getInstanceId();
 
@@ -140,7 +108,6 @@ public class InstanceService
 			{
 				obj.getController().delete();
 			}
-				
 		}
 	}
 	
@@ -161,7 +128,7 @@ public class InstanceService
 	 */
 	public void registerGroupWithInstance(WorldMapInstance instance, PlayerGroup group)
 	{
-		instance.register(group.getGroupId());
+		instance.registerGroup(group);
 	}
 	
 	/**
@@ -265,5 +232,55 @@ public class InstanceService
 	public boolean isInstanceExist(int worldId, int instanceId)
 	{
 		return world.getWorldMap(worldId).getWorldMapInstanceById(instanceId) != null;
+	}
+	
+	/**
+	 * 
+	 * @param worldMapInstance
+	 */
+	private void startInstanceChecker(WorldMapInstance worldMapInstance)
+	{
+		int delay = 60000 + Rnd.get(-10, 10);
+		worldMapInstance.setEmptyInstanceTask(ThreadPoolManager.getInstance().scheduleAtFixedRate(
+			new EmptyInstanceCheckerTask(worldMapInstance), delay, delay));
+	}
+
+	private class EmptyInstanceCheckerTask implements Runnable
+	{
+		private WorldMapInstance worldMapInstance;
+
+		private EmptyInstanceCheckerTask(WorldMapInstance worldMapInstance)
+		{
+			this.worldMapInstance = worldMapInstance;
+		}
+
+		@Override
+		public void run()
+		{
+			PlayerGroup registeredGroup = worldMapInstance.getRegisteredGroup();
+			if(registeredGroup == null)
+			{
+				if(worldMapInstance.playersCount() == 0)
+				{
+					destroyInstance(worldMapInstance);
+					return;
+				}
+				Iterator<Player> playerIterator = worldMapInstance.playerIterator();
+				int mapId = worldMapInstance.getMapId();
+				while(playerIterator.hasNext())
+				{
+					Player player = playerIterator.next();
+					if(player.isOnline() && player.getWorldId() == mapId)
+					{
+						return;
+					}
+				}
+				destroyInstance(worldMapInstance);
+			}
+			else if(registeredGroup.size() == 0)
+			{
+				destroyInstance(worldMapInstance);
+			}
+		}
 	}
 }

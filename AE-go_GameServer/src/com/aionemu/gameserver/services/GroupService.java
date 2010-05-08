@@ -317,6 +317,7 @@ public class GroupService
 		aionObjectsIDFactory.releaseId(group.getGroupId());
 		group.getGroupLeader().setPlayerGroup(null);
 		PacketSendUtility.sendPacket(group.getGroupLeader(), SM_SYSTEM_MESSAGE.DISBAND_GROUP());
+		group.disband();
 	}
 
 	/**
