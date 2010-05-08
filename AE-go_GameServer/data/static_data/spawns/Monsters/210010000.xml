@@ -942,7 +942,7 @@
 		<object x="335.55563" y="1856.7441" z="150.69086" h="77"/>
 	</spawn>
 	<!-- Wandering Kerub (Monster Normal lvl:3)-->
-	<spawn map="210010000" npcid="210135" pool="10" interval="295">
+	<spawn map="210010000" npcid="210135" pool="8" interval="295">
 		<object x="872.10034" y="1141.9141" z="105.28223" h="114"/>
 		<object x="872.80304" y="1143.096" z="105.11301" h="117"/>
 		<object x="904.1111" y="1118.7042" z="102.11796" h="32"/>

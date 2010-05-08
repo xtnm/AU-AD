@@ -21,12 +21,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+
+import org.apache.log4j.Logger;
 
 import com.aionemu.commons.utils.Rnd;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
@@ -92,6 +95,16 @@ public class SpawnGroup
 		this.npcid = npcid;
 		this.interval = interval;
 		this.pool = pool;
+	}
+	
+	void afterUnmarshal (Unmarshaller u, Object parent)
+	{		
+		if(objects != null && pool > objects.size())
+		{
+			Logger.getLogger(SpawnGroup.class).warn(
+				"Incorrect pool value for spawn group. MapId:" + mapid + " Npc: " + npcid);
+			this.pool = objects.size();
+		}
 	}
 
 	/**
