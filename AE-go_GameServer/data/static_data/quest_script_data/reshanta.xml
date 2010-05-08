@@ -355,7 +355,7 @@
 	<monster_hunt id="2764" start_npc_id="278107">
 		<monster_infos npc_id="256647" var_id="0" max_kill="7" />
 		<monster_infos npc_id="256636" var_id="1" max_kill="3" />
-		<monster_infos npc_id="215447" var_id="2" max_kill="3" />
+		<monster_infos npc_id="256650" var_id="2" max_kill="3" />
 		<monster_infos npc_id="256652" var_id="3" max_kill="3" />
 	</monster_hunt>
 
