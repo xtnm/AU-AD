@@ -76,7 +76,7 @@ public class InstanceService
 		spawnEngine.spawnInstance(worldId, worldMapInstance.getInstanceId());
 		
 		if(destroyTime == 0)
-			destroyTime = 60 * 30;//TODO take from template
+			destroyTime = 60 * 60 * 4;//TODO take from template
 		log.info("Destroying instance at:" + destroyTime + "sec after " + worldId);
 		setDestroyTime(worldMapInstance, destroyTime);
 		return worldMapInstance;
