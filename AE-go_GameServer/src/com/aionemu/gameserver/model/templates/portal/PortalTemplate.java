@@ -55,6 +55,8 @@ public class PortalTemplate
 	protected ExitPoint			exitPoint;
 	@XmlElement(name = "portalitem")
 	protected List<PortalItem>	portalItem;
+	@XmlAttribute(name = "titleid")
+	protected int				IdTitle;
 
 	/**
 	 * @return the npcId
@@ -138,4 +140,12 @@ public class PortalTemplate
 		
 		return portalItem;
 	}
+
+	/**
+	 * @return the Title Id
+	 */
+	public int getIdTitle()
+	{
+		return IdTitle;
+	}	
 }

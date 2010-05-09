@@ -96,110 +96,110 @@ public class _1929ASliverofDarkness extends QuestHandler
                 if(env.getVisibleObject() instanceof Npc)
                         targetId = ((Npc) env.getVisibleObject()).getNpcId();
 
-                if(qs.getStatus() == QuestStatus.START)
-                {
-                        switch (targetId)
-                        {
-                                case 203752:
-                                        switch(env.getDialogId())
-                                        {
-                                                case 25:
-                                                        if(var == 0)
-                                                                return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1011);
-                                                case 10000:
-                                                        if(var == 0)
-                                                        {
-                                                                qs.setQuestVarById(0, var + 1);
-                                                                updateQuestStatus(player, qs);
-                                                                PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
-                                                                return true;
-                                                        }
-                                        }
-                                        break;
-                                case 203852:
-                                        switch(env.getDialogId())
-                                        {
-                                                case 25:
-                                                        if(var == 1)
-                                                                return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1352);
-                                                case 10001:
-                                                        if(var == 1)
-                                                        {
-                                                                qs.setQuestVarById(0, var + 1);
-                                                                updateQuestStatus(player, qs);
-                                                                PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
-                                                                return true;
-                                                        }
-                                        }
-                                        break;
-                                case 203164:
-                                        switch(env.getDialogId())
-                                        {
-                                                case 25:
-                                                        if(var == 2)
-                                                                return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1693);
-                                                        else if(var == 8)
-                                                                return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 3057);
-                                                        break;
-                                                case 10002:
-                                                        if(var == 2)
-                                                        {
-                                                                qs.setQuestVarById(0, 93);
-                                                                updateQuestStatus(player, qs);
-                                                                PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 0));
-                                                                WorldMapInstance newInstance = instanceService.getNextAvailableInstance(310070000, 60 * 20);
-                                                                instanceService.registerPlayerWithInstance(newInstance, player);
-                                                                teleportService.teleportTo(player, 310070000, newInstance.getInstanceId(), 338, 101, 1191, 0);
-                                                                return true;
-                                                        }
-                                                        break;
-                                                case 10006:
-                                                if (var == 8)
-                                                {
-                                                        removeStigma(player);
-                                                        qs.setQuestVarById(0, var + 1);
-                                                        updateQuestStatus(player, qs);
-                                                        PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
-                                                        return true;
-                                                }
-                                        }
-                                        break;
-                                case 205110:
-                                        switch(env.getDialogId())
-                                        {
-                                                case 25:
-                                                        if(var == 93)
-                                                                return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2034);
-                                                case 10003:
-                                                        if(var == 93)
-                                                        {
-                                                                qs.setQuestVarById(0, 94);
-                                                                updateQuestStatus(player, qs);
-                                                                PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 0));
-                                                                PacketSendUtility.sendPacket(player, new SM_EMOTION(player, 6, 31001, 0));
-                                                                return true;
-                                                        }
-                                        }
-                                        break;
-                                case 700419:
-                                {
-                                        if (qs.getQuestVars().getQuestVars() == 94 && env.getDialogId() == -1)
-                                        {
-                                                final int targetObjectId = env.getVisibleObject().getObjectId();
-                                                PacketSendUtility.sendPacket(player, new SM_USE_OBJECT(player.getObjectId(), targetObjectId, 3000,
-                                                        1));
-                                                PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, 37, 0,
-                                                        targetObjectId), true);
-                                                ThreadPoolManager.getInstance().schedule(new Runnable(){
-                                                        @Override
-                                                        public void run()
-                                                        {
-                                                                if(player.getTarget() == null || player.getTarget().getObjectId() != targetObjectId)
-                                                                        return;
-                                                                PacketSendUtility.sendPacket(player, new SM_USE_OBJECT(player.getObjectId(),
-                                                                        targetObjectId, 3000, 0));
-                                                                PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, 38, 0,
-                                                                        targetObjectId), true);
+		if(qs.getStatus() == QuestStatus.START)
+		{
+			switch (targetId)
+			{
+				case 203752:
+					switch(env.getDialogId())
+					{
+						case 25:
+							if(var == 0)
+								return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1011);
+						case 10000:
+							if(var == 0)
+							{
+								qs.setQuestVarById(0, var + 1);
+								updateQuestStatus(player, qs);
+								PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
+								return true;
+							}
+					}
+					break;
+				case 203852:
+					switch(env.getDialogId())
+					{
+						case 25:
+							if(var == 1)
+								return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1352);
+						case 10001:
+							if(var == 1)
+							{
+								qs.setQuestVarById(0, var + 1);
+								updateQuestStatus(player, qs);
+								PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
+								return true;
+							}
+					}
+					break;
+				case 203164:
+					switch(env.getDialogId())
+					{
+						case 25:
+							if(var == 2)
+								return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1693);
+							else if(var == 8)
+								return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 3057);
+							break;
+						case 10002:
+							if(var == 2)
+							{
+								qs.setQuestVarById(0, 93);
+								updateQuestStatus(player, qs);
+								PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 0));
+								WorldMapInstance newInstance = instanceService.getNextAvailableInstance(310070000);
+								instanceService.registerPlayerWithInstance(newInstance, player);
+								teleportService.teleportTo(player, 310070000, newInstance.getInstanceId(), 338, 101, 1191, 0);
+								return true;
+							}
+							break;
+						case 10006:
+						if (var == 8)
+						{
+							removeStigma(player);
+							qs.setQuestVarById(0, var + 1);
+							updateQuestStatus(player, qs);
+							PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
+							return true;
+						}
+					}
+					break;
+				case 205110:
+					switch(env.getDialogId())
+					{
+						case 25:
+							if(var == 93)
+								return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2034);
+						case 10003:
+							if(var == 93)
+							{
+								qs.setQuestVarById(0, 94);
+								updateQuestStatus(player, qs);
+								PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 0));
+								PacketSendUtility.sendPacket(player, new SM_EMOTION(player, 6, 31001, 0));
+								return true;
+							}
+					}
+					break;
+				case 700419:
+				{
+					if (qs.getQuestVars().getQuestVars() == 94 && env.getDialogId() == -1)
+					{
+						final int targetObjectId = env.getVisibleObject().getObjectId();
+						PacketSendUtility.sendPacket(player, new SM_USE_OBJECT(player.getObjectId(), targetObjectId, 3000,
+							1));
+						PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, 37, 0,
+							targetObjectId), true);
+						ThreadPoolManager.getInstance().schedule(new Runnable(){
+							@Override
+							public void run()
+							{
+								if(player.getTarget() == null || player.getTarget().getObjectId() != targetObjectId)
+									return;
+								PacketSendUtility.sendPacket(player, new SM_USE_OBJECT(player.getObjectId(),
+									targetObjectId, 3000, 0));
+								PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, 38, 0,
+									targetObjectId), true);
 
                                                                 PacketSendUtility.sendPacket(player, new SM_PLAY_MOVIE(0, 155));
                                                         }

@@ -3805,13 +3805,6 @@
 		<object x="2674.88" y="643.7" z="2952.51" h="0"/>
 		<object x="2712.0393" y="671.14624" z="2920.2502" h="10"/>
 	</spawn>
-	<!-- Ranx Archer (Monster Normal lvl:36)-->
-	<spawn map="400010000" npcid="214102" pool="4" interval="295">
-		<object x="2340.21" y="1792.64" z="2258.8762" h="76"/>
-		<object x="2344.32" y="1789.96" z="2258.8767" h="86"/>
-		<object x="2339.86" y="1789.08" z="2258.881" h="1"/>
-		<object x="2344.51" y="1786.01" z="2258.8809" h="52"/>
-	</spawn>
 	<!-- Ranx Assault (Monster Normal lvl:40)-->
 	<spawn map="400010000" npcid="255177" pool="12" interval="295">
 		<object x="2725.508" y="1623.478" z="2887.7395" h="33"/>

@@ -274,7 +274,7 @@ public class _1002RequestoftheElim extends QuestHandler
 						updateQuestStatus(player, qs);
 						PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(),
 							0));
-						WorldMapInstance newInstance = instanceService.getNextAvailableInstance(310010000, 60 * 5);
+						WorldMapInstance newInstance = instanceService.getNextAvailableInstance(310010000);
 						teleportService.teleportTo(player, 310010000, newInstance.getInstanceId(), 52, 174, 229, 0);
 						return true;
 					}

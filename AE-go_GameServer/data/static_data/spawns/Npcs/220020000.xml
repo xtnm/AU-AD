@@ -863,9 +863,12 @@
 	<spawn map="220020000" npcid="204336" pool="1" interval="295">
 		<object x="736.0" y="2214.0" z="334.5" h="0"/>
 	</spawn>
-	<!-- Statue of Mau Hero (Object Normal lvl:1)-->
-	<spawn map="220020000" npcid="730052" pool="2" interval="295">
+	<!-- Statue of Mau Hero In(Object Normal lvl:1)-->
+	<spawn map="220020000" npcid="730052" pool="1" interval="295">
 		<object x="1245.31" y="271.16" z="531.78" h="100"/>
+	</spawn>
+	<!-- Statue of Mau Hero Out(Object Normal lvl:1)-->
+	<spawn map="220020000" npcid="730053" pool="1" interval="295">
 		<object x="1255.08" y="256.08" z="534.27" h="0"/>
 	</spawn>
 	<!-- Stigma Stone (Monster Normal lvl:1)-->

@@ -150,6 +150,18 @@
 		<entrypoint mapid="220010000" x="1111.6" y="1716.6" z="270.6" race="ASMODIANS"/>
 		<exitpoint mapid="320070000" x="257.5292" y="245" z="129"/>
 	</portal>
+
+	<!-- Statue of Mau Hero In [The Hand Behind The IceClaw] Asmodians -->
+	<portal npcid="730052" minlevel="20" maxlevel="50" instance="false" titleid="58" race="ASMODIANS">
+		<entrypoint mapid="220020000" x="0" y="0" z="0" race="ASMODIANS"/>
+		<exitpoint mapid="220020000" x="1252.9" y="266" z="534.2"/>		
+	</portal>
+
+	<!-- Statue of Mau Hero Out [The Hand Behind The IceClaw] Asmodians -->
+	<portal npcid="730053" minlevel="20" maxlevel="50" instance="false" titleid="58" race="ASMODIANS">
+		<entrypoint mapid="220020000" x="0" y="0" z="0" race="ASMODIANS"/>
+		<exitpoint mapid="220020000" x="1243.5" y="263.9" z="531.3"/>
+	</portal>
 	<!-- ABYSS GATES -->
 	
 	<!-- Verteron to Abyss -->

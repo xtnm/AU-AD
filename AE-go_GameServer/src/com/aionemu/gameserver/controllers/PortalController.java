@@ -68,6 +68,9 @@ public class PortalController extends NpcController
 		if(portalTemplate == null)
 			return;
 
+		if(portalTemplate.getIdTitle() !=0 && player.getCommonData().getTitleId() != portalTemplate.getIdTitle())
+			return;			
+			
 		if(!CustomConfig.ENABLE_INSTANCES)
 			return;
 

@@ -27,6 +27,7 @@ import com.google.inject.Inject;
  */
 public class CM_BROKER_LIST extends AionClientPacket
 {
+	@SuppressWarnings("unused")
 	private int brokerId;
 	private int sortType;
 	private int page;

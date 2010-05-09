@@ -175,6 +175,16 @@ public class LoginServer
 			loginRequests.remove(accountId);
 			loggedInAccounts.remove(accountId);
 		}
+		sendAccountDisconnected(accountId);
+	}
+	
+	/**
+	 * 
+	 * @param accountId
+	 */
+	private void sendAccountDisconnected(int accountId)
+	{
+		log.info("Sending account disconnected " + accountId);
 		if(loginServer != null && loginServer.getState() == State.AUTHED)
 			loginServer.sendPacket(new SM_ACCOUNT_DISCONNECTED(accountId));
 	}
@@ -301,17 +311,36 @@ public class LoginServer
 		{
 			AionConnection client = loggedInAccounts.get(accountId);
 			if(client != null)
-				client.close(/* closePacket, */false);
-			/**
-			 * This account is not logged in on this GameServer but LS thinks different...
-			 */
+			{
+				closeClientWithCheck(client, accountId);
+			}
+			//This account is not logged in on this GameServer but LS thinks different...
 			else
 			{
-				if(loginServer == null || loginServer.getState() != State.AUTHED)
-					return;
-				loginServer.sendPacket(new SM_ACCOUNT_DISCONNECTED(accountId));
+				sendAccountDisconnected(accountId);
 			}
 		}
+	}
+	
+	private void closeClientWithCheck(AionConnection client, final int accountId)
+	{
+		log.info("Closing client connection " + accountId);
+		client.close(/* closePacket, */false);
+		ThreadPoolManager.getInstance().schedule(new Runnable(){
+			
+			@Override
+			public void run()
+			{
+				AionConnection client = loggedInAccounts.get(accountId);
+				if(client != null)
+				{
+					log.warn("Removing client from server because of stalled connection");
+					client.close(false);
+					loggedInAccounts.remove(accountId);
+					sendAccountDisconnected(accountId);
+				}
+			}
+		}, 5000);
 	}
 
 	/**

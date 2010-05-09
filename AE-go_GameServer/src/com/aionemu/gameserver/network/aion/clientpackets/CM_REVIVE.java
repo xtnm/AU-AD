@@ -86,7 +86,9 @@ public class CM_REVIVE extends AionClientPacket
 	 */
 	private void skillRevive(Player activePlayer)
 	{
-		activePlayer.getLifeStats().setCurrentHpPercent(10);	
+		activePlayer.getLifeStats().setCurrentHpPercent(10);
+		activePlayer.getLifeStats().setCurrentMpPercent(10);
+		activePlayer.getCommonData().setDp(0);
 		activePlayer.getLifeStats().triggerRestoreOnRevive();
 		
 		activePlayer.unsetState(CreatureState.DEAD);		
@@ -102,7 +104,10 @@ public class CM_REVIVE extends AionClientPacket
 	private void bindRevive(Player activePlayer)
 	{
 		activePlayer.getLifeStats().setCurrentHpPercent(10);
+		activePlayer.getLifeStats().setCurrentMpPercent(10);
+		activePlayer.getCommonData().setDp(0);
 		activePlayer.getLifeStats().triggerRestoreOnRevive();
+		
 		activePlayer.unsetState(CreatureState.DEAD);
 		activePlayer.getController().startProtectionActiveTask();
 
