@@ -23,6 +23,7 @@ import org.apache.log4j.Logger;
 
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS.TYPE;
 import com.aionemu.gameserver.services.LifeStatsRestoreService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 
@@ -175,12 +176,13 @@ public abstract class CreatureLifeStats<T extends Creature>
 	}
 	
 	
-	protected void sendAttackStatusPacketUpdate()
+	protected void sendAttackStatusPacketUpdate(TYPE type, int value)
 	{
 		if(owner == null)
 		{
 			return;
 		}
+		
 		PacketSendUtility.broadcastPacketAndReceive(owner, new SM_ATTACK_STATUS(owner, 0));		
 	}
 
@@ -189,7 +191,7 @@ public abstract class CreatureLifeStats<T extends Creature>
 	 * @param value
 	 * @return currentHp
 	 */
-	public int increaseHp(int value)
+	public int increaseHp(TYPE type, int value)
 	{
 		if(value == getMaxHp())
 			return 0;
@@ -206,8 +208,11 @@ public abstract class CreatureLifeStats<T extends Creature>
 			{
 				newHp = getMaxHp();
 			}
-			this.currentHp = newHp;		
-			onIncreaseHp();
+			if(currentHp != newHp)
+			{
+				this.currentHp = newHp;		
+				onIncreaseHp(type, value);
+			}
 		}
 		finally
 		{
@@ -221,7 +226,7 @@ public abstract class CreatureLifeStats<T extends Creature>
 	 * @param value
 	 * @return currentMp
 	 */
-	public int increaseMp(int value)
+	public int increaseMp(TYPE type, int value)
 	{
 		if(value == getMaxMp())
 			return 0;
@@ -239,14 +244,16 @@ public abstract class CreatureLifeStats<T extends Creature>
 			{
 				newMp = getMaxMp();
 			}
-			this.currentMp = newMp;
+			if(currentMp != newMp)
+			{
+				this.currentMp = newMp;
+				onIncreaseMp(type, value);
+			}
 		}	
 		finally
 		{
 			mpLock.unlock();
 		}
-
-		onIncreaseMp();
 
 		return currentMp;
 	}
@@ -256,7 +263,7 @@ public abstract class CreatureLifeStats<T extends Creature>
 	 */
 	public void restoreHp()
 	{
-		increaseHp(getOwner().getGameStats().getCurrentStat(StatEnum.REGEN_HP));
+		increaseHp(TYPE.NATURAL_HP, getOwner().getGameStats().getCurrentStat(StatEnum.REGEN_HP));
 	}
 	
 	/**
@@ -264,7 +271,7 @@ public abstract class CreatureLifeStats<T extends Creature>
 	 */
 	public void restoreMp()
 	{
-		increaseMp(getOwner().getGameStats().getCurrentStat(StatEnum.REGEN_MP));
+		increaseMp(TYPE.NATURAL_MP, getOwner().getGameStats().getCurrentStat(StatEnum.REGEN_MP));
 	}
 
 	/**
@@ -360,11 +367,11 @@ public abstract class CreatureLifeStats<T extends Creature>
 		return 100 * currentMp / getMaxMp();
 	}
 	
-	protected abstract void onIncreaseMp();
+	protected abstract void onIncreaseMp(TYPE type, int value);
 	
 	protected abstract void onReduceMp();
 	
-	protected abstract void onIncreaseHp();
+	protected abstract void onIncreaseHp(TYPE type, int value);
 	
 	protected abstract void onReduceHp();
 

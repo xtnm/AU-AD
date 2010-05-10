@@ -38,11 +38,14 @@ public class SM_ATTACK_STATUS extends AionServerPacket
     
     public static enum TYPE
     {
+    	NATURAL_HP(3),
     	REGULAR(5),
     	DAMAGE(7),
-    	HP(9),
-    	MP(19),
-    	FP(25);
+    	HP(7),
+    	MP(21),
+    	NATURAL_MP(22),
+    	FP(25),
+    	NATURAL_FP(26);
     	
     	private int value;
     	

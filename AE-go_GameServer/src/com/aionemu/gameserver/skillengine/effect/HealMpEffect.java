@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
 import com.aionemu.gameserver.model.gameobjects.stats.StatEnum;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS.TYPE;
 import com.aionemu.gameserver.skillengine.model.Effect;
 
 
@@ -37,7 +38,7 @@ public class HealMpEffect
 	@Override
 	public void applyEffect(Effect effect)
 	{
-		effect.getEffected().getLifeStats().increaseMp(-effect.getReserved1());
+		effect.getEffected().getLifeStats().increaseMp(TYPE.NATURAL_MP, -effect.getReserved1());
 	}
 
 	@Override

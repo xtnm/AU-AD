@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.stats.CreatureLifeStats;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS.TYPE;
 import com.aionemu.gameserver.skillengine.model.Effect;
 
 
@@ -41,8 +42,8 @@ public class SwitchHpMpEffect extends EffectTemplate
 		int currentHp = lifeStats.getCurrentHp();
 		int currentMp = lifeStats.getCurrentMp();
 		
-		lifeStats.increaseHp(currentMp - currentHp);
-		lifeStats.increaseMp(currentHp - currentMp);
+		lifeStats.increaseHp(TYPE.NATURAL_HP, currentMp - currentHp);
+		lifeStats.increaseMp(TYPE.NATURAL_MP, currentHp - currentMp);
 	}
 
 	@Override

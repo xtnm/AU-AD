@@ -22,9 +22,11 @@ import java.util.concurrent.locks.ReentrantLock;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.state.CreatureState;
 import com.aionemu.gameserver.model.group.GroupEvent;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_FLY_TIME;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_STATUPDATE_HP;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_STATUPDATE_MP;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS.TYPE;
 import com.aionemu.gameserver.services.LifeStatsRestoreService;
 import com.aionemu.gameserver.taskmanager.tasks.PacketBroadcaster.BroadcastMode;
 import com.aionemu.gameserver.utils.PacketSendUtility;
@@ -64,17 +66,18 @@ public class PlayerLifeStats extends CreatureLifeStats<Player>
 	}
 	
 	@Override
-	protected void onIncreaseMp()
+	protected void onIncreaseMp(TYPE type, int value)
 	{
 		sendMpPacketUpdate();
+		sendAttackStatusPacketUpdate(type, value);
 		sendGroupPacketUpdate();
 	}	
 	
 	@Override
-	protected void onIncreaseHp()
+	protected void onIncreaseHp(TYPE type, int value)
 	{
 		sendHpPacketUpdate();
-		sendAttackStatusPacketUpdate();
+		sendAttackStatusPacketUpdate(type, value);
 		sendGroupPacketUpdate();
 	}
 	
@@ -99,7 +102,7 @@ public class PlayerLifeStats extends CreatureLifeStats<Player>
 		int currentRegenHp = getOwner().getGameStats().getCurrentStat(StatEnum.REGEN_HP);
 		if(getOwner().isInState(CreatureState.RESTING))
 			currentRegenHp *= 8;
-		increaseHp(currentRegenHp);
+		increaseHp(TYPE.NATURAL_HP, currentRegenHp);
 	}
 
 	@Override
@@ -108,7 +111,7 @@ public class PlayerLifeStats extends CreatureLifeStats<Player>
 		int currentRegenMp = getOwner().getGameStats().getCurrentStat(StatEnum.REGEN_MP);
 		if(getOwner().isInState(CreatureState.RESTING))
 			currentRegenMp *= 8;
-		increaseMp(currentRegenMp);
+		increaseMp(TYPE.NATURAL_MP, currentRegenMp);
 	}	
 
 	@Override
@@ -212,14 +215,16 @@ public class PlayerLifeStats extends CreatureLifeStats<Player>
 			{
 				newFp = getMaxFp();
 			}
-			this.currentFp = newFp;
+			if(currentFp != newFp)
+			{
+				this.currentFp = newFp;
+				onIncreaseFp();
+			}
 		}
 		finally
 		{
 			fpLock.unlock();
 		}
-
-		onIncreaseFp();
 
 		return currentFp;
 
@@ -336,6 +341,18 @@ public class PlayerLifeStats extends CreatureLifeStats<Player>
 	{
 		super.triggerRestoreOnRevive();
 		triggerFpRestore();
+	}
+	
+	@Override
+	protected void sendAttackStatusPacketUpdate(TYPE type, int value)
+	{
+		if(owner == null)
+		{
+			return;
+		}
+		
+		PacketSendUtility.sendPacket((Player)owner, new SM_ATTACK_STATUS((Player)owner, type, 0, value));
+		PacketSendUtility.broadcastPacket(owner, new SM_ATTACK_STATUS(owner, 0));	
 	}
 
 }

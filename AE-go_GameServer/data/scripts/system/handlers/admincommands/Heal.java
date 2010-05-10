@@ -21,6 +21,7 @@ import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.stats.StatEnum;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS.TYPE;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.chathandlers.AdminCommand;
 
@@ -54,8 +55,8 @@ public class Heal extends AdminCommand
       if(target instanceof Creature)
       {
          Creature creature = (Creature) target;
-         creature.getLifeStats().increaseHp(creature.getLifeStats().getMaxHp()+1); 
-         creature.getLifeStats().increaseMp(creature.getLifeStats().getMaxMp()+1); 
+         creature.getLifeStats().increaseHp(TYPE.HP, creature.getLifeStats().getMaxHp()+1); 
+         creature.getLifeStats().increaseMp(TYPE.MP, creature.getLifeStats().getMaxMp()+1); 
          
          if(target instanceof Player)
          {

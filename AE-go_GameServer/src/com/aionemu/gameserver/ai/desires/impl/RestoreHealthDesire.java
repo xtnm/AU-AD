@@ -20,6 +20,7 @@ import com.aionemu.gameserver.ai.AI;
 import com.aionemu.gameserver.ai.desires.AbstractDesire;
 import com.aionemu.gameserver.ai.events.Event;
 import com.aionemu.gameserver.model.gameobjects.Creature;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS.TYPE;
 
 /**
  * @author ATracer
@@ -43,7 +44,7 @@ public class RestoreHealthDesire extends AbstractDesire
 		if(owner == null || owner.getLifeStats().isAlreadyDead())
 			return false;
 		
-		owner.getLifeStats().increaseHp(restoreHpValue);
+		owner.getLifeStats().increaseHp(TYPE.NATURAL_HP, restoreHpValue);
 		if(owner.getLifeStats().isFullyRestoredHpMp())
 		{
 			ai.handleEvent(Event.RESTORED_HEALTH);

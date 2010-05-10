@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS.TYPE;
 import com.aionemu.gameserver.skillengine.model.Effect;
 
 /**
@@ -35,7 +36,7 @@ public class HealEffect
 	@Override
 	public void applyEffect(Effect effect)
 	{
-		effect.getEffected().getLifeStats().increaseHp(-effect.getReserved1());
+		effect.getEffected().getLifeStats().increaseHp(TYPE.NATURAL_HP, -effect.getReserved1());
 	}
 
 	@Override
