@@ -617,11 +617,21 @@
 
 	<!-- TODO: Quest Id: 2737  [Alliance] Turning the Tide -->
 
-	<!-- TODO: Quest Id: 2748  Decimating the Gray Wind Legion -->
+	<!-- 2748  Decimating the Gray Wind Legion -->
+	<monster_hunt start_npc_id="263569" id="2748">
+    	    <monster_infos var_id="0" npc_id="278599" max_kill="1"/>
+			<monster_infos var_id="1" npc_id="278600" max_kill="1"/>
+			<monster_infos var_id="2" npc_id="278601" max_kill="1"/>
+			<monster_infos var_id="3" npc_id="278602" max_kill="1"/>
+			<monster_infos var_id="4" npc_id="278603" max_kill="1"/>
+	</monster_hunt>
 
 	<!-- TODO: Quest Id: 2749  [Group] Defeat the Western Garrison -->
 
-	<!-- TODO: Quest Id: 2745  Have Fun Storming the Tower -->
+	<!-- 2745  Have Fun Storming the Tower -->
+	<monster_hunt start_npc_id="263267" id="2745">
+    	    <monster_infos var_id="0" npc_id="275112" max_kill="1"/>
+	</monster_hunt>
 
 	<!-- TODO: Quest Id: 2746  [Group] Defeat the Eastern Garrison -->
 
@@ -629,7 +639,8 @@
 
 	<!-- TODO: Quest Id: 2719  [Group] Challenge Elyos Officers -->
 
-	<!-- TODO: Quest Id: 2797  Balaur Bones -->
+	<!-- 2797  Balaur Bones -->
+	<item_collecting id="2797" start_npc_id="279028"/>
 
 	<!-- TODO: Quest Id: 2798  Sign on the Dotted Line -->
 
@@ -645,9 +656,15 @@
 
 	<!-- TODO: Quest Id: 2806  [Group] Attack Sulfur Elites -->
 
-	<!-- TODO: Quest Id: 2794  Crestfallen in Defeat -->
+	<!-- 2794  Crestfallen in Defeat -->
+	<item_collecting id="2794" start_npc_id="270152"/>
 
-	<!-- TODO: Quest Id: 2792  Something Unfamiliar -->
+	<!-- 2792  Something Unfamiliar -->
+	<monster_hunt start_npc_id="278116" id="2792">
+    	    <monster_infos var_id="0" npc_id="256177" max_kill="3"/>
+			<monster_infos var_id="1" npc_id="256181" max_kill="3"/>
+			<monster_infos var_id="2" npc_id="256185" max_kill="3"/>
+	</monster_hunt>
 
 	<!-- TODO: Quest Id: 2834  [Relic Reward] Ancient Icon -->
 
