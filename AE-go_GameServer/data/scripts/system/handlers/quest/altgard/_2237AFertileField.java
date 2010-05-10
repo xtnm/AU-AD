@@ -92,7 +92,7 @@ public class _2237AFertileField extends QuestHandler
 							@Override
 							public void run()
 							{
-								if(player.getTarget() == null || player.getTarget().getObjectId() != targetObjectId)
+								if(!player.isTargeting(targetObjectId))
 									return;
 								PacketSendUtility.sendPacket(player, new SM_USE_OBJECT(player.getObjectId(),
 									targetObjectId, 3000, 0));

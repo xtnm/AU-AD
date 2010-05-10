@@ -100,8 +100,8 @@ public class _1311AGermOfHope extends QuestHandler
                      @Override
                      public void run()
                      {
-                        if(player.getTarget() == null || player.getTarget().getObjectId() != targetObjectId)
-                           return;
+                    	 if(!player.isTargeting(targetObjectId))
+								return;
                         PacketSendUtility.sendPacket(player, new SM_USE_OBJECT(player.getObjectId(),
                            targetObjectId, 3000, 0));
                         PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, 38, 0,

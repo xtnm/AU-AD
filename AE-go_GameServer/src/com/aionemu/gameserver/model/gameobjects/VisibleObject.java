@@ -241,6 +241,16 @@ public abstract class VisibleObject extends AionObject
 	}
 	
 	/**
+	 * 
+	 * @param objectId
+	 * @return target is object with id equal to objectId
+	 */
+	public boolean isTargeting(int objectId)
+	{
+		return target != null && target.getObjectId() == objectId; 
+	}
+	
+	/**
 	 *  Return spawn template of this VisibleObject
 	 *  
 	 * @return SpawnTemplate
