@@ -125,6 +125,9 @@ public class ServantAi extends NpcAi
 			if(target == null || target.getLifeStats().isAlreadyDead())
 				return true;
 			
+			if(!owner.getActingCreature().isEnemy(target))
+				return false;
+			
 			Skill skill = SkillEngine.getInstance().getSkill(owner, owner.getSkillId(), 1, target);
 			if(skill != null)
 			{
