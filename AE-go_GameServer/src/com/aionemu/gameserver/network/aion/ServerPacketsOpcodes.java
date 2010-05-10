@@ -132,6 +132,7 @@ public class ServerPacketsOpcodes
 		addPacketOpcode(SM_RIFT_STATUS.class, 0xA4, idSet);
 		addPacketOpcode(SM_PLAYER_ID.class, 0xA5, idSet);
 		addPacketOpcode(SM_PRIVATE_STORE.class, 0xA6, idSet);
+		addPacketOpcode(SM_ASCENSION_MORPH.class, 0xB6, idSet);
 		addPacketOpcode(SM_ABYSS_RANK_UPDATE.class, 0xA8, idSet);
 		addPacketOpcode(SM_MAY_LOGIN_INTO_GAME.class, 0xA9, idSet);
 		addPacketOpcode(SM_BROKER_ITEMS.class, 0xAA, idSet);
