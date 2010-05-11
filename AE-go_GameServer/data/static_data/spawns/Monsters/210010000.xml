@@ -934,11 +934,11 @@
 	</spawn>
 	<!-- Training Dummy (Monster Normal lvl:5)-->
 	<spawn map="210010000" npcid="700100" pool="1" interval="295">
-		<object x="843.85156" y="1214.3412" z="118.98795" h="79"/>
+		<object x="843.85156" y="1214.3412" z="118.98795" h="28"/>
 	</spawn>
 	<!-- Training Dummy (Monster Normal lvl:5)-->
 	<spawn map="210010000" npcid="700130" pool="1" interval="295">
-		<object x="846.5148" y="1213.7222" z="118.66829" h="33"/>
+		<object x="846.5148" y="1213.7222" z="118.66829" h="28"/>
 	</spawn>
 	<!-- Tursin Big Boss (Monster Normal lvl:8)-->
 	<spawn map="210010000" npcid="210160" pool="12" interval="295">
