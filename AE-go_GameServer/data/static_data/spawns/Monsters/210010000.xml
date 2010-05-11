@@ -216,14 +216,6 @@
 		<object x="300.39447" y="2062.651" z="176.89566" h="9"/>
 		<object x="362.61594" y="1867.9619" z="157.14507" h="103"/>
 	</spawn>
-	<!-- Dukaki Watcher (Monster Normal lvl:13)-->
-	<spawn map="210010000" npcid="210684" pool="1" interval="295">
-		<object x="251.27747" y="1822.3003" z="156.93806" h="48"/>
-	</spawn>
-	<!-- Dukaki Watcher (Monster Normal lvl:13)-->
-	<spawn map="210010000" npcid="214098" pool="1" interval="295">
-		<object x="300.58643" y="2063.0266" z="176.89111" h="83"/>
-	</spawn>
 	<!-- Dukaki Woodcutter (Monster Normal lvl:6)-->
 	<spawn map="210010000" npcid="210681" pool="2" interval="295">
 		<object x="540.75415" y="1881.7616" z="136.89084" h="61"/>
