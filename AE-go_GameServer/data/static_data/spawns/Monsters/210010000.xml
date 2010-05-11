@@ -52,9 +52,10 @@
 		<object x="541.77" y="1542.66" z="112.15499" h="87"/>
 	</spawn>
 	<!-- Bigfoot Kerubar (Monster Normal lvl:4)-->
-	<spawn map="210010000" npcid="210671" pool="2" interval="295">
+	<spawn map="210010000" npcid="210671" pool="3" interval="295">
 		<object x="480.32556" y="1079.2031" z="117.89826" h="107"/>
 		<object x="571.0503" y="954.7502" z="108.5" h="8"/>
+		<object x="643.56384" y="1206.891" z="107.72391" h="111"/>
 	</spawn>
 	<!-- Brownbristle Brax (Monster Normal lvl:4)-->
 	<spawn map="210010000" npcid="210260" pool="2" interval="295">
@@ -354,7 +355,7 @@
 		<object x="244.3522" y="1633.0665" z="100.52139" h="69"/>
 	</spawn>
 	<!-- Everglade Sylphen (Monster Normal lvl:5)-->
-	<spawn map="210010000" npcid="210261" pool="53" interval="295">
+	<spawn map="210010000" npcid="210261" pool="54" interval="295">
 		<object x="549.64" y="1562.55" z="110.98686" h="33"/>
 		<object x="482.46" y="1401.88" z="109.67875" h="25"/>
 		<object x="535.33" y="1445.77" z="106.818756" h="76"/>
@@ -408,6 +409,7 @@
 		<object x="561.77045" y="1421.1903" z="113.93996" h="58"/>
 		<object x="550.49475" y="1590.0153" z="111.53474" h="96"/>
 		<object x="531.42633" y="1392.451" z="113.441154" h="18"/>
+		<object x="625.8209" y="1254.4209" z="110.5" h="27"/>
 	</spawn>
 	<!-- Fauron (Named Mob Normal lvl:6)-->
 	<spawn map="210010000" npcid="210305" pool="1" interval="1800">
@@ -843,7 +845,7 @@
 		<object x="985.6603" y="1094.893" z="112.103806" h="68"/>
 	</spawn>
 	<!-- Smallhorn Kerub (Monster Normal lvl:3)-->
-	<spawn map="210010000" npcid="210670" pool="8" interval="295">
+	<spawn map="210010000" npcid="210670" pool="13" interval="295">
 		<object x="706.9221" y="973.5971" z="103.625" h="47"/>
 		<object x="680.2414" y="987.27936" z="101.420044" h="97"/>
 		<object x="740.0905" y="1175.1973" z="106.67229" h="8"/>
@@ -852,6 +854,11 @@
 		<object x="699.5755" y="1178.4795" z="107.023094" h="41"/>
 		<object x="704.5867" y="1140.4843" z="103.05413" h="49"/>
 		<object x="700.2867" y="1238.1855" z="110.92243" h="108"/>
+		<object x="622.6182" y="1156.1986" z="107.83776" h="23"/>
+		<object x="570.2169" y="1177.3699" z="104.1387" h="10"/>
+		<object x="599.95105" y="1208.9187" z="109.96951" h="113"/>
+		<object x="653.30743" y="1168.3966" z="107.48151" h="94"/>
+		<object x="678.3754" y="1189.9366" z="108.23871" h="114"/>
 	</spawn>
 	<!-- Spore Forest Sylphen (Monster Normal lvl:7)-->
 	<spawn map="210010000" npcid="210084" pool="16" interval="295">
@@ -989,7 +996,7 @@
 		<object x="335.55563" y="1856.7441" z="150.69086" h="77"/>
 	</spawn>
 	<!-- Wandering Kerub (Monster Normal lvl:3)-->
-	<spawn map="210010000" npcid="210135" pool="40" interval="295">
+	<spawn map="210010000" npcid="210135" pool="44" interval="295">
 		<object x="872.10034" y="1141.9141" z="105.28223" h="114"/>
 		<object x="872.80304" y="1143.096" z="105.11301" h="117"/>
 		<object x="904.1111" y="1118.7042" z="102.11796" h="32"/>
@@ -1030,6 +1037,10 @@
 		<object x="606.5025" y="866.1562" z="105.18931" h="46"/>
 		<object x="602.84186" y="846.45123" z="108.90317" h="17"/>
 		<object x="584.7973" y="893.1994" z="106.57539" h="2"/>
+		<object x="612.333" y="1150.1796" z="108.48878" h="13"/>
+		<object x="587.2132" y="1178.3785" z="105.79732" h="107"/>
+		<object x="633.6232" y="1193.7015" z="108.107956" h="119"/>
+		<object x="658.2116" y="1190.718" z="107.919876" h="81"/>
 	</spawn>
 	<!-- Wandering Kerub (Monster Normal lvl:3)-->
 	<spawn map="210010000" npcid="210666" pool="3" interval="295">
@@ -1038,9 +1049,13 @@
 		<object x="781.42645" y="1184.3702" z="105.75" h="4"/>
 	</spawn>
 	<!-- Wandering Kerub (Monster Normal lvl:4)-->
-	<spawn map="210010000" npcid="210136" pool="2" interval="295">
+	<spawn map="210010000" npcid="210136" pool="6" interval="295">
 		<object x="488.1769" y="1077.7456" z="116.441246" h="27"/>
 		<object x="486.44897" y="1082.1179" z="117.09694" h="119"/>
+		<object x="598.51154" y="1155.3864" z="105.79124" h="39"/>
+		<object x="605.5883" y="1164.3844" z="107.19854" h="106"/>
+		<object x="568.4954" y="1201.4396" z="107.690994" h="115"/>
+		<object x="581.29486" y="1220.4398" z="112.33616" h="97"/>
 	</spawn>
 	<!-- Wandering Kerub (Monster Normal lvl:3)-->
 	<spawn map="210010000" npcid="210669" pool="2" interval="295">

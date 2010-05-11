@@ -21,7 +21,7 @@
 <spawns>
 	<!-- Aero (NPC Normal lvl:40)-->
 	<spawn map="210010000" npcid="203083" pool="1" interval="295">
-		<object x="425.42764" y="1739.6117" z="119.925865" h="4"/>
+		<object x="425.42764" y="1739.6117" z="119.925865" h="23"/>
 	</spawn>
 	<!-- Ager (NPC Normal lvl:10)-->
 	<spawn map="210010000" npcid="203062" pool="1" interval="295">
@@ -29,7 +29,7 @@
 	</spawn>
 	<!-- Ampeis (NPC Normal lvl:20)-->
 	<spawn map="210010000" npcid="203076" pool="1" interval="295">
-		<object x="571.57184" y="1358.7362" z="119.70952" h="46"/>
+		<object x="571.57184" y="1358.7362" z="119.70952" h="94"/>
 	</spawn>
 	<!-- Amus (NPC Normal lvl:10)-->
 	<spawn map="210010000" npcid="203063" pool="1" interval="295">
@@ -181,7 +181,7 @@
 	</spawn>
 	<!-- Melponeh (NPC Normal lvl:10)-->
 	<spawn map="210010000" npcid="203079" pool="1" interval="295">
-		<object x="421.11493" y="1754.5215" z="119.962906" h="110"/>
+		<object x="421.36108" y="1754.2916" z="119.93316" h="96"/>
 	</spawn>
 	<!-- Mercenary - Gladiator (NPC Normal lvl:2)-->
 	<spawn map="210010000" npcid="203055" pool="2" interval="295">
@@ -231,7 +231,7 @@
 	</spawn>
 	<!-- Obelisk (Object Normal lvl:3)-->
 	<spawn map="210010000" npcid="700014" pool="1" interval="295">
-		<object x="423.08667" y="1742.2821" z="120.478806" h="103"/>
+		<object x="423.08667" y="1742.2821" z="120.478806" h="23"/>
 	</spawn>
 	<!-- Obelisk (Object Normal lvl:3)-->
 	<spawn map="210010000" npcid="700013" pool="1" interval="295">
@@ -247,11 +247,11 @@
 	</spawn>
 	<!-- Pernos (NPC Normal lvl:50)-->
 	<spawn map="210010000" npcid="790001" pool="1" interval="295">
-		<object x="241.09402" y="1639.461" z="100.375" h="20"/>
+		<object x="241.09402" y="1639.461" z="100.375" h="112"/>
 	</spawn>
 	<!-- Poa (NPC Normal lvl:20)-->
 	<spawn map="210010000" npcid="203085" pool="1" interval="295">
-		<object x="262.2606" y="1276.8573" z="108.25155" h="60"/>
+		<object x="262.5719" y="1276.7648" z="108.24366" h="31"/>
 	</spawn>
 	<!-- Poeta Abyss Gate (Object Normal lvl:20)-->
 	<spawn map="210010000" npcid="700080" pool="1" interval="295">
@@ -295,7 +295,7 @@
 		<object x="243.7079" y="1634.5559" z="100.375" h="79"/>
 	</spawn>
 	<!-- Sleeping Elder (NPC Normal lvl:35)-->
-	<spawn map="210010000" npcid="730010" pool="1" interval="295">
+	<spawn map="210010000" npcid="730010" pool="6" interval="295">
 		<object x="528.0191" y="1541.4235" z="112.27287" h="28"/>
 		<object x="524.0951" y="1584.8158" z="112.4141" h="104"/>
 		<object x="558.58295" y="1597.0438" z="114.8452" h="28"/>
@@ -342,7 +342,7 @@
 	</spawn>
 	<!-- Tula (NPC Normal lvl:20)-->
 	<spawn map="210010000" npcid="203082" pool="1" interval="295">
-		<object x="429.6185" y="1756.6517" z="119.75" h="89"/>
+		<object x="429.73135" y="1756.6022" z="119.75" h="31"/>
 	</spawn>
 	<!-- Uno (NPC Normal lvl:10)-->
 	<spawn map="210010000" npcid="203061" pool="1" interval="295">
