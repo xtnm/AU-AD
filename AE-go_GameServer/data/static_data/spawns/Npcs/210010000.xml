@@ -49,7 +49,7 @@
 	</spawn>
 	<!-- Ben (NPC Normal lvl:10)-->
 	<spawn map="210010000" npcid="203073" pool="1" interval="295">
-		<object x="604.0" y="1090.0" z="100.35982" h="12"/>
+		<object x="602.31085" y="1090.2725" z="100.35982" h="102"/>
 	</spawn>
 	<!-- Blue Power Generator (Object Normal lvl:20)-->
 	<spawn map="210010000" npcid="700082" pool="1" interval="295">
@@ -82,7 +82,7 @@
 	</spawn>
 	<!-- Feira (NPC Normal lvl:10)-->
 	<spawn map="210010000" npcid="203072" pool="1" interval="295">
-		<object x="587.996" y="1094.7507" z="102.04189" h="105"/>
+		<object x="588.6266" y="1095.1138" z="101.49129" h="67"/>
 	</spawn>
 	<!-- Forest Protector Noah (NPC Normal lvl:10)-->
 	<spawn map="210010000" npcid="730007" pool="1" interval="295">
