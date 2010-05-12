@@ -32,6 +32,7 @@ import com.aionemu.gameserver.configs.main.TaskManagerConfig;
 import com.aionemu.gameserver.configs.main.ThreadConfig;
 import com.aionemu.gameserver.dao.PlayerDAO;
 import com.aionemu.gameserver.dataholders.loadingutils.XmlServiceProxy;
+import com.aionemu.gameserver.network.chatserver.ChatServer;
 import com.aionemu.gameserver.network.loginserver.LoginServer;
 import com.aionemu.gameserver.questEngine.QuestEngine;
 import com.aionemu.gameserver.services.BrokerService;
@@ -163,10 +164,11 @@ public class GameServer
 	{
 		NioServer nioServer = injector.getInstance(NioServer.class);
 		LoginServer loginServer = injector.getInstance(LoginServer.class);
-
+		ChatServer chatServer = injector.getInstance(ChatServer.class);
 		// Nio must go first
 		nioServer.connect();
 		loginServer.connect();
+		//chatServer.connect();
 	}
 
 	/**
