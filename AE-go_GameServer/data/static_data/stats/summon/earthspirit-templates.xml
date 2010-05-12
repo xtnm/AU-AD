@@ -84,6 +84,6 @@
 	</summon_stats>
 	<summon_stats npc_id_light="201018" npc_id_dark="201019" level="48">
 		<!-- Level 48 Stat from Eu Server -->
-		<stats_template maxHp="9654" pdefense="1545" mresist="913" main_hand_attack="223" run_speed="7.0"/>
+		<stats_template maxHp="8654" pdefense="1545" mresist="913" main_hand_attack="223" run_speed="7.0"/>
 	</summon_stats>
 </summon_stats_templates>
