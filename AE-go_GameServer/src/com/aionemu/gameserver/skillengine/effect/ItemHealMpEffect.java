@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.stats.StatEnum;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS.TYPE;
 import com.aionemu.gameserver.skillengine.model.Effect;
 
 
@@ -38,7 +39,7 @@ extends AbstractHealEffect
 	@Override
 	public void applyEffect(Effect effect)
 	{
-		effect.getEffected().getLifeStats().increaseMp(-effect.getReserved1());
+		effect.getEffected().getLifeStats().increaseMp(TYPE.NATURAL_MP, -effect.getReserved1());
 	}
 
 	@Override

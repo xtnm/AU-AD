@@ -124,30 +124,6 @@ public class SummonController extends CreatureController<Summon>
 			}
 		}, 5000);
 	}
-	
-	public void rest()
-	{
-		if(getOwner().getRestTask() == null)
-		{
-			getOwner().setRestTask(ThreadPoolManager.getInstance().scheduleAtFixedRate(new Runnable() {
-				
-				@Override
-				public void run() 
-				{
-					if(getOwner().getMode() == SummonMode.REST)
-					{
-						getOwner().getLifeStats().increaseHp(2 * getOwner().getGameStats().getCurrentStat(StatEnum.REGEN_HP));
-						PacketSendUtility.sendPacket(getOwner().getMaster(), new SM_SUMMON_UPDATE(getOwner()));
-					}
-					else
-					{
-						getOwner().getRestTask().cancel(true);
-						getOwner().setRestTask(null);
-					}
-				}
-			}, 1500, 2500));
-		}
-	}
 
 	/**
 	 * Change to rest mode

@@ -17,7 +17,6 @@
 package com.aionemu.gameserver.controllers;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -32,6 +31,7 @@ import com.aionemu.gameserver.model.templates.portal.ExitPoint;
 import com.aionemu.gameserver.model.templates.portal.PortalItem;
 import com.aionemu.gameserver.model.templates.portal.PortalTemplate;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EMOTION;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_USE_OBJECT;
 import com.aionemu.gameserver.services.InstanceService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
@@ -67,9 +67,6 @@ public class PortalController extends NpcController
 	{
 		if(portalTemplate == null)
 			return;
-
-		if(portalTemplate.getIdTitle() !=0 && player.getCommonData().getTitleId() != portalTemplate.getIdTitle())
-			return;			
 			
 		if(!CustomConfig.ENABLE_INSTANCES)
 			return;
@@ -85,6 +82,7 @@ public class PortalController extends NpcController
 			{
 				PacketSendUtility.sendPacket(player, new SM_USE_OBJECT(player.getObjectId(), getOwner().getObjectId(),
 					defaultUseTime, 0));
+				PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, 38, 0, getOwner().getObjectId()), true);
 				
 				analyzePortation(player);
 			}
@@ -94,37 +92,40 @@ public class PortalController extends NpcController
 			 */
 			private void analyzePortation(final Player player)
 			{
+				if(portalTemplate.getIdTitle() !=0 && player.getCommonData().getTitleId() != portalTemplate.getIdTitle())
+					return;
+
 				if(portalTemplate.getRace() != null && !portalTemplate.getRace().equals(player.getCommonData().getRace()))
 				{
-					PacketSendUtility.sendMessage(player, "You cannot use this portal because race doesn't match");
+					PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.STR_MOVE_PORTAL_ERROR_INVALID_RACE);
 					return;
 				}
-				
+
+				if((portalTemplate.getMaxLevel() != 0 && player.getLevel() > portalTemplate.getMaxLevel())
+					|| player.getLevel() < portalTemplate.getMinLevel())
+				{
+					PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.STR_MSG_CANT_INSTANCE_ENTER_LEVEL);
+					return;
+				}
+
 				PlayerGroup group = player.getPlayerGroup();
-				boolean success = true;
+				if(portalTemplate.isGroup() && group == null)
+				{
+					PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.STR_MSG_ENTER_ONLY_PARTY_DON);
+					return;
+				}
 
 				if(portalTemplate.isGroup() && group != null)
 				{
 					WorldMapInstance instance = instanceService.getRegisteredInstance(portalTemplate.getExitPoint()
 						.getMapId(), group.getGroupId());
-					// if already registered - just teleport
-					if(instance != null)
+					// register if not yet created
+					if(instance == null)
 					{
-						transfer(player, instance);
-						return;
+						instance = registerGroup(group);
 					}
-					
-					Collection<Player> players = group.getMembers();
-					for(Player p : players)
-					{
-						if(!checkPortalItem(p, portalTemplate.getPortalItem()))
-							success = false;
-					}
-					
-					if(!success)
-						return;
-					
-					portGroup(player);
+
+					transfer(player, instance);
 				}
 				else if(!portalTemplate.isGroup())
 				{
@@ -148,10 +149,6 @@ public class PortalController extends NpcController
 	 */
 	private void port(Player requester)
 	{
-		Collection<Player> players = Collections.singletonList(requester);
-		if(!checkPlayersLevel(players))
-			return;
-		
 		WorldMapInstance instance = null;
 		int worldId = portalTemplate.getExitPoint().getMapId();
 		if(portalTemplate.isInstance())
@@ -178,26 +175,11 @@ public class PortalController extends NpcController
 	/**
 	 * @param player
 	 */
-	private void portGroup(Player requester)
+	private WorldMapInstance registerGroup(PlayerGroup group)
 	{
-		PlayerGroup group = requester.getPlayerGroup();
-		if(group == null || group.getGroupLeader().getObjectId() != requester.getObjectId())
-		{
-			PacketSendUtility.sendMessage(requester, "You are not group leader");
-			return;
-		}		
-
-		Collection<Player> players = group.getMembers();
-		if(!checkPlayersLevel(players))
-			return;
-
 		WorldMapInstance instance = instanceService.getNextAvailableInstance(portalTemplate.getExitPoint().getMapId());
 		instanceService.registerGroupWithInstance(instance, group);
-		for(Player player : players)
-		{	
-			if(usePortalItem(player, portalTemplate.getPortalItem()))
-				transfer(player, instance);
-		}
+		return instance;
 	}
 
 	/**

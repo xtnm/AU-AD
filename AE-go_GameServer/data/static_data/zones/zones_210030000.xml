@@ -1692,6 +1692,7 @@
 		<link>KRAKAS_DEN</link>
 		<link>CANTAS_COAST</link>
 		<link>TURSIN_TOTEM_POLE</link>
+		<link>MIRAJUS_HOLY_GROUND</link>
 	</zone>
 
 	<zone mapid="210030000" name="Q1012" priority="17" fly="true">

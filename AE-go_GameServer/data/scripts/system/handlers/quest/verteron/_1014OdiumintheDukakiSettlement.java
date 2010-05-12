@@ -179,8 +179,9 @@ public class _1014OdiumintheDukakiSettlement extends QuestHandler
 					@Override
 					public void run()
 					{
-						if(player.getTarget() == null || player.getTarget().getObjectId() != targetObjectId || 
-								player.getInventory().getItemCountByItemId(182200011) == 0)
+						if(!player.isTargeting(targetObjectId))
+							return;
+						if(player.getInventory().getItemCountByItemId(182200011) == 0)
 							return;
 						PacketSendUtility.sendPacket(player, new SM_USE_OBJECT(player.getObjectId(), targetObjectId, 3000, 0));
 						PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, 38, 0, targetObjectId), true);

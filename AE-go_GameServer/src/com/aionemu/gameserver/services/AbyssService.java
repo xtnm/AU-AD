@@ -42,7 +42,7 @@ public class AbyssService
 	 */
 	public void doReward(Player defeated, Player winner)
 	{
-		int pointsGained = Math.round(winner.getAbyssRank().getRank().getPointsGained() * winner.getRates().getApPlayerRate());
+		int pointsGained = Math.round(defeated.getAbyssRank().getRank().getPointsGained() * winner.getRates().getApPlayerRate());
 		int pointsLost = Math.round(defeated.getAbyssRank().getRank().getPointsLost() * defeated.getRates().getApPlayerRate());
 		
 		// Level penalty calc

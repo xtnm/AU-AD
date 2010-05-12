@@ -127,10 +127,10 @@ public abstract class CreatureController<T extends Creature> extends VisibleObje
 		switch(hopType)
 		{
 			case HP:
-				getOwner().getLifeStats().increaseHp(value);
+				getOwner().getLifeStats().increaseHp(TYPE.HP, value);
 				break;
 			case MP:
-				getOwner().getLifeStats().increaseMp(value);
+				getOwner().getLifeStats().increaseMp(TYPE.MP, value);
 				break;
 			case FP:
 				getOwner().getLifeStats().increaseFp(value);

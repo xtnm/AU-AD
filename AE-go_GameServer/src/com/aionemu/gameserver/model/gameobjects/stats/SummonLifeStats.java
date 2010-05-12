@@ -20,6 +20,7 @@ import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Summon;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SUMMON_UPDATE;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS.TYPE;
 import com.aionemu.gameserver.services.LifeStatsRestoreService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 
@@ -37,10 +38,10 @@ public class SummonLifeStats extends CreatureLifeStats<Summon>
 	}
 
 	@Override
-	protected void onIncreaseHp()
+	protected void onIncreaseHp(TYPE type, int value)
 	{
 		Creature master = getOwner().getMaster();
-		sendAttackStatusPacketUpdate();
+		sendAttackStatusPacketUpdate(type, value);
 		
 		if(master instanceof Player)
 		{
@@ -49,7 +50,7 @@ public class SummonLifeStats extends CreatureLifeStats<Summon>
 	}
 
 	@Override
-	protected void onIncreaseMp()
+	protected void onIncreaseMp(TYPE type, int value)
 	{
 		// TODO Auto-generated method stub	
 	}

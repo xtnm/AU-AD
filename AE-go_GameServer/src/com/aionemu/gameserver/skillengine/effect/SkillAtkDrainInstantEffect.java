@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS.TYPE;
 import com.aionemu.gameserver.skillengine.action.DamageType;
 import com.aionemu.gameserver.skillengine.model.Effect;
 import com.aionemu.gameserver.skillengine.model.HealType;
@@ -46,10 +47,10 @@ public class SkillAtkDrainInstantEffect extends DamageEffect
 		switch(healType)
 		{
 			case HP:
-				effect.getEffector().getLifeStats().increaseHp(value);
+				effect.getEffector().getLifeStats().increaseHp(TYPE.NATURAL_HP, value);
 				break;
 			case MP:
-				effect.getEffector().getLifeStats().increaseMp(value);
+				effect.getEffector().getLifeStats().increaseMp(TYPE.NATURAL_MP, value);
 				break;
 		}
 	}

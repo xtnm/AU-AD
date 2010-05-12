@@ -28,6 +28,7 @@ import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.stats.StatEnum;
 import com.aionemu.gameserver.model.templates.quest.QuestItems;
 import com.aionemu.gameserver.network.aion.SystemMessageId;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ASCENSION_MORPH;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_DIALOG_WINDOW;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EMOTION;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ITEM_USAGE_ANIMATION;
@@ -397,6 +398,7 @@ public class _1006Ascension extends QuestHandler
 			updateQuestStatus(player, qs);
 			PacketSendUtility.sendPacket(player, new SM_SYSTEM_MESSAGE(SystemMessageId.QUEST_FAILED_$1, questsData.getQuestById(questId).getName()));
 		}
+
 		return false;
 	}
 
@@ -415,6 +417,11 @@ public class _1006Ascension extends QuestHandler
 					qs.setQuestVar(3);
 					updateQuestStatus(player, qs);
 					PacketSendUtility.sendPacket(player, new SM_SYSTEM_MESSAGE(SystemMessageId.QUEST_FAILED_$1, questsData.getQuestById(questId).getName()));
+				}
+				else
+				{
+					PacketSendUtility.sendPacket(player, new SM_ASCENSION_MORPH(1));
+					return true;
 				}
 			}
 		}

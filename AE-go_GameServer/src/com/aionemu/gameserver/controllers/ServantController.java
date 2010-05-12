@@ -16,6 +16,7 @@
  */
 package com.aionemu.gameserver.controllers;
 
+import com.aionemu.gameserver.ai.events.Event;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Servant;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
@@ -30,7 +31,8 @@ public class ServantController extends NpcController
 	@Override
 	public void onDie(Creature lastAttacker)
 	{
-		super.onDespawn(false);
+		super.onDelete();
+		getOwner().getAi().handleEvent(Event.DIED);
 	}
 
 	@Override

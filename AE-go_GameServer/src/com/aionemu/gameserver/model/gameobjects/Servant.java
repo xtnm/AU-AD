@@ -161,5 +161,10 @@ public class Servant extends Npc
 	{
 		return this.creator;
 	}
-	
+
+	@Override
+	public Creature getMaster()
+	{
+		return this.creator;
+	}
 }

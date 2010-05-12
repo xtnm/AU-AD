@@ -23,6 +23,7 @@ import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.templates.quest.QuestItems;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ASCENSION_MORPH;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_DIALOG_WINDOW;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EMOTION;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_PLAY_MOVIE;
@@ -63,6 +64,7 @@ public class _1002RequestoftheElim extends QuestHandler
 	public void register()
 	{
 		qe.addQuestLvlUp(questId);
+		qe.addOnEnterWorld(questId);
 		qe.setNpcQuestData(203076).addOnTalkEvent(questId);
 		qe.setNpcQuestData(730007).addOnTalkEvent(questId);
 		qe.setNpcQuestData(730010).addOnTalkEvent(questId);
@@ -227,7 +229,7 @@ public class _1002RequestoftheElim extends QuestHandler
 						@Override
 						public void run()
 						{
-							if(player.getTarget() == null || player.getTarget().getObjectId() != targetObjectId)
+							if(!player.isTargeting(targetObjectId))
 								return;
 							PacketSendUtility.sendPacket(player, new SM_USE_OBJECT(player.getObjectId(),
 								targetObjectId, 3000, 0));
@@ -315,6 +317,22 @@ public class _1002RequestoftheElim extends QuestHandler
 					return false;
 				default:
 					return false;
+			}
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean onEnterWorldEvent(QuestEnv env)
+	{
+		Player player = env.getPlayer();
+		QuestState qs = player.getQuestStateList().getQuestState(questId);
+		if(qs != null && qs.getStatus() == QuestStatus.START)
+		{
+			if(player.getWorldId() == 310010000)
+			{
+				PacketSendUtility.sendPacket(player, new SM_ASCENSION_MORPH(1));
+				return true;
 			}
 		}
 		return false;

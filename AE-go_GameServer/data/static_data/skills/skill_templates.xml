@@ -1202,6 +1202,14 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <statboost effectid="104051" e="1">
+                <change stat="WATER_RESISTANCE" func="PERCENT" value="20"/>
+                <change stat="WIND_RESISTANCE" func="PERCENT" value="20"/>
+                <change stat="FIRE_RESISTANCE" func="PERCENT" value="20"/>
+                <change stat="EARTH_RESISTANCE" func="PERCENT" value="20"/>
+            </statboost>
+        </effects>
     </skill_template>
     <skill_template skill_id="124" name="STR_SKILL_P_Tanacity_G1" nameId="567013" stack="SKILL_P_TANACITY" lvl="1" skilltype="MAGICAL" skillsubtype="NONE" tslot="NOSHOW" activation="PASSIVE" cooldown="0" duration="0">
         <setproperties>
@@ -1398,6 +1406,14 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <statboost effectid="101401" e="1">
+                <change stat="WATER_RESISTANCE" func="PERCENT" value="100"/>
+                <change stat="WIND_RESISTANCE" func="PERCENT" value="100"/>
+                <change stat="FIRE_RESISTANCE" func="PERCENT" value="100"/>
+                <change stat="EARTH_RESISTANCE" func="PERCENT" value="100"/>
+            </statboost>
+        </effects>
     </skill_template>
     <skill_template skill_id="151" name="STR_SKILL_WA_ArmorBreak_G1" nameId="572657" stack="SKILL_WA_ARMORBREAK" lvl="1" skilltype="PHYSICAL" skillsubtype="ATTACK" tslot="DEBUFF" activation="ACTIVE" cooldown="120" duration="0">
         <initproperties>
@@ -6838,6 +6854,14 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+            <statboost effectid="104051" e="1">
+                <change stat="WATER_RESISTANCE" func="PERCENT" value="30"/>
+                <change stat="WIND_RESISTANCE" func="PERCENT" value="30"/>
+                <change stat="FIRE_RESISTANCE" func="PERCENT" value="30"/>
+                <change stat="EARTH_RESISTANCE" func="PERCENT" value="30"/>
+            </statboost>
+        </effects>
     </skill_template>
     <skill_template skill_id="499" name="STR_SKILL_P_StatBoostPhysicalDefense_G4" nameId="579375" stack="SKILL_P_STATBOOSTPHYSICALDEFENSE" lvl="4" skilltype="PHYSICAL" skillsubtype="NONE" tslot="NOSHOW" activation="PASSIVE" cooldown="0" duration="0">
         <setproperties>
@@ -9597,6 +9621,10 @@
             <weaponstatboost weapon="BOW" effectid="106881" e="1" hoptype="SKILLLV" hopb="587">
                 <change stat="ATTACK_RANGE" func="PERCENT" value="10"/>
             </weaponstatboost>
+            <statboost effectid="106922" e="2">
+                <change stat="SPEED" func="ADD" delta="0" value="-10000"/>
+                <change stat="FLY_SPEED" func="ADD" delta="0" value="-10000"/>
+            </statboost>
         </effects>
     </skill_template>
     <skill_template skill_id="693" name="STR_SKILL_RA_MindsEye_G1" nameId="567169" stack="SKILL_RA_MINDSEYE" lvl="1" skilltype="MAGICAL" skillsubtype="BUFF" tslot="BUFF" activation="ACTIVE" cooldown="100" duration="0">
@@ -10221,6 +10249,10 @@
             <weaponstatboost weapon="BOW" effectid="106881" e="1">
                 <change stat="ATTACK_RANGE" func="PERCENT" value="10"/>
             </weaponstatboost>
+            <statboost effectid="106922" e="2">
+                <change stat="SPEED" func="ADD" delta="0" value="-10000"/>
+                <change stat="FLY_SPEED" func="ADD" delta="0" value="-10000"/>
+            </statboost>
         </effects>
     </skill_template>
     <skill_template skill_id="727" name="STR_SKILL_RA_Light_SpikeTrap_G4" nameId="574493" stack="SKILL_RA_LIGHT_SPIKETRAP" lvl="4" skilltype="MAGICAL" skillsubtype="SUMMONTRAP" tslot="NONE" activation="ACTIVE" cooldown="300" duration="1000">

@@ -21,7 +21,7 @@
 <spawns>
 	<!-- Aero (NPC Normal lvl:40)-->
 	<spawn map="210010000" npcid="203083" pool="1" interval="295">
-		<object x="425.42764" y="1739.6117" z="119.925865" h="4"/>
+		<object x="425.42764" y="1739.6117" z="119.925865" h="23"/>
 	</spawn>
 	<!-- Ager (NPC Normal lvl:10)-->
 	<spawn map="210010000" npcid="203062" pool="1" interval="295">
@@ -29,7 +29,7 @@
 	</spawn>
 	<!-- Ampeis (NPC Normal lvl:20)-->
 	<spawn map="210010000" npcid="203076" pool="1" interval="295">
-		<object x="571.57184" y="1358.7362" z="119.70952" h="46"/>
+		<object x="571.57184" y="1358.7362" z="119.70952" h="94"/>
 	</spawn>
 	<!-- Amus (NPC Normal lvl:10)-->
 	<spawn map="210010000" npcid="203063" pool="1" interval="295">
@@ -49,7 +49,7 @@
 	</spawn>
 	<!-- Ben (NPC Normal lvl:10)-->
 	<spawn map="210010000" npcid="203073" pool="1" interval="295">
-		<object x="604.0" y="1090.0" z="100.35982" h="12"/>
+		<object x="602.31085" y="1090.2725" z="100.35982" h="102"/>
 	</spawn>
 	<!-- Blue Power Generator (Object Normal lvl:20)-->
 	<spawn map="210010000" npcid="700082" pool="1" interval="295">
@@ -82,7 +82,7 @@
 	</spawn>
 	<!-- Feira (NPC Normal lvl:10)-->
 	<spawn map="210010000" npcid="203072" pool="1" interval="295">
-		<object x="587.996" y="1094.7507" z="102.04189" h="105"/>
+		<object x="588.6266" y="1095.1138" z="101.49129" h="67"/>
 	</spawn>
 	<!-- Forest Protector Noah (NPC Normal lvl:10)-->
 	<spawn map="210010000" npcid="730007" pool="1" interval="295">
@@ -125,27 +125,22 @@
 		<object x="820.9077" y="1241.0469" z="118.68173" h="110"/>
 	</spawn>
 	<!-- Kerub Grain Sack (Object Normal lvl:1)-->
-	<spawn map="210010000" npcid="700105" pool="37" interval="295">
+	<spawn map="210010000" npcid="700105" pool="32" interval="295">
 		<object x="134.33926" y="985.18567" z="288.8833" h="47"/>
 		<object x="1119.259" y="975.0611" z="131.895" h="72"/>
 		<object x="1122.15" y="991.9852" z="130.875" h="115"/>
-		<object x="1122.15" y="991.9852" z="130.875" h="97"/>
 		<object x="1122.745" y="993.2279" z="130.72151" h="61"/>
 		<object x="1124.903" y="979.7134" z="132.04431" h="12"/>
 		<object x="1126.023" y="974.8395" z="132.09976" h="32"/>
-		<object x="1126.023" y="974.8395" z="132.09976" h="30"/>
 		<object x="1126.479" y="978.1097" z="132.33981" h="36"/>
 		<object x="1129.436" y="995.4033" z="131.30655" h="44"/>
-		<object x="1129.436" y="995.4033" z="131.30655" h="56"/>
 		<object x="1130.272" y="978.2429" z="132.892" h="4"/>
 		<object x="1130.339" y="996.6207" z="131.42096" h="112"/>
 		<object x="1131.32" y="978.7134" z="132.95749" h="25"/>
-		<object x="1131.32" y="978.7134" z="132.95749" h="78"/>
 		<object x="1131.308" y="985.2346" z="132.83176" h="64"/>
 		<object x="1135.98" y="983.8059" z="132.875" h="85"/>
 		<object x="1136.648" y="988.3162" z="132.85075" h="118"/>
 		<object x="1137.327" y="983.8022" z="132.875" h="70"/>
-		<object x="1137.327" y="983.8022" z="132.875" h="78"/>
 		<object x="1195.2457" y="1161.0758" z="137.22409" h="53"/>
 		<object x="1192.5785" y="1158.552" z="137.20062" h="45"/>
 		<object x="1189.2614" y="1157.1147" z="136.91684" h="31"/>
@@ -186,7 +181,7 @@
 	</spawn>
 	<!-- Melponeh (NPC Normal lvl:10)-->
 	<spawn map="210010000" npcid="203079" pool="1" interval="295">
-		<object x="421.11493" y="1754.5215" z="119.962906" h="110"/>
+		<object x="421.36108" y="1754.2916" z="119.93316" h="96"/>
 	</spawn>
 	<!-- Mercenary - Gladiator (NPC Normal lvl:2)-->
 	<spawn map="210010000" npcid="203055" pool="2" interval="295">
@@ -202,9 +197,8 @@
 		<object x="846.45575" y="1214.7573" z="118.740364" h="91"/>
 	</spawn>
 	<!-- Mercenary - Templar (NPC Normal lvl:2)-->
-	<spawn map="210010000" npcid="203053" pool="3" interval="295">
+	<spawn map="210010000" npcid="203053" pool="2" interval="295">
 		<object x="1025.321" y="975.2266" z="130.46117" h="12"/>
-		<object x="1125.042" y="983.4776" z="132.04315" h="43"/>
 		<object x="1049.111" y="1208.146" z="109.578926" h="79"/>
 	</spawn>
 	<!-- Minalinerk (NPC Normal lvl:9)-->
@@ -237,7 +231,7 @@
 	</spawn>
 	<!-- Obelisk (Object Normal lvl:3)-->
 	<spawn map="210010000" npcid="700014" pool="1" interval="295">
-		<object x="423.08667" y="1742.2821" z="120.478806" h="103"/>
+		<object x="423.08667" y="1742.2821" z="120.478806" h="23"/>
 	</spawn>
 	<!-- Obelisk (Object Normal lvl:3)-->
 	<spawn map="210010000" npcid="700013" pool="1" interval="295">
@@ -253,11 +247,11 @@
 	</spawn>
 	<!-- Pernos (NPC Normal lvl:50)-->
 	<spawn map="210010000" npcid="790001" pool="1" interval="295">
-		<object x="241.09402" y="1639.461" z="100.375" h="20"/>
+		<object x="241.09402" y="1639.461" z="100.375" h="112"/>
 	</spawn>
 	<!-- Poa (NPC Normal lvl:20)-->
 	<spawn map="210010000" npcid="203085" pool="1" interval="295">
-		<object x="262.2606" y="1276.8573" z="108.25155" h="60"/>
+		<object x="262.5719" y="1276.7648" z="108.24366" h="31"/>
 	</spawn>
 	<!-- Poeta Abyss Gate (Object Normal lvl:20)-->
 	<spawn map="210010000" npcid="700080" pool="1" interval="295">
@@ -301,7 +295,7 @@
 		<object x="243.7079" y="1634.5559" z="100.375" h="79"/>
 	</spawn>
 	<!-- Sleeping Elder (NPC Normal lvl:35)-->
-	<spawn map="210010000" npcid="730010" pool="1" interval="295">
+	<spawn map="210010000" npcid="730010" pool="6" interval="295">
 		<object x="528.0191" y="1541.4235" z="112.27287" h="28"/>
 		<object x="524.0951" y="1584.8158" z="112.4141" h="104"/>
 		<object x="558.58295" y="1597.0438" z="114.8452" h="28"/>
@@ -348,7 +342,7 @@
 	</spawn>
 	<!-- Tula (NPC Normal lvl:20)-->
 	<spawn map="210010000" npcid="203082" pool="1" interval="295">
-		<object x="429.6185" y="1756.6517" z="119.75" h="89"/>
+		<object x="429.73135" y="1756.6022" z="119.75" h="31"/>
 	</spawn>
 	<!-- Uno (NPC Normal lvl:10)-->
 	<spawn map="210010000" npcid="203061" pool="1" interval="295">
