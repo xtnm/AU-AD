@@ -145,7 +145,7 @@
 		<object x="329.75217" y="1838.5773" z="146.37245" h="33"/>
 	</spawn>
 	<!-- Dukaki Lumberjack (Monster Normal lvl:6)-->
-	<spawn map="210010000" npcid="210679" pool="8" interval="295">
+	<spawn map="210010000" npcid="210682" pool="11" interval="295">
 		<object x="525.1636" y="1907.3639" z="139.18979" h="86"/>
 		<object x="565.22736" y="1803.9087" z="135.99725" h="111"/>
 		<object x="552.37897" y="1810.5895" z="132.24342" h="86"/>
@@ -154,14 +154,8 @@
 		<object x="462.65228" y="1827.7167" z="133.2457" h="101"/>
 		<object x="488.87906" y="1799.1621" z="126.649704" h="28"/>
 		<object x="476.78333" y="1770.6821" z="123.11979" h="110"/>
-	</spawn>
-	<!-- Dukaki Lumberjack (Monster Normal lvl:6)-->
-	<spawn map="210010000" npcid="210682" pool="2" interval="295">
 		<object x="541.871" y="1910.065" z="138.5203" h="88"/>
 		<object x="537.94354" y="1864.6781" z="137.0" h="112"/>
-	</spawn>
-	<!-- Dukaki Lumberjack (Monster Normal lvl:6)-->
-	<spawn map="210010000" npcid="210680" pool="1" interval="295">
 		<object x="439.19443" y="1845.1283" z="137.39104" h="9"/>
 	</spawn>
 	<!-- Dukaki Patrol (Monster Normal lvl:8)-->
