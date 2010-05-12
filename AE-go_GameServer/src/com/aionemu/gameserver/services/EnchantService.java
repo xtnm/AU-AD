@@ -23,7 +23,9 @@ import javax.inject.Inject;
 
 import org.apache.log4j.Logger;
 
+
 import com.aionemu.commons.utils.Rnd;
+import com.aionemu.gameserver.configs.main.CustomConfig;
 import com.aionemu.gameserver.model.DescriptionId;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.PersistentState;
@@ -215,24 +217,24 @@ public class EnchantService
 		switch(stoneCount)
 		{
 			case 1:
-				successRate = 57;
+				successRate = CustomConfig.MSPERCENT;
 				break;
 			case 2:
-				successRate = 43;
+				successRate = CustomConfig.MSPERCENT1;
 				break;
 			case 3:
-				successRate = 33;
+				successRate = CustomConfig.MSPERCENT2;
 				break;
 			case 4:
-				successRate = 25;
+				successRate = CustomConfig.MSPERCENT3;
 				break;
 			case 5:
-				successRate = 19;
+				successRate = CustomConfig.MSPERCENT4;
 				break;
 		}
 
 		if(stoneCount >= 6)
-			successRate = 2;
+			successRate = CustomConfig.MSPERCENT5;
 
 		if(Rnd.get(0, 100) < successRate)
 			result = true;
