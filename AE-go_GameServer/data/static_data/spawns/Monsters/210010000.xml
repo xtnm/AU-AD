@@ -951,7 +951,7 @@
 		<object x="291.92416" y="1912.2936" z="154.38861" h="7"/>
 		<object x="344.85" y="1976.57" z="154.875" h="41"/>
 	</spawn>
-	<!-- Tursin Loudmouth (Monster Normal lvl:15)-->
+	<!-- Tursin Loudmouth (Monster Normal lvl:8)-->
 	<spawn map="210010000" npcid="210182" pool="9" interval="295">
 		<object x="289.61853" y="1048.7123" z="127.90715" h="65"/>
 		<object x="228.93323" y="1183.3091" z="112.51969" h="108"/>
@@ -970,7 +970,7 @@
 		<object x="206.76799" y="1089.7312" z="110.3937" h="10"/>
 		<object x="236.84491" y="1127.1542" z="103.376854" h="99"/>
 	</spawn>
-	<!-- Tursin Loudmouth (Monster Normal lvl:15)-->
+	<!-- Tursin Loudmouth (Monster Normal lvl:9)-->
 	<spawn map="210010000" npcid="210161" pool="7" interval="295">
 		<object x="178.90607" y="1109.1394" z="130.62675" h="102"/>
 		<object x="220.56963" y="1129.6007" z="104.05344" h="30"/>
