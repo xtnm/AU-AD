@@ -23,6 +23,8 @@ import org.apache.log4j.Logger;
 import com.aionemu.commons.network.Dispatcher;
 import com.aionemu.commons.network.NioServer;
 import com.aionemu.gameserver.configs.network.NetworkConfig;
+import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.network.chatserver.serverpackets.SM_CS_PLAYER_AUTH;
 import com.aionemu.gameserver.network.factories.ChatServerConnectionFactory;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
 import com.google.inject.Inject;
@@ -39,7 +41,7 @@ public class ChatServer
 	private ChatServerConnectionFactory	cscFactory;
 
 	private boolean						serverShutdown	= false;
-
+	
 	@Inject
 	public void setNioServer(NioServer nioServer)
 	{
@@ -106,5 +108,14 @@ public class ChatServer
 				}
 			}, 5000);
 		}
+	}
+
+	/**
+	 * @param player
+	 * @param token
+	 */
+	public void sendPlayerLoginRequst(Player player, byte[] token)
+	{
+		chatServer.sendPacket(new SM_CS_PLAYER_AUTH(player.getObjectId(), token));
 	}
 }
