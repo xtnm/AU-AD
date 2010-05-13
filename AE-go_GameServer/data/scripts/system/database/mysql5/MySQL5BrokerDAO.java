@@ -174,14 +174,13 @@ public class MySQL5BrokerDAO extends BrokerDAO
 	
 	private boolean deleteBrokerItem(final BrokerItem item)
 	{
-		boolean result = DB.insertUpdate("DELETE FROM `broker` WHERE `itemPointer` = ? AND `sellerId` = ? AND `expireTime` = ? AND `isSold` = ? AND `isSettled` = ?", new IUStH(){
+		boolean result = DB.insertUpdate("DELETE FROM `broker` WHERE `itemPointer` = ? AND `sellerId` = ? AND `expireTime` = ? AND `isSettled` = ?", new IUStH(){
 			@Override
 			public void handleInsertUpdate(PreparedStatement stmt) throws SQLException
 			{
 				stmt.setInt(1, item.getItemUniqueId());
 				stmt.setInt(2, item.getSellerId());
 				stmt.setTimestamp(3, item.getExpireTime());
-				stmt.setBoolean(4, item.isSold());
 				stmt.setBoolean(5, item.isSettled());
 				
 				stmt.execute();
