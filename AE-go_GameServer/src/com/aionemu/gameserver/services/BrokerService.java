@@ -35,6 +35,7 @@ import com.aionemu.gameserver.model.gameobjects.BrokerItem;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.PersistentState;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.model.templates.broker.BrokerItemMask;
 import com.aionemu.gameserver.model.templates.broker.BrokerMessages;
 import com.aionemu.gameserver.model.templates.broker.BrokerRace;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_BROKER_ITEMS;
@@ -154,12 +155,12 @@ public class BrokerService
 		}
 	}
 
-	public void showRequestedItems(Player player, int mask, int sortType, int startPage)
+	public void showRequestedItems(Player player, int clientMask, int sortType, int startPage)
 	{
 		List<BrokerItem> searchItems = new ArrayList<BrokerItem>();
 
-		if(player.getBrokerListCache().size() == 0 || player.getBrokerMaskCache() != mask)
-			searchItems = getItemsByMask(player, mask);
+		if(player.getBrokerListCache().size() == 0 || player.getBrokerMaskCache() != clientMask)
+			searchItems = getItemsByMask(player, clientMask);
 		else
 			searchItems = getItemsFromCache(player);
 
@@ -177,7 +178,7 @@ public class BrokerService
 		PacketSendUtility.sendPacket(player, new SM_BROKER_ITEMS(searchItems, totalSearchItemsCount, startPage));
 	}
 
-	private List<BrokerItem> getItemsByMask(Player player, int mask)
+	private List<BrokerItem> getItemsByMask(Player player, int clientMask)
 	{
 		List<BrokerItem> brokerItems = getRaceBrokerItems(player.getCommonData().getRace());
 		if(brokerItems == null)
@@ -185,125 +186,38 @@ public class BrokerService
 
 		List<BrokerItem> searchItems = new ArrayList<BrokerItem>();
 		FastMap<Integer, Integer> brokerListCache = new FastMap<Integer, Integer>();
-
+		
 		int itemIdModifier = 100000;
-		int secondMask = 0;
-		int thirdMask = 0;
-		int fourthMask = 0;
-		int fifthMask = 0;
-
-		if(mask > 2000)
+		int trueMask = clientMask;
+		
+		if(clientMask > 2000)
 		{
-			switch(mask)
-			{
-				case 9010:
-					itemIdModifier = 10000000;
-					mask = 10;
-					break;
-
-				case 9020:
-					itemIdModifier = 10000000;
-					mask = 11;
-					break;
-
-				case 9030:
-					itemIdModifier = 10000000;
-					mask = 12;
-					break;
-
-				case 9040:
-					mask = 1400;
-					secondMask = 1695;
-					break;
-
-				case 9050:
-					itemIdModifier = 1000000;
-					mask = 152;
-					break;
-
-				case 9060:
-					itemIdModifier = 10000000;
-					mask = 16;
-					secondMask = 14;
-					break;
-
-				case 8010:
-					itemIdModifier = 100000;
-					mask = 1109;
-					break;
-
-				case 8020:
-					itemIdModifier = 100000;
-					mask = 1101;
-					secondMask = 1111;
-					thirdMask = 1121;
-					fourthMask = 1131;
-					fifthMask = 1141;
-					break;
-
-				case 8030:
-					itemIdModifier = 100000;
-					mask = 1103;
-					secondMask = 1113;
-					thirdMask = 1123;
-					fourthMask = 1133;
-					fifthMask = 1143;
-					break;
-
-				case 8040:
-					itemIdModifier = 100000;
-					mask = 1105;
-					secondMask = 1115;
-					thirdMask = 1125;
-					fourthMask = 1135;
-					fifthMask = 1145;
-					break;
-
-				case 8050:
-					itemIdModifier = 100000;
-					mask = 1106;
-					secondMask = 1116;
-					thirdMask = 1126;
-					fourthMask = 1136;
-					fifthMask = 1146;
-					break;
-
-				case 7070:
-					itemIdModifier = 10000000;
-					mask = 18;
-					break;
-
-				case 7062:
-					itemIdModifier = 100000;
-					mask = 1690;
-					secondMask = 1410;
-					thirdMask = 1630;
-					fourthMask = 1693;
-					break;
-
-				default:
-					return null;
-
-					// TODO: Other masks
-			}
+			trueMask = BrokerItemMask.getBrokerMaskById(clientMask).getMask();
+			
+			if(trueMask <=0)
+				return null;
+			
+			itemIdModifier = 1000;
 		}
 
 		for(int i = 0; i < brokerItems.size(); i++)
 		{
-			if(brokerItems.get(i) == null || brokerItems.get(i).getItem() == null)
+			BrokerItem item = brokerItems.get(i);
+			
+			if(item == null || item.getItem() == null)
 				continue;
 
-			int itemMask = brokerItems.get(i).getItemId() / itemIdModifier;
-			if(itemMask == mask || itemMask == secondMask || itemMask == thirdMask || itemMask == fourthMask
-				|| itemMask == fifthMask)
+			int itemMask = item.getItemId() / itemIdModifier;
+			
+			if(itemMask == (trueMask | itemMask))
 			{
-				searchItems.add(brokerItems.get(i));
-				brokerListCache.put(brokerItems.get(i).getItemUniqueId(), i);
+				searchItems.add(item);
+				brokerListCache.put(item.getItemUniqueId(), i);
 			}
 		}
 
 		player.setBrokerListCache(brokerListCache);
-		player.setBrokerMaskCache(mask);
+		player.setBrokerMaskCache(clientMask);
 
 		return searchItems;
 	}
