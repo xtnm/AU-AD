@@ -181,7 +181,7 @@ public class MySQL5BrokerDAO extends BrokerDAO
 				stmt.setInt(1, item.getItemUniqueId());
 				stmt.setInt(2, item.getSellerId());
 				stmt.setTimestamp(3, item.getExpireTime());
-				stmt.setBoolean(5, item.isSettled());
+				stmt.setBoolean(4, item.isSettled());
 				
 				stmt.execute();
 			}
