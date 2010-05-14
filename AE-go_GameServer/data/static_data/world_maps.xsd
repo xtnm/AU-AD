@@ -14,10 +14,19 @@
 						<xs:attribute name="instance" type="xs:boolean" />
 						<xs:attribute name="water_level" type="xs:int" use="required" />
 						<xs:attribute name="death_level" type="xs:int" use="required" />
+						<xs:attribute name="world_type" type="worldType" />
 					</xs:complexType>
 				</xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+	<xs:simpleType name="worldType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ASMODAE" />
+			<xs:enumeration value="ELYSEA" />
+			<xs:enumeration value="ABYSS" />
+			<xs:enumeration value="NONE" />
+		</xs:restriction>
+	</xs:simpleType>
 </xs:schema>
 

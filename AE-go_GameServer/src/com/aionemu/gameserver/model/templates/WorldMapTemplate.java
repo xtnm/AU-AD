@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.aionemu.gameserver.world.WorldType;
 /**
  * @author Luno
  * 
@@ -76,6 +77,12 @@ public class WorldMapTemplate
 	 */
 	@XmlAttribute(name = "water_level", required = true)
 	private int	waterlevel	= 16;
+	
+	/**
+	 * world type of map
+	 */
+	@XmlAttribute(name = "world_type")
+	private WorldType worldType = WorldType.NONE;
 
 	public String getName()
 	{
@@ -122,5 +129,13 @@ public class WorldMapTemplate
 	public int getDeathLevel()
 	{
 		return deathlevel;
+	}
+	
+	/**
+	 * @return the WorldType
+	 */
+	public WorldType getWorldType()
+	{
+		return worldType;
 	}
 }

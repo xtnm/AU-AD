@@ -90,6 +90,15 @@ public class WorldMap
 	{
 		return worldMapTemplate.getDeathLevel();
 	}
+	
+	/**
+	 * Returns the WorldType of the map
+	 * @return world type
+	 */
+	public WorldType getWorldType()
+	{
+		return worldMapTemplate.getWorldType();
+	}
 
 	/**
 	 * Returns map id
