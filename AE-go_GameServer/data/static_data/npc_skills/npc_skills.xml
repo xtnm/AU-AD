@@ -17,12 +17,113 @@
     <npcskills npcid="201025" skill_count="1">
         <npcskill abouthp="false" probability="10" skilllevel="2" skillid="17770" id="1"/>
     </npcskills>
+    <npcskills npcid="201029" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="2" skillid="17656" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="17656" id="2"/>
+    </npcskills>
     <npcskills npcid="201037" skill_count="2">
         <npcskill abouthp="false" probability="10" skilllevel="4" skillid="17779" id="1"/>
         <npcskill abouthp="false" probability="10" skilllevel="4" skillid="17638" id="2"/>
     </npcskills>
     <npcskills npcid="204260" skill_count="1">
         <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16642" id="1"/>
+    </npcskills>
+    <npcskills npcid="210063" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16523" id="1"/>
+    </npcskills>
+    <npcskills npcid="210064" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16523" id="1"/>
+    </npcskills>
+    <npcskills npcid="210076" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16782" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="17736" id="2"/>
+    </npcskills>
+    <npcskills npcid="210077" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="2" skillid="17406" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="2" skillid="16419" id="2"/>
+    </npcskills>
+    <npcskills npcid="210084" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="17813" id="1"/>
+    </npcskills>
+    <npcskills npcid="210092" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16516" id="1"/>
+    </npcskills>
+    <npcskills npcid="210096" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16516" id="1"/>
+    </npcskills>
+    <npcskills npcid="210097" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16516" id="1"/>
+    </npcskills>
+    <npcskills npcid="210133" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16419" id="1"/>
+    </npcskills>
+    <npcskills npcid="210135" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16419" id="1"/>
+    </npcskills>
+    <npcskills npcid="210139" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="2" skillid="17018" id="1"/>
+    </npcskills>
+    <npcskills npcid="210140" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="3" skillid="17018" id="1"/>
+    </npcskills>
+    <npcskills npcid="210160" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16602" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16424" id="2"/>
+    </npcskills>
+    <npcskills npcid="210161" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16602" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16424" id="2"/>
+    </npcskills>
+    <npcskills npcid="210162" skill_count="3">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16742" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16856" id="2"/>
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16608" id="3"/>
+    </npcskills>
+    <npcskills npcid="210181" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16604" id="1"/>
+    </npcskills>
+    <npcskills npcid="210182" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16604" id="1"/>
+    </npcskills>
+    <npcskills npcid="210191" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="17241" id="1"/>
+    </npcskills>
+    <npcskills npcid="210204" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16417" id="1"/>
+    </npcskills>
+    <npcskills npcid="210205" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16417" id="1"/>
+    </npcskills>
+    <npcskills npcid="210261" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="17813" id="1"/>
+    </npcskills>
+    <npcskills npcid="210264" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16416" id="1"/>
+    </npcskills>
+    <npcskills npcid="210265" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16416" id="1"/>
+    </npcskills>
+    <npcskills npcid="210266" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16423" id="1"/>
+    </npcskills>
+    <npcskills npcid="210267" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="2" skillid="16423" id="1"/>
+    </npcskills>
+    <npcskills npcid="210268" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16418" id="1"/>
+    </npcskills>
+    <npcskills npcid="210269" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16834" id="1"/>
+    </npcskills>
+    <npcskills npcid="210302" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16417" id="1"/>
+    </npcskills>
+    <npcskills npcid="210316" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="3" skillid="16425" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="3" skillid="16446" id="2"/>
+    </npcskills>
+    <npcskills npcid="210320" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="2" skillid="16834" id="1"/>
     </npcskills>
     <npcskills npcid="210413" skill_count="1">
         <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16416" id="1"/>
@@ -208,6 +309,49 @@
     <npcskills npcid="210626" skill_count="1">
         <npcskill abouthp="false" probability="10" skilllevel="8" skillid="16465" id="1"/>
     </npcskills>
+    <npcskills npcid="210670" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16419" id="1"/>
+    </npcskills>
+    <npcskills npcid="210671" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16419" id="1"/>
+    </npcskills>
+    <npcskills npcid="210674" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="17813" id="1"/>
+    </npcskills>
+    <npcskills npcid="210678" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16516" id="1"/>
+    </npcskills>
+    <npcskills npcid="210679" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16516" id="1"/>
+    </npcskills>
+    <npcskills npcid="210680" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16516" id="1"/>
+    </npcskills>
+    <npcskills npcid="210685" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16653" id="1"/>
+    </npcskills>
+    <npcskills npcid="210686" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16516" id="1"/>
+    </npcskills>
+    <npcskills npcid="210688" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="2" skillid="16782" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="2" skillid="17736" id="2"/>
+    </npcskills>
+    <npcskills npcid="210698" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="3" skillid="17406" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="3" skillid="16419" id="2"/>
+    </npcskills>
+    <npcskills npcid="210699" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="2" skillid="17403" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="2" skillid="17404" id="2"/>
+    </npcskills>
+    <npcskills npcid="210700" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="3" skillid="17403" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="3" skillid="17404" id="2"/>
+    </npcskills>
+    <npcskills npcid="210706" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="17406" id="1"/>
+    </npcskills>
     <npcskills npcid="210751" skill_count="1">
         <npcskill abouthp="false" probability="10" skilllevel="10" skillid="16574" id="1"/>
     </npcskills>
@@ -225,6 +369,9 @@
     <npcskills npcid="210761" skill_count="2">
         <npcskill abouthp="false" probability="10" skilllevel="13" skillid="16836" id="1"/>
         <npcskill abouthp="false" probability="10" skilllevel="13" skillid="16561" id="2"/>
+    </npcskills>
+    <npcskills npcid="211043" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="1" skillid="16526" id="1"/>
     </npcskills>
     <npcskills npcid="211279" skill_count="3">
         <npcskill abouthp="false" probability="10" skilllevel="9" skillid="16536" id="1"/>
@@ -244,16 +391,25 @@
     <npcskills npcid="211295" skill_count="1">
         <npcskill abouthp="false" probability="10" skilllevel="9" skillid="16675" id="1"/>
     </npcskills>
-    <npcskills npcid="211297" skill_count="1">
+    <npcskills npcid="211297" skill_count="2">
         <npcskill abouthp="false" probability="10" skilllevel="12" skillid="16931" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="12" skillid="16667" id="2"/>
     </npcskills>
     <npcskills npcid="211298" skill_count="2">
         <npcskill abouthp="false" probability="10" skilllevel="12" skillid="16807" id="1"/>
         <npcskill abouthp="false" probability="10" skilllevel="12" skillid="16516" id="2"/>
     </npcskills>
+    <npcskills npcid="211299" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="12" skillid="16518" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="12" skillid="16516" id="2"/>
+    </npcskills>
     <npcskills npcid="211300" skill_count="2">
         <npcskill abouthp="false" probability="10" skilllevel="12" skillid="16531" id="1"/>
         <npcskill abouthp="false" probability="10" skilllevel="12" skillid="16862" id="2"/>
+    </npcskills>
+    <npcskills npcid="211301" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="12" skillid="16841" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="12" skillid="16553" id="2"/>
     </npcskills>
     <npcskills npcid="211302" skill_count="2">
         <npcskill abouthp="false" probability="10" skilllevel="12" skillid="16841" id="1"/>
@@ -266,6 +422,9 @@
         <npcskill abouthp="false" probability="10" skilllevel="13" skillid="16516" id="1"/>
         <npcskill abouthp="false" probability="10" skilllevel="13" skillid="16807" id="2"/>
     </npcskills>
+    <npcskills npcid="211306" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="13" skillid="16518" id="1"/>
+    </npcskills>
     <npcskills npcid="211307" skill_count="2">
         <npcskill abouthp="false" probability="10" skilllevel="13" skillid="16531" id="1"/>
         <npcskill abouthp="false" probability="10" skilllevel="13" skillid="16862" id="2"/>
@@ -273,6 +432,66 @@
     <npcskills npcid="211310" skill_count="2">
         <npcskill abouthp="false" probability="10" skilllevel="13" skillid="16841" id="1"/>
         <npcskill abouthp="false" probability="10" skilllevel="13" skillid="16819" id="2"/>
+    </npcskills>
+    <npcskills npcid="211312" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="13" skillid="16841" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="13" skillid="16553" id="2"/>
+    </npcskills>
+    <npcskills npcid="211314" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16518" id="1"/>
+    </npcskills>
+    <npcskills npcid="211315" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16520" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16516" id="2"/>
+    </npcskills>
+    <npcskills npcid="211316" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16516" id="1"/>
+    </npcskills>
+    <npcskills npcid="211317" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16936" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16938" id="2"/>
+    </npcskills>
+    <npcskills npcid="211318" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16938" id="1"/>
+    </npcskills>
+    <npcskills npcid="211319" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16836" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16561" id="2"/>
+    </npcskills>
+    <npcskills npcid="211320" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16518" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16516" id="2"/>
+    </npcskills>
+    <npcskills npcid="211321" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16520" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16516" id="2"/>
+    </npcskills>
+    <npcskills npcid="211322" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16516" id="1"/>
+    </npcskills>
+    <npcskills npcid="211323" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16936" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16938" id="2"/>
+    </npcskills>
+    <npcskills npcid="211324" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16938" id="1"/>
+    </npcskills>
+    <npcskills npcid="211325" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16811" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16732" id="2"/>
+    </npcskills>
+    <npcskills npcid="211327" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16836" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16561" id="2"/>
+    </npcskills>
+    <npcskills npcid="211328" skill_count="3">
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16561" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16588" id="2"/>
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16595" id="3"/>
+    </npcskills>
+    <npcskills npcid="211338" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="16" skillid="16811" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="16" skillid="16732" id="2"/>
     </npcskills>
     <npcskills npcid="212345" skill_count="1">
         <npcskill abouthp="false" probability="10" skilllevel="9" skillid="16451" id="1"/>
@@ -297,14 +516,53 @@
         <npcskill abouthp="false" probability="10" skilllevel="11" skillid="16567" id="1"/>
         <npcskill abouthp="false" probability="10" skilllevel="11" skillid="16916" id="2"/>
     </npcskills>
+    <npcskills npcid="212370" skill_count="3">
+        <npcskill abouthp="false" probability="10" skilllevel="13" skillid="16666" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="13" skillid="16931" id="2"/>
+        <npcskill abouthp="false" probability="10" skilllevel="13" skillid="16667" id="3"/>
+    </npcskills>
     <npcskills npcid="212372" skill_count="1">
         <npcskill abouthp="false" probability="10" skilllevel="13" skillid="16519" id="1"/>
+    </npcskills>
+    <npcskills npcid="212373" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="12" skillid="16520" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="12" skillid="16395" id="2"/>
+    </npcskills>
+    <npcskills npcid="212375" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16588" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16595" id="2"/>
+    </npcskills>
+    <npcskills npcid="212376" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16841" id="1"/>
+    </npcskills>
+    <npcskills npcid="212377" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16841" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16553" id="2"/>
+    </npcskills>
+    <npcskills npcid="212379" skill_count="3">
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16912" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16837" id="2"/>
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16915" id="3"/>
+    </npcskills>
+    <npcskills npcid="212585" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16746" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16660" id="2"/>
+    </npcskills>
+    <npcskills npcid="212640" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="13" skillid="16531" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="13" skillid="16862" id="2"/>
     </npcskills>
     <npcskills npcid="213843" skill_count="1">
         <npcskill abouthp="false" probability="10" skilllevel="11" skillid="16939" id="1"/>
     </npcskills>
     <npcskills npcid="213844" skill_count="1">
         <npcskill abouthp="false" probability="10" skilllevel="12" skillid="16939" id="1"/>
+    </npcskills>
+    <npcskills npcid="213845" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="12" skillid="16841" id="1"/>
+    </npcskills>
+    <npcskills npcid="213846" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="13" skillid="16841" id="1"/>
     </npcskills>
     <npcskills npcid="213847" skill_count="2">
         <npcskill abouthp="false" probability="10" skilllevel="12" skillid="16538" id="1"/>
@@ -318,6 +576,9 @@
         <npcskill abouthp="false" probability="10" skilllevel="12" skillid="16556" id="1"/>
         <npcskill abouthp="false" probability="10" skilllevel="12" skillid="16845" id="2"/>
     </npcskills>
+    <npcskills npcid="213850" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="13" skillid="16556" id="1"/>
+    </npcskills>
     <npcskills npcid="213853" skill_count="1">
         <npcskill abouthp="false" probability="10" skilllevel="12" skillid="17231" id="1"/>
     </npcskills>
@@ -330,13 +591,73 @@
     <npcskills npcid="213856" skill_count="1">
         <npcskill abouthp="false" probability="10" skilllevel="12" skillid="16459" id="1"/>
     </npcskills>
+    <npcskills npcid="213857" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16459" id="1"/>
+    </npcskills>
+    <npcskills npcid="213858" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16459" id="1"/>
+    </npcskills>
     <npcskills npcid="213859" skill_count="2">
         <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16394" id="1"/>
         <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16520" id="2"/>
     </npcskills>
+    <npcskills npcid="213860" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16394" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16520" id="2"/>
+    </npcskills>
     <npcskills npcid="213861" skill_count="2">
         <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16394" id="1"/>
         <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16520" id="2"/>
+    </npcskills>
+    <npcskills npcid="213862" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16394" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16520" id="2"/>
+    </npcskills>
+    <npcskills npcid="213865" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16599" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16520" id="2"/>
+    </npcskills>
+    <npcskills npcid="213867" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16808" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16516" id="2"/>
+    </npcskills>
+    <npcskills npcid="213868" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16808" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16516" id="2"/>
+    </npcskills>
+    <npcskills npcid="213870" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16714" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16573" id="2"/>
+    </npcskills>
+    <npcskills npcid="213871" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16841" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16553" id="2"/>
+    </npcskills>
+    <npcskills npcid="213872" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16841" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16553" id="2"/>
+    </npcskills>
+    <npcskills npcid="213873" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="14" skillid="17255" id="1"/>
+    </npcskills>
+    <npcskills npcid="213874" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="17255" id="1"/>
+    </npcskills>
+    <npcskills npcid="213875" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16574" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16699" id="2"/>
+    </npcskills>
+    <npcskills npcid="213876" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16574" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16699" id="2"/>
+    </npcskills>
+    <npcskills npcid="213877" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16711" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="14" skillid="16395" id="2"/>
+    </npcskills>
+    <npcskills npcid="213878" skill_count="2">
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16711" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="15" skillid="16395" id="2"/>
     </npcskills>
     <npcskills npcid="213894" skill_count="1">
         <npcskill abouthp="false" probability="10" skilllevel="11" skillid="16930" id="1"/>
@@ -347,6 +668,9 @@
     <npcskills npcid="213897" skill_count="1">
         <npcskill abouthp="false" probability="10" skilllevel="12" skillid="16564" id="1"/>
     </npcskills>
+    <npcskills npcid="213898" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="13" skillid="16564" id="1"/>
+    </npcskills>
     <npcskills npcid="213911" skill_count="1">
         <npcskill abouthp="false" probability="10" skilllevel="13" skillid="16459" id="1"/>
     </npcskills>
@@ -356,11 +680,22 @@
     <npcskills npcid="214031" skill_count="1">
         <npcskill abouthp="false" probability="10" skilllevel="7" skillid="16653" id="1"/>
     </npcskills>
-    <npcskills npcid="749062" skill_count="2">
+    <npcskills npcid="214369" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="36" skillid="16516" id="1"/>
+    </npcskills>
+    <npcskills npcid="286080" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="21" skillid="16516" id="1"/>
+    </npcskills>
+    <npcskills npcid="749062" skill_count="3">
         <npcskill abouthp="false" probability="10" skilllevel="3" skillid="17515" id="1"/>
         <npcskill abouthp="false" probability="10" skilllevel="9" skillid="17515" id="2"/>
+        <npcskill abouthp="false" probability="10" skilllevel="8" skillid="17515" id="3"/>
     </npcskills>
-    <npcskills npcid="749072" skill_count="1">
+    <npcskills npcid="749065" skill_count="1">
+        <npcskill abouthp="false" probability="10" skilllevel="9" skillid="17515" id="1"/>
+    </npcskills>
+    <npcskills npcid="749072" skill_count="2">
         <npcskill abouthp="false" probability="10" skilllevel="9" skillid="17512" id="1"/>
+        <npcskill abouthp="false" probability="10" skilllevel="7" skillid="17512" id="2"/>
     </npcskills>
 </npc_skill_templates>
