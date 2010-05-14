@@ -28,6 +28,7 @@ import com.aionemu.commons.network.NioServer;
 import com.aionemu.commons.services.LoggingService;
 import com.aionemu.commons.utils.AEInfos;
 import com.aionemu.gameserver.configs.Config;
+import com.aionemu.gameserver.configs.main.CustomConfig;
 import com.aionemu.gameserver.configs.main.TaskManagerConfig;
 import com.aionemu.gameserver.configs.main.ThreadConfig;
 import com.aionemu.gameserver.dao.PlayerDAO;
@@ -168,7 +169,9 @@ public class GameServer
 		// Nio must go first
 		nioServer.connect();
 		loginServer.connect();
-		//chatServer.connect();
+		
+		if(!CustomConfig.DISABLE_CHAT_SERVER)
+			chatServer.connect();
 	}
 
 	/**

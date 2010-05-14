@@ -20,6 +20,7 @@ import com.aionemu.gameserver.network.chatserver.CsClientPacket;
 import com.aionemu.gameserver.network.chatserver.CsPacketHandler;
 import com.aionemu.gameserver.network.chatserver.ChatServerConnection.State;
 import com.aionemu.gameserver.network.chatserver.clientpackets.CM_CS_AUTH_RESPONSE;
+import com.aionemu.gameserver.network.chatserver.clientpackets.CM_CS_PLAYER_AUTH_RESPONSE;
 import com.google.inject.Injector;
 
 /**
@@ -38,6 +39,7 @@ public class CsPacketHandlerFactory
 		this.injector = injector;
 
 		addPacket(new CM_CS_AUTH_RESPONSE(0x00), State.CONNECTED);
+		addPacket(new CM_CS_PLAYER_AUTH_RESPONSE(0x01), State.AUTHED);
 	}
 
 	/**

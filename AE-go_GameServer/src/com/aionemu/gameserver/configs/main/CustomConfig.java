@@ -82,4 +82,10 @@ public class CustomConfig
 	public static int		MSPERCENT4;	
 	@Property(key = "gameserver.manastone.percent5", defaultValue = "2")
 	public static int		MSPERCENT5;	
+	
+	/**
+	 * Disable chat server connection
+	 */
+	@Property(key = "gameserver.disable.chatserver", defaultValue = "true")
+	public static boolean	DISABLE_CHAT_SERVER;
 }
