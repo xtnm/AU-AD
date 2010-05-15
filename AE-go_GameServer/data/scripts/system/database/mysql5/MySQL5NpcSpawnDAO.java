@@ -78,8 +78,8 @@ public class MySQL5NpcSpawnDAO extends NpcSpawnDAO
 	@Override
 	public synchronized int insertTemplate(final int npcId, final WorldPosition position)
 	{
-		final int[] template = new int[1];
-		DB.insertUpdate("INSERT INTO npc_spawn_template(template_id, map, pos_x, pos_y, pos_z, heading) VALUES (?,?,?,?,?,?); SELECT LAST_INSERT_ID()", new IUStH() {
+		final ArrayList<Integer> template = new ArrayList<Integer>();
+		DB.insertUpdate("INSERT INTO npc_spawn_template(template_id, map, pos_x, pos_y, pos_z, heading) VALUES (?,?,?,?,?,?)", new IUStH() {
 			
 			@Override
 			public void handleInsertUpdate(PreparedStatement arg0) throws SQLException {
@@ -99,7 +99,7 @@ public class MySQL5NpcSpawnDAO extends NpcSpawnDAO
 			public void handleRead(ResultSet arg0) throws SQLException {
 				// TODO Auto-generated method stub
 				arg0.first();
-				template[0] = arg0.getInt(0);
+				template.add(arg0.getInt(0));
 			}
 			
 			@Override
@@ -108,7 +108,7 @@ public class MySQL5NpcSpawnDAO extends NpcSpawnDAO
 				
 			}
 		});
-		return template[0];
+		return template.get(0);
 	}
 	
 	@Override
@@ -170,7 +170,7 @@ public class MySQL5NpcSpawnDAO extends NpcSpawnDAO
 	@Override
 	public int getCacheEntryRelatedTemplate(final int uniqueObjectId)
 	{
-		final int[] resultTemplate = new int[1];
+		final ArrayList<Integer> resultTemplate = new ArrayList<Integer>();
 		DB.select("SELECT template_id FROM npc_spawn_cache WHERE unique_objectid = ?", new ParamReadStH() {
 			
 			@Override
@@ -178,11 +178,11 @@ public class MySQL5NpcSpawnDAO extends NpcSpawnDAO
 				// TODO Auto-generated method stub
 				if(arg0.first())
 				{
-					resultTemplate[0] = arg0.getInt("template_id");
+					resultTemplate.add(arg0.getInt("template_id"));
 				}
 				else
 				{
-					resultTemplate[0] = 0;
+					resultTemplate.add(0);
 				}
 			}
 			
@@ -192,7 +192,7 @@ public class MySQL5NpcSpawnDAO extends NpcSpawnDAO
 				arg0.setInt(1, uniqueObjectId);
 			}
 		});
-		return resultTemplate[0];
+		return resultTemplate.get(0);
 	}
 
 	@Override
