@@ -79,7 +79,7 @@ public class MySQL5NpcSpawnDAO extends NpcSpawnDAO
 	public synchronized int insertTemplate(final int npcId, final WorldPosition position)
 	{
 		final ArrayList<Integer> template = new ArrayList<Integer>();
-		DB.insertUpdate("INSERT INTO npc_spawn_template(template_id, map, pos_x, pos_y, pos_z, heading) VALUES (?,?,?,?,?,?)", new IUStH() {
+		DB.insertUpdate("INSERT INTO npc_spawn_template(npc_template_id, map, pos_x, pos_y, pos_z, heading) VALUES (?,?,?,?,?,?)", new IUStH() {
 			
 			@Override
 			public void handleInsertUpdate(PreparedStatement arg0) throws SQLException {
