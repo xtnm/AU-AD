@@ -33,12 +33,12 @@ public enum WorldMapType
 	ELTNEN(210020000),
 	HEIRON(210040000),
 	THEOMOBOS(210060000),
-	
+
 	// Prison
 	PRISON(510010000),
 
 	RESHANTA(400010000),
-	
+
 	//Instances
 	NOCHSANA_TRAINING_CAMP(300030000),
 	DARK_POETA(300040000),
@@ -51,7 +51,7 @@ public enum WorldMapType
 	DREDGION(300110000),
 	KYSIS_CHAMBER(300120000),
 	MIREN_CHAMBER(300130000),
-	KROTAN_CHAMBER(300140000), 
+	KROTAN_CHAMBER(300140000),
 	THEOBOMOS_LAB(310110000),
 	SKY_TEMPLE_INTERIOR(320050000),
 	DRAUPNIR_CAVE(320080000),
@@ -61,7 +61,7 @@ public enum WorldMapType
 
 	private final int worldId;
 
-	WorldMapType(int worldId )
+	WorldMapType(int worldId)
 	{
 		this.worldId = worldId;
 	}
@@ -70,7 +70,7 @@ public enum WorldMapType
 	{
 		return worldId;
 	}
-	
+
 	/**
 	 * @param id of world
 	 * @return WorldMapType
