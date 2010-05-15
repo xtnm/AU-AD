@@ -90,8 +90,21 @@ public class MySQL5NpcSpawnDAO extends NpcSpawnDAO
 				arg0.setFloat(4, position.getY());
 				arg0.setFloat(5, position.getZ());
 				arg0.setByte(6, position.getHeading());
-				ResultSet rset = arg0.executeQuery();
-				template[0] = rset.getInt(0);
+				arg0.execute();
+			}
+		});
+		DB.select("SELECT LAST_INSERT_ID()", new ParamReadStH() {
+			
+			@Override
+			public void handleRead(ResultSet arg0) throws SQLException {
+				// TODO Auto-generated method stub
+				template[0] = arg0.getInt(0);
+			}
+			
+			@Override
+			public void setParams(PreparedStatement arg0) throws SQLException {
+				// TODO Auto-generated method stub
+				
 			}
 		});
 		return template[0];
