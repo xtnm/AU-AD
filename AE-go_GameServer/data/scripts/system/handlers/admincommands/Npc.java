@@ -23,6 +23,7 @@ import com.aionemu.commons.database.dao.DAOManager;
 import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.dao.NpcSpawnDAO;
 import com.aionemu.gameserver.model.ChatType;
+import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.templates.spawn.SpawnTemplate;
@@ -129,7 +130,35 @@ public class Npc extends AdminCommand
 		}
 		else if(params[0].equals("del"))
 		{
-			PacketSendUtility.sendMessage(admin, "not yet implemented");
+			boolean temp = false;
+			if(params.length == 2)
+			{
+				if(params[1].equals("temp"))
+				{
+					temp = true;
+				}
+			}
+			if(admin.getTarget() == null || !(admin.getTarget() instanceof com.aionemu.gameserver.model.gameobjects.Npc))
+			{
+				PacketSendUtility.sendMessage(admin, "Invalid target");
+				return;
+			}
+			com.aionemu.gameserver.model.gameobjects.Npc target = (com.aionemu.gameserver.model.gameobjects.Npc)admin.getTarget();
+			int relatedTemplateId = DAOManager.getDAO(NpcSpawnDAO.class).getCacheEntryRelatedTemplate(target.getObjectId());
+			if(relatedTemplateId == 0)
+			{
+				PacketSendUtility.sendMessage(admin, "This NPC is xml-defined. It will be despawned but will re-appear on next reboot.");
+			}
+			else
+			{
+				DAOManager.getDAO(NpcSpawnDAO.class).deleteFromCache(relatedTemplateId);
+				if(!temp)
+				{
+					DAOManager.getDAO(NpcSpawnDAO.class).deleteTemplate(relatedTemplateId);
+				}
+			}
+			target.getController().delete();
+			PacketSendUtility.sendMessage(admin, "NPC deleted");
 		}
 		else
 		{

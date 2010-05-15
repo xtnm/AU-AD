@@ -44,4 +44,10 @@ public abstract class NpcSpawnDAO implements DAO
 	public abstract ArrayList<NpcSpawnTemplate> getAllTemplates();
 	
 	public abstract void clearCache();
+	
+	public abstract int getCacheEntryRelatedTemplate(int uniqueObjectId);
+	
+	public abstract void deleteFromCache(int templateId);
+	
+	public abstract void deleteTemplate(int templateId);
 }

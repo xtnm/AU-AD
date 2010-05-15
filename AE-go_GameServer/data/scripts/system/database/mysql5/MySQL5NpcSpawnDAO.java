@@ -124,6 +124,62 @@ public class MySQL5NpcSpawnDAO extends NpcSpawnDAO
 			}
 		});
 	}
+	
+	@Override
+	public void deleteFromCache(final int templateId)
+	{
+		DB.insertUpdate("DELETE FROM npc_spawn_cache WHERE template_id = ?", new IUStH() {
+			
+			@Override
+			public void handleInsertUpdate(PreparedStatement arg0) throws SQLException {
+				// TODO Auto-generated method stub
+				arg0.setInt(1, templateId);
+				arg0.execute();
+			}
+		});
+	}
+	
+	@Override
+	public void deleteTemplate(final int templateId)
+	{
+		DB.insertUpdate("DELETE FROM npc_spawn_template WHERE template_id = ?", new IUStH() {
+			
+			@Override
+			public void handleInsertUpdate(PreparedStatement arg0) throws SQLException {
+				// TODO Auto-generated method stub
+				arg0.setInt(1, templateId);
+				arg0.execute();
+			}
+		});
+	}
+	
+	@Override
+	public int getCacheEntryRelatedTemplate(final int uniqueObjectId)
+	{
+		final int[] resultTemplate = new int[1];
+		DB.select("SELECT template_id FROM npc_spawn_cache WHERE unique_objectid = ?", new ParamReadStH() {
+			
+			@Override
+			public void handleRead(ResultSet arg0) throws SQLException {
+				// TODO Auto-generated method stub
+				if(arg0.first())
+				{
+					resultTemplate[0] = arg0.getInt("template_id");
+				}
+				else
+				{
+					resultTemplate[0] = 0;
+				}
+			}
+			
+			@Override
+			public void setParams(PreparedStatement arg0) throws SQLException {
+				// TODO Auto-generated method stub
+				arg0.setInt(1, uniqueObjectId);
+			}
+		});
+		return resultTemplate[0];
+	}
 
 	@Override
 	public boolean supports(String databaseName, int majorVersion, int minorVersion)
