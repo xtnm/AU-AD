@@ -48,7 +48,6 @@ import com.aionemu.gameserver.dataholders.loadingutils.XmlServiceProxy;
 import com.aionemu.gameserver.questEngine.QuestEngine;
 import com.aionemu.gameserver.services.AbyssService;
 import com.aionemu.gameserver.services.AccountService;
-import com.aionemu.gameserver.services.AnnouncementService;
 import com.aionemu.gameserver.services.BrokerService;
 import com.aionemu.gameserver.services.ChatService;
 import com.aionemu.gameserver.services.CraftService;
@@ -149,7 +148,6 @@ public class DataInjectionModule extends AbstractModule
 		bind(StigmaService.class).in(Scopes.SINGLETON);
 		bind(GameTimeService.class).asEagerSingleton();
 		bind(BrokerService.class).asEagerSingleton();
-		bind(AnnouncementService.class).asEagerSingleton();
 		bind(ChatService.class).asEagerSingleton();
 	}
 	
