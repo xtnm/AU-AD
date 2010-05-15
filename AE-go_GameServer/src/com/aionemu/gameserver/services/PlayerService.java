@@ -25,6 +25,7 @@ import com.aionemu.commons.database.dao.DAOManager;
 import com.aionemu.gameserver.configs.main.CacheConfig;
 import com.aionemu.gameserver.configs.main.GSConfig;
 import com.aionemu.gameserver.controllers.FlyController;
+import com.aionemu.gameserver.controllers.ReviveController;
 import com.aionemu.gameserver.controllers.SummonController.UnsummonType;
 import com.aionemu.gameserver.controllers.effect.PlayerEffectController;
 import com.aionemu.gameserver.controllers.factory.ObjectControllerFactory;
@@ -234,6 +235,7 @@ public class PlayerService
 			.getPlayerStatsTemplate().getMaxMp()));
 		player.setEffectController(new PlayerEffectController(player));
 		player.setFlyController(new FlyController(player));
+		player.setReviveController(new ReviveController(player));
 		
 		player.setQuestStateList(DAOManager.getDAO(PlayerQuestListDAO.class).load(player));
 		player.setRecipeList(DAOManager.getDAO(PlayerRecipesDAO.class).load(player.getObjectId()));

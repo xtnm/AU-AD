@@ -228,7 +228,7 @@ public class PlayerController extends CreatureController<Player>
 				sp.getDuelService().onDie(player);
 				return;
 			}
-			else
+			else if(player.isEnemy(master))
 			{
 				doReward(master);
 			}
@@ -236,7 +236,7 @@ public class PlayerController extends CreatureController<Player>
 
 		super.onDie(lastAttacker);
 		
-		if(master instanceof Npc)
+		if(master instanceof Npc || master == player)
 		{
 			if(player.getLevel() > 4)
 				player.getCommonData().calculateExpLoss();

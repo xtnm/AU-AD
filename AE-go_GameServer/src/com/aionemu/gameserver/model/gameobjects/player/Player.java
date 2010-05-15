@@ -26,6 +26,7 @@ import com.aionemu.commons.callbacks.Enhancable;
 import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.controllers.FlyController;
 import com.aionemu.gameserver.controllers.PlayerController;
+import com.aionemu.gameserver.controllers.ReviveController;
 import com.aionemu.gameserver.controllers.effect.PlayerEffectController;
 import com.aionemu.gameserver.dataholders.DataManager;
 import com.aionemu.gameserver.model.Gender;
@@ -93,6 +94,7 @@ public class Player extends Creature
 	private long				prisonTimer		= 0;
 	private boolean				invul;
 	private FlyController		flyController;
+	private ReviveController	reviveController;
 	private CraftingTask		craftingTask;
 	private int					flightTeleportId;
 	private int					flightDistance;
@@ -874,6 +876,16 @@ public class Player extends Creature
 	public void setFlyController(FlyController flyController)
 	{
 		this.flyController = flyController;
+	}
+
+	public ReviveController getReviveController()
+	{
+		return reviveController;
+	}
+
+	public void setReviveController(ReviveController reviveController)
+	{
+		this.reviveController = reviveController;
 	}
 
 	public int getLastOnline()

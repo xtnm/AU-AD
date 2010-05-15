@@ -19,6 +19,7 @@ package com.aionemu.gameserver.utils.stats;
 import org.apache.log4j.Logger;
 
 import com.aionemu.commons.utils.Rnd;
+import com.aionemu.gameserver.configs.main.CustomConfig;
 import com.aionemu.gameserver.controllers.attack.AttackStatus;
 import com.aionemu.gameserver.model.SkillElement;
 import com.aionemu.gameserver.model.gameobjects.Creature;
@@ -32,6 +33,8 @@ import com.aionemu.gameserver.model.gameobjects.stats.CreatureGameStats;
 import com.aionemu.gameserver.model.gameobjects.stats.StatEnum;
 import com.aionemu.gameserver.model.templates.item.WeaponType;
 import com.aionemu.gameserver.model.templates.stats.NpcRank;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS;
+import com.aionemu.gameserver.utils.PacketSendUtility;
 
 /**
  * @author ATracer
@@ -584,6 +587,41 @@ public class StatFunctions
 			.getGameStats().getCurrentStat(StatEnum.MAGICAL_ACCURACY)) / 10);
 
 		return resistRate;
+	}
+
+	/**
+	 * Calculates the fall damage
+	 * 
+	 * @param player
+	 * @param distance
+	 * @return True if the player is forced to his bind location.
+	 */
+	public static boolean calculateFallDamage(Player player, float distance)
+	{
+		if(player.isInvul())
+		{
+			return false;
+		}
+
+		if(distance >= CustomConfig.MAXIMUM_DISTANCE_DAMAGE)
+		{
+			player.getController().onStopMove();
+			player.getFlyController().onStopGliding();
+			player.getController().onDie(player);
+
+			player.getReviveController().bindRevive();
+			return true;
+		}
+		else if(distance >= CustomConfig.MINIMUM_DISTANCE_DAMAGE)
+		{
+			float dmgPerMeter = player.getLifeStats().getMaxHp() * CustomConfig.FALL_DAMAGE_PERCENTAGE / 100f;
+			int damage = (int) (distance * dmgPerMeter);
+
+			player.getLifeStats().reduceHp(damage, player);
+			PacketSendUtility.sendPacket(player, new SM_ATTACK_STATUS(player, SM_ATTACK_STATUS.TYPE.DAMAGE, 0, damage));
+		}
+
+		return false;
 	}
 
 }

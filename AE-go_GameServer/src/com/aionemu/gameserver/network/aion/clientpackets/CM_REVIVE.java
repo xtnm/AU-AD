@@ -18,15 +18,7 @@ package com.aionemu.gameserver.network.aion.clientpackets;
 
 import com.aionemu.gameserver.controllers.ReviveType;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
-import com.aionemu.gameserver.model.gameobjects.state.CreatureState;
 import com.aionemu.gameserver.network.aion.AionClientPacket;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_EMOTION;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_PLAYER_INFO;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_STATS_INFO;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
-import com.aionemu.gameserver.services.TeleportService;
-import com.aionemu.gameserver.utils.PacketSendUtility;
-import com.google.inject.Inject;
 
 /**
  * @author ATracer, orz, avol, Simple
@@ -34,9 +26,6 @@ import com.google.inject.Inject;
  */
 public class CM_REVIVE extends AionClientPacket
 {
-	@Inject
-	private TeleportService teleportService;
-	
 	private int reviveId;
 	
 	/**
@@ -70,53 +59,14 @@ public class CM_REVIVE extends AionClientPacket
 		switch(reviveType)
 		{
 			case BIND_REVIVE:
-				bindRevive(activePlayer);
+				activePlayer.getReviveController().bindRevive();
 				break;
 			case SKILL_REVIVE:
-				skillRevive(activePlayer);
+				activePlayer.getReviveController().skillRevive();
 				break;
 			default:
 				break;
 		}
 		
-	}
-
-	/**
-	 * @param activePlayer
-	 */
-	private void skillRevive(Player activePlayer)
-	{
-		activePlayer.getLifeStats().setCurrentHpPercent(10);
-		activePlayer.getLifeStats().setCurrentMpPercent(10);
-		activePlayer.getCommonData().setDp(0);
-		activePlayer.getLifeStats().triggerRestoreOnRevive();		
-		
-		activePlayer.unsetState(CreatureState.DEAD);		
-		PacketSendUtility.broadcastPacket(activePlayer, new SM_EMOTION(activePlayer, 14), true);
-		
-		sendPacket(SM_SYSTEM_MESSAGE.REVIVE);
-		sendPacket(new SM_STATS_INFO(activePlayer));
-	}
-
-	/**
-	 * @param activePlayer
-	 */
-	private void bindRevive(Player activePlayer)
-	{
-		activePlayer.getLifeStats().setCurrentHpPercent(10);
-		activePlayer.getLifeStats().setCurrentMpPercent(10);
-		activePlayer.getCommonData().setDp(0);
-		activePlayer.getLifeStats().triggerRestoreOnRevive();
-		
-		activePlayer.unsetState(CreatureState.DEAD);
-		activePlayer.getController().startProtectionActiveTask();
-
-		sendPacket(SM_SYSTEM_MESSAGE.REVIVE);
-		// TODO: It is not always necessary.
-		// sendPacket(new SM_QUEST_LIST(activePlayer));
-		sendPacket(new SM_STATS_INFO(activePlayer));
-		sendPacket(new SM_PLAYER_INFO(activePlayer, false));
-
-		teleportService.moveToBindLocation(activePlayer, true);
 	}
 }
