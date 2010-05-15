@@ -98,6 +98,7 @@ public class MySQL5NpcSpawnDAO extends NpcSpawnDAO
 			@Override
 			public void handleRead(ResultSet arg0) throws SQLException {
 				// TODO Auto-generated method stub
+				arg0.first();
 				template[0] = arg0.getInt(0);
 			}
 			

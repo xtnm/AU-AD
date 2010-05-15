@@ -102,7 +102,7 @@ public class Npc extends AdminCommand
 				}
 			}
 			
-			SpawnTemplate spawn = spawnEngine.addNewSpawn(admin.getWorldId(), 1, npcId, admin.getX(), admin.getY(), admin.getZ(), admin.getHeading(), 0, 0, temp, true);
+			SpawnTemplate spawn = spawnEngine.addNewSpawn(admin.getWorldId(), 1, npcId, admin.getX(), admin.getY(), admin.getZ(), admin.getHeading(), 0, 0, false, true);
 			
 			if(spawn == null)
 			{
