@@ -83,14 +83,15 @@
 		<stats_template maxHp="3638" pdefense="539" mresist="252" main_hand_attack="236" run_speed="11.0"/>
 	</summon_stats>
 	<summon_stats npc_id_light="201020" npc_id_dark="201021" level="45">
-		<stats_template maxHp="3766" pdefense="550" mresist="252" main_hand_attack="240" run_speed="11.0"/>
+		<!-- Level 45 Stat from Eu Server -->
+		<stats_template maxHp="4173" pdefense="552" mresist="861" main_hand_attack="265" run_speed="11.0"/>
 	</summon_stats>
 	<!-- (Retail Like) Wind spirit IV -->
 	<summon_stats npc_id_light="201036" npc_id_dark="201037" level="47">
-		<stats_template maxHp="4456" pdefense="576" mresist="900" main_hand_attack="282" run_speed="11.0"/>
+		<stats_template maxHp="4456" pdefense="576" mresist="900" main_hand_attack="281" run_speed="11.0"/>
 	</summon_stats>
 	<summon_stats npc_id_light="201036" npc_id_dark="201037" level="48">
-		<stats_template maxHp="4606" pdefense="587" mresist="917" main_hand_attack="286" run_speed="11.0"/>
+		<stats_template maxHp="4606" pdefense="587" mresist="917" main_hand_attack="285" run_speed="11.0"/>
 	</summon_stats>
 	<summon_stats npc_id_light="201036" npc_id_dark="201037" level="49">
 		<stats_template maxHp="4756" pdefense="598" mresist="934" main_hand_attack="290" run_speed="11.0"/>

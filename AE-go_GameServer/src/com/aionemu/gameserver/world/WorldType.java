@@ -24,5 +24,7 @@ public enum WorldType
 {
 	ASMODAE,
 	ELYSEA,
-	ABYSS
+	ABYSS,
+	PRISON,
+	NONE
 }

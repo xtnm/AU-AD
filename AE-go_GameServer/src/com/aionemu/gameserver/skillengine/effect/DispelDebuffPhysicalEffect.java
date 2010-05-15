@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
 import com.aionemu.gameserver.skillengine.model.Effect;
+import com.aionemu.gameserver.skillengine.model.SkillTargetSlot;
 import com.aionemu.gameserver.skillengine.model.SkillType;
 
 /**
@@ -38,7 +39,8 @@ public class DispelDebuffPhysicalEffect extends EffectTemplate
 	@Override
 	public void applyEffect(Effect effect)
 	{
-		effect.getEffected().getEffectController().removeEffectBySkillType(SkillType.PHYSICAL, value);
+		effect.getEffected().getEffectController().removeEffectBySkillTypeAndTargetSlot(SkillType.PHYSICAL,
+			SkillTargetSlot.DEBUFF, value);
 	}
 
 	@Override

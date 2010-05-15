@@ -68,24 +68,42 @@ public class CustomConfig
 	@Property(key = "gameserver.base.flytime", defaultValue = "60")
 	public static int		BASE_FLYTIME;
 
+        /*
+	*Allows players of opposite factions to bind in enemy territory
+	*/
+	@Property(key = "gameserver.cross.faction.binding", defaultValue = "false")
+	public static boolean				ENABLE_CROSS_FACTION_BINDING;
+
 	/**
 	 * Fly damage activator
 	 */
-	@Property(key = "active.fall.damage", defaultValue = "true")
-	public static boolean		ACTIVE_FALL_DAMAGE;
-	
-	
+	@Property(key = "gameserver.fall.damage.active", defaultValue = "true")
+	public static boolean	ACTIVE_FALL_DAMAGE;
+
 	/**
-	 * Base Fly damage multiplier
+	 * Percentage of damage per meter.
 	 */
-	@Property(key = "fall.damage.multiplier", defaultValue = "2.5")
-	public static float		FALL_DAMAGE_MULTIPLIER;
-	
+	@Property(key = "gameserver.fall.damage.percentage", defaultValue = "1.0")
+	public static float		FALL_DAMAGE_PERCENTAGE;
+
 	/**
-	 * Fly minimum damage range
+	 * Minimum fall damage range
 	 */
-	@Property(key = "minimum.distance.damage", defaultValue = "30")
+	@Property(key = "gameserver.fall.damage.distance.minimum", defaultValue = "10")
 	public static int		MINIMUM_DISTANCE_DAMAGE;
+
+	/**
+	 * Maximum fall distance after which you will die after hitting the ground.
+	 */
+	@Property(key = "gameserver.fall.damage.distance.maximum", defaultValue = "50")
+	public static int		MAXIMUM_DISTANCE_DAMAGE;
+
+	/**
+	 * Maximum fall distance after which you will die in mid air.
+	 */
+	@Property(key = "gameserver.fall.damage.distance.midair", defaultValue = "200")
+	public static int		MAXIMUM_DISTANCE_MIDAIR;
+
 	/**
 	 * ManaStone Rates
 	 */
@@ -100,5 +118,11 @@ public class CustomConfig
 	@Property(key = "gameserver.manastone.percent4", defaultValue = "19")
 	public static int		MSPERCENT4;	
 	@Property(key = "gameserver.manastone.percent5", defaultValue = "2")
-	public static int		MSPERCENT5;
+	public static int		MSPERCENT5;	
+	
+	/**
+	 * Disable chat server connection
+	 */
+	@Property(key = "gameserver.disable.chatserver", defaultValue = "true")
+	public static boolean	DISABLE_CHAT_SERVER;
 }

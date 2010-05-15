@@ -90,6 +90,15 @@ public class WorldMap
 	{
 		return worldMapTemplate.getDeathLevel();
 	}
+	
+	/**
+	 * Returns the WorldType of the map
+	 * @return world type
+	 */
+	public WorldType getWorldType()
+	{
+		return worldMapTemplate.getWorldType();
+	}
 
 	/**
 	 * Returns map id
@@ -101,15 +110,6 @@ public class WorldMap
 		return worldMapTemplate.getMapId();
 	}
 	
-	/**
-	 * Returns destorytime
-	 * 
-	 * @return destorytime
-	 */
-	public int getdestroyTime()
-	{
-		return worldMapTemplate.getdestroyTime();
-	}
 	/**
 	 * 
 	 * @return int

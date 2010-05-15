@@ -108,4 +108,16 @@ public class Trap extends Npc
 	{
 		return NpcObjectType.TRAP;
 	}
+
+	@Override
+	public Creature getActingCreature()
+	{
+		return this.creator;
+	}
+
+	@Override
+	public Creature getMaster()
+	{
+		return this.creator;
+	}
 }

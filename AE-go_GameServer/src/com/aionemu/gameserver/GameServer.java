@@ -29,18 +29,17 @@ import com.aionemu.commons.network.NioServer;
 import com.aionemu.commons.services.LoggingService;
 import com.aionemu.commons.utils.AEInfos;
 import com.aionemu.gameserver.configs.Config;
+import com.aionemu.gameserver.configs.main.CustomConfig;
 import com.aionemu.gameserver.configs.main.TaskManagerConfig;
 import com.aionemu.gameserver.configs.main.ThreadConfig;
 import com.aionemu.gameserver.controllers.BannedChatController;
-import com.aionemu.gameserver.controllers.BannedIpController;
-import com.aionemu.gameserver.dao.BannedIpDAO;
 import com.aionemu.gameserver.dao.NpcSpawnDAO;
 import com.aionemu.gameserver.dao.PlayerDAO;
 import com.aionemu.gameserver.dataholders.loadingutils.XmlServiceProxy;
-import com.aionemu.gameserver.model.ban.BannedIP;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
 import com.aionemu.gameserver.model.templates.spawn.NpcSpawnTemplate;
 import com.aionemu.gameserver.model.templates.spawn.SpawnTemplate;
+import com.aionemu.gameserver.network.chatserver.ChatServer;
 import com.aionemu.gameserver.network.loginserver.LoginServer;
 import com.aionemu.gameserver.questEngine.QuestEngine;
 import com.aionemu.gameserver.services.BrokerService;
@@ -200,10 +199,13 @@ public class GameServer
 	{
 		NioServer nioServer = injector.getInstance(NioServer.class);
 		LoginServer loginServer = injector.getInstance(LoginServer.class);
-
+		ChatServer chatServer = injector.getInstance(ChatServer.class);
 		// Nio must go first
 		nioServer.connect();
 		loginServer.connect();
+		
+		if(!CustomConfig.DISABLE_CHAT_SERVER)
+			chatServer.connect();
 	}
 
 	/**

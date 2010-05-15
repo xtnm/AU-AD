@@ -45,6 +45,18 @@ public class NetworkConfig
 	 */
 	@Property(key = "gameserver.network.login.address", defaultValue = "localhost:9014")
 	public static InetSocketAddress	LOGIN_ADDRESS;
+	
+	/**
+	 * ChatServer address
+	 */
+	@Property(key = "gameserver.network.chat.address", defaultValue = "localhost:9021")
+	public static InetSocketAddress	CHAT_ADDRESS;
+	
+	/**
+	 * Password for this GameServer ID for authentication at ChatServer.
+	 */
+	@Property(key = "gameserver.network.chat.password", defaultValue = "")
+	public static String			CHAT_PASSWORD;
 
 	/**
 	 * GameServer id that this GameServer will request at LoginServer.

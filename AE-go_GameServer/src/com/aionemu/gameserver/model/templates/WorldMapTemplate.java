@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.aionemu.gameserver.world.WorldType;
 /**
  * @author Luno
  * 
@@ -76,11 +77,12 @@ public class WorldMapTemplate
 	 */
 	@XmlAttribute(name = "water_level", required = true)
 	private int	waterlevel	= 16;
+	
 	/**
-	 * destroyTime on instance
+	 * world type of map
 	 */
-	@XmlAttribute(name = "destroy_time")
-	private int	destroyTime	= 0;
+	@XmlAttribute(name = "world_type")
+	private WorldType worldType = WorldType.NONE;
 
 	public String getName()
 	{
@@ -128,8 +130,12 @@ public class WorldMapTemplate
 	{
 		return deathlevel;
 	}
-	public int getdestroyTime()
+	
+	/**
+	 * @return the WorldType
+	 */
+	public WorldType getWorldType()
 	{
-		return destroyTime;
+		return worldType;
 	}
 }

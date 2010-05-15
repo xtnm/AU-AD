@@ -34,6 +34,8 @@ import com.aionemu.gameserver.model.gameobjects.stats.StatEnum;
 import com.aionemu.gameserver.model.gameobjects.stats.SummonGameStats;
 import com.aionemu.gameserver.model.templates.item.WeaponType;
 import com.aionemu.gameserver.model.templates.stats.NpcRank;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS;
+import com.aionemu.gameserver.utils.PacketSendUtility;
 
 /**
  * @author ATracer
@@ -588,21 +590,39 @@ public class StatFunctions
 		return resistRate;
 	}
 
-	public static int calculateFallDamage(float old_z, float new_z){
-		
-		int output = 0;
-		
-		float fall_damage_multiplier=(float) CustomConfig.FALL_DAMAGE_MULTIPLIER;
-		
-		float distance = (old_z - new_z);
-		
-		if(distance>=CustomConfig.MINIMUM_DISTANCE_DAMAGE){
-			output = ((int)(distance*fall_damage_multiplier));
+	/**
+	 * Calculates the fall damage
+	 * 
+	 * @param player
+	 * @param distance
+	 * @return True if the player is forced to his bind location.
+	 */
+	public static boolean calculateFallDamage(Player player, float distance)
+	{
+		if(player.isInvul())
+		{
+			return false;
 		}
-		
-		return output;
-		
+
+		if(distance >= CustomConfig.MAXIMUM_DISTANCE_DAMAGE)
+		{
+			player.getController().onStopMove();
+			player.getFlyController().onStopGliding();
+			player.getController().onDie(player);
+
+			player.getReviveController().bindRevive();
+			return true;
+		}
+		else if(distance >= CustomConfig.MINIMUM_DISTANCE_DAMAGE)
+		{
+			float dmgPerMeter = player.getLifeStats().getMaxHp() * CustomConfig.FALL_DAMAGE_PERCENTAGE / 100f;
+			int damage = (int) (distance * dmgPerMeter);
+
+			player.getLifeStats().reduceHp(damage, player);
+			PacketSendUtility.sendPacket(player, new SM_ATTACK_STATUS(player, SM_ATTACK_STATUS.TYPE.DAMAGE, 0, damage));
+		}
+
+		return false;
 	}
-	
-	
+
 }

@@ -229,6 +229,28 @@ public class EffectController
 			}
 		}
 	}
+	
+	/**
+	 * 
+	 * @param skillType
+	 * @param targetSlot
+	 * @param value
+	 */
+	public void removeEffectBySkillTypeAndTargetSlot(SkillType skillType, SkillTargetSlot targetSlot, int value)
+	{
+		for(Effect effect : abnormalEffectMap.values())
+		{
+			if(value == 0)
+				break;
+
+			if(effect.getSkillType() == skillType && effect.getTargetSlot() == targetSlot.ordinal())
+			{
+				effect.endEffect();
+				abnormalEffectMap.remove(effect.getStack());
+				value--;
+			}
+		}
+	}
 
 	/**
 >>>>>>> trunk:AE-go_GameServer/src/com/aionemu/gameserver/controllers/effect/EffectController.java

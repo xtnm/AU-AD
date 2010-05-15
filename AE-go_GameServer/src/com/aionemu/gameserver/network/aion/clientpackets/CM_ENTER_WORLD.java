@@ -23,6 +23,7 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 import com.aionemu.commons.database.dao.DAOManager;
+import com.aionemu.gameserver.configs.main.CustomConfig;
 import com.aionemu.gameserver.configs.main.GSConfig;
 import com.aionemu.gameserver.dao.ShopItemsDAO;
 import com.aionemu.gameserver.model.ChatType;
@@ -55,6 +56,7 @@ import com.aionemu.gameserver.network.aion.serverpackets.SM_TITLE_LIST;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_UI_SETTINGS;
 import com.aionemu.gameserver.network.aion.serverpackets.unk.SM_UNK5E;
 import com.aionemu.gameserver.services.BrokerService;
+import com.aionemu.gameserver.services.ChatService;
 import com.aionemu.gameserver.services.ClassChangeService;
 import com.aionemu.gameserver.services.GroupService;
 import com.aionemu.gameserver.services.ItemService;
@@ -103,6 +105,8 @@ public class CM_ENTER_WORLD extends AionClientPacket
 	private PeriodicSaveService periodicSaveService;
 	@Inject
 	private BrokerService		brokerService;
+	@Inject
+	private ChatService			chatService;
 
 	/**
 	 * Constructs new instance of <tt>CM_ENTER_WORLD </tt> packet
@@ -280,6 +284,11 @@ public class CM_ENTER_WORLD extends AionClientPacket
 			 * Notify player if have broker settled items
 			 */
 			brokerService.onPlayerLogin(player);
+			/**
+			 * Start initializing chat connection(/1, /2, /3, /4 channels)
+			 */
+			if(!CustomConfig.DISABLE_CHAT_SERVER)
+				chatService.onPlayerLogin(player);
 		}
 		else
 		{
