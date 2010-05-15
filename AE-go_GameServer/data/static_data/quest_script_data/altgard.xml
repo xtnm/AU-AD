@@ -50,6 +50,7 @@
   	<!-- The Lobnite Problem -->
   	<monster_hunt start_npc_id="203560" id="2202">
   		<monster_infos var_id="0" npc_id="210413" max_kill="10"/>
+		<monster_infos var_id="0" npc_id="210496" max_kill="10"/>
   	</monster_hunt>
   	
   	<!-- The Scribbler handled by script -->
@@ -102,6 +103,7 @@
   	<!-- Picking off Frightcorn -->
 	<monster_hunt start_npc_id="203604" id="2220">
   		<monster_infos var_id="0" npc_id="210470" max_kill="5"/>
+		<monster_infos var_id="0" npc_id="210471" max_kill="5"/>
   		<monster_infos var_id="0" npc_id="210472" max_kill="5"/>
   	</monster_hunt>
   	<!-- Ripened Frightcorn -->
@@ -158,6 +160,7 @@
   	<!-- Mantigar's Request -->
   	<monster_hunt start_npc_id="203611" id="2233">
   		<monster_infos var_id="0" npc_id="210587" max_kill="3"/>
+		<monster_infos var_id="0" npc_id="210597" max_kill="3"/>
   	</monster_hunt>
   	
   	<!-- Rarified Tastes -->
@@ -210,6 +213,7 @@
   	<!-- The Sting of Poison -->
   	<monster_hunt start_npc_id="203664" id="2264">
   		<monster_infos var_id="0" npc_id="210447" max_kill="3"/>
+		<monster_infos var_id="0" npc_id="210754" max_kill="3"/>
   	</monster_hunt>
   	
   	<!-- A Drinking Problem -->
@@ -309,6 +313,7 @@
   	<!-- [Coin] Mutated Spirits -->
   	<monster_hunt start_npc_id="203659" id="2293">
   		<monster_infos var_id="0" npc_id="210576" max_kill="6"/>
+		<monster_infos var_id="1" npc_id="210578" max_kill="16"/>
   		<monster_infos var_id="1" npc_id="210523" max_kill="16"/>
   	</monster_hunt>
   	
@@ -378,12 +383,19 @@
   	<!-- [Group] Finishing off Fighters -->
 	<monster_hunt start_npc_id="203558" id="2281">
   		<monster_infos var_id="0" npc_id="210560" max_kill="3"/>
+		<monster_infos var_id="0" npc_id="210561" max_kill="3"/>
+		<monster_infos var_id="0" npc_id="211283" max_kill="3"/>
   		<monster_infos var_id="1" npc_id="210533" max_kill="5"/>
+		<monster_infos var_id="1" npc_id="210534" max_kill="5"/>
+		<monster_infos var_id="1" npc_id="211279" max_kill="5"/>
   		<monster_infos var_id="2" npc_id="210535" max_kill="5"/>
+		<monster_infos var_id="2" npc_id="210536" max_kill="5"/>
+		<monster_infos var_id="2" npc_id="211280" max_kill="5"/>
   	</monster_hunt>
   	<!-- Killing the Shamans -->
   	 <monster_hunt start_npc_id="203560" id="2280">
   		<monster_infos var_id="0" npc_id="210508" max_kill="4"/>
+		<monster_infos var_id="0" npc_id="210509" max_kill="4"/>
   	</monster_hunt>
   	<!-- TODO: Keeping the Black Claw Tribe in Check -->
   	
@@ -392,5 +404,6 @@
   	<!-- [Group] Killing Kumbaron's Followers -->
   	  <monster_hunt start_npc_id="203557" id="2282">
   		<monster_infos var_id="0" npc_id="210538" max_kill="3"/>
+		<monster_infos var_id="0" npc_id="210539" max_kill="3"/>
   	</monster_hunt>
 </quest_scripts>
