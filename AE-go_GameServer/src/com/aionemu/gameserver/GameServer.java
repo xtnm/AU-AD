@@ -16,6 +16,7 @@
  */
 package com.aionemu.gameserver;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -33,9 +34,13 @@ import com.aionemu.gameserver.configs.main.ThreadConfig;
 import com.aionemu.gameserver.controllers.BannedChatController;
 import com.aionemu.gameserver.controllers.BannedIpController;
 import com.aionemu.gameserver.dao.BannedIpDAO;
+import com.aionemu.gameserver.dao.NpcSpawnDAO;
 import com.aionemu.gameserver.dao.PlayerDAO;
 import com.aionemu.gameserver.dataholders.loadingutils.XmlServiceProxy;
 import com.aionemu.gameserver.model.ban.BannedIP;
+import com.aionemu.gameserver.model.gameobjects.VisibleObject;
+import com.aionemu.gameserver.model.templates.spawn.NpcSpawnTemplate;
+import com.aionemu.gameserver.model.templates.spawn.SpawnTemplate;
 import com.aionemu.gameserver.network.loginserver.LoginServer;
 import com.aionemu.gameserver.questEngine.QuestEngine;
 import com.aionemu.gameserver.services.BrokerService;
@@ -135,8 +140,8 @@ public class GameServer
 
 		Runtime.getRuntime().addShutdownHook(gs.injector.getInstance(ShutdownHook.class));
 		
-		Thread unishell = new Thread(new Unishell(8675));
-		unishell.start();
+		//Thread unishell = new Thread(new Unishell(8675));
+		//unishell.start();
 		
 		World world = gs.injector.getInstance(World.class);
 		Thread autoAnnounce = new Thread(new AutoAnnounce(world));
@@ -156,6 +161,21 @@ public class GameServer
 		SpawnEngine spawnEngine = injector.getInstance(SpawnEngine.class);
 		spawnEngine.setInjector(injector);
 		spawnEngine.spawnAll();	
+		
+		ArrayList<NpcSpawnTemplate> databaseTemplates = DAOManager.getDAO(NpcSpawnDAO.class).getAllTemplates();
+		log.info("Successfully loaded " + databaseTemplates.size() + " database NPC spawn templates");
+		
+		DAOManager.getDAO(NpcSpawnDAO.class).clearCache();
+		log.info("Successfully cleared the database NPC spawns cache.");
+		
+		for(NpcSpawnTemplate tpl : databaseTemplates)
+		{
+			SpawnTemplate spawnTemplate = spawnEngine.addNewSpawn(tpl.getMap(), 1, tpl.getNpcTemplateId(), tpl.getX(), tpl.getY(), tpl.getZ(), tpl.getHeading(), 0, 0, false, true);
+			VisibleObject obj = spawnEngine.spawnObject(spawnTemplate, 1);
+			log.info("Spawned template #" + tpl.getSpawnTemplateId() + " : " + obj.getObjectTemplate().getName());
+			DAOManager.getDAO(NpcSpawnDAO.class).insertCache(tpl.getSpawnTemplateId(), obj.getObjectId());
+		}
+		
 	}
 
 	private void initQuests()
