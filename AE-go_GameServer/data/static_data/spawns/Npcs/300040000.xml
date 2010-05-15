@@ -54,7 +54,7 @@
 	</spawn>
 	<!-- Dark Poeta Abyss Gate (Object Normal lvl:1)-->
 	<spawn map="300040000" npcid="730211" pool="1" interval="295">
-		<object staticid="223" x="1179.0" y="1223.0" z="144.98427" h="27"/>
+		<object staticid="223" x="299.2994" y="316.23352" z="133.52376" h="98"/>
 	</spawn>
 	<!-- Drana (Object Normal lvl:1)-->
 	<spawn map="300040000" npcid="700520" pool="21" interval="295">
