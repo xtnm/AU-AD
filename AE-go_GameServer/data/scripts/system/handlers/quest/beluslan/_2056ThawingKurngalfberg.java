@@ -47,7 +47,7 @@ public class _2056ThawingKurngalfberg extends QuestHandler
 	ZoneService zoneService;
 	
 	private final static int	questId	= 2056;
-	private final static int[]	npc_ids	= { 204753, 790016, 730036, 279000 };
+	private final static int[]	npc_ids	= { 295178, 790016, 730036, 279000 };
 
 	public _2056ThawingKurngalfberg()
 	{
@@ -96,7 +96,7 @@ public class _2056ThawingKurngalfberg extends QuestHandler
 
 		if(qs.getStatus() == QuestStatus.REWARD)
 		{
-			if(targetId == 204753)
+			if(targetId == 295178)
 			{
 				if(env.getDialogId() == -1)
 					return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 10002);
@@ -110,7 +110,7 @@ public class _2056ThawingKurngalfberg extends QuestHandler
 		{
 			return false;
 		}
-		if(targetId == 204753)
+		if(targetId == 295178)
 		{
 			switch(env.getDialogId())
 			{

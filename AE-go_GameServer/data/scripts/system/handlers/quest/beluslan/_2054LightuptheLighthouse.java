@@ -18,11 +18,14 @@ package quest.beluslan;
 
 import java.util.Collections;
 
+import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.templates.quest.QuestItems;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_DIALOG_WINDOW;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EMOTION;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ITEM_USAGE_ANIMATION;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_PLAY_MOVIE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_USE_OBJECT;
 import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
@@ -133,6 +136,9 @@ public class _2054LightuptheLighthouse extends QuestHandler
 				case 25:
 					if(var == 1)
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1352);
+				case 1353:
+					PacketSendUtility.sendPacket(player, new SM_PLAY_MOVIE(0, 237));
+						break;
 				case 10001:
 					if(var == 1)
 					{
@@ -196,6 +202,7 @@ public class _2054LightuptheLighthouse extends QuestHandler
 						PacketSendUtility.sendPacket(player, new SM_USE_OBJECT(player.getObjectId(), targetObjectId, 3000, 0));
 						PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, 38, 0, targetObjectId), true);
 						player.getInventory().removeFromBagByItemId(182204309, 1);
+						PacketSendUtility.sendPacket(player, new SM_PLAY_MOVIE(0, 238));
 						qs.setStatus(QuestStatus.REWARD);
 						updateQuestStatus(player, qs);
 					}
@@ -204,4 +211,31 @@ public class _2054LightuptheLighthouse extends QuestHandler
 		}		
 		return false;
 	}
+	
+	@Override
+	public boolean onItemUseEvent(QuestEnv env, Item item)
+	{
+		final Player player = env.getPlayer();
+		final int id = item.getItemTemplate().getTemplateId();
+		final int itemObjId = item.getObjectId();
+
+		if(id != 182204308)
+			return false;
+
+		final QuestState qs = player.getQuestStateList().getQuestState(questId);
+		if(qs == null || qs.getQuestVarById(0) != 2)
+			return false;
+		PacketSendUtility.broadcastPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(), itemObjId, id, 1000, 0, 0), true);
+		ThreadPoolManager.getInstance().schedule(new Runnable(){
+			@Override
+			public void run()
+			{
+				PacketSendUtility.broadcastPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(), itemObjId, id, 0, 1, 0), true);
+				player.getInventory().removeFromBagByItemId(182204308, 1);
+				qs.setQuestVarById(0, 3);
+				updateQuestStatus(player, qs);
+			}
+		}, 1000);
+		return true;
+	}		
 }

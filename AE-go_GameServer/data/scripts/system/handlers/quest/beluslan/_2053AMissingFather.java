@@ -150,7 +150,7 @@ public class _2053AMissingFather extends QuestHandler
 					{
 						qs.setQuestVarById(0, var + 1);
 						updateQuestStatus(player, qs);
-						itemService.addItems(player, Collections.singletonList(new QuestItems(182204499, 1)));
+						itemService.addItems(player, Collections.singletonList(new QuestItems(182204305, 1)));
 						PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
 						return true;
 					}
