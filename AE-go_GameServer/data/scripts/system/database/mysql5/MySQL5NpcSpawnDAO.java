@@ -76,7 +76,7 @@ public class MySQL5NpcSpawnDAO extends NpcSpawnDAO
 	}
 	
 	@Override
-	public int insertTemplate(final int npcId, final WorldPosition position)
+	public synchronized int insertTemplate(final int npcId, final WorldPosition position)
 	{
 		final int[] template = new int[1];
 		DB.insertUpdate("INSERT INTO npc_spawn_template(template_id, map, pos_x, pos_y, pos_z, heading) VALUES (?,?,?,?,?,?); SELECT LAST_INSERT_ID()", new IUStH() {
@@ -93,7 +93,7 @@ public class MySQL5NpcSpawnDAO extends NpcSpawnDAO
 				arg0.execute();
 			}
 		});
-		DB.select("SELECT LAST_INSERT_ID()", new ParamReadStH() {
+		DB.select("SELECT MAX(template_id) FROM npc_spawn_template", new ParamReadStH() {
 			
 			@Override
 			public void handleRead(ResultSet arg0) throws SQLException {
