@@ -93,13 +93,13 @@ public class MySQL5NpcSpawnDAO extends NpcSpawnDAO
 				arg0.execute();
 			}
 		});
-		DB.select("SELECT MAX(template_id) FROM npc_spawn_template", new ParamReadStH() {
+		DB.select("SELECT MAX(template_id) as template_value FROM npc_spawn_template", new ParamReadStH() {
 			
 			@Override
 			public void handleRead(ResultSet arg0) throws SQLException {
 				// TODO Auto-generated method stub
 				arg0.first();
-				template.add(arg0.getInt(0));
+				template.add(arg0.getInt("template_value"));
 			}
 			
 			@Override
