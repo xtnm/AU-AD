@@ -94,3 +94,4 @@ xmllint --noout --schema $DATAPATH/player_titles.xsd $DATAPATH/player_titles.xml
 xmllint --noout --schema $DATAPATH/static_data.xsd $DATAPATH/static_data.xml
 xmllint --noout --schema $DATAPATH/teleport_location.xsd $DATAPATH/teleport_location.xml
 xmllint --noout --schema $DATAPATH/world_maps.xsd $DATAPATH/world_maps.xml
+xmllint --noout --schema $DATAPATH/pet_skills/pet_skills.xsd $DATAPATH/pet_skills/pet_skills.xml
