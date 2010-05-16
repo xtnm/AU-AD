@@ -462,7 +462,7 @@
 	<spawn map="210040000" npcid="700360" pool="2" interval="295">
 		<object x="2484.84000" y="351.80000" z="524.46620" h="58"/>
 	</spawn>
-	<spawn map="210040000" npc="700565" pool="2" interval="295">
+	<spawn map="210040000" npcid="700565" pool="2" interval="295">
 		<object x="1873.65640" y="2584.23050" z="141.12587" h="10"/>
 	</spawn>
 	<!-- Henobe (NPC Normal lvl:50)-->
