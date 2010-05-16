@@ -88,6 +88,7 @@ public class Rename extends AdminCommand
 		
 		world.storeObject(player);
 		
+		PacketSendUtility.sendPacket(player, new SM_PLAYER_INFO(player, false));
 		PacketSendUtility.broadcastPacket(player, new SM_PLAYER_INFO(player, false));
 		PacketSendUtility.sendMessage(player, "You have been renamed to: " + params[1]);
 		PacketSendUtility.sendMessage(admin, "Player " + params[0] + " renamed to " + params[1]);
