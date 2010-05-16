@@ -21,6 +21,7 @@ import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_PLAYER_ID;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_PLAYER_INFO;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_PLAYER_SPAWN;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_QUIT_RESPONSE;
 import com.aionemu.gameserver.services.PlayerService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
@@ -83,7 +84,7 @@ public class Rename extends AdminCommand
 		player.getCommonData().setName(params[1]);
 		playerService.storePlayer(player);
 		
-		PacketSendUtility.sendPacket(player, new SM_PLAYER_ID(player));
+		PacketSendUtility.broadcastPacket(player, new SM_PLAYER_INFO(player, false));
 		PacketSendUtility.sendMessage(player, "You have been renamed to: " + params[1]);
 		PacketSendUtility.sendMessage(admin, "Player " + params[0] + " renamed to " + params[1]);
 		
