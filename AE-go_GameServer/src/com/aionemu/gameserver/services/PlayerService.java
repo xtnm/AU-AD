@@ -23,6 +23,7 @@ import org.apache.log4j.Logger;
 
 import com.aionemu.commons.database.dao.DAOManager;
 import com.aionemu.gameserver.configs.main.CacheConfig;
+import com.aionemu.gameserver.configs.main.CustomConfig;
 import com.aionemu.gameserver.configs.main.GSConfig;
 import com.aionemu.gameserver.controllers.FlyController;
 import com.aionemu.gameserver.controllers.ReviveController;
@@ -105,13 +106,14 @@ public class PlayerService
 	private PlayerStatsData				playerStatsData;
 	private PlayerInitialData			playerInitialData;
 	private InstanceService				instanceService;
+	private ChatService					chatService;
 
 	@Inject
 	public PlayerService(World world, ItemService itemService,
 		LegionService legionService, TeleportService teleportService, ObjectControllerFactory controllerFactory,
 		SkillLearnService skillLearnService, GroupService groupService, PunishmentService punishmentService,
 		DuelService duelService, PlayerStatsData playerStatsData, PlayerInitialData playerInitialData,
-		InstanceService instanceService)
+		InstanceService instanceService, ChatService chatService)
 	{
 		this.world = world;
 		this.itemService = itemService;
@@ -125,6 +127,7 @@ public class PlayerService
 		this.playerStatsData = playerStatsData;
 		this.playerInitialData = playerInitialData;
 		this.instanceService = instanceService;
+		this.chatService = chatService;
 	}
 
 	/**
@@ -440,6 +443,9 @@ public class PlayerService
 
 		player.getController().delete();
 		DAOManager.getDAO(PlayerDAO.class).onlinePlayer(player, false);
+		
+		if(!CustomConfig.DISABLE_CHAT_SERVER)
+			chatService.onPlayerLogout(player);
 
 		storePlayer(player);
 		

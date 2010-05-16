@@ -1,5 +1,5 @@
 /*
- * This file is part of aion-unique <aion-unique.org>.
+ * This file is part of aion-unique <www.aion-unique.com>.
  *
  *  aion-unique is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -14,30 +14,36 @@
  *  You should have received a copy of the GNU General Public License
  *  along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aionemu.gameserver.network.chatserver.serverpackets;
+package com.aionemu.gameserver.network.aion.serverpackets;
 
 import java.nio.ByteBuffer;
 
-import com.aionemu.gameserver.network.chatserver.ChatServerConnection;
-import com.aionemu.gameserver.network.chatserver.CsServerPacket;
+import com.aionemu.gameserver.network.aion.AionConnection;
+import com.aionemu.gameserver.network.aion.AionServerPacket;
 
 /**
  * @author ATracer
  */
-public class SM_CS_PLAYER_AUTH extends CsServerPacket
+public class SM_CHAT_INIT extends AionServerPacket
 {
-	private int playerId;
-	
-	public SM_CS_PLAYER_AUTH(int playerId)
+	private byte[]	token;
+
+	/**
+	 * 
+	 * @param token
+	 */
+	public SM_CHAT_INIT(byte[] token)
 	{
-		super(0x01);
-		this.playerId = playerId;
+		this.token = token;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
-	protected void writeImpl(ChatServerConnection con, ByteBuffer buf)
+	protected void writeImpl(AionConnection con, ByteBuffer buf)
 	{
-		writeC(buf, getOpcode());
-		writeD(buf, playerId);
+		writeD(buf, token.length);
+		writeB(buf, token);
 	}
 }

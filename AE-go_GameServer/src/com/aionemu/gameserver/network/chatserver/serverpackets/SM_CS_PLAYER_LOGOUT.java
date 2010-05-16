@@ -24,13 +24,13 @@ import com.aionemu.gameserver.network.chatserver.CsServerPacket;
 /**
  * @author ATracer
  */
-public class SM_CS_PLAYER_AUTH extends CsServerPacket
+public class SM_CS_PLAYER_LOGOUT extends CsServerPacket
 {
 	private int playerId;
 	
-	public SM_CS_PLAYER_AUTH(int playerId)
+	public SM_CS_PLAYER_LOGOUT(int playerId)
 	{
-		super(0x01);
+		super(0x02);
 		this.playerId = playerId;
 	}
 

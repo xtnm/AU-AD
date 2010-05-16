@@ -30,16 +30,14 @@ public class CM_CS_PLAYER_AUTH_RESPONSE extends CsClientPacket
 	protected static final Logger	log	= Logger.getLogger(CM_CS_PLAYER_AUTH_RESPONSE.class);
 
 	/**
-	 * Response: 0=Authed,<br>
-	 * 1=NotAuthed,<br>
-	 * 2=AlreadyRegistered
-	 */
-	private int						response;
-	/**
 	 * Player for which authentication was performed
 	 */
 	private int						playerId;
-	
+	/**
+	 * Token will be sent to client
+	 */
+	private byte[]					token;
+
 	@Inject
 	private ChatService				chatService;
 
@@ -54,24 +52,14 @@ public class CM_CS_PLAYER_AUTH_RESPONSE extends CsClientPacket
 	@Override
 	protected void readImpl()
 	{
-		response = readC();
 		playerId = readD();
+		int tokenLenght = readC();
+		token = readB(tokenLenght);
 	}
 
 	@Override
 	protected void runImpl()
 	{
-		switch(response)
-		{
-			case 0: // Authed
-				chatService.playerAuthed(playerId);
-				break;
-			case 1: // NotAuthed
-				log.warn("Player was not authed in chat server " + playerId);
-				break;
-			case 2: // AlreadyRegistered
-				log.warn("Player was already registered in chat server " + playerId);
-				break;
-		}
+		chatService.playerAuthed(playerId, token);
 	}
 }

@@ -24,8 +24,7 @@ import com.aionemu.gameserver.network.aion.AionConnection;
 import com.aionemu.gameserver.network.aion.AionServerPacket;
 
 /**
- * @author -Nemesiss-
- * CC fix modified by Novo
+ * @author -Nemesiss- CC fix modified by Novo
  */
 
 public class SM_VERSION_CHECK extends AionServerPacket
@@ -40,7 +39,7 @@ public class SM_VERSION_CHECK extends AionServerPacket
 		switch(GSConfig.SERVER_COUNTRY_CODE)
 		{
 			case 1:
-				//only here check of Server Mode (OneRace, MultiRace)
+				// only here check of Server Mode (OneRace, MultiRace)
 				writeCountryCode_1(con, buf);
 				break;
 			case 2:
@@ -52,11 +51,11 @@ public class SM_VERSION_CHECK extends AionServerPacket
 				writeCoutnryCode_7(con, buf);
 				break;
 		}
-	} 
+	}
 
 	private void writeCountryCode_1(AionConnection con, ByteBuffer buf)
 	{
-		if(GSConfig.SERVER_MODE ==0)
+		if(GSConfig.SERVER_MODE == 0)
 		{
 			writeH(buf, 256);// unk
 			writeD(buf, 0);// unk
@@ -65,7 +64,7 @@ public class SM_VERSION_CHECK extends AionServerPacket
 			writeD(buf, 90819);
 			writeD(buf, 1254913038);
 			writeC(buf, 0);
-			writeC(buf, 1);  //
+			writeC(buf, 1); //
 			writeC(buf, 0);
 			writeC(buf, 0x80);
 			writeC(buf, 0x36);
@@ -75,7 +74,7 @@ public class SM_VERSION_CHECK extends AionServerPacket
 			writeC(buf, 1);//
 			writeC(buf, 1);
 			writeC(buf, 0);
-			writeC(buf, 0);//0
+			writeC(buf, 0);// 0
 			writeD(buf, (int) (System.currentTimeMillis() / 1000));// ServerTime in seconds
 			writeC(buf, 1);
 			writeC(buf, 40);
@@ -92,38 +91,16 @@ public class SM_VERSION_CHECK extends AionServerPacket
 			writeC(buf, 0x00);
 			writeC(buf, GSConfig.SERVER_COUNTRY_CODE); // Server country code (cc)
 			writeC(buf, 0x00);
-			writeC(buf, GSConfig.SERVER_MODE); // Server mode : 0x00 = one race / 0x01 = free race / 0x22 = Character Reservation
+			writeC(buf, GSConfig.SERVER_MODE); // Server mode : 0x00 = one race / 0x01 = free race / 0x22 = Character
+												// Reservation
 			writeD(buf, (int) (System.currentTimeMillis() / 1000));// ServerTime in seconds
-			writeD(buf, 0x0001015E);
-			writeD(buf, 0x9C7FCE00);
-			writeC(buf, 0xB0);
-			writeH(buf, 0x2801);			
-		}
-/*			writeH(buf, 0x0C00);// unk
-			writeD(buf, 0x15FFA);// unk
-			writeD(buf, 0x15FFA);// unk
-			writeD(buf, 0x00);// unk
-			writeD(buf, 0x15FFA);// unk
-			writeD(buf, 0x4A4CEC02);// unk
-			writeD(buf, 0x01000100);// unk
-			// Server Version Check for 1.5.0.6 NA/EU
-			writeC(buf, 0x00);
-			writeC(buf, Config.GAMESERVER_ID); // Server id
-			writeD(buf, 0x0001631F);
-			writeD(buf, 0x000162C3);
-			writeD(buf, 0x00);
-			writeD(buf, 0x000162C3);
-			writeD(buf, 0x4AB3CB5C);
-			writeC(buf, 0x00);
-			writeC(buf, Config.SERVER_COUNTRY_CODE); // Server country code (cc)
-			writeC(buf, 0x00);
-			writeC(buf, Config.SERVER_MODE); // Server mode : 0x00 = one race / 0x01 = free race / 0x22 = Character Reservation
-			writeD(buf, (int) (System.currentTimeMillis() / 1000));// ServerTime in seconds
-			writeD(buf, 0x0001015E);
-			writeD(buf, 0x9C7FCE00);
-			writeC(buf, 0xB0);
+			writeH(buf, 350);
+			writeH(buf, 2561);
+			writeH(buf, 2561);
+			writeD(buf, 266);
+			writeB(buf, NetworkConfig.CHAT_ADDRESS.getAddress().getAddress());
 			writeH(buf, 0x2801);
-		} // of if(Config.SERVER_MODE ==0)*/
+		}
 	}
 
 	private void writeCountryCode_2(AionConnection con, ByteBuffer buf)
@@ -135,18 +112,19 @@ public class SM_VERSION_CHECK extends AionServerPacket
 		writeD(buf, 0x00);// unk
 		writeD(buf, 0x000162C3);// unk
 		writeD(buf, 0x4AAc2E70);// unk
-		//writeD(buf, 0x80000200);// unk
-		writeC(buf, 0x00);//unk
+		// writeD(buf, 0x80000200);// unk
+		writeC(buf, 0x00);// unk
 		writeC(buf, 2);// country code;
-		writeC(buf, 0x00);//unk
-		writeC(buf, 0x80);//server mode? unk?
+		writeC(buf, 0x00);// unk
+		writeC(buf, 0x80);// server mode? unk?
 		writeD(buf, (int) (System.currentTimeMillis() / 1000));
-		writeD(buf, 0x0001015E);
-		writeC(buf, 0);
-		writeD(buf, 0xB09C7FCE);
-		writeH(buf, 0x2801);   
+		writeH(buf, 350);
+		writeH(buf, 2561);
+		writeH(buf, 2561);
+		writeD(buf, 266);
+		writeB(buf, NetworkConfig.CHAT_ADDRESS.getAddress().getAddress());
+		writeH(buf, 0x2801);
 	}
-
 
 	private void writeCoutnryCode_7(AionConnection con, ByteBuffer buf)
 	{
@@ -156,15 +134,17 @@ public class SM_VERSION_CHECK extends AionServerPacket
 		writeD(buf, 0x00);// unk
 		writeD(buf, 0x000162C3);// unk
 		writeD(buf, 0x4AAc2E70);// unk
-		//writeD(buf, 0x80000200);// unk
-		writeC(buf, 0x00);//unk
+		// writeD(buf, 0x80000200);// unk
+		writeC(buf, 0x00);// unk
 		writeC(buf, 7);// country code;
-		writeC(buf, 0x00);//unk
-		writeC(buf, 0x80);//server mode? unk?
+		writeC(buf, 0x00);// unk
+		writeC(buf, 0x80);// server mode? unk?
 		writeD(buf, (int) (System.currentTimeMillis() / 1000));
-		writeD(buf, 0x0001015E);
-		writeC(buf, 0);
-		writeD(buf, 0xB09C7FCE);
-		writeH(buf, 0x2801);   
-	} 
+		writeH(buf, 350);
+		writeH(buf, 2561);
+		writeH(buf, 2561);
+		writeD(buf, 266);
+		writeB(buf, NetworkConfig.CHAT_ADDRESS.getAddress().getAddress());
+		writeH(buf, 0x2801);
+	}
 }
