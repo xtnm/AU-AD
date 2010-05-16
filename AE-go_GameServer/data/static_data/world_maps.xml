@@ -48,7 +48,7 @@
 	<map id="320070000" name="IDSpace" instance="true" death_level="0" water_level="16"/>
 	<map id="320080000" name="IDDF3_Dragon" instance="true" death_level="0" water_level="16"/>
 	<map id="320090000" name="IDDC1_arena" death_level="0" water_level="16"/>
-	<map id="320100000" name="IDDF2_Dflame" instance="true" death_level="0" water_level="16" destroy_time="1800"/>
+	<map id="320100000" name="IDDF2_Dflame" instance="true" death_level="0" water_level="16" />
 	<map id="320110000" name="IDDF3_LP" instance="true" death_level="0" water_level="16"/>
 	<map id="320120000" name="IDDC1_Arena_3F" death_level="0" water_level="16"/>
 	<map id="320130000" name="AdmaStronghold" instance="true" death_level="0" water_level="16"/>
