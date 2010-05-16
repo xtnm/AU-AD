@@ -48,7 +48,24 @@ public class GiveMissingSkills extends AdminCommand
 			return;
 		}
 		
-		skillLearnService.addMissingSkills(admin);
+		VisibleObject target = admin.getTarget();
+		if(target == null)
+		{
+			skillLearnService.addMissingSkills(admin);
+			PacketSendUtility.sendMessage(admin, "Terminated");
+			return;
+		}
+		else if(target instanceof Player)
+		{
+			skillLearnService.addMissingSkills(target);
+			PacketSendUtility.sendMessage(admin, "Terminated");
+			return;
+		}
+		else
+		{
+			PacketSendUtility.sendMessage(admin, "Wrong Target");
+			return;
+		}
+		return;
 	}
-	
 }
