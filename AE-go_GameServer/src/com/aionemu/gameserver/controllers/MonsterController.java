@@ -23,7 +23,7 @@ import com.aionemu.gameserver.network.aion.serverpackets.SM_LOOT_STATUS;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.stats.StatFunctions;
-import com.aionemu.gameserver.world.WorldMapType;
+import com.aionemu.gameserver.world.WorldType;
 
 /**
  * @author ATracer
@@ -48,18 +48,26 @@ public class MonsterController extends NpcController
 		if(master instanceof Player)
 		{
 			Player player = (Player) master;
+			
 			if(player.getPlayerGroup() == null) //solo
 			{
-				long xpReward = StatFunctions.calculateSoloExperienceReward(player, getOwner());
-				player.getCommonData().addExp(xpReward);
+				// Exp reward
+				long expReward = StatFunctions.calculateSoloExperienceReward(player, getOwner());
+				player.getCommonData().addExp(expReward);
 
-				//DPreward
+				// DP reward
 				int currentDp = player.getCommonData().getDp();
 				int dpReward = StatFunctions.calculateSoloDPReward(player, getOwner());
 				player.getCommonData().setDp(dpReward + currentDp);
-				//AP reward in abyss basic
-				if(player.getWorldId() == WorldMapType.RESHANTA.getId())
-					sp.getAbyssService().doReward(getOwner(), player);
+				
+				// AP reward
+				WorldType worldType = sp.getWorld().getWorldMap(player.getWorldId()).getWorldType();
+				if(worldType == WorldType.ABYSS)
+				{
+					int apReward = StatFunctions.calculateSoloAPReward(player, getOwner());
+					player.getCommonData().addAp(apReward);
+				}
+				
 				sp.getQuestEngine().onKill(new QuestEnv(getOwner(), player, 0 , 0));
 			}
 			else

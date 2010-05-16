@@ -134,6 +134,9 @@ public class AdminConfig
 	@Property(key = "gameserver.administration.command.setexp", defaultValue = "3")
 	public static int	COMMAND_SETEXP;
 
+	@Property(key = "gameserver.administration.command.setap", defaultValue = "3")
+	public static int	COMMAND_SETAP;
+
 	@Property(key = "gameserver.administration.command.settitle", defaultValue = "3")
 	public static int	COMMAND_SETTITLE;
 

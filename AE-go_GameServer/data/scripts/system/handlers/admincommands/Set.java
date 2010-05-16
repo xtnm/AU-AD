@@ -14,6 +14,7 @@ import com.aionemu.gameserver.utils.chathandlers.AdminCommand;
 /**
  * @author Nemiroff, ATracer, IceReaper
  *         Date: 11.12.2009
+ * @author Sarynth - Added AP
  */
 public class Set extends AdminCommand {
 
@@ -27,7 +28,7 @@ public class Set extends AdminCommand {
 
 		if (params == null || params.length < 2)
 		{
-			PacketSendUtility.sendMessage(admin, "syntax //set <class|exp|level|title>");
+			PacketSendUtility.sendMessage(admin, "syntax //set <class|exp|ap|level|title>");
 			return;
 		}
 
@@ -100,6 +101,44 @@ public class Set extends AdminCommand {
 				PacketSendUtility.sendMessage(admin, "Set your exp to " + paramValue);
 			}
 
+		}
+		else if (params[0].equals("ap"))
+		{
+			if(admin.getAccessLevel() < AdminConfig.COMMAND_SETAP)
+			{
+				PacketSendUtility.sendMessage(admin, "You dont have enough rights to execute this command");
+				return;
+			}
+
+			int ap;
+			try
+			{
+				ap = Integer.parseInt(paramValue);
+			}
+			catch (NumberFormatException e)
+			{
+				PacketSendUtility.sendMessage(admin, "You should enter valid second params!");
+				return;
+			}
+
+			if (target instanceof Player)
+			{
+				Player player = (Player)target;
+				player.getCommonData().setAp(ap);
+				if (player == admin)
+				{
+					PacketSendUtility.sendMessage(admin, "Set your Abyss Points to " + ap + ".");
+				}
+				else
+				{
+					PacketSendUtility.sendMessage(admin, "Set " + player.getName() + " Abyss Points to " + ap + ".");
+					PacketSendUtility.sendMessage(player, "Admin set your Abyss Points to " + ap + ".");
+				}
+			}
+			else
+			{
+				PacketSendUtility.sendMessage(admin, "You must select a Player to set their AP.");
+			}
 		}
 		else if (params[0].equals("level"))
 		{

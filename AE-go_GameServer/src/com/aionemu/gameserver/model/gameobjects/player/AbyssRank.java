@@ -17,6 +17,7 @@
 package com.aionemu.gameserver.model.gameobjects.player;
 
 import com.aionemu.gameserver.model.gameobjects.PersistentState;
+import com.aionemu.gameserver.utils.stats.AbyssRankEnum;
 
 /**
  * @author ATracer
@@ -25,7 +26,7 @@ import com.aionemu.gameserver.model.gameobjects.PersistentState;
 public class AbyssRank
 {
 	private int ap;
-	private AbyssRankTemplate rank;
+	private AbyssRankEnum rank;
 	
 	private PersistentState persistentState;
     private int allKill;
@@ -36,7 +37,7 @@ public class AbyssRank
 	{
 		super();
 		this.ap = ap;
-		this.rank = AbyssRankTemplate.getTemplateById(rank);
+		this.rank = AbyssRankEnum.getRankById(rank);
         this.allKill = allKill;
         this.maxRank = maxRank;
 	}
@@ -44,9 +45,6 @@ public class AbyssRank
 	public void addAp(int ap)
 	{	
 		this.setAp(this.ap + ap);
-		AbyssRankTemplate newTemplate = AbyssRankTemplate.getTemplateForAp(this.ap);
-		if(newTemplate != this.rank)
-			setRank(newTemplate);
 	}
 	/**
 	 * @return the ap
@@ -64,12 +62,18 @@ public class AbyssRank
 		if(ap < 0)
 			ap = 0;
 		this.ap = ap;
+		
+		AbyssRankEnum newRank = AbyssRankEnum.getRankForAp(this.ap);
+		if(newRank != this.rank)
+			setRank(newRank);
+		
 		setPersistentState(PersistentState.UPDATE_REQUIRED);
 	}
+	
 	/**
 	 * @return the rank
 	 */
-	public AbyssRankTemplate getRank()
+	public AbyssRankEnum getRank()
 	{
 		return rank;
 	}
@@ -98,14 +102,15 @@ public class AbyssRank
 	/**
 	 * @param rank the rank to set
 	 */
-	public void setRank(AbyssRankTemplate rank)
+	public void setRank(AbyssRankEnum rank)
 	{
-        if(rank.getId() > this.rank.getId())
+        if(rank.getId() > this.maxRank)
             this.maxRank = rank.getId();
 		this.rank = rank;
 
 		setPersistentState(PersistentState.UPDATE_REQUIRED);
 	}
+	
 	/**
 	 * @return the persistentState
 	 */
@@ -113,6 +118,7 @@ public class AbyssRank
 	{
 		return persistentState;
 	}
+	
 	/**
 	 * @param persistentState the persistentState to set
 	 */
@@ -127,99 +133,6 @@ public class AbyssRank
 				this.persistentState = persistentState;
 		}
 	}
-
-	public enum AbyssRankTemplate
-	{
-		GRADE9_SOLDIER(1, 120, 24, 0),
-		GRADE8_SOLDIER(2, 168, 37, 1200),
-		GRADE7_SOLDIER(3, 235, 58, 4220),
-		GRADE6_SOLDIER(4, 329, 91, 10990),
-		GRADE5_SOLDIER(5, 461, 143, 23500),
-		GRADE4_SOLDIER(6, 645, 225, 42780),
-		GRADE3_SOLDIER(7, 903, 356, 69700),
-		GRADE2_SOLDIER(8, 1264, 561, 105600),
-		GRADE1_SOLDIER(9, 1770, 885, 150800),
-		STAR1_OFFICER(10, 2124, 1195, 214100),
-		STAR2_OFFICER(11, 2549, 1616, 278700),
-		STAR3_OFFICER(12, 3059, 2184, 344500),
-		STAR4_OFFICER(13, 3671, 2949, 411700),
-		STAR5_OFFICER(14, 4405, 3981, 488200),
-		GENERAL(15, 5286, 5374, 565400),
-		GREAT_GENERAL(16, 6343, 7258, 643200),
-		COMMANDER(17, 7612, 9799, 721600),
-		SUPREME_COMMANDER(18, 9134, 13229, 800700);
-		
-		private int id;
-		private int pointsGained;
-		private int pointsLost;		
-		private int required;
-		
-		private AbyssRankTemplate(int id, int pointsGained, int pointsLost, int required)
-		{
-			this.id = id;
-			this.pointsGained = pointsGained;
-			this.pointsLost = pointsLost;
-			this.required = required;
-		}
-
-		/**
-		 * @return the id
-		 */
-		public int getId()
-		{
-			return id;
-		}
-
-		/**
-		 * @return the pointsLost
-		 */
-		public int getPointsLost()
-		{
-			return pointsLost;
-		}
-
-		/**
-		 * @return the pointsGained
-		 */
-		public int getPointsGained()
-		{
-			return pointsGained;
-		}	
-		
-		
-		
-		/**
-		 * @return the required
-		 */
-		public int getRequired()
-		{
-			return required;
-		}
-
-		public static AbyssRankTemplate getTemplateById(int id)
-		{
-			for(AbyssRankTemplate template : values())
-			{
-				if(template.getId() == id)
-					return template;
-			}
-			throw new IllegalArgumentException("Invalid abyss rank provided");
-		}
-		
-		public static AbyssRankTemplate getTemplateForAp(int ap)
-		{
-			AbyssRankTemplate t = AbyssRankTemplate.GRADE9_SOLDIER;
-			for(AbyssRankTemplate template : values())
-			{
-				if(template.getRequired() <= ap)
-					t = template;
-				else
-					break;
-			}
-			return t;
-		}
-	}
-
 	
 }
 

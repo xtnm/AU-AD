@@ -27,7 +27,10 @@ import com.aionemu.gameserver.model.PlayerClass;
 import com.aionemu.gameserver.model.Race;
 import com.aionemu.gameserver.model.gameobjects.stats.StatEnum;
 import com.aionemu.gameserver.model.templates.VisibleObjectTemplate;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ABYSS_RANK;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ABYSS_RANK_UPDATE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_DP_INFO;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_LEGION_EDIT;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_STATS_INFO;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_STATUPDATE_DP;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_STATUPDATE_EXP;
@@ -156,7 +159,7 @@ public class PlayerCommonData extends VisibleObjectTemplate
 	{
 		return this.expRecoverable;
 	}
-
+	
 	/**
 	 * 
 	 * @param value
@@ -230,6 +233,55 @@ public class PlayerCommonData extends VisibleObjectTemplate
 		}
 	}
 
+	public void addAp(int value)
+	{
+		Player player = this.getPlayer();
+		
+		if (player == null)
+			return;
+		
+		AbyssRank rank = player.getAbyssRank();
+		
+		// Notify player of AP gained (This should happen before setAp happens.)
+		// TODO: Find System Message for "You have lost %d Abyss Points." (Lost instead of Gained)
+		PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.EARNED_ABYSS_POINT(String.valueOf(value)));
+		
+		// Set the new AP value
+		this.setAp(rank.getAp() + value);
+		
+		// Add Abyss Points to Legion
+		if(player.isLegionMember())
+		{
+			player.getLegion().addContributionPoints(value);
+			PacketSendUtility.broadcastPacketToLegion(player.getLegion(), new SM_LEGION_EDIT(0x03, player.getLegion()), player.getPosition().getWorld());
+		}
+	}
+	
+	public void setAp(int value)
+	{
+		Player player = this.getPlayer();
+		
+		if (player == null)
+			return;
+		
+		AbyssRank rank = player.getAbyssRank();
+		
+		int oldAbyssRank = rank.getRank().getId();
+		
+		rank.setAp(value);
+		
+		if (rank.getRank().getId() != oldAbyssRank)
+		{
+			PacketSendUtility.broadcastPacket(player, new SM_ABYSS_RANK_UPDATE(player));
+			
+			// Apparently we are not in our own known list... so we must tell ourselves as well
+			PacketSendUtility.sendPacket(player, new SM_ABYSS_RANK_UPDATE(player));
+		}
+		
+		PacketSendUtility.sendPacket(player, new SM_ABYSS_RANK(player.getAbyssRank()));
+	}
+	
+	
 	public Race getRace()
 	{
 		return race;

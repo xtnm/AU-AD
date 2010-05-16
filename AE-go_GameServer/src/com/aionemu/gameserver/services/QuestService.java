@@ -64,8 +64,6 @@ public class QuestService
 	@Inject
 	QuestEngine		questEngine;
 	@Inject
-	AbyssService	abyssService;
-	@Inject
 	QuestsData		questsData;
 
 	public boolean questFinish(QuestEnv env)
@@ -149,7 +147,7 @@ public class QuestService
 			
 			if (rewards.getRewardAbyssPoint() != null)
 			{
-				abyssService.doReward(player, rewards.getRewardAbyssPoint());
+				player.getCommonData().addAp(rewards.getRewardAbyssPoint());
 			}
 
 			//remove all worker list item if finished.

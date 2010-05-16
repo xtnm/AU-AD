@@ -19,9 +19,9 @@ package com.aionemu.gameserver.network.aion.serverpackets;
 import java.nio.ByteBuffer;
 
 import com.aionemu.gameserver.model.gameobjects.player.AbyssRank;
-import com.aionemu.gameserver.model.gameobjects.player.AbyssRank.AbyssRankTemplate;
 import com.aionemu.gameserver.network.aion.AionConnection;
 import com.aionemu.gameserver.network.aion.AionServerPacket;
+import com.aionemu.gameserver.utils.stats.AbyssRankEnum;
 
 /**
  * @author Nemiroff
@@ -45,8 +45,8 @@ public class SM_ABYSS_RANK extends AionServerPacket
 		writeD(buf, currentRankId); //curRank
 		writeD(buf, 0); //curRating
 
-		int nextRankId = currentRankId < AbyssRankTemplate.values().length ? currentRankId + 1 : currentRankId;
-		writeD(buf, 100 * rank.getAp()/AbyssRank.AbyssRankTemplate.getTemplateById(nextRankId).getRequired()); //exp %
+		int nextRankId = currentRankId < AbyssRankEnum.values().length ? currentRankId + 1 : currentRankId;
+		writeD(buf, 100 * rank.getAp()/AbyssRankEnum.getRankById(nextRankId).getRequired()); //exp %
 
 		writeD(buf, rank.getAllKill()); //allKill
 		writeD(buf, rank.getMaxRank()); //maxRank

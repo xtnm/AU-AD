@@ -46,7 +46,6 @@ import com.aionemu.gameserver.dataholders.WorldMapsData;
 import com.aionemu.gameserver.dataholders.ZoneData;
 import com.aionemu.gameserver.dataholders.loadingutils.XmlServiceProxy;
 import com.aionemu.gameserver.questEngine.QuestEngine;
-import com.aionemu.gameserver.services.AbyssService;
 import com.aionemu.gameserver.services.AccountService;
 import com.aionemu.gameserver.services.AnnouncementService;
 import com.aionemu.gameserver.services.BrokerService;
@@ -129,7 +128,6 @@ public class DataInjectionModule extends AbstractModule
 		bind(WeatherService.class).in(Scopes.SINGLETON);
 		bind(LegionService.class).in(Scopes.SINGLETON);
 		bind(PrivateStoreService.class).in(Scopes.SINGLETON);
-		bind(AbyssService.class).in(Scopes.SINGLETON);
 		bind(RespawnService.class).in(Scopes.SINGLETON);
 		bind(TeleportService.class).in(Scopes.SINGLETON);
 		bind(SkillLearnService.class).in(Scopes.SINGLETON);	
