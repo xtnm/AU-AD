@@ -1,35 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <world_maps xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-<<<<<<< HEAD
-	xsi:noNamespaceSchemaLocation="world_maps.xsd">
-	<map id="110010000" name="Sanctum" death_level="400" water_level="16"/>
-	<map id="120010000" name="Pandaemonium" death_level="150" water_level="16"/>
-	<map id="210010000" name="Poeta" max_user="200" twin_count="2" death_level="0" water_level="100"/>
-	<map id="210030000" name="Verteron" max_user="200" death_level="0" water_level="100"/>
-	<map id="210020000" name="Eltnen" death_level="0" water_level="6"/>
-	<map id="210060000" name="Theomobos" death_level="0" water_level="1"/>
-	<map id="210040000" name="Heiron" death_level="0" water_level="100"/>
-	<map id="220010000" name="Ishalgen" max_user="200" twin_count="2" death_level="0" water_level="248"/>
-	<map id="220030000" name="Altgard" max_user="200" death_level="0" water_level="16"/>
-	<map id="220020000" name="Morheim" death_level="0" water_level="16"/>
-	<map id="220050000" name="Brusthonin" death_level="0" water_level="5"/>
-	<map id="220040000" name="Beluslan" death_level="0" water_level="16"/>
-	<map id="300010000" name="IDAbPro" death_level="0" water_level="16"/>
-	<map id="320130000" name="Admastronghold" instance="true" death_level="0" water_level="16" destroy_time="14400" />
-	<map id="300020000" name="IDTest_Dungeon" death_level="0" water_level="16"/>
-	<map id="300030000" name="NochsanaTrainingCamp" instance="true" death_level="0" water_level="16"/>
-	<map id="300040000" name="DarkPoeta" instance="true" death_level="0" water_level="16" destroy_time="14400"/>
-	<map id="300050000" name="AstreiaChamber" instance="true" death_level="0" water_level="16"/>
-	<map id="300060000" name="SulfurTreeNest" instance="true" death_level="0" water_level="16"/>
-	<map id="300070000" name="ChamberOfRoah" instance="true" death_level="0" water_level="16"/>
-	<map id="300080000" name="LeftWingChamber" instance="true" death_level="0" water_level="16"/>
-	<map id="300090000" name="RightWingChamber" instance="true" death_level="0" water_level="16"/>
-	<map id="300100000" name="SteelRake" instance="true" death_level="0" water_level="16"/>
-	<map id="300110000" name="Dredgion" instance="true" death_level="0" water_level="16"/>
-	<map id="300120000" name="KysisChamber" instance="true" death_level="0" water_level="16"/>
-	<map id="300130000" name="MirenChamber" instance="true" death_level="0" water_level="16"/>
-	<map id="300140000" name="KrotanChamber" instance="true" death_level="0" water_level="16"/>
-=======
 	xsi:noNamespaceSchemaLocation="world_maps.xsd">
 	<map id="110010000" name="Sanctum" death_level="400" water_level="16" world_type="ELYSEA"/>
 	<map id="120010000" name="Pandaemonium" death_level="150" water_level="16" world_type="ASMODAE"/>
@@ -57,7 +27,6 @@
 	<map id="300120000" name="KysisChamber" instance="true" death_level="0" water_level="16" world_type="ABYSS"/>
 	<map id="300130000" name="MirenChamber" instance="true" death_level="0" water_level="16" world_type="ABYSS"/>
 	<map id="300140000" name="KrotanChamber" instance="true" death_level="0" water_level="16" world_type="ABYSS"/>
->>>>>>> trunk
 	<map id="310010000" name="IDAbProL1" instance="true" death_level="0" water_level="16"/>
 	<map id="310020000" name="IDAbProL2" instance="true" death_level="0" water_level="16"/>
 	<map id="310030000" name="IDAbGateL1" death_level="0" water_level="16"/>

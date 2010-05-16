@@ -105,19 +105,11 @@
   	<!-- TODO: Manir's Uncle -->
   	
   	<!-- Picking off Frightcorn -->
-<<<<<<< HEAD
-	<monster_hunt id="2220" start_npc_id="203604">
-		<monster_infos npc_id="210472"  var_id="0" max_kill="5"/>
-		<monster_infos npc_id="210470"  var_id="0" max_kill="5"/>
-	</monster_hunt>
-  	
-=======
 	<monster_hunt start_npc_id="203604" id="2220">
   		<monster_infos var_id="0" npc_id="210470" max_kill="5"/>
 		<monster_infos var_id="0" npc_id="210471" max_kill="5"/>
   		<monster_infos var_id="0" npc_id="210472" max_kill="5"/>
   	</monster_hunt>
->>>>>>> trunk
   	<!-- Ripened Frightcorn -->
   	<item_collecting start_npc_id="203604" id="2219" action_item_id="700052"/>
   	
@@ -229,12 +221,8 @@
   	
   	<!-- The Sting of Poison -->
   	<monster_hunt start_npc_id="203664" id="2264">
-<<<<<<< HEAD
-  		<monster_infos var_id="0" npc_id="210754" max_kill="3"/>
-=======
   		<monster_infos var_id="0" npc_id="210447" max_kill="3"/>
 		<monster_infos var_id="0" npc_id="210754" max_kill="3"/>
->>>>>>> trunk
   	</monster_hunt>
   	
   	<!-- A Drinking Problem -->
@@ -355,12 +343,8 @@
   	<!-- [Coin] Mutated Spirits -->
   	<monster_hunt start_npc_id="203659" id="2293">
   		<monster_infos var_id="0" npc_id="210576" max_kill="6"/>
-<<<<<<< HEAD
-  		<monster_infos var_id="0" npc_id="210523" max_kill="16"/>
-=======
 		<monster_infos var_id="1" npc_id="210578" max_kill="16"/>
   		<monster_infos var_id="1" npc_id="210523" max_kill="16"/>
->>>>>>> trunk
   	</monster_hunt>
   	
   	<!-- TODO: [Group] A Lucrative Endeavor -->
@@ -487,12 +471,8 @@
   	<!-- Killing the Shamans -->
   	 <monster_hunt start_npc_id="203560" id="2280">
   		<monster_infos var_id="0" npc_id="210508" max_kill="4"/>
-<<<<<<< HEAD
-  	</monster_hunt>
-=======
 		<monster_infos var_id="0" npc_id="210509" max_kill="4"/>
   	</monster_hunt>
->>>>>>> trunk
   	<!-- TODO: Keeping the Black Claw Tribe in Check -->
   	
   	<!-- TODO: Crushing the Conspiracy -->
@@ -500,10 +480,6 @@
   	<!-- [Group] Killing Kumbaron's Followers -->
   	  <monster_hunt start_npc_id="203557" id="2282">
   		<monster_infos var_id="0" npc_id="210538" max_kill="3"/>
-<<<<<<< HEAD
-  	</monster_hunt>
-=======
 		<monster_infos var_id="0" npc_id="210539" max_kill="3"/>
   	</monster_hunt>
->>>>>>> trunk
 </quest_scripts>
