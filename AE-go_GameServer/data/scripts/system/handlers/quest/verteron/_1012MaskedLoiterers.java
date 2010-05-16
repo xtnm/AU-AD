@@ -139,7 +139,7 @@ public class _1012MaskedLoiterers extends QuestHandler
 	@Override
 	public boolean onEnterZoneEvent(QuestEnv env, ZoneName zoneName)
 	{
-		if(zoneName != ZoneName.Q1012)
+		if(zoneName != ZoneName.VERTERON_CITADEL)
 			return false;
 		final Player player = env.getPlayer();
 		final QuestState qs = player.getQuestStateList().getQuestState(questId);

@@ -24,6 +24,7 @@ import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
 import com.aionemu.gameserver.utils.PacketSendUtility;
+import com.aionemu.gameserver.world.zone.ZoneName;
 
 /**
  * @author MrPoke
@@ -160,6 +161,28 @@ public class _1011DangerFromAbove extends QuestHandler
 		qs.setStatus(QuestStatus.START);
 		updateQuestStatus(player, qs);
 		return true;
+	}
+	
+	public boolean onZoneEnterEvent(QuestEnv env, ZoneName zone)
+	{
+		if(zone == ZoneName.VERTERON_CITADEL)
+		{
+			Player player = env.getPlayer();
+			QuestState qs = player.getQuestStateList().getQuestState(questId);
+			if(qs == null || qs.getStatus() != QuestStatus.LOCKED)
+				return false;
+			QuestState qs2 = player.getQuestStateList().getQuestState(1130);
+			if(qs2 == null || qs2.getStatus() != QuestStatus.COMPLETE)
+				return false;
+	
+			qs.setStatus(QuestStatus.START);
+			updateQuestStatus(player, qs);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 }
