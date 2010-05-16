@@ -68,13 +68,12 @@ public class StatFunctions
 	 * @param target
 	 * @return
 	 */
-	public static long calculateGroupExperienceReward(Player player, Creature target)
+	public static long calculateGroupExperienceReward(int maxLevelInRange, Creature target)
 	{
-		int playerLevel = player.getCommonData().getLevel();
 		int targetLevel = target.getLevel();
 
 		int baseXP = ((Npc)target).getObjectTemplate().getStatsTemplate().getMaxXp();
-		int xpPercentage =  XPRewardEnum.xpRewardFrom(targetLevel - playerLevel);
+		int xpPercentage =  XPRewardEnum.xpRewardFrom(targetLevel - maxLevelInRange);
 
 		return (int) Math.floor(baseXP * xpPercentage / 100);
 	}
@@ -115,7 +114,113 @@ public class StatFunctions
 		int percentage =  XPRewardEnum.xpRewardFrom(targetLevel - playerLevel);
 		return (int) Math.floor(10 * percentage * player.getRates().getApNpcRate() / 100);
 	}
+	
+	/**
+	 * 
+	 * @param maxLevelInRange
+	 * @param target
+	 * @return
+	 */
+	public static int calculateGroupAPReward(int maxLevelInRange, Creature target)
+	{
+		int targetLevel = target.getLevel();
+		NpcRank npcRank = ((Npc) target).getObjectTemplate().getRank();								
 
+		//TODO: fix to see monster Rank level, NORMAL lvl 1, 2 | ELITE lvl 1, 2 etc..
+		int baseAP = 10 + calculateRankMultipler(npcRank) - 1;
+
+		int apPercentage =  XPRewardEnum.xpRewardFrom(targetLevel - maxLevelInRange);
+
+		return (int) Math.floor(baseAP * apPercentage / 100);
+	}
+	
+	/**
+	 * 
+	 * @param defeated
+	 * @param winner
+	 * @return Points Lost in PvP Death
+	 */
+	public static int calculatePvPApLost(Player defeated, Player winner)
+	{
+		int pointsLost = Math.round(defeated.getAbyssRank().getRank().getPointsLost() * defeated.getRates().getApPlayerRate());
+
+		// Level penalty calculation
+		int difference = winner.getLevel() - defeated.getLevel();
+
+		if(difference > 4)
+		{
+			pointsLost = Math.round(pointsLost * 0.1f);
+		}
+		else
+		{
+			switch(difference)
+			{
+				case 3:
+					pointsLost = Math.round(pointsLost * 0.85f);
+					break;
+				case 4:
+					pointsLost = Math.round(pointsLost * 0.65f);
+					break;
+			}
+		}
+		return pointsLost;
+	}
+	
+	/**
+	 * 
+	 * @param defeated
+	 * @param winner
+	 * @return Points Gained in PvP Kill
+	 */
+	public static int calculatePvpApGained(Player defeated, Player winner)
+	{
+		int pointsGained = Math.round(defeated.getAbyssRank().getRank().getPointsGained() * winner.getRates().getApPlayerRate());
+
+		// Level penalty calculation
+		int difference = winner.getLevel() - defeated.getLevel();
+
+		if(difference > 4)
+		{
+			pointsGained = Math.round(pointsGained * 0.1f);
+		}
+		else if(difference < -3)
+		{
+			pointsGained = Math.round(pointsGained * 1.3f);
+		}
+		else
+		{
+			switch(difference)
+			{
+				case 3:
+					pointsGained = Math.round(pointsGained * 0.85f);
+					break;
+				case 4:
+					pointsGained = Math.round(pointsGained * 0.65f);
+					break;
+				case -2:
+					pointsGained = Math.round(pointsGained * 1.1f);
+					break;
+				case -3:
+					pointsGained = Math.round(pointsGained * 1.2f);
+					break;
+			}
+		}
+
+		// Abyss rank penalty calculation
+		int winnerAbyssRank = winner.getAbyssRank().getRank().getId();
+		int defeatedAbyssRank = defeated.getAbyssRank().getRank().getId();
+		int abyssRankDifference = winnerAbyssRank - defeatedAbyssRank;
+
+		if(winnerAbyssRank <= 7 && abyssRankDifference > 0)
+		{
+			float penaltyPercent = abyssRankDifference * 0.05f;			
+
+			pointsGained -= Math.round(pointsGained * penaltyPercent);
+		}
+
+		return pointsGained;
+	}
+	
 	/**
 	 * 
 	 * @param player

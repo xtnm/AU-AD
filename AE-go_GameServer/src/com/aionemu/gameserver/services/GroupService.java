@@ -48,6 +48,7 @@ import com.aionemu.gameserver.utils.ThreadPoolManager;
 import com.aionemu.gameserver.utils.idfactory.IDFactory;
 import com.aionemu.gameserver.utils.idfactory.IDFactoryAionObject;
 import com.aionemu.gameserver.utils.stats.StatFunctions;
+import com.aionemu.gameserver.world.WorldType;
 import com.google.inject.Inject;
 
 /**
@@ -257,43 +258,90 @@ public class GroupService
 	 */
 	public void doReward(Player player, Monster owner)
 	{
-		long xpReward = StatFunctions.calculateGroupExperienceReward(player, owner);
-		
+		// Find Group Members and Determine Highest Level
 		List<Player> players = new ArrayList<Player>();
 		int partyLvlSum = 0;
+		int highestLevel = 0;
 		for(Player member : player.getPlayerGroup().getMembers())
 		{
 			if(MathUtil.isInRange(member, player, GroupConfig.GROUP_MAX_DISTANCE))
 			{
 				players.add(member);
 				partyLvlSum += member.getLevel();
+				if (member.getLevel() > highestLevel)
+					highestLevel = member.getLevel();
 			}
 		}
+		
+		//AP reward
+		int apRewardPerMember = 0;
+		WorldType worldType = owner.getWorldType();
+		
+		//WorldType worldType = sp.getWorld().getWorldMap(player.getWorldId()).getWorldType();
+		if(worldType == WorldType.ABYSS)
+		{
+			// Split Evenly
+			apRewardPerMember = Math.round(StatFunctions.calculateGroupAPReward(highestLevel, owner) / players.size());
+		}
+		
+		// Exp reward
+		long expReward = StatFunctions.calculateGroupExperienceReward(highestLevel, owner);
+		
+		// Exp Mod
+		// TODO: Add logic to prevent power leveling. Players 10 levels below highest member should get 0 exp.
 		double mod = 1;
 		if (players.size() == 0)
 			return;
 		else if (players.size() > 1)
 			mod = 1+(((players.size()-1)*10)/100);
 		
-		xpReward *= mod; 
+		expReward *= mod; 
 
 		for(Player member : players)
 		{
+			// Exp reward
 			long currentExp = member.getCommonData().getExp();
-			long reward = (xpReward * member.getLevel())/partyLvlSum;
+			long reward = (expReward * member.getLevel())/partyLvlSum;
 			reward *= member.getRates().getGroupXpRate();
 			member.getCommonData().setExp(currentExp + reward);
 
 			PacketSendUtility.sendPacket(member, SM_SYSTEM_MESSAGE.EXP(Long.toString(reward)));
 
-				// DPreward
+			// DP reward
 			int currentDp = member.getCommonData().getDp();
 			int dpReward = StatFunctions.calculateGroupDPReward(member, owner);
 			member.getCommonData().setDp(dpReward + currentDp);
+			
+			// AP reward
+			if (apRewardPerMember > 0)
+				member.getCommonData().addAp(apRewardPerMember);
+			
 			questEngine.onKill(new QuestEnv(owner, member, 0 , 0));
 		}
 	}
-
+	
+	public void doReward(Player player, int apReward)
+	{
+		// Find group members in range
+		List<Player> players = new ArrayList<Player>();
+		for(Player member : player.getPlayerGroup().getMembers())
+		{
+			if(MathUtil.isInRange(member, player, GroupConfig.GROUP_MAX_DISTANCE))
+			{
+				players.add(member);
+			}
+		}
+		
+		int apRewardPerMember = Math.round(apReward / players.size());
+		
+		for(Player member : players)
+		{
+			// AP reward
+			if (apRewardPerMember > 0)
+				member.getCommonData().addAp(apRewardPerMember);
+		}
+	}
+	
 	/**
 	 * This method will send the show brand to every groupmember
 	 * 

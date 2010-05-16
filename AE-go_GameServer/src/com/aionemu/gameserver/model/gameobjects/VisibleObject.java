@@ -22,6 +22,7 @@ import com.aionemu.gameserver.model.templates.spawn.SpawnTemplate;
 import com.aionemu.gameserver.world.KnownList;
 import com.aionemu.gameserver.world.MapRegion;
 import com.aionemu.gameserver.world.WorldPosition;
+import com.aionemu.gameserver.world.WorldType;
 
 /**
  * This class is representing visible objects. It's a base class for all in-game objects that can be spawned in the
@@ -103,6 +104,16 @@ public abstract class VisibleObject extends AionObject
 		return position.getMapId();
 	}
 
+	/**
+	 * Return WorldType of current location
+	 * 
+	 * @return WorldType of current location
+	 */
+	public WorldType getWorldType()
+	{
+		return position.getWorld().getWorldMap(getWorldId()).getWorldType();
+	}
+	
 	/**
 	 * Return World position x
 	 * 

@@ -65,6 +65,7 @@ import com.aionemu.gameserver.skillengine.model.Skill;
 import com.aionemu.gameserver.taskmanager.tasks.PacketBroadcaster.BroadcastMode;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
+import com.aionemu.gameserver.utils.stats.StatFunctions;
 import com.aionemu.gameserver.world.World;
 import com.aionemu.gameserver.world.zone.ZoneInstance;
 import com.google.inject.internal.Nullable;
@@ -259,8 +260,41 @@ public class PlayerController extends CreatureController<Player>
 	@Override
 	public void doReward(Creature creature)
 	{
-		sp.getAbyssService().doReward(getOwner(), (Player) creature);
+		super.doReward(creature);
+
+		if (!(creature instanceof Player))
+			return;
+
+		Player winner = (Player)creature;
+		
+		// Apply lost AP to defeated player
+		int apLost = StatFunctions.calculatePvPApLost(getOwner(), winner);
+		getOwner().getCommonData().addAp(-apLost);
+		
+		// Add Player Kill to record.
+		winner.getAbyssRank().setAllKill();
+		
+		int apReward = StatFunctions.calculatePvpApGained(getOwner(), winner);
+		
+		if(winner.getPlayerGroup() == null) // solo
+		{
+			// DP reward 
+			// TODO: Figure out what DP reward should be for PvP
+			//int currentDp = winner.getCommonData().getDp();
+			//int dpReward = StatFunctions.calculateSoloDPReward(winner, getOwner());
+			//winner.getCommonData().setDp(dpReward + currentDp);
+
+			// AP reward
+			winner.getCommonData().addAp(apReward);
+		}
+		else // in group
+		{
+			// Group AP Distribution
+			sp.getGroupService().doReward(winner, apReward);
+		}
 	}
+
+	
 
 	@Override
 	public void attackTarget(Creature target)

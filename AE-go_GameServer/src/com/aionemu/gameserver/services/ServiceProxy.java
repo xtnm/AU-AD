@@ -32,8 +32,6 @@ public class ServiceProxy
 	@Inject
 	private World					world;
 	@Inject
-	private AbyssService			abyssService;
-	@Inject
 	private DropService				dropService;
 	@Inject
 	private ExchangeService			exchangeService;
@@ -84,14 +82,6 @@ public class ServiceProxy
 	public World getWorld()
 	{
 		return world;
-	}
-
-	/**
-	 * @return the abyssService
-	 */
-	public AbyssService getAbyssService()
-	{
-		return abyssService;
 	}
 
 	/**
