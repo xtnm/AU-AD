@@ -23,6 +23,10 @@
 	<spawn map="220010000" npcid="203543" pool="1" interval="295">
 		<object x="928.04236" y="1566.0132" z="284.12152" h="50"/>
 	</spawn>
+	<!-- Iron Axe (Object Normal lvl:1)-->
+	<spawn map="220010000" npcid="700146" pool="1" interval="105">
+        <object x="1085.7817" y="2347.947" z="262.88773" h="15"/>
+    </spawn>
 	<!-- Ampreh Flower (Object Normal lvl:1)-->
 	<spawn map="220010000" npcid="700125" pool="20" interval="295">
 		<object x="613.5958" y="2213.441" z="247.40" h="0"/>
