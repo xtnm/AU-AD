@@ -303,7 +303,11 @@ public class GoTo extends AdminCommand
 			teleportService.teleportTo(admin, 900030000, 228, 171, 49, 0);
 			PacketSendUtility.sendMessage(admin, "Teleported to Test Server.");
 		}
-
+		else if(params[0].toLowerCase().equals("steelrake"))
+		{
+			teleportService.teleportTo(admin, 300100000, 237, 505, 949, 0);
+			PacketSendUtility.sendMessage(admin, "Teleported to Steel Rake.");
+		}
 		else 
 			PacketSendUtility.sendMessage(admin, "Target location was not found!");
 	}

@@ -232,5 +232,13 @@
 	
 	<!-- SCROLL TELEPORTS ASMODIANS END-->
 	
+	<!-- ZONE TELEPORT -->
+
+	<!--Symbol of Mau Hero to Chieftain Nuaka-->
+	<portal npcid="730049"  instance="false" minlevel="29" maxlevel="50" group="false" race="ASMODIANS">
+		<entrypoint mapid="220020000" x="2399.2" y="540.37" z="266.15" race="ASMODIANS"/>
+		<exitpoint mapid="220020000" x="2401.9648" y="570.7738" z="329.09976"/>
+	</portal>
+	
 	
 </portal_templates>
