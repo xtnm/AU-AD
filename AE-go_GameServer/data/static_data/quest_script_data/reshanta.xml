@@ -780,23 +780,32 @@
 	<!-- 2826  Muelina's Forgetfulness -->
 	<item_collecting id="2826" start_npc_id="260236"/>
 
-	<!-- TODO: Quest Id: 2808  [Group] Attack Asteria Elites -->
+	<!-- 2808  [Group] Attack Asteria Elites -->
+	<item_collecting id="2808" start_npc_id="278107"/>
 
-	<!-- TODO: Quest Id: 2809  [Group] Seize Roah Fortress -->
+	<!-- 2809  [Group] Seize Roah Fortress -->
+	<item_collecting id="2809" start_npc_id="278104"/>
 
-	<!-- TODO: Quest Id: 2810  [Group] Attack Roah Elites -->
+	<!-- 2810  [Group] Attack Roah Elites -->
+	<item_collecting id="2810" start_npc_id="278102"/>
 
-	<!-- TODO: Quest Id: 2811  [Group] Seize Krotan Refuge -->
+	<!-- 2811  [Group] Seize Krotan Refuge -->
+	<item_collecting id="2811" start_npc_id="278113"/>
 
-	<!-- TODO: Quest Id: 2812  [Group] Attack Krotan Elites -->
+	<!-- 2812  [Group] Attack Krotan Elites -->
+	<item_collecting id="2812" start_npc_id="278109"/>
 
-	<!-- TODO: Quest Id: 2813  [Group] Seize Kysis Fortress -->
+	<!-- 2813  [Group] Seize Kysis Fortress -->
+	<item_collecting id="2813" start_npc_id="278123"/>
 
-	<!-- TODO: Quest Id: 2814  [Group] Attack Kysis Elites -->
+	<!-- 2814  [Group] Attack Kysis Elites -->
+	<item_collecting id="2814" start_npc_id="278119"/>
 
-	<!-- TODO: Quest Id: 2815  [Group] Seize Miren Fortress -->
+	<!-- 2815  [Group] Seize Miren Fortress -->
+	<item_collecting id="2815" start_npc_id="278118"/>
 
-	<!-- TODO: Quest Id: 2816  [Group] Attack Miren Elites -->
+	<!-- 2816  [Group] Attack Miren Elites -->
+	<item_collecting id="2816" start_npc_id="278114"/>
 
 	<!-- TODO: Quest Id: 1739  [Alliance] Defeat Upper Generals -->
 
