@@ -17,10 +17,10 @@
 package admincommands;
 
 import com.aionemu.gameserver.configs.administration.AdminConfig;
+import com.aionemu.gameserver.model.gameobjects.VisibleObject;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.services.SkillLearnService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
-import com.aionemu.gameserver.model.gameobjects.VisibleObject;
 import com.aionemu.gameserver.utils.chathandlers.AdminCommand;
 import com.google.inject.Inject;
 
@@ -58,7 +58,7 @@ public class GiveMissingSkills extends AdminCommand
 		}
 		else if(target instanceof Player)
 		{
-			skillLearnService.addMissingSkills(target);
+			skillLearnService.addMissingSkills((Player) target);
 			PacketSendUtility.sendMessage(admin, "Terminated");
 			return;
 		}
@@ -67,6 +67,5 @@ public class GiveMissingSkills extends AdminCommand
 			PacketSendUtility.sendMessage(admin, "Wrong Target");
 			return;
 		}
-		return;
 	}
 }
