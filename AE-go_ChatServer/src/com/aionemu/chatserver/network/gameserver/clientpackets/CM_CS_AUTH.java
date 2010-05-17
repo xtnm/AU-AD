@@ -76,7 +76,9 @@ public class CM_CS_AUTH extends AbstractGameClientPacket
 				gameChannelHandler.setState(State.AUTHED);
 				gameChannelHandler.sendPacket(new SM_GS_AUTH_RESPONSE(resp));
 				break;
-
+			case NOT_AUTHED:
+				gameChannelHandler.sendPacket(new SM_GS_AUTH_RESPONSE(resp));
+				break;
 			default:
 				gameChannelHandler.close(new SM_GS_AUTH_RESPONSE(resp));
 		}

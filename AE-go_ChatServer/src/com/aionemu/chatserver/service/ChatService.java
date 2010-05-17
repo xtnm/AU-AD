@@ -20,6 +20,9 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.apache.log4j.Logger;
+
+import com.aionemu.chatserver.ChatServer;
 import com.aionemu.chatserver.model.ChatClient;
 import com.aionemu.chatserver.model.channel.Channel;
 import com.aionemu.chatserver.model.channel.Channels;
@@ -33,6 +36,8 @@ import com.google.inject.Inject;
  */
 public class ChatService
 {
+	private static final Logger	log = Logger.getLogger(ChatService.class);
+	
 	private Map<Integer, ChatClient>	players	= new ConcurrentHashMap<Integer, ChatClient>();
 	
 	@Inject
@@ -118,7 +123,10 @@ public class ChatService
 		{
 			players.remove(playerId);
 			broadcastService.removeClient(chatClient);
-			chatClient.getChannelHandler().close();	
+			if(chatClient.getChannelHandler() != null)
+				chatClient.getChannelHandler().close();
+			else
+				log.warn("Received logout event without client authentication for player " + playerId);
 		}		
 	}
 
