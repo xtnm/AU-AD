@@ -35,28 +35,34 @@ public class Config
 	protected static final Logger	log	= Logger.getLogger(Config.class);
 
 	/**
-	 * Login Server port
+	 * Chat Server port
 	 */
 	@Property(key = "chatserver.network.client.port", defaultValue = "10241")
 	public static int				CHAT_PORT;
 
 	/**
-	 * Login Server bind ip
+	 * Chat Server bind ip
 	 */
 	@Property(key = "chatserver.network.client.host", defaultValue = "*")
 	public static String			CHAT_BIND_ADDRESS;
 
 	/**
-	 * Login Server port
+	 * Game Server port
 	 */
 	@Property(key = "chatserver.network.gameserver.port", defaultValue = "9021")
 	public static int				GAME_PORT;
 
 	/**
-	 * Login Server bind ip
+	 * Game Server bind ip
 	 */
 	@Property(key = "chatserver.network.gameserver.host", defaultValue = "*")
 	public static String			GAME_BIND_ADDRESS;
+	
+	/**
+	 * Game Server bind ip
+	 */
+	@Property(key = "chatserver.network.gameserver.password", defaultValue = "*")
+	public static String			GAME_SERVER_PASSWORD;
 
 	/**
 	 * Load configs from files.

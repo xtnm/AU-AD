@@ -16,6 +16,7 @@
  */
 package com.aionemu.chatserver.service;
 
+import com.aionemu.chatserver.configs.Config;
 import com.aionemu.chatserver.network.gameserver.GsAuthResponse;
 import com.aionemu.chatserver.network.netty.handler.GameChannelHandler;
 
@@ -38,7 +39,19 @@ public class GameServerService
 	public GsAuthResponse registerGameServer(GameChannelHandler gameChannelHandler, byte gameServerId,
 		byte[] defaultAddress, String password)
 	{
-		return GsAuthResponse.AUTHED;
+		return passwordConfigAuth(password);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	private GsAuthResponse passwordConfigAuth(String password)
+	{
+		if (password.equals(Config.GAME_SERVER_PASSWORD))
+			return GsAuthResponse.AUTHED;
+
+		return GsAuthResponse.NOT_AUTHED;
 	}
 
 }
