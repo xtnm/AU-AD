@@ -744,7 +744,8 @@
 
 	<!-- TODO: Quest Id: 2785  [Group] Defeat the Krotan Garrison -->
 
-	<!-- TODO: Quest Id: 4705  [Group] Essential Material -->
+	<!-- 4705  [Group] Essential Material -->
+	<item_collecting id="4705" start_npc_id="279027" end_npc_id="204837"/>
 
 	<!-- TODO: Quest Id: 4706  [Group] Artifact Activation -->
 
