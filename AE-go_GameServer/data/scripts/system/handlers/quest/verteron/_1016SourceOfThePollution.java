@@ -70,16 +70,18 @@ public class _1016SourceOfThePollution extends QuestHandler
 		return true;
 	}
 
-   @Override
-   public boolean onDialogEvent(QuestEnv env)
+	@Override
+	public boolean onDialogEvent(QuestEnv env)
 	{
-      Player player = env.getPlayer();
-      QuestState qs = player.getQuestStateList().getQuestState(questId);
+		Player player = env.getPlayer();
+		QuestState qs = player.getQuestStateList().getQuestState(questId);
+		if(qs == null)
+			return false;
 
-      int var = qs.getQuestVarById(0);
-      int targetId = 0;
-      if(env.getVisibleObject() instanceof Npc)
-         targetId = ((Npc) env.getVisibleObject()).getNpcId();
+		int var = qs.getQuestVarById(0);
+		int targetId = 0;
+		if(env.getVisibleObject() instanceof Npc)
+			targetId = ((Npc) env.getVisibleObject()).getNpcId();
 
 		if(qs.getStatus() == QuestStatus.REWARD)
 		{
