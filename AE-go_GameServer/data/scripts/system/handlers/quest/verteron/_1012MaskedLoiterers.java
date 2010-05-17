@@ -45,6 +45,7 @@ public class _1012MaskedLoiterers extends QuestHandler
 		qe.setNpcQuestData(203111).addOnTalkEvent(questId);
 		qe.setQuestEnterZone(ZoneName.Q1012).add(questId);
 		qe.addQuestLvlUp(questId);
+		qe.setQuestEnterZone(ZoneName.VERTERON_CITADEL);
 	}
 
 	@Override

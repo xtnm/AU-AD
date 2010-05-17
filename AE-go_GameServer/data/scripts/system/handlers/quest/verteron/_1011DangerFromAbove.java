@@ -46,6 +46,7 @@ public class _1011DangerFromAbove extends QuestHandler
 		int[] talkNpcs = { 203109, 203122, 203109 };
 		qe.setNpcQuestData(700091).addOnKillEvent(questId);
 		qe.addQuestLvlUp(questId);
+		qe.setQuestEnterZone(ZoneName.VERTERON_CITADEL);
 		for(int id : talkNpcs)
 			qe.setNpcQuestData(id).addOnTalkEvent(questId);
 	}
