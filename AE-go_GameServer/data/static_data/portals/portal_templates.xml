@@ -4,6 +4,12 @@
 	
 	<!-- INSTANCES -->
 	
+	<!-- Left Wing Chamber  -->
+   <portal npcid="700454"  instance="true" minlevel="35" maxlevel="50" group="true">
+      <entrypoint mapid="400010000" x="2784.99" y="2664.03" z="1486.7"/>
+      <exitpoint mapid="300080000" x="227" y="617" z="367"/>
+   </portal>
+   
 	<!--Chamber of Roah -->
 	<portal npcid="700479" instance="true" minlevel="40" maxlevel="50" group="true">
 		<entrypoint mapid="400010000" x="2712.53" y="757.89" z="2854.295"/>
