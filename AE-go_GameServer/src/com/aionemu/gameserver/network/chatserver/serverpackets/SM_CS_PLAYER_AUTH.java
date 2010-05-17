@@ -27,20 +27,17 @@ import com.aionemu.gameserver.network.chatserver.CsServerPacket;
 public class SM_CS_PLAYER_AUTH extends CsServerPacket
 {
 	private int playerId;
-	private byte[] token;
 	
-	public SM_CS_PLAYER_AUTH(int playerId, byte[] token)
+	public SM_CS_PLAYER_AUTH(int playerId)
 	{
 		super(0x01);
 		this.playerId = playerId;
-		this.token = token;
 	}
 
 	@Override
 	protected void writeImpl(ChatServerConnection con, ByteBuffer buf)
 	{
+		writeC(buf, getOpcode());
 		writeD(buf, playerId);
-		writeC(buf, token.length);
-		writeB(buf, token);
 	}
 }

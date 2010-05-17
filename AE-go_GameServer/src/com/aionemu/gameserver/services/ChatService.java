@@ -22,7 +22,10 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_CHAT_INIT;
 import com.aionemu.gameserver.network.chatserver.ChatServer;
+import com.aionemu.gameserver.utils.PacketSendUtility;
+import com.aionemu.gameserver.utils.ThreadPoolManager;
 import com.aionemu.gameserver.world.World;
 import com.google.inject.Inject;
 
@@ -40,24 +43,32 @@ public class ChatService
 	private World 				world;
 	
 	private Map<Integer, Player>		players = new HashMap<Integer, Player>();
+	
 
 	/**
 	 * Send token to chat server
 	 * 
 	 * @param player
 	 */
-	public void onPlayerLogin(Player player)
+	public void onPlayerLogin(final Player player)
 	{
-		if(!isPlayerConnected(player))
-		{
-			byte[] token = generateToken(player);
-			chatServer.sendPlayerLoginRequst(player, token);
-		}
-		else
-		{
-			log.warn("Player already registered with chat server " + player.getName());
-			//TODO do force relog in chat server?
-		}
+		ThreadPoolManager.getInstance().schedule(new Runnable(){
+			
+			@Override
+			public void run()
+			{
+				if(!isPlayerConnected(player))
+				{
+					chatServer.sendPlayerLoginRequst(player);
+				}
+				else
+				{
+					log.warn("Player already registered with chat server " + player.getName());
+					//TODO do force relog in chat server?
+				}
+			}
+		}, 10000);
+		
 	}
 
 	/**
@@ -67,7 +78,8 @@ public class ChatService
 	 */
 	public void onPlayerLogout(Player player)
 	{
-		//TODO
+		players.remove(player.getObjectId());
+		chatServer.sendPlayerLogout(player);
 	}
 	
 	/**
@@ -82,24 +94,15 @@ public class ChatService
 
 	/**
 	 * @param playerId
+	 * @param token 
 	 */
-	public void playerAuthed(int playerId)
+	public void playerAuthed(int playerId, byte[] token)
 	{	
 		Player player = world.findPlayer(playerId);
 		if(player != null)
 		{
 			players.put(playerId, player);
-			// TODO send init packet with token	
+			PacketSendUtility.sendPacket(player, new SM_CHAT_INIT(token));	
 		}	
-	}
-	
-	/**
-	 * 
-	 * @param player
-	 * @return
-	 */
-	private byte[] generateToken(Player player)
-	{
-		return new byte[0];
 	}
 }

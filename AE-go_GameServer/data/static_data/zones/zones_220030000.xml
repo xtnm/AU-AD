@@ -648,6 +648,7 @@
 		</points>
 		<link>GRIBADE_CRATER_LAKE_220030000</link>
 		<link>TRADERS_BERTH_220030000</link>
+		<link>IMPETUSIUM_220030000</link>
 	</zone>
 	<zone mapid="220030000" name="ALTGARD_FORTRESS_220030000"
 		priority="14" fly="true" breath="true">

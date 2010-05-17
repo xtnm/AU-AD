@@ -25,6 +25,7 @@ import com.aionemu.commons.network.NioServer;
 import com.aionemu.gameserver.configs.network.NetworkConfig;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.chatserver.serverpackets.SM_CS_PLAYER_AUTH;
+import com.aionemu.gameserver.network.chatserver.serverpackets.SM_CS_PLAYER_LOGOUT;
 import com.aionemu.gameserver.network.factories.ChatServerConnectionFactory;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
 import com.google.inject.Inject;
@@ -114,8 +115,17 @@ public class ChatServer
 	 * @param player
 	 * @param token
 	 */
-	public void sendPlayerLoginRequst(Player player, byte[] token)
+	public void sendPlayerLoginRequst(Player player)
 	{
-		chatServer.sendPacket(new SM_CS_PLAYER_AUTH(player.getObjectId(), token));
+		chatServer.sendPacket(new SM_CS_PLAYER_AUTH(player.getObjectId()));
+	}
+	
+	/**
+	 * 
+	 * @param player
+	 */
+	public void sendPlayerLogout(Player player)
+	{
+		chatServer.sendPacket(new SM_CS_PLAYER_LOGOUT(player.getObjectId()));
 	}
 }
