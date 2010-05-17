@@ -815,7 +815,8 @@
 
 	<!-- TODO: Quest Id: 1785  [Group] Decimate the Krotan Garrison -->
 
-	<!-- TODO: Quest Id: 1808  [Group] Assault Asteria Elites -->
+	<!-- 1808  [Group] Assault Asteria Elites -->
+	<item_collecting id="1808" start_npc_id="278606"/>
 
 	<!-- 1809  [Group] Capture Roah Fortress -->
 	<item_collecting id="1809" start_npc_id="278605"/>
