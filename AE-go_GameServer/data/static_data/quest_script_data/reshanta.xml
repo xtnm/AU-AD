@@ -817,21 +817,29 @@
 
 	<!-- TODO: Quest Id: 1808  [Group] Assault Asteria Elites -->
 
-	<!-- TODO: Quest Id: 1809  [Group] Capture Roah Fortress -->
+	<!-- 1809  [Group] Capture Roah Fortress -->
+	<item_collecting id="1809" start_npc_id="278605"/>
 
-	<!-- TODO: Quest Id: 1810  [Group] Assault Roah Elites -->
+	<!-- 1810  [Group] Assault Roah Elites -->
+	<item_collecting id="1810" start_npc_id="278604"/>
 
-	<!-- TODO: Quest Id: 1811  [Group] Capture Krotan Refuge -->
+	<!-- 1811  [Group] Capture Krotan Refuge -->
+	<item_collecting id="1811" start_npc_id="278609"/>
 
-	<!-- TODO: Quest Id: 1812  [Group] Assault Krotan Elites -->
+	<!-- 1812  [Group] Assault Krotan Elites -->
+	<item_collecting id="1812" start_npc_id="278613"/>
 
-	<!-- TODO: Quest Id: 1813  [Group] Capture Kysis Fortress -->
+	<!-- 1813  [Group] Capture Kysis Fortress -->
+	<item_collecting id="1813" start_npc_id="278623"/>
 
-	<!-- TODO: Quest Id: 1814  [Group] Assault Kysis Elites -->
+	<!-- 1814  [Group] Assault Kysis Elites -->
+	<item_collecting id="1814" start_npc_id="278619"/>
 
-	<!-- TODO: Quest Id: 1815  [Group] Capture Miren Fortress -->
+	<!-- 1815  [Group] Capture Miren Fortress -->
+	<item_collecting id="1815" start_npc_id="278618"/>
 
-	<!-- TODO: Quest Id: 1816  [Group] Assault Miren Elites -->
+	<!-- 1816  [Group] Assault Miren Elites -->
+	<item_collecting id="1816" start_npc_id="278614"/>
 
 	<!-- TODO: Quest Id: 1790  [Group] Decimate the Kysis Garrison -->
 
