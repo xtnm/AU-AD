@@ -21,30 +21,8 @@ package com.aionemu.chatserver.model;
  */
 public enum ChannelType
 {
-	PUBLIC(2),
-	TRADE(3),
-	GROUP(4),
-	JOB(5);
-
-	private int	index;
-
-	private ChannelType(int index)
-	{
-		this.index = index;
-	}
-
-	public int getIndex()
-	{
-		return index;
-	}
-
-	public static ChannelType getChannel(int index)
-	{
-		for (ChannelType ch : values())
-		{
-			if (ch.getIndex() == index)
-				return ch;
-		}
-		return null;
-	}
+	PUBLIC,
+	TRADE,
+	GROUP,
+	JOB;
 }

@@ -79,7 +79,7 @@ public class CM_CHANNEL_REQUEST extends AbstractClientPacket
 		Channel channel = chatService.registerPlayerWithChannel(chatClient, channelIndex, channelIdentifier);
 		if (channel != null)
 		{
-			clientChannelHandler.sendPacket(new SM_CHANNEL_RESPONSE(channel));
+			clientChannelHandler.sendPacket(new SM_CHANNEL_RESPONSE(chatClient, channel));
 		}
 	}
 

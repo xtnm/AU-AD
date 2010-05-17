@@ -18,6 +18,7 @@ package com.aionemu.chatserver.model;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import com.aionemu.chatserver.model.channel.Channel;
 import com.aionemu.chatserver.network.netty.handler.ClientChannelHandler;
@@ -30,29 +31,34 @@ public class ChatClient
 	/**
 	 * Id of chat client (player id)
 	 */
-	private int clientId;
-	
+	private int							clientId;
+
 	/**
 	 * Identifier used when sending message
 	 */
-	private byte[] identifier;
-	
+	private byte[]						identifier;
+
 	/**
 	 * Token used during auth with GS
 	 */
-	private byte[] token;
-	
+	private byte[]						token;
+
 	/**
 	 * Channel handler of chat client
 	 */
-	private ClientChannelHandler channelHandler;
-	
+	private ClientChannelHandler		channelHandler;
+
 	/**
 	 * Map with all connected channels<br>
 	 * Only one channel of specific type can be added
 	 */
-	private Map<ChannelType, Channel> channelsList = new ConcurrentHashMap<ChannelType, Channel>();
-	
+	private Map<ChannelType, Channel>	channelsList	= new ConcurrentHashMap<ChannelType, Channel>();
+
+	/**
+	 * Incremented during each new channel request
+	 */
+	private AtomicInteger				channelIndex	= new AtomicInteger(1);
+
 	/**
 	 * 
 	 * @param clientId
@@ -73,7 +79,7 @@ public class ChatClient
 	{
 		channelsList.put(channel.getChannelType(), channel);
 	}
-	
+
 	/**
 	 * 
 	 * @param channel
@@ -98,7 +104,7 @@ public class ChatClient
 	{
 		return token;
 	}
-	
+
 	/**
 	 * @return the identifier
 	 */
@@ -116,7 +122,8 @@ public class ChatClient
 	}
 
 	/**
-	 * @param channelHandler the channelHandler to set
+	 * @param channelHandler
+	 *            the channelHandler to set
 	 */
 	public void setChannelHandler(ClientChannelHandler channelHandler)
 	{
@@ -124,10 +131,20 @@ public class ChatClient
 	}
 
 	/**
-	 * @param identifier the identifier to set
+	 * @param identifier
+	 *            the identifier to set
 	 */
 	public void setIdentifier(byte[] identifier)
 	{
 		this.identifier = identifier;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public int nextIndex()
+	{
+		return channelIndex.incrementAndGet();
 	}
 }
