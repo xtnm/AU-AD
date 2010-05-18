@@ -35,15 +35,17 @@ import com.google.inject.Inject;
  */
 public class ChatService
 {
-	private static final Logger	log	= Logger.getLogger(ChatService.class);
+	private static final Logger		log		= Logger.getLogger(ChatService.class);
 
 	@Inject
-	private ChatServer			chatServer;
+	private ChatServer				chatServer;
 	@Inject
-	private World 				world;
-	
-	private Map<Integer, Player>		players = new HashMap<Integer, Player>();
-	
+	private World					world;
+
+	private Map<Integer, Player>	players	= new HashMap<Integer, Player>();
+
+	private byte[]					ip		= { 127, 0, 0, 1 };
+	private int						port	= 10241;
 
 	/**
 	 * Send token to chat server
@@ -53,7 +55,7 @@ public class ChatService
 	public void onPlayerLogin(final Player player)
 	{
 		ThreadPoolManager.getInstance().schedule(new Runnable(){
-			
+
 			@Override
 			public void run()
 			{
@@ -64,11 +66,11 @@ public class ChatService
 				else
 				{
 					log.warn("Player already registered with chat server " + player.getName());
-					//TODO do force relog in chat server?
+					// TODO do force relog in chat server?
 				}
 			}
 		}, 10000);
-		
+
 	}
 
 	/**
@@ -81,7 +83,7 @@ public class ChatService
 		players.remove(player.getObjectId());
 		chatServer.sendPlayerLogout(player);
 	}
-	
+
 	/**
 	 * 
 	 * @param player
@@ -94,15 +96,47 @@ public class ChatService
 
 	/**
 	 * @param playerId
-	 * @param token 
+	 * @param token
 	 */
 	public void playerAuthed(int playerId, byte[] token)
-	{	
+	{
 		Player player = world.findPlayer(playerId);
 		if(player != null)
 		{
 			players.put(playerId, player);
-			PacketSendUtility.sendPacket(player, new SM_CHAT_INIT(token));	
-		}	
+			PacketSendUtility.sendPacket(player, new SM_CHAT_INIT(token));
+		}
+	}
+	
+	/**
+	 * @return the ip
+	 */
+	public byte[] getIp()
+	{
+		return ip;
+	}
+
+	/**
+	 * @return the port
+	 */
+	public int getPort()
+	{
+		return port;
+	}
+
+	/**
+	 * @param ip the ip to set
+	 */
+	public void setIp(byte[] ip)
+	{
+		this.ip = ip;
+	}
+
+	/**
+	 * @param port the port to set
+	 */
+	public void setPort(int port)
+	{
+		this.port = port;
 	}
 }
