@@ -29,7 +29,7 @@ import com.aionemu.gameserver.questEngine.model.QuestStatus;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 
 /**
- * @author Rhys2002
+ * @author Rhys2002 corrected by xitanium
  * 
  */
 public class _1042KeeperoftheKaidanKey extends QuestHandler
