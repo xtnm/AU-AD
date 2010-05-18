@@ -132,7 +132,7 @@
 	</portal>
 	
 	<!-- Dark poeta -->
-	<portal npcid="730211" instance="true" minlevel="40" maxlevel="50" group="true">
+	<portal npcid="700565" instance="true" minlevel="40" maxlevel="50" group="true">
 		<entrypoint mapid="300040000" x="294.7497" y="317.4346" z="132.72688"/>
 		<exitpoint mapid="300040000" x="1169.0043" y="1223.6459" z="145.77489"/>
 	</portal>
