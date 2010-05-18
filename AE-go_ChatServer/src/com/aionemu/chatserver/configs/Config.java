@@ -16,6 +16,7 @@
  */
 package com.aionemu.chatserver.configs;
 
+import java.net.InetSocketAddress;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
@@ -35,28 +36,16 @@ public class Config
 	protected static final Logger	log	= Logger.getLogger(Config.class);
 
 	/**
-	 * Chat Server port
+	 * Chat Server address
 	 */
-	@Property(key = "chatserver.network.client.port", defaultValue = "10241")
-	public static int				CHAT_PORT;
+	@Property(key = "chatserver.network.client.address", defaultValue = "localhost:10241")
+	public static InetSocketAddress	CHAT_ADDRESS;
 
 	/**
-	 * Chat Server bind ip
+	 * Game Server address
 	 */
-	@Property(key = "chatserver.network.client.host", defaultValue = "*")
-	public static String			CHAT_BIND_ADDRESS;
-
-	/**
-	 * Game Server port
-	 */
-	@Property(key = "chatserver.network.gameserver.port", defaultValue = "9021")
-	public static int				GAME_PORT;
-
-	/**
-	 * Game Server bind ip
-	 */
-	@Property(key = "chatserver.network.gameserver.host", defaultValue = "*")
-	public static String			GAME_BIND_ADDRESS;
+	@Property(key = "chatserver.network.gameserver.address", defaultValue = "localhost:9021")
+	public static InetSocketAddress			GAME_ADDRESS;
 	
 	/**
 	 * Game Server bind ip
