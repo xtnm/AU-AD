@@ -4,8 +4,14 @@
 	
 	<!-- INSTANCES -->
 	
+	<!-- Aetherogenetics Lab -->
+	<portal npcid="730034" instance="true" minlevel="41" maxlevel="45" group="true">
+		<entrypoint mapid="210040000" x="233.95" y="533.53" z="158.75"/>
+		<exitpoint mapid="310050000" x="225" y="244" z="133"/>
+	</portal>
+	
 	<!-- Left Wing Chamber  -->
-   <portal npcid="700454"  instance="true" minlevel="35" maxlevel="50" group="true">
+   <portal npcid="700454" instance="true" minlevel="35" maxlevel="50" group="true">
       <entrypoint mapid="400010000" x="2784.99" y="2664.03" z="1486.7"/>
       <exitpoint mapid="300080000" x="227" y="617" z="367"/>
    </portal>
@@ -17,13 +23,13 @@
 	</portal>
 	
 	<!-- Alquimia Research Center Entrance -->
-   <portal npcid="730110"  instance="true" minlevel="41" maxlevel="44" group="true">
+   <portal npcid="730110" instance="true" minlevel="41" maxlevel="44" group="true">
       <entrypoint mapid="220040000" x="2203.19" y="2923.57" z="699.81"/>
       <exitpoint mapid="320110000" x="602.62976" y="526.6474" z="200.05792"/>
    </portal>
 	
 	<!-- Nochsana Training Camp Asmodians -->
-	<portal npcid="700414"  instance="true" minlevel="25" maxlevel="28" group="true" race="ASMODIANS">
+	<portal npcid="700414" instance="true" minlevel="25" maxlevel="28" group="true" race="ASMODIANS">
 		<entrypoint mapid="400010000" x="876.7211" y="3079.2874" z="1644.5786" race="ASMODIANS"/>
 		<exitpoint mapid="300030000" x="513" y="668" z="331"/>
 	</portal>
