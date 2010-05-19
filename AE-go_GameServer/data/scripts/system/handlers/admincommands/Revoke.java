@@ -19,6 +19,7 @@ package admincommands;
 
 import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.network.loginserver.LoginServer;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.Util;
 import com.aionemu.gameserver.utils.chathandlers.AdminCommand;
@@ -29,12 +30,15 @@ import com.google.inject.Inject;
  * Admin revoke command.
  *
  * @author Cyrakuse
+ * @modified By Aionchs-Wylovech
  */
 
 public class Revoke extends AdminCommand
 {
 	@Inject
 	private World	world;
+	@Inject
+	private LoginServer loginServer;
 
 	/**
 	 * Constructor.
@@ -58,9 +62,24 @@ public class Revoke extends AdminCommand
 			return;
 		}
 		
-		if (params == null || params.length < 1)
+		if (params.length != 2)
 		{
-			PacketSendUtility.sendMessage(admin, "syntax //revoke characterName");
+			PacketSendUtility.sendMessage(admin, "syntax //revoke <characterName> <acceslevel | membership>");
+			return;
+		}
+
+		int type = 0;
+		if(params[1].toLowerCase().equals("acceslevel"))
+		{
+			type = 1;
+		}
+		else if(params[1].toLowerCase().equals("membership"))
+		{
+			type = 2;
+		}
+		else
+		{
+			PacketSendUtility.sendMessage(admin, "syntax //revoke <characterName> <acceslevel | membership>");
 			return;
 		}
 
@@ -70,10 +89,6 @@ public class Revoke extends AdminCommand
 			PacketSendUtility.sendMessage(admin, "The specified player is not online.");
 			return;
 		}
-		
-		//TODO
-		//player.getCommonData().setAdminRole(0);
-		PacketSendUtility.sendMessage(admin, player.getName() + " Administrator status has been revoked");
-		PacketSendUtility.sendMessage(player, "Your Administrator status has been revoked.");
+		loginServer.sendLsControlPacket(admin.getAcountName(), player.getName(), admin.getName(), 0, type);
 	}
 }

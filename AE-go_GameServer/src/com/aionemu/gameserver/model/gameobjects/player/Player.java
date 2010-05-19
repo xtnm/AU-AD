@@ -729,6 +729,16 @@ public class Player extends Creature
 	}
 
 	/**
+	 * accountName of this player
+	 * 
+	 * @return int
+	 */
+	public String getAcountName()
+	{
+		return getClientConnection().getAccount().getName();
+	}
+
+	/**
 	 * @return the rates
 	 */
 	public Rates getRates()
