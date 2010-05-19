@@ -29100,7 +29100,7 @@
         <effects>
             <poison checktime="6000" value="20" delta="0" duration="600000" effectid="106522" e="1" element="FIRE"/>
             <statdown duration="600000" effectid="118512" e="2" element="FIRE">
-                <change stat="SPEED" func="ADD" delta="0" value="-10"/>
+                <change stat="SPEED" func="ADD" delta="0" value="-1000"/>
             </statdown>
         </effects>
     </skill_template>
@@ -30574,7 +30574,7 @@
         </useconditions>
         <effects>
             <statup duration="6500" effectid="182321" e="1" hoptype="SKILLLV">
-                <change stat="SPEED" func="ADD" value="10"/>
+                <change stat="SPEED" func="ADD" value="1000"/>
             </statup>
         </effects>
     </skill_template>
@@ -30768,7 +30768,7 @@
         </useconditions>
         <effects>
             <statup duration="6500" effectid="182321" e="1" hoptype="SKILLLV">
-                <change stat="SPEED" func="ADD" value="18"/>
+                <change stat="SPEED" func="ADD" value="1800"/>
             </statup>
         </effects>
     </skill_template>
@@ -31139,7 +31139,7 @@
         </useconditions>
         <effects>
             <statup duration="4000" e="1">
-                <change stat="SPEED" func="ADD" delta="0" value="30"/>
+                <change stat="SPEED" func="ADD" delta="0" value="3000"/>
             </statup>
         </effects>
     </skill_template>
@@ -32165,7 +32165,7 @@
         </useconditions>
         <effects>
             <statup duration="4000" e="1">
-                <change stat="SPEED" func="ADD" delta="0" value="30"/>
+                <change stat="SPEED" func="ADD" delta="0" value="3000"/>
             </statup>
         </effects>
     </skill_template>
@@ -33102,7 +33102,7 @@
         </useconditions>
         <effects>
             <statup duration="6500" effectid="182841" e="1" hoptype="SKILLLV">
-                <change stat="SPEED" func="ADD" value="30"/>
+                <change stat="SPEED" func="ADD" value="3000"/>
             </statup>
         </effects>
     </skill_template>
@@ -37959,7 +37959,7 @@
         <effects>
             <transform model="210138" duration="600000" effectid="175" e="1"/>
             <statup duration="600000" effectid="30182" e="2" element="WIND">
-                <change stat="SPEED" func="ADD" delta="0" value="12"/>
+                <change stat="SPEED" func="ADD" delta="0" value="1200"/>
             </statup>
         </effects>
     </skill_template>
@@ -37975,7 +37975,7 @@
         <effects>
             <transform model="210757" duration="600000" effectid="175" e="1"/>
             <statup duration="600000" effectid="30182" e="2" element="WIND">
-                <change stat="SPEED" func="ADD" delta="0" value="18"/>
+                <change stat="SPEED" func="ADD" delta="0" value="1800"/>
             </statup>
         </effects>
     </skill_template>
@@ -37991,7 +37991,7 @@
         <effects>
             <transform model="210306" duration="600000" effectid="175" e="1"/>
             <statup duration="600000" effectid="30182" e="2" element="WIND">
-                <change stat="SPEED" func="ADD" delta="0" value="24"/>
+                <change stat="SPEED" func="ADD" delta="0" value="2400"/>
             </statup>
         </effects>
     </skill_template>
@@ -38088,7 +38088,7 @@
         </useconditions>
         <effects>
             <statup duration="600000" effectid="30182" e="1">
-                <change stat="SPEED" func="ADD" delta="0" value="6"/>
+                <change stat="SPEED" func="ADD" delta="0" value="600"/>
             </statup>
         </effects>
     </skill_template>
@@ -38145,7 +38145,7 @@
         <effects>
             <transform model="210421" duration="600000" effectid="175" e="1"/>
             <statup duration="600000" effectid="30182" e="2" element="WIND">
-                <change stat="SPEED" func="ADD" delta="0" value="12"/>
+                <change stat="SPEED" func="ADD" delta="0" value="1200"/>
             </statup>
         </effects>
     </skill_template>
@@ -38161,7 +38161,7 @@
         <effects>
             <transform model="211875" duration="600000" effectid="175" e="1"/>
             <statup duration="600000" effectid="30182" e="2" element="WIND">
-                <change stat="SPEED" func="ADD" delta="0" value="18"/>
+                <change stat="SPEED" func="ADD" delta="0" value="1800"/>
             </statup>
         </effects>
     </skill_template>
@@ -38177,7 +38177,7 @@
         <effects>
             <transform model="210390" duration="600000" effectid="175" e="1"/>
             <statup duration="600000" effectid="30182" e="2" element="WIND">
-                <change stat="SPEED" func="ADD" delta="0" value="24"/>
+                <change stat="SPEED" func="ADD" delta="0" value="2400"/>
             </statup>
         </effects>
     </skill_template>
@@ -49982,7 +49982,7 @@
                 <change stat="SPEED" func="PERCENT" delta="-10" value="-40"/>
             </statdown>
             <statdown duration="4000" effectid="40184" e="2" element="EARTH" hoptype="SKILLLV" hopb="199" hopa="22">
-                <change stat="ATTACK_SPEED" func="ADD" delta="10" value="20"/>
+                <change stat="ATTACK_SPEED" func="ADD" delta="10" value="2000"/>
             </statdown>
         </effects>
     </skill_template>
@@ -66040,7 +66040,7 @@
                 <change stat="SPEED" func="PERCENT" delta="0" value="-30"/>
             </snare>
             <slow duration="6000" effectid="20008" e="2" element="WATER" hoptype="SKILLLV" hopb="60" hopa="60">
-                <change stat="ATTACK_SPEED" func="ADD" delta="0" value="25"/>
+                <change stat="ATTACK_SPEED" func="ADD" delta="0" value="2500"/>
             </slow>
         </effects>
     </skill_template>
@@ -66751,7 +66751,7 @@
         <effects>
             <skillatk value="0" delta="0" e="1" hoptype="DAMAGE"/>
             <slow duration="8000" effectid="20008" e="2" element="EARTH" hoptype="SKILLLV" hopb="60" hopa="60">
-                <change stat="ATTACK_SPEED" func="ADD" delta="0" value="25"/>
+                <change stat="ATTACK_SPEED" func="ADD" delta="0" value="2500"/>
             </slow>
         </effects>
     </skill_template>
@@ -69979,7 +69979,7 @@
         <effects>
             <skillatk value="0" delta="0" e="1" hoptype="DAMAGE"/>
             <slow duration="4000" effectid="20008" e="2" element="WATER" hoptype="SKILLLV" hopb="60" hopa="60">
-                <change stat="ATTACK_SPEED" func="ADD" delta="0" value="70"/>
+                <change stat="ATTACK_SPEED" func="ADD" delta="0" value="7000"/>
             </slow>
             <snare duration="4000" effectid="20007" e="3" element="WATER" hoptype="SKILLLV" hopb="60" hopa="60">
                 <change stat="SPEED" func="PERCENT" delta="0" value="-50"/>
