@@ -83,15 +83,11 @@ public class AdminCommandChatHandler implements ChatHandler
 				while(onlinePlayers.hasNext())
 				{
 					Player p = onlinePlayers.next();
-					if(sender.getAccessLevel() > 0)
-					{
-						PacketSendUtility.sendMessage(p, "[Staff] <GM> " + sender.getName() + " : " + message);
-					}
-					else if(sender.getCommonData().getRace() == Race.ASMODIANS && p.getCommonData().getRace() == Race.ASMODIANS && sender.getAccessLevel() == 0)
+					if(sender.getCommonData().getRace() == Race.ASMODIANS && p.getCommonData().getRace() == Race.ASMODIANS)
 					{
 						PacketSendUtility.sendMessage(p, "[Asmodiens] " + sender.getName() + " : " + message);
 					}
-					else if(sender.getCommonData().getRace() == Race.ELYOS && p.getCommonData().getRace() == Race.ELYOS && sender.getAccessLevel() == 0)
+					else if(sender.getCommonData().getRace() == Race.ELYOS && p.getCommonData().getRace() == Race.ELYOS)
 					{
 						PacketSendUtility.sendMessage(p, "[Elyséens] " + sender.getName() + " : " + message);
 					}
@@ -146,11 +142,7 @@ public class AdminCommandChatHandler implements ChatHandler
 						while(onlinePlayers.hasNext())
 						{
 							Player p = onlinePlayers.next();
-							if(sender.getAccessLevel() > 0)
-							{
-								PacketSendUtility.sendMessage(p, "[Staff] <GM> " + sender.getName() + " : " + worldMessage);
-							}
-							else if(sender.getCommonData().getRace() == Race.ASMODIANS && p.getCommonData().getRace() == Race.ASMODIANS && sender.getAccessLevel() == 0)
+							if(sender.getCommonData().getRace() == Race.ASMODIANS && p.getCommonData().getRace() == Race.ASMODIANS && sender.getAccessLevel() == 0)
 							{
 								PacketSendUtility.sendMessage(p, "[Asmodiens] " + sender.getName() + " : " + worldMessage);
 							}
@@ -159,6 +151,30 @@ public class AdminCommandChatHandler implements ChatHandler
 								PacketSendUtility.sendMessage(p, "[Elyséens] " + sender.getName() + " : " + worldMessage);
 							}
 							else { }
+						}
+					}
+				}
+				else if(command.equals("ely") && sender.getAccessLevel() > 0)
+				{
+					Iterator<Player> onlinePlayers = sender.getActiveRegion().getWorld().getPlayersIterator();
+					while(onlinePlayers.hasNext())
+					{
+						Player p = onlinePlayers.next();
+						if(p.getCommonData().getRace() == Race.ELYOS)
+						{
+							PacketSendUtility.sendMessage(p, "[Elyséens] <GM> " + sender.getName() + " : " + commandAndParams[1].trim());
+						}
+					}
+				}
+				else if(command.equals("asmo") && sender.getAccessLevel() > 0)
+				{
+					Iterator<Player> onlinePlayers = sender.getActiveRegion().getWorld().getPlayersIterator();
+					while(onlinePlayers.hasNext())
+					{
+						Player p = onlinePlayers.next();
+						if(p.getCommonData().getRace() == Race.ASMODIANS)
+						{
+							PacketSendUtility.sendMessage(p, "[Asmodiens] <GM> " + sender.getName() + " : " + commandAndParams[1].trim());
 						}
 					}
 				}
