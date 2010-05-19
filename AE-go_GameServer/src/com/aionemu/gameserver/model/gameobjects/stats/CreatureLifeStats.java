@@ -193,9 +193,6 @@ public abstract class CreatureLifeStats<T extends Creature>
 	 */
 	public int increaseHp(TYPE type, int value)
 	{
-		if(value == getMaxHp())
-			return 0;
-		
 		hpLock.lock();
 		try
 		{
@@ -228,9 +225,6 @@ public abstract class CreatureLifeStats<T extends Creature>
 	 */
 	public int increaseMp(TYPE type, int value)
 	{
-		if(value == getMaxMp())
-			return 0;
-		
 		mpLock.lock();
 		
 		try

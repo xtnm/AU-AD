@@ -199,9 +199,6 @@ public class PlayerLifeStats extends CreatureLifeStats<Player>
 	@Override
 	public int increaseFp(int value)
 	{
-		if(value == getMaxFp())
-			return 0;
-
 		fpLock.lock();
 
 		try
