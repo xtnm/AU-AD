@@ -16498,7 +16498,7 @@
         </useconditions>
         <effects>
             <boostskillcastingtime duration="10000" effectid="111021" e="1" hoptype="SKILLLV" hopb="587">
-                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="50"/>
+                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="-50"/>
             </boostskillcastingtime>
         </effects>
         <actions>
@@ -16892,7 +16892,7 @@
         </useconditions>
         <effects>
             <boostskillcastingtime duration="10000" effectid="111021" e="1">
-                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="60"/>
+                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="-60"/>
             </boostskillcastingtime>
         </effects>
         <actions>
@@ -20499,7 +20499,7 @@
         </setproperties>
         <effects>
             <boostskillcastingtime duration="30000" effectid="113261" e="1" hoptype="SKILLLV" hopb="586">
-                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="50"/>
+                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="-50"/>
             </boostskillcastingtime>
         </effects>
         <actions>
@@ -22847,7 +22847,7 @@
         </useconditions>
         <effects>
             <boostskillcastingtime duration="30000" effectid="114921" e="1" hoptype="SKILLLV" hopb="1221">
-                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="50"/>
+                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="-50"/>
             </boostskillcastingtime>
             <statdown duration="30000" effectid="114922" e="2" element="FIRE">
                 <change stat="CONCENTRATION" func="ADD" delta="0" value="-100"/>
@@ -23524,7 +23524,7 @@
         </useconditions>
         <effects>
             <boostskillcastingtime duration="30000" effectid="114921" e="1">
-                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="55"/>
+                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="-55"/>
             </boostskillcastingtime>
             <statdown duration="30000" effectid="114922" e="2" element="FIRE">
                 <change stat="CONCENTRATION" func="ADD" delta="0" value="-100"/>
@@ -23697,7 +23697,7 @@
         </useconditions>
         <effects>
             <boostskillcastingtime effectid="115341" e="1">
-                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="20"/>
+                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="-20"/>
             </boostskillcastingtime>
         </effects>
     </skill_template>
@@ -23968,7 +23968,7 @@
         </setproperties>
         <effects>
             <boostskillcastingtime duration="15000" effectid="173" e="1" hoptype="SKILLLV" hopb="586">
-                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="25"/>
+                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="-25"/>
             </boostskillcastingtime>
         </effects>
         <actions>
@@ -24606,7 +24606,7 @@
         </setproperties>
         <effects>
             <boostskillcastingtime duration="15000" effectid="173" e="1" hoptype="SKILLLV" hopb="684">
-                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="50"/>
+                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="-50"/>
             </boostskillcastingtime>
         </effects>
         <actions>
@@ -26068,7 +26068,7 @@
                 <change stat="EARTH_RESISTANCE" func="ADD" delta="0" value="-200"/>
             </statdown>
             <boostskillcastingtime duration="30000" effectid="116633" e="3">
-                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="-50"/>
+                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="50"/>
             </boostskillcastingtime>
         </effects>
         <actions>
@@ -33217,7 +33217,7 @@
                 <change stat="ATTACK_SPEED" func="PERCENT" delta="0" value="-40"/>
             </statup>
             <boostskillcastingtime duration="6500" effectid="184082" e="2">
-                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="20"/>
+                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="-20"/>
             </boostskillcastingtime>
         </effects>
     </skill_template>
@@ -43625,7 +43625,7 @@
                 <change stat="ATTACK_SPEED" func="PERCENT" delta="0" value="-2"/>
             </statup>
             <statup duration="3600000" effectid="10013" e="4" element="WIND">
-                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="2"/>
+                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="-2"/>
             </statup>
         </effects>
     </skill_template>
@@ -46053,7 +46053,7 @@
         </useconditions>
         <effects>
             <boostskillcastingtime duration="30000" effectid="114921" e="1" hoptype="SKILLLV" hopb="1322">
-                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="50"/>
+                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="-50"/>
             </boostskillcastingtime>
             <statdown duration="30000" effectid="114922" e="2" element="FIRE">
                 <change stat="CONCENTRATION" func="ADD" delta="0" value="-100"/>
@@ -47368,7 +47368,7 @@
                 <change stat="FLY_TIME" func="ADD" delta="0" value="240"/>
             </statup>
             <boostskillcastingtime duration="300000" effectid="197774" e="4">
-                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="30"/>
+                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="-30"/>
             </boostskillcastingtime>
         </effects>
     </skill_template>
@@ -48056,7 +48056,7 @@
                 <change stat="FLY_TIME" func="ADD" delta="0" value="240"/>
             </statup>
             <boostskillcastingtime duration="300000" effectid="197774" e="4">
-                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="30"/>
+                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="-30"/>
             </boostskillcastingtime>
         </effects>
     </skill_template>
@@ -66378,7 +66378,7 @@
         <effects>
             <blind value="50" duration="30000" effectid="20107" e="1" element="EARTH" hoptype="SKILLLV" hopb="1"/>
             <boostskillcastingtime duration="30000" effectid="17503" e="2">
-                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="-50"/>
+                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="50"/>
             </boostskillcastingtime>
             <dot checktime="6000" value="42" delta="1" duration="30000" effectid="1175033" e="3" element="EARTH"/>
         </effects>
@@ -67686,7 +67686,7 @@
         <effects>
             <blind value="100" duration="60000" effectid="20107" e="1" element="EARTH"/>
             <boostskillcastingtime duration="60000" effectid="17503" e="2">
-                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="-100"/>
+                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="100"/>
             </boostskillcastingtime>
         </effects>
     </skill_template>
@@ -81640,7 +81640,7 @@
                 <change stat="BOOST_MAGICAL_SKILL" func="PERCENT" delta="0" value="-99"/>
             </statdown>
             <boostskillcastingtime duration="60000" effectid="10184633" e="3" hoptype="DAMAGE">
-                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="-100"/>
+                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="100"/>
             </boostskillcastingtime>
         </effects>
     </skill_template>
@@ -82035,7 +82035,7 @@
         <effects>
             <spellatk value="115" delta="0" e="1" element="WATER" hoptype="DAMAGE"/>
             <boostskillcastingtime duration="15000" effectid="10184882" e="2" hoptype="DAMAGE">
-                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="-100"/>
+                <change stat="BOOST_CASTING_TIME" func="PERCENT" delta="0" value="100"/>
             </boostskillcastingtime>
         </effects>
     </skill_template>
