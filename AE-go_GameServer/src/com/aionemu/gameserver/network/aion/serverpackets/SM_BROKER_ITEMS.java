@@ -17,7 +17,6 @@
 package com.aionemu.gameserver.network.aion.serverpackets;
 
 import java.nio.ByteBuffer;
-import java.util.List;
 import java.util.Set;
 
 import com.aionemu.gameserver.model.gameobjects.BrokerItem;
@@ -35,11 +34,11 @@ import com.aionemu.gameserver.network.aion.AionServerPacket;
  */
 public class SM_BROKER_ITEMS extends AionServerPacket
 {
-	private List<BrokerItem> brokerItems;
+	private BrokerItem[] brokerItems;
 	private int itemsCount;
 	private int startPage;
 	
-	public SM_BROKER_ITEMS(List<BrokerItem> brokerItems, int itemsCount, int startPage)
+	public SM_BROKER_ITEMS(BrokerItem[] brokerItems, int itemsCount, int startPage)
 	{
 		this.brokerItems = brokerItems;
 		this.itemsCount = itemsCount;
@@ -53,7 +52,7 @@ public class SM_BROKER_ITEMS extends AionServerPacket
 		writeD(buf, itemsCount);
 		writeC(buf, 0);
 		writeH(buf, startPage);
-		writeH(buf, brokerItems.size());
+		writeH(buf, brokerItems.length);
 		
 		for(BrokerItem item : brokerItems)
 		{
@@ -62,9 +61,7 @@ public class SM_BROKER_ITEMS extends AionServerPacket
 			else
 				writeCommonInfo(buf, item);
 		}
-		
 	}
-	
 	
 	private void writeArmorWeaponInfo(ByteBuffer buf, BrokerItem item)
 	{

@@ -14,26 +14,34 @@
  *  You should have received a copy of the GNU General Public License
  *  along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aionemu.gameserver.model.templates.broker;
+package com.aionemu.gameserver.model.broker.filter;
+
+import org.apache.commons.lang.ArrayUtils;
+
+import com.aionemu.gameserver.model.templates.item.ItemTemplate;
 
 /**
- * @author kosyachok
- *
+ * @author ATracer
+ * 
  */
-public enum BrokerMessages
+public class BrokerContainsFilter extends BrokerFilter
 {
-	NO_ENOUGHT_KINAH(1),
-	CANT_REGISTER_ITEM(2);
-	
-	private int id;
-	
-	private BrokerMessages(int id)
+
+	private int[]	masks;
+
+	/**
+	 * 
+	 * @param masks
+	 */
+	public BrokerContainsFilter(int... masks)
 	{
-		this.id = id;
+		this.masks = masks;
 	}
-	
-	public int getId()
+
+	@Override
+	public boolean accept(ItemTemplate template)
 	{
-		return id;
+		return ArrayUtils.contains(masks, template.getTemplateId() / 100000);
 	}
+
 }

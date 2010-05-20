@@ -20,8 +20,6 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import javolution.util.FastMap;
-
 import com.aionemu.commons.callbacks.Enhancable;
 import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.controllers.FlyController;
@@ -31,6 +29,7 @@ import com.aionemu.gameserver.controllers.effect.PlayerEffectController;
 import com.aionemu.gameserver.dataholders.DataManager;
 import com.aionemu.gameserver.model.Gender;
 import com.aionemu.gameserver.model.PlayerClass;
+import com.aionemu.gameserver.model.gameobjects.BrokerItem;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.Monster;
@@ -99,10 +98,10 @@ public class Player extends Creature
 	private int					flightTeleportId;
 	private int					flightDistance;
 	private Summon				summon;
-	private FastMap<Integer, Integer> brokerListCache = new FastMap<Integer, Integer>();
-	private int					brokerMaskCache = 0;
-	private int					brokerSoftTypeCache = 0;
-	private int					brokerStartPageCache = 0;
+	private BrokerItem[]		brokerListCache			= new BrokerItem[0];
+	private int					brokerMaskCache			= 0;
+	private int					brokerSoftTypeCache		= 0;
+	private int					brokerStartPageCache	= 0;
 	/**
 	 * Static information for players
 	 */
@@ -1104,12 +1103,12 @@ public class Player extends Creature
 		this.summon = summon;
 	}
 	
-	public void setBrokerListCache(FastMap<Integer, Integer> brokerListCache)
+	public void setBrokerListCache(BrokerItem[] brokerListCache)
 	{
 		this.brokerListCache = brokerListCache;
 	}
 	
-	public FastMap<Integer, Integer> getBrokerListCache()
+	public BrokerItem[] getBrokerListCache()
 	{
 		return brokerListCache;
 	}
