@@ -170,8 +170,7 @@
 	<!-- An Unfinished Mystery -->
 	<item_collecting id="2325" start_npc_id="204373" />
 
-        <!-- Meaty Treats -->
-	<item_collecting id="2332" start_npc_id="798084" />
+        <!-- Meaty Treats handled by script -->
 
         <!-- Ravenous Philosopher -->
 	<item_collecting id="2460" start_npc_id="204386" />
@@ -522,7 +521,7 @@
         <!-- TODO: The Blue Vine Necklace -->
 
         <!-- Trolls on the Path -->
-	<monster_hunt id="2398" start_npc_id="204359">
+	<monster_hunt id="2415" start_npc_id="204359">
 		<monster_infos npc_id="212535"  var_id="0" max_kill="11"/>
 		<monster_infos npc_id="211529"  var_id="1" max_kill="7"/>
 	</monster_hunt>
@@ -670,9 +669,6 @@
 
         <!-- [Group] Legendary Armor -->
 	<item_collecting id="2471" start_npc_id="204387" end_npc_id="204387"/>
-
-        <!-- [Group] Legendary Armor -->
-	<item_collecting id="2471" start_npc_id="204110" />	
 
         <!-- 2439 Never to Rise Again -->
         <monster_hunt id="2439" start_npc_id="204400">

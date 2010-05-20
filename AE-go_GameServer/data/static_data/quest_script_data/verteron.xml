@@ -50,10 +50,6 @@
 	</monster_hunt>
 	
 	<!-- TODO: Summons to the Citadel -->
-	
-	
-	<!-- TODO: Undelivered Armor -->
-	<report_to start_npc_id="203097" end_npc_id="203101" id="1131"/>
 		
 	<!-- TODO: [Event] Fei's Blessing -->
 	
@@ -81,22 +77,13 @@
 	<!-- Collecting Kukuru -->
 	<item_collecting start_npc_id="203124" id="1145"/>
 	
-	<!-- TODO: Danger From Above -->
-	<report_to start_npc_id="203109" end_npc_id="203109" id="1011"/>
-	
 	<!-- Decorative Weapons -->
 	<item_collecting id="1136" start_npc_id="203100" action_item_id="700116" />
 
 	<!-- Belbua is Missing -->
 	<item_collecting start_npc_id="203125" id="1151"/>
 	
-	<!-- Belbua's Treasure -->
-	<item_collecting id="1141" start_npc_id="730001" action_item_id="700122"/>
-	
 	<!-- Delicate Mandrake script. TODO: Needed timer.-->
-	
-	<!-- TODO: Masked Loiterers -->
-	<report_to start_npc_id="203111" end_npc_id="203111" id="1012"/>
 		
 	<!-- Nola's Request -->
 	<monster_hunt start_npc_id="730001" id="1143">
@@ -153,9 +140,6 @@
 	
 	<!-- TODO: The Potion Maker's Mistake -->
 	<report_to id="1164" start_npc_id="203131" end_npc_id="203149"/>
-	
-	<!-- Village Seal Found -->
-	<report_to start_npc_id="798003" end_npc_id="203128" item_id="182200502" id="1158"/>
 	
 	<!-- TODO: A Special Omelette -->
 	<report_to id="1154" start_npc_id="203150" end_npc_id="203130"/>
@@ -266,19 +250,10 @@
 	<!-- Can't Please Everyone -->
 	<item_collecting start_npc_id="203172" id="1215"/>
 	
-	<!-- TODO: Held Sacred -->
-	<item_collecting id="1017" start_npc_id="203178" action_item_id="700115"/>
-	
-	<!-- Investigating Wind Spirits -->
-	<report_to start_npc_id="203165" end_npc_id="203097" id="1184"/>
-	
 	<!-- TODO: Mark of Vengeance -->
 	
 	<!-- Potcrab Pincers -->
 	<item_collecting start_npc_id="203166" id="1204"/>
-	
-	<!-- Potcrab, the Headache -->
-	<item_collecting start_npc_id="203166" id="1189"/>
 	
 	<!-- TODO: Spirit Of Nature -->
 	<report_to id="1183" start_npc_id="730012" end_npc_id="730012"/>
@@ -286,16 +261,10 @@
 	<!-- The Wriggot Menace -->
 	<item_collecting start_npc_id="730012" id="1186"/>
 	
-	<!-- Tribute to the Temple -->
-	<report_to start_npc_id="203157" end_npc_id="203178" item_id="182200548" id="1180"/>
-	
 	<!-- Unquiet Spirits -->
 	<monster_hunt start_npc_id="203178" id="1185">
 		<monster_infos var_id="0" npc_id="210080" max_kill="6"/>
 	</monster_hunt>
-	
-	<!-- Wriggot Resurgence -->
-	<item_collecting start_npc_id="730012" id="1203"/>
 	
 	<!-- [Coin] Dampening Spirits -->
 	<monster_hunt start_npc_id="203179" id="1196">
@@ -314,30 +283,18 @@
 	
 	<!-- Flotsam -->
 	<monster_hunt start_npc_id="203184" id="1217">
-		<monster_infos var_id="0" npc_id="210299" max_kill="12"/>
 		<monster_infos var_id="0" npc_id="210197" max_kill="12"/>
 	</monster_hunt>
 	
 	<!-- TODO: Flying Reconnaissance -->
 	
-	<!-- TODO: Krall Desecration -->
-	<monster_hunt id="1022" start_npc_id="203178">
-		<monster_infos npc_id="210177" var_id="0" max_kill="5"/>	
-	</monster_hunt>
-	
 	<!-- Message From Morai -->
 	<report_to start_npc_id="203164" end_npc_id="203167" id="1188"/>
-	
-	<!-- Numonerk's Demand Note -->
-	<report_to start_npc_id="203121" end_npc_id="798004" item_id="182200566" id="1218"/>
 
 	<!-- Saving the Snappers -->
 	<monster_hunt start_npc_id="203169" id="1216">
 		<monster_infos var_id="0" npc_id="210112" max_kill="12"/>
 	</monster_hunt>
-	
-	<!-- Shipwreck Revolutionaries -->
-	<item_collecting start_npc_id="203183" id="1190"/>
 	
 	<!-- TODO: Verteron Reinforcements -->
 	
@@ -350,9 +307,6 @@
 	
 	<!-- TODO: A Secret Delivery -->
 	
-	<!-- Lepharist Treasure Box -->
-	<item_collecting start_npc_id="203172" action_item_id="700283" id="1219"/>
-	
 	<!-- http://www.aionarmory.com/search.aspx?browse=4.3.2#quests:100+2+1 -->
 	
 	<!-- TODO: [Group] Tursin Assassination -->
@@ -364,9 +318,6 @@
 	
 	<!-- TODO: Ancient Stone Fragment -->
 	
-	<!-- Can't Please Everyone -->
-	<item_collecting start_npc_id="203172" id="1215"/>
-	
 	<!-- TODO: Held Sacred -->
 	
 	<!-- Investigating Wind Spirits -->
@@ -374,52 +325,24 @@
 	
 	<!-- TODO: Mark of Vengeance -->
 	
-	<!-- Potcrab Pincers -->
-	<item_collecting start_npc_id="203166" id="1204"/>
-	
 	<!-- Potcrab, the Headache -->
 	<item_collecting start_npc_id="203166" id="1189"/>
 	
 	<!-- TODO: Spirit Of Nature -->
 	
-	<!-- The Wriggot Menace -->
-	<item_collecting start_npc_id="730012" id="1186"/>
-	
 	<!-- Tribute to the Temple -->
 	<report_to start_npc_id="203157" end_npc_id="203178" item_id="182200548" id="1180"/>
-	
-	<!-- Unquiet Spirits -->
-	<monster_hunt start_npc_id="203178" id="1185">
-		<monster_infos var_id="0" npc_id="210080" max_kill="6"/>
-	</monster_hunt>
 	
 	<!-- Wriggot Resurgence -->
 	<item_collecting start_npc_id="730012" id="1203"/>
 	
 	<!-- TODO: [Group] Culling Krall -->
 	
-	<!-- An Urgent Letter -->
-	<report_to start_npc_id="203099" end_npc_id="203183" item_id="182200555" id="1191"/>
-	
-	<!-- Flotsam -->
-	<monster_hunt start_npc_id="203184" id="1217">
-		<monster_infos var_id="0" npc_id="210299" max_kill="12"/>
-		<monster_infos var_id="0" npc_id="210085" max_kill="12"/>		
-	</monster_hunt>
-	
 	<!-- TODO: Flying Reconnaissance -->
 	
 	<!-- TODO: Krall Desecration -->
 	
-	<!-- Message From Morai -->
-	<report_to start_npc_id="203164" end_npc_id="203167" id="1188"/>
-	
 	<!-- TODO: Numonerk's Demand Note -->
-	
-	<!-- Saving the Snappers -->
-	<monster_hunt start_npc_id="203169" id="1216">
-		<monster_infos var_id="0" npc_id="210112" max_kill="12"/>
-	</monster_hunt>
 	
 	<!-- Shipwreck Revolutionaries -->
 	<item_collecting start_npc_id="203183" id="1190"/>

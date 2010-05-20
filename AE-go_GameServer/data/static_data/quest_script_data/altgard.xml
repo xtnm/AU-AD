@@ -26,10 +26,7 @@
   
 	<!-- Conversing With a Skurv -->
 	  
-	<!-- TODO: Encroachers -->
-	<monster_hunt id="2012" start_npc_id="203559">
-		<monster_infos var_id="0" npc_id="210715" max_kill="4"/>
-	</monster_hunt>	
+	<!-- Encroachers handled by script -->
   
 	<!-- TODO: Fungus Among Us -->
   
@@ -82,8 +79,7 @@
   	<!-- No-Frills Quills -->
   	<item_collecting start_npc_id="203605" id="2214"/>
   	
-  	<!-- Poison Root, Potent Fruit -->
-	<item_collecting id="2213" start_npc_id="203604" action_item_id="700057"/>
+  	<!-- Poison Root, Potent Fruit handled by script -->
   	
   	<!-- Retrieving the Report -->
   	<report_to start_npc_id="203603" end_npc_id="203605" id="2210"/>
@@ -99,8 +95,7 @@
   	
   	<!-- TODO: Knot Your Average Message -->
   	
-  	<!-- Manir's Message -->
-  	<report_to start_npc_id="203607" end_npc_id="203631" id="2222"/>
+  	<!-- Manir's Message handled by script -->
   	
   	<!-- TODO: Manir's Uncle -->
   	
@@ -174,12 +169,7 @@
   	
   	<!-- http://www.aionarmory.com/search.aspx?browse=4.3.6#quests:50+2+1 -->
   	
-  	<!-- Take the Initiative -->
-	<monster_hunt id="2015" start_npc_id="203631">
-		<monster_infos npc_id="210510"  var_id="0" max_kill="1"/>
-		<monster_infos npc_id="210504"  var_id="0" max_kill="5"/>
-		<monster_infos npc_id="210553"  var_id="0" max_kill="5"/>
-	</monster_hunt>
+  	<!-- Take the Initiative handled by script -->
   	
   	<!-- A Crystal Hand Mirror -->
   	<report_to start_npc_id="798031" end_npc_id="798035" id="2243"/>
@@ -216,8 +206,7 @@
   	<!-- Shugo Potion -->
   	<item_collecting start_npc_id="798036" id="2263"/>
   	
-  	<!-- The Broken Honey Jar -->
-  	<item_collecting start_npc_id="203613" action_item_id="700061" id="2232"/>
+  	<!-- The Broken Honey Jar handled by script -->
   	
   	<!-- The Sting of Poison -->
   	<monster_hunt start_npc_id="203664" id="2264">
@@ -266,14 +255,6 @@
   	
   	<!-- Know Your Enemy handled by script -->
   	
-  	<!-- Ksellid Control -->
-  	<monster_hunt start_npc_id="203643" id="2245">
-  		<monster_infos var_id="0" npc_id="210490" max_kill="5"/>
-  	</monster_hunt>
-  	
-  	<!-- Neifenmer's Reasoning -->
-  	<item_collecting start_npc_id="203655" id="2269"/>
-  	
   	<!-- Reconstruction Supplies -->
   	<report_to start_npc_id="203649" end_npc_id="203557" id="2260"/>
   	
@@ -288,9 +269,6 @@
   	
   	<!-- The Lost Cube -->
   	<item_collecting start_npc_id="203669" id="2272"/>
-  	
-  	<!-- The Secret Letter -->
-  	<report_to start_npc_id="203643" end_npc_id="798033" item_id="182203232" id="2248"/>
   	
 	<!-- Trespassers at the Observatory handled by script -->
   	
@@ -313,39 +291,17 @@
   	
   	<!-- TODO: Securing the Supply Route -->
   	
-  	<!-- Securing the Trade Route -->
-  	<item_collecting start_npc_id="798034" id="2251"/>
-  	
   	<!-- TODO: Solid Proof -->
-  	
-  	<!-- Soul Essence -->
-  	<item_collecting start_npc_id="203651" id="2254"/>
   	
   	<!-- http://www.aionarmory.com/search.aspx?browse=4.3.6#quests:100+2+1 -->
   	
   	<!-- The Brigade General's Order -->
   	<report_to start_npc_id="203557" end_npc_id="203560" item_id="182203259" id="2286"/>
   	
-  	<!-- The Tayga Threat -->
-  	<item_collecting start_npc_id="203649" id="2259"/>
-  	
-  	<!-- Turbulent Mist Spirits -->
-  	<monster_hunt start_npc_id="203650" id="2255">
-  		<monster_infos var_id="0" npc_id="210575" max_kill="3"/>
-  	</monster_hunt>
-  	
   	<!-- Turbulent Splash Spirits -->
   	<monster_hunt start_npc_id="203650" id="2256">
-  		<monster_infos var_id="0" npc_id="210522" max_kill="5"/>
   		<monster_infos var_id="0" npc_id="210577" max_kill="5"/>
   	</monster_hunt> 
-  	
-  	<!-- [Coin] Mutated Spirits -->
-  	<monster_hunt start_npc_id="203659" id="2293">
-  		<monster_infos var_id="0" npc_id="210576" max_kill="6"/>
-		<monster_infos var_id="1" npc_id="210578" max_kill="16"/>
-  		<monster_infos var_id="1" npc_id="210523" max_kill="16"/>
-  	</monster_hunt>
   	
   	<!-- TODO: [Group] A Lucrative Endeavor -->
   	
@@ -371,19 +327,7 @@
   	<!-- Neifenmer's Reasoning -->
   	<item_collecting id="2269" start_npc_id="203655" action_item_id="700010"/>
   	
-  	<!-- Reconstruction Supplies -->
-  	<report_to start_npc_id="203649" end_npc_id="203557" id="2260"/>
-  	
-  	<!-- The Blue Crystals -->
-  	<item_collecting start_npc_id="798033" id="2249"/>
-  	
   	<!-- TODO: The Gerger's Disguise -->
-  	
-  	<!-- The Gerger's Insignia -->
-  	<item_collecting start_npc_id="203645" id="2246"/>
-  	
-  	<!-- The Lost Cube -->
-  	<item_collecting start_npc_id="203669" id="2272"/>
   	
   	<!-- The Secret Letter -->
   	<report_to start_npc_id="203643" end_npc_id="798033" item_id="182203232" id="2248"/>
@@ -396,9 +340,6 @@
   		<monster_infos var_id="0" npc_id="210527" max_kill="5"/>
   	</monster_hunt>
   	
-  	<!-- A Bill Found in a Box -->
-  	<report_to start_npc_id="203656" end_npc_id="798036" item_id="182203263" id="2296"/>
-  	
   	<!-- A Change of Diet -->
   	<item_collecting start_npc_id="203693" id="2275"/>
   	
@@ -406,16 +347,10 @@
   	
   	<!-- TODO: Black Claw Baton -->
   	
-  	<!-- Branching out Further -->
-  	<item_collecting start_npc_id="203693" id="2276"/>
-  	
   	<!-- TODO: Chasing the Legend -->
   	
   	<!-- Order to Valurion -->
   	<report_to start_npc_id="203557" end_npc_id="203558" item_id="182203260" id="2287"/>
-  	
-  	<!-- Rebuilding the Pillar -->
-  	<item_collecting start_npc_id="203673" id="2257"/>
   	
   	<!-- TODO: Reconstructing Impetusium -->
   	
@@ -431,9 +366,6 @@
   	
   	<!-- http://www.aionarmory.com/search.aspx?browse=4.3.6#quests:100+2+1 -->
   	
-  	<!-- The Brigade General's Order -->
-  	<report_to start_npc_id="203557" end_npc_id="203560" item_id="182203259" id="2286"/>
-  	
   	<!-- The Tayga Threat -->
   	<item_collecting start_npc_id="203649" id="2259"/>
   	
@@ -441,11 +373,6 @@
   	<monster_hunt start_npc_id="203650" id="2255">
   		<monster_infos var_id="0" npc_id="210575" max_kill="3"/>
   	</monster_hunt>
-  	
-  	<!-- Turbulent Splash Spirits -->
-  	<monster_hunt start_npc_id="203650" id="2256">
-  		<monster_infos var_id="0" npc_id="210522" max_kill="5"/>
-  	</monster_hunt> 
   	
   	<!-- [Coin] Mutated Spirits -->
   	<monster_hunt start_npc_id="203659" id="2293">

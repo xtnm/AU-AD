@@ -134,8 +134,6 @@
 
 	<!-- 1487 Balaur Bones -->
 	<item_collecting id="1487" start_npc_id="798126" action_item_id="700313" />
-	<item_collecting id="1487" start_npc_id="798126" action_item_id="700314" />
-	<item_collecting id="1487" start_npc_id="798126" action_item_id="700315" />
 
 	<!-- Killing Crestliches -->
 	<monster_hunt id="1326" start_npc_id="203940">
@@ -174,11 +172,6 @@
 
 	<!-- Support for the Desert Scouts -->
 	<report_to start_npc_id="203999" end_npc_id="204006" id="1335"/>
-
-	<!-- The Scolopen Sting -->
-	<monster_hunt start_npc_id="204008" id="1339">
-		<monster_infos var_id="0" npc_id="210801" max_kill="10"/>
-	</monster_hunt>
 
 	<!-- Basilisk Purge -->
 	<monster_hunt start_npc_id="204008" id="1340">
@@ -221,7 +214,6 @@
 	
 	<!-- The Scolopen Sting -->
 	<monster_hunt start_npc_id="204008" id="1339">
-		<monster_infos var_id="0" npc_id="210801" max_kill="10"/>
 		<monster_infos var_id="0" npc_id="210810" max_kill="10"/>		
 	</monster_hunt>
 	
@@ -253,18 +245,9 @@
 
 	<!-- TODO: 1300 Orders from Telemachus -->
 
-	<!-- A Teleportation Experiment -->
-	<report_to id="1430" start_npc_id="203919" end_npc_id="203337"/>
-	
-	<!--  Medicinal Roots -->
-	<item_collecting start_npc_id="203936" id="1434" />
-
 	<!-- TODO: 1031 The Manduri's Secret -->
 
 	<!-- TODO: 1314 An Elim out of Water -->
-
-	<!-- A Germ of Hope -->
-	<report_to id="1311" start_npc_id="203997" end_npc_id="203997"/>
 
 	<!-- TODO: 1309 Manduri's Diary -->
 
@@ -308,10 +291,6 @@
 		<monster_infos var_id="0" npc_id="210793" max_kill="13"/>		
 	</monster_hunt>
 
-
-	<!-- Confidential Orders -->
-	<report_to id="1324" start_npc_id="203904" end_npc_id="204031" item_id="182201310"/>
-
 	<!-- Girrinerk's Potions -->
 	<item_collecting start_npc_id="798050" id="1433" />
 
@@ -325,12 +304,6 @@
 
 
 	<!-- TODO: 1489 Marfonda of Darkness -->
-
-	<!-- Harumonerk's Request -->
-	<report_to id="1483" start_npc_id="798126" end_npc_id="203940"/>
-
-	<!-- Chiyorinrinerk's Request -->
-	<report_to id="1484" start_npc_id="798127" end_npc_id="204045"/>
 
 	<!-- [Spy] Message to a Spy -->
 	<report_to id="1463" start_npc_id="203940" end_npc_id="203903"/>
@@ -359,9 +332,6 @@
 
 	<!-- [Spy] That Old Elyos Spirit -->
 	<report_to id="1465" start_npc_id="203903" end_npc_id="212649"/>
-
-	<!-- [Spy] Respect For Deltras -->
-	<report_to id="1466" start_npc_id="212649" end_npc_id="203903"/>
 
 	<!-- ADaeva's Reputation (II) -->
 	<item_collecting id="1458" start_npc_id="798049" />
@@ -411,9 +381,6 @@
 
 	<!-- Gimme Shelter -->
 	<report_to id="1382" start_npc_id="203993" end_npc_id="203943"/>
-
-	<!-- Thanking Mabangtah -->
-	<report_to id="1363" start_npc_id="203943" end_npc_id="203943" item_id="182201330"/>
 
 	<!-- TODO: 1364 Journey to Agairon -->
 
@@ -513,9 +480,6 @@
 	<!-- Mabangtah's SecondTest -->
 	<item_collecting start_npc_id="204020" id="1366" />
 
-	<!-- Mabangtah's Feast -->
-	<item_collecting id="1367" start_npc_id="204023" />
-
 	<!-- Mabangtah's Message -->
 	<report_to id="1369" start_npc_id="204020" end_npc_id="203949" />
 
@@ -541,9 +505,6 @@
 
 	<!-- A Tender Concern -->
 	<item_collecting id="1447" start_npc_id="203947" />
-
-	<!-- Hannet's Lost Love -->
-	<report_to id="1468" start_npc_id="790004" end_npc_id="203184" />
 
 	<!-- Mace Making Materials -->
 	<item_collecting id="1448" start_npc_id="790004" end_npc_id="203934" />
@@ -603,9 +564,6 @@
 
 	<!-- TODO: 1039 Something in the Water -->
 
-	<!-- TODO: 1456 Garnets For Krato -->
-	<item_collecting id="1456" start_npc_id="203923" />
-
 	<!-- TODO: 1459 Krato Needs Lapis -->
 	<item_collecting id="1459" start_npc_id="203923" />
 
@@ -619,12 +577,6 @@
 
 	<!-- TODO: 1375 Arming the Watch -->
 	<item_collecting id="1375" start_npc_id="203947" />
-
-	<!-- TODO: 1376 A Mountain of Trouble -->
-	<monster_hunt id="1376" start_npc_id="203947">
-		<monster_infos npc_id="210986"  var_id="0" max_kill="7"/>
-		<monster_infos npc_id="210976"  var_id="0" max_kill="7"/>
-	</monster_hunt>
 
 	<!-- TODO: 1377 [Coin] Kerubsin Kuriullu -->
 	<monster_hunt id="1377" start_npc_id="203964">
