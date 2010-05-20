@@ -89,7 +89,7 @@ public class AdminCommandChatHandler implements ChatHandler
 					}
 					else if(sender.getCommonData().getRace() == Race.ELYOS && p.getCommonData().getRace() == Race.ELYOS)
 					{
-						PacketSendUtility.sendMessage(p, "[Elyséens] " + sender.getName() + " : " + message);
+						PacketSendUtility.sendMessage(p, "[Elyseens] " + sender.getName() + " : " + message);
 					}
 					else { }
 				}
@@ -148,7 +148,7 @@ public class AdminCommandChatHandler implements ChatHandler
 							}
 							else if(sender.getCommonData().getRace() == Race.ELYOS && p.getCommonData().getRace() == Race.ELYOS && sender.getAccessLevel() == 0)
 							{
-								PacketSendUtility.sendMessage(p, "[Elyséens] " + sender.getName() + " : " + worldMessage);
+								PacketSendUtility.sendMessage(p, "[Elyseens] " + sender.getName() + " : " + worldMessage);
 							}
 							else { }
 						}
@@ -162,7 +162,7 @@ public class AdminCommandChatHandler implements ChatHandler
 						Player p = onlinePlayers.next();
 						if(p.getCommonData().getRace() == Race.ELYOS)
 						{
-							PacketSendUtility.sendMessage(p, "[Elyséens] <GM> " + sender.getName() + " : " + commandAndParams[1].trim());
+							PacketSendUtility.sendMessage(p, "[Elyseens] <GM> " + sender.getName() + " : " + commandAndParams[1].trim());
 						}
 					}
 				}
