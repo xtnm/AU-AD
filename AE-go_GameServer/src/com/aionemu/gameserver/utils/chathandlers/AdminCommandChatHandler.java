@@ -142,11 +142,11 @@ public class AdminCommandChatHandler implements ChatHandler
 						while(onlinePlayers.hasNext())
 						{
 							Player p = onlinePlayers.next();
-							if(sender.getCommonData().getRace() == Race.ASMODIANS && p.getCommonData().getRace() == Race.ASMODIANS && sender.getAccessLevel() == 0)
+							if(sender.getCommonData().getRace() == Race.ASMODIANS && p.getCommonData().getRace() == Race.ASMODIANS)
 							{
 								PacketSendUtility.sendMessage(p, "[Asmodiens] " + sender.getName() + " : " + worldMessage);
 							}
-							else if(sender.getCommonData().getRace() == Race.ELYOS && p.getCommonData().getRace() == Race.ELYOS && sender.getAccessLevel() == 0)
+							else if(sender.getCommonData().getRace() == Race.ELYOS && p.getCommonData().getRace() == Race.ELYOS)
 							{
 								PacketSendUtility.sendMessage(p, "[Elyseens] " + sender.getName() + " : " + worldMessage);
 							}
