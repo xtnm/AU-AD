@@ -85,11 +85,25 @@ public class AdminCommandChatHandler implements ChatHandler
 					Player p = onlinePlayers.next();
 					if(sender.getCommonData().getRace() == Race.ASMODIANS && p.getCommonData().getRace() == Race.ASMODIANS)
 					{
-						PacketSendUtility.sendMessage(p, "[Asmodiens] " + sender.getName() + " : " + message);
+						String toSend = "[Asmodiens]";
+						if(sender.getAccessLevel() > 0)
+						{
+							toSend += " <GM>";
+						}
+						toSend += " " + sender.getName();
+						toSend += " : " + message;
+						PacketSendUtility.sendMessage(p, toSend);
 					}
 					else if(sender.getCommonData().getRace() == Race.ELYOS && p.getCommonData().getRace() == Race.ELYOS)
 					{
-						PacketSendUtility.sendMessage(p, "[Elyseens] " + sender.getName() + " : " + message);
+						String toSend = "[Elyseens]";
+						if(sender.getAccessLevel() > 0)
+						{
+							toSend += " <GM>";
+						}
+						toSend += " " + sender.getName();
+						toSend += " : " + message;
+						PacketSendUtility.sendMessage(p, toSend);
 					}
 					else { }
 				}
@@ -144,11 +158,25 @@ public class AdminCommandChatHandler implements ChatHandler
 							Player p = onlinePlayers.next();
 							if(sender.getCommonData().getRace() == Race.ASMODIANS && p.getCommonData().getRace() == Race.ASMODIANS)
 							{
-								PacketSendUtility.sendMessage(p, "[Asmodiens] " + sender.getName() + " : " + worldMessage);
+								String toSend = "[Asmodiens]";
+								if(sender.getAccessLevel() > 0)
+								{
+									toSend += " <GM>";
+								}
+								toSend += " " + sender.getName();
+								toSend += " : " + worldMessage;
+								PacketSendUtility.sendMessage(p, toSend);
 							}
 							else if(sender.getCommonData().getRace() == Race.ELYOS && p.getCommonData().getRace() == Race.ELYOS)
 							{
-								PacketSendUtility.sendMessage(p, "[Elyseens] " + sender.getName() + " : " + worldMessage);
+								String toSend = "[Elyseens]";
+								if(sender.getAccessLevel() > 0)
+								{
+									toSend += " <GM>";
+								}
+								toSend += " " + sender.getName();
+								toSend += " : " + worldMessage;
+								PacketSendUtility.sendMessage(p, toSend);
 							}
 							else { }
 						}
