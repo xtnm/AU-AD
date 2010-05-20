@@ -17,7 +17,7 @@ public class Gps extends AdminCommand
 
     public Gps()
 	{
-        super("info");
+        super("gps");
     }
 
     @Override

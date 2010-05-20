@@ -188,11 +188,12 @@ public class AdminCommandChatHandler implements ChatHandler
 					while(onlinePlayers.hasNext())
 					{
 						Player p = onlinePlayers.next();
-						if(p.getCommonData().getRace() == Race.ELYOS)
+						if(p.getCommonData().getRace() == Race.ELYOS && p.getObjectId() != sender.getObjectId())
 						{
 							PacketSendUtility.sendMessage(p, "[Elyseens] <GM> " + sender.getName() + " : " + commandAndParams[1].trim());
 						}
 					}
+					PacketSendUtility.sendMessage(sender, "[Elyseens] <GM> " + sender.getName() + " : " + commandAndParams[1]);
 				}
 				else if(command.equals("asmo") && sender.getAccessLevel() > 0)
 				{
@@ -200,11 +201,12 @@ public class AdminCommandChatHandler implements ChatHandler
 					while(onlinePlayers.hasNext())
 					{
 						Player p = onlinePlayers.next();
-						if(p.getCommonData().getRace() == Race.ASMODIANS)
+						if(p.getCommonData().getRace() == Race.ASMODIANS && p.getObjectId() != sender.getObjectId())
 						{
 							PacketSendUtility.sendMessage(p, "[Asmodiens] <GM> " + sender.getName() + " : " + commandAndParams[1].trim());
 						}
 					}
+					PacketSendUtility.sendMessage(sender, "[Asmodiens] <GM> " + sender.getName() + " : " + commandAndParams[1]);
 				}
 				else
 				{
