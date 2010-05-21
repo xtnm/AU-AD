@@ -6,7 +6,9 @@
 package com.aionemu.gameserver.model.gameobjects.player;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -15,25 +17,24 @@ import org.apache.log4j.Logger;
 import com.aionemu.commons.database.dao.DAOManager;
 import com.aionemu.gameserver.dao.InventoryDAO;
 import com.aionemu.gameserver.model.DescriptionId;
+import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.PersistentState;
 import com.aionemu.gameserver.model.gameobjects.state.CreatureState;
 import com.aionemu.gameserver.model.gameobjects.stats.listeners.ItemEquipmentListener;
 import com.aionemu.gameserver.model.items.ItemSlot;
 import com.aionemu.gameserver.model.templates.item.ArmorType;
+import com.aionemu.gameserver.model.templates.item.ItemTemplate;
 import com.aionemu.gameserver.model.templates.item.WeaponType;
 import com.aionemu.gameserver.model.templates.itemset.ItemSetTemplate;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_DELETE_ITEM;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EMOTION;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_UPDATE_ITEM;
-import com.aionemu.gameserver.utils.PacketSendUtility;
-
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ITEM_USAGE_ANIMATION;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_QUESTION_WINDOW;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
-import com.aionemu.gameserver.model.templates.item.ItemTemplate;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_UPDATE_ITEM;
+import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
-import com.aionemu.gameserver.model.gameobjects.Creature;
 
 /**
  *
@@ -41,11 +42,11 @@ import com.aionemu.gameserver.model.gameobjects.Creature;
  */
 public class Equipment
 {
-	private SortedMap<Integer, Item>	equipment	= new TreeMap<Integer, Item>();
+	private SortedMap<Integer, Item>	equipment		= new TreeMap<Integer, Item>();
 	private Player						owner;
-	private static final Logger			log			= Logger.getLogger(Equipment.class);
-	
-	private PersistentState persistentState = PersistentState.UPDATED;
+	private static final Logger			log				= Logger.getLogger(Equipment.class);
+	private Set<Integer>				markedFreeSlots	= new HashSet<Integer>();
+	private PersistentState				persistentState	= PersistentState.UPDATED;
 
 	public Equipment(Player player)
 	{
@@ -60,103 +61,133 @@ public class Equipment
 	 */
 	public Item equipItem(int itemUniqueId, int slot)
 	{
-		synchronized(equipment)
+		Item item = owner.getInventory().getItemByObjId(itemUniqueId);
+
+		if(item == null)
+			return null;
+
+		ItemTemplate itemTemplate = item.getItemTemplate();
+
+		// don't allow to wear items of higher level
+		if(itemTemplate.getLevel() > owner.getCommonData().getLevel())
 		{
-			Item item = owner.getInventory().getItemByObjId(itemUniqueId);
+			PacketSendUtility.sendPacket(owner, SM_SYSTEM_MESSAGE.STR_CANNOT_USE_ITEM_TOO_LOW_LEVEL_MUST_BE_THIS_LEVEL(
+				itemTemplate.getLevel(), new DescriptionId(Integer.parseInt(item.getName()))));
+			return null;
+		}
+		
+		int itemSlotToEquip = 0;
+		
+		synchronized(equipment)
+		{			
+			markedFreeSlots.clear();
 
-			if(item == null)
-				return null;
-
-			//don't allow to wear items of higher level
-			if(item.getItemTemplate().getLevel() > owner.getCommonData().getLevel())
-			{
-				PacketSendUtility.sendPacket(owner, 
-					SM_SYSTEM_MESSAGE.STR_CANNOT_USE_ITEM_TOO_LOW_LEVEL_MUST_BE_THIS_LEVEL(
-						item.getItemTemplate().getLevel(), new DescriptionId(Integer.parseInt(item.getName()))));
-				return null;
-			}
-
-			int itemSlotToEquip = 0;
-
+			// validate item against current equipment and mark free slots
 			switch(item.getEquipmentType())
 			{
 				case ARMOR:
-					if(!validateEquippedArmor(item))
+					if(!validateEquippedArmor(item, true))
 						return null;
 					break;
 				case WEAPON:
-					if(!validateEquippedWeapon(item))
+					if(!validateEquippedWeapon(item, true))
 						return null;
 					break;
 			}
 
-			//check whether there is already item in specified slot
-			int itemSlotMask =  0 ;		
+			// check whether there is already item in specified slot
+			int itemSlotMask = 0;
 			switch(item.getEquipmentType())
 			{
 				case STIGMA:
 					itemSlotMask = slot;
 					break;
 				default:
-					itemSlotMask = item.getItemTemplate().getItemSlot();
+					itemSlotMask = itemTemplate.getItemSlot();
 					break;
 			}
 
+			// find correct slot
 			List<ItemSlot> possibleSlots = ItemSlot.getSlotsFor(itemSlotMask);
-			ItemTemplate itemTemplate = item.getItemTemplate();
-			if( itemTemplate.isSoulBound() && !item.isSoulBound() )
-			{
-				soulBindItem(owner, item);
-			}
-
 			for(ItemSlot possibleSlot : possibleSlots)
 			{
-				if(equipment.get(possibleSlot.getSlotIdMask()) == null)
+				int slotId = possibleSlot.getSlotIdMask();
+				if(equipment.get(slotId) == null || markedFreeSlots.contains(slotId))
 				{
-					itemSlotToEquip = possibleSlot.getSlotIdMask();
+					itemSlotToEquip = slotId;
 					break;
 				}
 			}
+			
 			// equip first occupied slot if there is no free
 			if(itemSlotToEquip == 0)
 			{
 				itemSlotToEquip = possibleSlots.get(0).getSlotIdMask();
 			}
-			
-			if(itemSlotToEquip == 0)
-				return null;
-			
+		}
+		
+		if(itemSlotToEquip == 0)
+			return null;
+
+		if(itemTemplate.isSoulBound() && !item.isSoulBound())
+		{
+			soulBindItem(owner, item, itemSlotToEquip);
+			return null;
+		}
+		else
+		{
+			return equip(itemSlotToEquip, item);
+		}
+	}
+	
+	/**
+	 * 
+	 * @param itemSlotToEquip
+	 * @param item
+	 */
+	private Item equip(int itemSlotToEquip, Item item)
+	{
+		synchronized(equipment)
+		{
 			//remove item first from inventory to have at least one slot free
 			owner.getInventory().removeFromBag(item, false);
 			
+			//do unequip of necessary items
 			Item equippedItem = equipment.get(itemSlotToEquip);
 			if(equippedItem != null)
 				unEquip(itemSlotToEquip);
 			
-			equip(itemSlotToEquip, item);
+			switch(item.getEquipmentType())
+			{
+				case ARMOR:
+					validateEquippedArmor(item, false);
+					break;
+				case WEAPON:
+					validateEquippedWeapon(item, false);
+					break;
+			}
+
+			if(equipment.get(itemSlotToEquip) != null)
+			{
+				log.error("CHECKPOINT : putting item to already equiped slot. Info slot: " +
+					itemSlotToEquip + " new item: " + item.getItemTemplate().getTemplateId() + " old item: "
+					+ equipment.get(itemSlotToEquip).getItemTemplate().getTemplateId());
+				return null;
+			}			
+
+			//equip target item
+			equipment.put(itemSlotToEquip, item);
+			item.setEquipped(true);
+			item.setEquipmentSlot(itemSlotToEquip);
+			PacketSendUtility.sendPacket(owner, new SM_UPDATE_ITEM(item));
+			
+			//update stats
+			ItemEquipmentListener.onItemEquipment(item, owner);
+			owner.getObserveController().notifyItemEquip(item, owner);
+			owner.getLifeStats().updateCurrentStats();
 			setPersistentState(PersistentState.UPDATE_REQUIRED);
 			return item;
 		}	
-	}
-	
-	private void equip(int slot, Item item)
-	{
-		if(equipment.get(slot) != null)
-		{
-			log.error("CHECKPOINT : putting item to already equiped slot. Info slot: " +
-				slot + " new item: " + item.getItemTemplate().getTemplateId() + " old item: "
-				+ equipment.get(slot).getItemTemplate().getTemplateId());
-			return;
-		}			
-
-		equipment.put(slot, item);
-		item.setEquipped(true);
-		item.setEquipmentSlot(slot);
-		PacketSendUtility.sendPacket(owner, new SM_UPDATE_ITEM(item));
-		
-		ItemEquipmentListener.onItemEquipment(item, owner);
-		owner.getObserveController().notifyItemEquip(item, owner);
-		owner.getLifeStats().updateCurrentStats();
 	}
 
 
@@ -247,7 +278,7 @@ public class Equipment
 	 * @param itemInSubHand
 	 * @return
 	 */
-	private boolean validateEquippedWeapon(Item item)
+	private boolean validateEquippedWeapon(Item item, boolean validateOnly)
 	{
 		// check present skill
 		int[] requiredSkills = item.getItemTemplate().getWeaponType().getRequiredSkills();
@@ -257,6 +288,8 @@ public class Equipment
 		
 		Item itemInMainHand = equipment.get(ItemSlot.MAIN_HAND.getSlotIdMask());
 		Item itemInSubHand = equipment.get(ItemSlot.SUB_HAND.getSlotIdMask());
+		
+		int requiredSlots = 0;
 		switch(item.getItemTemplate().getWeaponType().getRequiredSlots())
 		{
 			case 2:
@@ -267,51 +300,69 @@ public class Equipment
 						if(itemInSubHand != null &&
 							itemInSubHand.getItemTemplate().getArmorType() != ArmorType.ARROW)
 						{
-							//TODO more wise check here is needed
-							if(owner.getInventory().getNumberOfFreeSlots() < 1)
-								return false;
-							unEquip(ItemSlot.SUB_HAND.getSlotIdMask());
+							if(validateOnly)
+							{
+								requiredSlots++;
+								markedFreeSlots.add(ItemSlot.SUB_HAND.getSlotIdMask());
+							}
+							else
+								unEquip(ItemSlot.SUB_HAND.getSlotIdMask());
 						}
 						break;
 						//if new item is not bow - unequip arrows
 					default:
 						if(itemInSubHand != null)
 						{
-							//TODO more wise check here is needed
-							if(owner.getInventory().getNumberOfFreeSlots() < 1)
-								return false;
-							//remove 2H weapon
-							unEquip(ItemSlot.SUB_HAND.getSlotIdMask());
+							if(validateOnly)
+							{
+								requiredSlots++;
+								markedFreeSlots.add(ItemSlot.SUB_HAND.getSlotIdMask());
+							}
+							else
+								unEquip(ItemSlot.SUB_HAND.getSlotIdMask());
 						}
 				}//no break
 			case 1:
 				//check dual skill
 				if(itemInMainHand != null && !owner.getSkillList().isSkillPresent(19))
 				{
-					if(owner.getInventory().getNumberOfFreeSlots() < 1)
-						return false;
-					unEquip(ItemSlot.MAIN_HAND.getSlotIdMask());
+					if(validateOnly)
+					{
+						requiredSlots++;
+						markedFreeSlots.add(ItemSlot.MAIN_HAND.getSlotIdMask());
+					}
+					else
+						unEquip(ItemSlot.MAIN_HAND.getSlotIdMask());
 				}
 				//check 2h weapon in main hand
 				else if(itemInMainHand != null && itemInMainHand.getItemTemplate().getWeaponType().getRequiredSlots() == 2)
 				{
-					if(owner.getInventory().getNumberOfFreeSlots() < 1)
-						return false;
-					unEquip(ItemSlot.MAIN_HAND.getSlotIdMask());
+					if(validateOnly)
+					{
+						requiredSlots++;
+						markedFreeSlots.add(ItemSlot.MAIN_HAND.getSlotIdMask());
+					}
+					else
+						unEquip(ItemSlot.MAIN_HAND.getSlotIdMask());
 				}
 
 				//unequip arrows if bow+arrows were equipeed
 				Item possibleArrows = equipment.get(ItemSlot.SUB_HAND.getSlotIdMask());
 				if(possibleArrows != null && possibleArrows.getItemTemplate().getArmorType() == ArmorType.ARROW)
 				{
-					//TODO more wise check here is needed
-					if(owner.getInventory().getNumberOfFreeSlots() < 1)
-						return false;
-					unEquip(ItemSlot.SUB_HAND.getSlotIdMask());
+					if(validateOnly)
+					{
+						requiredSlots++;
+						markedFreeSlots.add(ItemSlot.SUB_HAND.getSlotIdMask());
+					}
+					else
+						unEquip(ItemSlot.SUB_HAND.getSlotIdMask());
 				}
 				break;
 		}
-		return true;
+		
+		//check agains = required slots - 1(equipping item)
+		return owner.getInventory().getNumberOfFreeSlots() >= requiredSlots - 1;
 	}
 
 	/**
@@ -345,7 +396,7 @@ public class Equipment
 	 * @param itemInMainHand
 	 * @return
 	 */
-	private boolean validateEquippedArmor(Item item)
+	private boolean validateEquippedArmor(Item item, boolean validateOnly)
 	{
 		//allow wearing of jewelry etc stuff
 		ArmorType armorType = item.getItemTemplate().getArmorType();
@@ -363,17 +414,26 @@ public class Equipment
 			case ARROW:
 				if(itemInMainHand == null
 					|| itemInMainHand.getItemTemplate().getWeaponType() != WeaponType.BOW)
-					return false;
+				{
+					if(validateOnly)
+						return false;
+				}
 				break;
 			case SHIELD:
 				if(itemInMainHand != null
 					&& itemInMainHand.getItemTemplate().getWeaponType().getRequiredSlots() == 2)
 				{
-					//TODO more wise check here is needed
-					if(owner.getInventory().isFull())
-						return false;
-					//remove 2H weapon
-					unEquip(ItemSlot.MAIN_HAND.getSlotIdMask());
+					if(validateOnly)
+					{
+						if(owner.getInventory().isFull())
+							return false;
+						markedFreeSlots.add(ItemSlot.MAIN_HAND.getSlotIdMask());
+					}
+					else
+					{
+						//remove 2H weapon
+						unEquip(ItemSlot.MAIN_HAND.getSlotIdMask());
+					}
 				}
 				break;
 		}
@@ -780,7 +840,7 @@ public class Equipment
 	 * @param item
 	 * @return
 	 */
-	private boolean soulBindItem(final Player player, final Item item)
+	private boolean soulBindItem(final Player player, final Item item, final int slot)
 	{
 		RequestResponseHandler responseHandler = new RequestResponseHandler(player){
 
@@ -799,6 +859,7 @@ public class Equipment
 						PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE
 							.SOUL_BOUND_ITEM_SUCCEED(new DescriptionId(item.getNameID())));
 						item.setSoulBound(true);
+						equip(slot, item);
 					}
 				}, 5100);
 			}

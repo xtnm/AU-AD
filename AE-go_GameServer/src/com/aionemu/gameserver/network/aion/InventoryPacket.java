@@ -245,7 +245,8 @@ public abstract class InventoryPacket extends AionServerPacket
 			writeC(buf, 0x01);
 			writeD(buf,	ItemSlot.getSlotsFor(item.getItemTemplate().getItemSlot()).get(0).getSlotIdMask());
 			writeD(buf, 0x02);
-			writeH(buf, 0x0B); //? some details separator
+			writeC(buf, 0x0B); //? some details separator
+			writeC(buf, item.isSoulBound() ? 1 : 0);
 			writeC(buf, item.getEchantLevel()); //enchant (1-10)
 			writeD(buf, item.getItemTemplate().getTemplateId());
 			writeC(buf, 0);
@@ -340,7 +341,8 @@ public abstract class InventoryPacket extends AionServerPacket
 		writeD(buf,	ItemSlot.getSlotsFor(item.getItemTemplate().getItemSlot()).get(0).getSlotIdMask());
 		writeD(buf, 0);
 		writeD(buf, 0);
-		writeH(buf, 0x0B); //? some details separator
+		writeC(buf, 0x0B); //? some details separator
+		writeC(buf, item.isSoulBound() ? 1 : 0);
 		writeC(buf, item.getEchantLevel()); //enchant (1-10)
 		writeD(buf, item.getItemTemplate().getTemplateId());
 

@@ -519,6 +519,10 @@ public class ItemTemplate extends VisibleObjectTemplate
 		return stigma;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean isSoulBound()
 	{
 		return (getMask() & ItemMask.SOUL_BOUND) == ItemMask.SOUL_BOUND;
