@@ -25,9 +25,15 @@ import com.aionemu.gameserver.model.templates.item.WeaponType;
 import com.aionemu.gameserver.model.templates.itemset.ItemSetTemplate;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_DELETE_ITEM;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EMOTION;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_UPDATE_ITEM;
 import com.aionemu.gameserver.utils.PacketSendUtility;
+
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ITEM_USAGE_ANIMATION;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_QUESTION_WINDOW;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
+import com.aionemu.gameserver.model.templates.item.ItemTemplate;
+import com.aionemu.gameserver.utils.ThreadPoolManager;
+import com.aionemu.gameserver.model.gameobjects.Creature;
 
 /**
  *
@@ -97,6 +103,12 @@ public class Equipment
 			}
 
 			List<ItemSlot> possibleSlots = ItemSlot.getSlotsFor(itemSlotMask);
+			ItemTemplate itemTemplate = item.getItemTemplate();
+			if( itemTemplate.isSoulBound() && !item.isSoulBound() )
+			{
+				soulBindItem(owner, item);
+			}
+
 			for(ItemSlot possibleSlot : possibleSlots)
 			{
 				if(equipment.get(possibleSlot.getSlotIdMask()) == null)
@@ -760,5 +772,52 @@ public class Equipment
 	public void setOwner(Player player)
 	{
 		this.owner = player;
+	}
+
+	/**
+	 * 
+	 * @param player
+	 * @param item
+	 * @return
+	 */
+	private boolean soulBindItem(final Player player, final Item item)
+	{
+		RequestResponseHandler responseHandler = new RequestResponseHandler(player){
+
+			public void acceptRequest(Creature requester, Player responder)
+			{
+				PacketSendUtility.broadcastPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(), item
+					.getObjectId(), item.getItemId(), 5000, 4), true);
+
+				// item usage animation
+				ThreadPoolManager.getInstance().schedule(new Runnable(){
+
+					public void run()
+					{
+						PacketSendUtility.broadcastPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(),
+							item.getObjectId(), item.getItemId(), 0, 6), true);
+						PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE
+							.SOUL_BOUND_ITEM_SUCCEED(new DescriptionId(item.getNameID())));
+						item.setSoulBound(true);
+					}
+				}, 5100);
+			}
+
+			public void denyRequest(Creature requester, Player responder)
+			{
+				PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.SOUL_BOUND_ITEM_CANCELED(new DescriptionId(item
+					.getNameID())));
+			}
+		};
+
+		boolean requested = player.getResponseRequester().putRequest(
+			SM_QUESTION_WINDOW.STR_SOUL_BOUND_ITEM_DO_YOU_WANT_SOUL_BOUND, responseHandler);
+		if(requested)
+		{
+			PacketSendUtility.sendPacket(player, new SM_QUESTION_WINDOW(
+				SM_QUESTION_WINDOW.STR_SOUL_BOUND_ITEM_DO_YOU_WANT_SOUL_BOUND, 0, new DescriptionId(item.getNameID())));
+		}
+
+		return false;
 	}
 }

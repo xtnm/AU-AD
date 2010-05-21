@@ -91,8 +91,7 @@ public class MySQL5BrokerDAO extends BrokerDAO
 					int slot = rset.getInt("slot");
 					int location = rset.getInt("itemLocation");
 					int enchant = rset.getInt("enchant");
-					brokerItems
-						.add(new Item(itemUniqueId, itemId, itemCount, itemColor, false, slot, location, enchant));
+					brokerItems.add(new Item(itemUniqueId, itemId, itemCount, itemColor, false, false, slot, location, enchant));
 				}
 			}
 		});

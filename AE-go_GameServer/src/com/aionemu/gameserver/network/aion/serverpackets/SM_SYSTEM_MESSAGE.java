@@ -237,6 +237,20 @@ public class SM_SYSTEM_MESSAGE extends AionServerPacket
 	}
 
 	/**
+	 * You have successfully soul-bound %0.
+	 */
+	public static SM_SYSTEM_MESSAGE SOUL_BOUND_ITEM_SUCCEED(DescriptionId itemDescId) {
+		return new SM_SYSTEM_MESSAGE(1300485, itemDescId);
+	}
+
+	/**
+	 * You cancelled the soul-binding of %0.
+	 */
+	public static SM_SYSTEM_MESSAGE SOUL_BOUND_ITEM_CANCELED(DescriptionId itemDescId) {
+		return new SM_SYSTEM_MESSAGE(1300487, itemDescId);
+	}
+
+	/**
 	 * Group System Messages
 	 */
 	public static SM_SYSTEM_MESSAGE REQUEST_GROUP_INVITE(String player)

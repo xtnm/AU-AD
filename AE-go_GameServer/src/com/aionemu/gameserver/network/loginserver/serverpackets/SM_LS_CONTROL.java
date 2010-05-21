@@ -19,7 +19,6 @@ package com.aionemu.gameserver.network.loginserver.serverpackets;
 
 import java.nio.ByteBuffer;
 
-import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.loginserver.LoginServerConnection;
 import com.aionemu.gameserver.network.loginserver.LsServerPacket;
 

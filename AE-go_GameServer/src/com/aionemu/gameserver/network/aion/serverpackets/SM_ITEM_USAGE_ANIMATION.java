@@ -38,19 +38,28 @@ public class SM_ITEM_USAGE_ANIMATION extends AionServerPacket
 		this.playerObjId = playerObjId;
 		this.itemObjId = itemObjId;
 		this.itemId = itemId;
-        this.time = 0;
-        this.end = 1;
-        this.unk = 1;
+		this.time = 0;
+		this.end = 1;
+		this.unk = 1;
 	}
 
-    public SM_ITEM_USAGE_ANIMATION(int playerObjId, int itemObjId, int itemId, int time, int end, int unk)
+	public SM_ITEM_USAGE_ANIMATION(int playerObjId, int itemObjId, int itemId, int time, int end, int unk)
 	{
 		this.playerObjId = playerObjId;
 		this.itemObjId = itemObjId;
 		this.itemId = itemId;
-        this.time = time;
-        this.end = end;
-        this.unk = unk;
+		this.time = time;
+		this.end = end;
+		this.unk = unk;
+	}
+
+	public SM_ITEM_USAGE_ANIMATION(int playerObjId, int itemObjId, int itemId, int time, int end)
+	{
+		this.playerObjId = playerObjId;
+		this.itemObjId = itemObjId;
+		this.itemId = itemId;
+		this.time = time;
+		this.end = end;
 	}
 
 	@Override
@@ -65,7 +74,7 @@ public class SM_ITEM_USAGE_ANIMATION extends AionServerPacket
 		writeD(buf, time); // unk
 		writeC(buf, end); // unk
 		writeC(buf, 1); // unk
-        writeC(buf, 0);
-        writeD(buf, unk);
+		writeC(buf, 0);
+		writeD(buf, unk);
 	}
 }

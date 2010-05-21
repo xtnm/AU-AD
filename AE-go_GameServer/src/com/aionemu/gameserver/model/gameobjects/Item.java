@@ -23,6 +23,7 @@ import java.util.TreeSet;
 import com.aionemu.gameserver.dataholders.DataManager;
 import com.aionemu.gameserver.model.items.GodStone;
 import com.aionemu.gameserver.model.items.ItemStorage;
+import com.aionemu.gameserver.model.items.ItemMask;
 import com.aionemu.gameserver.model.items.ManaStone;
 import com.aionemu.gameserver.model.templates.item.EquipType;
 import com.aionemu.gameserver.model.templates.item.ItemTemplate;
@@ -47,6 +48,8 @@ public class Item extends AionObject
 	private Set<ManaStone> manaStones;
 	
 	private GodStone godStone;
+
+	private boolean isSoulBound = false;
 
 	private int itemLocation;
 	
@@ -82,7 +85,7 @@ public class Item extends AionObject
 	 * 
 	 * This constructor should be called only from DAO while loading from DB
 	 */
-	public Item(int objId, int itemId, int itemCount, int itemColor, boolean isEquipped, int equipmentSlot, int itemLocation, int enchant)
+	public Item(int objId, int itemId, int itemCount, int itemColor, boolean isEquipped, boolean isSoulBound,int equipmentSlot, int itemLocation, int enchant)
 	{
 		super(objId);
 
@@ -90,6 +93,7 @@ public class Item extends AionObject
 		this.itemCount = itemCount;
 		this.itemColor = itemColor;
 		this.isEquipped = isEquipped;
+		this.isSoulBound = isSoulBound;
 		this.equipmentSlot = equipmentSlot;
 		this.itemLocation = itemLocation;
 		this.echantLevel = enchant;
@@ -359,7 +363,23 @@ public class Item extends AionObject
 	
 	public int getItemMask()
 	{
-		return itemTemplate.getMask();
+		int mask = itemTemplate.getMask();
+		if( !isSoulBound() && itemTemplate.isSoulBound() )
+		{
+			mask ^= ItemMask.SOUL_BOUND;
+		}
+		return mask;
+	}
+
+	public boolean isSoulBound()
+	{
+		return isSoulBound;
+	}
+
+	public void setSoulBound(boolean isSoulBound)
+	{
+		this.isSoulBound = isSoulBound;
+		setPersistentState(PersistentState.UPDATE_REQUIRED);
 	}
 	
 	public EquipType getEquipmentType()
@@ -377,5 +397,15 @@ public class Item extends AionObject
 			+ ", itemColor=" + itemColor + ", itemCount=" + itemCount + ", itemLocation="
 			+ itemLocation + ", itemTemplate=" + itemTemplate + ", manaStones=" + manaStones + ", persistentState="
 			+ persistentState + "]";
+	}
+
+	public int getItemId()
+	{
+		return itemTemplate.getTemplateId();
+	}
+
+	public int getNameID()
+	{
+		return itemTemplate.getNameId();
 	}
 }

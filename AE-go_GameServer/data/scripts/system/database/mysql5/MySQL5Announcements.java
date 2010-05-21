@@ -19,13 +19,11 @@ package mysql5;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Types;
 import java.util.HashSet;
 import java.util.Set;
 
 import com.aionemu.commons.database.DB;
 import com.aionemu.commons.database.IUStH;
-import com.aionemu.commons.database.ParamReadStH;
 import com.aionemu.commons.database.ReadStH;
 import com.aionemu.gameserver.dao.AnnouncementsDAO;
 import com.aionemu.gameserver.model.Announcement;
