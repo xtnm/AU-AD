@@ -3,19 +3,31 @@
 	xsi:noNamespaceSchemaLocation="portal_templates.xsd">
 	
 	<!-- INSTANCES -->
+
+	<!-- Sulfur tree nest -->
+	<portal npcid="700452"  instance="true" minlevel="35" maxlevel="35" group="true">
+        <entrypoint mapid="400010000" x="1344.07" y="1243.71" z="1498.31"/>
+        <exitpoint mapid="300060000" x="462.352" y="345.609" z="162.817"/>
+    </portal>
+	
+	<!-- Asteria chamber -->
+	<portal npcid="700460"  instance="true" minlevel="45" maxlevel="50" group="true">
+        <entrypoint mapid="400010000" x="705.45" y="2921.74" z="2880.84"/>
+        <exitpoint mapid="300050000" x="469.343" y="567.713" z="201.732"/>
+    </portal>
 	
 	<!-- Aetherogenetics Lab -->
-	<portal npcid="730034" instance="true" minlevel="41" maxlevel="45" group="true">
+	<portal npcid="730034"  instance="true" minlevel="41" maxlevel="45" group="true">
 		<entrypoint mapid="210040000" x="233.95" y="533.53" z="158.75"/>
-		<exitpoint mapid="310050000" x="225" y="244" z="133"/>
+        <exitpoint mapid="310050000" x="348.7295" y="235.60219" z="147.67067"/>		
 	</portal>
 	
 	<!-- Left Wing Chamber  -->
-   <portal npcid="700454" instance="true" minlevel="35" maxlevel="50" group="true">
-      <entrypoint mapid="400010000" x="2784.99" y="2664.03" z="1486.7"/>
-      <exitpoint mapid="300080000" x="227" y="617" z="367"/>
-   </portal>
-   
+    <portal npcid="700454"  instance="true" minlevel="35" maxlevel="35" group="true">
+		<entrypoint mapid="400010000" x="2784.99" y="2664.03" z="1486.7"/>
+		<exitpoint mapid="300080000" x="672.09576" y="606.1819" z="321.19"/>
+    </portal>
+  
 	<!--Chamber of Roah -->
 	<portal npcid="700479" instance="true" minlevel="40" maxlevel="50" group="true">
 		<entrypoint mapid="400010000" x="2712.53" y="757.89" z="2854.295"/>

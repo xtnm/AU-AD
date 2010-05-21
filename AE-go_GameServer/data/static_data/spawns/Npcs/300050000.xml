@@ -16,19 +16,23 @@
 	along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
 	
 	Asteria Chamber
+
  -->
 <spawns>
-
-	<!-- Golden Abyss Crate (Object Normal lvl:45)-->
+	<!-- Golden Abyss Crate (Object Normal lvl:45) (from client spawn)-->
 	<spawn map="300050000" npcid="700475" pool="1" interval="295">
-		<object x="524.5648" y="706.177" z="191.8985" h="77"/>
+		<object x="524.5349" y="705.1356" z="191.8985" h="34"/>
 	</spawn>
-	<!-- Jeweled Abyss Crate (Object Normal lvl:45)-->
+	<!-- Jeweled Abyss Crate (Object Normal lvl:45) (from client spawn)-->
 	<spawn map="300050000" npcid="700476" pool="1" interval="295">
-		<object x="522.29724" y="421.42368" z="201.66695" h="57"/>
+		<object x="522.2547" y="422.55276" z="199.75935" h="30"/>
 	</spawn>
-	<!-- Magic Abyss Crate (Object Normal lvl:3)-->
+	<!-- Magic Abyss Crate (Object Normal lvl:3) (from client spawn)-->
 	<spawn map="300050000" npcid="700477" pool="1" interval="295">
-		<object x="671.4528" y="565.16864" z="206.14534" h="10"/>
+		<object x="669.9804" y="565.1138" z="206.14532" h="60"/>
+	</spawn>
+	<!-- TreasureRoom_Sensory_A (NPC Normal lvl:3) (from client spawn)-->
+	<spawn map="300050000" npcid="206087" pool="1" interval="295">
+		<object x="479.58884" y="567.70667" z="205.12364" h="109"/>
 	</spawn>
 </spawns>
