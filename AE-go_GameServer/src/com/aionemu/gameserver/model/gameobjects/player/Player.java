@@ -19,8 +19,6 @@ package com.aionemu.gameserver.model.gameobjects.player;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-import javolution.util.FastMap;
-
 import com.aionemu.commons.callbacks.Enhancable;
 import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.controllers.FlyController;
@@ -30,8 +28,10 @@ import com.aionemu.gameserver.controllers.effect.PlayerEffectController;
 import com.aionemu.gameserver.dataholders.DataManager;
 import com.aionemu.gameserver.model.Gender;
 import com.aionemu.gameserver.model.PlayerClass;
+import com.aionemu.gameserver.model.gameobjects.BrokerItem;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Item;
+import com.aionemu.gameserver.model.gameobjects.Kisk;
 import com.aionemu.gameserver.model.gameobjects.Monster;
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.PersistentState;
@@ -99,10 +99,11 @@ public class Player extends Creature
 	private int					flightTeleportId;
 	private int					flightDistance;
 	private Summon				summon;
-	private FastMap<Integer, Integer> brokerListCache = new FastMap<Integer, Integer>();
-	private int					brokerMaskCache = 0;
-	private int					brokerSoftTypeCache = 0;
-	private int					brokerStartPageCache = 0;
+	private BrokerItem[]		brokerListCache			= new BrokerItem[0];
+	private Kisk				kisk;
+	private int					brokerMaskCache			= 0;
+	private int					brokerSoftTypeCache		= 0;
+	private int					brokerStartPageCache	= 0;
 	/**
 	 * Static information for players
 	 */
@@ -729,6 +730,16 @@ public class Player extends Creature
 	}
 
 	/**
+	 * accountName of this player
+	 * 
+	 * @return int
+	 */
+	public String getAcountName()
+	{
+		return getClientConnection().getAccount().getName();
+	}
+
+	/**
 	 * @return the rates
 	 */
 	public Rates getRates()
@@ -1092,12 +1103,12 @@ public class Player extends Creature
 		this.summon = summon;
 	}
 	
-	public void setBrokerListCache(FastMap<Integer, Integer> brokerListCache)
+	public void setBrokerListCache(BrokerItem[] brokerListCache)
 	{
 		this.brokerListCache = brokerListCache;
 	}
 	
-	public FastMap<Integer, Integer> getBrokerListCache()
+	public BrokerItem[] getBrokerListCache()
 	{
 		return brokerListCache;
 	}
@@ -1130,5 +1141,21 @@ public class Player extends Creature
 	public int getBrokerStartPageCache()
 	{
 		return brokerStartPageCache;
+	}
+
+	/**
+	 * @param new kisk to bind to (null if unbinding)
+	 */
+	public void setKisk(Kisk newKisk)
+	{
+		this.kisk = newKisk;
+	}
+
+	/**
+	 * @return
+	 */
+	public Kisk getKisk()
+	{
+		return this.kisk;
 	}
 }

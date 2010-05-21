@@ -24,6 +24,7 @@ import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.templates.quest.QuestItems;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_DIALOG_WINDOW;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ITEM_USAGE_ANIMATION;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_PLAY_MOVIE;
 import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
@@ -119,6 +120,9 @@ public class _2056ThawingKurngalfberg extends QuestHandler
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1011);
 					else if(var == 1)
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2375);
+				case 1012:
+					PacketSendUtility.sendPacket(player, new SM_PLAY_MOVIE(0, 242));
+						break;
 				case 2376:
 					if(questService.collectItemCheck(env, false))				
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2376);
@@ -217,8 +221,16 @@ public class _2056ThawingKurngalfberg extends QuestHandler
 			public void run()
 			{
 				PacketSendUtility.broadcastPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(), itemObjId, id, 0, 1, 0), true);
-				if(qs.getQuestVarById(0) == 2 || qs.getQuestVarById(0) == 3)
+				if(qs.getQuestVarById(0) == 2)
 				{
+					PacketSendUtility.sendPacket(player, new SM_PLAY_MOVIE(0, 243));
+					player.getInventory().removeFromBagByItemId(id, 1);
+					qs.setQuestVarById(0, qs.getQuestVarById(0) + 1);
+					updateQuestStatus(player, qs);
+				}
+				else if(qs.getQuestVarById(0) == 3)
+				{
+					PacketSendUtility.sendPacket(player, new SM_PLAY_MOVIE(0, 244));
 					player.getInventory().removeFromBagByItemId(id, 1);
 					qs.setQuestVarById(0, qs.getQuestVarById(0) + 1);
 					updateQuestStatus(player, qs);
@@ -226,6 +238,7 @@ public class _2056ThawingKurngalfberg extends QuestHandler
 				else if(qs.getQuestVarById(0) == 4)
 				{
 					player.getInventory().removeFromBagByItemId(id, 1);
+					PacketSendUtility.sendPacket(player, new SM_PLAY_MOVIE(0, 245));
 					qs.setStatus(QuestStatus.REWARD);
 					updateQuestStatus(player, qs);
 				}

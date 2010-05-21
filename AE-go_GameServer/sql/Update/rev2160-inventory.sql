@@ -1,0 +1,1 @@
+ALTER TABLE `inventory` ADD `isSoulBound` TINYINT(1) NOT NULL DEFAULT '0' AFTER `isEquiped` ;

@@ -26,6 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import com.aionemu.gameserver.model.NpcType;
 import com.aionemu.gameserver.model.Race;
 import com.aionemu.gameserver.model.items.NpcEquippedGear;
+import com.aionemu.gameserver.model.templates.stats.KiskStatsTemplate;
 import com.aionemu.gameserver.model.templates.stats.NpcRank;
 import com.aionemu.gameserver.model.templates.stats.NpcStatsTemplate;
 
@@ -57,6 +58,8 @@ public class NpcTemplate extends VisibleObjectTemplate
 	private NpcStatsTemplate	statsTemplate;
 	@XmlElement(name = "equipment")
 	private NpcEquippedGear		equipment;
+	@XmlElement(name = "kisk_stats")
+	private KiskStatsTemplate	kiskStatsTemplate;
 	@SuppressWarnings("unused")
 	@XmlElement(name = "ammo_speed")
 	private int					ammoSpeed		= 0;
@@ -137,6 +140,11 @@ public class NpcTemplate extends VisibleObjectTemplate
 	public void setStatsTemplate(NpcStatsTemplate statsTemplate)
 	{
 		this.statsTemplate = statsTemplate;
+	}
+	
+	public KiskStatsTemplate getKiskStatsTemplate()
+	{
+		return kiskStatsTemplate;
 	}
 	
 	/**

@@ -18,6 +18,7 @@ package com.aionemu.chatserver.network.gameserver.serverpackets;
 
 import org.jboss.netty.buffer.ChannelBuffer;
 
+import com.aionemu.chatserver.configs.Config;
 import com.aionemu.chatserver.network.gameserver.AbstractGameServerPacket;
 import com.aionemu.chatserver.network.gameserver.GsAuthResponse;
 import com.aionemu.chatserver.network.netty.handler.GameChannelHandler;
@@ -40,6 +41,8 @@ public class SM_GS_AUTH_RESPONSE extends AbstractGameServerPacket
 	{
 		writeC(buf, getOpCode());
 		writeC(buf, response.getResponseId());
+		writeB(buf, Config.CHAT_ADDRESS.getAddress().getAddress());
+		writeH(buf, Config.CHAT_ADDRESS.getPort());
 	}
 
 }

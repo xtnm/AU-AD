@@ -26,6 +26,7 @@ import com.aionemu.gameserver.dataholders.TeleLocationData;
 import com.aionemu.gameserver.dataholders.TeleporterData;
 import com.aionemu.gameserver.dataholders.PlayerInitialData.LocationData;
 import com.aionemu.gameserver.model.Race;
+import com.aionemu.gameserver.model.gameobjects.Kisk;
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.player.Storage;
@@ -455,7 +456,7 @@ public class TeleportService
 			y = locationData.getY();
 			z = locationData.getZ();
 		}
-		PacketSendUtility.sendPacket(player, new SM_SET_BIND_POINT(worldId, x, y, z));
+		PacketSendUtility.sendPacket(player, new SM_SET_BIND_POINT(worldId, x, y, z, player));
 	}
 	
 	/**
@@ -487,5 +488,28 @@ public class TeleportService
 		}
 		
 		teleportTo(player, template.getWorldId(), template.getX(), template.getY(), template.getZ(), delay);
+	}
+
+	/**
+	 * @param player
+	 * @param b
+	 */
+	public void moveToKiskLocation(Player player)
+	{
+		Kisk kisk = player.getKisk();
+		
+		int worldId = kisk.getWorldId();
+		float x = kisk.getX();
+		float y = kisk.getY();
+		float z = kisk.getZ();
+		byte heading = kisk.getHeading();
+		
+		int instanceId = 1;
+		if(player.getWorldId() == worldId)
+		{
+			instanceId = player.getInstanceId();
+		}
+
+		teleportTo(player, worldId, instanceId, x, y, z, heading, 0);
 	}
 }

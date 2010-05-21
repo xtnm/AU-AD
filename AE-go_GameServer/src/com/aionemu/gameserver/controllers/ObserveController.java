@@ -243,6 +243,24 @@ public class ObserveController
 		}
 		return false;
 	}
+	
+	/**
+	 * 
+	 * @param status
+	 * @return
+	 */
+	public boolean checkAttackerStatus(AttackStatus status)
+	{
+		synchronized(attackCalcObservers)
+		{
+			for(AttackCalcObserver observer : attackCalcObservers)
+			{
+				if(observer.checkAttackerStatus(status))
+					return true;
+			}
+		}
+		return false;
+	}
 
 	/**
 	 * @param attackList

@@ -14,14 +14,34 @@
  *  You should have received a copy of the GNU General Public License
  *  along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aionemu.gameserver.model.templates.broker;
+package com.aionemu.gameserver.model.broker.filter;
+
+import com.aionemu.gameserver.model.templates.item.ItemTemplate;
 
 /**
- * @author kosyak
- *
+ * @author ATracer
+ * 
  */
-public enum BrokerRace
+public class BrokerMinMaxFilter extends BrokerFilter
 {
-	ELYOS,
-	ASMODIAN;
+	private int	min;
+	private int	max;
+
+	/**
+	 * 
+	 * @param min
+	 * @param max
+	 */
+	public BrokerMinMaxFilter(int min, int max)
+	{
+		this.min = min * 100000;
+		this.max = max * 100000;
+	}
+
+	@Override
+	public boolean accept(ItemTemplate template)
+	{
+		return template.getTemplateId() >= min && template.getTemplateId() < max;
+	}
+
 }

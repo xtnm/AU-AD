@@ -118,6 +118,8 @@
 				minOccurs="0" maxOccurs="1" />
 			<xs:element name="extract" type="ExtractAction"
 				minOccurs="0" maxOccurs="1" />
+			<xs:element name="toypetspawn" type="ToyPetSpawnAction"
+				minOccurs="0" maxOccurs="1" />
 		</xs:sequence>
 	</xs:complexType>
 
@@ -180,7 +182,15 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-
+	
+	<xs:complexType name="ToyPetSpawnAction">
+		<xs:complexContent>
+			<xs:extension base="AbstractItemAction">
+				<xs:attribute name="npcid" type="xs:int" />
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
 	<xs:simpleType name="equipType">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="ARMOR" />

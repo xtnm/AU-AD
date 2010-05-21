@@ -32,6 +32,8 @@ import com.aionemu.gameserver.network.aion.SystemMessageId;
  * @author Luno :D
  * @author Avol!
  * @author Simple :)
+ * @author Sarynth
+ * 
  */
 public class SM_SYSTEM_MESSAGE extends AionServerPacket
 {
@@ -234,6 +236,20 @@ public class SM_SYSTEM_MESSAGE extends AionServerPacket
 	public static SM_SYSTEM_MESSAGE DUEL_PARTNER_INVALID(String partner)
 	{
 		return new SM_SYSTEM_MESSAGE(1300091, partner);
+	}
+
+	/**
+	 * You have successfully soul-bound %0.
+	 */
+	public static SM_SYSTEM_MESSAGE SOUL_BOUND_ITEM_SUCCEED(DescriptionId itemDescId) {
+		return new SM_SYSTEM_MESSAGE(1300485, itemDescId);
+	}
+
+	/**
+	 * You cancelled the soul-binding of %0.
+	 */
+	public static SM_SYSTEM_MESSAGE SOUL_BOUND_ITEM_CANCELED(DescriptionId itemDescId) {
+		return new SM_SYSTEM_MESSAGE(1300487, itemDescId);
 	}
 
 	/**
@@ -953,7 +969,21 @@ public class SM_SYSTEM_MESSAGE extends AionServerPacket
 
 	public static final SM_SYSTEM_MESSAGE	STR_MSG_DICE_INVEN_ERROR	= new SM_SYSTEM_MESSAGE(1390182);
 	public static final SM_SYSTEM_MESSAGE	COMBINE_INVENTORY_IS_FULL	= new SM_SYSTEM_MESSAGE(1330037);
-
+	
+	/***
+	 *  Kisks
+	 *  - Sarynth, Master
+	 */
+	public static final SM_SYSTEM_MESSAGE	KISK_REGISTERED_BIND_POINT	= new SM_SYSTEM_MESSAGE(1390159);
+	public static final SM_SYSTEM_MESSAGE   KISK_UNDER_ATTACK			= new SM_SYSTEM_MESSAGE(1390166);
+	public static final SM_SYSTEM_MESSAGE	KISK_FULL					= new SM_SYSTEM_MESSAGE(1400247);
+	public static final SM_SYSTEM_MESSAGE	BOUND_KISK_DESTROYED		= new SM_SYSTEM_MESSAGE(1390158);
+	public static final SM_SYSTEM_MESSAGE	CANT_USE_KISK_HERE			= new SM_SYSTEM_MESSAGE(1300800);
+	public static final SM_SYSTEM_MESSAGE	CANT_USE_KISK				= new SM_SYSTEM_MESSAGE(1300799);
+	public static final SM_SYSTEM_MESSAGE	KISK_DESTROYED				= new SM_SYSTEM_MESSAGE(1300802);
+	public static final SM_SYSTEM_MESSAGE	KISK_DISMANTLED				= new SM_SYSTEM_MESSAGE(1300803);
+	
+	
 	private final int						code;
 	private final Object[]					params;
 	private boolean							npcShout = false;

@@ -20,7 +20,7 @@ import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Comparator;
 
-import com.aionemu.gameserver.model.templates.broker.BrokerRace;
+import com.aionemu.gameserver.model.broker.BrokerRace;
 
 /**
  * @author kosyachok

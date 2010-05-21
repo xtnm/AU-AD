@@ -18,7 +18,6 @@ package quest.verteron;
 
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_DIALOG_WINDOW;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_PLAY_MOVIE;
 import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
@@ -55,6 +54,8 @@ public class _1157GaphyrksLove extends QuestHandler
 		Player player = env.getPlayer();
 		QuestState qs = player.getQuestStateList().getQuestState(questId);
 		
+		if(qs == null || qs.getStatus() != QuestStatus.START)
+			return false;
 		int targetId = 0;
 		if(env.getVisibleObject() instanceof Npc)
 			targetId = ((Npc) env.getVisibleObject()).getNpcId();
@@ -95,7 +96,14 @@ public class _1157GaphyrksLove extends QuestHandler
 		else if(qs.getStatus() == QuestStatus.REWARD)
 		{
 			if(targetId == 798003)
-				return defaultQuestEndDialog(env);
+			{
+				if(env.getDialogId() == -1)
+					return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2375);
+				else if(env.getDialogId() == 1009)
+					return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 5);
+				else return defaultQuestEndDialog(env);
+			}
+			return false;
 		}
 		return false;		
 	}

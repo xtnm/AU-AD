@@ -135,6 +135,7 @@ public class _1003IllegalLogging extends QuestHandler
 					updateQuestStatus(player, qs);
 					return true;
 				}
+					break;
 			case 210160:
 				if (var >=14 && var <=15)
 				{

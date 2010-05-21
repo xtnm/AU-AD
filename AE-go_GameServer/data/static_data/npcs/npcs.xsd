@@ -19,6 +19,7 @@
 		<xs:sequence>
 			<xs:element name="stats" type="npcStatsTemplate" />
 			<xs:element name="equipment" type="npcEquipmentList" minOccurs="0" />
+			<xs:element name="kisk_stats" type="kiskStats" minOccurs="0" />
 		</xs:sequence>
 		<xs:attribute name="npc_id" type="npcId" use="required" />
 		<xs:attribute name="level" type="xs:byte" use="required" />
@@ -58,6 +59,14 @@
 		<xs:sequence>
 			<xs:element name="item" type="itemId" minOccurs="0" maxOccurs="unbounded" />
 		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="kiskStats">
+		<xs:sequence />
+		<xs:attribute name="usemask" type="xs:int" use="required" />
+		<xs:attribute name="members" type="xs:int" use="required" />
+		<xs:attribute name="resurrects" type="xs:int" use="required" />
+		<xs:attribute name="lifetime" type="xs:int" use="required" />
 	</xs:complexType>
 
 	<xs:simpleType name="npcType">

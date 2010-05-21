@@ -46,6 +46,8 @@ public class SM_QUESTION_WINDOW extends AionServerPacket
 	public static final int	STR_LEGION_DISBAND_CANCEL			= 80009;
 	public static final int	STR_LEGION_CHANGE_MASTER			= 80011;
 	public static final int STR_CRAFT_ADDSKILL_CONFIRM 			= 900852;
+	public static final int STR_BIND_TO_KISK					= 160018;
+	public static final int STR_SOUL_BOUND_ITEM_DO_YOU_WANT_SOUL_BOUND = 95006;
 
 	private int				code;
 	private int				senderId;

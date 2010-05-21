@@ -22,7 +22,9 @@ import com.aionemu.commons.utils.ExitCode;
 import com.aionemu.gameserver.network.chatserver.CsClientPacket;
 import com.aionemu.gameserver.network.chatserver.ChatServerConnection.State;
 import com.aionemu.gameserver.network.chatserver.serverpackets.SM_CS_AUTH;
+import com.aionemu.gameserver.services.ChatService;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
+import com.google.inject.Inject;
 
 /**
  * 
@@ -31,6 +33,9 @@ import com.aionemu.gameserver.utils.ThreadPoolManager;
  */
 public class CM_CS_AUTH_RESPONSE extends CsClientPacket
 {
+	@Inject
+	private ChatService			chatService;
+
 	/**
 	 * Logger for this class.
 	 */
@@ -42,7 +47,8 @@ public class CM_CS_AUTH_RESPONSE extends CsClientPacket
 	 * 2=AlreadyRegistered
 	 */
 	private int						response;
-
+	private byte[] ip;
+	private int port;
 	/**
 	 * @param opcode
 	 */
@@ -55,6 +61,8 @@ public class CM_CS_AUTH_RESPONSE extends CsClientPacket
 	protected void readImpl()
 	{
 		response = readC();
+		ip = readB(4);
+		port = readH();
 	}
 
 	@Override
@@ -63,8 +71,10 @@ public class CM_CS_AUTH_RESPONSE extends CsClientPacket
 		switch(response)
 		{
 			case 0: // Authed
-				log.info("GameServer authed successfully");
+				log.info("GameServer authed successfully IP :"+ip[0]+"."+ip[1]+"."+ip[2]+"."+ip[3]+" Port: " +port);
 				getConnection().setState(State.AUTHED);
+				chatService.setIp(ip);
+				chatService.setPort(port);
 				break;
 			case 1: // NotAuthed
 				log.fatal("GameServer is not authenticated at ChatServer side");

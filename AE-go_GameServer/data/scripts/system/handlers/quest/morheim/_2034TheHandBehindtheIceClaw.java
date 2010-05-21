@@ -80,7 +80,6 @@ public class _2034TheHandBehindtheIceClaw extends QuestHandler
 	public boolean onDialogEvent(QuestEnv env)
 	{
 		final Player player = env.getPlayer();
-		final int titleId = player.getCommonData().getTitleId();		
 		final QuestState qs = player.getQuestStateList().getQuestState(questId);
 		if(qs == null)
 			return false;

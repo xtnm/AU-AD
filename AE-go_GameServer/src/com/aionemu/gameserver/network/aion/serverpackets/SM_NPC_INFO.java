@@ -21,6 +21,7 @@ import java.util.Map.Entry;
 
 import com.aionemu.gameserver.model.NpcType;
 import com.aionemu.gameserver.model.gameobjects.Creature;
+import com.aionemu.gameserver.model.gameobjects.Kisk;
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.Summon;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
@@ -51,7 +52,8 @@ public class SM_NPC_INFO extends AionServerPacket
 	private String masterName = "";
 	@SuppressWarnings("unused")
 	private float speed = 0.3f;
-	private final boolean isAggressive;
+	private final int npcTypeId;
+	
 
 	/**
 	 * Constructs new <tt>SM_NPC_INFO </tt> packet
@@ -63,10 +65,36 @@ public class SM_NPC_INFO extends AionServerPacket
 	public SM_NPC_INFO(Npc npc, Player player)
 	{
 		this.npc = npc;
-		isAggressive = player.isAggroIconTo(npc.getTribe());
 		npcTemplate = npc.getObjectTemplate();
+		npcTypeId = (player.isAggroIconTo(npc.getTribe()) ?
+			NpcType.AGGRESSIVE.getId() : npcTemplate.getNpcType().getId());
 		npcId = npc.getNpcId();
 		
+	}
+	
+	/**
+	 * Constructs new <tt>SM_NPC_INFO </tt> packet
+	 * 
+	 * @param player 
+	 * @param kisk - the visible npc.
+	 */
+	public SM_NPC_INFO(Player player, Kisk kisk)
+	{
+		Player owner = (Player)kisk.getMaster();
+		this.npc = kisk;
+		npcTypeId = (player.isAggroFrom(kisk) ?
+			NpcType.ATTACKABLE.getId() : NpcType.NON_ATTACKABLE.getId());
+		npcTemplate = kisk.getObjectTemplate();
+		npcId = kisk.getNpcId();
+		if(owner != null)
+		{
+			masterObjId = owner.getObjectId();
+			masterName = owner.getName();
+		}
+		else
+		{
+			masterName = kisk.getOwnerName();
+		}
 	}
 	
 	/**
@@ -76,8 +104,8 @@ public class SM_NPC_INFO extends AionServerPacket
 	public SM_NPC_INFO(Summon summon)
 	{
 		this.npc = summon;
-		isAggressive = false;
 		npcTemplate = summon.getObjectTemplate();
+		npcTypeId = npcTemplate.getNpcType().getId();
 		npcId = summon.getNpcId();
 		Player owner = summon.getMaster();
 		if(owner != null)
@@ -91,7 +119,7 @@ public class SM_NPC_INFO extends AionServerPacket
 			masterName = "LOST";
 		}
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 */
@@ -105,10 +133,7 @@ public class SM_NPC_INFO extends AionServerPacket
 		writeD(buf, npcId);
 		writeD(buf, npcId);
 
-		if(isAggressive)
-			writeC(buf, NpcType.AGGRESSIVE.getId());
-		else
-			writeC(buf, npcTemplate.getNpcType().getId());// 0-monster, 38 - (non attackable), 8- pre-emptive attack (aggro monsters)
+		writeC(buf, npcTypeId);
 
 		writeH(buf, npc.getState());// unk 65=normal,0x47 (71)= [dead npc ?]no drop,0x21(33)=fight state,0x07=[dead monster?]
 								// no drop
