@@ -128,7 +128,7 @@
 	<!-- Supplies for the Watch -->
 	<report_to start_npc_id="203096" end_npc_id="203126" item_id="182200520" id="1147"/>
 	
-	<!-- TODO: Gaphyrk's Love -->
+	<!-- Gaphyrk's Love handled by script-->
 	
 	<!-- TODO: Krall Book -->
 	
@@ -147,8 +147,7 @@
 	
 	<!-- TODO: The Potion Maker's Mistake -->
 	
-	<!-- Village Seal Found -->
-	<report_to start_npc_id="798003" end_npc_id="203128" item_id="182200502" id="1158"/>
+	<!-- Village Seal Found handled by script-->
 	
 	<!-- TODO: A Special Omelette -->
 	

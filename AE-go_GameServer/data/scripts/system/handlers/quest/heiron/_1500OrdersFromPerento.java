@@ -73,14 +73,15 @@ public class _1500OrdersFromPerento extends QuestHandler
 		if(qs.getStatus() == QuestStatus.START)
 		{
 			if(env.getDialogId() == 25)
+				return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 10002);
+			else if(env.getDialogId() == 1009)
 			{
-				qs.setQuestVar(1);
 				qs.setStatus(QuestStatus.REWARD);
+				qs.setQuestVarById(0, 1);
 				updateQuestStatus(player, qs);
-				return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1011);
+				return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 5);
 			}
-			else
-				return defaultQuestStartDialog(env);
+			return false;
 		}
 		else if(qs.getStatus() == QuestStatus.REWARD)
 		{

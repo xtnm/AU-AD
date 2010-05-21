@@ -53,6 +53,7 @@ public class _2019SecuringtheSupplyRoute extends QuestHandler
 		qe.addQuestLvlUp(questId);
 		qe.setNpcQuestData(798033).addOnTalkEvent(questId);
 		qe.setNpcQuestData(210492).addOnKillEvent(questId);
+		qe.setNpcQuestData(210493).addOnKillEvent(questId);		
 		qe.setNpcQuestData(203673).addOnTalkEvent(questId);
 	}
 
@@ -140,11 +141,16 @@ public class _2019SecuringtheSupplyRoute extends QuestHandler
 		if(env.getVisibleObject() instanceof Npc)
 			targetId = ((Npc) env.getVisibleObject()).getNpcId();
 		
-		if (targetId == 210492 && var >= 1 && var < 4)
+		switch(targetId)
 		{
-			qs.setQuestVarById(0, var+1);
-			updateQuestStatus(player, qs);
-			return true;
+			case 210492:
+			case 210493:
+				if (var >= 1 && var < 4)
+				{
+					qs.setQuestVarById(0, var+1);
+					updateQuestStatus(player, qs);
+					return true;
+				}
 		}
 		return false;
 	}

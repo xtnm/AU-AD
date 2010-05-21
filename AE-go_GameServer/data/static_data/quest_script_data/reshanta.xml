@@ -455,7 +455,7 @@
 	<item_collecting id="2793" start_npc_id="278117"/>
 
 	<!-- 2796  Crystal Recovery -->
-	<item_collecting id="2796" start_npc_id="279028"/>
+	<item_collecting id="2796" start_npc_id="279028" action_item_id="700307"/>
 
 	<!-- TODO: Quest Id: 2716  [Coin] Klaw of the Nebula of Blood -->
 
@@ -640,7 +640,7 @@
 	<!-- TODO: Quest Id: 2719  [Group] Challenge Elyos Officers -->
 
 	<!-- 2797  Balaur Bones -->
-	<item_collecting id="2797" start_npc_id="279028"/>
+	<item_collecting id="2797" start_npc_id="279028" action_item_id="700308"/>
 
 	<!-- TODO: Quest Id: 2798  Sign on the Dotted Line -->
 
