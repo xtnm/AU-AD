@@ -22,6 +22,7 @@ import com.aionemu.gameserver.network.aion.AionClientPacket;
 /**
  *  Response to SM_QUESTION_WINDOW
  * @author Ben
+ * @author Sarynth
  */
 public class CM_QUESTION_RESPONSE extends AionClientPacket
 {
@@ -42,7 +43,9 @@ public class CM_QUESTION_RESPONSE extends AionClientPacket
 	protected void readImpl()
 	{
 		questionid = readD();
-		response = readH();
+		
+		response = readC(); // y/n
+		readC(); // unk 0x00 - 0x01 ?
 		readH();
 		senderid = readD();
 		readD();

@@ -32,6 +32,7 @@ import com.aionemu.gameserver.model.PlayerClass;
 import com.aionemu.gameserver.model.gameobjects.BrokerItem;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Item;
+import com.aionemu.gameserver.model.gameobjects.Kisk;
 import com.aionemu.gameserver.model.gameobjects.Monster;
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.PersistentState;
@@ -99,6 +100,7 @@ public class Player extends Creature
 	private int					flightDistance;
 	private Summon				summon;
 	private BrokerItem[]		brokerListCache			= new BrokerItem[0];
+	private Kisk				kisk;
 	private int					brokerMaskCache			= 0;
 	private int					brokerSoftTypeCache		= 0;
 	private int					brokerStartPageCache	= 0;
@@ -1141,5 +1143,21 @@ public class Player extends Creature
 	public int getBrokerStartPageCache()
 	{
 		return brokerStartPageCache;
+	}
+
+	/**
+	 * @param new kisk to bind to (null if unbinding)
+	 */
+	public void setKisk(Kisk newKisk)
+	{
+		this.kisk = newKisk;
+	}
+
+	/**
+	 * @return
+	 */
+	public Kisk getKisk()
+	{
+		return this.kisk;
 	}
 }

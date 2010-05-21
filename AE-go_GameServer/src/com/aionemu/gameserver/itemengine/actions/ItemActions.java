@@ -40,7 +40,8 @@ public class ItemActions {
         @XmlElement(name = "enchant", type = EnchantItemAction.class),
         @XmlElement(name = "queststart", type = QuestStartAction.class),
         @XmlElement(name = "dye", type = DyeAction.class),
-        @XmlElement(name = "craftlearn", type = CraftLearnAction.class)
+        @XmlElement(name = "craftlearn", type = CraftLearnAction.class),
+        @XmlElement(name = "toypetspawn", type = ToyPetSpawnAction.class)
     })
     protected List<AbstractItemAction> itemActions;
 

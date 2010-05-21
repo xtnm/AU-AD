@@ -23,6 +23,7 @@ import org.apache.log4j.Logger;
 import com.aionemu.gameserver.controllers.ActionitemController;
 import com.aionemu.gameserver.controllers.BindpointController;
 import com.aionemu.gameserver.controllers.GatherableController;
+import com.aionemu.gameserver.controllers.KiskController;
 import com.aionemu.gameserver.controllers.MonsterController;
 import com.aionemu.gameserver.controllers.NpcController;
 import com.aionemu.gameserver.controllers.PortalController;
@@ -40,6 +41,7 @@ import com.aionemu.gameserver.dataholders.WorldMapsData;
 import com.aionemu.gameserver.model.NpcType;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Gatherable;
+import com.aionemu.gameserver.model.gameobjects.Kisk;
 import com.aionemu.gameserver.model.gameobjects.Monster;
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.Servant;
@@ -221,6 +223,25 @@ public class SpawnEngine
 		trap.getController().onRespawn();
 		bringIntoWorld(trap, spawn, instanceIndex);
 		return trap;
+	}
+
+	/**
+	 * @param spawn
+	 * @param instanceIndex
+	 * @param creator
+	 * @return
+	 */
+	public Kisk spawnKisk(SpawnTemplate spawn, int instanceIndex, Player creator)
+	{
+		int npcId = spawn.getSpawnGroup().getNpcid();
+		NpcTemplate template = npcData.getNpcTemplate(npcId);
+		Kisk kisk = new Kisk(aionObjectsIDFactory.nextId(), injector.getInstance(KiskController.class), spawn, template);
+		kisk.setCreator(creator);
+		kisk.setKnownlist(new StaticObjectKnownList(kisk));
+		kisk.setEffectController(new EffectController(kisk));
+		kisk.getController().onRespawn();
+		bringIntoWorld(kisk, spawn, instanceIndex);
+		return kisk;
 	}
 	
 	/**

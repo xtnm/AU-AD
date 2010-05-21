@@ -32,6 +32,7 @@ import com.aionemu.gameserver.network.aion.serverpackets.unk.SM_UNK5E;
  * @author ATracer
  * @author avol
  * @author orz
+ * @author Sarynth
  */
 public class ServerPacketsOpcodes
 {
@@ -43,10 +44,10 @@ public class ServerPacketsOpcodes
 
 		addPacketOpcode(SM_VERSION_CHECK.class, 0x00, idSet);
 		addPacketOpcode(SM_STATS_INFO.class, 0x01, idSet);
-		addPacketOpcode(SM_CHAT_INIT.class, 0x06, idSet);
 		addPacketOpcode(SM_SET_BIND_POINT.class, 0x03, idSet);
 		addPacketOpcode(SM_RIFT_ANNOUNCE.class, 0x04, idSet);
 		addPacketOpcode(SM_ABYSS_RANK.class, 0x05, idSet);
+		addPacketOpcode(SM_CHAT_INIT.class, 0x06, idSet);
 		addPacketOpcode(SM_MACRO_LIST.class, 0x07, idSet);
 		addPacketOpcode(SM_MACRO_RESULT.class, 0x08, idSet);
 		addPacketOpcode(SM_NICKNAME_CHECK_RESPONSE.class, 0x09, idSet);
@@ -94,6 +95,7 @@ public class ServerPacketsOpcodes
 		addPacketOpcode(SM_LOOKATOBJECT.class, 0x48, idSet);
 		addPacketOpcode(SM_TARGET_SELECTED.class, 0x49, idSet);
 		addPacketOpcode(SM_ABNORMAL_EFFECT.class, 0x4A, idSet);
+		addPacketOpcode(SM_SKILL_COOLDOWN.class, 0x4B, idSet);
 		addPacketOpcode(SM_QUESTION_WINDOW.class, 0x4C, idSet);
 		addPacketOpcode(SM_SKILL_ACTIVATION.class, 0x4E, idSet);
 		addPacketOpcode(SM_ABNORMAL_STATE.class, 0x51, idSet);
@@ -127,20 +129,27 @@ public class ServerPacketsOpcodes
 		addPacketOpcode(SM_LEGION_ADD_MEMBER.class, 0x8F, idSet);
 		addPacketOpcode(SM_LEGION_LEAVE_MEMBER.class, 0x90, idSet);
 		addPacketOpcode(SM_LEGION_UPDATE_MEMBER.class, 0x91, idSet);
+		addPacketOpcode(SM_SUMMON_PANEL_REMOVE.class, 0x92, idSet);
+		addPacketOpcode(SM_SUMMON_UPDATE.class, 0x93, idSet);
+		addPacketOpcode(SM_SUMMON_OWNER_REMOVE.class, 0x94, idSet);
 		addPacketOpcode(SM_LEGION_MEMBERLIST.class, 0x95, idSet);
+		addPacketOpcode(SM_BROKER_SETTLED_LIST.class, 0x97, idSet);
+		addPacketOpcode(SM_SUMMON_PANEL.class, 0x99, idSet);
+		addPacketOpcode(SM_SUMMON_USESKILL.class, 0x9A, idSet);
 		addPacketOpcode(SM_LEGION_EDIT.class, 0x9E, idSet);
 		addPacketOpcode(SM_MAIL_SERVICE.class, 0xA1, idSet);
 		addPacketOpcode(SM_RIFT_STATUS.class, 0xA4, idSet);
 		addPacketOpcode(SM_PLAYER_ID.class, 0xA5, idSet);
 		addPacketOpcode(SM_PRIVATE_STORE.class, 0xA6, idSet);
-		addPacketOpcode(SM_ASCENSION_MORPH.class, 0xB6, idSet);
 		addPacketOpcode(SM_ABYSS_RANK_UPDATE.class, 0xA8, idSet);
 		addPacketOpcode(SM_MAY_LOGIN_INTO_GAME.class, 0xA9, idSet);
 		addPacketOpcode(SM_BROKER_ITEMS.class, 0xAA, idSet);
 		addPacketOpcode(SM_BROKER_REGISTERED_LIST.class, 0xAB, idSet);
 		addPacketOpcode(SM_BROKER_REGISTRATION_SERVICE.class, 0xAD, idSet);
 		addPacketOpcode(SM_PONG.class, 0xAE, idSet);
+		addPacketOpcode(SM_KISK_UPDATE.class, 0xB0, idSet);
 		addPacketOpcode(SM_PRIVATE_STORE_NAME.class, 0xB1, idSet);
+		addPacketOpcode(SM_ASCENSION_MORPH.class, 0xB6, idSet);
 		addPacketOpcode(SM_ITEM_USAGE_ANIMATION.class, 0xB7, idSet);
 		addPacketOpcode(SM_CUSTOM_SETTINGS.class, 0xB8, idSet);
 		addPacketOpcode(SM_DUEL.class, 0xB9, idSet);
@@ -185,13 +194,6 @@ public class ServerPacketsOpcodes
 		addPacketOpcode(SM_ATTACK_STATUS.class, 0xFD, idSet);
 		addPacketOpcode(SM_RECONNECT_KEY.class, 0xFF, idSet);
 		addPacketOpcode(SM_CUSTOM_PACKET.class, 99999, idSet); // fake packet
-		addPacketOpcode(SM_SUMMON_PANEL.class, 0x99, idSet);
-		addPacketOpcode(SM_SUMMON_PANEL_REMOVE.class, 0x92, idSet);
-		addPacketOpcode(SM_SUMMON_UPDATE.class, 0x93, idSet);
-		addPacketOpcode(SM_SUMMON_OWNER_REMOVE.class, 0x94, idSet);
-		addPacketOpcode(SM_SUMMON_USESKILL.class, 0x9A, idSet);
-		addPacketOpcode(SM_SKILL_COOLDOWN.class, 0x4B, idSet);
-		addPacketOpcode(SM_BROKER_SETTLED_LIST.class, 0x97, idSet);
 		// Unrecognized Opcodes from 1.5.4:
 		// addPacketOpcode(SM_BUY_LIST.class, 0x7E, idSet);
 

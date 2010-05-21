@@ -26,6 +26,7 @@ import com.aionemu.gameserver.controllers.attack.AttackUtil;
 import com.aionemu.gameserver.model.TaskId;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Gatherable;
+import com.aionemu.gameserver.model.gameobjects.Kisk;
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.StaticObject;
 import com.aionemu.gameserver.model.gameobjects.Summon;
@@ -43,6 +44,7 @@ import com.aionemu.gameserver.network.aion.serverpackets.SM_DELETE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_DIE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EMOTION;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_GATHERABLE_INFO;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_KISK_UPDATE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_LEVEL_UPDATE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_NEARBY_QUESTS;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_NPC_INFO;
@@ -73,7 +75,7 @@ import com.google.inject.internal.Nullable;
 /**
  * This class is for controlling players.
  * 
- * @author -Nemesiss-, ATracer (2009-09-29), xavier
+ * @author -Nemesiss-, ATracer (2009-09-29), xavier, Sarynth
  * 
  */
 public class PlayerController extends CreatureController<Player>
@@ -96,6 +98,13 @@ public class PlayerController extends CreatureController<Player>
 		{
 			PacketSendUtility.sendPacket(getOwner(), new SM_PLAYER_INFO((Player) object, getOwner().isEnemyPlayer((Player)object)));
 			getOwner().getEffectController().sendEffectIconsTo((Player) object);
+		}
+		else if (object instanceof Kisk)
+		{
+			Kisk kisk = ((Kisk) object);
+			PacketSendUtility.sendPacket(getOwner(), new SM_NPC_INFO(getOwner(), kisk));
+			if (getOwner().getCommonData().getRace() == kisk.getOwnerRace())
+				PacketSendUtility.sendPacket(getOwner(), new SM_KISK_UPDATE(kisk));
 		}
 		else if(object instanceof Npc)
 		{
@@ -250,9 +259,10 @@ public class PlayerController extends CreatureController<Player>
 		if(summon != null)
 			summon.getController().release(UnsummonType.UNSPECIFIED);
 
-		PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, 13, 0, lastAttacker == null ? 0 : lastAttacker
-			.getObjectId()), true);
-		PacketSendUtility.sendPacket(player, new SM_DIE(ReviveType.BIND_REVIVE));
+		PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, 13, 0, lastAttacker == null ? 0 :
+			lastAttacker.getObjectId()), true);
+		ReviveType reviveType = (player.getKisk() == null ? ReviveType.BIND_REVIVE : ReviveType.KISK_REVIVE);
+		PacketSendUtility.sendPacket(player, new SM_DIE(reviveType));
 		PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.DIE);
 		sp.getQuestEngine().onDie(new QuestEnv(null, player, 0, 0));
 	}
