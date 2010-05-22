@@ -16,14 +16,10 @@
  */
 package com.aionemu.chatserver;
 
-import java.lang.management.ManagementFactory;
-import java.lang.management.MemoryUsage;
-
-import org.apache.log4j.Logger;
-
 import com.aionemu.chatserver.configs.Config;
 import com.aionemu.chatserver.utils.guice.ServiceInjectionModule;
 import com.aionemu.commons.services.LoggingService;
+import com.aionemu.commons.utils.AEInfos;
 import com.google.inject.Guice;
 
 /**
@@ -31,11 +27,6 @@ import com.google.inject.Guice;
  */
 public class ChatServer
 {
-    /**
-     * Logger for this class.
-     */
-    private static final Logger	log = Logger.getLogger(ChatServer.class);
-
     /**
      * @param args
      */
@@ -46,10 +37,6 @@ public class ChatServer
         
         Guice.createInjector(new ServiceInjectionModule());		
 
-        MemoryUsage	hm  = ManagementFactory.getMemoryMXBean().getHeapMemoryUsage();
-        MemoryUsage	nhm = ManagementFactory.getMemoryMXBean().getNonHeapMemoryUsage();
-
-        log.info("Heap Memory Usage: " + (hm.getUsed() / 1048576) + "/" + (hm.getMax() / 1048576) + " MB");
-        log.info("NonHeap Memory Usage: " + (nhm.getUsed() / 1048576) + "/" + (nhm.getMax() / 1048576) + " MB");
+        AEInfos.printAllInfos();
     }
 }
