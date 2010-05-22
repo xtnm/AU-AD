@@ -23,7 +23,6 @@ import org.apache.log4j.Logger;
 
 import com.aionemu.commons.database.dao.DAOManager;
 import com.aionemu.gameserver.configs.main.CacheConfig;
-import com.aionemu.gameserver.configs.main.CustomConfig;
 import com.aionemu.gameserver.configs.main.GSConfig;
 import com.aionemu.gameserver.controllers.FlyController;
 import com.aionemu.gameserver.controllers.ReviveController;
@@ -444,7 +443,7 @@ public class PlayerService
 		player.getController().delete();
 		DAOManager.getDAO(PlayerDAO.class).onlinePlayer(player, false);
 		
-		if(!CustomConfig.DISABLE_CHAT_SERVER)
+		if(!GSConfig.DISABLE_CHAT_SERVER)
 			chatService.onPlayerLogout(player);
 
 		storePlayer(player);

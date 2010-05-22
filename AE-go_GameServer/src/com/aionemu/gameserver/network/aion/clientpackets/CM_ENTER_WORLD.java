@@ -18,7 +18,6 @@ package com.aionemu.gameserver.network.aion.clientpackets;
 
 import java.util.List;
 
-import com.aionemu.gameserver.configs.main.CustomConfig;
 import com.aionemu.gameserver.configs.main.GSConfig;
 import com.aionemu.gameserver.model.ChatType;
 import com.aionemu.gameserver.model.account.Account;
@@ -249,7 +248,7 @@ public class CM_ENTER_WORLD extends AionClientPacket
 			/**
 			 * Start initializing chat connection(/1, /2, /3, /4 channels)
 			 */
-			if(!CustomConfig.DISABLE_CHAT_SERVER)
+			if(!GSConfig.DISABLE_CHAT_SERVER)
 				chatService.onPlayerLogin(player);
 		}
 		else

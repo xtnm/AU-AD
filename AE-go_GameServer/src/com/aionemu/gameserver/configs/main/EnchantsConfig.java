@@ -16,39 +16,23 @@
  */
 package com.aionemu.gameserver.configs.main;
 
-import java.util.regex.Pattern;
-
 import com.aionemu.commons.configuration.Property;
 
-public class GSConfig
+public class EnchantsConfig
 {
 	/**
-	 * Server name
+	 * ManaStone Rates
 	 */
-	@Property(key = "gameserver.name", defaultValue = "aion private")
-	public static String	SERVER_NAME;
-
-	/**
-	 * Character name pattern (checked when character is being created)
-	 */
-	@Property(key = "gameserver.character.name.pattern", defaultValue = "[a-zA-Z]{2,16}")
-	public static Pattern	CHAR_NAME_PATTERN;
-
-	/**
-	 * Server Country Code
-	 */
-	@Property(key = "gameserver.country.code", defaultValue = "1")
-	public static int		SERVER_COUNTRY_CODE;
-
-	/*
-	 * Server Mode
-	 */
-	@Property(key = "gameserver.mode", defaultValue = "1")
-	public static int		SERVER_MODE;
-	
-	/**
-	 * Disable chat server connection
-	 */
-	@Property(key = "gameserver.disable.chatserver", defaultValue = "true")
-	public static boolean	DISABLE_CHAT_SERVER;
+	@Property(key = "gameserver.manastone.percent", defaultValue = "57")
+	public static int		MSPERCENT;
+	@Property(key = "gameserver.manastone.percent1", defaultValue = "43")
+	public static int		MSPERCENT1;	
+	@Property(key = "gameserver.manastone.percent2", defaultValue = "33")
+	public static int		MSPERCENT2;	
+	@Property(key = "gameserver.manastone.percent3", defaultValue = "25")
+	public static int		MSPERCENT3;	
+	@Property(key = "gameserver.manastone.percent4", defaultValue = "19")
+	public static int		MSPERCENT4;	
+	@Property(key = "gameserver.manastone.percent5", defaultValue = "2")
+	public static int		MSPERCENT5;	
 }

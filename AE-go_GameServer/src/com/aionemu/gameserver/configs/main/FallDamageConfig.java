@@ -16,39 +16,37 @@
  */
 package com.aionemu.gameserver.configs.main;
 
-import java.util.regex.Pattern;
-
 import com.aionemu.commons.configuration.Property;
 
-public class GSConfig
+public class FallDamageConfig
 {
 	/**
-	 * Server name
+	 * Fly damage activator
 	 */
-	@Property(key = "gameserver.name", defaultValue = "aion private")
-	public static String	SERVER_NAME;
+	@Property(key = "gameserver.fall.damage.active", defaultValue = "true")
+	public static boolean	ACTIVE_FALL_DAMAGE;
 
 	/**
-	 * Character name pattern (checked when character is being created)
+	 * Percentage of damage per meter.
 	 */
-	@Property(key = "gameserver.character.name.pattern", defaultValue = "[a-zA-Z]{2,16}")
-	public static Pattern	CHAR_NAME_PATTERN;
+	@Property(key = "gameserver.fall.damage.percentage", defaultValue = "1.0")
+	public static float		FALL_DAMAGE_PERCENTAGE;
 
 	/**
-	 * Server Country Code
+	 * Minimum fall damage range
 	 */
-	@Property(key = "gameserver.country.code", defaultValue = "1")
-	public static int		SERVER_COUNTRY_CODE;
+	@Property(key = "gameserver.fall.damage.distance.minimum", defaultValue = "10")
+	public static int		MINIMUM_DISTANCE_DAMAGE;
 
-	/*
-	 * Server Mode
-	 */
-	@Property(key = "gameserver.mode", defaultValue = "1")
-	public static int		SERVER_MODE;
-	
 	/**
-	 * Disable chat server connection
+	 * Maximum fall distance after which you will die after hitting the ground.
 	 */
-	@Property(key = "gameserver.disable.chatserver", defaultValue = "true")
-	public static boolean	DISABLE_CHAT_SERVER;
+	@Property(key = "gameserver.fall.damage.distance.maximum", defaultValue = "50")
+	public static int		MAXIMUM_DISTANCE_DAMAGE;
+
+	/**
+	 * Maximum fall distance after which you will die in mid air.
+	 */
+	@Property(key = "gameserver.fall.damage.distance.midair", defaultValue = "200")
+	public static int		MAXIMUM_DISTANCE_MIDAIR;
 }

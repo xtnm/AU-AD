@@ -19,7 +19,7 @@ package com.aionemu.gameserver.utils.stats;
 import org.apache.log4j.Logger;
 
 import com.aionemu.commons.utils.Rnd;
-import com.aionemu.gameserver.configs.main.CustomConfig;
+import com.aionemu.gameserver.configs.main.FallDamageConfig;
 import com.aionemu.gameserver.controllers.attack.AttackStatus;
 import com.aionemu.gameserver.model.SkillElement;
 import com.aionemu.gameserver.model.gameobjects.Creature;
@@ -708,7 +708,7 @@ public class StatFunctions
 			return false;
 		}
 
-		if(distance >= CustomConfig.MAXIMUM_DISTANCE_DAMAGE)
+		if(distance >= FallDamageConfig.MAXIMUM_DISTANCE_DAMAGE)
 		{
 			player.getController().onStopMove();
 			player.getFlyController().onStopGliding();
@@ -717,9 +717,9 @@ public class StatFunctions
 			player.getReviveController().bindRevive();
 			return true;
 		}
-		else if(distance >= CustomConfig.MINIMUM_DISTANCE_DAMAGE)
+		else if(distance >= FallDamageConfig.MINIMUM_DISTANCE_DAMAGE)
 		{
-			float dmgPerMeter = player.getLifeStats().getMaxHp() * CustomConfig.FALL_DAMAGE_PERCENTAGE / 100f;
+			float dmgPerMeter = player.getLifeStats().getMaxHp() * FallDamageConfig.FALL_DAMAGE_PERCENTAGE / 100f;
 			int damage = (int) (distance * dmgPerMeter);
 
 			player.getLifeStats().reduceHp(damage, player);
