@@ -77,6 +77,12 @@ public class ToyPetSpawnAction extends AbstractItemAction
 	@Override
 	public void act(Player player, Item parentItem, Item targetItem)
 	{
+		if (player.getFlyState() != 0)
+		{
+			PacketSendUtility.sendMessage(player, "You can not use that item while flying.");
+			return;
+		}
+		
 		SpawnEngine spawnEngine = xsp.getSpawnEngine();
 		float x = player.getX();
 		float y = player.getY();
@@ -88,9 +94,9 @@ public class ToyPetSpawnAction extends AbstractItemAction
 		SpawnTemplate spawn = spawnEngine.addNewSpawn(worldId, 
 			instanceId, npcid, x, y, z, heading, 0, 0, true, true);
 		
-        final Kisk kisk = spawnEngine.spawnKisk(spawn, instanceId, player);
-        
-        // Schedule Despawn Action
+		final Kisk kisk = spawnEngine.spawnKisk(spawn, instanceId, player);
+
+		// Schedule Despawn Action
 		Future<?> task = ThreadPoolManager.getInstance().schedule(new Runnable(){
 
 			@Override

@@ -266,12 +266,18 @@ public class GroupService
 		{
 			if(MathUtil.isInRange(member, player, GroupConfig.GROUP_MAX_DISTANCE))
 			{
+				if (member.getLifeStats().isAlreadyDead())
+					continue;
 				players.add(member);
 				partyLvlSum += member.getLevel();
 				if (member.getLevel() > highestLevel)
 					highestLevel = member.getLevel();
 			}
 		}
+		
+		// All are dead or not nearby.
+		if (players.size() == 0)
+			return;
 		
 		//AP reward
 		int apRewardPerMember = 0;
@@ -314,7 +320,7 @@ public class GroupService
 			
 			// AP reward
 			if (apRewardPerMember > 0)
-				member.getCommonData().addAp(apRewardPerMember);
+				member.getCommonData().addAp(Math.round(apRewardPerMember * member.getRates().getApNpcRate()));
 			
 			questEngine.onKill(new QuestEnv(owner, member, 0 , 0));
 		}
@@ -328,9 +334,15 @@ public class GroupService
 		{
 			if(MathUtil.isInRange(member, player, GroupConfig.GROUP_MAX_DISTANCE))
 			{
-				players.add(member);
+				// Don't distribute AP to a dead player!
+				if (!member.getLifeStats().isAlreadyDead())
+					players.add(member);
 			}
 		}
+		
+		// They are all dead or out of range.
+		if (players.size() == 0)
+			return;
 		
 		int apRewardPerMember = Math.round(apReward / players.size());
 		
@@ -338,7 +350,7 @@ public class GroupService
 		{
 			// AP reward
 			if (apRewardPerMember > 0)
-				member.getCommonData().addAp(apRewardPerMember);
+				member.getCommonData().addAp(Math.round(apRewardPerMember * member.getRates().getApPlayerRate()));
 		}
 	}
 	

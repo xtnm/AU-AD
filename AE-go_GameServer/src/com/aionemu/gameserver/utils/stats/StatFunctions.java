@@ -173,7 +173,7 @@ public class StatFunctions
 	 */
 	public static int calculatePvpApGained(Player defeated, Player winner)
 	{
-		int pointsGained = Math.round(defeated.getAbyssRank().getRank().getPointsGained() * winner.getRates().getApPlayerRate());
+		int pointsGained = Math.round(defeated.getAbyssRank().getRank().getPointsGained());
 
 		// Level penalty calculation
 		int difference = winner.getLevel() - defeated.getLevel();
