@@ -683,6 +683,7 @@ public class BrokerService
 			this.brokerItem = brokerItem;
 			this.item = item;
 			this.kinahItem = kinahItem;
+			this.playerId = playerId;
 		}
 
 		/**
