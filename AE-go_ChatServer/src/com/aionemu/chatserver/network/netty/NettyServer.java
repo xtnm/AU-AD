@@ -75,9 +75,9 @@ public class NettyServer
 		loginToClientChannelFactory = initChannelFactory();
 		loginToGameChannelFactory = initChannelFactory();
 
-		Channel loginToClientChannel = initChannel(loginToClientChannelFactory, Config.CHAT_BIND_ADDRESS,
-			Config.CHAT_PORT, loginToClientPipeLineFactory);
-		Channel loginToGameChannel = initChannel(loginToGameChannelFactory, Config.GAME_BIND_ADDRESS, Config.GAME_PORT,
+		Channel loginToClientChannel = initChannel(loginToClientChannelFactory,
+			Config.CHAT_ADDRESS, loginToClientPipeLineFactory);
+		Channel loginToGameChannel = initChannel(loginToGameChannelFactory, Config.GAME_ADDRESS,
 			loginToGamePipelineFactory);
 
 		channelGroup.add(loginToClientChannel);
@@ -104,7 +104,7 @@ public class NettyServer
 	 * @param channelPipelineFactory
 	 * @return Channel
 	 */
-	private Channel initChannel(ChannelFactory channelFactory, String listenAddress, int port,
+	private Channel initChannel(ChannelFactory channelFactory, InetSocketAddress address,
 		ChannelPipelineFactory channelPipelineFactory)
 	{
 		ServerBootstrap bootstrap = new ServerBootstrap(channelFactory);
@@ -116,13 +116,7 @@ public class NettyServer
 		bootstrap.setOption("child.connectTimeoutMillis", 100);
 		bootstrap.setOption("readWriteFair", true);
 
-		InetSocketAddress isa = null;
-		if ("*".equals(listenAddress))
-			isa = new InetSocketAddress(port);
-		else
-			isa = new InetSocketAddress(listenAddress, port);
-
-		return bootstrap.bind(isa);
+		return bootstrap.bind(address);
 	}
 
 	/**

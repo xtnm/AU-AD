@@ -18,18 +18,19 @@ package quest.verteron;
 
 import java.util.Collections;
 
-import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.templates.quest.QuestItems;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_DIALOG_WINDOW;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EMOTION;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_USE_OBJECT;
 import com.aionemu.gameserver.questEngine.handlers.QuestHandler;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.questEngine.model.QuestState;
 import com.aionemu.gameserver.questEngine.model.QuestStatus;
 import com.aionemu.gameserver.services.ItemService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
+import com.aionemu.gameserver.utils.ThreadPoolManager;
 import com.google.inject.Inject;
 
 /**
@@ -77,33 +78,58 @@ public class _1158VillageSealFound extends QuestHandler
 					return defaultQuestStartDialog(env);
 			}
 		}
+	
+		if(qs == null)
+			return false;
+			
+		int var = qs.getQuestVarById(0);		
+		
+		if(qs.getStatus() == QuestStatus.REWARD)
+		{
+			if(targetId == 203128)
+			{
+				if(env.getDialogId() == -1)
+					return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2375);
+				else if(env.getDialogId() == 1009)
+					return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 5);
+				else return defaultQuestEndDialog(env);
+			}
+			return false;
+		}
 		else if(qs.getStatus() == QuestStatus.START)
 		{
-			if(targetId == 700003 && qs.getQuestVarById(0) == 0)
+			if(targetId == 700003 && var == 0)
 			{	
-				final int targetObjectId = env.getVisibleObject().getObjectId();
 				if(env.getDialogId() == 25)
-				{
-					PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, 37, 0, targetObjectId), true);
 					return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1352);
+				else if(env.getDialogId() == 10000)
+				{
+					qs.setQuestVarById(0, 1);
+					qs.setStatus(QuestStatus.REWARD);									
+					updateQuestStatus(player, qs);
+					itemService.addItems(player, Collections.singletonList(new QuestItems(182200502, 1)));
+					PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
+					return true;
 				}
 				else if(env.getDialogId() == 1353)
 				{
-					PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, 38, 0, targetObjectId), true);				
-					qs.setQuestVarById(0, 1);					
-					qs.setStatus(QuestStatus.REWARD);
-					updateQuestStatus(player, qs);
-					itemService.addItems(player, Collections.singletonList(new QuestItems(182200502, 1)));
-					return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 0);
+					final int targetObjectId = env.getVisibleObject().getObjectId();
+					PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(0, 0));
+					PacketSendUtility.sendPacket(player, new SM_USE_OBJECT(player.getObjectId(), targetObjectId, 3000, 1));				
+					PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, 37, 0, targetObjectId), true);
+						ThreadPoolManager.getInstance().schedule(new Runnable(){
+							@Override
+								public void run()
+								{
+										PacketSendUtility.sendPacket(player, new SM_USE_OBJECT(player.getObjectId(), targetObjectId, 3000, 0));								
+										PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, 38, 0, targetObjectId), true);
+										sendQuestDialog(player, targetObjectId, 1353);
+										return;
+								}
+						}, 3000);		
 				}	
 			}
-				return false;
-		}				
-		else if(qs.getStatus() == QuestStatus.REWARD)
-		{
-			if(targetId == 203128)
-				return defaultQuestEndDialog(env);
-		}
+		}			
 		return false;	
 	}
 }

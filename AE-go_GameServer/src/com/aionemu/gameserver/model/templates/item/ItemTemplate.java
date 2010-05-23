@@ -32,6 +32,7 @@ import com.aionemu.gameserver.dataholders.DataManager;
 import com.aionemu.gameserver.itemengine.actions.ItemActions;
 import com.aionemu.gameserver.model.gameobjects.stats.modifiers.StatModifier;
 import com.aionemu.gameserver.model.items.ItemId;
+import com.aionemu.gameserver.model.items.ItemMask;
 import com.aionemu.gameserver.model.templates.VisibleObjectTemplate;
 import com.aionemu.gameserver.model.templates.itemset.ItemSetTemplate;
 import com.aionemu.gameserver.model.templates.stats.ModifiersTemplate;
@@ -516,5 +517,14 @@ public class ItemTemplate extends VisibleObjectTemplate
 	public Stigma getStigma()
 	{
 		return stigma;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean isSoulBound()
+	{
+		return (getMask() & ItemMask.SOUL_BOUND) == ItemMask.SOUL_BOUND;
 	}
 }

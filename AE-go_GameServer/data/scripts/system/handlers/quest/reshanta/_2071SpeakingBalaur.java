@@ -135,7 +135,6 @@ public class _2071SpeakingBalaur extends QuestHandler
 						PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
 						return true;
 					}
-		
 			}
 		}
 		else if(targetId == 278039)
@@ -213,7 +212,7 @@ public class _2071SpeakingBalaur extends QuestHandler
 		Player player = env.getPlayer();
 		QuestState qs = player.getQuestStateList().getQuestState(questId);
 		
-		if(qs.getQuestVarById(0) != 2)
+		if(qs == null || qs.getStatus() != QuestStatus.START || qs.getQuestVarById(0) != 2)
 			return false;
 		
 		int targetId = 0;
@@ -230,8 +229,8 @@ public class _2071SpeakingBalaur extends QuestHandler
 		if(npc.getLifeStats().getCurrentHp() < npc.getLifeStats().getMaxHp() / 3)
 		{
 			PacketSendUtility.sendPacket(player, new SM_PLAY_MOVIE(0, 289));
+			npc.getController().onDie(null);
 			npc.getController().onDespawn(true);
-			npc.getController().scheduleRespawn();
 			qs.setQuestVarById(0, 3);
 			updateQuestStatus(player, qs);			
 		}

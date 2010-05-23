@@ -45,4 +45,13 @@ public class AttackCalcObserver
 	{
 		
 	}
+
+	/**
+	 * @param status
+	 * @return
+	 */
+	public boolean checkAttackerStatus(AttackStatus status)
+	{
+		return false;
+	}
 }

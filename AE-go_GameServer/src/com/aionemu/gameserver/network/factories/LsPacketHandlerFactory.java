@@ -23,6 +23,7 @@ import com.aionemu.gameserver.network.loginserver.clientpackets.CM_ACCOUNT_RECON
 import com.aionemu.gameserver.network.loginserver.clientpackets.CM_ACOUNT_AUTH_RESPONSE;
 import com.aionemu.gameserver.network.loginserver.clientpackets.CM_GS_AUTH_RESPONSE;
 import com.aionemu.gameserver.network.loginserver.clientpackets.CM_REQUEST_KICK_ACCOUNT;
+import com.aionemu.gameserver.network.loginserver.clientpackets.CM_LS_CONTROL_RESPONSE;
 import com.google.inject.Injector;
 
 /**
@@ -45,6 +46,7 @@ public class LsPacketHandlerFactory
 		addPacket(new CM_ACOUNT_AUTH_RESPONSE(0x01), State.AUTHED);
 		addPacket(new CM_GS_AUTH_RESPONSE(0x00), State.CONNECTED);
 		addPacket(new CM_REQUEST_KICK_ACCOUNT(0x02), State.AUTHED);
+		addPacket(new CM_LS_CONTROL_RESPONSE(0x04), State.AUTHED);
 
 	}
 

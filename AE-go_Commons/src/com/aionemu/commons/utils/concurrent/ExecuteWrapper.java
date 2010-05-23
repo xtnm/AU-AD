@@ -82,7 +82,7 @@ public class ExecuteWrapper implements Runnable
 				tb.append(runtimeInMillisec);
 				tb.append("msec");
 
-				log.warn(tb);
+				log.warn(tb.toString());
 
 				TextBuilder.recycle(tb);
 			}

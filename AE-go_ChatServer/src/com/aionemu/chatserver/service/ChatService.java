@@ -22,7 +22,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.log4j.Logger;
 
-import com.aionemu.chatserver.ChatServer;
 import com.aionemu.chatserver.model.ChatClient;
 import com.aionemu.chatserver.model.channel.Channel;
 import com.aionemu.chatserver.model.channel.Channels;

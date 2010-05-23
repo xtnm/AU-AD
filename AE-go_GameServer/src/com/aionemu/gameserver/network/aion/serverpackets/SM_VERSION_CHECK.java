@@ -22,6 +22,7 @@ import com.aionemu.gameserver.configs.main.GSConfig;
 import com.aionemu.gameserver.configs.network.NetworkConfig;
 import com.aionemu.gameserver.network.aion.AionConnection;
 import com.aionemu.gameserver.network.aion.AionServerPacket;
+import com.aionemu.gameserver.services.ChatService;
 
 /**
  * @author -Nemesiss- CC fix modified by Novo
@@ -29,6 +30,16 @@ import com.aionemu.gameserver.network.aion.AionServerPacket;
 
 public class SM_VERSION_CHECK extends AionServerPacket
 {
+	private ChatService			chatService;
+
+	/**
+	 * @param chatService
+	 */
+	public SM_VERSION_CHECK(ChatService chatService)
+	{
+		this.chatService = chatService;
+	}
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -98,8 +109,8 @@ public class SM_VERSION_CHECK extends AionServerPacket
 			writeH(buf, 2561);
 			writeH(buf, 2561);
 			writeD(buf, 266);
-			writeB(buf, NetworkConfig.CHAT_ADDRESS.getAddress().getAddress());
-			writeH(buf, 0x2801);
+			writeB(buf, chatService.getIp());
+			writeH(buf, chatService.getPort());
 		}
 	}
 
@@ -122,8 +133,8 @@ public class SM_VERSION_CHECK extends AionServerPacket
 		writeH(buf, 2561);
 		writeH(buf, 2561);
 		writeD(buf, 266);
-		writeB(buf, NetworkConfig.CHAT_ADDRESS.getAddress().getAddress());
-		writeH(buf, 0x2801);
+		writeB(buf, chatService.getIp());
+		writeH(buf, chatService.getPort());
 	}
 
 	private void writeCoutnryCode_7(AionConnection con, ByteBuffer buf)
@@ -144,7 +155,7 @@ public class SM_VERSION_CHECK extends AionServerPacket
 		writeH(buf, 2561);
 		writeH(buf, 2561);
 		writeD(buf, 266);
-		writeB(buf, NetworkConfig.CHAT_ADDRESS.getAddress().getAddress());
-		writeH(buf, 0x2801);
+		writeB(buf, chatService.getIp());
+		writeH(buf, chatService.getPort());
 	}
 }

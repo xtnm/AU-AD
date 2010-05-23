@@ -49,26 +49,21 @@ public class PeriodicSaveService
 {
 	private static final Logger	log	= Logger.getLogger(PeriodicSaveService.class);
 	private LegionService		legionService;
-	private BrokerService		brokerService;
 	
 	private Future<?>			legionWhUpdateTask;
-	private Future<?>			brokerUpdateTask;
 	
 	private static final int DELAY_GENERAL = PeriodicSaveConfig.PLAYER_GENERAL * 1000;
 	private static final int DELAY_ITEM = PeriodicSaveConfig.PLAYER_ITEMS * 1000;
-	private int DELAY_BROKER = PeriodicSaveConfig.BROKER * 1000;
 
 	@Inject
-	public PeriodicSaveService(LegionService legionService, BrokerService brokerService)
+	public PeriodicSaveService(LegionService legionService)
 	{
 		this.legionService = legionService;
-		this.brokerService = brokerService;
 		
 		int DELAY_LEGION_ITEM = PeriodicSaveConfig.LEGION_ITEMS * 1000;
 		
 		legionWhUpdateTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new LegionWhUpdateTask(),
 			DELAY_LEGION_ITEM, DELAY_LEGION_ITEM);
-		brokerUpdateTask = ThreadPoolManager.getInstance().scheduleAtFixedRate(new BrokerUpdateTask(), DELAY_BROKER, DELAY_BROKER);
 	}
 
 	/**
@@ -198,21 +193,6 @@ public class PeriodicSaveService
 			log.info("Legion WH update: " + workTime + " ms, legions: " + legionWhUpdated + ".");
 		}
 	}
-	
-	private class BrokerUpdateTask implements Runnable
-	{
-		@Override
-		public void run()
-		{
-			log.info("Broker update task started...");
-			long startTime = System.currentTimeMillis();
-			
-			brokerService.storeBroker();
-			
-			long workTime = System.currentTimeMillis() - startTime;
-			log.info("Broker updated in " + workTime + " ms");
-		}
-	}
 
 	/**
 	 * Save data on shutdown
@@ -223,9 +203,6 @@ public class PeriodicSaveService
 		//save legion warehouse
 		legionWhUpdateTask.cancel(false);
 		new LegionWhUpdateTask().run();
-		//save broker data
-		brokerUpdateTask.cancel(false);
-		new BrokerUpdateTask().run();
 		log.info("Data successfully saved.");
 	}
 }

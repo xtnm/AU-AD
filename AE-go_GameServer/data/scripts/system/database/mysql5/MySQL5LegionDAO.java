@@ -466,7 +466,7 @@ public class MySQL5LegionDAO extends LegionDAO
 					int isEquiped = rset.getInt("isEquiped");
 					int slot = rset.getInt("slot");
 					int enchant = rset.getInt("enchant");
-					Item item = new Item(itemUniqueId, itemId, itemCount, itemColor, isEquiped == 1, slot, storage, enchant);
+					Item item = new Item(itemUniqueId, itemId, itemCount, itemColor, isEquiped == 1, false, slot, storage, enchant);
 					item.setPersistentState(PersistentState.UPDATED);
 					inventory.onLoadHandler(item);
 				}

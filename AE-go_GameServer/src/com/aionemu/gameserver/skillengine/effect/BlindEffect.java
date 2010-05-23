@@ -18,8 +18,13 @@ package com.aionemu.gameserver.skillengine.effect;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
+import com.aionemu.commons.utils.Rnd;
+import com.aionemu.gameserver.controllers.attack.AttackStatus;
+import com.aionemu.gameserver.controllers.movement.AttackCalcObserver;
+import com.aionemu.gameserver.controllers.movement.AttackStatusObserver;
 import com.aionemu.gameserver.skillengine.model.Effect;
 
 /**
@@ -30,17 +35,43 @@ import com.aionemu.gameserver.skillengine.model.Effect;
 @XmlType(name = "BlindEffect")
 public class BlindEffect extends EffectTemplate
 {
+	@XmlAttribute
+	private int value;
 
 	@Override
 	public void applyEffect(Effect effect)
 	{
-		// TODO Auto-generated method stub
+		effect.addToEffectedController();
 	}
 
 	@Override
 	public void calculate(Effect effect)
 	{
 		effect.increaseSuccessEffect();
+	}
+	
+	@Override
+	public void startEffect(Effect effect)
+	{
+		AttackCalcObserver acObserver = new AttackStatusObserver(value, AttackStatus.DODGE)
+		{
+
+			@Override
+			public boolean checkAttackerStatus(AttackStatus status)
+			{
+				return Rnd.get(0, value) <= value;
+			}
+			
+		};
+		effect.getEffected().getObserveController().addAttackCalcObserver(acObserver);
+		effect.setAttackStatusObserver(acObserver, position);
+	}
+	
+	@Override
+	public void endEffect(Effect effect)
+	{
+		AttackCalcObserver acObserver = effect.getAttackStatusObserver(position);
+		effect.getEffected().getObserveController().removeAttackCalcObserver(acObserver);
 	}
 
 }

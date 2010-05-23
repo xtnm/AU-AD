@@ -27,6 +27,7 @@ import com.aionemu.commons.network.Dispatcher;
 import com.aionemu.commons.network.NioServer;
 import com.aionemu.gameserver.configs.network.NetworkConfig;
 import com.aionemu.gameserver.model.account.AccountTime;
+import com.aionemu.gameserver.model.account.Account;
 import com.aionemu.gameserver.network.aion.AionConnection;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_L2AUTH_LOGIN_CHECK;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_RECONNECT_KEY;
@@ -35,6 +36,7 @@ import com.aionemu.gameserver.network.loginserver.LoginServerConnection.State;
 import com.aionemu.gameserver.network.loginserver.serverpackets.SM_ACCOUNT_AUTH;
 import com.aionemu.gameserver.network.loginserver.serverpackets.SM_ACCOUNT_DISCONNECTED;
 import com.aionemu.gameserver.network.loginserver.serverpackets.SM_ACCOUNT_RECONNECT_KEY;
+import com.aionemu.gameserver.network.loginserver.serverpackets.SM_LS_CONTROL;
 import com.aionemu.gameserver.services.AccountService;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
 import com.google.inject.Inject;
@@ -377,4 +379,28 @@ public class LoginServer
 
 		log.info("GameServer disconnected from the Login Server...");
 	}
+
+
+	public void sendLsControlPacket(String accountName, String playerName, String adminName, int param, int type)
+	{
+		if(loginServer != null && loginServer.getState() == State.AUTHED)
+			loginServer.sendPacket(new SM_LS_CONTROL(accountName, playerName, adminName, param, type));
+	}
+
+	public void accountUpdate(int accountId, byte param, int type)
+	{
+		synchronized(this)
+		{
+			AionConnection client = loggedInAccounts.get(accountId);
+			if (client != null)
+			{
+				Account account =client.getAccount();
+				if (type == 1)
+					account.setAccessLevel(param);
+				if (type == 2)
+					account.setMembership(param);
+			}
+		}
+	}
+
 }

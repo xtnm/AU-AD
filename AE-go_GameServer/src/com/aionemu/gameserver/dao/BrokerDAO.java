@@ -8,7 +8,7 @@ public abstract class BrokerDAO implements IDFactoryAwareDAO
 {
 	public abstract List<BrokerItem> loadBroker();
 	
-	public abstract boolean storeBroker(List<BrokerItem> brokerItems);
+	public abstract boolean store(BrokerItem brokerItem);
 	
 	@Override
 	public final String getClassName()

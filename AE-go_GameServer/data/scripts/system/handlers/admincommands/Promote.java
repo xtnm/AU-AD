@@ -19,6 +19,7 @@ package admincommands;
 
 import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.network.loginserver.LoginServer;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.Util;
 import com.aionemu.gameserver.utils.chathandlers.AdminCommand;
@@ -28,12 +29,15 @@ import com.google.inject.Inject;
  * Admin promote command.
  *
  * @author Cyrakuse
+ * @modified By Aionchs-Wylovech
  */
 
 public class Promote extends AdminCommand
 {
 	@Inject
 	private World	world;
+	@Inject
+	private LoginServer loginServer;
 
 	/**
 	 * Constructor.
@@ -53,26 +57,45 @@ public class Promote extends AdminCommand
 			return;
 		}
 		
-		if (params == null || params.length < 2)
+		if (params.length != 3 )
 		{
-			PacketSendUtility.sendMessage(admin, "syntax //promote <characterName> <rolemask>");
+			PacketSendUtility.sendMessage(admin, "syntax //promote <characterName> <acceslevel | membership> <mask> ");
 			return;
 		}
-		
+
 		int mask = 0;
 		try
 		{
-			mask = Integer.parseInt(params[1]);
+			mask = Integer.parseInt(params[2]);
 		}
 		catch (NumberFormatException e)
 		{
-			PacketSendUtility.sendMessage(admin, "rolemask should be number");
+			PacketSendUtility.sendMessage(admin, "Only number!");
 			return;
 		}
-		
-		if(mask > 3)
+
+		int type = 0;
+		if(params[1].toLowerCase().equals("acceslevel"))
 		{
-			PacketSendUtility.sendMessage(admin, "rolemask can be 1, 2 or 3");
+			type = 1;
+			if(mask > 3 || mask < 0)
+			{
+				PacketSendUtility.sendMessage(admin, "accesslevel can be 0, 1, 2 or 3");
+				return;
+			}
+		}
+		else if(params[1].toLowerCase().equals("membership"))
+		{
+			type = 2;
+			if(mask > 1 || mask < 0)
+			{
+				PacketSendUtility.sendMessage(admin, "membership can be 0 or 1");
+				return;
+			}
+		}
+		else
+		{
+			PacketSendUtility.sendMessage(admin, "syntax //promote <characterName> <acceslevel | membership> <mask>");
 			return;
 		}
 
@@ -82,10 +105,7 @@ public class Promote extends AdminCommand
 			PacketSendUtility.sendMessage(admin, "The specified player is not online.");
 			return;
 		}
-		
-		//TODO
-		//player.getCommonData().setAdminRole(mask);
-		PacketSendUtility.sendMessage(admin, player.getName() + " has been promoted Administrator with role " + mask);
-		PacketSendUtility.sendMessage(player, "You have been promoted Administrator with role " + mask);
+		loginServer.sendLsControlPacket(admin.getAcountName(), player.getName(), admin.getName(), mask, type);
+
 	}
 }

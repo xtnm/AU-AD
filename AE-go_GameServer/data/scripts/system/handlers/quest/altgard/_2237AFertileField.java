@@ -54,7 +54,7 @@ public class _2237AFertileField extends QuestHandler
 	{
 		qe.setNpcQuestData(203629).addOnQuestStart(questId);
 		qe.setNpcQuestData(203629).addOnTalkEvent(questId);
-		qe.setNpcQuestData(700051).addOnTalkEvent(questId);
+		qe.setNpcQuestData(700145).addOnTalkEvent(questId);
 	}
 	
 	@Override
@@ -79,7 +79,7 @@ public class _2237AFertileField extends QuestHandler
 		{
 			switch(targetId)
 			{
-				case 700051:
+				case 700145:
 				{
 					if (qs.getQuestVarById(0) == 0 && env.getDialogId() == -1)
 					{
@@ -109,14 +109,14 @@ public class _2237AFertileField extends QuestHandler
 					if(env.getDialogId() == 25)
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2375);
 					else if(env.getDialogId() == 33)
-					{
-						player.getInventory().removeFromBagByItemId(182200215, 1);
+						if(questService.collectItemCheck(env, true))
+						{
 						qs.setStatus(QuestStatus.REWARD);
 						updateQuestStatus(player, qs);
 						return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 5);
-					}
-					else
-						return defaultQuestEndDialog(env);
+						}
+						else
+							return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2716);							
 				}
 			}
 		}

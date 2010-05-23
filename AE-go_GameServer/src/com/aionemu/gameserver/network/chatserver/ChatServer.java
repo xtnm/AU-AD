@@ -117,7 +117,8 @@ public class ChatServer
 	 */
 	public void sendPlayerLoginRequst(Player player)
 	{
-		chatServer.sendPacket(new SM_CS_PLAYER_AUTH(player.getObjectId()));
+		if(chatServer != null)
+			chatServer.sendPacket(new SM_CS_PLAYER_AUTH(player.getObjectId()));
 	}
 	
 	/**
@@ -126,6 +127,7 @@ public class ChatServer
 	 */
 	public void sendPlayerLogout(Player player)
 	{
-		chatServer.sendPacket(new SM_CS_PLAYER_LOGOUT(player.getObjectId()));
+		if(chatServer != null)
+			chatServer.sendPacket(new SM_CS_PLAYER_LOGOUT(player.getObjectId()));
 	}
 }

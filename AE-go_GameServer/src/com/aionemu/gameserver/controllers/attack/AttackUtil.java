@@ -47,7 +47,11 @@ public class AttackUtil
 	public static List<AttackResult> calculateAttackResult(Creature attacker, Creature attacked)
 	{
 		int damage = StatFunctions.calculateBaseDamageToTarget(attacker, attacked);
-		AttackStatus status = calculatePhysicalStatus(attacker, attacked);
+		
+		AttackStatus status = calculateAttackerPhysicalStatus(attacker);
+		
+		if(status == null)
+			status = calculatePhysicalStatus(attacker, attacked);
 
 		CreatureGameStats<?> gameStats = attacker.getGameStats();
 
@@ -201,7 +205,11 @@ public class AttackUtil
 		Creature effected = effect.getEffected();
 		int damage = StatFunctions.calculatePhysicDamageToTarget(effector, effected, skillDamage);
 
-		AttackStatus status = calculatePhysicalStatus(effector, effected);
+		AttackStatus status = calculateAttackerPhysicalStatus(effector);
+		
+		if(status == null)
+			status = calculatePhysicalStatus(effector, effected);
+		
 		switch(status)
 		{
 			case BLOCK:
@@ -223,6 +231,20 @@ public class AttackUtil
 		
 		calculateEffectResult(effect, effected, damage, status);
 	}
+
+	/**
+	 * If attacker is blinded - return DODGE for physical attacks
+	 * 
+	 * @param effector
+	 * @return
+	 */
+	private static AttackStatus calculateAttackerPhysicalStatus(Creature effector)
+	{
+		if(effector.getObserveController().checkAttackerStatus(AttackStatus.DODGE))
+			return AttackStatus.DODGE;
+		return null;
+	}
+
 
 	/**
 	 * 

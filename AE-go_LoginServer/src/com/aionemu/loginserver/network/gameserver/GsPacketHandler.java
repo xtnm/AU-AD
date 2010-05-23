@@ -26,6 +26,7 @@ import com.aionemu.loginserver.network.gameserver.clientpackets.CM_ACCOUNT_DISCO
 import com.aionemu.loginserver.network.gameserver.clientpackets.CM_ACCOUNT_LIST;
 import com.aionemu.loginserver.network.gameserver.clientpackets.CM_ACCOUNT_RECONNECT_KEY;
 import com.aionemu.loginserver.network.gameserver.clientpackets.CM_GS_AUTH;
+import com.aionemu.loginserver.network.gameserver.clientpackets.CM_LS_CONTROL;
 
 /**
  * @author -Nemesiss-
@@ -79,6 +80,9 @@ public class GsPacketHandler
 						break;
 					case 0x04:
 						msg = new CM_ACCOUNT_LIST(data, client);
+						break;
+					case 0x05:
+						msg = new CM_LS_CONTROL(data, client);
 						break;
 					default:
 						unknownPacket(state, id);

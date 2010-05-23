@@ -24,11 +24,11 @@ import com.aionemu.gameserver.network.aion.AionServerPacket;
 
 /**
  * @author orz
+ * @author Sarynth
  * 
  */
 public class SM_DIE extends AionServerPacket
 {
-	@SuppressWarnings("unused")
 	private ReviveType	reviveType;
 
 	public SM_DIE(ReviveType reviveType)
@@ -39,12 +39,12 @@ public class SM_DIE extends AionServerPacket
 	@Override
 	protected void writeImpl(AionConnection con, ByteBuffer buf)
 	{
-		writeD(buf, 0);
-		writeH(buf, 0);
-
-		// [trisphere] Structure is actually:
-		// uint8 skillRevive
-		// uint8 itemRevive
-		// uint32 kiskReviveDelay (wait time before choice can be made)
+		// 6660 was sniffed from another free server.
+		// If anyone has retail SM_DIE data from retail please feel free to update the last dword.
+		int kiskReviveDelay = (this.reviveType == ReviveType.KISK_REVIVE ? 6660 : 0); 
+		
+		writeC(buf, 0); // skillRevive
+		writeC(buf, 0); // itemRevive
+		writeD(buf, kiskReviveDelay); // kiskReviveDelay
 	}
 }

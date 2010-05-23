@@ -16,6 +16,7 @@
  */
 package com.aionemu.gameserver.controllers;
 
+import com.aionemu.gameserver.model.gameobjects.Kisk;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.state.CreatureState;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EMOTION;
@@ -67,6 +68,21 @@ public class ReviveController
 		teleportService.moveToBindLocation(player, true);
 	}
 
+	public void kiskRevive()
+	{
+		Kisk kisk = player.getKisk();
+		
+		revive(25, 25);
+		PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.REVIVE);
+
+		PacketSendUtility.sendPacket(player, new SM_STATS_INFO(player));
+		PacketSendUtility.sendPacket(player, new SM_PLAYER_INFO(player, false));
+		
+		teleportService.moveToKiskLocation(player);
+		
+		kisk.resurrectionUsed(player);
+	}
+	
 	private void revive(int hpPercent, int mpPercent)
 	{
 		player.getLifeStats().setCurrentHpPercent(hpPercent);

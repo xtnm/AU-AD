@@ -200,7 +200,7 @@ public class _1038TheShadowsCommand extends QuestHandler
 						qs.setQuestVarById(0, 7);
 						updateQuestStatus(player, qs);						
 						PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 0));
-						questService.addNewSpawn(210020000, 1, 203331, (float) 1768.16, (float) 924.47, (float) 422.02, (byte) 0, true);						
+						questService.addNewSpawn(210020000, 1, 204005, (float) 1768.16, (float) 924.47, (float) 422.02, (byte) 0, true);						
 						return true;
 					}
 				return false;

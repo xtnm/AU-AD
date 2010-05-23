@@ -56,7 +56,7 @@ public class _1022KrallDesecration extends QuestHandler
 		QuestState qs = player.getQuestStateList().getQuestState(questId);
 		if(qs == null || player.getCommonData().getLevel() < 19 || qs.getStatus() != QuestStatus.LOCKED)
 			return false;
-		QuestState qs2 = player.getQuestStateList().getQuestState(1015);
+		QuestState qs2 = player.getQuestStateList().getQuestState(1017);
 		if(qs2 == null || qs2.getStatus() != QuestStatus.COMPLETE)
 			return false;
 		qs.setStatus(QuestStatus.START);

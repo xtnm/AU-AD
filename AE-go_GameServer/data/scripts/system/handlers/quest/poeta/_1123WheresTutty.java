@@ -57,7 +57,7 @@ public class _1123WheresTutty extends QuestHandler
 		QuestState qs = player.getQuestStateList().getQuestState(questId);
 		if(targetId == 790001)
 		{
-			if(qs == null)
+			if(qs == null || qs.getStatus() == QuestStatus.NONE)
 			{
 				if(env.getDialogId() == 25)
 					return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1011);
@@ -82,7 +82,6 @@ public class _1123WheresTutty extends QuestHandler
 		env.setQuestId(questId);
 		PacketSendUtility.sendPacket(player, new SM_PLAY_MOVIE(0, 11));
 		qs.setStatus(QuestStatus.REWARD);
-		qs.setQuestVarById(0, 1);
 		updateQuestStatus(player, qs);
 		return true;
 	}
