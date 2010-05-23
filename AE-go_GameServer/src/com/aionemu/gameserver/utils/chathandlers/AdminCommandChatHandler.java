@@ -83,7 +83,7 @@ public class AdminCommandChatHandler implements ChatHandler
 				while(onlinePlayers.hasNext())
 				{
 					Player p = onlinePlayers.next();
-					if(sender.getCommonData().getRace() == Race.ASMODIANS && p.getCommonData().getRace() == Race.ASMODIANS)
+					if(sender.getCommonData().getRace() == Race.ASMODIANS && (p.getCommonData().getRace() == Race.ASMODIANS || p.getAccessLevel() > 0))
 					{
 						String toSend = "[Asmodiens]";
 						if(sender.getAccessLevel() > 0)
@@ -94,7 +94,7 @@ public class AdminCommandChatHandler implements ChatHandler
 						toSend += " : " + message;
 						PacketSendUtility.sendMessage(p, toSend);
 					}
-					else if(sender.getCommonData().getRace() == Race.ELYOS && p.getCommonData().getRace() == Race.ELYOS)
+					else if(sender.getCommonData().getRace() == Race.ELYOS && (p.getCommonData().getRace() == Race.ELYOS || p.getAccessLevel() > 0))
 					{
 						String toSend = "[Elyseens]";
 						if(sender.getAccessLevel() > 0)
@@ -156,7 +156,7 @@ public class AdminCommandChatHandler implements ChatHandler
 						while(onlinePlayers.hasNext())
 						{
 							Player p = onlinePlayers.next();
-							if(sender.getCommonData().getRace() == Race.ASMODIANS && p.getCommonData().getRace() == Race.ASMODIANS)
+							if(sender.getCommonData().getRace() == Race.ASMODIANS && (p.getCommonData().getRace() == Race.ASMODIANS || p.getAccessLevel() > 0))
 							{
 								String toSend = "[Asmodiens]";
 								if(sender.getAccessLevel() > 0)
@@ -167,7 +167,7 @@ public class AdminCommandChatHandler implements ChatHandler
 								toSend += " : " + worldMessage;
 								PacketSendUtility.sendMessage(p, toSend);
 							}
-							else if(sender.getCommonData().getRace() == Race.ELYOS && p.getCommonData().getRace() == Race.ELYOS)
+							else if(sender.getCommonData().getRace() == Race.ELYOS && (p.getCommonData().getRace() == Race.ELYOS || p.getAccessLevel() > 0))
 							{
 								String toSend = "[Elyseens]";
 								if(sender.getAccessLevel() > 0)
