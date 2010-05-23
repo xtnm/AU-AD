@@ -89,6 +89,47 @@
 		<portalitem id="2" itemid="186000050" quantity="1"/>
 	</portal>
 	
+	<!-- Sky Temple Interior / Wind Room -->
+	<portal npcid="730043" instance="true" minlevel="30" maxlevel="33" group="true">
+		<entrypoint mapid="220020000" x="1684.3113" y="1155.8898" z="200.3536"/>
+		<exitpoint mapid="320050000" x="308.1934" y="434.4128" z="416.82278"/>
+	</portal>
+
+	<!-- Sky Temple Interior / Water Room -->
+	<portal npcid="730041" instance="true" minlevel="30" maxlevel="33" group="true">
+		<entrypoint mapid="220020000" x="1673.5468" y="1147.3054" z="200.42954"/>
+		<exitpoint mapid="320050000" x="473.72284" y="115.55677" z="214.81421"/>
+	</portal>
+
+	<!-- Sky Temple Interior / Fire Room -->
+	<portal npcid="730045" instance="true" minlevel="30" maxlevel="33" group="true">
+		<entrypoint mapid="220020000" x="1686.6586" y="1142.5929" z="200.3536"/>
+		<exitpoint mapid="320050000" x="101.47154" y="23.524532" z="611.0359"/>
+	</portal>
+	
+	<!-- Azoturan Fortress -->
+	<portal npcid="700364" instance="true" minlevel="43" maxlevel="45" group="true">
+		<entrypoint mapid="210040000" x="542.84" y="7129" z="153.03"/>
+		<exitpoint mapid="310100000" x="304.16013" y="323.43713" z="1021.4955"/>
+	</portal>
+	
+	<!-- Theobomos Lab -->
+	<portal npcid="730154" instance="true" minlevel="50" maxlevel="50" group="true">
+		<entrypoint mapid="210060000" x="2974.363" y="196.73184" z="170.99928"/>
+		<exitpoint mapid="310110000" x="476.96606" y="201.32736" z="169.98848"/>
+	</portal>
+	
+	<!-- Krotan Chamber -->
+	<portal npcid="700458" instance="true" minlevel="45" maxlevel="50" group="true">	
+		<entrypoint mapid="400010000" x="2011.16" y="1252.53" z="2945.4082"/>
+		<exitpoint mapid="300140000" x="527.79846" y="109.320755" z="175.92393"/>
+	</portal>
+	
+	<!-- Indratu Fortress Abyss Gate -->
+	<portal npcid="700565" instance="true" minlevel="41" maxlevel="48" group="true">
+		<entrypoint mapid="210040000" x="1977.4312" y="2586.454" z="140.32721"/>
+		<exitpoint mapid="310090000" x="561.80707" y="331.4151" z="1015.85065"/>
+	</portal>
 	<!-- QUEST PORTALS -->
 	
 	<!-- Pernos [Ascension quest] Elyos -->
