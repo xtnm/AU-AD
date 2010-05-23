@@ -18,7 +18,7 @@ package com.aionemu.gameserver.network.aion.clientpackets;
 
 import org.apache.log4j.Logger;
 
-import com.aionemu.gameserver.configs.main.CustomConfig;
+import com.aionemu.gameserver.configs.main.FallDamageConfig;
 import com.aionemu.gameserver.controllers.MoveController;
 import com.aionemu.gameserver.controllers.movement.MovementType;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
@@ -207,9 +207,9 @@ public class CM_MOVE extends AionClientPacket
 		}
 
 		float distance = playerZ - z;
-		if(CustomConfig.ACTIVE_FALL_DAMAGE && player.isInState(CreatureState.ACTIVE)
+		if(FallDamageConfig.ACTIVE_FALL_DAMAGE && player.isInState(CreatureState.ACTIVE)
 			&& !player.isInState(CreatureState.FLYING) && !player.isInState(CreatureState.GLIDING)
-			&& (type == MovementType.MOVEMENT_STOP || distance >= CustomConfig.MAXIMUM_DISTANCE_MIDAIR))
+			&& (type == MovementType.MOVEMENT_STOP || distance >= FallDamageConfig.MAXIMUM_DISTANCE_MIDAIR))
 		{
 			if(StatFunctions.calculateFallDamage(player, distance))
 			{

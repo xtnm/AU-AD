@@ -25,6 +25,8 @@ import com.aionemu.commons.utils.PropertiesUtils;
 import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.configs.main.CacheConfig;
 import com.aionemu.gameserver.configs.main.CustomConfig;
+import com.aionemu.gameserver.configs.main.EnchantsConfig;
+import com.aionemu.gameserver.configs.main.FallDamageConfig;
 import com.aionemu.gameserver.configs.main.GSConfig;
 import com.aionemu.gameserver.configs.main.GroupConfig;
 import com.aionemu.gameserver.configs.main.LegionConfig;
@@ -92,6 +94,12 @@ public class Config
 			
 			ConfigurableProcessor.process(CustomConfig.class, mainProps);
 			log.info("Loading: " + main + "/custom.properties");
+			
+			ConfigurableProcessor.process(EnchantsConfig.class, mainProps);
+			log.info("Loading: " + main + "/enchants.properties");
+			
+			ConfigurableProcessor.process(FallDamageConfig.class, mainProps);
+			log.info("Loading: " + main + "/falldamage.properties");
 			
 			ConfigurableProcessor.process(GSConfig.class, mainProps);
 			log.info("Loading: " + main + "/gameserver.properties");

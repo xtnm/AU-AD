@@ -287,7 +287,7 @@ public class CM_ENTER_WORLD extends AionClientPacket
 			/**
 			 * Start initializing chat connection(/1, /2, /3, /4 channels)
 			 */
-			if(!CustomConfig.DISABLE_CHAT_SERVER)
+			if(!GSConfig.DISABLE_CHAT_SERVER)
 				chatService.onPlayerLogin(player);
 		}
 		else

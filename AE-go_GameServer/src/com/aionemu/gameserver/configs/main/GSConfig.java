@@ -64,4 +64,10 @@ public class GSConfig
 	 */
 	@Property(key = "gameserver.mode", defaultValue = "1")
 	public static int		SERVER_MODE;
+	
+	/**
+	 * Disable chat server connection
+	 */
+	@Property(key = "gameserver.disable.chatserver", defaultValue = "true")
+	public static boolean	DISABLE_CHAT_SERVER;
 }

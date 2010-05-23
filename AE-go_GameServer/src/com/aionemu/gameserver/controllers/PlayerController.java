@@ -333,7 +333,7 @@ public class PlayerController extends CreatureController<Player>
 			//winner.getCommonData().setDp(dpReward + currentDp);
 
 			// AP reward
-			winner.getCommonData().addAp(apReward);
+			winner.getCommonData().addAp(Math.round(apReward * winner.getRates().getApPlayerRate()));
 		}
 		else // in group
 		{

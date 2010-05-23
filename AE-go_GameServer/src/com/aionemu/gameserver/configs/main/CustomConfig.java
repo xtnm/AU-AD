@@ -68,8 +68,8 @@ public class CustomConfig
 	@Property(key = "gameserver.base.flytime", defaultValue = "60")
 	public static int		BASE_FLYTIME;
 
-        /*
-	*Allows players of opposite factions to bind in enemy territory
+    /**
+	* Allows players of opposite factions to bind in enemy territory
 	*/
 	@Property(key = "gameserver.cross.faction.binding", defaultValue = "false")
 	public static boolean				ENABLE_CROSS_FACTION_BINDING;

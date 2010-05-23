@@ -18,7 +18,6 @@ package com.aionemu.gameserver.services;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -54,9 +53,8 @@ public class DropService
 
 	private DropList					dropList;
 
-	private Map<Integer, Set<DropItem>>	currentDropMap		= Collections
-																.synchronizedMap(new HashMap<Integer, Set<DropItem>>());
-	private Map<Integer, DropNpc>		dropRegistrationMap	= new FastMap<Integer, DropNpc>();
+	private Map<Integer, Set<DropItem>>	currentDropMap		= new FastMap<Integer, Set<DropItem>>().shared();
+	private Map<Integer, DropNpc>		dropRegistrationMap	= new FastMap<Integer, DropNpc>().shared();
 
 	private ItemService					itemService;
 	private GroupService				groupService;

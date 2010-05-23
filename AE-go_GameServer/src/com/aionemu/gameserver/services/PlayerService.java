@@ -444,7 +444,7 @@ public class PlayerService
 		player.getController().delete();
 		DAOManager.getDAO(PlayerDAO.class).onlinePlayer(player, false);
 		
-		if(!CustomConfig.DISABLE_CHAT_SERVER)
+		if(!GSConfig.DISABLE_CHAT_SERVER)
 			chatService.onPlayerLogout(player);
 
 		storePlayer(player);
