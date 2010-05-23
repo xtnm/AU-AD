@@ -69,6 +69,8 @@ import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
 import com.aionemu.gameserver.utils.stats.StatFunctions;
 import com.aionemu.gameserver.world.World;
+import com.aionemu.gameserver.model.Race;
+import com.aionemu.gameserver.world.zone.ZoneName;
 import com.aionemu.gameserver.world.zone.ZoneInstance;
 import com.google.inject.internal.Nullable;
 
@@ -197,6 +199,42 @@ public class PlayerController extends CreatureController<Player>
 	{
 		sp.getQuestEngine()
 			.onEnterZone(new QuestEnv(null, this.getOwner(), 0, 0), zoneInstance.getTemplate().getName());
+		checkAbyssMainFortress(zoneInstance);
+	}
+	
+	private void checkAbyssMainFortress(ZoneInstance zoneInstance)
+	{
+		Player player = getOwner();
+		
+		if(player.getLifeStats().isAlreadyDead() || player.isGM())
+			return;
+		
+		// Prevent enemy players from entering the main Abyss fortress Zone.
+		// TODO: Instead of using zone, need to build a precise shield globe.
+		Race race = player.getCommonData().getRace();
+		ZoneName zone = zoneInstance.getTemplate().getName();
+		
+		boolean isAsmoBase = (zone == ZoneName.PRIMUM_TRAINING_CAMP_400010000 ||
+			zone == ZoneName.PRIMUM_WHARF_400010000 ||
+			zone == ZoneName.RUSSET_PLAZA_400010000 ||
+			zone == ZoneName.PRIMUM_PLAZA_400010000 ||
+			zone == ZoneName.NOBELIUM_FRAGMENT_400010000 ||
+			zone == ZoneName.BROKEN_NOBELIUM_400010000 ||
+			zone == ZoneName.PRIMUM_FORTRESS_400010000);
+			
+		boolean isElyosBase = (zone == ZoneName.WAREHOUSE_CONSTRUCTION_SITE_400010000 ||
+			zone == ZoneName.WEATHERED_CRAG_400010000 ||
+			zone == ZoneName.TEMINON_WHARF_400010000 ||
+			zone == ZoneName.LATIS_PLAZA_400010000 ||
+			zone == ZoneName.TEMINON_FORTRESS_400010000 ||
+			zone == ZoneName.TEMINONS_LEAP_400010000 ||
+			zone == ZoneName.TEMINON_TRAINING_CAMP_400010000);
+			
+		if ((race == Race.ELYOS && isAsmoBase) || (race == Race.ASMODIANS && isElyosBase))
+		{
+			die();
+		}
+		
 	}
 
 	/**
