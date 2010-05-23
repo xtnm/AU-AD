@@ -103,8 +103,8 @@
 		<object staticid="87" x="220.5054" y="386.66074" z="126.678986" h="117"/>
 		<object staticid="168" x="200.23024" y="426.76007" z="106.449875" h="6"/>
 	</spawn>
-	<!-- Indratu Fortress Abyss Gate (Object Normal lvl:3)-->
-	<spawn map="300040000" npcid="700565" pool="1" interval="295">
+	<!-- Tahabata Abyss Gate (Object Normal lvl:3)-->
+	<spawn map="300040000" npcid="730211" pool="1" interval="295">
 		<object staticid="579" x="299.2994" y="316.23352" z="133.52376" h="98"/>
 	</spawn>
 	<!-- Main Power Generator (Object Hero lvl:50)-->

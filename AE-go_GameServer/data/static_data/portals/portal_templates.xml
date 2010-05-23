@@ -125,10 +125,10 @@
 		<exitpoint mapid="300140000" x="527.79846" y="109.320755" z="175.92393"/>
 	</portal>
 	
-	<!-- Indratu Fortress Abyss Gate -->
-	<portal npcid="700565" instance="true" minlevel="41" maxlevel="48" group="true">
+	<!-- Tahabata Abyss Gate -->
+	<portal npcid="730211" instance="true" minlevel="41" maxlevel="48" group="true">
 		<entrypoint mapid="210040000" x="1977.4312" y="2586.454" z="140.32721"/>
-		<exitpoint mapid="310090000" x="561.80707" y="331.4151" z="1015.85065"/>
+		<exitpoint mapid="300040000" x="1188.80707" y="1241.4151" z="143.85065"/>
 	</portal>
 	<!-- QUEST PORTALS -->
 	
