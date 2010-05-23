@@ -53,6 +53,8 @@ public class SpawnTemplate
 	private float x;
 	@XmlAttribute(name = "staticid")
 	private int staticid;
+	@XmlAttribute(name = "fly")
+	private int npcfly;
 	
 	@XmlTransient
 	private BitSet spawnState = new BitSet();
@@ -77,8 +79,9 @@ public class SpawnTemplate
 	 * @param heading
 	 * @param walkerId
 	 * @param randomWalk
+	 * @param npcstate
 	 */
-	public SpawnTemplate(float x, float y, float z, byte heading, int walkerId, int randomWalk)
+	public SpawnTemplate(float x, float y, float z, byte heading, int walkerId, int randomWalk, int npcfly)
 	{
 		this.x = x;
 		this.y = y;
@@ -86,6 +89,7 @@ public class SpawnTemplate
 		this.heading = heading;
 		this.walkerId = walkerId;
 		this.randomWalk = randomWalk;
+		this.npcfly = npcfly;
 	}
 	
 	public int getWorldId()
@@ -121,6 +125,11 @@ public class SpawnTemplate
 	public boolean hasRandomWalk()
 	{
 		return randomWalk > 0;
+	}
+	
+	public int getNpcFlyState()
+	{
+		return npcfly;
 	}
 
 	/**

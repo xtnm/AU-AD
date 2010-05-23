@@ -76,6 +76,7 @@ public class QuestEngine
 	private List<Integer>						_questOnDie= new ArrayList<Integer>();
 	private List<Integer>						_questOnEnterWorld= new ArrayList<Integer>();
 	private FastMap<Integer, List<QuestDrop>>	_questDrop= new FastMap<Integer, List<QuestDrop>>();
+	private List<Integer>						_questOnQuestFinish= new ArrayList<Integer>();
 
 	public void load()
 	{
@@ -230,6 +231,16 @@ public class QuestEngine
 		}
 		return false;
 	}
+	
+	public void onQuestFinish(QuestEnv env)
+	{
+		for(int questId : _questOnQuestFinish)
+		{
+			QuestHandler questHandler = getQuestHandlerByQuestId(questId);
+			if(questHandler != null)
+				questHandler.onQuestFinishEvent(env);
+		}
+	}
 
 	public boolean deleteQuest(Player player, int questId)
 	{
@@ -370,6 +381,12 @@ public class QuestEngine
 		}
 		return _questMovieEndIds.get(moveId);
 	}
+	
+	public void addOnQuestFinish(int questId)
+	{
+		if(!_questOnQuestFinish.contains(questId))
+			_questOnQuestFinish.add(questId);
+	}
 
 	public void clear()
 	{
@@ -381,6 +398,7 @@ public class QuestEngine
 		_questEnterZone.clear();
 		_questMovieEndIds.clear();
 		_questDrop.clear();
+		_questOnQuestFinish.clear();
 		questHandlers.clear();
 	}
 	

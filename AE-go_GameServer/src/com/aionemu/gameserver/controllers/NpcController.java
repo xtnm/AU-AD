@@ -108,6 +108,10 @@ public class NpcController extends CreatureController<Npc>
 		owner.getLifeStats().setCurrentHpPercent(100);
 		owner.getAggroList().clear();
 		owner.getAi().handleEvent(Event.RESPAWNED);
+		if(owner.getSpawn().getNpcFlyState() != 0)
+		{
+			owner.setState(CreatureState.FLYING);
+		}
 	}
 
 	public void onDespawn(boolean forced)

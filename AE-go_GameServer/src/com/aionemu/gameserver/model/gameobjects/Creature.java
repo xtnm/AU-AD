@@ -471,6 +471,16 @@ public abstract class Creature extends VisibleObject
 	
 	/**
 	 * 
+	 * @param npc
+	 * @return
+	 */
+	public boolean isHostileFrom(Npc npc)
+	{
+		return false;
+	}
+	
+	/**
+	 * 
 	 * @param player
 	 * @return
 	 */

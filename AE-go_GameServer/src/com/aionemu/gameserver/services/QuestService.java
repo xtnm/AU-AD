@@ -166,7 +166,8 @@ public class QuestService
 					}
 				}
 			}
-
+			
+			questEngine.onQuestFinish(env);
 			qs.setStatus(QuestStatus.COMPLETE);
 			qs.setCompliteCount(qs.getCompliteCount() + 1);
 			PacketSendUtility.sendPacket(player, new SM_QUEST_STEP(id, qs.getStatus(), qs.getQuestVars().getQuestVars()));

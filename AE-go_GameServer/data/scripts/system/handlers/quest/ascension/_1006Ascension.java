@@ -88,6 +88,7 @@ public class _1006Ascension extends QuestHandler
 		qe.setQuestMovieEndIds(151).add(questId);
 		qe.addOnEnterWorld(questId);
 		qe.addOnDie(questId);
+		qe.addOnQuestFinish(questId);
 	}
 
 	@Override
@@ -424,6 +425,19 @@ public class _1006Ascension extends QuestHandler
 					return true;
 				}
 			}
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean onQuestFinishEvent(QuestEnv env)
+	{
+		Player player = env.getPlayer();
+		QuestState qs = player.getQuestStateList().getQuestState(questId);
+		if(qs != null && qs.getStatus() == QuestStatus.REWARD)
+		{
+			teleportService.teleportTo(player, 210010000, 1, 242, 1638, 100, (byte) 20, 0);
+			return true;
 		}
 		return false;
 	}

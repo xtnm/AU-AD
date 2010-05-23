@@ -24,6 +24,7 @@
 					<xs:attribute name="w" type="xs:int" />
 					<xs:attribute name="rw" type="xs:int" />
 					<xs:attribute name="staticid" type="xs:int" />
+					<xs:attribute name="fly" type="xs:int" />
 				</xs:complexType>
 			</xs:element>
 		</xs:sequence>

@@ -82,6 +82,7 @@ public class _2008Ascension extends QuestHandler
 		qe.setQuestMovieEndIds(152).add(questId);
 		qe.addOnEnterWorld(questId);
 		qe.addOnDie(questId);
+		qe.addOnQuestFinish(questId);
 	}
 
 	@Override
@@ -430,6 +431,19 @@ public class _2008Ascension extends QuestHandler
 			qs.setQuestVar(4);
 			updateQuestStatus(player, qs);
 			PacketSendUtility.sendPacket(player, new SM_SYSTEM_MESSAGE(SystemMessageId.QUEST_FAILED_$1, questsData.getQuestById(env.getQuestId()).getName()));
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean onQuestFinishEvent(QuestEnv env)
+	{
+		Player player = env.getPlayer();
+		QuestState qs = player.getQuestStateList().getQuestState(questId);
+		if(qs != null && qs.getStatus() == QuestStatus.REWARD)
+		{
+			teleportService.teleportTo(player, 220010000, 1, 385, 1895, 327, (byte) 20, 0);
+			return true;
 		}
 		return false;
 	}
