@@ -73,6 +73,7 @@ public class Config
 			ConfigurableProcessor.process(ThreadConfig.class, props);
 			ConfigurableProcessor.process(NetworkConfig.class, props);
 			ConfigurableProcessor.process(DatabaseConfig.class, props);
+			IPConfig.load();
 			log.info("Loaded AD Emu configuration from: " + specifiedConfigPath);
 		}
 		catch(Exception e)
