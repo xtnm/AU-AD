@@ -50,7 +50,8 @@ public class LoginServer
     	
         LoggingService.init();
 
-		Config.load();
+        Config.loadAionDream(args[0]);
+		//Config.load();
 
 		Util.printSection("DataBase");
 		DatabaseFactory.init();

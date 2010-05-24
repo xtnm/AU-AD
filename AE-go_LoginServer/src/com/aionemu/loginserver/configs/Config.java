@@ -16,6 +16,7 @@
  */
 package com.aionemu.loginserver.configs;
 
+import java.io.File;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
@@ -90,6 +91,19 @@ public class Config
 	@Property(key = "loginserver.accounts.autocreate", defaultValue = "true")
 	public static boolean			ACCOUNT_AUTO_CREATION;
 
+	public static void loadAionDream(String configurationFileLocation)
+	{
+		try
+		{
+			Properties props = PropertiesUtils.load(new File(configurationFileLocation));
+			ConfigurableProcessor.process(Config.class, props);
+		}
+		catch(Exception e)
+		{
+			log.fatal("Cannot load AD configuration file", e);
+		}
+	}
+	
 	/**
 	 * Load configs from files.
 	 */
