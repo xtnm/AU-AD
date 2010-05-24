@@ -126,7 +126,7 @@
 	</portal>
 	
 	<!-- Tahabata Abyss Gate -->
-	<portal npcid="730211" instance="true" minlevel="41" maxlevel="48" group="true">
+	<portal npcid="730211" instance="true" minlevel="49" maxlevel="50" group="true">
 		<entrypoint mapid="210040000" x="1977.4312" y="2586.454" z="140.32721"/>
 		<exitpoint mapid="300040000" x="1188.80707" y="1241.4151" z="143.85065"/>
 	</portal>
