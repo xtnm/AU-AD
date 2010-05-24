@@ -108,12 +108,12 @@ public class GameServer
 	{
 		long start = System.currentTimeMillis();
 		
+		initUtilityServicesAndConfig();
+		
 		for(String arg : args)
 		{
 			log.info("Argument: " + arg);
 		}
-		
-		initUtilityServicesAndConfig();
 
 		GameServer gs = new GameServer();
 		// Set all players is offline
