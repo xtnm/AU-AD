@@ -99,6 +99,7 @@ public class Config
 			Properties props = PropertiesUtils.load(new File(configurationFileLocation));
 			ConfigurableProcessor.process(Config.class, props);
 			ConfigurableProcessor.process(DatabaseConfig.class, props);
+			DatabaseConfig.DATABASE_URL = props.getProperty("database.loginserver.url");
 		}
 		catch(Exception e)
 		{
