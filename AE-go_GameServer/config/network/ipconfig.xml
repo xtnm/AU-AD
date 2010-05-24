@@ -25,7 +25,7 @@
     Examples: <ipconfig default="google.de">
 -->
 
-<ipconfig default="87.98.183.171">
+<ipconfig default="178.32.104.166">
 
     <!--
         IANA-reserved private IPv4 network ranges
