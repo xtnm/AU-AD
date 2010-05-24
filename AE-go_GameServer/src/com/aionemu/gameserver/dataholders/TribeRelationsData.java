@@ -79,6 +79,20 @@ public class TribeRelationsData
 	
 	/**
 	 * 
+	 * @param tribeName
+	 * @return
+	 */
+	public boolean hasHostileRelations(String tribeName)
+	{
+		Tribe tribe = tribeNameMap.get(tribeName);
+		if(tribe == null)
+			return false;
+		HostileRelations hostileRelations = tribe.getHostileRelations();
+		return hostileRelations != null && !hostileRelations.getTo().isEmpty();
+	}
+	
+	/**
+	 * 
 	 * @param tribeName1
 	 * @param tribeName2
 	 * @return
@@ -91,6 +105,7 @@ public class TribeRelationsData
 		AggroRelations aggroRelations = tribe1.getAggroRelations();
 		if(aggroRelations == null)
 			return false;
+		
 		return aggroRelations.getTo().contains(tribeName2);
 	}
 	

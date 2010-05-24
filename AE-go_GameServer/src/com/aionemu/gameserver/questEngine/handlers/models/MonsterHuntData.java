@@ -41,7 +41,9 @@ public class MonsterHuntData extends QuestScriptData
 	@XmlElement(name = "monster_infos", required = true)
 	protected List<MonsterInfo>	monsterInfos;
 	@XmlAttribute(name = "start_npc_id")
-	protected int					startNpcId;
+	protected int	startNpcId;
+	@XmlAttribute(name = "end_npc_id")
+	protected int	endNpcId;
 
 	@Override
 	public void register(QuestEngine questEngine)
@@ -49,7 +51,7 @@ public class MonsterHuntData extends QuestScriptData
 		FastMap<Integer, MonsterInfo> monsterInfo = new FastMap<Integer, MonsterInfo>();
 		for(MonsterInfo mi : monsterInfos)
 			monsterInfo.put(mi.getNpcId(), mi);
-		MonsterHunt template = new MonsterHunt(id, startNpcId, monsterInfo);
+		MonsterHunt template = new MonsterHunt(id, startNpcId, endNpcId, monsterInfo);
 		questEngine.addQuestHandler(template);
 	}
 

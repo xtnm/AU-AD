@@ -125,19 +125,31 @@ public class Npc extends Creature
 	public boolean isAggressive()
 	{
 		String currentTribe = getObjectTemplate().getTribe();
-		return DataManager.TRIBE_RELATIONS_DATA.hasAggressiveRelations(currentTribe) || isGuard();
+		return DataManager.TRIBE_RELATIONS_DATA.hasAggressiveRelations(currentTribe) || isGuard() || isHostile();
+	}
+	
+	public boolean isHostile()
+	{
+		String currentTribe = getObjectTemplate().getTribe();
+		return DataManager.TRIBE_RELATIONS_DATA.hasHostileRelations(currentTribe);
 	}
 	
 	@Override
 	public boolean isAggressiveTo(Creature creature)
 	{
-		return creature.isAggroFrom(this);
+		return creature.isAggroFrom(this) || creature.isHostileFrom(this);
 	}
 	
 	@Override
 	public boolean isAggroFrom(Npc npc)
 	{
 		return DataManager.TRIBE_RELATIONS_DATA.isAggressiveRelation(npc.getTribe(), getTribe());
+	}
+	
+	@Override
+	public boolean isHostileFrom(Npc npc)
+	{
+		return DataManager.TRIBE_RELATIONS_DATA.isHostileRelation(npc.getTribe(), getTribe());
 	}
 
 	/**

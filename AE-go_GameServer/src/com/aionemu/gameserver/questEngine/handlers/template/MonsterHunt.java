@@ -32,18 +32,23 @@ import com.aionemu.gameserver.questEngine.model.QuestStatus;
  */
 public class MonsterHunt extends QuestHandler
 {
-	private final int							questId;
-	private final int							startNpc;
+	private final int				questId;
+	private final int				startNpc;
+	private final int				endNpc;
 	private final FastMap<Integer, MonsterInfo>	monsterInfo;
 
 	/**
 	 * @param questId
 	 */
-	public MonsterHunt(int questId, int startNpc, FastMap<Integer, MonsterInfo> monsterInfo)
+	public MonsterHunt(int questId, int startNpc, int endNpc, FastMap<Integer, MonsterInfo> monsterInfo)
 	{
 		super(questId);
 		this.questId = questId;
 		this.startNpc = startNpc;
+		if (endNpc != 0)
+			this.endNpc = endNpc;
+		else
+			this.endNpc = startNpc;
 		this.monsterInfo = monsterInfo;
 	}
 
@@ -54,6 +59,8 @@ public class MonsterHunt extends QuestHandler
 		qe.setNpcQuestData(startNpc).addOnTalkEvent(questId);
 		for(int monsterId : monsterInfo.keySet())
 			qe.setNpcQuestData(monsterId).addOnKillEvent(questId);
+		if (endNpc != startNpc)
+			qe.setNpcQuestData(endNpc).addOnTalkEvent(questId);
 	}
 
 	@Override
@@ -64,41 +71,45 @@ public class MonsterHunt extends QuestHandler
 		if(env.getVisibleObject() instanceof Npc)
 			targetId = ((Npc) env.getVisibleObject()).getNpcId();
 		QuestState qs = player.getQuestStateList().getQuestState(questId);
-		if(targetId == startNpc)
+		if(qs == null || qs.getStatus() == QuestStatus.NONE)
 		{
-			if(qs == null || qs.getStatus() == QuestStatus.NONE)
+			if(targetId == startNpc)
 			{
 				if(env.getDialogId() == 25)
 					return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1011);
 				else
 					return defaultQuestStartDialog(env);
 			}
-			else if(qs.getStatus() == QuestStatus.START)
+		}
+		else if(qs.getStatus() == QuestStatus.START)
+		{
+			for(MonsterInfo mi : monsterInfo.values())
 			{
-				for(MonsterInfo mi : monsterInfo.values())
-				{
-					if(mi.getMaxKill() < qs.getQuestVarById(mi.getVarId()))
-						return false;
-				}
-				if(env.getDialogId() == 25)
-					return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1352);
-				else if(env.getDialogId() == 1009)
-				{
-					qs.setStatus(QuestStatus.REWARD);
-					qs.setQuestVarById(0, qs.getQuestVarById(0) + 1);
-					updateQuestStatus(player, qs);
-					return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 5);
-				}
-				else
-					return defaultQuestEndDialog(env);
+				if(mi.getMaxKill() < qs.getQuestVarById(mi.getVarId()))
+					return false;
 			}
-			else if(qs.getStatus() == QuestStatus.REWARD)
+			if (targetId == endNpc)
 			{
+			if(env.getDialogId() == 25)
+				return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1352);
+			else if(env.getDialogId() == 1009)
+			{
+				qs.setStatus(QuestStatus.REWARD);
+				qs.setQuestVarById(0, qs.getQuestVarById(0) + 1);
+				updateQuestStatus(player, qs);
+				return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 5);
+			}
+			else
 				return defaultQuestEndDialog(env);
 			}
 		}
-		return false;
+		else if(qs.getStatus() == QuestStatus.REWARD && targetId == endNpc)
+		{
+			return defaultQuestEndDialog(env);
+		}
+	return false;
 	}
+	
 
 	@Override
 	public boolean onKillEvent(QuestEnv env)

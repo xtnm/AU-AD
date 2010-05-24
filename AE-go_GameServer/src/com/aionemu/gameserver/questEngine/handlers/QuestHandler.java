@@ -171,6 +171,11 @@ public class QuestHandler
 	{
 		return false;
 	}
+	
+	public boolean onQuestFinishEvent(QuestEnv questEnv)
+	{
+		return false;
+	}
 
 	public void register()
 	{
