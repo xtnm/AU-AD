@@ -23,6 +23,7 @@ import org.apache.log4j.Logger;
 
 import com.aionemu.commons.configuration.ConfigurableProcessor;
 import com.aionemu.commons.configuration.Property;
+import com.aionemu.commons.database.DatabaseConfig;
 import com.aionemu.commons.utils.PropertiesUtils;
 import com.aionemu.loginserver.utils.Util;
 
@@ -97,6 +98,7 @@ public class Config
 		{
 			Properties props = PropertiesUtils.load(new File(configurationFileLocation));
 			ConfigurableProcessor.process(Config.class, props);
+			ConfigurableProcessor.process(DatabaseConfig.class, props);
 		}
 		catch(Exception e)
 		{
