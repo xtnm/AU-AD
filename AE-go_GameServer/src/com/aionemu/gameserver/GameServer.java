@@ -235,6 +235,9 @@ public class GameServer
 		LoggingService.init();
 		// init config
 		Config.load();
+		// Second should be database factory
+		Util.printSection("DataBase");
+		DatabaseFactory.init();
 		// Initialize DAOs
 		DAOManager.init();
 		// Initialize thread pools
