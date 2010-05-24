@@ -29,6 +29,7 @@ import com.aionemu.gameserver.model.Race;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_MESSAGE;
+import com.aionemu.gameserver.services.PlayerService;
 import com.aionemu.gameserver.services.TeleportService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.google.inject.Inject;
@@ -48,6 +49,9 @@ public class AdminCommandChatHandler implements ChatHandler
 	
 	@Inject
 	private TeleportService teleportService;
+	
+	@Inject
+	private PlayerService playerService;
 
 	AdminCommandChatHandler()
 	{
@@ -207,6 +211,11 @@ public class AdminCommandChatHandler implements ChatHandler
 						}
 					}
 					PacketSendUtility.sendMessage(sender, "[Asmodiens] <GM> " + sender.getName() + " : " + commandAndParams[1]);
+				}
+				else if(command.equals("save"))
+				{
+					playerService.storePlayer(sender);
+					PacketSendUtility.sendMessage(sender, "Personnage sauvegarde !");
 				}
 				else
 				{
