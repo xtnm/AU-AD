@@ -29,17 +29,20 @@ import javolution.util.FastMap;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.log4j.Logger;
 
+import com.aionemu.commons.callbacks.EnhancedObject;
 import com.aionemu.commons.database.dao.DAOManager;
 import com.aionemu.gameserver.dao.BrokerDAO;
 import com.aionemu.gameserver.dao.InventoryDAO;
 import com.aionemu.gameserver.model.Race;
 import com.aionemu.gameserver.model.broker.BrokerItemMask;
 import com.aionemu.gameserver.model.broker.BrokerMessages;
+import com.aionemu.gameserver.model.broker.BrokerPlayerCache;
 import com.aionemu.gameserver.model.broker.BrokerRace;
 import com.aionemu.gameserver.model.gameobjects.BrokerItem;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.PersistentState;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.model.gameobjects.player.listeners.PlayerLoggedOutListener;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_BROKER_ITEMS;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_BROKER_REGISTERED_LIST;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_BROKER_REGISTRATION_SERVICE;
@@ -60,20 +63,22 @@ import com.google.inject.Inject;
  */
 public class BrokerService
 {
-	private Map<Integer, BrokerItem>	elyosBrokerItems		= new FastMap<Integer, BrokerItem>().shared();
-	private Map<Integer, BrokerItem>	elyosSettledItems		= new FastMap<Integer, BrokerItem>().shared();
-	private Map<Integer, BrokerItem>	asmodianBrokerItems		= new FastMap<Integer, BrokerItem>().shared();
-	private Map<Integer, BrokerItem>	asmodianSettledItems	= new FastMap<Integer, BrokerItem>().shared();
+	private Map<Integer, BrokerItem>		elyosBrokerItems		= new FastMap<Integer, BrokerItem>().shared();
+	private Map<Integer, BrokerItem>		elyosSettledItems		= new FastMap<Integer, BrokerItem>().shared();
+	private Map<Integer, BrokerItem>		asmodianBrokerItems		= new FastMap<Integer, BrokerItem>().shared();
+	private Map<Integer, BrokerItem>		asmodianSettledItems	= new FastMap<Integer, BrokerItem>().shared();
 
-	private static final Logger			log						= Logger.getLogger(BrokerService.class);
+	private static final Logger				log						= Logger.getLogger(BrokerService.class);
 
-	private final int					DELAY_BROKER_SAVE		= 6000;
-	private final int					DELAY_BROKER_CHECK		= 60000;
+	private final int						DELAY_BROKER_SAVE		= 6000;
+	private final int						DELAY_BROKER_CHECK		= 60000;
 
-	private BrokerPeriodicTaskManager	saveManager;
+	private BrokerPeriodicTaskManager		saveManager;
 
 	@Inject
-	private World						world;
+	private World							world;
+
+	private Map<Integer, BrokerPlayerCache>	playerBrokerCache		= new FastMap<Integer, BrokerPlayerCache>().shared();
 
 	public BrokerService()
 	{
@@ -140,10 +145,10 @@ public class BrokerService
 	public void showRequestedItems(Player player, int clientMask, int sortType, int startPage)
 	{
 		BrokerItem[] searchItems = null;
-		int playerBrokerMaskCache = player.getBrokerMaskCache();
+		int playerBrokerMaskCache = getPlayerMask(player);
 		BrokerItemMask brokerMaskById = BrokerItemMask.getBrokerMaskById(clientMask);
 		boolean isChidrenMask = brokerMaskById.isChildrenMask(playerBrokerMaskCache);
-		if(player.getBrokerListCache().length == 0 || !isChidrenMask)
+		if(getFilteredItems(player).length == 0 || !isChidrenMask)
 		{
 			searchItems = getItemsByMask(player, clientMask, false);
 		}
@@ -152,15 +157,15 @@ public class BrokerService
 			searchItems = getItemsByMask(player, clientMask, true);
 		}
 		else
-			searchItems = player.getBrokerListCache();
+			searchItems = getFilteredItems(player);
 
 		if(searchItems == null || searchItems.length < 0)
 			return;
 
 		int totalSearchItemsCount = searchItems.length;
 
-		player.setBrokerSortTypeCache(sortType);
-		player.setBrokerStartPageCache(startPage);
+		getPlayerCache(player).setBrokerSortTypeCache(sortType);
+		getPlayerCache(player).setBrokerStartPageCache(startPage);
 
 		sortBrokerItems(searchItems, sortType);
 		searchItems = getRequestedPage(searchItems, startPage);
@@ -176,15 +181,13 @@ public class BrokerService
 	 */
 	private BrokerItem[] getItemsByMask(Player player, int clientMask, boolean cached)
 	{
-		
-		
 		List<BrokerItem> searchItems = new ArrayList<BrokerItem>();
 
 		BrokerItemMask brokerMask = BrokerItemMask.getBrokerMaskById(clientMask);
 
 		if(cached)
 		{
-			BrokerItem[] brokerItems = player.getBrokerListCache();
+			BrokerItem[] brokerItems = getFilteredItems(player);
 			if(brokerItems == null)
 				return null;
 
@@ -215,11 +218,10 @@ public class BrokerService
 				}
 			}
 		}
-		
 
 		BrokerItem[] items = searchItems.toArray(new BrokerItem[searchItems.size()]);
-		player.setBrokerListCache(items);
-		player.setBrokerMaskCache(clientMask);
+		getPlayerCache(player).setBrokerListCache(items);
+		getPlayerCache(player).setBrokerMaskCache(clientMask);
 
 		return items;
 	}
@@ -303,7 +305,7 @@ public class BrokerService
 			return;
 		}
 
-		boolean isEmptyCache = player.getBrokerListCache().length == 0;
+		boolean isEmptyCache = getFilteredItems(player).length == 0;
 		Race playerRace = player.getCommonData().getRace();
 
 		BrokerItem buyingItem = getRaceBrokerItems(playerRace).get(itemUniqueId);
@@ -322,8 +324,8 @@ public class BrokerService
 
 		if(!isEmptyCache)
 		{
-			BrokerItem[] newCache = (BrokerItem[]) ArrayUtils.removeElement(player.getBrokerListCache(), buyingItem);
-			player.setBrokerListCache(newCache);
+			BrokerItem[] newCache = (BrokerItem[]) ArrayUtils.removeElement(getFilteredItems(player), buyingItem);
+			getPlayerCache(player).setBrokerListCache(newCache);
 		}
 
 		player.getInventory().decreaseKinah(price);
@@ -336,8 +338,8 @@ public class BrokerService
 
 		PacketSendUtility.sendPacket(player, new SM_INVENTORY_UPDATE(Collections.singletonList(boughtItem)));
 
-		showRequestedItems(player, player.getBrokerMaskCache(), player.getBrokerSortTypeCache(), player
-			.getBrokerStartPageCache());
+		showRequestedItems(player, getPlayerCache(player).getBrokerMaskCache(), getPlayerCache(player)
+			.getBrokerSortTypeCache(), getPlayerCache(player).getBrokerStartPageCache());
 	}
 
 	/**
@@ -565,7 +567,7 @@ public class BrokerService
 						}
 						saveManager.add(new BrokerOpSaveTask(item));
 						PacketSendUtility.sendPacket(player, new SM_INVENTORY_UPDATE(Collections
-							.singletonList(resultItem)));					
+							.singletonList(resultItem)));
 					}
 					else
 						itemsLeft = true;
@@ -631,6 +633,51 @@ public class BrokerService
 				break;
 			}
 		}
+	}
+	
+	/**
+	 * 
+	 * @param player
+	 * @return
+	 */
+	private BrokerPlayerCache getPlayerCache(Player player)
+	{
+		BrokerPlayerCache cacheEntry = playerBrokerCache.get(player.getObjectId());
+		if(cacheEntry == null)
+		{
+			cacheEntry = new BrokerPlayerCache();
+			playerBrokerCache.put(player.getObjectId(), cacheEntry);
+			((EnhancedObject)player).addCallback(new PlayerLoggedOutListener(){
+				
+				@Override
+				protected void onLoggedOut(Player loggedOutPlayer)
+				{
+					playerBrokerCache.remove(loggedOutPlayer.getObjectId());
+					
+				}
+			});
+		}
+		return cacheEntry;
+	}
+
+	/**
+	 * 
+	 * @param player
+	 * @return
+	 */
+	private int getPlayerMask(Player player)
+	{
+		return getPlayerCache(player).getBrokerMaskCache();
+	}
+
+	/**
+	 * 
+	 * @param player
+	 * @return
+	 */
+	private BrokerItem[] getFilteredItems(Player player)
+	{
+		return getPlayerCache(player).getBrokerListCache();
 	}
 
 	/**

@@ -459,7 +459,8 @@ public class ItemTemplate extends VisibleObjectTemplate
 	void afterUnmarshal (Unmarshaller u, Object parent)
 	{
 		setItemId(Integer.parseInt(id));
-		String[] parts = restrict.split(restrict);
+		String[] parts = restrict.split(",");
+		restricts = new int[12];
 		for(int i = 0; i < parts.length; i++)
 		{
 			restricts[i] = Integer.parseInt(parts[i]);
