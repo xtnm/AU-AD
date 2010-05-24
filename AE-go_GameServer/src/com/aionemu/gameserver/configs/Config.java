@@ -56,7 +56,7 @@ public class Config
 	{
 		try
 		{
-			Properties[] props = PropertiesUtils.load(specifiedConfigPath, "");
+			Properties props = PropertiesUtils.load(specifiedConfigPath);
 			ConfigurableProcessor.process(Config.class, props);
 			ConfigurableProcessor.process(AdminConfig.class, props);
 			ConfigurableProcessor.process(LegionConfig.class, props);
