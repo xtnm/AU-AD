@@ -75,6 +75,8 @@ public class GameServer
 	private static final Logger	log	= Logger.getLogger(GameServer.class);
 
 	private Injector			injector;
+	
+	private static String 				configurationFileLocation;
 
 	/**
 	 * Creates instance of GameServer, which includes loading static data, initializing world.
@@ -105,7 +107,12 @@ public class GameServer
 	public static void main(String[] args)
 	{
 		long start = System.currentTimeMillis();
-
+		
+		for(String arg : args)
+		{
+			log.info("Argument: " + arg);
+		}
+		
 		initUtilityServicesAndConfig();
 
 		GameServer gs = new GameServer();
@@ -228,9 +235,6 @@ public class GameServer
 		LoggingService.init();
 		// init config
 		Config.load();
-		// Second should be database factory
-		Util.printSection("DataBase");
-		DatabaseFactory.init();
 		// Initialize DAOs
 		DAOManager.init();
 		// Initialize thread pools
