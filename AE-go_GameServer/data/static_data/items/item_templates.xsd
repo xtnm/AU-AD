@@ -50,6 +50,7 @@
 		<xs:attribute name="attack_gap" type="xs:float" />
 		<xs:attribute name="desc" type="xs:int" />
 		<xs:attribute name="gender" type="xs:string" />
+		<xs:attribute name="restrict" type="xs:string" />
 		<xs:attribute name="option_slot_bonus" type="xs:int" />
 		<xs:attribute name="bonus_apply" type="xs:string" />
 		<xs:attribute name="no_enchant" type="xs:boolean" />
