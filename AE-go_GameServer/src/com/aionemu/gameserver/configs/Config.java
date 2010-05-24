@@ -23,6 +23,7 @@ import org.apache.log4j.Logger;
 
 import com.aionemu.commons.configuration.ConfigurableProcessor;
 import com.aionemu.commons.database.DatabaseConfig;
+import com.aionemu.commons.database.DatabaseFactory;
 import com.aionemu.commons.utils.PropertiesUtils;
 import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.configs.main.CacheConfig;
@@ -75,8 +76,6 @@ public class Config
 			ConfigurableProcessor.process(DatabaseConfig.class, props);
 			IPConfig.load();
 			log.info("Loaded AD Emu configuration from: " + specifiedConfigPath);
-			log.info("Using script descriptor: " + DatabaseConfig.DATABASE_SCRIPTCONTEXT_DESCRIPTOR);
-			log.info("Saving players every: " + PeriodicSaveConfig.PLAYER_GENERAL);
 		}
 		catch(Exception e)
 		{

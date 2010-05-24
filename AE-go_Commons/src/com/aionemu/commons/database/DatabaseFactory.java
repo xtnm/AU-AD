@@ -77,7 +77,7 @@ public class DatabaseFactory
 	 * Retursn minor version that is used For instance, MySQL 5.0.51 community edition returns 0
 	 */
 	private static int					databaseMinorVersion;
-
+	
 	/**
 	 * Initializes DatabaseFactory.
 	 */
@@ -87,8 +87,6 @@ public class DatabaseFactory
 		{
 			return;
 		}
-
-		DatabaseConfig.load();
 
 		try
 		{

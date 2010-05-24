@@ -234,6 +234,7 @@ public class GameServer
 		Config.loadAionDream(configurationFileLocation);
 		// Second should be database factory
 		Util.printSection("DataBase");
+		DatabaseFactory.init();
 		// Initialize DAOs
 		DAOManager.init();
 		// Initialize thread pools
