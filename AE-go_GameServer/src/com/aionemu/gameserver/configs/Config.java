@@ -75,6 +75,8 @@ public class Config
 			ConfigurableProcessor.process(DatabaseConfig.class, props);
 			IPConfig.load();
 			log.info("Loaded AD Emu configuration from: " + specifiedConfigPath);
+			log.info("Using script descriptor: " + DatabaseConfig.DATABASE_SCRIPTCONTEXT_DESCRIPTOR);
+			log.info("Saving players every: " + PeriodicSaveConfig.PLAYER_GENERAL);
 		}
 		catch(Exception e)
 		{
