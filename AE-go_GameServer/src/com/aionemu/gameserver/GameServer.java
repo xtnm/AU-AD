@@ -108,12 +108,9 @@ public class GameServer
 	{
 		long start = System.currentTimeMillis();
 		
-		initUtilityServicesAndConfig();
+		configurationFileLocation = args[0];
 		
-		for(String arg : args)
-		{
-			log.info("Argument: " + arg);
-		}
+		initUtilityServicesAndConfig();
 
 		GameServer gs = new GameServer();
 		// Set all players is offline
@@ -234,7 +231,7 @@ public class GameServer
 		// First of all we must initialize logging
 		LoggingService.init();
 		// init config
-		Config.load();
+		Config.loadAionDream(configurationFileLocation);
 		// Second should be database factory
 		Util.printSection("DataBase");
 		DatabaseFactory.init();
