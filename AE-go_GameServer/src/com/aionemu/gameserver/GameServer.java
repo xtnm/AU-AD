@@ -75,6 +75,8 @@ public class GameServer
 	private static final Logger	log	= Logger.getLogger(GameServer.class);
 
 	private Injector			injector;
+	
+	private static String 				configurationFileLocation;
 
 	/**
 	 * Creates instance of GameServer, which includes loading static data, initializing world.
@@ -105,7 +107,9 @@ public class GameServer
 	public static void main(String[] args)
 	{
 		long start = System.currentTimeMillis();
-
+		
+		configurationFileLocation = args[0];
+		
 		initUtilityServicesAndConfig();
 
 		GameServer gs = new GameServer();
@@ -227,7 +231,7 @@ public class GameServer
 		// First of all we must initialize logging
 		LoggingService.init();
 		// init config
-		Config.load();
+		Config.loadAionDream(configurationFileLocation);
 		// Second should be database factory
 		Util.printSection("DataBase");
 		DatabaseFactory.init();

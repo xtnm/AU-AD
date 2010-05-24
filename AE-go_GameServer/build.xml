@@ -93,6 +93,7 @@
     	<mkdir dir="${build.dist}" />
     	<mkdir dir="${build.dist.gs}" />
     	<mkdir dir="${build.dist.gs}/config" />
+    	<mkdir dir="${build.dist.gs}/config/network" />
     	<mkdir dir="${build.dist.gs}/data" />
     	<mkdir dir="${build.dist.gs}/libs" />
     	<mkdir dir="${build.dist.gs}/sql" />
@@ -116,28 +117,17 @@
         </copy>
     	
     	<copy todir="${build.dist.gs}/config">
-			<fileset dir="config">
-				<include name="*.*"/>
-			</fileset>
-		</copy>
-
-        <copy todir="${build.dist.gs}/config/administration">
-    		<fileset dir="config/administration">
-    			<include name="*.*"/>
-    		</fileset>
-    	</copy>
-    		
-        <copy todir="${build.dist.gs}/config/main">
-    		<fileset dir="config/main">
-    			<include name="*.*"/>
+    		<fileset dir="config">
+    			<include name="log4j.dtd" />
+    			<include name="log4j.xml" />
     		</fileset>
     	</copy>
     	
     	<copy todir="${build.dist.gs}/config/network">
-			<fileset dir="config/network">
-				<include name="*.*"/>
-			</fileset>
-		</copy>
+    		<fileset dir="config/network">
+    			<include name="ipconfig.xml" />
+    		</fileset>
+    	</copy>
     	
         <copy todir="${build.dist.gs}/data">
             <fileset dir="data">

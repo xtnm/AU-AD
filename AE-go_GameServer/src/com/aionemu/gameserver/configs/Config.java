@@ -16,11 +16,14 @@
  */
 package com.aionemu.gameserver.configs;
 
+import java.io.File;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
 
 import com.aionemu.commons.configuration.ConfigurableProcessor;
+import com.aionemu.commons.database.DatabaseConfig;
+import com.aionemu.commons.database.DatabaseFactory;
 import com.aionemu.commons.utils.PropertiesUtils;
 import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.configs.main.CacheConfig;
@@ -50,6 +53,37 @@ public class Config
 	 */
 	protected static final Logger	log	= Logger.getLogger(Config.class);
 
+	public static void loadAionDream(String specifiedConfigPath)
+	{
+		try
+		{
+			Properties props = PropertiesUtils.load(specifiedConfigPath);
+			ConfigurableProcessor.process(Config.class, props);
+			ConfigurableProcessor.process(AdminConfig.class, props);
+			ConfigurableProcessor.process(LegionConfig.class, props);
+			ConfigurableProcessor.process(RateConfig.class, props);
+			ConfigurableProcessor.process(CacheConfig.class, props);
+			ConfigurableProcessor.process(ShutdownConfig.class, props);
+			ConfigurableProcessor.process(TaskManagerConfig.class, props);
+			ConfigurableProcessor.process(GroupConfig.class, props);
+			ConfigurableProcessor.process(CustomConfig.class, props);
+			ConfigurableProcessor.process(EnchantsConfig.class, props);
+			ConfigurableProcessor.process(FallDamageConfig.class, props);
+			ConfigurableProcessor.process(GSConfig.class, props);
+			ConfigurableProcessor.process(PeriodicSaveConfig.class, props);
+			ConfigurableProcessor.process(ThreadConfig.class, props);
+			ConfigurableProcessor.process(NetworkConfig.class, props);
+			ConfigurableProcessor.process(DatabaseConfig.class, props);
+			IPConfig.load();
+			log.info("Loaded AD Emu configuration from: " + specifiedConfigPath);
+		}
+		catch(Exception e)
+		{
+			log.fatal("Cannot load configuration from: " + specifiedConfigPath);
+			throw new Error("Cannot load configuration from: " + specifiedConfigPath, e);
+		}
+	}
+	
 	/**
 	 * Initialize all configs in com.aionemu.gameserver.configs package
 	 */
