@@ -71,7 +71,6 @@ public class IPConfig
 			ranges.add(new IPRange("10.0.0.0", "10.255.255.255", "10.0.0.0"));
 			ranges.add(new IPRange("172.16.0.0", "172.16.255.255", "172.16.0.0"));
 			ranges.add(new IPRange("192.168.0.0", "192.168.255.255", "192.168.0.0"));
-			log.info("GameServer successfully bound to " + networkBindAddress);
 		}
 		catch(Exception e)
 		{

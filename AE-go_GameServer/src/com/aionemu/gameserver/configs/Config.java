@@ -76,6 +76,7 @@ public class Config
 			ConfigurableProcessor.process(DatabaseConfig.class, props);
 			IPConfig.loadAionDream(props.getProperty("gameserver.network.bindip"));
 			log.info("Loaded AD Emu configuration from: " + specifiedConfigPath);
+			log.info("GameServer bound to: " + props.getProperty("gameserver.network.bindip"));
 		}
 		catch(Exception e)
 		{
