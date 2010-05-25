@@ -27,7 +27,6 @@ import com.aionemu.gameserver.model.gameobjects.player.RequestResponseHandler;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_DIE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EMOTION;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_LEVEL_UPDATE;
-import com.aionemu.gameserver.network.aion.serverpackets.SM_MESSAGE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_QUESTION_WINDOW;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS.TYPE;
@@ -50,7 +49,7 @@ public class KiskController extends NpcController
 			List<Player> members = kisk.getCurrentMemberList();
 			for(Player member : members)
 			{
-				PacketSendUtility.sendPacket(member, SM_SYSTEM_MESSAGE.KISK_UNDER_ATTACK);
+				PacketSendUtility.sendPacket(member, SM_SYSTEM_MESSAGE.STR_BINDSTONE_IS_ATTACKED);
 			}
 		}
 		
@@ -67,7 +66,7 @@ public class KiskController extends NpcController
 		List<Player> members = kisk.getCurrentMemberList();
 		for(Player member : members)
 		{
-			PacketSendUtility.sendPacket(member, SM_SYSTEM_MESSAGE.KISK_DISMANTLED);
+			PacketSendUtility.sendPacket(member, SM_SYSTEM_MESSAGE.STR_BINDSTONE_IS_REMOVED);
 			member.setKisk(null);
 			sp.getTeleportService().sendSetBindPoint(member);
 		}
@@ -83,7 +82,7 @@ public class KiskController extends NpcController
 		List<Player> members = kisk.getCurrentMemberList();
 		for(Player member : members)
 		{
-			PacketSendUtility.sendPacket(member, SM_SYSTEM_MESSAGE.KISK_DESTROYED);
+			PacketSendUtility.sendPacket(member, SM_SYSTEM_MESSAGE.STR_BINDSTONE_IS_DESTROYED);
 		}
 		
 		removeKisk(kisk);
@@ -121,7 +120,7 @@ public class KiskController extends NpcController
 		
 		if (player.getKisk() == kisk)
 		{
-			PacketSendUtility.sendPacket(player, new SM_MESSAGE(0, null, "You are already bound to this kisk.", ChatType.ANNOUNCEMENTS));
+			PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.STR_BINDSTONE_ALREADY_REGISTERED);
 			return;
 		}
 		
@@ -137,7 +136,7 @@ public class KiskController extends NpcController
 					// Check again if it's full (If they waited to press OK)
 					if (!kisk.canBind(responder))
 					{
-						PacketSendUtility.sendPacket(responder, SM_SYSTEM_MESSAGE.CANT_USE_KISK);
+						PacketSendUtility.sendPacket(responder, SM_SYSTEM_MESSAGE.STR_CANNOT_REGISTER_BINDSTONE_HAVE_NO_AUTHORITY);
 						return;
 					}
 					
@@ -148,7 +147,7 @@ public class KiskController extends NpcController
 					sp.getTeleportService().sendSetBindPoint(responder);
 					
 					// Send System Message
-					PacketSendUtility.sendPacket(responder, SM_SYSTEM_MESSAGE.KISK_REGISTERED_BIND_POINT);
+					PacketSendUtility.sendPacket(responder, SM_SYSTEM_MESSAGE.STR_BINDSTONE_REGISTER);
 					
 					// Send Animated Bind Flash
 					PacketSendUtility.broadcastPacket(responder, new SM_LEVEL_UPDATE(responder.getObjectId(), 2, responder.getCommonData().getLevel()), true);
@@ -169,11 +168,11 @@ public class KiskController extends NpcController
 		}
 		else if (kisk.getCurrentMemberCount() >= kisk.getMaxMembers())
 		{
-			PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.KISK_FULL);
+			PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.STR_CANNOT_REGISTER_BINDSTONE_FULL);
 		}
 		else
 		{
-			PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.CANT_USE_KISK);
+			PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.STR_CANNOT_REGISTER_BINDSTONE_HAVE_NO_AUTHORITY);
 		}
 	}
 	
