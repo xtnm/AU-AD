@@ -17,10 +17,12 @@
 package com.aionemu.gameserver.model.trade;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
+import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
-import com.aionemu.gameserver.services.ItemService;
 
 /**
  * @author ATracer
@@ -28,15 +30,16 @@ import com.aionemu.gameserver.services.ItemService;
  */
 public class Exchange
 {
-	private Player activeplayer;
-	private Player targetPlayer;
+	private Player						activeplayer;
+	private Player						targetPlayer;
 
-	private boolean confirmed;
-	private boolean locked;
+	private boolean						confirmed;
+	private boolean						locked;
 
-	private int kinahCount;
+	private int							kinahCount;
 
-	private Map<Integer, ExchangeItem> items = new HashMap<Integer, ExchangeItem>();
+	private Map<Integer, ExchangeItem>	items			= new HashMap<Integer, ExchangeItem>();
+	private Set<Item>					itemsToUpdate	= new HashSet<Item>();
 
 	public Exchange(Player activeplayer, Player targetPlayer)
 	{
@@ -56,17 +59,6 @@ public class Exchange
 	public boolean isConfirmed()
 	{
 		return confirmed;
-	}
-
-	/**
-	 * @param itemService
-	 */
-	public void cancel(ItemService itemService)
-	{
-		for(ExchangeItem item : items.values())
-		{
-			itemService.releaseItemId(item.getNewItem());
-		}
 	}
 
 	public void lock()
@@ -133,5 +125,22 @@ public class Exchange
 	public boolean isExchangeListFull()
 	{
 		return items.size() > 18;
+	}
+
+	/**
+	 * @return the itemsToUpdate
+	 */
+	public Set<Item> getItemsToUpdate()
+	{
+		return itemsToUpdate;
+	}
+	
+	/**
+	 * 
+	 * @param item
+	 */
+	public void addItemToUpdate(Item item)
+	{
+		itemsToUpdate.add(item);
 	}
 }

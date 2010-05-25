@@ -18,18 +18,22 @@ package com.aionemu.gameserver.services;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
+import com.aionemu.commons.database.dao.DAOManager;
+import com.aionemu.gameserver.dao.InventoryDAO;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.player.Storage;
-import com.aionemu.gameserver.model.items.ItemStone;
 import com.aionemu.gameserver.model.trade.Exchange;
 import com.aionemu.gameserver.model.trade.ExchangeItem;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_DELETE_ITEM;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EXCHANGE_ADD_ITEM;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EXCHANGE_ADD_KINAH;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EXCHANGE_CONFIRMATION;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EXCHANGE_REQUEST;
 import com.aionemu.gameserver.restrictions.RestrictionsManager;
+import com.aionemu.gameserver.taskmanager.AbstractFIFOPeriodicTaskManager;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.google.inject.Inject;
 
@@ -40,9 +44,21 @@ import com.google.inject.Inject;
 public class ExchangeService
 {
 	@Inject
-	private ItemService itemService;
+	private ItemService					itemService;
 
-	private Map<Integer, Exchange> exchanges = new HashMap<Integer, Exchange>();
+	private Map<Integer, Exchange>		exchanges			= new HashMap<Integer, Exchange>();
+
+	private ExchangePeriodicTaskManager	saveManager;
+
+	private final int					DELAY_EXCHANGE_SAVE	= 5000;
+	
+	/**
+	 * Default constructor
+	 */
+	public ExchangeService()
+	{
+		saveManager = new ExchangePeriodicTaskManager(DELAY_EXCHANGE_SAVE);
+	}
 
 	/**
 	 * @param objectId
@@ -159,22 +175,17 @@ public class ExchangeService
 		//item was not added previosly
 		if(exchangeItem == null)
 		{
-			Item newItem = itemService.newItem(item.getItemTemplate().getTemplateId(), itemCount);
+			Item newItem = null;
+			if(itemCount < item.getItemCount())
+			{
+				newItem = itemService.newItem(item.getItemId(), itemCount);
+			}
+			else
+			{
+				newItem = item;
+			}
 			exchangeItem = new ExchangeItem(itemObjId, itemCount, newItem);
 			currentExchange.addItem(itemObjId, exchangeItem);
-			if(item.hasManaStones())
-			{
-				for(ItemStone stone : item.getItemStones())
-				{
-					itemService.addManaStone(newItem, stone.getItemId());
-				}
-			}
-			if(item.getGodStone() != null)
-			{
-				newItem.addGodStone(item.getGodStone().getItemId());
-			}
-			if(item.getEchantLevel() > 0)
-				newItem.setEchantLevel(item.getEchantLevel());
 			actuallAddCount = itemCount;
 		}
 		//item was already added
@@ -186,14 +197,12 @@ public class ExchangeService
 				return;
 
 			int possibleToAdd = item.getItemCount() - exchangeItem.getItemCount();
-
 			actuallAddCount = itemCount > possibleToAdd ? possibleToAdd : itemCount;	
-
-			exchangeItem.addCount(actuallAddCount);		
+			exchangeItem.addCount(actuallAddCount);	
 		}	
 
-		PacketSendUtility.sendPacket(activePlayer, new SM_EXCHANGE_ADD_ITEM(0, exchangeItem.getNewItem()));
-		PacketSendUtility.sendPacket(partner, new SM_EXCHANGE_ADD_ITEM(1, exchangeItem.getNewItem()));
+		PacketSendUtility.sendPacket(activePlayer, new SM_EXCHANGE_ADD_ITEM(0, exchangeItem.getItem()));
+		PacketSendUtility.sendPacket(partner, new SM_EXCHANGE_ADD_ITEM(1, exchangeItem.getItem()));
 	}
 
 	/**
@@ -215,14 +224,6 @@ public class ExchangeService
 	 */
 	public void cancelExchange(Player activePlayer)
 	{
-		Exchange exchange1 = getCurrentExchange(activePlayer);
-		if(exchange1 != null)
-			exchange1.cancel(itemService);
-
-		Exchange exchange2 = getCurrentParnterExchange(activePlayer);
-		if(exchange2 != null)
-			exchange2.cancel(itemService);
-
 		Player currentParter = getCurrentParter(activePlayer);;		
 		cleanupExchanges(activePlayer, currentParter);	
 		if(currentParter != null)
@@ -253,6 +254,7 @@ public class ExchangeService
 	private void performTrade(Player activePlayer, Player currentPartner)
 	{
 		//TODO message here
+		//TODO release item id if return
 		if(!validateExchange(activePlayer, currentPartner))
 			return;
 
@@ -267,8 +269,11 @@ public class ExchangeService
 		removeItemsFromInventory(activePlayer, exchange1);
 		removeItemsFromInventory(currentPartner, exchange2);
 
-		putItemToInventory(currentPartner, exchange1);
-		putItemToInventory(activePlayer, exchange2);	
+		putItemToInventory(currentPartner, exchange1, exchange2);
+		putItemToInventory(activePlayer, exchange2, exchange1);
+
+		saveManager.add(new ExchangeOpSaveTask(exchange1.getActiveplayer().getObjectId(), exchange2.getActiveplayer()
+			.getObjectId(), exchange1.getItemsToUpdate(), exchange2.getItemsToUpdate()));
 	}
 
 	/**
@@ -301,13 +306,25 @@ public class ExchangeService
 
 		for(ExchangeItem exchangeItem : exchange.getItems().values())
 		{
-			int itemObjId = exchangeItem.getItemObjId();
-			Item itemInInventory = inventory.getItemByObjId(itemObjId);
+			Item item = exchangeItem.getItem();
+			Item itemInInventory = inventory.getItemByObjId(exchangeItem.getItemObjId());
+			int itemCount = exchangeItem.getItemCount();
 
-			int itemCount = exchangeItem.getNewItem().getItemCount();			
-			inventory.decreaseItemCount(itemInInventory, itemCount);	
+			if(itemCount < itemInInventory.getItemCount())
+			{
+				inventory.decreaseItemCount(itemInInventory, itemCount);
+				exchange.addItemToUpdate(item);
+			}
+			else
+			{
+				inventory.removeFromBag(itemInInventory, false);
+				exchangeItem.setItem(itemInInventory);
+				itemService.releaseItemId(item);
+				PacketSendUtility.sendPacket(player, new SM_DELETE_ITEM(itemInInventory.getObjectId()));
+			}			
 		}
 		player.getInventory().decreaseKinah(exchange.getKinahCount());
+		exchange.addItemToUpdate(player.getInventory().getKinahItem());
 	}
 
 	/**
@@ -333,16 +350,95 @@ public class ExchangeService
 	/**
 	 * 
 	 * @param player
-	 * @param exchange
+	 * @param exchange1
+	 * @param exchange2
 	 */
-	private void putItemToInventory(Player player, Exchange exchange)
+	private void putItemToInventory(Player player, Exchange exchange1, Exchange exchange2)
 	{
-		for(ExchangeItem exchangeItem : exchange.getItems().values())
+		for(ExchangeItem exchangeItem : exchange1.getItems().values())
 		{
-			Item itemToPut = exchangeItem.getNewItem();
+			Item itemToPut = exchangeItem.getItem();
+			itemToPut.setEquipmentSlot(0);
 			player.getInventory().putToBag(itemToPut);
 			itemService.updateItem(player, itemToPut, true);
+			exchange2.addItemToUpdate(itemToPut);
 		}	
-		player.getInventory().increaseKinah(exchange.getKinahCount());
+		int kinahToExchange = exchange1.getKinahCount();
+		if(kinahToExchange > 0)
+		{
+			player.getInventory().increaseKinah(exchange1.getKinahCount());
+			exchange2.addItemToUpdate(player.getInventory().getKinahItem());
+		}	
+	}
+	
+	/**
+	 * Frequent running save task
+	 */
+	public static final class ExchangePeriodicTaskManager extends AbstractFIFOPeriodicTaskManager<ExchangeOpSaveTask>
+	{
+		private static final String	CALLED_METHOD_NAME	= "exchangeOperation()";
+
+		/**
+		 * @param period
+		 */
+		public ExchangePeriodicTaskManager(int period)
+		{
+			super(period);
+		}
+
+		@Override
+		protected void callTask(ExchangeOpSaveTask task)
+		{
+			task.run();
+		}
+
+		@Override
+		protected String getCalledMethodName()
+		{
+			return CALLED_METHOD_NAME;
+		}
+		
+		
+	}
+	
+	/**
+	 * This class is used for storing all items in one shot after any exchange operation
+	 */
+	public static final class ExchangeOpSaveTask implements Runnable
+	{
+		private int player1Id;
+		private int player2Id;
+		private Set<Item> player1Items;
+		private Set<Item> player2Items;
+
+		/**
+		 * 
+		 * @param player1Id
+		 * @param plaer2Id
+		 * @param player1Items
+		 * @param player2Items
+		 */
+		public ExchangeOpSaveTask(int player1Id, int player2Id, Set<Item> player1Items, Set<Item> player2Items)
+		{
+			this.player1Id = player1Id;
+			this.player2Id = player2Id;
+			this.player1Items = player1Items;
+			this.player2Items = player2Items;
+		}
+
+
+		@Override
+		public void run()
+		{
+			for(Item item : player1Items)
+			{
+				DAOManager.getDAO(InventoryDAO.class).store(item, player1Id);
+			}
+			
+			for(Item item : player2Items)
+			{
+				DAOManager.getDAO(InventoryDAO.class).store(item, player2Id);
+			}
+		}
 	}
 }
