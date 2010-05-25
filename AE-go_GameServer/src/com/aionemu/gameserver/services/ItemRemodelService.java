@@ -31,6 +31,12 @@ import com.aionemu.gameserver.utils.PacketSendUtility;
  */
 public class ItemRemodelService
 {
+	/**
+	 * 
+	 * @param player
+	 * @param keepItemObjId
+	 * @param extractItemObjId
+	 */
 	public void remodelItem (Player player, int keepItemObjId, int extractItemObjId)
 	{
 		Storage inventory = player.getInventory();
