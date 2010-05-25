@@ -32,6 +32,8 @@ public class Tribe
 {
 	public static final String GUARD_DARK = "GUARD_DARK";
 	public static final String GUARD_LIGHT = "GUARD";
+	public static final String GENERAL_DARK = "GENERAL_DARK";
+	public static final String GENERAL_LIGHT = "GENERAL";
 	
 	@XmlElement(name = "aggro")
 	protected AggroRelations aggroRelations;

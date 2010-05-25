@@ -188,7 +188,7 @@ public class TribeRelationsData
 		if(tribe == null)
 			return false;
 		
-		if(Tribe.GUARD_DARK.equals(tribe.getName()))
+		if(Tribe.GUARD_DARK.equals(tribe.getName()) || Tribe.GENERAL_DARK.equals(tribe.getName()))
 			return true;
 		
 		String baseTribe = tribe.getBase();
@@ -209,7 +209,7 @@ public class TribeRelationsData
 		if(tribe == null)
 			return false;
 		
-		if(Tribe.GUARD_LIGHT.equals(tribe.getName()))
+		if(Tribe.GUARD_LIGHT.equals(tribe.getName()) || Tribe.GENERAL_LIGHT.equals(tribe.getName()))
 			return true;
 		
 		String baseTribe = tribe.getBase();
