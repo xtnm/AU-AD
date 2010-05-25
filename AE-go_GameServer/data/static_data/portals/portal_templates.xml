@@ -109,7 +109,7 @@
 	
 	<!-- Azoturan Fortress -->
 	<portal npcid="700364" instance="true" minlevel="43" maxlevel="45" group="true">
-		<entrypoint mapid="210040000" x="542.84" y="7129" z="153.03"/>
+		<entrypoint mapid="210040000" x="542.84" y="712.9" z="153.03"/>
 		<exitpoint mapid="310100000" x="304.16013" y="323.43713" z="1021.4955"/>
 	</portal>
 	
