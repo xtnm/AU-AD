@@ -595,7 +595,7 @@ public abstract class Creature extends VisibleObject
 	 * @param skillId
 	 * @return
 	 */
-	public long getCoolDown(int skillId)
+	public long getSkillCoolDown(int skillId)
 	{
 		if(skillCoolDowns == null || !skillCoolDowns.containsKey(skillId))
 			return 0;
@@ -608,7 +608,7 @@ public abstract class Creature extends VisibleObject
 	 * @param skillId
 	 * @param time
 	 */
-	public void setCoolDown(int skillId, long time)
+	public void setSkillCoolDown(int skillId, long time)
 	{
 		if(skillCoolDowns == null)
 			skillCoolDowns = new FastMap<Integer, Long>().shared();
@@ -628,7 +628,7 @@ public abstract class Creature extends VisibleObject
 	 * 
 	 * @param skillId
 	 */
-	public void removeCoolDown(int skillId)
+	public void removeSkillCoolDown(int skillId)
 	{
 		if(skillCoolDowns == null)
 			return;

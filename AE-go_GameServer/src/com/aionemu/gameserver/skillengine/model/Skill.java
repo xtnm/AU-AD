@@ -155,7 +155,7 @@ public class Skill
 		int skillDuration = skillTemplate.getDuration();
 		int cooldown = skillTemplate.getCooldown();
 		if(cooldown != 0)
-			effector.setCoolDown(skillTemplate.getSkillId(), cooldown * 100 + skillDuration + System.currentTimeMillis());
+			effector.setSkillCoolDown(skillTemplate.getSkillId(), cooldown * 100 + skillDuration + System.currentTimeMillis());
 		
 		int currentStat = effector.getGameStats().getCurrentStat(StatEnum.BOOST_CASTING_TIME);
 		this.duration = skillDuration + Math.round(skillDuration * (currentStat - 100) / 100f);
