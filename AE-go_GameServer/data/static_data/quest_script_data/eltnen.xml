@@ -420,7 +420,7 @@
 	<report_to id="1359" start_npc_id="798055" end_npc_id="798051" item_id="182201324" />
 
 	<!-- 1346 Killing for Castor -->
-	<monster_hunt id="1346" start_npc_id="203966">
+	<monster_hunt id="1346" start_npc_id="203966" end_npc_id="203965">
 		<monster_infos var_id="0" npc_id="210844" max_kill="15"/>
 		<monster_infos var_id="0" npc_id="210872" max_kill="15"/>		
 		<monster_infos var_id="1" npc_id="210878" max_kill="20"/>
@@ -482,7 +482,7 @@
 
 
 	<!-- [Group] Earning Marana's Respect -->
-	<item_collecting start_npc_id="203965" id="1351" />
+	<item_collecting start_npc_id="203965" id="1351" end_npc_id="203983"/>
 
 	<!-- [Group] Siren Song -->
 		<monster_hunt start_npc_id="203965" id="1352">
@@ -609,7 +609,7 @@
 	<item_collecting id="1375" start_npc_id="203947" />
 
 	<!-- 1376 A Mountain of Trouble -->
-	<monster_hunt id="1376" start_npc_id="203947">
+	<monster_hunt id="1376" start_npc_id="203947" end_npc_id="203964">
 		<monster_infos npc_id="210986"  var_id="0" max_kill="7"/>
 		<monster_infos npc_id="210976"  var_id="0" max_kill="7"/>
 	</monster_hunt>

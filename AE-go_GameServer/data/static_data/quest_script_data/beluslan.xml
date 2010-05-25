@@ -53,7 +53,7 @@
 	<item_collecting start_npc_id="204720" id="2680"/>
 
 	<!-- Gigrite's Drakie Problem -->
-	<monster_hunt start_npc_id="204703" id="2509">
+	<monster_hunt start_npc_id="204703" id="2509" end_npc_id="204801">
 		<monster_infos var_id="0" npc_id="213020" max_kill="15"/>
 	</monster_hunt>
 
