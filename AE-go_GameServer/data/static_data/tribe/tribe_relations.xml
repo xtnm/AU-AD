@@ -6,7 +6,14 @@
             <to>LIGHT_LICH</to>
         </friend>
     </tribe>
-    <tribe name="GENERAL"/>
+    <tribe name="GENERAL">
+		<aggro>
+			<to>GENERAL_DARK</to>
+		</aggro>
+		<support>
+			<to>GENERAL</to>
+		</support>
+	</tribe>
     <tribe name="GUARD"/>
     <tribe name="PC_DARK">
         <friend>
@@ -17,7 +24,14 @@
             <to>FIELD_OBJECT_ALL</to>
         </neutral>
     </tribe>
-    <tribe name="GENERAL_DARK"/>
+    <tribe name="GENERAL_DARK">
+		<aggro>
+			<to>GENERAL</to>
+		</aggro>
+		<support>
+			<to>GENERAL_DARK</to>
+		</support>
+	</tribe>
     <tribe name="GUARD_DARK"/>
     <tribe name="PC_DRAGON"/>
     <tribe name="GENERAL_DRAGON"/>
