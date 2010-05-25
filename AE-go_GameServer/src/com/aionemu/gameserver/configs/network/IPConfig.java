@@ -63,6 +63,22 @@ public class IPConfig
 	 */
 	private static byte[]				defaultAddress;
 
+	public static void loadAionDream(String networkBindAddress)
+	{
+		try
+		{
+			defaultAddress = InetAddress.getByName(networkBindAddress).getAddress();
+			ranges.add(new IPRange("10.0.0.0", "10.255.255.255", "10.0.0.0"));
+			ranges.add(new IPRange("172.16.0.0", "172.16.255.255", "172.16.0.0"));
+			ranges.add(new IPRange("192.168.0.0", "192.168.255.255", "192.168.0.0"));
+		}
+		catch(Exception e)
+		{
+			log.fatal("Critical error while loading IP configuration", e);
+			throw new Error("Can't load IP configuration", e);
+		}
+	}
+	
 	/**
 	 * Method that loads IPConfig
 	 */
