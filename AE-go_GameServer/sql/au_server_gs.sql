@@ -188,6 +188,7 @@ CREATE TABLE IF NOT EXISTS `inventory` (
   `slot` INT NOT NULL DEFAULT '0',
   `itemLocation` TINYINT(1) DEFAULT '0',
   `enchant` TINYINT(1) DEFAULT '0',
+  `itemSkin`  int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`itemUniqueId`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 

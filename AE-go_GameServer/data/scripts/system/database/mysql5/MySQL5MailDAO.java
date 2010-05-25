@@ -125,7 +125,8 @@ public class MySQL5MailDAO extends MailDAO
 					int isSoulBound = rset.getInt("isSoulBound");
 					int slot = rset.getInt("slot");
 					int enchant = rset.getInt("enchant");
-					Item item = new Item(itemUniqueId, itemId, itemCount, itemColor, isEquiped == 1, isSoulBound == 1, slot, StorageType.MAILBOX.getId(), enchant);
+					int itemSkin = rset.getInt("itemSkin");
+					Item item = new Item(itemUniqueId, itemId, itemCount, itemColor, isEquiped == 1, isSoulBound == 1, slot, StorageType.MAILBOX.getId(), enchant, itemSkin);
 					item.setPersistentState(PersistentState.UPDATED);
 					mailboxItems.add(item);
 				}

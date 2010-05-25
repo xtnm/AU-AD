@@ -43,9 +43,9 @@ public class MySQL5InventoryDAO extends InventoryDAO
 {
 	private static final Logger log = Logger.getLogger(MySQL5InventoryDAO.class);
 
-	public static final String SELECT_QUERY = "SELECT `itemUniqueId`, `itemId`, `itemCount`, `itemColor`, `isEquiped`, `isSoulBound`, `slot`, `enchant` FROM `inventory` WHERE `itemOwner`=? AND `itemLocation`=? AND `isEquiped`=?";
-	public static final String INSERT_QUERY = "INSERT INTO `inventory` (`itemUniqueId`, `itemId`, `itemCount`, `itemColor`, `itemOwner`, `isEquiped`, isSoulBound, `slot`, `itemLocation`, `enchant`) VALUES(?,?,?,?,?,?,?,?,?,?)";
-	public static final String UPDATE_QUERY = "UPDATE inventory SET  itemCount=?, itemColor=?, itemOwner=?, isEquiped=?, isSoulBound=?, slot=?, itemLocation=?, enchant=? WHERE itemUniqueId=?";
+	public static final String SELECT_QUERY = "SELECT `itemUniqueId`, `itemId`, `itemCount`, `itemColor`, `isEquiped`, `isSoulBound`, `slot`, `enchant`, `itemSkin` FROM `inventory` WHERE `itemOwner`=? AND `itemLocation`=? AND `isEquiped`=?";
+	public static final String INSERT_QUERY = "INSERT INTO `inventory` (`itemUniqueId`, `itemId`, `itemCount`, `itemColor`, `itemOwner`, `isEquiped`, isSoulBound, `slot`, `itemLocation`, `enchant`, `itemSkin`) VALUES(?,?,?,?,?,?,?,?,?,?, ?)";
+	public static final String UPDATE_QUERY = "UPDATE inventory SET  itemCount=?, itemColor=?, itemOwner=?, isEquiped=?, isSoulBound=?, slot=?, itemLocation=?, enchant=?, itemSkin=? WHERE itemUniqueId=?";
 	public static final String DELETE_QUERY = "DELETE FROM inventory WHERE itemUniqueId=?";
 	public static final String DELETE_CLEAN_QUERY = "DELETE FROM inventory WHERE itemOwner=? AND (itemLocation=0 OR itemLocation=1)";
 	public static final String SELECT_ACCOUNT_QUERY = "SELECT `account_id` FROM `players` WHERE `id`=?";
@@ -88,7 +88,8 @@ public class MySQL5InventoryDAO extends InventoryDAO
 					int isSoulBound = rset.getInt("isSoulBound");
 					int slot = rset.getInt("slot");
 					int enchant = rset.getInt("enchant");
-					Item item = new Item(itemUniqueId, itemId, itemCount, itemColor, isEquiped == 1, isSoulBound == 1,slot, storage, enchant);
+					int itemSkin = rset.getInt("itemSkin");
+					Item item = new Item(itemUniqueId, itemId, itemCount, itemColor, isEquiped == 1, isSoulBound == 1,slot, storage, enchant, itemSkin);
 					item.setPersistentState(PersistentState.UPDATED);
 					inventory.onLoadHandler(item);
 				}
@@ -129,7 +130,8 @@ public class MySQL5InventoryDAO extends InventoryDAO
 					int isSoulBound = rset.getInt("isSoulBound");
 					int slot = rset.getInt("slot");
 					int enchant = rset.getInt("enchant");
-					Item item = new Item(itemUniqueId, itemId, itemCount, itemColor, true, isSoulBound == 1, slot, storage, enchant);
+					int itemSkin = rset.getInt("itemSkin");
+					Item item = new Item(itemUniqueId, itemId, itemCount, itemColor, true, isSoulBound == 1, slot, storage, enchant, itemSkin);
 					item.setPersistentState(PersistentState.UPDATED);
 					equipment.onLoadHandler(item);
 				}
@@ -229,6 +231,7 @@ public class MySQL5InventoryDAO extends InventoryDAO
 				stmt.setInt(8, item.getEquipmentSlot());
 				stmt.setInt(9, item.getItemLocation());
 				stmt.setInt(10, item.getEchantLevel());
+				stmt.setInt(11, item.getItemSkinTemplate().getTemplateId());
 				stmt.execute();
 			}
 		});
@@ -252,7 +255,8 @@ public class MySQL5InventoryDAO extends InventoryDAO
 				stmt.setInt(6, item.getEquipmentSlot());
 				stmt.setInt(7, item.getItemLocation());
 				stmt.setInt(8, item.getEchantLevel());
-				stmt.setInt(9, item.getObjectId());
+				stmt.setInt(9, item.getItemSkinTemplate().getTemplateId());
+				stmt.setInt(10, item.getObjectId());
 				stmt.execute();
 			}
 		});

@@ -21,6 +21,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import com.aionemu.gameserver.dataholders.DataManager;
+import com.aionemu.gameserver.model.gameobjects.player.PlayerCommonData;
 import com.aionemu.gameserver.model.items.GodStone;
 import com.aionemu.gameserver.model.items.ItemStorage;
 import com.aionemu.gameserver.model.items.ManaStone;
@@ -36,7 +37,8 @@ public class Item extends AionObject
 
 	private int itemColor = 0;
 
-	private ItemTemplate itemTemplate;
+	private ItemTemplate	itemTemplate;
+	private ItemTemplate	itemSkinTemplate;
 
 	private boolean isEquipped = false;
 
@@ -84,7 +86,8 @@ public class Item extends AionObject
 	 * 
 	 * This constructor should be called only from DAO while loading from DB
 	 */
-	public Item(int objId, int itemId, int itemCount, int itemColor, boolean isEquipped, boolean isSoulBound,int equipmentSlot, int itemLocation, int enchant)
+	public Item(int objId, int itemId, int itemCount, int itemColor, boolean isEquipped, boolean isSoulBound,int equipmentSlot, int itemLocation,
+		int enchant, int itemSkin)
 	{
 		super(objId);
 
@@ -96,6 +99,7 @@ public class Item extends AionObject
 		this.equipmentSlot = equipmentSlot;
 		this.itemLocation = itemLocation;
 		this.echantLevel = enchant;
+		this.itemSkinTemplate = DataManager.ITEM_DATA.getItemTemplate(itemSkin);
 	}
 
 	@Override
@@ -117,7 +121,23 @@ public class Item extends AionObject
 	{
 		return itemTemplate;
 	}
-
+	
+	/**
+	 * @return the itemAppearanceTemplate
+	 */
+	public ItemTemplate getItemSkinTemplate()
+	{
+		if (this.itemSkinTemplate == null)
+			return this.itemTemplate;
+		return this.itemSkinTemplate;
+	}
+	
+	public void setItemSkinTemplate(ItemTemplate newTemplate)
+	{
+		this.itemSkinTemplate = newTemplate;
+		setPersistentState(PersistentState.UPDATE_REQUIRED);
+	}
+	
 	/**
 	 *@return the itemColor
 	 */
@@ -402,4 +422,5 @@ public class Item extends AionObject
 	{
 		return itemTemplate.getNameId();
 	}
+
 }

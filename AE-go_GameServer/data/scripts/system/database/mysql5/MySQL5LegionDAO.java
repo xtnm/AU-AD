@@ -71,7 +71,7 @@ public class MySQL5LegionDAO extends LegionDAO
 	private static final String	SELECT_EMBLEM_QUERY				= "SELECT * FROM legion_emblems WHERE legion_id=?";
 
 	/** Storage Queries **/
-	private static final String	SELECT_STORAGE_QUERY			= "SELECT `itemUniqueId`, `itemId`, `itemCount`, `itemColor`, `isEquiped`, `slot`, `enchant` FROM `inventory` WHERE `itemOwner`=? AND `itemLocation`=? AND `isEquiped`=?";
+	private static final String	SELECT_STORAGE_QUERY			= "SELECT `itemUniqueId`, `itemId`, `itemCount`, `itemColor`, `isEquiped`, `slot`, `enchant`, `itemSkin` FROM `inventory` WHERE `itemOwner`=? AND `itemLocation`=? AND `isEquiped`=?";
 
 	/** History Queries **/
 	private static final String	INSERT_HISTORY_QUERY			= "INSERT INTO legion_history(`legion_id`, `date`, `history_type`, `name`) VALUES (?, ?, ?, ?)";
@@ -467,7 +467,8 @@ public class MySQL5LegionDAO extends LegionDAO
 					int isEquiped = rset.getInt("isEquiped");
 					int slot = rset.getInt("slot");
 					int enchant = rset.getInt("enchant");
-					Item item = new Item(itemUniqueId, itemId, itemCount, itemColor, isEquiped == 1, false, slot, storage, enchant);
+					int itemSkin = rset.getInt("itemSkin");
+					Item item = new Item(itemUniqueId, itemId, itemCount, itemColor, isEquiped == 1, false, slot, storage, enchant, itemSkin);
 					item.setPersistentState(PersistentState.UPDATED);
 					inventory.onLoadHandler(item);
 				}

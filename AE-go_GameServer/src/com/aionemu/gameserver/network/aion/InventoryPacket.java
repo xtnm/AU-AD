@@ -248,7 +248,7 @@ public abstract class InventoryPacket extends AionServerPacket
 			writeC(buf, 0x0B); //? some details separator
 			writeC(buf, item.isSoulBound() ? 1 : 0);
 			writeC(buf, item.getEchantLevel()); //enchant (1-10)
-			writeD(buf, item.getItemTemplate().getTemplateId());
+			writeD(buf, item.getItemSkinTemplate().getTemplateId());
 			writeC(buf, 0);
 
 			writeItemStones(buf, item);
@@ -344,7 +344,7 @@ public abstract class InventoryPacket extends AionServerPacket
 		writeC(buf, 0x0B); //? some details separator
 		writeC(buf, item.isSoulBound() ? 1 : 0);
 		writeC(buf, item.getEchantLevel()); //enchant (1-10)
-		writeD(buf, item.getItemTemplate().getTemplateId());
+		writeD(buf, item.getItemSkinTemplate().getTemplateId());
 
 		writeC(buf, 0);
 

@@ -152,7 +152,7 @@ public abstract class PlayerInfo extends AionServerPacket
 			if(itemsDataSize < 208 && item.getItemTemplate().getItemSlot() <= ItemSlot.PANTS.getSlotIdMask())
 			{
 				writeC(buf, 1); // this flas is needed to show equipment on selection screen
-				writeD(buf, item.getItemTemplate().getTemplateId());
+				writeD(buf, item.getItemSkinTemplate().getTemplateId());
 				GodStone godStone = item.getGodStone();
 				writeD(buf, godStone != null ? godStone.getItemId() : 0); 
 				writeD(buf, item.getItemColor());

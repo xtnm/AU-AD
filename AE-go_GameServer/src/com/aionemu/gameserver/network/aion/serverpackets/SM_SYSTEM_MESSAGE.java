@@ -936,6 +936,48 @@ public class SM_SYSTEM_MESSAGE extends AionServerPacket
 	}
 	
 	/**
+	 * Item Remodel (Thanks wylovech)
+	 */
+	public static final SM_SYSTEM_MESSAGE STR_CHANGE_ITEM_SKIN_FAR_FROM_NPC = new SM_SYSTEM_MESSAGE(1300475);
+	public static final SM_SYSTEM_MESSAGE STR_CHANGE_ITEM_SKIN_PC_LEVEL_LIMIT = new SM_SYSTEM_MESSAGE(1300476);
+	public static final SM_SYSTEM_MESSAGE STR_CHANGE_ITEM_SKIN_NO_TARGET_ITEM = new SM_SYSTEM_MESSAGE(1300477);
+	
+	public static SM_SYSTEM_MESSAGE STR_CHANGE_ITEM_SKIN_NOT_SKIN_CHANGABLE_ITEM(DescriptionId nameId)
+	{
+		return new SM_SYSTEM_MESSAGE(1300478, nameId);
+	}
+	
+	public static SM_SYSTEM_MESSAGE STR_CHANGE_ITEM_SKIN_NOT_SAME_EQUIP_SLOT(DescriptionId keepNameId, DescriptionId skinNameId)
+	{
+		return new SM_SYSTEM_MESSAGE(1300479, keepNameId, skinNameId);
+	}
+	
+	public static SM_SYSTEM_MESSAGE STR_CHANGE_ITEM_SKIN_NOT_COMPATIBLE(DescriptionId keepNameId, DescriptionId skinNameId)
+	{
+		return new SM_SYSTEM_MESSAGE(1300480, keepNameId, skinNameId);
+	}
+	
+	public static SM_SYSTEM_MESSAGE STR_CHANGE_ITEM_SKIN_NOT_ENOUGH_GOLD(DescriptionId nameId)
+	{
+		return new SM_SYSTEM_MESSAGE(1300481, nameId);
+	}
+	
+	public static SM_SYSTEM_MESSAGE STR_CHANGE_ITEM_SKIN_CAN_NOT_REMOVE_SKIN_ITEM(DescriptionId nameId)
+	{
+		return new SM_SYSTEM_MESSAGE(1300482, nameId);
+	}
+	
+	public static SM_SYSTEM_MESSAGE STR_CHANGE_ITEM_SKIN_SUCCEED(DescriptionId nameId)
+	{
+		return new SM_SYSTEM_MESSAGE(1300483, nameId);
+	}
+	
+	public static SM_SYSTEM_MESSAGE STR_CHANGE_ITEM_SKIN_INVALID_STANCE(DescriptionId nameId)
+	{
+		return new SM_SYSTEM_MESSAGE(1300484, nameId);
+	}
+	
+	/**
 	 * Example npc shout
 	 */
 	public static SM_SYSTEM_MESSAGE STR_CHAT_FARMER_001()
