@@ -18,13 +18,13 @@ package com.aionemu.gameserver.controllers;
 
 import org.apache.log4j.Logger;
 
-import com.aionemu.gameserver.model.gameobjects.Creature;
+import com.aionemu.gameserver.configs.main.CustomConfig;
+import com.aionemu.gameserver.model.ChatType;
 import com.aionemu.gameserver.model.Race;
+import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.player.RequestResponseHandler;
 import com.aionemu.gameserver.model.templates.BindPointTemplate;
-import com.aionemu.gameserver.configs.main.CustomConfig;
-import com.aionemu.gameserver.model.ChatType;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_LEVEL_UPDATE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_MESSAGE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_QUESTION_WINDOW;

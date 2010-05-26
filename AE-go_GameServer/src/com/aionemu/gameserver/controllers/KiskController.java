@@ -18,7 +18,6 @@ package com.aionemu.gameserver.controllers;
 
 import java.util.List;
 
-import com.aionemu.gameserver.model.ChatType;
 import com.aionemu.gameserver.model.TaskId;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Kisk;

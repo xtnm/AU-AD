@@ -21,7 +21,6 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import com.aionemu.gameserver.dataholders.DataManager;
-import com.aionemu.gameserver.model.gameobjects.player.PlayerCommonData;
 import com.aionemu.gameserver.model.items.GodStone;
 import com.aionemu.gameserver.model.items.ItemStorage;
 import com.aionemu.gameserver.model.items.ManaStone;

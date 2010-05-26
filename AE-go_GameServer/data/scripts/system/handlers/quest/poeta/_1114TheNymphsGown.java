@@ -163,7 +163,7 @@ public class _1114TheNymphsGown extends QuestHandler
 				case -1:
 					if(var == 1)
 					{
-						final Npc npc = (Npc)env.getVisibleObject();
+						//final Npc npc = (Npc)env.getVisibleObject();
 						final int targetObjectId = env.getVisibleObject().getObjectId();
 						PacketSendUtility.sendPacket(player, new SM_USE_OBJECT(player.getObjectId(), targetObjectId, 3000, 1));
 						PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, 37, 0, targetObjectId), true);
