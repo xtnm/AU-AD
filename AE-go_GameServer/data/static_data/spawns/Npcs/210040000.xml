@@ -1090,7 +1090,7 @@
 		<object x="1682.66770" y="2656.73100" z="116.00000" h="64"/>
 	</spawn>
 	<!-- Wailing Moroch (NPC Normal lvl:35)-->
-	<spawn map="210040000" npcid="204611" pool="1" interval="295">
+	<spawn map="210040000" npcid="204611" pool="1" interval="295" time="DAY">
 		<object x="2417.50600" y="691.37610" z="370.00000" h="70"/>
 	</spawn>
 	<!-- Wandering Ghost (NPC Normal lvl:41)-->

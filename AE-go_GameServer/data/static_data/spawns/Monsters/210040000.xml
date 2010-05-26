@@ -7256,7 +7256,7 @@
 		<object x="1212.76920" y="2816.99660" z="127.93686" h="92"/>
 	</spawn>
 	<!-- Wailing Moroch (Named Mob Normal lvl:35)-->
-	<spawn map="210040000" npcid="212116" pool="1" interval="1800">
+	<spawn map="210040000" npcid="212116" pool="1" interval="1800" time="NIGHT">
 		<object x="2417.00000" y="691.00000" z="369.55500" h="112"/>
 	</spawn>
 	<!-- Warrior Spirit (Monster Normal lvl:25)-->
