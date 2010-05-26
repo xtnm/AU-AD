@@ -30,6 +30,7 @@ import com.aionemu.gameserver.configs.main.FallDamageConfig;
 import com.aionemu.gameserver.configs.main.GSConfig;
 import com.aionemu.gameserver.configs.main.GroupConfig;
 import com.aionemu.gameserver.configs.main.LegionConfig;
+import com.aionemu.gameserver.configs.main.NpcMovementConfig;
 import com.aionemu.gameserver.configs.main.PeriodicSaveConfig;
 import com.aionemu.gameserver.configs.main.RateConfig;
 import com.aionemu.gameserver.configs.main.ShutdownConfig;
@@ -103,6 +104,9 @@ public class Config
 			
 			ConfigurableProcessor.process(GSConfig.class, mainProps);
 			log.info("Loading: " + main + "/gameserver.properties");
+			
+			ConfigurableProcessor.process(NpcMovementConfig.class, mainProps);
+			log.info("Loading: " + main + "/npcmovement.properties");
 			
 			ConfigurableProcessor.process(PeriodicSaveConfig.class, mainProps);
 			log.info("Loading: " + main + "/periodicsave.properties");
