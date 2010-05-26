@@ -88,7 +88,9 @@ public class ItemRemodelService
 		// Check that types match.
 		if(keepItem.getItemTemplate().getWeaponType() != extractItem.getItemSkinTemplate().getWeaponType()
 			|| (extractItem.getItemSkinTemplate().getArmorType() != ArmorType.CLOTHES
-			&& keepItem.getItemTemplate().getArmorType() != extractItem.getItemSkinTemplate().getArmorType()))
+				&& keepItem.getItemTemplate().getArmorType() != extractItem.getItemSkinTemplate().getArmorType())
+			|| keepItem.getItemTemplate().getArmorType() == ArmorType.CLOTHES
+			|| keepItem.getItemTemplate().getItemSlot() != extractItem.getItemSkinTemplate().getItemSlot())
 		{
 			PacketSendUtility.sendPacket(player,
 				SM_SYSTEM_MESSAGE.STR_CHANGE_ITEM_SKIN_NOT_COMPATIBLE(
