@@ -118,14 +118,7 @@
     	
     	<copy todir="${build.dist.gs}/config">
     		<fileset dir="config">
-    			<include name="log4j.dtd" />
-    			<include name="log4j.xml" />
-    		</fileset>
-    	</copy>
-    	
-    	<copy todir="${build.dist.gs}/config/network">
-    		<fileset dir="config/network">
-    			<include name="ipconfig.xml" />
+    			<include name="*.*" />
     		</fileset>
     	</copy>
     	
