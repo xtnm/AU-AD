@@ -5179,7 +5179,7 @@
 		<object x="1083.49000" y="365.87000" z="104.63812" h="113"/>
 	</spawn>
 	<!-- Ragenon Souleater (Named Mob Elite lvl:43)-->
-	<spawn map="210040000" npcid="212145" pool="1" interval="3600">
+	<spawn map="210040000" npcid="212145" pool="1" interval="3600" time="DAY">
 		<object x="1673.78000" y="2252.02000" z="157.74875" h="32"/>
 		<object x="1661.37000" y="2244.17000" z="157.75000" h="97"/>
 		<object x="1559.86000" y="1996.67000" z="113.54188" h="21"/>
