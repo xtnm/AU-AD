@@ -1145,4 +1145,7 @@
         <npcskill abouthp="false" probability="10" skilllevel="4" skillid="17513" id="1"/>
         <npcskill abouthp="false" probability="10" skilllevel="5" skillid="17513" id="2"/>
     </npcskills>
+	<npcskills npcid="203175" skill_count="1">
+      <npcskill abouthp="false" probability="10" skilllevel="10" skillid="16434" id="1" /> 
+   </npcskills>
 </npc_skill_templates>

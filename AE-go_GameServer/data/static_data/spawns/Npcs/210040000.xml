@@ -705,10 +705,10 @@
 	<spawn map="210040000" npcid="700025" pool="1" interval="295">
 		<object x="2468.51860" y="300.03873" z="416.21384" h="25"/>
 	</spawn>
-	<!-- Obelisk (Object Normal lvl:1)-->
-	<spawn map="210040000" npcid="250093" pool="1" interval="295">
-		<object x="865.09340" y="2874.93920" z="147.11494" h="0"/>
-	</spawn>
+	<!-- Cursed Obelisk (Object Normal lvl:1)-->
+   	<spawn map="210040000" npcid="700282" pool="1" interval="295">
+      	<object x="865.09340" y="2874.93920" z="147.11494" h="0"/>
+   	</spawn>
 	<!-- Obelisk (Object Normal lvl:3)-->
 	<spawn map="210040000" npcid="700026" pool="1" interval="295">
 		<object x="1450.84020" y="1346.63930" z="175.43262" h="20"/>
