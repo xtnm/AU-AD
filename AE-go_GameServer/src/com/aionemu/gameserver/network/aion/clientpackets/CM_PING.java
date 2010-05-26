@@ -20,6 +20,7 @@ import org.apache.log4j.Logger;
 
 import com.aionemu.gameserver.network.aion.AionClientPacket;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_PONG;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_QUIT_RESPONSE;
 
 /**
  * I have no idea wtf is this
@@ -66,7 +67,7 @@ public class CM_PING extends AionClientPacket
 			{
 				String name = getConnection().getActivePlayer().getName();
 				log.info("[AUDIT] possible client timer cheat: " + pingInterval + " " + name);
-				//getConnection().close(new SM_QUIT_RESPONSE(), true);
+				getConnection().close(new SM_QUIT_RESPONSE(), true);
 			}
 
 		}
