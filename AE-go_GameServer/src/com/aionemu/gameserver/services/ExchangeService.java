@@ -319,7 +319,9 @@ public class ExchangeService
 			{
 				inventory.removeFromBag(itemInInventory, false);
 				exchangeItem.setItem(itemInInventory);
-				itemService.releaseItemId(item);
+				//release when only part stack was added in the beginning -> full stack in the end
+				if(item.getObjectId() != exchangeItem.getItemId())
+					itemService.releaseItemId(item);
 				PacketSendUtility.sendPacket(player, new SM_DELETE_ITEM(itemInInventory.getObjectId()));
 			}			
 		}
