@@ -87,6 +87,10 @@ public class CM_USE_ITEM extends AionClientPacket {
 				break;
 		}	
 		
+		//TODO message? you are not allowed to use?
+		if(!item.getItemTemplate().isAllowedFor(player.getCommonData().getPlayerClass(), player.getLevel()))
+			return;
+		
 		if (questEngine.onItemUseEvent(new QuestEnv(null, player, 0, 0), item))
 			return;
 

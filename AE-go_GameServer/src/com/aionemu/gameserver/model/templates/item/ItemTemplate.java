@@ -196,6 +196,17 @@ public class ItemTemplate extends VisibleObjectTemplate
 		}
 		return related;
 	}
+	
+	/**
+	 * 
+	 * @param playerClass
+	 * @param level
+	 * @return
+	 */
+	public boolean isAllowedFor(PlayerClass playerClass, int level)
+	{
+		return restricts[playerClass.ordinal()] < level && restricts[playerClass.ordinal()] != 0;
+	}
 
 	/**
 	 * @return the modifiers
