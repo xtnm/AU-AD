@@ -366,34 +366,30 @@ public class MySQL5LegionDAO extends LegionDAO
 	@Override
 	public void storeLegionEmblem(final int legionId, final LegionEmblem legionEmblem)
 	{
-		DB.insertUpdate(UPDATE_EMBLEM_QUERY, new IUStH(){
-			@Override
-			public void handleInsertUpdate(PreparedStatement stmt) throws SQLException
-			{
-				log.debug("[DAO: MySQL5LegionDAO] storing emblem for legion id: " + legionId);
-
-				stmt.setInt(1, legionEmblem.getEmblemId());
-				stmt.setInt(2, legionEmblem.getColor_r());
-				stmt.setInt(3, legionEmblem.getColor_g());
-				stmt.setInt(4, legionEmblem.getColor_b());
-				stmt.setInt(5, legionId);
-				stmt.execute();
-			}
-		});
+		switch(legionEmblem.getPersistentState())
+		{
+			case UPDATE_REQUIRED:
+				updateLegionEmblem(legionId, legionEmblem);
+				break;
+			case NEW:
+				createLegionEmblem(legionId, legionEmblem);
+				break;
+		}
+		legionEmblem.setPersistentState(PersistentState.UPDATED);
 	}
-
+	
 	/**
-	 * {@inheritDoc}
+	 * 
+	 * @param legionId
+	 * @param legionEmblem
+	 * @return
 	 */
-	@Override
-	public boolean saveNewLegionEmblem(final int legionId, final LegionEmblem legionEmblem)
+	private void createLegionEmblem(final int legionId, final LegionEmblem legionEmblem)
 	{
-		boolean success = DB.insertUpdate(INSERT_EMBLEM_QUERY, new IUStH(){
+		DB.insertUpdate(INSERT_EMBLEM_QUERY, new IUStH(){
 			@Override
 			public void handleInsertUpdate(PreparedStatement preparedStatement) throws SQLException
 			{
-				log.debug("[DAO: MySQL5LegionDAO] saving new legion emblem: " + legionId);
-
 				preparedStatement.setInt(1, legionId);
 				preparedStatement.setInt(2, legionEmblem.getEmblemId());
 				preparedStatement.setInt(3, legionEmblem.getColor_r());
@@ -402,7 +398,27 @@ public class MySQL5LegionDAO extends LegionDAO
 				preparedStatement.execute();
 			}
 		});
-		return success;
+	}
+	
+	/**
+	 * 
+	 * @param legionId
+	 * @param legionEmblem
+	 */
+	private void updateLegionEmblem(final int legionId, final LegionEmblem legionEmblem)
+	{
+		DB.insertUpdate(UPDATE_EMBLEM_QUERY, new IUStH(){
+			@Override
+			public void handleInsertUpdate(PreparedStatement stmt) throws SQLException
+			{
+				stmt.setInt(1, legionEmblem.getEmblemId());
+				stmt.setInt(2, legionEmblem.getColor_r());
+				stmt.setInt(3, legionEmblem.getColor_g());
+				stmt.setInt(4, legionEmblem.getColor_b());
+				stmt.setInt(5, legionId);
+				stmt.execute();
+			}
+		});
 	}
 
 	/**
@@ -427,7 +443,6 @@ public class MySQL5LegionDAO extends LegionDAO
 				{
 					legionEmblem.setEmblem(resultSet.getInt("emblem_id"), resultSet.getInt("color_r"), resultSet
 						.getInt("color_g"), resultSet.getInt("color_b"));
-					legionEmblem.setDefaultEmblem(false);
 				}
 			}
 		});

@@ -140,8 +140,7 @@ public class LegionService
 		else
 		{
 			DAOManager.getDAO(LegionDAO.class).storeLegion(legion);
-			if(legion.getLegionEmblem().isChanged())
-				storeLegionEmblem(legion.getLegionId(), legion.getLegionEmblem());
+			DAOManager.getDAO(LegionDAO.class).storeLegionEmblem(legion.getLegionId(), legion.getLegionEmblem());
 		}
 	}
 
@@ -207,21 +206,6 @@ public class LegionService
 			LegionMemberEx legionMemberEx = new LegionMemberEx(player, player.getLegionMember(), false);
 			addCachedLegionMemberEx(legionMemberEx);
 		}
-	}
-
-	/**
-	 * Stores legion emblem data into db
-	 * 
-	 * @param legionId
-	 * @param legionEmblem
-	 */
-	private void storeLegionEmblem(int legionId, LegionEmblem legionEmblem)
-	{
-		if(legionEmblem.isDefaultEmblem())
-			DAOManager.getDAO(LegionDAO.class).saveNewLegionEmblem(legionId, legionEmblem);
-
-		else
-			DAOManager.getDAO(LegionDAO.class).storeLegionEmblem(legionId, legionEmblem);
 	}
 
 	/**

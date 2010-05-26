@@ -16,40 +16,29 @@
  */
 package com.aionemu.gameserver.model.legion;
 
+import com.aionemu.gameserver.model.gameobjects.PersistentState;
+
 /**
  * @author Simple
  * 
  */
 public class LegionEmblem
 {
-	private int		emblemId		= 0x00;
-	private int		color_r			= 0x00;
-	private int		color_g			= 0x00;
-	private int		color_b			= 0x00;
-	private boolean	defaultEmblem	= true;
-	private boolean	isChanged		= false;
+	private int				emblemId		= 0x00;
+	private int				color_r			= 0x00;
+	private int				color_g			= 0x00;
+	private int				color_b			= 0x00;
+	private boolean			defaultEmblem	= true;
+	private PersistentState	persistentState;
 
-	private boolean	isUploading		= false;
-	private int		uploadSize		= 0;
-	private int		uploadedSize	= 0;
-	private byte[]	uploadData;
+	private boolean			isUploading		= false;
+	private int				uploadSize		= 0;
+	private int				uploadedSize	= 0;
+	private byte[]			uploadData;
 
 	public LegionEmblem()
 	{
-	}
-
-	/**
-	 * Legion Emblem
-	 * 
-	 * @param color_r
-	 * @param color_g
-	 * @param color_b
-	 */
-	public LegionEmblem(int color_r, int color_g, int color_b)
-	{
-		this.color_r = color_r;
-		this.color_g = color_g;
-		this.color_b = color_b;
+		setPersistentState(PersistentState.NEW);
 	}
 
 	/**
@@ -68,9 +57,8 @@ public class LegionEmblem
 		this.color_r = color_r;
 		this.color_g = color_g;
 		this.color_b = color_b;
-		this.isChanged = true;
-		if(this.isDefaultEmblem())
-			this.setDefaultEmblem(false);
+		setPersistentState(PersistentState.UPDATE_REQUIRED);
+		this.defaultEmblem = false;
 	}
 
 	/**
@@ -106,28 +94,11 @@ public class LegionEmblem
 	}
 
 	/**
-	 * @param defaultEmblem
-	 *            the defaultEmblem to set
-	 */
-	public void setDefaultEmblem(boolean defaultEmblem)
-	{
-		this.defaultEmblem = defaultEmblem;
-	}
-
-	/**
 	 * @return the defaultEmblem
 	 */
 	public boolean isDefaultEmblem()
 	{
 		return defaultEmblem;
-	}
-
-	/**
-	 * @return the isChanged
-	 */
-	public boolean isChanged()
-	{
-		return isChanged;
 	}
 
 	/**
@@ -221,4 +192,29 @@ public class LegionEmblem
 		this.isUploading = false;
 		this.uploadedSize = 0;
 	}
+	
+	/**
+	 * 
+	 * @param persistentState
+	 */
+	public void setPersistentState(PersistentState persistentState)
+	{
+		switch(persistentState)
+		{
+			case UPDATE_REQUIRED:
+				if(this.persistentState == PersistentState.NEW)
+					break;
+			default:
+				this.persistentState = persistentState;
+		}
+	}
+
+	/**
+	 * @return the persistentState
+	 */
+	public PersistentState getPersistentState()
+	{
+		return persistentState;
+	}
+	
 }
