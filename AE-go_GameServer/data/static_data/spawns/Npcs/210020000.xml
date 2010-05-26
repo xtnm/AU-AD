@@ -176,10 +176,6 @@
 	<spawn map="210020000" npcid="203968" pool="1" interval="295">
 		<object x="725.58400" y="403.95822" z="335.80765" h="47"/>
 	</spawn>
-	<!-- Crios (NPC Normal lvl:30)-->
-	<spawn map="210020000" npcid="798150" pool="1" interval="295">
-		<object x="1415.33890" y="1564.21500" z="32.00000" h="68"/>
-	</spawn>
 	<!-- Daedalus (NPC Normal lvl:45)-->
 	<spawn map="210020000" npcid="203930" pool="1" interval="295">
 		<object x="386.00000" y="2704.00000" z="265.98907" h="60"/>
