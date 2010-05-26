@@ -86,7 +86,7 @@ public class PlayerLifeStats extends CreatureLifeStats<Player>
 		Player owner = getOwner();
 		if(owner.getPlayerGroup() != null)
 		{
-			owner.getPlayerGroup().updateGroupUIToEvent(owner, GroupEvent.UNK);
+			owner.getPlayerGroup().updateGroupUIToEvent(owner, GroupEvent.MOVEMENT);
 		}
 	}
 
