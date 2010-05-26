@@ -17,15 +17,17 @@
 
 package com.aionemu.loginserver.network.ncrypt;
 
-import com.aionemu.commons.utils.Rnd;
-import org.apache.log4j.Logger;
+import java.security.GeneralSecurityException;
+import java.security.KeyPairGenerator;
+import java.security.spec.RSAKeyGenParameterSpec;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
-import java.security.GeneralSecurityException;
-import java.security.KeyPairGenerator;
-import java.security.spec.RSAKeyGenParameterSpec;
+
+import org.apache.log4j.Logger;
+
+import com.aionemu.commons.utils.Rnd;
 
 /**
  * Key generator. It generates keys or keyPairs for Blowfish and RSA

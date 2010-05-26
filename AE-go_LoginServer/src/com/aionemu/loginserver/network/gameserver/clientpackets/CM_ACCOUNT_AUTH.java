@@ -16,12 +16,12 @@
  */
 package com.aionemu.loginserver.network.gameserver.clientpackets;
 
+import java.nio.ByteBuffer;
+
 import com.aionemu.loginserver.controller.AccountController;
 import com.aionemu.loginserver.network.aion.SessionKey;
 import com.aionemu.loginserver.network.gameserver.GsClientPacket;
 import com.aionemu.loginserver.network.gameserver.GsConnection;
-
-import java.nio.ByteBuffer;
 
 /**
  * In this packet Gameserver is asking if given account sessionKey is valid at Loginserver side. [if user that is

@@ -16,10 +16,11 @@
  */
 package com.aionemu.loginserver.network.gameserver;
 
-import com.aionemu.commons.network.packet.BaseClientPacket;
+import java.nio.ByteBuffer;
+
 import org.apache.log4j.Logger;
 
-import java.nio.ByteBuffer;
+import com.aionemu.commons.network.packet.BaseClientPacket;
 
 /**
  * Base class for every GameServer -> LS Client Packet

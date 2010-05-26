@@ -16,10 +16,10 @@
  */
 package com.aionemu.loginserver.network.gameserver.serverpackets;
 
+import java.nio.ByteBuffer;
+
 import com.aionemu.loginserver.network.gameserver.GsConnection;
 import com.aionemu.loginserver.network.gameserver.GsServerPacket;
-
-import java.nio.ByteBuffer;
 
 /**
  * In this packet LoginSerer is requesting kicking account from GameServer.

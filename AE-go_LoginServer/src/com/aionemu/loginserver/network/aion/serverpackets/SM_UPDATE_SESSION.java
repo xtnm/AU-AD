@@ -16,11 +16,11 @@
  */
 package com.aionemu.loginserver.network.aion.serverpackets;
 
+import java.nio.ByteBuffer;
+
 import com.aionemu.loginserver.network.aion.AionConnection;
 import com.aionemu.loginserver.network.aion.AionServerPacket;
 import com.aionemu.loginserver.network.aion.SessionKey;
-
-import java.nio.ByteBuffer;
 
 /**
  * This packet is send to client to update sessionKey [for fast reconnection feature]

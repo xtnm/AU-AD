@@ -16,10 +16,10 @@
  */
 package com.aionemu.loginserver.network.gameserver.serverpackets;
 
+import java.nio.ByteBuffer;
+
 import com.aionemu.loginserver.network.gameserver.GsConnection;
 import com.aionemu.loginserver.network.gameserver.GsServerPacket;
-
-import java.nio.ByteBuffer;
 
 /**
  * In this packet LoginServer is sending response for CM_ACCOUNT_RECONNECT_KEY with account name and reconnectionKey.

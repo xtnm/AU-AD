@@ -17,10 +17,10 @@
 
 package com.aionemu.loginserver.network.gameserver.serverpackets;
 
+import java.nio.ByteBuffer;
+
 import com.aionemu.loginserver.network.gameserver.GsConnection;
 import com.aionemu.loginserver.network.gameserver.GsServerPacket;
-
-import java.nio.ByteBuffer;
 
 /**
  * 

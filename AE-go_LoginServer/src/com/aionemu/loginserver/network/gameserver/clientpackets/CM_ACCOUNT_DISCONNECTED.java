@@ -17,12 +17,12 @@
 
 package com.aionemu.loginserver.network.gameserver.clientpackets;
 
+import java.nio.ByteBuffer;
+
 import com.aionemu.loginserver.controller.AccountTimeController;
 import com.aionemu.loginserver.model.Account;
 import com.aionemu.loginserver.network.gameserver.GsClientPacket;
 import com.aionemu.loginserver.network.gameserver.GsConnection;
-
-import java.nio.ByteBuffer;
 
 /**
  * In this packet GameServer is informing LoginServer that some account is no longer on GameServer [ie was disconencted]

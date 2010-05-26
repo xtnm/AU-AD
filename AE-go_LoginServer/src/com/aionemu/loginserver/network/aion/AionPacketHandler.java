@@ -16,15 +16,16 @@
  */
 package com.aionemu.loginserver.network.aion;
 
+import java.nio.ByteBuffer;
+
+import org.apache.log4j.Logger;
+
 import com.aionemu.loginserver.network.aion.AionConnection.State;
 import com.aionemu.loginserver.network.aion.clientpackets.CM_AUTH_GG;
 import com.aionemu.loginserver.network.aion.clientpackets.CM_LOGIN;
 import com.aionemu.loginserver.network.aion.clientpackets.CM_PLAY;
 import com.aionemu.loginserver.network.aion.clientpackets.CM_SERVER_LIST;
 import com.aionemu.loginserver.network.aion.clientpackets.CM_UPDATE_SESSION;
-import org.apache.log4j.Logger;
-
-import java.nio.ByteBuffer;
 
 /**
  * @author -Nemesiss-

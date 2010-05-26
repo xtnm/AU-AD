@@ -16,14 +16,14 @@
  */
 package com.aionemu.loginserver.network.aion.clientpackets;
 
+import java.nio.ByteBuffer;
+
 import com.aionemu.loginserver.network.aion.AionAuthResponse;
 import com.aionemu.loginserver.network.aion.AionClientPacket;
 import com.aionemu.loginserver.network.aion.AionConnection;
 import com.aionemu.loginserver.network.aion.AionConnection.State;
 import com.aionemu.loginserver.network.aion.serverpackets.SM_AUTH_GG;
 import com.aionemu.loginserver.network.aion.serverpackets.SM_LOGIN_FAIL;
-
-import java.nio.ByteBuffer;
 
 /**
  * @author -Nemesiss-
