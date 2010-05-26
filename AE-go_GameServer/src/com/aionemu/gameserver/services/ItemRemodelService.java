@@ -20,6 +20,7 @@ import com.aionemu.gameserver.model.DescriptionId;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.player.Storage;
+import com.aionemu.gameserver.model.templates.item.ArmorType;
 import com.aionemu.gameserver.model.templates.item.ItemQuality;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_UPDATE_ITEM;
@@ -85,8 +86,9 @@ public class ItemRemodelService
 			return;
 		}
 		// Check that types match.
-		if (keepItem.getItemTemplate().getWeaponType() != extractItem.getItemSkinTemplate().getWeaponType() ||
-			keepItem.getItemTemplate().getArmorType() != extractItem.getItemSkinTemplate().getArmorType())
+		if(keepItem.getItemTemplate().getWeaponType() != extractItem.getItemSkinTemplate().getWeaponType()
+			|| (extractItem.getItemSkinTemplate().getArmorType() != ArmorType.CLOTHES
+			&& keepItem.getItemTemplate().getArmorType() != extractItem.getItemSkinTemplate().getArmorType()))
 		{
 			PacketSendUtility.sendPacket(player,
 				SM_SYSTEM_MESSAGE.STR_CHANGE_ITEM_SKIN_NOT_COMPATIBLE(
