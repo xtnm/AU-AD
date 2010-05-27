@@ -204,7 +204,8 @@
 		<monster_infos npc_id="211127" var_id="1" max_kill="5"/>
 	    <monster_infos npc_id="212099" var_id="2" max_kill="5"/>
 	    <monster_infos npc_id="211946" var_id="3" max_kill="5"/>
-	    <monster_infos npc_id="211947" var_id="3" max_kill="5"/>	</monster_hunt>
+	    <monster_infos npc_id="211947" var_id="3" max_kill="5"/>
+	</monster_hunt>
 
 	<!-- Jaiorunerk's Diary -->
 	<report_to id="1564" start_npc_id="798096" end_npc_id="798012" item_id="182201731" />
@@ -235,7 +236,8 @@
 	<!-- Outlaw of the Jungle -->
 	<monster_hunt id="1542" start_npc_id="204585">
            <monster_infos npc_id="211879" var_id="0" max_kill="10" />
-           <monster_infos npc_id="211880" var_id="0" max_kill="10" />           
+           <monster_infos npc_id="211880" var_id="0" max_kill="10" />
+           
         </monster_hunt>
 
 	<!-- Sillen's Spirit Samples -->
@@ -286,7 +288,8 @@
 	<!-- Stopping the Spread of Klaw -->
 	<monster_hunt id="1546" start_npc_id="204607">
         <monster_infos npc_id="211145" var_id="0" max_kill="10" />
-        <monster_infos npc_id="211160" var_id="0" max_kill="10" />        <monster_infos npc_id="211118" var_id="1" max_kill="10" />
+        <monster_infos npc_id="211160" var_id="0" max_kill="10" />
+        <monster_infos npc_id="211118" var_id="1" max_kill="10" />
 	    <monster_infos npc_id="211147" var_id="1" max_kill="10" />
     </monster_hunt>
 
@@ -336,11 +339,14 @@
 	<!-- The Agrint Problem -->
 	<monster_hunt id="1557" start_npc_id="204583">
         <monster_infos npc_id="211145" var_id="0" max_kill="10" />
-        <monster_infos npc_id="211160" var_id="0" max_kill="10" />        <monster_infos npc_id="211146" var_id="1" max_kill="10" />
-	    <monster_infos npc_id="211161" var_id="1" max_kill="10" />	    <monster_infos npc_id="211118" var_id="2" max_kill="10" />
+        <monster_infos npc_id="211160" var_id="0" max_kill="10" />
+        <monster_infos npc_id="211146" var_id="1" max_kill="10" />
+	    <monster_infos npc_id="211161" var_id="1" max_kill="10" />
+	    <monster_infos npc_id="211118" var_id="2" max_kill="10" />
 	    <monster_infos npc_id="211147" var_id="2" max_kill="10" />
 	    <monster_infos npc_id="211119" var_id="3" max_kill="10" />
-	    <monster_infos npc_id="211148" var_id="3" max_kill="10" />	</monster_hunt>
+	    <monster_infos npc_id="211148" var_id="3" max_kill="10" />
+	</monster_hunt>
 
 	<!-- TODO: The Lepharist Situation -->
 
@@ -603,6 +609,9 @@
 		<monster_infos var_id="0" npc_id="214050" max_kill="60"/>
 		<monster_infos var_id="0" npc_id="214047" max_kill="60"/>
    	    <monster_infos var_id="1" npc_id="214162" max_kill="30"/>
+		<monster_infos var_id="1" npc_id="213971" max_kill="30"/>
+		<monster_infos var_id="1" npc_id="214054" max_kill="30"/>
+		<monster_infos var_id="1" npc_id="213970" max_kill="30"/>
     </monster_hunt>	
 
 	<!-- Stealing Stigma -->
