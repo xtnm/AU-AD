@@ -38,6 +38,6 @@ public class NpcMovementConfig
 	/**
 	 * Maximum movement delay
 	 */
-	@Property(key = "gameserver.npc.movement.delay.minimum", defaultValue = "15")
+	@Property(key = "gameserver.npc.movement.delay.maximum", defaultValue = "15")
 	public static int		MAXIMUM_DELAY;
 }
