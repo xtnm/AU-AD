@@ -205,7 +205,7 @@ public class ItemTemplate extends VisibleObjectTemplate
 	 */
 	public boolean isAllowedFor(PlayerClass playerClass, int level)
 	{
-		return restricts[playerClass.ordinal()] < level && restricts[playerClass.ordinal()] != 0;
+		return restricts[playerClass.ordinal()] <= level && restricts[playerClass.ordinal()] != 0;
 	}
 
 	/**
