@@ -50,7 +50,7 @@ public abstract class AbstractChannelHandler extends SimpleChannelUpstreamHandle
 	@Override
 	public void channelDisconnected(ChannelHandlerContext ctx, ChannelStateEvent e) throws Exception
 	{
-		log.info("Channel disconnected");
+		log.info("Channel disconnected IP: " + inetAddress.getHostAddress());
 	}
 
 	@Override
