@@ -446,6 +446,7 @@ public class MySQL5LegionDAO extends LegionDAO
 				}
 			}
 		});
+		legionEmblem.setPersistentState(PersistentState.UPDATED);
 
 		return legionEmblem;
 	}
