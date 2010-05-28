@@ -18,17 +18,13 @@ package com.aionemu.gameserver.skillengine.effect;
 
 import java.util.Iterator;
 
-import javax.naming.OperationNotSupportedException;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
-import javolution.util.FastCollection;
 import javolution.util.FastMap;
-import javolution.util.FastCollection.Record;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import com.aionemu.gameserver.controllers.movement.AttackCalcObserver;
 import com.aionemu.gameserver.controllers.movement.AttackShieldObserver;
