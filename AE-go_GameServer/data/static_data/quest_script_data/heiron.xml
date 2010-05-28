@@ -361,7 +361,7 @@
 	<monster_hunt id="1662" start_npc_id="204602">
         <monster_infos npc_id="212212" var_id="0" max_kill="5" />
 	    <monster_infos npc_id="212213" var_id="1" max_kill="5" />
-	    <monster_infos npc_id="212265" var_id="2" max_kill="5" />
+	    <monster_infos npc_id="212222" var_id="2" max_kill="5" />
     </monster_hunt>
 
 	<!-- [Spend Coin] Silver (Warriors and Scouts) -->

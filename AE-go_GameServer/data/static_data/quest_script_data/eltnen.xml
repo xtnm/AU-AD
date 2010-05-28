@@ -335,7 +335,8 @@
 
 	<!-- When Statues go Bad -->
 	<monster_hunt start_npc_id="203939" id="1327">
-		<monster_infos var_id="0" npc_id="212003" max_kill="15"/>
+		<monster_infos var_id="0" npc_id="210804" max_kill="15"/>
+		<monster_infos var_id="0" npc_id="210814" max_kill="15"/>
 	</monster_hunt>
 
 
