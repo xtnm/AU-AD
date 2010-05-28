@@ -215,11 +215,11 @@
 		<object x="496.5" y="1947.51" z="293.52" h="0"/>
 	</spawn>
 	<!-- Iron Axe (Object Normal lvl:1)-->
-	<spawn map="220010000" npcid="700146" pool="1" interval="105">
+	<spawn map="220010000" npcid="700146" pool="1" interval="295">
         <object x="1085.7817" y="2347.947" z="262.88773" h="15"/>
     </spawn>
 	<!-- Ishalgen Abyss Gate (Object Normal lvl:1)-->
-	<spawn map="220010000" npcid="700084" pool="1" interval="105">
+	<spawn map="220010000" npcid="700084" pool="1" interval="295">
 		<object staticid="0" x="667.86255" y="847.9274" z="321.11786" h="32"/>
 	</spawn>
 	<!-- Jailer Ghost (NPC Normal lvl:20)-->

@@ -316,7 +316,7 @@ public class SpawnEngine
 	{
 		SpawnTemplate spawnTemplate = new SpawnTemplate(x, y, z, heading, walkerid, randomwalk, 0);
 
-		SpawnGroup spawnGroup = new SpawnGroup(worldId, objectId, 105, 1);
+		SpawnGroup spawnGroup = new SpawnGroup(worldId, objectId, 295, 1);
 		spawnTemplate.setSpawnGroup(spawnGroup);
 		spawnGroup.getObjects().add(spawnTemplate);
 
