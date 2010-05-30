@@ -528,7 +528,8 @@
 			<monster_infos var_id="2" npc_id="255614" max_kill="3"/>
 	</monster_hunt>
 
-	<!-- TODO: Quest Id: 1789  Seizing the Asmodian Supplies -->
+	<!-- 1789  Seizing the Asmodian Supplies -->
+	<item_collecting id="1789" start_npc_id="269251"/>
 
 	<!-- TODO: Quest Id: 1801  [Group] Capture Siel East Fortress -->
 
@@ -613,7 +614,8 @@
 			<monster_infos var_id="0" npc_id="278590" max_kill="1"/>
 	</monster_hunt>
 
-	<!-- TODO: Quest Id: 2760  [Group] Recovering Souvenirs -->
+	<!-- 2760  [Group] Recovering Souvenirs -->
+	<item_collecting id="2760" start_npc_id="278086"/>
 
 	<!-- TODO: Quest Id: 2737  [Alliance] Turning the Tide -->
 
@@ -633,7 +635,8 @@
     	    <monster_infos var_id="0" npc_id="275112" max_kill="1"/>
 	</monster_hunt>
 
-	<!-- TODO: Quest Id: 2746  [Group] Defeat the Eastern Garrison -->
+	<!-- 2746  [Group] Defeat the Eastern Garrison -->
+	<item_collecting id="2746" start_npc_id="278097"/>
 
 	<!-- TODO: Quest Id: 2718  Trading Down -->
 
@@ -769,9 +772,13 @@
 
 	<!-- TODO: Quest Id: 3713  [Group] Heart of the Dredgion -->
 
-	<!-- TODO: Quest Id: 3714  [Group] Inspection Concluded -->
+	<!-- 3714  [Group] Inspection Concluded -->
+	<monster_hunt start_npc_id="279045" id="3714">
+    	    <monster_infos var_id="0" npc_id="215390" max_kill="1"/>
+	</monster_hunt>
 
-	<!-- TODO: Quest Id: 3715  [Group] Steal the Surkanate -->
+	<!-- 3715  [Group] Steal the Surkanate -->
+	<item_collecting id="3715" start_npc_id="279045"/>
 
 	<!-- TODO: Quest Id: 2795  [Group] Defeat the Miren Garrison -->
 
