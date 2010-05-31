@@ -34,6 +34,7 @@ import com.aionemu.gameserver.dao.AbyssRankDAO;
 import com.aionemu.gameserver.dao.BlockListDAO;
 import com.aionemu.gameserver.dao.FriendListDAO;
 import com.aionemu.gameserver.dao.InventoryDAO;
+import com.aionemu.gameserver.dao.ItemCooldownsDAO;
 import com.aionemu.gameserver.dao.ItemStoneListDAO;
 import com.aionemu.gameserver.dao.MailDAO;
 import com.aionemu.gameserver.dao.PlayerAppearanceDAO;
@@ -291,6 +292,8 @@ public class PlayerService
 		player.getController().updatePassiveStats();
 		// load saved effects
 		DAOManager.getDAO(PlayerEffectsDAO.class).loadPlayerEffects(player);
+		// load item cooldowns
+		DAOManager.getDAO(ItemCooldownsDAO.class).loadItemCooldowns(player);
 
 		if(player.getCommonData().getTitleId() > 0)
 		{
@@ -407,6 +410,7 @@ public class PlayerService
 		
 		//store current effects
 		DAOManager.getDAO(PlayerEffectsDAO.class).storePlayerEffects(player);
+		DAOManager.getDAO(ItemCooldownsDAO.class).storeItemCooldowns(player);
 		player.getEffectController().removeAllEffects();
 		
 		player.getLifeStats().cancelAllTasks();

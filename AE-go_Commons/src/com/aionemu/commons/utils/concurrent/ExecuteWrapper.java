@@ -18,9 +18,9 @@ package com.aionemu.commons.utils.concurrent;
 
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.Logger;
-
 import javolution.text.TextBuilder;
+
+import org.apache.log4j.Logger;
 
 /**
  * @author NB4L1

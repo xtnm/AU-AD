@@ -16,14 +16,14 @@
  */
 package com.aionemu.loginserver.network.aion.clientpackets;
 
+import java.nio.ByteBuffer;
+
 import com.aionemu.loginserver.GameServerTable;
 import com.aionemu.loginserver.network.aion.AionAuthResponse;
 import com.aionemu.loginserver.network.aion.AionClientPacket;
 import com.aionemu.loginserver.network.aion.AionConnection;
 import com.aionemu.loginserver.network.aion.serverpackets.SM_LOGIN_FAIL;
 import com.aionemu.loginserver.network.aion.serverpackets.SM_SERVER_LIST;
-
-import java.nio.ByteBuffer;
 
 /**
  * @author -Nemesiss-

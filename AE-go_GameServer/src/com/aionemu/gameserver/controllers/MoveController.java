@@ -82,6 +82,13 @@ public class MoveController
 	}
 
 	/**
+	 * @return The speed.
+	 */
+	public float getSpeed() {
+		return speed;
+	}
+
+	/**
 	 * @param distance the distance to set
 	 */
 	public void setDistance(float distance)

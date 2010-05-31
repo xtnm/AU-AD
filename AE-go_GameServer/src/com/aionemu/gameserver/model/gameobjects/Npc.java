@@ -19,6 +19,7 @@ package com.aionemu.gameserver.model.gameobjects;
 import com.aionemu.gameserver.ai.npcai.AggressiveAi;
 import com.aionemu.gameserver.ai.npcai.NpcAi;
 import com.aionemu.gameserver.configs.main.CustomConfig;
+import com.aionemu.gameserver.configs.main.NpcMovementConfig;
 import com.aionemu.gameserver.controllers.NpcController;
 import com.aionemu.gameserver.controllers.attack.AggroList;
 import com.aionemu.gameserver.dataholders.DataManager;
@@ -115,7 +116,7 @@ public class Npc extends Creature
 
 	public boolean hasWalkRoutes()
 	{
-		return getSpawn().getWalkerId() > 0;
+		return getSpawn().getWalkerId() > 0 || (getSpawn().hasRandomWalk() && NpcMovementConfig.ACTIVE_NPC_MOVEMENT);
 	}
 	
 	/**

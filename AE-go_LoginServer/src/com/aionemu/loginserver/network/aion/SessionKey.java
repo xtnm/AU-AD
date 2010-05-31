@@ -16,8 +16,8 @@
  */
 package com.aionemu.loginserver.network.aion;
 
-import com.aionemu.loginserver.model.Account;
 import com.aionemu.commons.utils.Rnd;
+import com.aionemu.loginserver.model.Account;
 
 /**
  * @author -Nemesiss-

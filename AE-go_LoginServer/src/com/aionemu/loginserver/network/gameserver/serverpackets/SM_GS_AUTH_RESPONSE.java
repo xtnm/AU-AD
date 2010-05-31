@@ -16,11 +16,11 @@
  */
 package com.aionemu.loginserver.network.gameserver.serverpackets;
 
+import java.nio.ByteBuffer;
+
 import com.aionemu.loginserver.network.gameserver.GsAuthResponse;
 import com.aionemu.loginserver.network.gameserver.GsConnection;
 import com.aionemu.loginserver.network.gameserver.GsServerPacket;
-
-import java.nio.ByteBuffer;
 
 /**
  * This packet is response for CM_GS_AUTH its notify Gameserver if registration was ok or what was wrong.

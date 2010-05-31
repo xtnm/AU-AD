@@ -16,10 +16,15 @@
  */
 package com.aionemu.gameserver.skillengine.effect;
 
+import java.util.Iterator;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
+
+import javolution.util.FastMap;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import com.aionemu.gameserver.controllers.movement.AttackCalcObserver;
 import com.aionemu.gameserver.controllers.movement.AttackShieldObserver;
@@ -79,4 +84,81 @@ public class ShieldEffect extends EffectTemplate
 		effect.getEffected().getObserveController().removeAttackCalcObserver(acObserver);
 	}
 
+	public static void main(String[] args)
+	{
+		FastMap<Integer, Integer> data = new FastMap<Integer, Integer>().shared();
+		for (int i = 1 ; i < 30; i++)
+			data.put(i, i);
+		
+		int f = 0;
+		long startTime = System.nanoTime();
+	     
+	
+		for(Integer i : data.values())
+		{
+			f += i;
+		}
+		Iterator<Integer> it = data.values().iterator();
+		while (it.hasNext())
+		{
+			f +=it.next();
+		}
+		System.out.println("iterator: "+ (System.nanoTime() - startTime));
+		
+		f = 0;
+		startTime = System.nanoTime();
+		for (FastMap.Entry<Integer, Integer> e = data.head(), end = data.tail(); (e = e.getNext()) != end;)
+	     {
+	    	 Integer key = e.getKey(); // No typecast necessary.
+	    	 f +=key; 
+	     }
+		System.out.println("FastMap.Entry: " + (System.nanoTime() - startTime));
+
+		f = 0;
+		startTime = System.nanoTime();
+		
+		Iterator<Integer> it2 = new FastMapValueIterator<Integer, Integer>(data);
+		while (it2.hasNext())
+		{
+			f += it2.next();
+		}
+	    System.out.println("FastMapValueIterator: " + (System.nanoTime() - startTime));
+		
+		
+	}
+	
+	static class FastMapValueIterator<E, K> implements Iterator<K>
+	{
+		private FastMap.Entry<E, K> head;
+		private FastMap.Entry<E, K>	end;
+		private boolean hasNext;
+		private FastMap.Entry<E, K> next;
+		
+		private FastMapValueIterator(FastMap<E, K> coll)
+		{
+			head = coll.head();
+			end = coll.tail();
+			hasNext = (next = head.getNext()) != end;
+		}
+
+		@Override
+		public boolean hasNext()
+		{
+			return hasNext;
+		}
+
+		@Override
+		public K next()
+		{
+			FastMap.Entry<E, K> nextReturn = next;
+			hasNext = (next = next.getNext()) != end;
+			return  nextReturn.getValue();
+		}
+
+		@Override
+		public void remove()
+		{
+			throw new NotImplementedException();
+		}	
+	}
 }

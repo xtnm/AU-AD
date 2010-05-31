@@ -16,14 +16,15 @@
  */
 package com.aionemu.loginserver.network.aion.serverpackets;
 
+import java.nio.ByteBuffer;
+import java.util.Collection;
+
+import org.apache.log4j.Logger;
+
 import com.aionemu.loginserver.GameServerInfo;
 import com.aionemu.loginserver.GameServerTable;
 import com.aionemu.loginserver.network.aion.AionConnection;
 import com.aionemu.loginserver.network.aion.AionServerPacket;
-import org.apache.log4j.Logger;
-
-import java.nio.ByteBuffer;
-import java.util.Collection;
 
 /**
  * @author -Nemesiss-

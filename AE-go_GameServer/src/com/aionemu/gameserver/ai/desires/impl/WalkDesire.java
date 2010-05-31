@@ -20,9 +20,11 @@ import com.aionemu.commons.utils.Rnd;
 import com.aionemu.gameserver.ai.AI;
 import com.aionemu.gameserver.ai.desires.AbstractDesire;
 import com.aionemu.gameserver.ai.desires.MoveDesire;
+import com.aionemu.gameserver.configs.main.NpcMovementConfig;
 import com.aionemu.gameserver.dataholders.DataManager;
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.templates.walker.RouteData;
+import com.aionemu.gameserver.model.templates.walker.RouteStep;
 import com.aionemu.gameserver.model.templates.walker.WalkerTemplate;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EMOTION;
 import com.aionemu.gameserver.utils.MathUtil;
@@ -41,20 +43,39 @@ public class WalkDesire extends AbstractDesire implements MoveDesire
 	private long		nextMoveTime;
 	private boolean		isRandomWalk			= false;
 
+	private RouteStep	randomPoint				= null;
+	private float		walkArea				= 10;
+	private float		halfWalkArea			= 5;
+	private float		minRandomDistance		= 2;
+
 	public WalkDesire(Npc npc, int power)
 	{
 		super(power);
 		owner = npc;
 
 		WalkerTemplate template = DataManager.WALKER_DATA.getWalkerTemplate(owner.getSpawn().getWalkerId());
+		isRandomWalk = owner.getSpawn().hasRandomWalk();
 		if(template != null)
 		{
-			isRandomWalk = owner.getSpawn().hasRandomWalk();
 			route = template.getRouteData();
 			
 			owner.getMoveController().setSpeed(owner.getObjectTemplate().getStatsTemplate().getWalkSpeed());
 			owner.getMoveController().setWalking(true);
 			PacketSendUtility.broadcastPacket(owner, new SM_EMOTION(owner, 0x15));			
+		}
+		else if(isRandomWalk && NpcMovementConfig.ACTIVE_NPC_MOVEMENT)
+		{
+			walkArea = Math.max(5, owner.getSpawn().getRandomWalkNr());
+			halfWalkArea = walkArea / 2f;
+			minRandomDistance = walkArea / 5f;
+
+			route = null;
+			randomPoint = new RouteStep(owner.getX(), owner.getY(), owner.getZ());
+
+			owner.getMoveController().setSpeed(owner.getObjectTemplate().getStatsTemplate().getWalkSpeed());
+			owner.getMoveController().setWalking(true);
+			owner.getMoveController().setDistance(minRandomDistance);
+			PacketSendUtility.broadcastPacket(owner, new SM_EMOTION(owner, 0x15));
 		}
 	}
 
@@ -65,7 +86,7 @@ public class WalkDesire extends AbstractDesire implements MoveDesire
 		if(owner == null)
 			return false;
 
-		if(route == null)
+		if(route == null && !isRandomWalk)
 			return false;
 
 		if(isWalkingToNextPoint())
@@ -80,12 +101,19 @@ public class WalkDesire extends AbstractDesire implements MoveDesire
 	 */
 	private void checkArrivedToPoint()
 	{
-		float x = route.getRouteSteps().get(targetPosition).getX();
-		float y = route.getRouteSteps().get(targetPosition).getY();
-		float z = route.getRouteSteps().get(targetPosition).getZ();
+		RouteStep step = randomPoint;
+		if(route != null)
+		{
+			step = route.getRouteSteps().get(targetPosition);
+		}
+
+		float x = step.getX();
+		float y = step.getY();
+		float z = step.getZ();
 
 		double dist = MathUtil.getDistance(owner, x, y, z);
-		if(dist <= 2)
+		float minDist = (route == null ? minRandomDistance : 2);
+		if(dist <= minDist)
 		{
 			setWalkingToNextPoint(false);
 			getNextTime();
@@ -101,10 +129,16 @@ public class WalkDesire extends AbstractDesire implements MoveDesire
 		{
 			setNextPosition();
 			setWalkingToNextPoint(true);
-			
-			float x = route.getRouteSteps().get(targetPosition).getX();
-			float y = route.getRouteSteps().get(targetPosition).getY();
-			float z = route.getRouteSteps().get(targetPosition).getZ();
+
+			RouteStep step = randomPoint;
+			if(route != null)
+			{
+				step = route.getRouteSteps().get(targetPosition);
+			}
+
+			float x = step.getX();
+			float y = step.getY();
+			float z = step.getZ();
 			owner.getMoveController().setNewDirection(x, y, z);			
 			if(!owner.getMoveController().isScheduled())
 				owner.getMoveController().schedule();
@@ -123,6 +157,12 @@ public class WalkDesire extends AbstractDesire implements MoveDesire
 
 	private void setNextPosition()
 	{
+		if(route == null)
+		{
+			getNextRandomPoint();
+			return;
+		}
+
 		if(isRandomWalk)
 		{
 			targetPosition = Rnd.get(0, route.getRouteSteps().size() - 1);
@@ -138,8 +178,23 @@ public class WalkDesire extends AbstractDesire implements MoveDesire
 
 	private void getNextTime()
 	{
-		int nextDelay = isRandomWalk ? Rnd.get(5, 60) : route.getRouteSteps().get(targetPosition).getRestTime();
+		int nextDelay;
+		if(route == null)
+		{
+			nextDelay = Rnd.get(NpcMovementConfig.MINIMIMUM_DELAY, NpcMovementConfig.MAXIMUM_DELAY);
+		}
+		else
+		{
+			nextDelay = isRandomWalk ? Rnd.get(5, 60) : route.getRouteSteps().get(targetPosition).getRestTime();
+		}
 		nextMoveTime = System.currentTimeMillis() + nextDelay * 1000;
+	}
+
+	private void getNextRandomPoint()
+	{
+		float x = owner.getSpawn().getX() - halfWalkArea + Rnd.get() * walkArea;
+		float y = owner.getSpawn().getY() - halfWalkArea + Rnd.get() * walkArea;
+		randomPoint = new RouteStep(x, y, owner.getSpawn().getZ());
 	}
 
 	@Override

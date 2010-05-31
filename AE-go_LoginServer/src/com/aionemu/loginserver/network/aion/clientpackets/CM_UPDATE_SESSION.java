@@ -16,11 +16,11 @@
  */
 package com.aionemu.loginserver.network.aion.clientpackets;
 
+import java.nio.ByteBuffer;
+
 import com.aionemu.loginserver.controller.AccountController;
 import com.aionemu.loginserver.network.aion.AionClientPacket;
 import com.aionemu.loginserver.network.aion.AionConnection;
-
-import java.nio.ByteBuffer;
 
 /**
  * This packet is send when client was connected to game server and now is reconnection to login server.

@@ -16,11 +16,12 @@
  */
 package com.aionemu.loginserver.network.aion;
 
-import com.aionemu.commons.network.packet.BaseClientPacket;
-import com.aionemu.loginserver.model.Account;
+import java.nio.ByteBuffer;
+
 import org.apache.log4j.Logger;
 
-import java.nio.ByteBuffer;
+import com.aionemu.commons.network.packet.BaseClientPacket;
+import com.aionemu.loginserver.model.Account;
 
 /**
  * Base class for every Aion -> LS Client Packet

@@ -16,11 +16,12 @@
  */
 package com.aionemu.loginserver.network.aion.serverpackets;
 
-import com.aionemu.loginserver.network.aion.AionConnection;
-import com.aionemu.loginserver.network.aion.AionServerPacket;
+import java.nio.ByteBuffer;
 
 import javax.crypto.SecretKey;
-import java.nio.ByteBuffer;
+
+import com.aionemu.loginserver.network.aion.AionConnection;
+import com.aionemu.loginserver.network.aion.AionServerPacket;
 
 /**
  * Format: dd b dddd s d: session id d: protocol revision b: 0x90 bytes : 0x80 bytes for the scrambled RSA public key

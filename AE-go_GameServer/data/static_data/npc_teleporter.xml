@@ -385,8 +385,8 @@
          <telelocation loc_id="36" price="2300" />
          <telelocation loc_id="37" price="3000" />         
          <telelocation loc_id="39" price="3000" />
-         <telelocation loc_id="40" price="1500" />
-         <telelocation loc_id="42" price="4500" />         
+         <telelocation loc_id="40" price="4500" />
+         <telelocation loc_id="42" price="1500" />         
          <telelocation loc_id="44" price="4500" />
          <telelocation loc_id="45" price="5200" />
          <telelocation loc_id="46" price="6000" />

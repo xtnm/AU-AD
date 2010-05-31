@@ -42,6 +42,7 @@ import com.aionemu.gameserver.network.aion.serverpackets.SM_ENTER_WORLD_CHECK;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_GAME_TIME;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_INFLUENCE_RATIO;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_INVENTORY_INFO;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ITEM_COOLDOWN;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_MACRO_LIST;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_MESSAGE;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_PLAYER_ID;
@@ -54,7 +55,6 @@ import com.aionemu.gameserver.network.aion.serverpackets.SM_SKILL_LIST;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_STATS_INFO;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_TITLE_LIST;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_UI_SETTINGS;
-import com.aionemu.gameserver.network.aion.serverpackets.unk.SM_UNK5E;
 import com.aionemu.gameserver.services.BrokerService;
 import com.aionemu.gameserver.services.ChatService;
 import com.aionemu.gameserver.services.ClassChangeService;
@@ -158,6 +158,9 @@ public class CM_ENTER_WORLD extends AionClientPacket
 			
 			if(player.getSkillCoolDowns() != null)
 				sendPacket(new SM_SKILL_COOLDOWN(player.getSkillCoolDowns()));
+			
+			if(player.getItemCoolDowns() != null)
+				sendPacket(new SM_ITEM_COOLDOWN(player.getItemCoolDowns()));
 
 			sendPacket(new SM_QUEST_LIST(player));
 			sendPacket(new SM_RECIPE_LIST(player.getRecipeList().getRecipeList()));
@@ -175,8 +178,6 @@ public class CM_ENTER_WORLD extends AionClientPacket
 
 			if(shortcuts != null)
 				sendPacket(new SM_UI_SETTINGS(shortcuts, 1));
-
-			sendPacket(new SM_UNK5E());
 
 			// Cubesize limit set in inventory.
 			int cubeSize = player.getCubeSize();

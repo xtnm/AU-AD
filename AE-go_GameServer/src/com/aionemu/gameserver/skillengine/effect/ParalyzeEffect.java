@@ -20,7 +20,9 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
+import com.aionemu.gameserver.network.aion.serverpackets.SM_TARGET_IMMOBILIZE;
 import com.aionemu.gameserver.skillengine.model.Effect;
+import com.aionemu.gameserver.utils.PacketSendUtility;
 
 /**
  * @author ATracer
@@ -34,7 +36,7 @@ public class ParalyzeEffect extends EffectTemplate
 	@Override
 	public void applyEffect(Effect effect)
 	{
-		// TODO Auto-generated method stub
+		effect.addToEffectedController();
 	}
 
 	@Override
@@ -42,4 +44,19 @@ public class ParalyzeEffect extends EffectTemplate
 	{
 		effect.increaseSuccessEffect();
 	}
+
+	@Override
+	public void startEffect(Effect effect)
+	{
+		effect.getEffected().getEffectController().setAbnormal(EffectId.PARALYZE.getEffectId());
+		PacketSendUtility.broadcastPacketAndReceive(effect.getEffected(), new SM_TARGET_IMMOBILIZE(effect.getEffected()));
+	}
+	
+	@Override
+	public void endEffect(Effect effect)
+	{
+		effect.getEffected().getEffectController().unsetAbnormal(EffectId.PARALYZE.getEffectId());
+	}
+	
+	
 }

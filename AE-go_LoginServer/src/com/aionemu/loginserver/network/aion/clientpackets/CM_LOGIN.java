@@ -16,19 +16,21 @@
  */
 package com.aionemu.loginserver.network.aion.clientpackets;
 
+import java.nio.ByteBuffer;
+import java.security.GeneralSecurityException;
+
+import javax.crypto.Cipher;
+
+import org.apache.log4j.Logger;
+
 import com.aionemu.loginserver.controller.AccountController;
 import com.aionemu.loginserver.network.aion.AionAuthResponse;
 import com.aionemu.loginserver.network.aion.AionClientPacket;
 import com.aionemu.loginserver.network.aion.AionConnection;
-import com.aionemu.loginserver.network.aion.AionConnection.State;
 import com.aionemu.loginserver.network.aion.SessionKey;
+import com.aionemu.loginserver.network.aion.AionConnection.State;
 import com.aionemu.loginserver.network.aion.serverpackets.SM_LOGIN_FAIL;
 import com.aionemu.loginserver.network.aion.serverpackets.SM_LOGIN_OK;
-import org.apache.log4j.Logger;
-
-import javax.crypto.Cipher;
-import java.nio.ByteBuffer;
-import java.security.GeneralSecurityException;
 
 /**
  * @author -Nemesiss-, KID

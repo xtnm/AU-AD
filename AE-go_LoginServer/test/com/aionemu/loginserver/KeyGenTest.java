@@ -17,14 +17,16 @@
 
 package com.aionemu.loginserver;
 
-import com.aionemu.loginserver.network.ncrypt.KeyGen;
-import com.aionemu.loginserver.network.ncrypt.EncryptedRSAKeyPair;
-import org.junit.Test;
-
-import javax.crypto.Cipher;
 import java.security.GeneralSecurityException;
 import java.security.KeyPairGenerator;
 import java.security.spec.RSAKeyGenParameterSpec;
+
+import javax.crypto.Cipher;
+
+import org.junit.Test;
+
+import com.aionemu.loginserver.network.ncrypt.EncryptedRSAKeyPair;
+import com.aionemu.loginserver.network.ncrypt.KeyGen;
 
 /**
  * This test is for KeyGen initialization and performance checking

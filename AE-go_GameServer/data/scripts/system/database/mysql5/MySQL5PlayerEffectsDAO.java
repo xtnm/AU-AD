@@ -65,7 +65,7 @@ public class MySQL5PlayerEffectsDAO extends PlayerEffectsDAO
 						player.getEffectController().addSavedEffect(skillId, skillLvl, currentTime);
 					
 					if(reuseDelay > System.currentTimeMillis())
-						player.setCoolDown(skillId, reuseDelay);
+						player.setSkillCoolDown(skillId, reuseDelay);
 					
 				}
 			}
@@ -96,8 +96,8 @@ public class MySQL5PlayerEffectsDAO extends PlayerEffectsDAO
 					stmt.setInt(3, effect.getSkillLevel());
 					stmt.setInt(4, effect.getCurrentTime());
 					
-					long reuseTime = player.getCoolDown(effect.getSkillId());
-					player.removeCoolDown(effect.getSkillId());
+					long reuseTime = player.getSkillCoolDown(effect.getSkillId());
+					player.removeSkillCoolDown(effect.getSkillId());
 					
 					stmt.setLong(5, reuseTime);
 					stmt.execute();

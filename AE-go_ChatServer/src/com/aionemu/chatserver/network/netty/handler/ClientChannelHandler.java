@@ -37,7 +37,6 @@ import com.google.inject.Inject;
  */
 public class ClientChannelHandler extends AbstractChannelHandler
 {
-	@SuppressWarnings("unused")
 	private static final Logger			log	= Logger.getLogger(ClientChannelHandler.class);
 
 	private final ClientPacketHandler	clientPacketHandler;
@@ -60,6 +59,7 @@ public class ClientChannelHandler extends AbstractChannelHandler
 		state = State.CONNECTED;
 		inetAddress = ((InetSocketAddress) e.getChannel().getRemoteAddress()).getAddress();
 		channel = ctx.getChannel();
+		log.info("Channel connected Ip:" + inetAddress.getHostAddress());
 	}
 
 	@Override
@@ -68,15 +68,12 @@ public class ClientChannelHandler extends AbstractChannelHandler
 		super.messageReceived(ctx, e);
 
 		AbstractClientPacket clientPacket = clientPacketHandler.handle((ChannelBuffer) e.getMessage(), this);
+		if(clientPacket != null)
+			log.info("Received packet: " + clientPacket);
 		if (clientPacket != null && clientPacket.read())
 		{
 			clientPacket.run();
 		}
-	}
-
-	protected final void onServerClose()
-	{
-		close();
 	}
 
 	/**
@@ -88,6 +85,7 @@ public class ClientChannelHandler extends AbstractChannelHandler
 		ChannelBuffer cb = ChannelBuffers.buffer(ByteOrder.LITTLE_ENDIAN, 2 * 8192);
 		packet.write(this, cb);
 		channel.write(cb);
+		log.info("Sent packet: " + packet);
 	}
 
 	/**

@@ -26,9 +26,8 @@ public class ExchangeItem
 {
 	private int itemObjId;
 	private int itemCount;
-	private int itemId;
 	private int itemDesc;
-	private Item newItem;
+	private Item item;
 
 	/**
 	 * Used when exchange item != original item
@@ -37,13 +36,20 @@ public class ExchangeItem
 	 * @param itemCount
 	 * @param item
 	 */
-	public ExchangeItem(int itemObjId, int itemCount, Item newItem)
+	public ExchangeItem(int itemObjId, int itemCount, Item item)
 	{
 		this.itemObjId = itemObjId;
 		this.itemCount = itemCount;
-		this.newItem = newItem;
-		this.itemId = newItem.getItemTemplate().getTemplateId();
-		this.itemDesc = newItem.getItemTemplate().getNameId();
+		this.item = item;
+		this.itemDesc = item.getItemTemplate().getNameId();
+	}
+	
+	/**
+	 * @param item the item to set
+	 */
+	public void setItem(Item item)
+	{
+		this.item = item;
 	}
 
 	/**
@@ -52,15 +58,15 @@ public class ExchangeItem
 	public void addCount(int countToAdd)
 	{
 		this.itemCount += countToAdd;
-		this.newItem.increaseItemCount(countToAdd);
+		this.item.setItemCount(itemCount);
 	}
 
 	/**
 	 * @return the newItem
 	 */
-	public Item getNewItem()
+	public Item getItem()
 	{
-		return newItem;
+		return item;
 	}
 
 	/**
@@ -77,14 +83,6 @@ public class ExchangeItem
 	public int getItemCount()
 	{
 		return itemCount;
-	}
-
-	/**
-	 * @return the itemId
-	 */
-	public int getItemId()
-	{
-		return itemId;
 	}
 
 	/**

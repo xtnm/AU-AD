@@ -44,6 +44,17 @@ public class RouteStep
 	@XmlAttribute(name = "rest_time", required = true)
 	private int time;
 
+	public RouteStep()
+	{
+	}
+
+	public RouteStep(float x, float y, float z)
+	{
+		locX = x;
+		locY = y;
+		locZ = z;
+	}
+
 	public float getX()
 	{
 		return locX;

@@ -224,9 +224,16 @@ public class QuestService
 		}
 
 		QuestState qs = player.getQuestStateList().getQuestState(template.getId());
-		if(qs != null && qs.getStatus().value() > 0)
-			return false;
-
+		if(qs != null && qs.getStatus().value() > 0){
+            if (qs.getStatus() == QuestStatus.COMPLETE && (qs.getCompliteCount() <= template.getMaxRepeatCount()))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+		}
 		return true;
 	}
 

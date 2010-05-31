@@ -19,6 +19,10 @@ package com.aionemu.gameserver.model.gameobjects.player;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import javolution.util.FastMap;
+
 import com.aionemu.commons.callbacks.Enhancable;
 import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.controllers.FlyController;
@@ -28,7 +32,6 @@ import com.aionemu.gameserver.controllers.effect.PlayerEffectController;
 import com.aionemu.gameserver.dataholders.DataManager;
 import com.aionemu.gameserver.model.Gender;
 import com.aionemu.gameserver.model.PlayerClass;
-import com.aionemu.gameserver.model.gameobjects.BrokerItem;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.Kisk;
@@ -43,6 +46,7 @@ import com.aionemu.gameserver.model.gameobjects.state.CreatureVisualState;
 import com.aionemu.gameserver.model.gameobjects.stats.PlayerGameStats;
 import com.aionemu.gameserver.model.gameobjects.stats.PlayerLifeStats;
 import com.aionemu.gameserver.model.group.PlayerGroup;
+import com.aionemu.gameserver.model.items.ItemCooldown;
 import com.aionemu.gameserver.model.legion.Legion;
 import com.aionemu.gameserver.model.legion.LegionMember;
 import com.aionemu.gameserver.model.templates.stats.PlayerStatsTemplate;
@@ -99,11 +103,10 @@ public class Player extends Creature
 	private int					flightTeleportId;
 	private int					flightDistance;
 	private Summon				summon;
-	private BrokerItem[]		brokerListCache			= new BrokerItem[0];
 	private Kisk				kisk;
-	private int					brokerMaskCache			= 0;
-	private int					brokerSoftTypeCache		= 0;
-	private int					brokerStartPageCache	= 0;
+	
+	private Map<Integer, ItemCooldown>	itemCoolDowns;
+	
 	/**
 	 * Static information for players
 	 */
@@ -1102,46 +1105,6 @@ public class Player extends Creature
 	{
 		this.summon = summon;
 	}
-	
-	public void setBrokerListCache(BrokerItem[] brokerListCache)
-	{
-		this.brokerListCache = brokerListCache;
-	}
-	
-	public BrokerItem[] getBrokerListCache()
-	{
-		return brokerListCache;
-	}
-	
-	public void setBrokerMaskCache(int mask)
-	{
-		this.brokerMaskCache = mask;
-	}
-	
-	public int getBrokerMaskCache()
-	{
-		return brokerMaskCache;
-	}
-	
-	public void setBrokerSortTypeCache(int sortType)
-	{
-		this.brokerSoftTypeCache = sortType;
-	}
-	
-	public int getBrokerSortTypeCache()
-	{
-		return brokerSoftTypeCache;
-	}
-	
-	public void setBrokerStartPageCache(int startPage)
-	{
-		this.brokerStartPageCache = startPage;
-	}
-	
-	public int getBrokerStartPageCache()
-	{
-		return brokerStartPageCache;
-	}
 
 	/**
 	 * @param new kisk to bind to (null if unbinding)
@@ -1157,5 +1120,75 @@ public class Player extends Creature
 	public Kisk getKisk()
 	{
 		return this.kisk;
+	}
+	
+	/**
+	 * 
+	 * @param delayId
+	 * @return
+	 */
+	public boolean isItemUseDisabled(int delayId)
+	{
+		if(itemCoolDowns == null || !itemCoolDowns.containsKey(delayId))
+			return false;
+		
+		Long coolDown = itemCoolDowns.get(delayId).getReuseTime();
+		if(coolDown == null)
+			return false;
+		
+		
+		if (coolDown < System.currentTimeMillis())
+		{
+			itemCoolDowns.remove(delayId);
+			return false;
+		}
+		
+		return true;
+	}
+	
+	/**
+	 * 
+	 * @param itemMask
+	 * @return
+	 */
+	public long getItemCoolDown(int itemMask)
+	{
+		if(itemCoolDowns == null || !itemCoolDowns.containsKey(itemMask))
+			return 0;
+		
+		return itemCoolDowns.get(itemMask).getReuseTime();
+	}
+	
+	/**
+	 * @return the itemCoolDowns
+	 */
+	public Map<Integer, ItemCooldown> getItemCoolDowns()
+	{
+		return itemCoolDowns;
+	}
+
+	/**
+	 * 
+	 * @param delayId
+	 * @param time
+	 * @param useDelay
+	 */
+	public void addItemCoolDown(int delayId, long time, int useDelay)
+	{
+		if(itemCoolDowns == null)
+			itemCoolDowns = new FastMap<Integer, ItemCooldown>().shared();
+		
+		itemCoolDowns.put(delayId, new ItemCooldown(time, useDelay));
+	}
+	
+	/**
+	 * 
+	 * @param itemMask
+	 */
+	public void removeItemCoolDown(int itemMask)
+	{
+		if(itemCoolDowns == null)
+			return;
+		itemCoolDowns.remove(itemMask);
 	}
 }

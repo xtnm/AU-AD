@@ -73,7 +73,7 @@ public class SM_BROKER_ITEMS extends AionServerPacket
 		writeD(buf, 0);
 		writeC(buf, 0);
 		writeC(buf, item.getItem().getEchantLevel());
-		writeD(buf, item.getItem().getItemTemplate().getTemplateId());
+		writeD(buf, item.getItem().getItemSkinTemplate().getTemplateId());
 		writeC(buf, 0);
 		
 		writeItemStones(buf, item.getItem());

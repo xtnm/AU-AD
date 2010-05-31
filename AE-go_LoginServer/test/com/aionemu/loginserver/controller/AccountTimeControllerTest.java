@@ -17,6 +17,9 @@
 
 package com.aionemu.loginserver.controller;
 
+import org.junit.Before;
+import org.junit.Test;
+
 import com.aionemu.commons.database.DatabaseFactory;
 import com.aionemu.commons.database.dao.DAOManager;
 import com.aionemu.loginserver.configs.Config;
@@ -24,8 +27,6 @@ import com.aionemu.loginserver.dao.AccountDAO;
 import com.aionemu.loginserver.dao.AccountTimeDAO;
 import com.aionemu.loginserver.model.Account;
 import com.aionemu.loginserver.model.AccountTime;
-import org.junit.Before;
-import org.junit.Test;
 
 /**
  * A controller made for testing

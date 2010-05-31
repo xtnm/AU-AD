@@ -72,12 +72,6 @@ public class GameChannelHandler extends AbstractChannelHandler
 	}
 
 	@Override
-	public void channelDisconnected(ChannelHandlerContext ctx, ChannelStateEvent e) throws Exception
-	{
-		log.info(this + " disconnected");
-	}
-
-	@Override
 	public void messageReceived(ChannelHandlerContext ctx, MessageEvent e) throws Exception
 	{
 		super.messageReceived(ctx, e);

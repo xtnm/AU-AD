@@ -179,7 +179,7 @@ public class SM_NPC_INFO extends AionServerPacket
 
 		writeF(buf, 1.5f);// unk
 		writeF(buf, npcTemplate.getHeight());
-		writeF(buf, npcTemplate.getStatsTemplate().getRunSpeed());// speed
+		writeF(buf, npc.getMoveController().getSpeed());// speed
 
 		writeH(buf, 2000);// 0x834 (depends on speed ? )
 		writeH(buf, 2000);// 0x834

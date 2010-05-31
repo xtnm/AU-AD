@@ -505,8 +505,11 @@
 		<object x="1573.17740" y="1372.21080" z="564.57715" h="37"/>
 	</spawn>
 	<!-- Kunberunerk (NPC Normal lvl:17)-->
-	<spawn map="110010000" npcid="798026" pool="2" interval="295">
+	<spawn map="110010000" npcid="798026" pool="1" interval="295" time="DAY">
 		<object x="1968.00000" y="1768.00000" z="576.51860" h="60"/>
+	</spawn>	
+	<!-- Kunberunerk (NPC Normal lvl:17)-->
+	<spawn map="110010000" npcid="798026" pool="1" interval="295" time="NIGHT">
 		<object x="1818.54200" y="2192.09180" z="528.51180" h="10"/>
 	</spawn>
 	<!-- Kuruminerk (NPC Normal lvl:45)-->

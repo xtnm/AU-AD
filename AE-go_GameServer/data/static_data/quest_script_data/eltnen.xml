@@ -319,7 +319,8 @@
 
 	<!-- When Statues go Bad -->
 	<monster_hunt start_npc_id="203939" id="1327">
-		<monster_infos var_id="0" npc_id="212003" max_kill="15"/>
+		<monster_infos var_id="0" npc_id="210804" max_kill="15"/>
+		<monster_infos var_id="0" npc_id="210814" max_kill="15"/>
 	</monster_hunt>
 
 
@@ -398,7 +399,7 @@
 	<report_to id="1359" start_npc_id="798055" end_npc_id="798051" item_id="182201324" />
 
 	<!-- 1346 Killing for Castor -->
-	<monster_hunt id="1346" start_npc_id="203966">
+	<monster_hunt id="1346" start_npc_id="203966" end_npc_id="203965">
 		<monster_infos var_id="0" npc_id="210844" max_kill="15"/>
 		<monster_infos var_id="0" npc_id="210872" max_kill="15"/>		
 		<monster_infos var_id="1" npc_id="210878" max_kill="20"/>
@@ -461,7 +462,7 @@
 
 
 	<!-- [Group] Earning Marana's Respect -->
-	<item_collecting id="1351" start_npc_id="203965" end_npc_id="203983" />
+	<item_collecting start_npc_id="203965" id="1351" end_npc_id="203983"/>
 
 	<!-- [Group] Siren Song -->
 		<monster_hunt start_npc_id="203965" id="1352">
@@ -578,7 +579,13 @@
 	<!-- TODO: 1375 Arming the Watch -->
 	<item_collecting id="1375" start_npc_id="203947" />
 
-	<!-- TODO: 1377 [Coin] Kerubsin Kuriullu -->
+	<!-- 1376 A Mountain of Trouble -->
+	<monster_hunt id="1376" start_npc_id="203947" end_npc_id="203964">
+		<monster_infos npc_id="210986"  var_id="0" max_kill="7"/>
+		<monster_infos npc_id="210976"  var_id="0" max_kill="7"/>
+	</monster_hunt>
+
+	<!-- 1377 [Coin] Kerubsin Kuriullu -->
 	<monster_hunt id="1377" start_npc_id="203964">
 		<monster_infos var_id="0" npc_id="210976" max_kill="12"/>
 		<monster_infos var_id="0" npc_id="210986" max_kill="12"/>		

@@ -121,6 +121,11 @@ public class SpawnTemplate
 	{
 		return walkerId;
 	}
+
+	public int getRandomWalkNr()
+	{
+		return randomWalk;
+	}
 	
 	public boolean hasRandomWalk()
 	{

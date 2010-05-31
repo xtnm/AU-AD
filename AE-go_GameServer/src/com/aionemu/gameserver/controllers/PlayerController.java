@@ -453,7 +453,7 @@ public class PlayerController extends CreatureController<Player>
 		Skill castingSkill = player.getCastingSkill();
 		if(castingSkill != null)
 		{
-			player.removeCoolDown(castingSkill.getSkillTemplate().getSkillId());
+			player.removeSkillCoolDown(castingSkill.getSkillTemplate().getSkillId());
 			player.setCasting(null);
 			PacketSendUtility.sendPacket(player, new SM_SKILL_CANCEL(player));
 		}	

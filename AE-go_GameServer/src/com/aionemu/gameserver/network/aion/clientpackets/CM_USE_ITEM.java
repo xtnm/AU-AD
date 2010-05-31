@@ -26,6 +26,7 @@ import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.AionClientPacket;
 import com.aionemu.gameserver.questEngine.QuestEngine;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
+import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.google.inject.Inject;
 
 /**
@@ -86,6 +87,10 @@ public class CM_USE_ITEM extends AionClientPacket {
 				break;
 		}	
 		
+		//TODO message? you are not allowed to use?
+		if(!item.getItemTemplate().isAllowedFor(player.getCommonData().getPlayerClass(), player.getLevel()))
+			return;
+		
 		if (questEngine.onItemUseEvent(new QuestEnv(null, player, 0, 0), item))
 			return;
 
@@ -95,7 +100,20 @@ public class CM_USE_ITEM extends AionClientPacket {
 			//PacketSendUtility.sendMessage(this.getOwner(), "You must wait until cast time finished to use skill again.");
 			return;
 		}
-
+		
+		// Store Item CD in server Player variable.
+		// Prevents potion spamming, and relogging to use kisks/aether jelly/long CD items.
+		if (player.isItemUseDisabled(item.getItemTemplate().getDelayId()))
+		{
+			PacketSendUtility.sendMessage(player, "That item is still in cooldown.");
+			return;
+		}
+		else
+		{
+			int useDelay = item.getItemTemplate().getDelayTime();
+			player.addItemCoolDown(item.getItemTemplate().getDelayId(), System.currentTimeMillis() + useDelay, useDelay / 1000);
+		}
+		
 		Item targetItem = player.getInventory().getItemByObjId(targetItemId);
 		if(targetItem == null)
 			targetItem = player.getEquipment().getEquippedItemByObjId(targetItemId);

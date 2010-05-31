@@ -707,10 +707,10 @@
 	<spawn map="210040000" npcid="700025" pool="1" interval="295">
 		<object x="2468.51860" y="300.03873" z="416.21384" h="25"/>
 	</spawn>
-	<!-- Obelisk (Object Normal lvl:1)-->
-	<spawn map="210040000" npcid="250093" pool="1" interval="295">
-		<object x="865.09340" y="2874.93920" z="147.11494" h="0"/>
-	</spawn>
+	<!-- Cursed Obelisk (Object Normal lvl:1)-->
+   	<spawn map="210040000" npcid="700282" pool="1" interval="295">
+      	<object x="865.09340" y="2874.93920" z="147.11494" h="0"/>
+   	</spawn>
 	<!-- Obelisk (Object Normal lvl:3)-->
 	<spawn map="210040000" npcid="700026" pool="1" interval="295">
 		<object x="1450.84020" y="1346.63930" z="175.43262" h="20"/>
@@ -1092,7 +1092,7 @@
 		<object x="1682.66770" y="2656.73100" z="116.00000" h="64"/>
 	</spawn>
 	<!-- Wailing Moroch (NPC Normal lvl:35)-->
-	<spawn map="210040000" npcid="204611" pool="1" interval="295">
+	<spawn map="210040000" npcid="204611" pool="1" interval="295" time="DAY">
 		<object x="2417.50600" y="691.37610" z="370.00000" h="70"/>
 	</spawn>
 	<!-- Wandering Ghost (NPC Normal lvl:41)-->

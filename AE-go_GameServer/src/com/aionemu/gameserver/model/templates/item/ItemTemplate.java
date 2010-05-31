@@ -25,11 +25,13 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.apache.commons.lang.StringUtils;
 
 import com.aionemu.gameserver.dataholders.DataManager;
 import com.aionemu.gameserver.itemengine.actions.ItemActions;
+import com.aionemu.gameserver.model.PlayerClass;
 import com.aionemu.gameserver.model.gameobjects.stats.modifiers.StatModifier;
 import com.aionemu.gameserver.model.items.ItemId;
 import com.aionemu.gameserver.model.items.ItemMask;
@@ -148,18 +150,24 @@ public class ItemTemplate extends VisibleObjectTemplate
 	
 	@XmlAttribute(name = "return_world")
 	private int					returnWorldId;
-	
+
 	@XmlAttribute(name = "return_alias")
 	private String				returnAlias;
-	
+
 	@XmlElement(name = "godstone")
 	private GodstoneInfo		godstoneInfo;
-	
+
 	@XmlElement(name = "stigma")
-	private Stigma		stigma;
-	
+	private Stigma				stigma;
+
 	@XmlAttribute(name = "name")
-	private String		name;
+	private String				name;
+
+	@XmlAttribute(name = "restrict")
+	private String				restrict;
+
+	@XmlTransient
+	private int[]				restricts;
 	
 	/**
 	 * @return the mask
@@ -172,6 +180,32 @@ public class ItemTemplate extends VisibleObjectTemplate
 	public int getItemSlot()
 	{
 		return itemSlot;
+	}
+	
+	/**
+	 * 
+	 * @param playerClass
+	 * @return
+	 */
+	public boolean isClassSpecific(PlayerClass playerClass)
+	{
+		boolean related = restricts[playerClass.ordinal()] > 0;
+		if(!related && !playerClass.isStartingClass())
+		{
+			related = restricts[PlayerClass.getStartingClassFor(playerClass).ordinal()] > 0;
+		}
+		return related;
+	}
+	
+	/**
+	 * 
+	 * @param playerClass
+	 * @param level
+	 * @return
+	 */
+	public boolean isAllowedFor(PlayerClass playerClass, int level)
+	{
+		return restricts[playerClass.ordinal()] <= level && restricts[playerClass.ordinal()] != 0;
 	}
 
 	/**
@@ -436,6 +470,12 @@ public class ItemTemplate extends VisibleObjectTemplate
 	void afterUnmarshal (Unmarshaller u, Object parent)
 	{
 		setItemId(Integer.parseInt(id));
+		String[] parts = restrict.split(",");
+		restricts = new int[12];
+		for(int i = 0; i < parts.length; i++)
+		{
+			restricts[i] = Integer.parseInt(parts[i]);
+		}
 	}
 
 	public void setItemId(int itemId)

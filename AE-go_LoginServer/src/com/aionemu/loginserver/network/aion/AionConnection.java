@@ -17,6 +17,17 @@
 
 package com.aionemu.loginserver.network.aion;
 
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.channels.SocketChannel;
+import java.security.interfaces.RSAPrivateKey;
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+import javax.crypto.SecretKey;
+
+import org.apache.log4j.Logger;
+
 import com.aionemu.commons.network.AConnection;
 import com.aionemu.commons.network.Dispatcher;
 import com.aionemu.commons.network.PacketProcessor;
@@ -25,17 +36,8 @@ import com.aionemu.loginserver.controller.AccountTimeController;
 import com.aionemu.loginserver.model.Account;
 import com.aionemu.loginserver.network.aion.serverpackets.SM_INIT;
 import com.aionemu.loginserver.network.ncrypt.CryptEngine;
-import com.aionemu.loginserver.network.ncrypt.KeyGen;
 import com.aionemu.loginserver.network.ncrypt.EncryptedRSAKeyPair;
-import org.apache.log4j.Logger;
-
-import javax.crypto.SecretKey;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.channels.SocketChannel;
-import java.security.interfaces.RSAPrivateKey;
-import java.util.ArrayDeque;
-import java.util.Deque;
+import com.aionemu.loginserver.network.ncrypt.KeyGen;
 
 /**
  * Object representing connection between LoginServer and Aion Client.

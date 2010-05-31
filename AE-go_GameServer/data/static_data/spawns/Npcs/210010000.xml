@@ -104,10 +104,6 @@
 	<spawn map="210010000" npcid="700081" pool="1" interval="295">
 		<object staticid="3" x="254.15" y="1065.97" z="120.792946" h="96"/>
 	</spawn>
-	<!-- Indratu Fortress Abyss Gate (Object Normal lvl:3)-->
-	<spawn map="210010000" npcid="700565" pool="1" interval="295">
-		<object staticid="579" x="299.35413" y="1016.2239" z="132.75842" h="86"/>
-	</spawn>
 	<!-- Ino (NPC Normal lvl:20)-->
 	<spawn map="210010000" npcid="203086" pool="1" interval="295">
 		<object x="166.23222" y="1141.4475" z="119.50536" h="4"/>
@@ -253,9 +249,9 @@
 	<spawn map="210010000" npcid="203085" pool="1" interval="295">
 		<object x="262.5719" y="1276.7648" z="108.24366" h="31"/>
 	</spawn>
-	<!-- Poeta Abyss Gate (Object Normal lvl:20)-->
+	<!-- Poeta Abyss Gate (Object Normal lvl:3)-->
 	<spawn map="210010000" npcid="700080" pool="1" interval="295">
-		<object x="298.91" y="1016.25" z="133.44154" h="38"/>
+		<object staticid="579" x="299.44205" y="1016.1417" z="131.55842" h="54"/>
 	</spawn>
 	<!-- Polinia (NPC Normal lvl:10)-->
 	<spawn map="210010000" npcid="203059" pool="1" interval="295">
@@ -327,10 +323,6 @@
 		<object x="226.29" y="1120.11" z="103.473366" h="30"/>
 		<object x="237.29" y="1131.36" z="103.78494" h="51"/>
 		<object x="180.18" y="1133.11" z="113.44005" h="81"/>
-	</spawn>
-	<!-- Suspicious Box (Object Normal lvl:1)-->
-	<spawn map="210010000" npcid="700174" pool="1" interval="295">
-		<object x="187.44165" y="1144.3655" z="120.63082" h="38"/>
 	</spawn>
 	<!-- Tamed Griffon (NPC Elite lvl:20)-->
 	<spawn map="210010000" npcid="203351" pool="1" interval="295">

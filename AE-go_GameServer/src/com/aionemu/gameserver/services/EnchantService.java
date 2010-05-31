@@ -23,7 +23,6 @@ import javax.inject.Inject;
 
 import org.apache.log4j.Logger;
 
-
 import com.aionemu.commons.utils.Rnd;
 import com.aionemu.gameserver.configs.main.EnchantsConfig;
 import com.aionemu.gameserver.model.DescriptionId;

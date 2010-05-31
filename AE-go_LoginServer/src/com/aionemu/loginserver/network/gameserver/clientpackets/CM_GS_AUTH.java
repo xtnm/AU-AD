@@ -16,6 +16,10 @@
  */
 package com.aionemu.loginserver.network.gameserver.clientpackets;
 
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.aionemu.commons.network.IPRange;
 import com.aionemu.loginserver.GameServerTable;
 import com.aionemu.loginserver.network.gameserver.GsAuthResponse;
@@ -23,10 +27,6 @@ import com.aionemu.loginserver.network.gameserver.GsClientPacket;
 import com.aionemu.loginserver.network.gameserver.GsConnection;
 import com.aionemu.loginserver.network.gameserver.GsConnection.State;
 import com.aionemu.loginserver.network.gameserver.serverpackets.SM_GS_AUTH_RESPONSE;
-
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This is authentication packet that gs will send to login server for registration.
