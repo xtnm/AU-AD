@@ -198,5 +198,31 @@ public class WorldPosition
 		return "WorldPosition [heading=" + heading + ", isSpawned=" + isSpawned + ", mapRegion=" + mapRegion + ", x="
 			+ x + ", y=" + y + ", z=" + z + "]";
 	}
+
+	@Override
+	public boolean equals(Object o)
+	{
+		if(this == o)
+			return true;
+		if(!(o instanceof WorldPosition))
+			return false;
+
+		WorldPosition pos = (WorldPosition) o;
+		return this.x == pos.x && this.y == pos.y && this.z == pos.z && this.isSpawned == pos.isSpawned
+			&& this.heading == pos.heading && this.mapRegion == pos.mapRegion;
+	}
+
+	@Override
+	public WorldPosition clone()
+	{
+		WorldPosition pos = new WorldPosition();
+		pos.heading = this.heading;
+		pos.isSpawned = this.isSpawned;
+		pos.mapRegion = this.mapRegion;
+		pos.x = this.x;
+		pos.y = this.y;
+		pos.z = this.z;
+		return pos;
+	}
 	
 }
