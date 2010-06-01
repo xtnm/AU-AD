@@ -3,6 +3,12 @@
 	xsi:noNamespaceSchemaLocation="portal_templates.xsd">
 	
 	<!-- INSTANCES -->
+	
+	<!-- Adma Stronghold -->
+	<portal npcid="730165" instance="true" minlevel="50" maxlevel="50" group="false">
+		<entrypoint mapid="220050000" x="2339.747" y="160.00119" z="246.44734"/>
+		<exitpoint mapid="320130000" x="450.66864" y="199.70248" z="167.84444"/>
+	</portal>	
 
 	<!-- Sulfur tree nest -->
 	<portal npcid="700452"  instance="true" minlevel="35" maxlevel="35" group="true">
