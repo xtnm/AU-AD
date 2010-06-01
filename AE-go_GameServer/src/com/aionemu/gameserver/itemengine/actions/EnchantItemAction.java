@@ -49,6 +49,10 @@ public class EnchantItemAction extends AbstractItemAction
 	@Override
 	public void act(final Player player, final Item parentItem, final Item targetItem)
 	{
+		if(targetItem == null)
+		{ // no item selected.
+			return;
+		}
 
 		PacketSendUtility.sendPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(),
 			parentItem.getObjectId(), parentItem.getItemTemplate().getTemplateId(), 5000, 0, 0));
