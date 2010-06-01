@@ -51,7 +51,7 @@ public class FirstTargetRangeProperty extends Property
 		if(firstTarget == null)
 			return false;
 		//here value +4 till better move controller developed
-		if(MathUtil.isInRange(effector, firstTarget, value + 4))
+		if(MathUtil.isIn3dRange(effector, firstTarget, value + 4))
 		{
 			return true;
 		}
