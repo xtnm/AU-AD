@@ -143,6 +143,9 @@ public class MoveController
 
 	public void schedule()
 	{
+		if(isScheduled())
+			return;
+
 		if(speed == 0)
 			speed = owner.getGameStats().getCurrentStat(StatEnum.SPEED) / 1000;
 		
@@ -234,7 +237,8 @@ public class MoveController
 		
 		if(moveTask != null)
 		{
-			moveTask.cancel(true);
+			if(!moveTask.isCancelled())
+				moveTask.cancel(true);
 			moveTask = null;
 		}
 	}

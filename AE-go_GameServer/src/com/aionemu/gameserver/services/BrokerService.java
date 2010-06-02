@@ -556,18 +556,24 @@ public class BrokerService
 					Item resultItem = player.getInventory().putToBag(item.getItem());
 					if(resultItem != null)
 					{
+						boolean result = false;
 						switch(playerRace)
 						{
 							case ASMODIANS:
-								asmodianSettledItems.remove(item.getItemUniqueId());
+								result = asmodianSettledItems.remove(item.getItemUniqueId()) != null;
 								break;
 							case ELYOS:
-								elyosSettledItems.remove(item.getItemUniqueId());
+								result = elyosSettledItems.remove(item.getItemUniqueId()) != null;
 								break;
 						}
-						saveManager.add(new BrokerOpSaveTask(item));
-						PacketSendUtility.sendPacket(player, new SM_INVENTORY_UPDATE(Collections
-							.singletonList(resultItem)));
+
+						if(result)
+						{
+							item.setPersistentState(PersistentState.DELETED);
+							saveManager.add(new BrokerOpSaveTask(item));
+							PacketSendUtility.sendPacket(player, new SM_INVENTORY_UPDATE(Collections
+								.singletonList(resultItem)));
+						}
 					}
 					else
 						itemsLeft = true;
@@ -594,9 +600,8 @@ public class BrokerService
 
 		Timestamp currentTime = new Timestamp(Calendar.getInstance().getTimeInMillis());
 
-		for(int i = 0; i < asmoBrokerItems.size(); i++)
+		for(BrokerItem item : asmoBrokerItems.values())
 		{
-			BrokerItem item = asmoBrokerItems.get(i);
 			if(item != null && item.getExpireTime().getTime() <= currentTime.getTime())
 			{
 				putToSettled(Race.ASMODIANS, item, false);
@@ -604,9 +609,8 @@ public class BrokerService
 			}
 		}
 
-		for(int i = 0; i < elyosBrokerItems.size(); i++)
+		for(BrokerItem item : elyosBrokerItems.values())
 		{
-			BrokerItem item = elyosBrokerItems.get(i);
 			if(item != null && item.getExpireTime().getTime() <= currentTime.getTime())
 			{
 				putToSettled(Race.ELYOS, item, false);

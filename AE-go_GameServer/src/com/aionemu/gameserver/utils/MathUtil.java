@@ -314,6 +314,25 @@ public class MathUtil
 	}
 	
 	/**
+	 * Checks whether two given instances of AionObject are within given range.
+	 * Includes Z-Axis check.
+	 * @param object1
+	 * @param object2
+	 * @param range
+	 * @return true if objects are in range, false otherwise
+	 */
+	public static boolean isIn3dRange(VisibleObject object1, VisibleObject object2, float range)
+	{
+		if(object1.getWorldId() != object2.getWorldId())
+			return false;
+		
+		float dx = (object2.getX() - object1.getX());
+		float dy = (object2.getY() - object1.getY());
+		float dz = (object2.getZ() - object1.getZ());
+		return dx * dx + dy * dy + dz * dz < range * range;
+	}
+	
+	/**
 	 * 
 	 * @param obj1X
 	 * @param obj1Y

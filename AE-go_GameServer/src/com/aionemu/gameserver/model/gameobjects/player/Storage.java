@@ -21,6 +21,8 @@ import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import org.apache.log4j.Logger;
+
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.PersistentState;
 import com.aionemu.gameserver.model.items.ItemStorage;
@@ -35,6 +37,8 @@ import com.aionemu.gameserver.utils.PacketSendUtility;
  */
 public class Storage
 {
+	private static final Logger	log	= Logger.getLogger(Storage.class);
+
 	private Player owner;
 
 	protected ItemStorage storage;
@@ -270,6 +274,11 @@ public class Storage
 			return false;
 
 		Item item = storage.getItemFromStorageByItemObjId(itemObjId);
+		if(item == null)
+		{ // the item doesn't exist, return false if the count is bigger then 0.
+			log.warn("An item from player '" + getOwner().getName() + "' that should be removed doesn't exist.");
+			return count == 0;
+		}
 		boolean result = decreaseItemCount(item, count) >= 0;
 		if(result)
 			setPersistentState(PersistentState.UPDATE_REQUIRED);

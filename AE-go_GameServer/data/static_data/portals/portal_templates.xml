@@ -3,6 +3,18 @@
 	xsi:noNamespaceSchemaLocation="portal_templates.xsd">
 	
 	<!-- INSTANCES -->
+		
+	<!-- Adma Stronghold -->
+	<portal npcid="730165" instance="true" minlevel="50" maxlevel="50" group="true">
+		<entrypoint mapid="220050000" x="2339.747" y="160.00119" z="246.44734"/>
+		<exitpoint mapid="320130000" x="450.66864" y="199.70248" z="167.84444"/>
+	</portal>
+	
+	<!-- Aetherogenetics Lab -->
+	<portal npcid="730034"  instance="true" minlevel="41" maxlevel="45" group="true">
+		<entrypoint mapid="210040000" x="233.95" y="533.53" z="158.75"/>
+        <exitpoint mapid="310050000" x="348.7295" y="235.60219" z="147.67067"/>		
+	</portal>
 	
 	<!-- Nochsana Training Camp Asmodians -->
 	<portal npcid="700414"  instance="true" minlevel="25" maxlevel="28" group="false" race="ASMODIANS">
@@ -107,12 +119,6 @@
 		<exitpoint mapid="320110000" x="606.7069" y="527.3919" z="200.05792"/>
 	</portal>
 
-	<!-- Adma Stronghold -->
-	<portal npcid="730165" instance="true" minlevel="50" maxlevel="50" group="true">
-		<entrypoint mapid="220050000" x="2339.747" y="160.00119" z="246.44734"/>
-		<exitpoint mapid="320130000" x="450.66864" y="199.70248" z="167.84444"/>
-	</portal>
-
 	<!-- Left Wing Chamber -->	
 	<portal npcid="700454" instance="true" minlevel="35" maxlevel="35" group="true">
 		<entrypoint mapid="400010000" x="2784.99" y="2664.03" z="1486.7"/>
@@ -132,7 +138,7 @@
 	</portal>
 	
 	<!-- Tahabata Abyss Gate -->
-	<portal npcid="730211" instance="true" minlevel="49" maxlevel="50" group="true">
+	<portal npcid="730211" instance="true" minlevel="40" maxlevel="50" group="true">
 		<entrypoint mapid="300040000" x="1179" y="1223" z="145"/>
 		<exitpoint mapid="300040000" x="1188.80707" y="1241.4151" z="143.85065"/>
 	</portal>

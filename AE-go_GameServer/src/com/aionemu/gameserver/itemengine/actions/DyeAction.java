@@ -45,6 +45,11 @@ public class DyeAction extends AbstractItemAction
 	@Override
 	public void act(Player player, Item parentItem, Item targetItem)
 	{
+		if(targetItem == null)
+		{ // no item selected.
+			return;
+		}
+
 		if (targetItem.getItemTemplate().isItemDyePermitted())
 		{
 			if (color.equals("no"))

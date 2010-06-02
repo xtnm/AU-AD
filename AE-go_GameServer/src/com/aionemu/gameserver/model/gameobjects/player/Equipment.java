@@ -36,6 +36,7 @@ import com.aionemu.gameserver.network.aion.serverpackets.SM_UPDATE_ITEM;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_UPDATE_PLAYER_APPEARANCE;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
+import com.aionemu.gameserver.world.WorldPosition;
 
 /**
  *
@@ -260,6 +261,11 @@ public class Equipment
 	private void unEquip(int slot)
 	{
 		Item item = equipment.remove(slot);
+		if(item == null)
+		{ // NPE check, there is no item in the given slot.
+			return;
+		}
+
 		item.setEquipped(false);
 		
 		ItemEquipmentListener.onItemUnequipment(item, owner);
@@ -850,6 +856,8 @@ public class Equipment
 				PacketSendUtility.broadcastPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(), item
 					.getObjectId(), item.getItemId(), 5000, 4), true);
 
+				final WorldPosition position = player.getCommonData().getPosition().clone();
+
 				// item usage animation
 				ThreadPoolManager.getInstance().schedule(new Runnable(){
 
@@ -857,6 +865,10 @@ public class Equipment
 					{
 						PacketSendUtility.broadcastPacket(player, new SM_ITEM_USAGE_ANIMATION(player.getObjectId(),
 							item.getObjectId(), item.getItemId(), 0, 6), true);
+						if(!position.equals(player.getCommonData().getPosition()))
+						{ // player moved, binding is canceled.
+							return;
+						}
 						PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE
 							.SOUL_BOUND_ITEM_SUCCEED(new DescriptionId(item.getNameID())));
 						item.setSoulBound(true);
