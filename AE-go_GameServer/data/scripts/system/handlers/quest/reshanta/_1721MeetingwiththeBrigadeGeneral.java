@@ -124,7 +124,7 @@ public class _1721MeetingwiththeBrigadeGeneral extends QuestHandler
       }
       else if(targetId == 278518)
       {
-         if(qs.getStatus() == QuestStatus.REWARD)
+         if(qs != null && qs.getStatus() == QuestStatus.REWARD)
          {
             return defaultQuestEndDialog(env);
          }

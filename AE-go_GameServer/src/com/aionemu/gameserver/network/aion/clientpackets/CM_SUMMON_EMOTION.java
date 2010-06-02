@@ -60,6 +60,8 @@ public class CM_SUMMON_EMOTION extends AionClientPacket
 			return;
 		
 		Summon summon = activePlayer.getSummon();
+		if (summon == null)
+			return;
 		
 		switch(emotionType)
 		{
@@ -70,6 +72,7 @@ public class CM_SUMMON_EMOTION extends AionClientPacket
 			case 0x13: //start attacking
 				summon.setState(CreatureState.WEAPON_EQUIPPED);
 				PacketSendUtility.broadcastPacket(summon, new SM_EMOTION(summon, emotionType));
+				break;
 			case 0x14: //stop attacking
 				summon.unsetState(CreatureState.WEAPON_EQUIPPED);
 				PacketSendUtility.broadcastPacket(summon, new SM_EMOTION(summon, emotionType));

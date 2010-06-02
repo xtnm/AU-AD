@@ -261,6 +261,11 @@ public class Equipment
 	private void unEquip(int slot)
 	{
 		Item item = equipment.remove(slot);
+		if(item == null)
+		{ // NPE check, there is no item in the given slot.
+			return;
+		}
+
 		item.setEquipped(false);
 		
 		ItemEquipmentListener.onItemUnequipment(item, owner);

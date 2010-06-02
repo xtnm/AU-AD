@@ -43,8 +43,12 @@ public class ItemRemodelService
 		Storage inventory = player.getInventory();
 		Item keepItem = inventory.getItemByObjId(keepItemObjId);
 		Item extractItem = inventory.getItemByObjId(extractItemObjId);
-		
-		
+
+		if(keepItem == null || extractItem == null)
+		{ // NPE check.
+			return;
+		}
+
 		// Check Player Level
 		if (player.getLevel() < 30)
 		{
