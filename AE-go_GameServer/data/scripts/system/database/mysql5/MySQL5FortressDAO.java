@@ -190,7 +190,7 @@ public class MySQL5FortressDAO extends FortressDAO
 				// TODO Auto-generated method stub
 				arg0.next();
 				String factionName = arg0.getString("owner_faction");
-				if(factionName == "ASMODIANS")
+				if(factionName.equals("ASMODIANS"))
 				{
 					ownerFaction[0] = Race.ASMODIANS;
 				}
