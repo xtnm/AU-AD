@@ -40,6 +40,7 @@ public class FortressGeneral extends Npc
 	public FortressGeneral(int objId, FortressGeneralController controller, SpawnTemplate spawn, VisibleObjectTemplate objectTemplate, int fortressId)
 	{
 		super(objId, controller, spawn, objectTemplate);
+		controller.setOwner(this);
 		this.linkedFortressId = fortressId;
 	}
 	
