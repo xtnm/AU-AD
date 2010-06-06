@@ -144,7 +144,7 @@ public class MySQL5FortressDAO extends FortressDAO
 			public void handleRead(ResultSet arg0) throws SQLException {
 				// TODO Auto-generated method stub
 				arg0.next();
-				int npcTemplateId = arg0.getInt("npc_template_id");
+				int npcTemplateId = arg0.getInt("general_template_id");
 				int map = arg0.getInt("map");
 				float x = arg0.getFloat("pos_x");
 				float y = arg0.getFloat("pos_y");
