@@ -59,4 +59,10 @@
 	<map id="900020000" twin_count="10" name="Test_Basic" death_level="0" water_level="16"/>
 	<map id="900030000" twin_count="5" name="Test_Server" death_level="0" water_level="1"/>
 	<map id="900100000" name="Test_GiantMonster" death_level="0" water_level="16"/>
+	<map id="220070000" name="Gelkmaros" death_level="0" water_level="16"/> 
+	<map id="210050000" name="Inggison" death_level="0" water_level="16"/> 
+	<map id="300190000" name="TalocsHollow" instance="true" death_level="0" water_level="16"/> 
+	<map id="600010000" name="SilenteraCanyon" instance="true" death_level="0" water_level="16"/> 
+	<map id="120020000" name="ConventofMarchutan" death_level="0" water_level="16"/> 
+	<map id="110020000" name="CloisterofKaisinel" death_level="0" water_level="16"/>
 </world_maps>

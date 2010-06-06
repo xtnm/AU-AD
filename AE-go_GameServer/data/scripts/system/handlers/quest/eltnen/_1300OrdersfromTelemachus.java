@@ -50,7 +50,7 @@ public class _1300OrdersfromTelemachus extends QuestHandler
 	{
 		final Player player = env.getPlayer();
 		final QuestState qs = player.getQuestStateList().getQuestState(questId);
-		if(qs == null || qs.getStatus() == QuestStatus.LOCKED)
+		if(qs == null)
 			return false;
 		int targetId = 0;
 		if(env.getVisibleObject() instanceof Npc)
@@ -61,14 +61,13 @@ public class _1300OrdersfromTelemachus extends QuestHandler
 		{
 			if(env.getDialogId() == 25)
 			{
+				qs.setQuestVar(1);
+				qs.setStatus(QuestStatus.REWARD);
+				updateQuestStatus(player, qs);
 				return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1011);
 			}
 			else
-			{	
-				qs.setStatus(QuestStatus.REWARD);
-				updateQuestStatus(player, qs);
-				return true;
-			}
+				return defaultQuestStartDialog(env);
 		}
 		else if(qs.getStatus() == QuestStatus.REWARD)
 		{
@@ -92,10 +91,10 @@ public class _1300OrdersfromTelemachus extends QuestHandler
 			return false;
 		final Player player = env.getPlayer();
 		final QuestState qs = player.getQuestStateList().getQuestState(questId);
-		if(qs.getStatus() == QuestStatus.START || qs.getStatus() == QuestStatus.REWARD || qs.getStatus() == QuestStatus.COMPLETE)
+		if(qs != null)
 			return false;
-		qs.setStatus(QuestStatus.START);
-		updateQuestStatus(player, qs);
+		env.setQuestId(questId);
+		questService.startQuest(env, QuestStatus.START);
 		return true;
 	}
 }
