@@ -83,7 +83,7 @@ public class FortressService
 	{
 		switch(fortressId)
 		{
-		case 1: return "Archipel de Soufre";
+		case 1: return "de Soufre";
 		case 2: return "Archipel des Ailes de Siel A";
 		case 3: return "Archipel des Ailes de Siel B";
 		case 4: return "Oeil de Reshanta";
