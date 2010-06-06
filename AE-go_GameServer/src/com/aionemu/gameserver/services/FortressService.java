@@ -106,7 +106,7 @@ public class FortressService
 		// spawns npc using the specified race
 		for(NpcSpawnTemplate tpl : spawnTemplates)
 		{
-			SpawnTemplate template = spawnEngine.addNewSpawn(tpl.getMap(), 0, tpl.getNpcTemplateId(), tpl.getX(), tpl.getY(), tpl.getZ(), tpl.getHeading(), 0, 0, false);
+			SpawnTemplate template = spawnEngine.addNewSpawn(tpl.getMap(), 0, tpl.getNpcTemplateId(), tpl.getX(), tpl.getY(), tpl.getZ(), tpl.getHeading(), 0, 0, false, true);
 			VisibleObject obj = spawnEngine.spawnObject(template, 0);
 			DAOManager.getDAO(FortressDAO.class).insertCache(fortressId, obj.getObjectId());
 		}
@@ -175,7 +175,7 @@ public class FortressService
 	public void spawnFortressGeneral(int fortressId, Race race)
 	{
 		NpcSpawnTemplate generalTemplate = DAOManager.getDAO(FortressDAO.class).getGeneralSpawnTemplate(fortressId, race);
-		SpawnTemplate tpl = spawnEngine.addNewSpawn(generalTemplate.getMap(), 0, generalTemplate.getNpcTemplateId(), generalTemplate.getX(), generalTemplate.getY(), generalTemplate.getZ(), generalTemplate.getHeading(), 0, 0, true);
+		SpawnTemplate tpl = spawnEngine.addNewSpawn(generalTemplate.getMap(), 0, generalTemplate.getNpcTemplateId(), generalTemplate.getX(), generalTemplate.getY(), generalTemplate.getZ(), generalTemplate.getHeading(), 0, 0, true, true);
 		FortressGeneral general = spawnEngine.spawnFortressGeneral(tpl, fortressId);
 	}
 	
