@@ -176,12 +176,17 @@ public class FortressService
 	public void spawnFortressGeneral(int fortressId, Race race)
 	{
 		NpcSpawnTemplate generalTemplate = DAOManager.getDAO(FortressDAO.class).getGeneralSpawnTemplate(fortressId, race);
-		SpawnTemplate tpl = spawnEngine.addNewSpawn(generalTemplate.getMap(), 1, generalTemplate.getNpcTemplateId(), generalTemplate.getX(), generalTemplate.getY(), generalTemplate.getZ(), generalTemplate.getHeading(), 0, 0, true, true);
+		SpawnTemplate tpl = spawnEngine.addNewSpawn(generalTemplate.getMap(), 1, generalTemplate.getNpcTemplateId(), generalTemplate.getX(), generalTemplate.getY(), generalTemplate.getZ(), generalTemplate.getHeading(), 0, 0, false, true);
 		FortressGeneral general = spawnEngine.spawnFortressGeneral(tpl, fortressId);
 	}
 	
 	public void triggerGeneralKilled(final int fortressId, final Player lastAttacker)
 	{
+		if(DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(fortressId) == lastAttacker.getCommonData().getRace())
+		{
+			PacketSendUtility.sendMessage(lastAttacker, "Vous venez de tuer votre propre general de la divinite protectrice. Vous ne gagnerez aucune medaille et ne serez pas teleporte.");
+			return;
+		}
 		PlayerGroup group = groupService.getGroup(lastAttacker.getObjectId());
 		final ArrayList<Player> players = new ArrayList<Player>();
 		if(group == null || group.size() < 2)
