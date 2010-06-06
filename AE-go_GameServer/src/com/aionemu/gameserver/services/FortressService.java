@@ -7,8 +7,6 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import admincommands.Npc;
-
 import com.aionemu.commons.database.dao.DAO;
 import com.aionemu.commons.database.dao.DAOManager;
 import com.aionemu.gameserver.ai.desires.impl.AggressionDesire;
@@ -22,6 +20,7 @@ import com.aionemu.gameserver.model.gameobjects.AionObject;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.FortressGeneral;
 import com.aionemu.gameserver.model.gameobjects.Item;
+import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.Monster;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
