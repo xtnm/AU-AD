@@ -94,7 +94,7 @@ public class FortressGeneralController extends NpcController
 	@Override
 	public void onDie(@Nullable Creature lastAttacker)
 	{
-		super.onDie(lastAttacker);
+		//super.onDie(lastAttacker);
 		if(lastAttacker instanceof Player)
 		{
 			fortressService.triggerGeneralKilled(getOwner().getFortressId(), (Player)lastAttacker);
