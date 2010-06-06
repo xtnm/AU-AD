@@ -257,7 +257,7 @@ public class CM_ENTER_WORLD extends AionClientPacket
 			sendPacket(new SM_ABYSS_RANK(player.getAbyssRank()));
 
 			sendPacket(new SM_MESSAGE(0, null, "Bienvenue sur " + GSConfig.SERVER_NAME
-				+ " server\nEmulateur Aion Dream Emu v2 RC1\nFork Aion Unique by Aion Dream Team",
+				+ "\nEmulateur Aion Dream Emu v2 RC1\nFork Aion Unique by Aion Dream Team",
 				ChatType.ANNOUNCEMENTS));
 
 			if(player.isInPrison())
