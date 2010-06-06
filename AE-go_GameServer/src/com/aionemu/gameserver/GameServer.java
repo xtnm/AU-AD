@@ -184,9 +184,10 @@ public class GameServer
 		{
 			SpawnTemplate spawnTemplate = spawnEngine.addNewSpawn(tpl.getMap(), 1, tpl.getNpcTemplateId(), tpl.getX(), tpl.getY(), tpl.getZ(), tpl.getHeading(), 0, 0, false, true);
 			VisibleObject obj = spawnEngine.spawnObject(spawnTemplate, 1);
-			log.info("Spawned template #" + tpl.getSpawnTemplateId() + " : " + obj.getObjectTemplate().getName());
 			DAOManager.getDAO(NpcSpawnDAO.class).insertCache(tpl.getSpawnTemplateId(), obj.getObjectId());
 		}
+		
+		log.info("Successfully spawned " + databaseTemplates.size() + " NPC templates from database");
 		
 	}
 
