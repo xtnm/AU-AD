@@ -232,7 +232,7 @@ public class SpawnEngine
 		int objectId = spawn.getSpawnGroup().getNpcid();
 		FortressGeneral gen = new FortressGeneral(aionObjectsIDFactory.nextId(), injector.getInstance(FortressGeneralController.class), spawn, npcData.getNpcTemplate(objectId), fortressId);
 		gen.setKnownlist(new KnownList(gen));
-		bringIntoWorld(gen, spawn, 0);
+		bringIntoWorld(gen, spawn, 1);
 		return gen;
 	}
 
