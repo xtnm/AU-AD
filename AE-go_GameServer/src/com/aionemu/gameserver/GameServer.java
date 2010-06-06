@@ -156,6 +156,8 @@ public class GameServer
 		{
 			log.info("Successfully loaded FortressService");
 		}
+		
+		gs.injector.getInstance(FortressService.class).initialize();
 
 		// gs.injector.getInstance(com.aionemu.gameserver.utils.chathandlers.ChatHandlers.class);
 		onStartup();
