@@ -44,6 +44,7 @@ import com.aionemu.gameserver.network.chatserver.ChatServer;
 import com.aionemu.gameserver.network.loginserver.LoginServer;
 import com.aionemu.gameserver.questEngine.QuestEngine;
 import com.aionemu.gameserver.services.BrokerService;
+import com.aionemu.gameserver.services.FortressService;
 import com.aionemu.gameserver.services.ServiceProxy;
 import com.aionemu.gameserver.spawnengine.SpawnEngine;
 import com.aionemu.gameserver.taskmanager.tasks.PacketBroadcaster;
@@ -150,6 +151,11 @@ public class GameServer
 		World world = gs.injector.getInstance(World.class);
 		Thread autoAnnounce = new Thread(new AutoAnnounce(world));
 		autoAnnounce.start();
+		
+		if(gs.injector.getInstance(FortressService.class) instanceof FortressService)
+		{
+			log.info("Successfully loaded FortressService");
+		}
 
 		// gs.injector.getInstance(com.aionemu.gameserver.utils.chathandlers.ChatHandlers.class);
 		onStartup();

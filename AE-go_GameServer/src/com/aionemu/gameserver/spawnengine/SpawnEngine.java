@@ -22,6 +22,7 @@ import org.apache.log4j.Logger;
 
 import com.aionemu.gameserver.controllers.ActionitemController;
 import com.aionemu.gameserver.controllers.BindpointController;
+import com.aionemu.gameserver.controllers.FortressGeneralController;
 import com.aionemu.gameserver.controllers.GatherableController;
 import com.aionemu.gameserver.controllers.KiskController;
 import com.aionemu.gameserver.controllers.MonsterController;
@@ -40,6 +41,7 @@ import com.aionemu.gameserver.dataholders.SummonStatsData;
 import com.aionemu.gameserver.dataholders.WorldMapsData;
 import com.aionemu.gameserver.model.NpcType;
 import com.aionemu.gameserver.model.gameobjects.Creature;
+import com.aionemu.gameserver.model.gameobjects.FortressGeneral;
 import com.aionemu.gameserver.model.gameobjects.Gatherable;
 import com.aionemu.gameserver.model.gameobjects.Kisk;
 import com.aionemu.gameserver.model.gameobjects.Monster;
@@ -223,6 +225,15 @@ public class SpawnEngine
 		trap.getController().onRespawn();
 		bringIntoWorld(trap, spawn, instanceIndex);
 		return trap;
+	}
+	
+	public FortressGeneral spawnFortressGeneral(SpawnTemplate spawn, int fortressId)
+	{
+		int objectId = spawn.getSpawnGroup().getNpcid();
+		FortressGeneral gen = new FortressGeneral(aionObjectsIDFactory.nextId(), injector.getInstance(FortressGeneralController.class), spawn, npcData.getNpcTemplate(objectId), fortressId);
+		gen.setKnownlist(new KnownList(gen));
+		bringIntoWorld(gen, spawn, 0);
+		return gen;
 	}
 
 	/**
