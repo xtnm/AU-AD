@@ -111,6 +111,7 @@ public class FortressService
 			DAOManager.getDAO(FortressDAO.class).insertCache(fortressId, obj.getObjectId());
 		}
 		log.info("Successfully spawned " + spawnTemplates.size() + " " + ownerFaction.name() + " npc for fortress #" + fortressId);
+		spawnFortressGeneral(fortressId, ownerFaction);
 		// send message to world : "Fortress XXXX is now available to attack for Asmodians"
 		sendWorldMessage(getFortressName(fortressId), ownerFaction);
 	}
