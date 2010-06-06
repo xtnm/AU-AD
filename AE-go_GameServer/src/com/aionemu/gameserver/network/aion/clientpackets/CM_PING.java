@@ -67,6 +67,10 @@ public class CM_PING extends AionClientPacket
 			{
 				String name = getConnection().getActivePlayer().getName();
 				log.info("[AUDIT] possible client timer cheat: " + pingInterval + " " + name);
+				if(pingInterval < 35000)
+				{
+					getConnection().close(true);
+				}
 			}
 
 		}

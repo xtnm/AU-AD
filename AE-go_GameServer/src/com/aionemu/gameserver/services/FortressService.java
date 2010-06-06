@@ -104,13 +104,22 @@ public class FortressService
 		// get all spawns from DB templates
 		ArrayList<NpcSpawnTemplate> spawnTemplates = DAOManager.getDAO(FortressDAO.class).getAllTemplates(fortressId, ownerFaction);
 		// spawns npc using the specified race
+		int spawnedCounter = 0;
 		for(NpcSpawnTemplate tpl : spawnTemplates)
 		{
 			SpawnTemplate template = spawnEngine.addNewSpawn(tpl.getMap(), 1, tpl.getNpcTemplateId(), tpl.getX(), tpl.getY(), tpl.getZ(), tpl.getHeading(), 0, 0, false, true);
 			VisibleObject obj = spawnEngine.spawnObject(template, 1);
-			DAOManager.getDAO(FortressDAO.class).insertCache(fortressId, obj.getObjectId());
+			if(obj == null)
+			{
+				log.error("No template for fortress npc id #" + tpl.getNpcTemplateId());
+			}
+			else
+			{
+				spawnedCounter++;
+				DAOManager.getDAO(FortressDAO.class).insertCache(fortressId, obj.getObjectId());
+			}
 		}
-		log.info("Successfully spawned " + spawnTemplates.size() + " " + ownerFaction.name() + " npc for fortress #" + fortressId);
+		log.info("Successfully spawned " + spawnedCounter + " " + ownerFaction.name() + " npc for fortress #" + fortressId);
 		spawnFortressGeneral(fortressId, ownerFaction);
 		// send message to world : "Fortress XXXX is now available to attack for Asmodians"
 		sendWorldMessage(getFortressName(fortressId), ownerFaction);
