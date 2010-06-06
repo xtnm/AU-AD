@@ -205,7 +205,7 @@ public class FortressService
 				// get group members of lastAttacker
 				
 				//TODO: set correct exit point location
-				portPlayersToExit(players, null);
+				portPlayersToExit(players);
 				doPlayerMedalReward(players);
 				DAOManager.getDAO(FortressDAO.class).setFortressOwner(fortressId, lastAttacker.getCommonData().getRace());
 				spawnFortress(fortressId, lastAttacker.getCommonData().getRace());
@@ -221,11 +221,11 @@ public class FortressService
 		}
 	}
 	
-	public void portPlayersToExit(ArrayList<Player> players, WorldPosition exitPoint)
+	public void portPlayersToExit(ArrayList<Player> players)
 	{
 		for(Player p : players)
 		{
-			teleportService.teleportTo(p, exitPoint.getMapId(), exitPoint.getX(), exitPoint.getY(), exitPoint.getZ(), 0);
+			teleportService.teleportTo(p, 400010000, (float)1300.8483, (float)1088.8396, (float)1508.2749, 0);
 		}
 	}
 	
