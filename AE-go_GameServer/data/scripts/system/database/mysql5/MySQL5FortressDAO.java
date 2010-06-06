@@ -138,7 +138,7 @@ public class MySQL5FortressDAO extends FortressDAO
 	public NpcSpawnTemplate getGeneralSpawnTemplate(final int fortressId, final Race ownerFaction)
 	{
 		final NpcSpawnTemplate[] templates = new NpcSpawnTemplate[1];
-		DB.select("SELECT npc_template_id, map, pos_x, pos_y, pos_z, heading FROM fortress_generals WHERE fortress_id = ? AND race = ?", new ParamReadStH() {
+		DB.select("SELECT general_template_id, map, pos_x, pos_y, pos_z, heading FROM fortress_generals WHERE fortress_id = ? AND race = ?", new ParamReadStH() {
 			
 			@Override
 			public void handleRead(ResultSet arg0) throws SQLException {
