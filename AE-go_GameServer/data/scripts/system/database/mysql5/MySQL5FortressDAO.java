@@ -84,7 +84,7 @@ public class MySQL5FortressDAO extends FortressDAO
 	@Override
 	public void insertCache(final int fortressId, final int uniqueObjectId)
 	{
-		DB.insertUpdate("INSERT INTO npc_spawn_cache(fortress_id, unique_objectid) VALUES (?,?)", new IUStH() {
+		DB.insertUpdate("INSERT INTO fortress_spawn_cache(fortress_id, unique_objectid) VALUES (?,?)", new IUStH() {
 			
 			@Override
 			public void handleInsertUpdate(PreparedStatement arg0) throws SQLException {
@@ -99,7 +99,7 @@ public class MySQL5FortressDAO extends FortressDAO
 	@Override
 	public void clearCache(final int fortressId)
 	{
-		DB.insertUpdate("DELETE FROM npc_spawn_cache WHERE fortress_id = ?", new IUStH() {
+		DB.insertUpdate("DELETE FROM fortress_spawn_cache WHERE fortress_id = ?", new IUStH() {
 			
 			@Override
 			public void handleInsertUpdate(PreparedStatement arg0) throws SQLException {
@@ -114,7 +114,7 @@ public class MySQL5FortressDAO extends FortressDAO
 	public ArrayList<Integer> loadCache(final int fortressId)
 	{
 		final ArrayList<Integer> entries = new ArrayList<Integer>();
-		DB.select("SELECT unique_objectid FROM npc_spawn_cache WHERE fortress_id = ?", new ParamReadStH() {
+		DB.select("SELECT unique_objectid FROM fortress_spawn_cache WHERE fortress_id = ?", new ParamReadStH() {
 			
 			@Override
 			public void handleRead(ResultSet arg0) throws SQLException {
