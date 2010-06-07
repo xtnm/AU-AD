@@ -193,7 +193,15 @@ public class FortressService
 	{
 		if(DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(fortressId) == lastAttacker.getCommonData().getRace())
 		{
-			PacketSendUtility.sendMessage(lastAttacker, "Vous venez de tuer votre propre general de la divinite protectrice. Vous ne gagnerez aucune medaille et ne serez pas teleporte.");
+			PacketSendUtility.sendMessage(lastAttacker, "Vous venez de tuer votre propre general de la divinite protectrice. Vous ne gagnerez aucune medaille et ne serez pas teleporte. La zone va etre reinitialisee ...");
+			ThreadPoolManager.getInstance().schedule(new Runnable() {
+				
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					spawnFortress(fortressId, lastAttacker.getCommonData().getRace());
+				}
+			}, 5000);
 			return;
 		}
 		PlayerGroup group = groupService.getGroup(lastAttacker.getObjectId());
