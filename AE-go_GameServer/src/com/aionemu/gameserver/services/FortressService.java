@@ -60,7 +60,7 @@ public class FortressService
 	{
 		// spawn individual fortresses
 		// 1: Archipel de Soufre
-		spawnFortress(1, DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(1));
+		spawnFortress(1, DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(1), true);
 		// 2: Archipel des Ailes de Siel UP
 		/*spawnFortress(2, DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(2));
 		// 3: Archipel des Ailes de Siel DOWN
@@ -96,7 +96,7 @@ public class FortressService
 		}
 	}
 	
-	public void spawnFortress(int fortressId, Race ownerFaction)
+	public void spawnFortress(int fortressId, Race ownerFaction, boolean killedSelfFaction)
 	{
 		log.info("Starting fortress (re)spawn #" + fortressId);
 		// remove all spawns from the current fortress instance
@@ -122,7 +122,10 @@ public class FortressService
 		log.info("Successfully spawned " + spawnedCounter + " " + ownerFaction.name() + " npc for fortress #" + fortressId);
 		spawnFortressGeneral(fortressId, ownerFaction);
 		// send message to world : "Fortress XXXX is now available to attack for Asmodians"
-		sendWorldMessage(getFortressName(fortressId), ownerFaction);
+		if(!killedSelfFaction)
+		{
+			sendWorldMessage(getFortressName(fortressId), ownerFaction);
+		}
 	}
 	
 	private void sendWorldMessage(String fortressName, Race ownedBy)
@@ -199,7 +202,7 @@ public class FortressService
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
-					spawnFortress(fortressId, lastAttacker.getCommonData().getRace());
+					spawnFortress(fortressId, lastAttacker.getCommonData().getRace(), true);
 				}
 			}, 5000);
 			return;
@@ -230,7 +233,7 @@ public class FortressService
 				portPlayersToExit(players);
 				doPlayerMedalReward(players);
 				DAOManager.getDAO(FortressDAO.class).setFortressOwner(fortressId, lastAttacker.getCommonData().getRace());
-				spawnFortress(fortressId, lastAttacker.getCommonData().getRace());
+				spawnFortress(fortressId, lastAttacker.getCommonData().getRace(), false);
 			}
 		}, 5000);
 	}
