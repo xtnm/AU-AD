@@ -4,3 +4,4 @@
 tools/
 build/
 unishell.passwd
+.classpath

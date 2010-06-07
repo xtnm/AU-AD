@@ -1,0 +1,780 @@
+commit 1b3afa8f6c7a4a023f12b509ac7863c14b248f58
+Author: Xitanium <xitanium@zetatron.net>
+Date:   Sun Jun 6 17:14:03 2010 +0200
+
+    Basic implementations of Fortresses
+
+diff --git a/AE-go_GameServer/data/scripts/system/database/mysql5/MySQL5FortressDAO.java b/AE-go_GameServer/data/scripts/system/database/mysql5/MySQL5FortressDAO.java
+new file mode 100755
+index 0000000..c0b63f9
+--- /dev/null
++++ b/AE-go_GameServer/data/scripts/system/database/mysql5/MySQL5FortressDAO.java
+@@ -0,0 +1,218 @@
++/*
++ * This file is part of aion-unique <aion-unique.org>.
++ *
++ *  aion-unique is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, either version 3 of the License, or
++ *  (at your option) any later version.
++ *
++ *  aion-unique is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
++ */
++package mysql5;
++
++import java.sql.PreparedStatement;
++import java.sql.ResultSet;
++import java.sql.SQLException;
++import java.sql.Timestamp;
++import java.util.ArrayList;
++import java.util.Date;
++import java.util.HashMap;
++import java.util.Map;
++
++import com.aionemu.commons.database.DB;
++import com.aionemu.commons.database.IUStH;
++import com.aionemu.commons.database.ParamReadStH;
++import com.aionemu.gameserver.dao.FortressDAO;
++import com.aionemu.gameserver.dao.NpcSpawnDAO;
++import com.aionemu.gameserver.dao.TicketDAO;
++import com.aionemu.gameserver.model.Race;
++import com.aionemu.gameserver.model.gameobjects.Creature;
++import com.aionemu.gameserver.model.gameobjects.player.Player;
++import com.aionemu.gameserver.model.templates.NpcTemplate;
++import com.aionemu.gameserver.model.templates.spawn.NpcSpawnTemplate;
++import com.aionemu.gameserver.model.templates.spawn.SpawnTemplate;
++import com.aionemu.gameserver.restrictions.DisabledRestriction;
++import com.aionemu.gameserver.spawnengine.SpawnEngine;
++import com.aionemu.gameserver.world.WorldPosition;
++
++
++/**
++ * @author xitanium
++ *
++ */
++public class MySQL5FortressDAO extends FortressDAO
++{
++	
++	@Override
++	public ArrayList<NpcSpawnTemplate> getAllTemplates(final int fortressId, final Race ownerFaction)
++	{
++		final ArrayList<NpcSpawnTemplate> templates = new ArrayList<NpcSpawnTemplate>();
++		DB.select("SELECT npc_template_id, map, pos_x, pos_y, pos_z, heading FROM fortress_spawn_template WHERE fortress_id = ? AND race = ?", new ParamReadStH() {
++			
++			@Override
++			public void handleRead(ResultSet arg0) throws SQLException {
++				// TODO Auto-generated method stub
++				while(arg0.next())
++				{
++					int npcTemplateId = arg0.getInt("npc_template_id");
++					int map = arg0.getInt("map");
++					float x = arg0.getFloat("pos_x");
++					float y = arg0.getFloat("pos_y");
++					float z = arg0.getFloat("pos_z");
++					byte heading = arg0.getByte("heading");
++					NpcSpawnTemplate template = new NpcSpawnTemplate(fortressId, npcTemplateId, map, x, y, z, heading);
++					templates.add(template);
++				}
++			}
++			
++			@Override
++			public void setParams(PreparedStatement arg0) throws SQLException {
++				// TODO Auto-generated method stub
++				arg0.setInt(1, fortressId);
++				arg0.setString(2, ownerFaction.name());
++			}
++		});
++		return templates;
++	}
++	
++	@Override
++	public void insertCache(final int fortressId, final int uniqueObjectId)
++	{
++		DB.insertUpdate("INSERT INTO npc_spawn_cache(fortress_id, unique_objectid) VALUES (?,?)", new IUStH() {
++			
++			@Override
++			public void handleInsertUpdate(PreparedStatement arg0) throws SQLException {
++				// TODO Auto-generated method stub
++				arg0.setInt(1, fortressId);
++				arg0.setInt(2, uniqueObjectId);
++				arg0.execute();
++			}
++		});
++	}
++	
++	@Override
++	public void clearCache(final int fortressId)
++	{
++		DB.insertUpdate("DELETE FROM npc_spawn_cache WHERE fortress_id = ?", new IUStH() {
++			
++			@Override
++			public void handleInsertUpdate(PreparedStatement arg0) throws SQLException {
++				// TODO Auto-generated method stub
++				arg0.setInt(1, fortressId);
++				arg0.execute();
++			}
++		});
++	}
++	
++	@Override
++	public ArrayList<Integer> loadCache(final int fortressId)
++	{
++		final ArrayList<Integer> entries = new ArrayList<Integer>();
++		DB.select("SELECT unique_objectid FROM npc_spawn_cache WHERE fortress_id = ?", new ParamReadStH() {
++			
++			@Override
++			public void handleRead(ResultSet arg0) throws SQLException {
++				// TODO Auto-generated method stub
++				while(arg0.next())
++				{
++					entries.add(arg0.getInt("unique_objectid"));
++				}
++			}
++			
++			@Override
++			public void setParams(PreparedStatement arg0) throws SQLException {
++				// TODO Auto-generated method stub
++				arg0.setInt(1, fortressId);
++			}
++		});
++		return entries;
++	}
++	
++	@Override
++	public NpcSpawnTemplate getGeneralSpawnTemplate(final int fortressId, final Race ownerFaction)
++	{
++		final NpcSpawnTemplate[] templates = new NpcSpawnTemplate[1];
++		DB.select("SELECT npc_template_id, map, pos_x, pos_y, pos_z, heading FROM fortress_generals WHERE fortress_id = ? AND race = ?", new ParamReadStH() {
++			
++			@Override
++			public void handleRead(ResultSet arg0) throws SQLException {
++				// TODO Auto-generated method stub
++				arg0.next();
++				int npcTemplateId = arg0.getInt("npc_template_id");
++				int map = arg0.getInt("map");
++				float x = arg0.getFloat("pos_x");
++				float y = arg0.getFloat("pos_y");
++				float z = arg0.getFloat("pos_z");
++				byte heading = arg0.getByte("heading");
++				NpcSpawnTemplate template = new NpcSpawnTemplate(fortressId, npcTemplateId, map, x, y, z, heading);
++				templates[0] = template;
++			}
++			
++			@Override
++			public void setParams(PreparedStatement arg0) throws SQLException {
++				// TODO Auto-generated method stub
++				arg0.setInt(1, fortressId);
++				arg0.setString(2, ownerFaction.name());
++			}
++		});
++		return templates[0];
++	}
++	
++	@Override
++	public void setFortressOwner(final int fortressId, final Race newOwner)
++	{
++		DB.insertUpdate("UPDATE fortress_owners SET owner_faction = ? WHERE fortress_id = ?", new IUStH() {
++			
++			@Override
++			public void handleInsertUpdate(PreparedStatement arg0) throws SQLException {
++				// TODO Auto-generated method stub
++				arg0.setString(1, newOwner.name());
++				arg0.setInt(2, fortressId);
++				arg0.execute();
++			}
++		});
++	}
++	
++	@Override
++	public Race getCurrentFortressOwnerFaction(final int fortressId)
++	{
++		final Race[] ownerFaction = new Race[1];
++		DB.select("SELECT owner_faction FROM fortress_owners WHERE fortress_id = ?", new ParamReadStH() {
++			
++			@Override
++			public void handleRead(ResultSet arg0) throws SQLException {
++				// TODO Auto-generated method stub
++				arg0.next();
++				String factionName = arg0.getString("owner_faction");
++				if(factionName == "ASMODIANS")
++				{
++					ownerFaction[0] = Race.ASMODIANS;
++				}
++				else
++				{
++					ownerFaction[0] = Race.ELYOS;
++				}
++			}
++			
++			@Override
++			public void setParams(PreparedStatement arg0) throws SQLException {
++				// TODO Auto-generated method stub
++				arg0.setInt(1, fortressId);
++			}
++		});
++		return ownerFaction[0];
++	}
++
++	@Override
++	public boolean supports(String databaseName, int majorVersion, int minorVersion)
++	{
++		return MySQL5DAOUtils.supports(databaseName, majorVersion, minorVersion);
++	}
++
++}
+diff --git a/AE-go_GameServer/src/com/aionemu/gameserver/GameServer.java b/AE-go_GameServer/src/com/aionemu/gameserver/GameServer.java
+index 8e545ae..57a5d85 100755
+--- a/AE-go_GameServer/src/com/aionemu/gameserver/GameServer.java
++++ b/AE-go_GameServer/src/com/aionemu/gameserver/GameServer.java
+@@ -44,6 +44,7 @@ import com.aionemu.gameserver.network.chatserver.ChatServer;
+ import com.aionemu.gameserver.network.loginserver.LoginServer;
+ import com.aionemu.gameserver.questEngine.QuestEngine;
+ import com.aionemu.gameserver.services.BrokerService;
++import com.aionemu.gameserver.services.FortressService;
+ import com.aionemu.gameserver.services.ServiceProxy;
+ import com.aionemu.gameserver.spawnengine.SpawnEngine;
+ import com.aionemu.gameserver.taskmanager.tasks.PacketBroadcaster;
+@@ -150,6 +151,11 @@ public class GameServer
+ 		World world = gs.injector.getInstance(World.class);
+ 		Thread autoAnnounce = new Thread(new AutoAnnounce(world));
+ 		autoAnnounce.start();
++		
++		if(gs.injector.getInstance(FortressService.class) instanceof FortressService)
++		{
++			log.info("Successfully loaded FortressService");
++		}
+ 
+ 		// gs.injector.getInstance(com.aionemu.gameserver.utils.chathandlers.ChatHandlers.class);
+ 		onStartup();
+diff --git a/AE-go_GameServer/src/com/aionemu/gameserver/controllers/FortressGeneralController.java b/AE-go_GameServer/src/com/aionemu/gameserver/controllers/FortressGeneralController.java
+new file mode 100755
+index 0000000..6fff14e
+--- /dev/null
++++ b/AE-go_GameServer/src/com/aionemu/gameserver/controllers/FortressGeneralController.java
+@@ -0,0 +1,109 @@
++/*
++ * This file is part of aion-emu <aion-emu.com>.
++ *
++ *  aion-emu is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, either version 3 of the License, or
++ *  (at your option) any later version.
++ *
++ *  aion-emu is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with aion-emu.  If not, see <http://www.gnu.org/licenses/>.
++ */
++package com.aionemu.gameserver.controllers;
++
++import com.aionemu.gameserver.model.gameobjects.Creature;
++import com.aionemu.gameserver.model.gameobjects.FortressGeneral;
++import com.aionemu.gameserver.model.gameobjects.Monster;
++import com.aionemu.gameserver.model.gameobjects.player.Player;
++import com.aionemu.gameserver.network.aion.serverpackets.SM_LOOT_STATUS;
++import com.aionemu.gameserver.questEngine.model.QuestEnv;
++import com.aionemu.gameserver.services.FortressService;
++import com.aionemu.gameserver.utils.PacketSendUtility;
++import com.aionemu.gameserver.utils.stats.StatFunctions;
++import com.aionemu.gameserver.world.WorldType;
++import com.google.inject.Inject;
++import com.google.inject.internal.Nullable;
++
++/**
++ * @author Xitanium
++ *
++ */
++public class FortressGeneralController extends NpcController
++{
++	
++	@Inject
++	private FortressService fortressService;
++	
++	@Override
++	public void doDrop(Player player)
++	{
++		super.doDrop(player);
++		/*sp.getDropService().registerDrop(getOwner() , player);			
++		PacketSendUtility.broadcastPacket(this.getOwner(), new SM_LOOT_STATUS(this.getOwner().getObjectId(), 0));*/
++	}
++	
++	@Override
++	public void doReward(Creature creature)
++	{
++		super.doReward(creature);
++
++		/*Creature master = creature.getMaster();
++		if(master instanceof Player)
++		{
++			Player player = (Player) master;
++			
++			if(player.getPlayerGroup() == null) //solo
++			{
++				// Exp reward
++				long expReward = StatFunctions.calculateSoloExperienceReward(player, getOwner());
++				player.getCommonData().addExp(expReward);
++
++				// DP reward
++				int currentDp = player.getCommonData().getDp();
++				int dpReward = StatFunctions.calculateSoloDPReward(player, getOwner());
++				player.getCommonData().setDp(dpReward + currentDp);
++				
++				// AP reward
++				WorldType worldType = sp.getWorld().getWorldMap(player.getWorldId()).getWorldType();
++				if(worldType == WorldType.ABYSS)
++				{
++					int apReward = StatFunctions.calculateSoloAPReward(player, getOwner());
++					player.getCommonData().addAp(apReward);
++				}
++				
++				sp.getQuestEngine().onKill(new QuestEnv(getOwner(), player, 0 , 0));
++			}
++			else
++			{
++				sp.getGroupService().doReward(player, getOwner());
++			}
++		}*/
++	}
++	
++	@Override
++	public void onRespawn()
++	{
++		super.onRespawn();
++	}
++	
++	@Override
++	public void onDie(@Nullable Creature lastAttacker)
++	{
++		super.onDie(lastAttacker);
++		if(lastAttacker instanceof Player)
++		{
++			fortressService.triggerGeneralKilled(getOwner().getFortressId(), (Player)lastAttacker);
++		}
++	}
++
++	@Override
++	public FortressGeneral getOwner()
++	{
++		return (FortressGeneral) super.getOwner();
++	}
++}
+\ No newline at end of file
+diff --git a/AE-go_GameServer/src/com/aionemu/gameserver/dao/FortressDAO.java b/AE-go_GameServer/src/com/aionemu/gameserver/dao/FortressDAO.java
+new file mode 100755
+index 0000000..7d3f6d4
+--- /dev/null
++++ b/AE-go_GameServer/src/com/aionemu/gameserver/dao/FortressDAO.java
+@@ -0,0 +1,57 @@
++/*
++ * This file is part of aion-unique <aion-unique.org>.
++ *
++ *  aion-unique is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, either version 3 of the License, or
++ *  (at your option) any later version.
++ *
++ *  aion-unique is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
++ */
++package com.aionemu.gameserver.dao;
++
++import java.util.ArrayList;
++import java.util.Map;
++
++import com.aionemu.commons.database.dao.DAO;
++import com.aionemu.gameserver.model.Race;
++import com.aionemu.gameserver.model.gameobjects.Creature;
++import com.aionemu.gameserver.model.gameobjects.player.Player;
++import com.aionemu.gameserver.model.templates.spawn.NpcSpawnTemplate;
++import com.aionemu.gameserver.model.templates.spawn.SpawnTemplate;
++import com.aionemu.gameserver.world.WorldPosition;
++
++/**
++ * @author xitanium
++ *
++ */
++public abstract class FortressDAO implements DAO
++{
++
++	@Override
++	public final String getClassName()
++	{
++		 return FortressDAO.class.getName();
++	}
++	
++	public abstract void insertCache(int fortressId, int uniqueObjectId);
++	
++	public abstract ArrayList<NpcSpawnTemplate> getAllTemplates(final int fortressId, final Race ownerFaction);
++	
++	public abstract void clearCache(final int fortressId);
++	
++	public abstract ArrayList<Integer> loadCache(final int fortressId);
++	
++	public abstract NpcSpawnTemplate getGeneralSpawnTemplate(final int fortressId, final Race ownerFaction);
++	
++	public abstract Race getCurrentFortressOwnerFaction(final int fortressId);
++	
++	public abstract void setFortressOwner(final int fortressId, final Race newOwner);
++	
++}
+diff --git a/AE-go_GameServer/src/com/aionemu/gameserver/model/gameobjects/FortressGeneral.java b/AE-go_GameServer/src/com/aionemu/gameserver/model/gameobjects/FortressGeneral.java
+new file mode 100755
+index 0000000..4d66919
+--- /dev/null
++++ b/AE-go_GameServer/src/com/aionemu/gameserver/model/gameobjects/FortressGeneral.java
+@@ -0,0 +1,67 @@
++/**
++ * This file is part of aion-emu <aion-emu.com>.
++ *
++ *  aion-emu is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, either version 3 of the License, or
++ *  (at your option) any later version.
++ *
++ *  aion-emu is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with aion-emu.  If not, see <http://www.gnu.org/licenses/>.
++ */
++package com.aionemu.gameserver.model.gameobjects;
++
++import com.aionemu.gameserver.ai.npcai.AggressiveAi;
++import com.aionemu.gameserver.ai.npcai.MonsterAi;
++import com.aionemu.gameserver.configs.main.CustomConfig;
++import com.aionemu.gameserver.controllers.FortressGeneralController;
++import com.aionemu.gameserver.controllers.MonsterController;
++import com.aionemu.gameserver.controllers.NpcController;
++import com.aionemu.gameserver.model.templates.VisibleObjectTemplate;
++import com.aionemu.gameserver.model.templates.spawn.SpawnTemplate;
++
++public class FortressGeneral extends Npc
++{	
++	/**
++	 * 
++	 * @param objId
++	 * @param controller
++	 * @param spawn
++	 * @param objectTemplate
++	 */
++	
++	private int linkedFortressId;
++	
++	public FortressGeneral(int objId, FortressGeneralController controller, SpawnTemplate spawn, VisibleObjectTemplate objectTemplate, int fortressId)
++	{
++		super(objId, controller, spawn, objectTemplate);
++		this.linkedFortressId = fortressId;
++	}
++	
++	public int getFortressId()
++	{
++		return this.linkedFortressId;
++	}
++
++	@Override
++	public FortressGeneralController getController()
++	{
++		return (FortressGeneralController) super.getController();
++	}
++
++	@Override
++	public void initializeAi()
++	{
++		if(isAggressive() && !CustomConfig.DISABLE_MOB_AGGRO)
++			this.ai = new AggressiveAi();
++		else
++			this.ai = new MonsterAi();
++		
++		ai.setOwner(this);	
++	}
++}
+diff --git a/AE-go_GameServer/src/com/aionemu/gameserver/services/FortressService.java b/AE-go_GameServer/src/com/aionemu/gameserver/services/FortressService.java
+new file mode 100755
+index 0000000..a8beb09
+--- /dev/null
++++ b/AE-go_GameServer/src/com/aionemu/gameserver/services/FortressService.java
+@@ -0,0 +1,232 @@
++package com.aionemu.gameserver.services;
++
++import java.util.ArrayList;
++import java.util.Collection;
++import java.util.Iterator;
++import java.util.Map;
++
++import org.apache.log4j.Logger;
++
++import admincommands.Npc;
++
++import com.aionemu.commons.database.dao.DAO;
++import com.aionemu.commons.database.dao.DAOManager;
++import com.aionemu.gameserver.ai.desires.impl.AggressionDesire;
++import com.aionemu.gameserver.ai.npcai.AggressiveAi;
++import com.aionemu.gameserver.ai.state.AIState;
++import com.aionemu.gameserver.dao.FortressDAO;
++import com.aionemu.gameserver.dataholders.DataManager;
++import com.aionemu.gameserver.dataholders.TribeRelationsData;
++import com.aionemu.gameserver.model.Race;
++import com.aionemu.gameserver.model.gameobjects.AionObject;
++import com.aionemu.gameserver.model.gameobjects.Creature;
++import com.aionemu.gameserver.model.gameobjects.FortressGeneral;
++import com.aionemu.gameserver.model.gameobjects.Item;
++import com.aionemu.gameserver.model.gameobjects.Monster;
++import com.aionemu.gameserver.model.gameobjects.VisibleObject;
++import com.aionemu.gameserver.model.gameobjects.player.Player;
++import com.aionemu.gameserver.model.group.PlayerGroup;
++import com.aionemu.gameserver.model.templates.spawn.NpcSpawnTemplate;
++import com.aionemu.gameserver.model.templates.spawn.SpawnTemplate;
++import com.aionemu.gameserver.model.templates.tribe.AggroRelations;
++import com.aionemu.gameserver.model.templates.tribe.HostileRelations;
++import com.aionemu.gameserver.model.templates.tribe.Tribe;
++import com.aionemu.gameserver.network.aion.serverpackets.SM_MESSAGE;
++import com.aionemu.gameserver.spawnengine.SpawnEngine;
++import com.aionemu.gameserver.utils.PacketSendUtility;
++import com.aionemu.gameserver.utils.ThreadPoolManager;
++import com.aionemu.gameserver.world.World;
++import com.aionemu.gameserver.world.WorldPosition;
++import com.google.inject.Inject;
++
++/*
++ * @author Xitanium
++ */
++
++public class FortressService 
++{
++	private static final Logger 	log = Logger.getLogger(FortressService.class);
++	@Inject
++	private SpawnEngine spawnEngine;
++	@Inject
++	private World world;
++	@Inject
++	private TeleportService teleportService;
++	@Inject
++	private GroupService groupService;
++	@Inject
++	private ItemService itemService;
++	
++	public void initialize()
++	{
++		// spawn individual fortresses
++		// 1: Archipel de Soufre
++		spawnFortress(1, DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(1));
++		// 2: Archipel des Ailes de Siel UP
++		/*spawnFortress(2, DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(2));
++		// 3: Archipel des Ailes de Siel DOWN
++		spawnFortress(3, DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(3));
++		// 4: Oeil de Reshanta
++		spawnFortress(4, DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(4));
++		// 5: Lac Asteria
++		spawnFortress(5, DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(5));
++		// 6: Eclat oriental de Latesran
++		spawnFortress(6, DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(6));
++		// 7: Ile de Kysis
++		spawnFortress(7, DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(7));
++		// 8: Rocher de Krotan
++		spawnFortress(8, DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(8));
++		// 9: Ruines de Roah
++		spawnFortress(9, DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(9));*/
++	}
++	
++	private String getFortressName(int fortressId)
++	{
++		switch(fortressId)
++		{
++		case 1: return "Archipel de Soufre";
++		case 2: return "Archipel des Ailes de Siel A";
++		case 3: return "Archipel des Ailes de Siel B";
++		case 4: return "Oeil de Reshanta";
++		case 5: return "Lac Asteria";
++		case 6: return "Eclat Oriental de Latesran";
++		case 7: return "Ile de Kysis";
++		case 8: return "Rocher de Krotan";
++		case 9: return "Ruines de Roah";
++		default: return "Forteresse";
++		}
++	}
++	
++	public void spawnFortress(int fortressId, Race ownerFaction)
++	{
++		log.info("Starting fortress (re)spawn #" + fortressId);
++		// remove all spawns from the current fortress instance
++		clearFortress(fortressId);
++		// get all spawns from DB templates
++		ArrayList<NpcSpawnTemplate> spawnTemplates = DAOManager.getDAO(FortressDAO.class).getAllTemplates(fortressId, ownerFaction);
++		// spawns npc using the specified race
++		for(NpcSpawnTemplate tpl : spawnTemplates)
++		{
++			SpawnTemplate template = spawnEngine.addNewSpawn(tpl.getMap(), 0, tpl.getNpcTemplateId(), tpl.getX(), tpl.getY(), tpl.getZ(), tpl.getHeading(), 0, 0, false);
++			VisibleObject obj = spawnEngine.spawnObject(template, 0);
++			DAOManager.getDAO(FortressDAO.class).insertCache(fortressId, obj.getObjectId());
++		}
++		log.info("Successfully spawned " + spawnTemplates.size() + " " + ownerFaction.name() + " npc for fortress #" + fortressId);
++		// send message to world : "Fortress XXXX is now available to attack for Asmodians"
++		sendWorldMessage(getFortressName(fortressId), ownerFaction);
++	}
++	
++	private void sendWorldMessage(String fortressName, Race ownedBy)
++	{
++		Iterator<Player> players = world.getPlayersIterator();
++		while(players.hasNext())
++		{
++			Player dest = players.next();
++			if(dest.getCommonData().getRace() != ownedBy)
++			{
++				String message = "La forteresse ";
++				message += fortressName;
++				message += " est maintenant conquise par les ";
++				if(ownedBy == Race.ELYOS)
++				{
++					message += "Elyseens";
++				}
++				else
++				{
++					message += "Asmodiens";
++				}
++				message += ". Vous pouvez attaquer cette forteresse des maintenant.";
++				PacketSendUtility.sendMessage(dest, message);
++			}
++			else
++			{
++				String message = "La forteresse ";
++				message += fortressName;
++				message += " est maintenant conquise par votre faction.";
++				message += ". Vous devez maintenant defendre cette position contre la faction adverse.";
++				PacketSendUtility.sendMessage(dest, message);
++			}
++		}
++	}
++	
++	private void sendPlayersMessage(ArrayList<Player> players, String message)
++	{
++		for(Player p : players)
++		{
++			PacketSendUtility.sendMessage(p, message);
++		}
++	}
++	
++	public void clearFortress(int fortressId)
++	{
++		ArrayList<Integer> spawnedCreatures = DAOManager.getDAO(FortressDAO.class).loadCache(fortressId);
++		for(Integer creature : spawnedCreatures)
++		{
++			AionObject obj = world.findAionObject(creature);
++			if(obj instanceof Creature)
++			{
++				Creature c = (Creature)obj;
++				c.getController().delete();
++			}
++		}
++		DAOManager.getDAO(FortressDAO.class).clearCache(fortressId);
++		log.info("Successfully cleared cache for fortress #" + fortressId);
++	}
++	
++	public void spawnFortressGeneral(int fortressId, Race race)
++	{
++		NpcSpawnTemplate generalTemplate = DAOManager.getDAO(FortressDAO.class).getGeneralSpawnTemplate(fortressId, race);
++		SpawnTemplate tpl = spawnEngine.addNewSpawn(generalTemplate.getMap(), 0, generalTemplate.getNpcTemplateId(), generalTemplate.getX(), generalTemplate.getY(), generalTemplate.getZ(), generalTemplate.getHeading(), 0, 0, true);
++		FortressGeneral general = spawnEngine.spawnFortressGeneral(tpl, fortressId);
++	}
++	
++	public void triggerGeneralKilled(final int fortressId, final Player lastAttacker)
++	{
++		PlayerGroup group = groupService.getGroup(lastAttacker.getObjectId());
++		final ArrayList<Player> players = new ArrayList<Player>();
++		if(group == null || group.size() < 2)
++		{
++			players.add(lastAttacker);
++		}
++		else
++		{
++			Collection<Player> plCol = group.getMembers();
++			for(Player plr : plCol)
++			{
++				players.add(plr);
++			}
++		}
++		sendPlayersMessage(players, "Vous venez de prendre " + getFortressName(fortressId) + ". Vous serez teleporte a l'entree dans 5 secondes ...");
++		ThreadPoolManager.getInstance().schedule(new Runnable() {
++			
++			@Override
++			public void run() {
++				// TODO Auto-generated method stub
++				// get group members of lastAttacker
++				
++				//TODO: set correct exit point location
++				portPlayersToExit(players, null);
++				doPlayerMedalReward(players);
++				DAOManager.getDAO(FortressDAO.class).setFortressOwner(fortressId, lastAttacker.getCommonData().getRace());
++				spawnFortress(fortressId, lastAttacker.getCommonData().getRace());
++			}
++		}, 5000);
++	}
++	
++	public void doPlayerMedalReward(ArrayList<Player> players)
++	{
++		for(Player p : players)
++		{
++			itemService.addItem(p, 186000030, 3);
++		}
++	}
++	
++	public void portPlayersToExit(ArrayList<Player> players, WorldPosition exitPoint)
++	{
++		for(Player p : players)
++		{
++			teleportService.teleportTo(p, exitPoint.getMapId(), exitPoint.getX(), exitPoint.getY(), exitPoint.getZ(), 0);
++		}
++	}
++	
++}
+diff --git a/AE-go_GameServer/src/com/aionemu/gameserver/spawnengine/SpawnEngine.java b/AE-go_GameServer/src/com/aionemu/gameserver/spawnengine/SpawnEngine.java
+index daa6640..bb153e2 100755
+--- a/AE-go_GameServer/src/com/aionemu/gameserver/spawnengine/SpawnEngine.java
++++ b/AE-go_GameServer/src/com/aionemu/gameserver/spawnengine/SpawnEngine.java
+@@ -22,6 +22,7 @@ import org.apache.log4j.Logger;
+ 
+ import com.aionemu.gameserver.controllers.ActionitemController;
+ import com.aionemu.gameserver.controllers.BindpointController;
++import com.aionemu.gameserver.controllers.FortressGeneralController;
+ import com.aionemu.gameserver.controllers.GatherableController;
+ import com.aionemu.gameserver.controllers.KiskController;
+ import com.aionemu.gameserver.controllers.MonsterController;
+@@ -40,6 +41,7 @@ import com.aionemu.gameserver.dataholders.SummonStatsData;
+ import com.aionemu.gameserver.dataholders.WorldMapsData;
+ import com.aionemu.gameserver.model.NpcType;
+ import com.aionemu.gameserver.model.gameobjects.Creature;
++import com.aionemu.gameserver.model.gameobjects.FortressGeneral;
+ import com.aionemu.gameserver.model.gameobjects.Gatherable;
+ import com.aionemu.gameserver.model.gameobjects.Kisk;
+ import com.aionemu.gameserver.model.gameobjects.Monster;
+@@ -224,6 +226,15 @@ public class SpawnEngine
+ 		bringIntoWorld(trap, spawn, instanceIndex);
+ 		return trap;
+ 	}
++	
++	public FortressGeneral spawnFortressGeneral(SpawnTemplate spawn, int fortressId)
++	{
++		int objectId = spawn.getSpawnGroup().getNpcid();
++		FortressGeneral gen = new FortressGeneral(aionObjectsIDFactory.nextId(), injector.getInstance(FortressGeneralController.class), spawn, npcData.getNpcTemplate(objectId), fortressId);
++		gen.setKnownlist(new KnownList(gen));
++		bringIntoWorld(gen, spawn, 0);
++		return gen;
++	}
+ 
+ 	/**
+ 	 * @param spawn
