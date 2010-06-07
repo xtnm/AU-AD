@@ -107,7 +107,7 @@ public class FortressService
 		int spawnedCounter = 0;
 		for(NpcSpawnTemplate tpl : spawnTemplates)
 		{
-			SpawnTemplate template = spawnEngine.addNewSpawn(tpl.getMap(), 1, tpl.getNpcTemplateId(), tpl.getX(), tpl.getY(), tpl.getZ(), tpl.getHeading(), 0, 0, false, true);
+			SpawnTemplate template = spawnEngine.addNewSpawn(tpl.getMap(), 1, tpl.getNpcTemplateId(), tpl.getX(), tpl.getY(), tpl.getZ(), tpl.getHeading(), 0, 0, true, true);
 			VisibleObject obj = spawnEngine.spawnObject(template, 1);
 			if(obj == null)
 			{
