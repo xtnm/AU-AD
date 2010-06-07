@@ -16,6 +16,8 @@
  */
 package com.aionemu.gameserver.network.aion.clientpackets;
 
+import org.apache.log4j.Logger;
+
 import com.aionemu.gameserver.model.account.PlayerAccountData;
 import com.aionemu.gameserver.network.aion.AionClientPacket;
 import com.aionemu.gameserver.network.aion.AionConnection;
@@ -43,6 +45,8 @@ public class CM_DELETE_CHARACTER extends AionClientPacket
 	private int	chaOid;
 	@Inject
 	private PlayerService playerService;
+	
+	private static final Logger log = Logger.getLogger(CM_DELETE_CHARACTER.class);
 	
 	/**
 	 * Constructs new instance of <tt>CM_DELETE_CHARACTER </tt> packet
@@ -78,6 +82,10 @@ public class CM_DELETE_CHARACTER extends AionClientPacket
 		}
 		else
 		{
+			if(playerAccData != null)
+			{
+				log.error("Cannot delete character " + playerAccData.getPlayerCommonData().getName() + " : Player is in a legion");
+			}
 			client.sendPacket(SM_SYSTEM_MESSAGE.STR_DELETE_CHARACTER_IN_LEGION());
 		}		
 	}
