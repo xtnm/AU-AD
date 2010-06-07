@@ -579,12 +579,6 @@
 	<!-- TODO: 1375 Arming the Watch -->
 	<item_collecting id="1375" start_npc_id="203947" />
 
-	<!-- 1376 A Mountain of Trouble -->
-	<monster_hunt id="1376" start_npc_id="203947" end_npc_id="203964">
-		<monster_infos npc_id="210986"  var_id="0" max_kill="7"/>
-		<monster_infos npc_id="210976"  var_id="0" max_kill="7"/>
-	</monster_hunt>
-
 	<!-- 1377 [Coin] Kerubsin Kuriullu -->
 	<monster_hunt id="1377" start_npc_id="203964">
 		<monster_infos var_id="0" npc_id="210976" max_kill="12"/>
