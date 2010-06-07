@@ -185,7 +185,7 @@ public class FortressService
 	public void spawnFortressGeneral(int fortressId, Race race)
 	{
 		NpcSpawnTemplate generalTemplate = DAOManager.getDAO(FortressDAO.class).getGeneralSpawnTemplate(fortressId, race);
-		SpawnTemplate tpl = spawnEngine.addNewSpawn(generalTemplate.getMap(), 1, generalTemplate.getNpcTemplateId(), generalTemplate.getX(), generalTemplate.getY(), generalTemplate.getZ(), generalTemplate.getHeading(), 0, 0, false, true);
+		SpawnTemplate tpl = spawnEngine.addNewSpawn(generalTemplate.getMap(), 1, generalTemplate.getNpcTemplateId(), generalTemplate.getX(), generalTemplate.getY(), generalTemplate.getZ(), generalTemplate.getHeading(), 0, 0, true, true);
 		FortressGeneral general = spawnEngine.spawnFortressGeneral(tpl, fortressId);
 	}
 	
