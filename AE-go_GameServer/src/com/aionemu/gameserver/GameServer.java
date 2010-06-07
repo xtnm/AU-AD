@@ -17,8 +17,11 @@
 package com.aionemu.gameserver;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
+import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.Priority;
@@ -180,21 +183,40 @@ public class GameServer
 		DAOManager.getDAO(NpcSpawnDAO.class).clearCache();
 		log.info("Successfully cleared the database NPC spawns cache.");
 		
+		Map<Integer,Integer> successfullySpawned = new HashMap<Integer,Integer>();
+		
 		for(NpcSpawnTemplate tpl : databaseTemplates)
 		{
 			SpawnTemplate spawnTemplate = spawnEngine.addNewSpawn(tpl.getMap(), 1, tpl.getNpcTemplateId(), tpl.getX(), tpl.getY(), tpl.getZ(), tpl.getHeading(), 0, 0, false, true);
 			VisibleObject obj = spawnEngine.spawnObject(spawnTemplate, 1);
-			try
+			if(obj != null)
 			{
 				DAOManager.getDAO(NpcSpawnDAO.class).insertCache(tpl.getSpawnTemplateId(), obj.getObjectId());
+				int mapId = obj.getPosition().getMapId();
+				if(successfullySpawned.get(mapId) == null)
+				{
+					successfullySpawned.put(mapId, 1);
+				}
+				else
+				{
+					int currentValue = successfullySpawned.get(mapId);
+					successfullySpawned.remove(mapId);
+					successfullySpawned.put(mapId, currentValue + 1);
+				}
 			}
-			catch(Exception ex)
+			else
 			{
 				log.info("invalid spawn object id #" + tpl.getSpawnTemplateId());
 			}
 		}
 		
-		log.info("Successfully spawned " + databaseTemplates.size() + " NPC templates from database");
+		Set<Entry<Integer, Integer>> dta = successfullySpawned.entrySet();
+		for(Entry<Integer, Integer> row : dta)
+		{
+			log.info("[XpawnEngine] Spawned " + row.getKey() + " : " + row.getValue());
+		}
+		
+		//log.info("Successfully spawned " + databaseTemplates.size() + " NPC templates from database");
 		
 	}
 
