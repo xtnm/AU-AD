@@ -57,7 +57,7 @@ public class FortressService
 	@Inject
 	private ItemService itemService;
 	
-	private Map<Integer,ArrayList<PlayerGroup>> registeredRewardableGroups = new HashMap<Integer,ArrayList<PlayerGroup>>();
+	private Map<Integer,ArrayList<PlayerGroup>> registeredRewardableGroups;
 	
 	public void initialize()
 	{
@@ -80,6 +80,7 @@ public class FortressService
 		spawnFortress(8, DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(8));
 		// 9: Ruines de Roah
 		spawnFortress(9, DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(9));*/
+		registeredRewardableGroups = new HashMap<Integer, ArrayList<PlayerGroup>>();
 		for(int i=0; i < 9; i++)
 		{
 			registeredRewardableGroups.put(i+1, new ArrayList<PlayerGroup>());
@@ -202,7 +203,14 @@ public class FortressService
 			}
 		}
 		DAOManager.getDAO(FortressDAO.class).clearCache(fortressId);
-		registeredRewardableGroups.get(fortressId).clear();
+		if(registeredRewardableGroups.get(fortressId) == null)
+		{
+			registeredRewardableGroups.put(fortressId, new ArrayList<PlayerGroup>());
+		}
+		else
+		{
+			registeredRewardableGroups.get(fortressId).clear();
+		}
 		log.info("Successfully cleared cache for fortress #" + fortressId);
 	}
 	
