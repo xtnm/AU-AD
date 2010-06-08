@@ -50,6 +50,8 @@ public class AionPacketHandler
 	{
 		State state = client.getState();
 		int id = data.get() & 0xff;
+		
+		log.info("Received packet with id: " + id);
 
 		/* Second opcodec. */
 		data.position(data.position() + 2);
