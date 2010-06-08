@@ -16,13 +16,18 @@
  */
 package com.aionemu.gameserver.controllers;
 
+import java.util.ArrayList;
+
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.FortressGeneral;
 import com.aionemu.gameserver.model.gameobjects.Monster;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.model.group.PlayerGroup;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_LOOT_STATUS;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_ATTACK_STATUS.TYPE;
 import com.aionemu.gameserver.questEngine.model.QuestEnv;
 import com.aionemu.gameserver.services.FortressService;
+import com.aionemu.gameserver.services.GroupService;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.stats.StatFunctions;
 import com.aionemu.gameserver.world.WorldType;
@@ -38,6 +43,8 @@ public class FortressGeneralController extends NpcController
 	
 	@Inject
 	private FortressService fortressService;
+	@Inject
+	private GroupService groupService;
 	
 	@Override
 	public void doDrop(Player player)
@@ -97,7 +104,22 @@ public class FortressGeneralController extends NpcController
 		super.onDie(lastAttacker);
 		if(lastAttacker instanceof Player)
 		{
-			fortressService.triggerGeneralKilled(getOwner().getFortressId(), (Player)lastAttacker);
+			fortressService.triggerGeneralKilled(getOwner().getFortressId());
+		}
+	}
+	
+	@Override
+	public void onAttack(Creature creature, int skillId, TYPE type, int damage)
+	{
+		super.onAttack(creature, skillId, type, damage);
+		if(creature instanceof Player)
+		{
+			Player sender = (Player)creature;
+			PlayerGroup senderGroup = groupService.getGroup(sender.getObjectId());
+			if(senderGroup != null && sender.getCommonData().getRace() != fortressService.getCurrentFortressOwner(getOwner().getFortressId()))
+			{
+				fortressService.registerRewardableGroup(senderGroup, getOwner().getFortressId());
+			}
 		}
 	}
 

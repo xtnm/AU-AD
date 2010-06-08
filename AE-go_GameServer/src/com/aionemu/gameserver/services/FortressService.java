@@ -2,6 +2,7 @@ package com.aionemu.gameserver.services;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -56,6 +57,8 @@ public class FortressService
 	@Inject
 	private ItemService itemService;
 	
+	private Map<Integer,ArrayList<PlayerGroup>> registeredRewardableGroups = new HashMap<Integer,ArrayList<PlayerGroup>>();
+	
 	public void initialize()
 	{
 		// spawn individual fortresses
@@ -77,6 +80,23 @@ public class FortressService
 		spawnFortress(8, DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(8));
 		// 9: Ruines de Roah
 		spawnFortress(9, DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(9));*/
+		for(int i=0; i < 9; i++)
+		{
+			registeredRewardableGroups.put(i+1, new ArrayList<PlayerGroup>());
+		}
+	}
+	
+	public void registerRewardableGroup(PlayerGroup group, int fortressId)
+	{
+		if(!registeredRewardableGroups.get(fortressId).contains(group))
+		{
+			registeredRewardableGroups.get(fortressId).add(group);
+		}
+	}
+	
+	public Race getCurrentFortressOwner(int fortressId)
+	{
+		return DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(fortressId);
 	}
 	
 	private String getFortressName(int fortressId)
@@ -182,6 +202,7 @@ public class FortressService
 			}
 		}
 		DAOManager.getDAO(FortressDAO.class).clearCache(fortressId);
+		registeredRewardableGroups.get(fortressId).clear();
 		log.info("Successfully cleared cache for fortress #" + fortressId);
 	}
 	
@@ -192,9 +213,9 @@ public class FortressService
 		FortressGeneral general = spawnEngine.spawnFortressGeneral(tpl, fortressId);
 	}
 	
-	public void triggerGeneralKilled(final int fortressId, final Player lastAttacker)
+	public void triggerGeneralKilled(final int fortressId)
 	{
-		if(DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(fortressId) == lastAttacker.getCommonData().getRace())
+		/*if(DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(fortressId) == lastAttacker.getCommonData().getRace())
 		{
 			PacketSendUtility.sendMessage(lastAttacker, "Vous venez de tuer votre propre general de la divinite protectrice. Vous ne gagnerez aucune medaille et ne serez pas teleporte. La zone va etre reinitialisee ...");
 			ThreadPoolManager.getInstance().schedule(new Runnable() {
@@ -206,19 +227,14 @@ public class FortressService
 				}
 			}, 5000);
 			return;
-		}
-		PlayerGroup group = groupService.getGroup(lastAttacker.getObjectId());
+		}*/
 		final ArrayList<Player> players = new ArrayList<Player>();
-		if(group == null || group.size() < 2)
+		for(PlayerGroup grp : registeredRewardableGroups.get(fortressId))
 		{
-			players.add(lastAttacker);
-		}
-		else
-		{
-			Collection<Player> plCol = group.getMembers();
-			for(Player plr : plCol)
+			Collection<Player> grpPlayers = grp.getMembers();
+			for(Player p : grpPlayers)
 			{
-				players.add(plr);
+				players.add(p);
 			}
 		}
 		sendPlayersMessage(players, "Vous venez de prendre " + getFortressName(fortressId) + ". Vous serez teleporte a l'entree dans 5 secondes ...");
@@ -232,8 +248,17 @@ public class FortressService
 				//TODO: set correct exit point location
 				portPlayersToExit(players);
 				doPlayerMedalReward(players);
-				DAOManager.getDAO(FortressDAO.class).setFortressOwner(fortressId, lastAttacker.getCommonData().getRace());
-				spawnFortress(fortressId, lastAttacker.getCommonData().getRace(), false);
+				Race newRace;
+				if(getCurrentFortressOwner(fortressId) == Race.ELYOS)
+				{
+					newRace = Race.ASMODIANS;
+				}
+				else
+				{
+					newRace = Race.ELYOS;
+				}
+				DAOManager.getDAO(FortressDAO.class).setFortressOwner(fortressId, newRace);
+				spawnFortress(fortressId, newRace, false);
 			}
 		}, 5000);
 	}
