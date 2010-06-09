@@ -33,6 +33,7 @@ import com.aionemu.commons.network.NioServer;
 import com.aionemu.commons.services.LoggingService;
 import com.aionemu.commons.utils.AEInfos;
 import com.aionemu.gameserver.configs.Config;
+import com.aionemu.gameserver.configs.main.CustomConfig;
 import com.aionemu.gameserver.configs.main.GSConfig;
 import com.aionemu.gameserver.configs.main.TaskManagerConfig;
 import com.aionemu.gameserver.configs.main.ThreadConfig;
@@ -55,6 +56,7 @@ import com.aionemu.gameserver.unishell.Unishell;
 import com.aionemu.gameserver.utils.AEVersions;
 import com.aionemu.gameserver.utils.AutoAnnounce;
 import com.aionemu.gameserver.utils.DeadlockDetector;
+import com.aionemu.gameserver.utils.LocaleManager;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
 import com.aionemu.gameserver.utils.ThreadUncaughtExceptionHandler;
 import com.aionemu.gameserver.utils.Util;
@@ -161,6 +163,8 @@ public class GameServer
 		}
 		
 		gs.injector.getInstance(FortressService.class).initialize();
+		
+		LocaleManager.initialize(CustomConfig.LOCALE);
 
 		// gs.injector.getInstance(com.aionemu.gameserver.utils.chathandlers.ChatHandlers.class);
 		onStartup();

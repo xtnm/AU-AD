@@ -125,4 +125,7 @@ public class CustomConfig
 	 */
 	@Property(key = "gameserver.disable.chatserver", defaultValue = "true")
 	public static boolean	DISABLE_CHAT_SERVER;
+	
+	@Property(key = "gameserver.locale", defaultValue = "en")
+	public static String 	LOCALE;
 }

@@ -19,6 +19,7 @@ package admincommands;
 import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.services.ItemService;
+import com.aionemu.gameserver.utils.LocaleManager;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.Util;
 import com.aionemu.gameserver.utils.chathandlers.AdminCommand;
@@ -47,13 +48,13 @@ public class Add extends AdminCommand
 	{
 		if(admin.getAccessLevel() < AdminConfig.COMMAND_ADD)
 		{
-			PacketSendUtility.sendMessage(admin, "You dont have enough rights to execute this command");
+			PacketSendUtility.sendMessage(admin, LocaleManager.getString(1));
 			return;
 		}
 
 		if(params.length == 0 || params.length > 3)
 		{
-			PacketSendUtility.sendMessage(admin, "syntax //add <player> <item ID> <quantity>");
+			PacketSendUtility.sendMessage(admin, LocaleManager.getString(2));
 			return;
 		}
 
