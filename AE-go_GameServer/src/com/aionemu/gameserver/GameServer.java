@@ -56,6 +56,7 @@ import com.aionemu.gameserver.unishell.Unishell;
 import com.aionemu.gameserver.utils.AEVersions;
 import com.aionemu.gameserver.utils.AutoAnnounce;
 import com.aionemu.gameserver.utils.DeadlockDetector;
+import com.aionemu.gameserver.utils.InfluenceManager;
 import com.aionemu.gameserver.utils.LocaleManager;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
 import com.aionemu.gameserver.utils.ThreadUncaughtExceptionHandler;
@@ -163,6 +164,8 @@ public class GameServer
 		}
 		
 		gs.injector.getInstance(FortressService.class).initialize();
+		
+		InfluenceManager.initialize();
 		
 		LocaleManager.initialize();
 
