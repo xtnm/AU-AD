@@ -87,6 +87,7 @@ public class FortressService
 		spawnFortress(8, DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(8));
 		// 9: Ruines de Roah
 		spawnFortress(9, DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(9));*/
+		log.info("FortressService successfully initialized!");
 	}
 	
 	public void registerRewardableGroup(PlayerGroup group, int fortressId)
@@ -225,19 +226,6 @@ public class FortressService
 	
 	public void triggerGeneralKilled(final int fortressId, Creature lastAttacker)
 	{
-		/*if(DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(fortressId) == lastAttacker.getCommonData().getRace())
-		{
-			PacketSendUtility.sendMessage(lastAttacker, "Vous venez de tuer votre propre general de la divinite protectrice. Vous ne gagnerez aucune medaille et ne serez pas teleporte. La zone va etre reinitialisee ...");
-			ThreadPoolManager.getInstance().schedule(new Runnable() {
-				
-				@Override
-				public void run() {
-					// TODO Auto-generated method stub
-					spawnFortress(fortressId, lastAttacker.getCommonData().getRace(), true);
-				}
-			}, 5000);
-			return;
-		}*/
 		final ArrayList<Player> players = new ArrayList<Player>();
 		if(registeredRewardableGroups.get(fortressId).size() == 0)
 		{
