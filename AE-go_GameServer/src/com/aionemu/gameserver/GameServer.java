@@ -164,7 +164,7 @@ public class GameServer
 		
 		gs.injector.getInstance(FortressService.class).initialize();
 		
-		LocaleManager.initialize(CustomConfig.LOCALE);
+		LocaleManager.initialize();
 
 		// gs.injector.getInstance(com.aionemu.gameserver.utils.chathandlers.ChatHandlers.class);
 		onStartup();

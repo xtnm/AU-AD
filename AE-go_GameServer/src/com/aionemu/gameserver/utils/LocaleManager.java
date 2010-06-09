@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 import com.aionemu.commons.database.dao.DAOManager;
+import com.aionemu.gameserver.configs.main.CustomConfig;
 import com.aionemu.gameserver.dao.LocaleDAO;
 
 public class LocaleManager 
@@ -17,16 +18,32 @@ public class LocaleManager
 	
 	private static boolean isInitialized = false;
 	
-	public static void initialize(String configurationLocale)
+	public static void initialize()
 	{
-		if(configurationLocale.equals(""))
+		if(CustomConfig.LOCALE.equals(""))
 		{
 			log.error("Cannot initialize LocaleManager. Please add the gameserver.locale directive to your custom.config file");
 			return;
 		}
-		registeredLocales = DAOManager.getDAO(LocaleDAO.class).loadLocalesByLang(configurationLocale);
+		registeredLocales = DAOManager.getDAO(LocaleDAO.class).loadLocalesByLang(CustomConfig.LOCALE);
 		log.info("Successfully loaded " + registeredLocales.size() + " database locales strings");
 		isInitialized = true;
+	}
+	
+	public static boolean reloadData()
+	{
+		if(registeredLocales != null)
+		{
+			registeredLocales.clear();
+			registeredLocales = null;
+			registeredLocales = DAOManager.getDAO(LocaleDAO.class).loadLocalesByLang(CustomConfig.LOCALE);
+			log.info("Successfully reloaded " + registeredLocales.size() + "database locales strings");
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 	
 	public static String getString(int stringId)

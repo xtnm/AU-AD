@@ -51,6 +51,7 @@ import com.aionemu.gameserver.model.templates.portal.PortalTemplate;
 import com.aionemu.gameserver.model.templates.spawn.SpawnGroup;
 import com.aionemu.gameserver.questEngine.QuestEngine;
 import com.aionemu.gameserver.skillengine.model.SkillTemplate;
+import com.aionemu.gameserver.utils.LocaleManager;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.chathandlers.AdminCommand;
 import com.google.inject.Inject;
@@ -206,6 +207,18 @@ public class Reload extends AdminCommand
 			finally
 			{
 				PacketSendUtility.sendMessage(admin, "Spawn reload finished");
+			}
+		}
+		else if(params[0].equals("locales"))
+		{
+			boolean reloadResult = LocaleManager.reloadData();
+			if(reloadResult)
+			{
+				PacketSendUtility.sendMessage(admin, LocaleManager.getString(11));
+			}
+			else
+			{
+				PacketSendUtility.sendMessage(admin, "ERROR: locales strings reload failed. please restart emulator");
 			}
 		}
 		else
