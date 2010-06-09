@@ -33,6 +33,7 @@ import com.aionemu.gameserver.model.templates.tribe.HostileRelations;
 import com.aionemu.gameserver.model.templates.tribe.Tribe;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_MESSAGE;
 import com.aionemu.gameserver.spawnengine.SpawnEngine;
+import com.aionemu.gameserver.utils.InfluenceManager;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
 import com.aionemu.gameserver.world.World;
@@ -267,6 +268,7 @@ public class FortressService
 					newRace = Race.ELYOS;
 				}
 				DAOManager.getDAO(FortressDAO.class).setFortressOwner(fortressId, newRace);
+				InfluenceManager.recalculateInfluenceRatio();
 				spawnFortress(fortressId, newRace, false);
 			}
 		}, 5000);

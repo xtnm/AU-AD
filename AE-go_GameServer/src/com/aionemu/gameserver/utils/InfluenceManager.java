@@ -47,7 +47,7 @@ public class InfluenceManager
 		}, 0, 300000);
 	}
 	
-	private static void recalculateInfluenceRatio()
+	public static void recalculateInfluenceRatio()
 	{
 		log.info("Starting influence ratios recalculation");
 		ArrayList<Race> currentFortressHolders = new ArrayList<Race>();
