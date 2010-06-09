@@ -61,13 +61,14 @@ public class FortressService
 	
 	public void initialize()
 	{
-		// spawn individual fortresses
-		// 1: Archipel de Soufre
+		// initialize group reward container
 		registeredRewardableGroups = new HashMap<Integer, ArrayList<PlayerGroup>>();
 		for(int i=0; i < 9; i++)
 		{
 			registeredRewardableGroups.put(i+1, new ArrayList<PlayerGroup>());
 		}
+		// spawn individual fortresses
+		// 1: Archipel de Soufre
 		spawnFortress(1, DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(1), true);
 		// 2: Archipel des Ailes de Siel UP
 		/*spawnFortress(2, DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(2));
@@ -85,7 +86,6 @@ public class FortressService
 		spawnFortress(8, DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(8));
 		// 9: Ruines de Roah
 		spawnFortress(9, DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(9));*/
-		
 	}
 	
 	public void registerRewardableGroup(PlayerGroup group, int fortressId)
@@ -246,7 +246,7 @@ public class FortressService
 				players.add(p);
 			}
 		}
-		sendPlayersMessage(players, "Vous venez de prendre " + getFortressName(fortressId) + ". Vous serez teleporte a l'entree dans 5 secondes ...");
+		sendPlayersMessage(players, "Vous venez de prendre la forteresse " + getFortressName(fortressId) + ". Vous serez teleporte a l'entree dans 5 secondes ...");
 		ThreadPoolManager.getInstance().schedule(new Runnable() {
 			
 			@Override
