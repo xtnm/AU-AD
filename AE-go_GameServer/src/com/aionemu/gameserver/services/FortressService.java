@@ -223,7 +223,7 @@ public class FortressService
 		FortressGeneral general = spawnEngine.spawnFortressGeneral(tpl, fortressId);
 	}
 	
-	public void triggerGeneralKilled(final int fortressId)
+	public void triggerGeneralKilled(final int fortressId, Creature lastAttacker)
 	{
 		/*if(DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(fortressId) == lastAttacker.getCommonData().getRace())
 		{
@@ -239,12 +239,19 @@ public class FortressService
 			return;
 		}*/
 		final ArrayList<Player> players = new ArrayList<Player>();
-		for(PlayerGroup grp : registeredRewardableGroups.get(fortressId))
+		if(registeredRewardableGroups.get(fortressId).size() == 0)
 		{
-			Collection<Player> grpPlayers = grp.getMembers();
-			for(Player p : grpPlayers)
+			players.add((Player)lastAttacker);
+		}
+		else
+		{
+			for(PlayerGroup grp : registeredRewardableGroups.get(fortressId))
 			{
-				players.add(p);
+				Collection<Player> grpPlayers = grp.getMembers();
+				for(Player p : grpPlayers)
+				{
+					players.add(p);
+				}
 			}
 		}
 		sendPlayersMessage(players, "Vous venez de prendre la forteresse " + getFortressName(fortressId) + ". Vous serez teleporte a l'entree dans 5 secondes ...");

@@ -104,7 +104,7 @@ public class FortressGeneralController extends NpcController
 		super.onDie(lastAttacker);
 		if(lastAttacker instanceof Player)
 		{
-			fortressService.triggerGeneralKilled(getOwner().getFortressId());
+			fortressService.triggerGeneralKilled(getOwner().getFortressId(), lastAttacker);
 		}
 	}
 	
