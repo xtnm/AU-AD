@@ -55,7 +55,7 @@ public class MySQL5LocaleDAO extends LocaleDAO
 	public Map<Integer, String> loadLocalesByLang(final String locale)
 	{
 		final Map<Integer, String> result = new HashMap<Integer, String>();
-		DB.select("SELECT locale_id, locale_" + locale.toLowerCase() + " FROM locales", new ReadStH() {
+		DB.select("SELECT locale_id, string_" + locale.toLowerCase() + " FROM locales", new ReadStH() {
 			
 			@Override
 			public void handleRead(ResultSet arg0) throws SQLException {
