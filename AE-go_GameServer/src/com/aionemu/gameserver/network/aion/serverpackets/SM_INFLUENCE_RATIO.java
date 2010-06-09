@@ -20,6 +20,7 @@ import java.nio.ByteBuffer;
 
 import com.aionemu.gameserver.network.aion.AionConnection;
 import com.aionemu.gameserver.network.aion.AionServerPacket;
+import com.aionemu.gameserver.utils.InfluenceManager;
 
 /**
  * @author Nemiroff
@@ -35,15 +36,15 @@ public class SM_INFLUENCE_RATIO extends AionServerPacket
 	protected void writeImpl(AionConnection con, ByteBuffer buf)
 	{
 		writeD(buf, 5749);
-        writeF(buf, (float) 0.34); //elyos
-        writeF(buf, (float) 0.33); //asmo
-        writeF(buf, (float) 0.33); //balaur
+        writeF(buf, (float) (InfluenceManager.getElyosRatio() / 100)); //elyos
+        writeF(buf, (float) (InfluenceManager.getAsmodiansRatio() / 100)); //asmo
+        writeF(buf, (float) (InfluenceManager.getBalaursRatio() / 100)); //balaur
         // asmo + balaur + elyos = 1
         writeH(buf, 1);
         writeD(buf, 400010000); //worlid ?
-        writeF(buf, (float) 0.34); //elyos
-        writeF(buf, (float) 0.33); //asmo
-        writeF(buf, (float) 0.33); //balaur
+        writeF(buf, (float) (InfluenceManager.getElyosRatio() / 100)); //elyos
+        writeF(buf, (float) (InfluenceManager.getAsmodiansRatio() / 100)); //asmo
+        writeF(buf, (float) (InfluenceManager.getBalaursRatio() / 100)); //balaur
 
 	}
 }
