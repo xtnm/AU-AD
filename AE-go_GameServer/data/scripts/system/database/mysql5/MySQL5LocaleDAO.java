@@ -62,7 +62,7 @@ public class MySQL5LocaleDAO extends LocaleDAO
 				// TODO Auto-generated method stub
 				while(arg0.next())
 				{
-					result.put(arg0.getInt("locale_id"), arg0.getString("locale_"+locale));
+					result.put(arg0.getInt("locale_id"), arg0.getString("string_"+locale));
 				}
 			}
 		});
