@@ -53,8 +53,8 @@ public enum EffectId
 	/**
 	 * Compound abnormal states
 	 */
-	CANT_ATTACK_STATE(SPIN.effectId | SLEEP.effectId | STUN.effectId | STUMBLE.effectId | STAGGER.effectId | OPENAERIAL.effectId | PARALYZE.effectId),
-	CANT_MOVE_STATE(SPIN.effectId | ROOT.effectId | SLEEP.effectId | STUMBLE.effectId | STUN.effectId | STAGGER.effectId | OPENAERIAL.effectId | PARALYZE.effectId);
+	CANT_ATTACK_STATE(SPIN.effectId | FEAR.effectId | PETRIFICATION.effectId | SNARE.effectId | BLOCKADE.effectId | SLEEP.effectId | STUN.effectId | STUMBLE.effectId | STAGGER.effectId | OPENAERIAL.effectId | PARALYZE.effectId),
+	CANT_MOVE_STATE(SPIN.effectId | FEAR.effectId | PETRIFICATION.effectId | SNARE.effectId | ROOT.effectId | SLEEP.effectId | STUMBLE.effectId | STUN.effectId | STAGGER.effectId | OPENAERIAL.effectId | PARALYZE.effectId);
 	
 	private int effectId;
 	
