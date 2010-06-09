@@ -19,6 +19,11 @@ public class LocaleManager
 	
 	public static void initialize(String configurationLocale)
 	{
+		if(configurationLocale.equals(""))
+		{
+			log.error("Cannot initialize LocaleManager. Please add the gameserver.locale directive to your custom.config file");
+			return;
+		}
 		registeredLocales = DAOManager.getDAO(LocaleDAO.class).loadLocalesByLang(configurationLocale);
 		log.info("Successfully loaded " + registeredLocales.size() + " database locales strings");
 		isInitialized = true;
