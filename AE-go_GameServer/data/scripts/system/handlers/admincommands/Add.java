@@ -95,12 +95,12 @@ public class Add extends AdminCommand
 			catch (NumberFormatException ex)
 			{
 			
-				PacketSendUtility.sendMessage(admin, "You must give number to itemid.");
+				PacketSendUtility.sendMessage(admin, LocaleManager.getString(3));
 				return;
 			}
 			catch (Exception ex2)
 			{
-				PacketSendUtility.sendMessage(admin, "Occurs an error.");
+				PacketSendUtility.sendMessage(admin, LocaleManager.getString(7));
 				return;
 			}
 		}
@@ -109,12 +109,12 @@ public class Add extends AdminCommand
 
 		if(count == 0)
 		{
-			PacketSendUtility.sendMessage(admin, "Item added successfully");
-			PacketSendUtility.sendMessage(receiver, "Admin gives you an item");
+			PacketSendUtility.sendMessage(admin, LocaleManager.getString(8));
+			PacketSendUtility.sendMessage(receiver, LocaleManager.getString(9));
 		}
 		else
 		{
-			PacketSendUtility.sendMessage(admin, "Item couldn't be added");
+			PacketSendUtility.sendMessage(admin, LocaleManager.getString(10));
 		}
 		
 	}
