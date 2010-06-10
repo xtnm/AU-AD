@@ -462,4 +462,116 @@
 		                main_hand_attack="19" main_hand_accuracy="610" main_hand_crit_rate="3"
 		                magic_accuracy="713" />
 	</player_stats>
+
+	<!-- Checked By Dragon 06/2010 at US Retail -->
+	<player_stats class="ASSASSIN" level="51">
+		<stats_template maxHp="4750" maxMp="3650"
+		                power="110" health="100" agility="110" accuracy="110" knowledge="90" will="90"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.5"
+		                evasion="715" block="715" parry="715"
+		                main_hand_attack="19" main_hand_accuracy="610" main_hand_crit_rate="3"
+		                magic_accuracy="713" />
+	</player_stats>
+
+	<!-- Checked By Dragon 06/2010 at US Retail -->
+	<player_stats class="ASSASSIN" level="52">
+		<stats_template maxHp="4800" maxMp="3700"
+		                power="110" health="100" agility="110" accuracy="110" knowledge="90" will="90"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.5"
+		                evasion="720" block="720" parry="720"
+		                main_hand_attack="19" main_hand_accuracy="610" main_hand_crit_rate="3"
+		                magic_accuracy="713" />
+	</player_stats>
+
+	<!-- Checked By Dragon 06/2010 at US Retail -->
+	<player_stats class="ASSASSIN" level="53">
+		<stats_template maxHp="4850" maxMp="3800"
+		                power="110" health="100" agility="110" accuracy="110" knowledge="90" will="90"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.5"
+		                evasion="725" block="725" parry="725"
+		                main_hand_attack="19" main_hand_accuracy="610" main_hand_crit_rate="3"
+		                magic_accuracy="713" />
+	</player_stats>
+
+	<!-- Checked By Dragon 07/2010 at US Retail -->
+	<player_stats class="ASSASSIN" level="54">
+		<stats_template maxHp="4900" maxMp="3850"
+		                power="110" health="100" agility="110" accuracy="110" knowledge="90" will="90"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.5"
+		                evasion="730" block="730" parry="730"
+		                main_hand_attack="19" main_hand_accuracy="610" main_hand_crit_rate="3"
+		                magic_accuracy="713" />
+	</player_stats>
+
+	<!-- Checked By Dragon 07/2010 at US Retail -->
+	<player_stats class="ASSASSIN" level="55">
+		<stats_template maxHp="4950" maxMp="3900"
+		                power="110" health="100" agility="110" accuracy="110" knowledge="90" will="90"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.5"
+		                evasion="735" block="735" parry="735"
+		                main_hand_attack="19" main_hand_accuracy="610" main_hand_crit_rate="3"
+		                magic_accuracy="713" />
+	</player_stats>
+
+	<!-- Checked By Dragon 07/2010 at US Retail -->
+	<player_stats class="ASSASSIN" level="56">
+		<stats_template maxHp="5000" maxMp="4000"
+		                power="110" health="100" agility="110" accuracy="110" knowledge="90" will="90"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="735" block="735" parry="735"
+		                main_hand_attack="19" main_hand_accuracy="610" main_hand_crit_rate="3"
+		                magic_accuracy="713" />
+	</player_stats>
+
+	<!-- Checked By Dragon 07/2010 at US Retail -->
+	<player_stats class="ASSASSIN" level="57">
+		<stats_template maxHp="5100" maxMp="4100"
+		                power="110" health="100" agility="110" accuracy="110" knowledge="90" will="90"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.7"
+		                evasion="740" block="740" parry="740"
+		                main_hand_attack="19" main_hand_accuracy="610" main_hand_crit_rate="3"
+		                magic_accuracy="713" />
+	</player_stats>
+
+	<!-- Checked By Dragon 07/2010 at US Retail -->
+	<player_stats class="ASSASSIN" level="58">
+		<stats_template maxHp="5200" maxMp="4200"
+		                power="110" health="100" agility="110" accuracy="110" knowledge="90" will="90"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.7"
+		                evasion="740" block="740" parry="740"
+		                main_hand_attack="19" main_hand_accuracy="610" main_hand_crit_rate="3"
+		                magic_accuracy="720" />
+	</player_stats>
+
+	<!-- Checked By Dragon 07/2010 at US Retail -->
+	<player_stats class="ASSASSIN" level="59">
+		<stats_template maxHp="5300" maxMp="4300"
+		                power="110" health="100" agility="110" accuracy="110" knowledge="90" will="90"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.7"
+		                evasion="750" block="750" parry="750"
+		                main_hand_attack="19" main_hand_accuracy="610" main_hand_crit_rate="3"
+		                magic_accuracy="730" />
+	</player_stats>
+
+	<!-- Checked By Dragon 07/2010 at US Retail -->
+	<player_stats class="ASSASSIN" level="60">
+		<stats_template maxHp="5400" maxMp="4400"
+		                power="110" health="100" agility="110" accuracy="110" knowledge="90" will="90"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.7"
+		                evasion="750" block="750" parry="750"
+		                main_hand_attack="19" main_hand_accuracy="615" main_hand_crit_rate="4"
+		                magic_accuracy="730" />
+	</player_stats>
+
+
 </player_stats_templates>

@@ -462,4 +462,125 @@
 		                main_hand_attack="18" main_hand_accuracy="568" main_hand_crit_rate="1"
 		                magic_accuracy="713" />
 	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="CLERIC" level="51">
+		<stats_template maxHp="4250" maxMp="5550"
+		                power="105" health="110" agility="90" accuracy="90" knowledge="110" will="115"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.5"
+		                evasion="651" block="651" parry="651"
+		                main_hand_attack="18" main_hand_accuracy="568" main_hand_crit_rate="1"
+		                magic_accuracy="713" />
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="CLERIC" level="52">
+		<stats_template maxHp="4300" maxMp="5600"
+		                power="110" health="115" agility="90" accuracy="90" knowledge="115" will="120"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.5"
+		                evasion="651" block="651" parry="651"
+		                main_hand_attack="18" main_hand_accuracy="568" main_hand_crit_rate="1"
+		                magic_accuracy="713" />
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="CLERIC" level="53">
+		<stats_template maxHp="4350" maxMp="5650"
+		                power="110" health="115" agility="90" accuracy="90" knowledge="115" will="120"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.5"
+		                evasion="655" block="655" parry="655"
+		                main_hand_attack="18" main_hand_accuracy="568" main_hand_crit_rate="1"
+		                magic_accuracy="715" />
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="CLERIC" level="54">
+		<stats_template maxHp="4400" maxMp="5700"
+		                power="110" health="115" agility="90" accuracy="100" knowledge="115" will="120"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.5"
+		                evasion="655" block="655" parry="655"
+		                main_hand_attack="20" main_hand_accuracy="570" main_hand_crit_rate="1"
+		                magic_accuracy="715" />
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="CLERIC" level="55">
+		<stats_template maxHp="4450" maxMp="5750"
+		                power="110" health="115" agility="90" accuracy="100" knowledge="115" will="120"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.5"
+		                evasion="655" block="655" parry="655"
+		                main_hand_attack="20" main_hand_accuracy="570" main_hand_crit_rate="2"
+		                magic_accuracy="715" />
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="CLERIC" level="56">
+		<stats_template maxHp="4500" maxMp="5800"
+		                power="110" health="120" agility="90" accuracy="100" knowledge="115" will="125"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.5"
+		                evasion="655" block="655" parry="655"
+		                main_hand_attack="20" main_hand_accuracy="570" main_hand_crit_rate="2"
+		                magic_accuracy="715" />
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="CLERIC" level="56">
+		<stats_template maxHp="4550" maxMp="5850"
+		                power="110" health="120" agility="90" accuracy="100" knowledge="115" will="125"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.5"
+		                evasion="660" block="660" parry="660"
+		                main_hand_attack="20" main_hand_accuracy="570" main_hand_crit_rate="2"
+		                magic_accuracy="715" />
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="CLERIC" level="57">
+		<stats_template maxHp="4650" maxMp="5950"
+		                power="110" health="120" agility="90" accuracy="100" knowledge="115" will="125"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="660" block="660" parry="660"
+		                main_hand_attack="20" main_hand_accuracy="570" main_hand_crit_rate="2"
+		                magic_accuracy="715" />
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="CLERIC" level="58">
+		<stats_template maxHp="4750" maxMp="6050"
+		                power="110" health="130" agility="90" accuracy="100" knowledge="120" will="125"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="660" block="660" parry="660"
+		                main_hand_attack="20" main_hand_accuracy="570" main_hand_crit_rate="2"
+		                magic_accuracy="720" />
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="CLERIC" level="59">
+		<stats_template maxHp="4800" maxMp="6100"
+		                power="110" health="130" agility="90" accuracy="100" knowledge="125" will="130"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="660" block="660" parry="660"
+		                main_hand_attack="20" main_hand_accuracy="570" main_hand_crit_rate="2"
+		                magic_accuracy="720" />
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="CLERIC" level="60">
+		<stats_template maxHp="4900" maxMp="6200"
+		                power="115" health="135" agility="1000" accuracy="100" knowledge="125" will="130"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="660" block="660" parry="660"
+		                main_hand_attack="20" main_hand_accuracy="570" main_hand_crit_rate="2"
+		                magic_accuracy="720" />
+	</player_stats>
 </player_stats_templates>

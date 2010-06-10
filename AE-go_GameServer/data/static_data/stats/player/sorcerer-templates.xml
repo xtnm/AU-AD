@@ -462,4 +462,115 @@
 		                main_hand_attack="16" main_hand_accuracy="590" main_hand_crit_rate="2"
 		                magic_accuracy="713" />
 	</player_stats>
+
+	<!-- Checked By Dragon 11/2010 at US Retail -->
+	<player_stats class="SORCERER" level="51">
+		<stats_template maxHp="3400" maxMp="5550"
+		                power="90" health="90" agility="100" accuracy="100" knowledge="125" will="115"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.5"
+		                evasion="682" block="682" parry="682"
+		                main_hand_attack="16" main_hand_accuracy="590" main_hand_crit_rate="2"
+		                magic_accuracy="715" />
+	</player_stats>
+
+	<!-- Checked By Dragon 11/2010 at US Retail -->
+	<player_stats class="SORCERER" level="52">
+		<stats_template maxHp="3450" maxMp="5600"
+		                power="90" health="90" agility="100" accuracy="100" knowledge="125" will="115"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.5"
+		                evasion="690" block="690" parry="690"
+		                main_hand_attack="16" main_hand_accuracy="590" main_hand_crit_rate="2"
+		                magic_accuracy="720" />
+	</player_stats>
+
+	<!-- Checked By Dragon 11/2010 at US Retail -->
+	<player_stats class="SORCERER" level="53">
+		<stats_template maxHp="3500" maxMp="5650"
+		                power="90" health="90" agility="100" accuracy="100" knowledge="125" will="115"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="695" block="695" parry="695"
+		                main_hand_attack="16" main_hand_accuracy="590" main_hand_crit_rate="2"
+		                magic_accuracy="720" />
+	</player_stats>
+
+	<!-- Checked By Dragon 11/2010 at US Retail -->
+	<player_stats class="SORCERER" level="54">
+		<stats_template maxHp="3550" maxMp="5700"
+		                power="90" health="90" agility="100" accuracy="100" knowledge="130" will="120"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="695" block="695" parry="695"
+		                main_hand_attack="16" main_hand_accuracy="590" main_hand_crit_rate="2"
+		                magic_accuracy="725" />
+	</player_stats>
+
+	<!-- Checked By Dragon 11/2010 at US Retail -->
+	<player_stats class="SORCERER" level="55">
+		<stats_template maxHp="3600" maxMp="5750"
+		                power="95" health="95" agility="105" accuracy="105" knowledge="130" will="120"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="695" block="695" parry="695"
+		                main_hand_attack="17" main_hand_accuracy="590" main_hand_crit_rate="2"
+		                magic_accuracy="730" />
+	</player_stats>
+
+	<!-- Checked By Dragon 11/2010 at US Retail -->
+	<player_stats class="SORCERER" level="56">
+		<stats_template maxHp="3700" maxMp="5800"
+		                power="95" health="95" agility="105" accuracy="105" knowledge="130" will="120"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="700" block="700" parry="700"
+		                main_hand_attack="18" main_hand_accuracy="600" main_hand_crit_rate="2"
+		                magic_accuracy="735" />
+	</player_stats>
+
+	<!-- Checked By Dragon 11/2010 at US Retail -->
+	<player_stats class="SORCERER" level="57">
+		<stats_template maxHp="3800" maxMp="5900"
+		                power="100" health="100" agility="110" accuracy="110" knowledge="135" will="125"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="710" block="710" parry="710"
+		                main_hand_attack="18" main_hand_accuracy="610" main_hand_crit_rate="3"
+		                magic_accuracy="740" />
+	</player_stats>
+
+	<!-- Checked By Dragon 11/2010 at US Retail -->
+	<player_stats class="SORCERER" level="58">
+		<stats_template maxHp="3900" maxMp="6000"
+		                power="100" health="100" agility="110" accuracy="110" knowledge="135" will="125"
+		                walk_speed="1.5" run_speed="7" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="720" block="720" parry="720"
+		                main_hand_attack="18" main_hand_accuracy="610" main_hand_crit_rate="3"
+		                magic_accuracy="745" />
+	</player_stats>
+
+	<!-- Checked By Dragon 11/2010 at US Retail -->
+	<player_stats class="SORCERER" level="59">
+		<stats_template maxHp="4000" maxMp="6100"
+		                power="100" health="100" agility="110" accuracy="110" knowledge="135" will="125"
+		                walk_speed="1.5" run_speed="7" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="725" block="725" parry="725"
+		                main_hand_attack="19" main_hand_accuracy="620" main_hand_crit_rate="3"
+		                magic_accuracy="755" />
+	</player_stats>
+
+	<!-- Checked By Dragon 11/2010 at US Retail -->
+	<player_stats class="SORCERER" level="60">
+		<stats_template maxHp="4100" maxMp="6200"
+		                power="100" health="100" agility="115" accuracy="115" knowledge="135" will="125"
+		                walk_speed="1.5" run_speed="7" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="730" block="730" parry="730"
+		                main_hand_attack="19" main_hand_accuracy="625" main_hand_crit_rate="3"
+		                magic_accuracy="760" />
+	</player_stats>
+
 </player_stats_templates>

@@ -462,4 +462,114 @@
 		                main_hand_attack="19" main_hand_accuracy="590" main_hand_crit_rate="2"
 		                magic_accuracy="713" />
 	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="GLADIATOR" level="51">
+		<stats_template maxHp="5900" maxMp="3700"
+		                power="120" health="120" agility="100" accuracy="100" knowledge="90" will="90"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.5"
+		                evasion="690" block="690" parry="690"
+		                main_hand_attack="19" main_hand_accuracy="590" main_hand_crit_rate="2"
+		                magic_accuracy="713" />
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="GLADIATOR" level="52">
+		<stats_template maxHp="5950" maxMp="3750"
+		                power="130" health="130" agility="110" accuracy="110" knowledge="100" will="100"
+		                walk_speed="1.5" run_speed="7" fly_speed="9"
+		                attack_speed="1.5"
+		                evasion="690" block="690" parry="690"
+		                main_hand_attack="19" main_hand_accuracy="600" main_hand_crit_rate="3"
+		                magic_accuracy="720" />
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="GLADIATOR" level="53">
+		<stats_template maxHp="6000" maxMp="3800"
+		                power="135" health="135" agility="110" accuracy="110" knowledge="100" will="100"
+		                walk_speed="1.5" run_speed="7" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="690" block="690" parry="690"
+		                main_hand_attack="19" main_hand_accuracy="600" main_hand_crit_rate="3"
+		                magic_accuracy="720" />
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="GLADIATOR" level="54">
+		<stats_template maxHp="6100" maxMp="3850"
+		                power="140" health="140" agility="115" accuracy="115" knowledge="100" will="100"
+		                walk_speed="1.5" run_speed="7" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="700" block="700" parry="700"
+		                main_hand_attack="20" main_hand_accuracy="610" main_hand_crit_rate="3"
+		                magic_accuracy="740" />
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="GLADIATOR" level="55">
+		<stats_template maxHp="6200" maxMp="3900"
+		                power="140" health="140" agility="115" accuracy="115" knowledge="100" will="100"
+		                walk_speed="1.5" run_speed="7" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="700" block="710" parry="700"
+		                main_hand_attack="20" main_hand_accuracy="610" main_hand_crit_rate="3"
+		                magic_accuracy="740" />
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="GLADIATOR" level="56">
+		<stats_template maxHp="6300" maxMp="4000"
+		                power="140" health="140" agility="120" accuracy="115" knowledge="100" will="100"
+		                walk_speed="1.5" run_speed="7" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="710" block="715" parry="705"
+		                main_hand_attack="20" main_hand_accuracy="610" main_hand_crit_rate="3"
+		                magic_accuracy="740" />
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="GLADIATOR" level="57">
+		<stats_template maxHp="6700" maxMp="4050"
+		                power="140" health="140" agility="120" accuracy="115" knowledge="105" will="105"
+		                walk_speed="1.5" run_speed="7" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="710" block="715" parry="710"
+		                main_hand_attack="20" main_hand_accuracy="610" main_hand_crit_rate="3"
+		                magic_accuracy="740" />
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="GLADIATOR" level="58">
+		<stats_template maxHp="6800" maxMp="4150"
+		                power="140" health="140" agility="120" accuracy="115" knowledge="105" will="105"
+		                walk_speed="1.5" run_speed="7" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="725" block="725" parry="725"
+		                main_hand_attack="20" main_hand_accuracy="610" main_hand_crit_rate="3"
+		                magic_accuracy="750" />
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="GLADIATOR" level="59">
+		<stats_template maxHp="6850" maxMp="4200"
+		                power="140" health="140" agility="120" accuracy="115" knowledge="105" will="105"
+		                walk_speed="1.5" run_speed="7" fly_speed="10"
+		                attack_speed="1.7"
+		                evasion="725" block="725" parry="725"
+		                main_hand_attack="20" main_hand_accuracy="610" main_hand_crit_rate="3"
+		                magic_accuracy="770" />
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="GLADIATOR" level="60">
+		<stats_template maxHp="6900" maxMp="4250"
+		                power="140" health="140" agility="120" accuracy="115" knowledge="105" will="105"
+		                walk_speed="1.5" run_speed="7" fly_speed="10"
+		                attack_speed="1.7"
+		                evasion="725" block="725" parry="725"
+		                main_hand_attack="20" main_hand_accuracy="610" main_hand_crit_rate="3"
+		                magic_accuracy="790" />
+	</player_stats>
 </player_stats_templates>

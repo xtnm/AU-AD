@@ -462,4 +462,115 @@
 		                main_hand_attack="19" main_hand_accuracy="570" main_hand_crit_rate="1"
 		                magic_accuracy="713" />
 	</player_stats>
+
+	<!-- Checked By Dragon 06/2010 at US Retail -->
+	<player_stats class="CHANTER" level="51">
+		<stats_template maxHp="4770" maxMp="5600"
+		                power="110" health="105" agility="90" accuracy="90" knowledge="110" will="115"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.5"
+		                evasion="651" block="651" parry="651"
+		                main_hand_attack="19" main_hand_accuracy="570" main_hand_crit_rate="1"
+		                magic_accuracy="713" />
+	</player_stats>
+
+	<!-- Checked By Dragon 06/2010 at US Retail -->
+	<player_stats class="CHANTER" level="52">
+		<stats_template maxHp="4820" maxMp="5650"
+		                power="110" health="105" agility="90" accuracy="90" knowledge="115" will="120"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.5"
+		                evasion="651" block="651" parry="651"
+		                main_hand_attack="19" main_hand_accuracy="570" main_hand_crit_rate="1"
+		                magic_accuracy="713" />
+	</player_stats>
+
+	<!-- Checked By Dragon 06/2010 at US Retail -->
+	<player_stats class="CHANTER" level="53">
+		<stats_template maxHp="4850" maxMp="5700"
+		                power="110" health="105" agility="90" accuracy="90" knowledge="115" will="120"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="651" block="651" parry="651"
+		                main_hand_attack="19" main_hand_accuracy="570" main_hand_crit_rate="1"
+		                magic_accuracy="715" />
+	</player_stats>
+
+	<!-- Checked By Dragon 06/2010 at US Retail -->
+	<player_stats class="CHANTER" level="54">
+		<stats_template maxHp="4900" maxMp="5750"
+		                power="110" health="105" agility="90" accuracy="90" knowledge="120" will="120"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="651" block="651" parry="651"
+		                main_hand_attack="19" main_hand_accuracy="570" main_hand_crit_rate="1"
+		                magic_accuracy="715" />
+	</player_stats>
+
+	<!-- Checked By Dragon 06/2010 at US Retail -->
+	<player_stats class="CHANTER" level="55">
+		<stats_template maxHp="4950" maxMp="5800"
+		                power="110" health="105" agility="90" accuracy="90" knowledge="120" will="120"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="651" block="651" parry="651"
+		                main_hand_attack="19" main_hand_accuracy="570" main_hand_crit_rate="1"
+		                magic_accuracy="720" />
+	</player_stats>
+
+	<!-- Checked By Dragon 06/2010 at US Retail -->
+	<player_stats class="CHANTER" level="56">
+		<stats_template maxHp="5000" maxMp="5850"
+		                power="110" health="105" agility="90" accuracy="90" knowledge="120" will="125"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="651" block="651" parry="651"
+		                main_hand_attack="19" main_hand_accuracy="570" main_hand_crit_rate="1"
+		                magic_accuracy="720" />
+	</player_stats>
+
+	<!-- Checked By Dragon 06/2010 at US Retail -->
+	<player_stats class="CHANTER" level="57">
+		<stats_template maxHp="5100" maxMp="5900"
+		                power="120" health="115" agility="100" accuracy="90" knowledge="120" will="125"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="651" block="651" parry="651"
+		                main_hand_attack="19" main_hand_accuracy="570" main_hand_crit_rate="1"
+		                magic_accuracy="720" />
+	</player_stats>
+
+	<!-- Checked By Dragon 06/2010 at US Retail -->
+	<player_stats class="CHANTER" level="58">
+		<stats_template maxHp="5200" maxMp="6000"
+		                power="125" health="120" agility="100" accuracy="90" knowledge="120" will="125"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="651" block="651" parry="651"
+		                main_hand_attack="19" main_hand_accuracy="570" main_hand_crit_rate="1"
+		                magic_accuracy="725" />
+	</player_stats>
+
+	<!-- Checked By Dragon 06/2010 at US Retail -->
+	<player_stats class="CHANTER" level="59">
+		<stats_template maxHp="5300" maxMp="6100"
+		                power="125" health="120" agility="100" accuracy="90" knowledge="120" will="125"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="655" block="655" parry="655"
+		                main_hand_attack="19" main_hand_accuracy="570" main_hand_crit_rate="2"
+		                magic_accuracy="725" />
+	</player_stats>
+
+	<!-- Checked By Dragon 06/2010 at US Retail -->
+	<player_stats class="CHANTER" level="60">
+		<stats_template maxHp="5400" maxMp="6200"
+		                power="125" health="120" agility="100" accuracy="90" knowledge="120" will="125"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="655" block="655" parry="655"
+		                main_hand_attack="19" main_hand_accuracy="570" main_hand_crit_rate="3"
+		                magic_accuracy="740" />
+	</player_stats>
+
 </player_stats_templates>

@@ -462,4 +462,131 @@
 		                main_hand_attack="18" main_hand_accuracy="622" main_hand_crit_rate="3"
 		                magic_accuracy="713" />
 	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="RANGER" level="51">
+		<stats_template maxHp="3700" maxMp="3650"
+		                power="100" health="100" agility="115" accuracy="115" knowledge="90" will="90"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.5"
+		                evasion="735" block="735" parry="735"
+		                main_hand_attack="18" main_hand_accuracy="630" main_hand_crit_rate="3"
+		                magic_accuracy="720" />
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="RANGER" level="52">
+		<stats_template maxHp="3750" maxMp="3700"
+		                power="100" health="100" agility="115" accuracy="115" knowledge="90" will="90"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.5"
+		                evasion="745" block="745" parry="745"
+		                main_hand_attack="18" main_hand_accuracy="640" main_hand_crit_rate="3"
+		                magic_accuracy="730" />
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="RANGER" level="53">
+		<stats_template maxHp="3800" maxMp="3750"
+		                power="100" health="100" agility="115" accuracy="115" knowledge="90" will="90"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.5"
+		                evasion="750" block="750" parry="750"
+		                main_hand_attack="18" main_hand_accuracy="650" main_hand_crit_rate="3"
+		                magic_accuracy="740" />
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="RANGER" level="53">
+		<stats_template maxHp="3850" maxMp="3800"
+		                power="100" health="100" agility="115" accuracy="115" knowledge="90" will="90"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.5"
+		                evasion="755" block="755" parry="755"
+		                main_hand_attack="18" main_hand_accuracy="660" main_hand_crit_rate="4"
+		                magic_accuracy="750" />
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="RANGER" level="54">
+		<stats_template maxHp="3900" maxMp="3850"
+		                power="100" health="100" agility="115" accuracy="115" knowledge="90" will="90"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="760" block="760" parry="760"
+		                main_hand_attack="18" main_hand_accuracy="660" main_hand_crit_rate="4"
+		                magic_accuracy="750" />
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="RANGER" level="55">
+		<stats_template maxHp="3950" maxMp="3900"
+		                power="105" health="105" agility="120" accuracy="115" knowledge="90" will="90"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="765" block="765" parry="765"
+		                main_hand_attack="19" main_hand_accuracy="660" main_hand_crit_rate="4"
+		                magic_accuracy="750" />
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="RANGER" level="56">
+		<stats_template maxHp="3950" maxMp="3900"
+		                power="105" health="105" agility="120" accuracy="115" knowledge="90" will="90"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="770" block="770" parry="770"
+		                main_hand_attack="19" main_hand_accuracy="660" main_hand_crit_rate="4"
+		                magic_accuracy="750" />
+	
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="RANGER" level="57">
+		<stats_template maxHp="4000" maxMp="3950"
+		                power="110" health="115" agility="130" accuracy="115" knowledge="90" will="90"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="775" block="775" parry="775"
+		                main_hand_attack="19" main_hand_accuracy="660" main_hand_crit_rate="4"
+		                magic_accuracy="750" />
+
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="RANGER" level="58">
+		<stats_template maxHp="4050" maxMp="4000"
+		                power="115" health="120" agility="135" accuracy="115" knowledge="100" will="100"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="780" block="780" parry="780"
+		                main_hand_attack="19" main_hand_accuracy="665" main_hand_crit_rate="4"
+		                magic_accuracy="750" />
+
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="RANGER" level="59">
+		<stats_template maxHp="4100" maxMp="4050"
+		                power="115" health="120" agility="135" accuracy="115" knowledge="100" will="100"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="760" block="760" parry="760"
+		                main_hand_attack="19" main_hand_accuracy="665" main_hand_crit_rate="4"
+		                magic_accuracy="750" />
+
+	</player_stats>
+
+	<!-- Checked By Dragon 05/2010 at US Retail -->
+	<player_stats class="RANGER" level="60">
+		<stats_template maxHp="4150" maxMp="4100"
+		                power="120" health="135" agility="135" accuracy="115" knowledge="100" will="100"
+		                walk_speed="1.5" run_speed="6" fly_speed="9"
+		                attack_speed="1.6"
+		                evasion="760" block="760" parry="760"
+		                main_hand_attack="19" main_hand_accuracy="665" main_hand_crit_rate="4"
+		                magic_accuracy="760" />
+
+	</player_stats>
+
 </player_stats_templates>
