@@ -13,6 +13,7 @@ import com.aionemu.gameserver.network.aion.serverpackets.SM_INFLUENCE_RATIO;
 import com.aionemu.gameserver.services.FortressService;
 import com.aionemu.gameserver.world.World;
 import com.google.inject.Inject;
+import com.google.inject.Injector;
 import com.sun.tools.javac.util.Log;
 
 public class InfluenceManager 
@@ -26,6 +27,9 @@ public class InfluenceManager
 	
 	private static int fortressCount = 1;
 	
+	@Inject
+	private static Injector injector;
+	
 	public static void initialize()
 	{
 		ThreadPoolManager.getInstance().scheduleAtFixedRate(new Runnable() {
@@ -34,12 +38,12 @@ public class InfluenceManager
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				recalculateInfluenceRatio(false, world);
+				recalculateInfluenceRatio(false);
 			}
 		}, 0, 300000);
 	}
 	
-	public static void recalculateInfluenceRatio(boolean sendPackets, World world)
+	public static void recalculateInfluenceRatio(boolean sendPackets)
 	{
 		log.info("Starting influence ratios recalculation");
 		ArrayList<Race> currentFortressHolders = new ArrayList<Race>();
@@ -71,7 +75,7 @@ public class InfluenceManager
 		log.info("Influence ratios were recalculated :: ELYOS " + elyosRatio + "% - ASMODIANS " + asmodiansRatio + "% - BALAURS " + balaursRatio + "%");
 		if(sendPackets)
 		{
-			Iterator<Player> players = world.getPlayersIterator();
+			Iterator<Player> players = injector.getInstance(World.class).getPlayersIterator();
 			while(players.hasNext())
 			{
 				Player p = players.next();
