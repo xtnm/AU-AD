@@ -165,7 +165,7 @@ public class GameServer
 		
 		gs.injector.getInstance(FortressService.class).initialize();
 		
-		InfluenceManager.initialize();
+		InfluenceManager.initialize(world);
 		
 		LocaleManager.initialize();
 

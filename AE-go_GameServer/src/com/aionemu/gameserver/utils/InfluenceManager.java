@@ -28,10 +28,11 @@ public class InfluenceManager
 	private static int fortressCount = 1;
 	
 	@Inject
-	private static Injector injector;
+	private static World world;
 	
-	public static void initialize()
+	public static void initialize(World world)
 	{
+		InfluenceManager.world = world;
 		ThreadPoolManager.getInstance().scheduleAtFixedRate(new Runnable() {
 			@Inject
 			private World world;
@@ -75,7 +76,7 @@ public class InfluenceManager
 		log.info("Influence ratios were recalculated :: ELYOS " + elyosRatio + "% - ASMODIANS " + asmodiansRatio + "% - BALAURS " + balaursRatio + "%");
 		if(sendPackets)
 		{
-			Iterator<Player> players = injector.getInstance(World.class).getPlayersIterator();
+			Iterator<Player> players = InfluenceManager.world.getPlayersIterator();
 			while(players.hasNext())
 			{
 				Player p = players.next();
