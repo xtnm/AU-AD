@@ -58,7 +58,7 @@ public class FortressService
 	@Inject
 	private ItemService itemService;
 	
-	private Map<Integer,ArrayList<PlayerGroup>> registeredRewardableGroups = new HashMap<Integer, ArrayList<PlayerGroup>>();
+	private static Map<Integer,ArrayList<PlayerGroup>> registeredRewardableGroups = new HashMap<Integer, ArrayList<PlayerGroup>>();
 	
 	public void initialize()
 	{
