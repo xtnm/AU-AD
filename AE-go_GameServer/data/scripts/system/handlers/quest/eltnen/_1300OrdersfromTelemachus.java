@@ -25,7 +25,7 @@ import com.aionemu.gameserver.questEngine.model.QuestStatus;
 import com.aionemu.gameserver.world.zone.ZoneName;
 
 /**
- * @author MrPoke + Dune11
+ * @author Nephis
  * 
  */
 public class _1300OrdersfromTelemachus extends QuestHandler
@@ -52,6 +52,7 @@ public class _1300OrdersfromTelemachus extends QuestHandler
 		final QuestState qs = player.getQuestStateList().getQuestState(questId);
 		if(qs == null)
 			return false;
+
 		int targetId = 0;
 		if(env.getVisibleObject() instanceof Npc)
 			targetId = ((Npc) env.getVisibleObject()).getNpcId();
