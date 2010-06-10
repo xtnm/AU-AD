@@ -5,11 +5,13 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Random;
 
 import org.apache.log4j.Logger;
 
 import com.aionemu.commons.database.dao.DAO;
 import com.aionemu.commons.database.dao.DAOManager;
+import com.aionemu.commons.utils.Rnd;
 import com.aionemu.gameserver.ai.desires.impl.AggressionDesire;
 import com.aionemu.gameserver.ai.npcai.AggressiveAi;
 import com.aionemu.gameserver.ai.state.AIState;
@@ -58,10 +60,19 @@ public class FortressService
 	@Inject
 	private ItemService itemService;
 	
+	/*
+	 * balaurAssaultChance
+	 * probability percentage, if 100 balaur will assault every hour, if 0 will never (value is the chance balaurs have to assault the fortress)
+	 */
+	private static final int balaurAssaultChance = 20;
+	
+	private static final int balaurAssaultInterval = 3600; //value in seconds
+	
 	private static Map<Integer,ArrayList<PlayerGroup>> registeredRewardableGroups = new HashMap<Integer, ArrayList<PlayerGroup>>();
 	
 	public void initialize()
 	{
+		// initialize container and AI
 		for(int i=0; i < 9; i++)
 		{
 			registeredRewardableGroups.put(i+1, new ArrayList<PlayerGroup>());
@@ -280,6 +291,37 @@ public class FortressService
 		{
 			teleportService.teleportTo(p, 400010000, (float)1300.8483, (float)1088.8396, (float)1508.2749, 0);
 		}
+	}
+	
+	/*
+	 * Balaur pseudo-AI
+	 */
+	
+	public void initializeBalaurAI()
+	{
+		for(int i=0; i < 9; i++)
+		{
+			final int currentFortressId = i+1;
+			ThreadPoolManager.getInstance().scheduleAtFixedRate(new Runnable() {
+				
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					int randomInt = Rnd.get(100);
+					if(randomInt < balaurAssaultChance)
+					{
+						launchBalaurAssault(currentFortressId);
+					}
+				}
+			}, balaurAssaultInterval*1000, balaurAssaultInterval*1000);
+		}
+	}
+	
+	public void launchBalaurAssault(int fortressId)
+	{
+		// get balaur spawnlist for specified fortressId
+		// spawn mobs
+		// update tribe to make balaur attack the current fortress holder faction
 	}
 	
 }
