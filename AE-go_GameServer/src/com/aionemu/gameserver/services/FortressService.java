@@ -58,12 +58,10 @@ public class FortressService
 	@Inject
 	private ItemService itemService;
 	
-	private Map<Integer,ArrayList<PlayerGroup>> registeredRewardableGroups;
+	private Map<Integer,ArrayList<PlayerGroup>> registeredRewardableGroups = new HashMap<Integer, ArrayList<PlayerGroup>>();
 	
 	public void initialize()
 	{
-		// initialize group reward container
-		registeredRewardableGroups = new HashMap<Integer, ArrayList<PlayerGroup>>();
 		for(int i=0; i < 9; i++)
 		{
 			registeredRewardableGroups.put(i+1, new ArrayList<PlayerGroup>());
