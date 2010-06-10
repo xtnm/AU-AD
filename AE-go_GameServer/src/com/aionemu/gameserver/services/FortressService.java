@@ -96,6 +96,7 @@ public class FortressService
 		spawnFortress(8, DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(8));
 		// 9: Ruines de Roah
 		spawnFortress(9, DAOManager.getDAO(FortressDAO.class).getCurrentFortressOwnerFaction(9));*/
+		initializeBalaurAI();
 		log.info("FortressService successfully initialized!");
 	}
 	
@@ -322,6 +323,7 @@ public class FortressService
 		// get balaur spawnlist for specified fortressId
 		// spawn mobs
 		// update tribe to make balaur attack the current fortress holder faction
+		// notify players that balaur are attacking fortress
 	}
 	
 }
