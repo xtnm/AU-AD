@@ -37,12 +37,6 @@ public class InfluenceManager
 			public void run() {
 				// TODO Auto-generated method stub
 				recalculateInfluenceRatio();
-				Iterator<Player> players = world.getPlayersIterator();
-				while(players.hasNext())
-				{
-					Player p = players.next();
-					PacketSendUtility.sendPacket(p, new SM_INFLUENCE_RATIO());
-				}
 			}
 		}, 0, 300000);
 	}
@@ -77,6 +71,15 @@ public class InfluenceManager
 		asmodiansRatio = Math.round((asmodiansCount / fortressCount) * 100);
 		balaursRatio = Math.round((balaursCount / fortressCount) * 100);
 		log.info("Influence ratios were recalculated :: ELYOS " + elyosRatio + "% - ASMODIANS " + asmodiansRatio + "% - BALAURS " + balaursRatio + "%");
+		if(world instanceof World)
+		{
+			Iterator<Player> players = world.getPlayersIterator();
+			while(players.hasNext())
+			{
+				Player p = players.next();
+				PacketSendUtility.sendPacket(p, new SM_INFLUENCE_RATIO());
+			}
+		}
 	}
 	
 	public static int getElyosRatio()
