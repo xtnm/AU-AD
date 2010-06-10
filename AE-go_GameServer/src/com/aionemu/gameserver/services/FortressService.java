@@ -261,7 +261,7 @@ public class FortressService
 					newRace = Race.ELYOS;
 				}
 				DAOManager.getDAO(FortressDAO.class).setFortressOwner(fortressId, newRace);
-				InfluenceManager.recalculateInfluenceRatio();
+				InfluenceManager.recalculateInfluenceRatio(true);
 				spawnFortress(fortressId, newRace, false);
 			}
 		}, 5000);
