@@ -242,7 +242,8 @@ public class FortressService
 		}
 		sendPlayersMessage(players, "Vous venez de prendre la forteresse " + getFortressName(fortressId) + ". Vous serez teleporte a l'entree dans 5 secondes ...");
 		ThreadPoolManager.getInstance().schedule(new Runnable() {
-			
+			@Inject
+			private World world;
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
@@ -261,7 +262,7 @@ public class FortressService
 					newRace = Race.ELYOS;
 				}
 				DAOManager.getDAO(FortressDAO.class).setFortressOwner(fortressId, newRace);
-				InfluenceManager.recalculateInfluenceRatio(true);
+				InfluenceManager.recalculateInfluenceRatio(true, world);
 				spawnFortress(fortressId, newRace, false);
 			}
 		}, 5000);

@@ -26,22 +26,20 @@ public class InfluenceManager
 	
 	private static int fortressCount = 1;
 	
-	@Inject
-	private static World world;
-	
 	public static void initialize()
 	{
 		ThreadPoolManager.getInstance().scheduleAtFixedRate(new Runnable() {
-			
+			@Inject
+			private World world;
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				recalculateInfluenceRatio(false);
+				recalculateInfluenceRatio(false, world);
 			}
 		}, 0, 300000);
 	}
 	
-	public static void recalculateInfluenceRatio(boolean sendPackets)
+	public static void recalculateInfluenceRatio(boolean sendPackets, World world)
 	{
 		log.info("Starting influence ratios recalculation");
 		ArrayList<Race> currentFortressHolders = new ArrayList<Race>();
