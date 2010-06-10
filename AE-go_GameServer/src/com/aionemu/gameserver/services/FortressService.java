@@ -242,8 +242,6 @@ public class FortressService
 		}
 		sendPlayersMessage(players, "Vous venez de prendre la forteresse " + getFortressName(fortressId) + ". Vous serez teleporte a l'entree dans 5 secondes ...");
 		ThreadPoolManager.getInstance().schedule(new Runnable() {
-			@Inject
-			private World world;
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub

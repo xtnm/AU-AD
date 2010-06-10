@@ -34,8 +34,6 @@ public class InfluenceManager
 	{
 		InfluenceManager.world = world;
 		ThreadPoolManager.getInstance().scheduleAtFixedRate(new Runnable() {
-			@Inject
-			private World world;
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
