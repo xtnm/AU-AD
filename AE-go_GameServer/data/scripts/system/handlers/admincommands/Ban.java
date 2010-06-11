@@ -26,6 +26,7 @@ import com.aionemu.gameserver.model.ban.BannedChat;
 import com.aionemu.gameserver.model.ban.BannedIP;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_QUIT_RESPONSE;
+import com.aionemu.gameserver.utils.LocaleManager;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.ThreadPoolManager;
 import com.aionemu.gameserver.utils.Util;
@@ -53,10 +54,10 @@ public class Ban extends AdminCommand
     @Override
     public void executeCommand(Player admin, String[] params)
    {
-      String syntaxCommand = "Syntax: //ban <account | chat | ip> <character name> <time in minutes | forever>";
+      String syntaxCommand = LocaleManager.getString(35);
         if (admin.getAccessLevel() < AdminConfig.COMMAND_BAN)
         {
-            PacketSendUtility.sendMessage(admin, "You dont have enough rights to execute this command");
+            PacketSendUtility.sendMessage(admin, LocaleManager.getString(1));
             return;
         }
 
@@ -71,7 +72,7 @@ public class Ban extends AdminCommand
       
       if (target == null)
       {
-         PacketSendUtility.sendMessage(admin, "WARNING: The specified player is not online.");
+         PacketSendUtility.sendMessage(admin, LocaleManager.getString(29));
          return;
       }
       
@@ -112,7 +113,7 @@ public class Ban extends AdminCommand
          }, 2000);
          
          // Done
-         PacketSendUtility.sendMessage(admin, "INFO: The player (account) " + params[1] + " has been banned with successful.");
+         PacketSendUtility.sendMessage(admin, LocaleManager.getString(36));
       }
       else if (params[0].equals("chat"))
       {
@@ -132,10 +133,10 @@ public class Ban extends AdminCommand
          BannedChatController.reload();
          
          // Done
-         PacketSendUtility.sendMessage(admin, "INFO: The player (Chat) " + params[1] + " has been banned with successful.");
+         PacketSendUtility.sendMessage(admin, LocaleManager.getString(37));
          
          // Warning the player
-         PacketSendUtility.sendMessage(target, "You are currently banned from the chat by the admin.");
+         PacketSendUtility.sendMessage(target, LocaleManager.getString(38));
       }
       else if (params[0].equals("ip"))
       {
@@ -155,7 +156,7 @@ public class Ban extends AdminCommand
          target.getClientConnection().close(new SM_QUIT_RESPONSE(), true);
          
          // Done
-         PacketSendUtility.sendMessage(admin, "INFO: The player (IP) " + params[1] + " has been banned with successful.");
+         PacketSendUtility.sendMessage(admin, LocaleManager.getString(39));
       }
       else
       {
