@@ -110,8 +110,7 @@ public class SkillUseDesire extends AbstractDesire
 					NpcLifeStats nls = (NpcLifeStats)owner.getLifeStats();
 					int minHpPercent = template.getMinHp();
 					int maxHpPercent = template.getMaxHp();
-					int currentNpcHpPercent = (nls.getCurrentHp() / nls.getMaxHp()) * 100;
-					if(currentNpcHpPercent >= minHpPercent && currentNpcHpPercent <= maxHpPercent)
+					if(nls.getHpPercentage() >= minHpPercent && nls.getHpPercentage() <= maxHpPercent)
 					{
 						if(Rnd.get(0, 100) < template.getProbability())
 						{
