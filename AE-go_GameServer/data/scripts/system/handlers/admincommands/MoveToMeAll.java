@@ -30,7 +30,7 @@ import com.google.inject.Inject;
 
 
 /**
-* @author Atomics
+* @author Shepper, alfa24t
 */
 
 public class MoveToMeAll extends AdminCommand
