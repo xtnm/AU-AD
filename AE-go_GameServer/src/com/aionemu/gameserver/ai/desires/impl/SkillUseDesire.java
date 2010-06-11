@@ -16,20 +16,27 @@
  */
 package com.aionemu.gameserver.ai.desires.impl;
 
+import java.util.Iterator;
 import java.util.List;
+
+import org.apache.log4j.Logger;
 
 import com.aionemu.commons.utils.Rnd;
 import com.aionemu.gameserver.ai.AI;
 import com.aionemu.gameserver.ai.desires.AbstractDesire;
+import com.aionemu.gameserver.model.ChatType;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Npc;
+import com.aionemu.gameserver.model.gameobjects.VisibleObject;
 import com.aionemu.gameserver.model.gameobjects.stats.CreatureLifeStats;
 import com.aionemu.gameserver.model.gameobjects.stats.NpcLifeStats;
 import com.aionemu.gameserver.model.templates.npcskill.NpcSkillList;
 import com.aionemu.gameserver.model.templates.npcskill.NpcSkillTemplate;
 import com.aionemu.gameserver.model.templates.npcskill.NpcUniqueSkillTemplate;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_MESSAGE;
 import com.aionemu.gameserver.skillengine.SkillEngine;
 import com.aionemu.gameserver.skillengine.model.Skill;
+import com.aionemu.gameserver.utils.PacketSendUtility;
 
 /**
  * @author ATracer
@@ -41,6 +48,8 @@ public class SkillUseDesire extends AbstractDesire
 	protected Creature		owner;
 	private NpcSkillList	skillList;
 
+	private static final Logger log = Logger.getLogger(SkillUseDesire.class);
+	
 	/**
 	 * @param owner
 	 * @param desirePower
@@ -79,9 +88,14 @@ public class SkillUseDesire extends AbstractDesire
 							owner.setCastedUniqueSkill(uSkill.getSkillid());
 							// MEGA KILL !!!!!
 							skill.useSkill();
+							PacketSendUtility.broadcastPacket(owner, new SM_MESSAGE(owner.getObjectId(), owner.getName(), "Boooooooooooooooooommmm !!", ChatType.SHOUT));
 							// let's sleep a second ...
 							return true;
-						}						
+						}
+						else
+						{
+							log.error("npc #" + owner.getName() + " cannot cast unique skill #" + uSkill.getSkillid() + " : no such skill template");
+						}
 					}
 				}
 			}
