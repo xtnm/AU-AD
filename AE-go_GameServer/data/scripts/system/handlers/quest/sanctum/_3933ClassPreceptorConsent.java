@@ -164,7 +164,7 @@ public class _3933ClassPreceptorConsent extends QuestHandler
 						{
 							// Get HACTION_QUEST_SELECT in the eddit-HyperLinks.xml
 							case 25:
-								if(player.getInventory().getItemCountByItemId(186000080) == 1)
+								if(player.getInventory().getItemCountByItemId(186000080) >= 1)
 									// Send select5 to eddit-HtmlPages.xml
 									return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2375);
 								else
