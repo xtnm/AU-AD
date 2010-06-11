@@ -656,4 +656,9 @@ public abstract class Creature extends VisibleObject
 		castedUniqueSkills.add(skillId);
 	}
 	
+	public void clearCastedUniqueSkills()
+	{
+		castedUniqueSkills.clear();
+	}
+	
 }
