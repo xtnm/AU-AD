@@ -21,6 +21,7 @@ import java.util.Iterator;
 
 import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.utils.LocaleManager;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.chathandlers.AdminCommand;
 
@@ -40,18 +41,18 @@ public class Announce extends AdminCommand
 	{
 		if(admin.getAccessLevel() < AdminConfig.COMMAND_ANNOUNCE)
 		{
-			PacketSendUtility.sendMessage(admin, "You dont have enough rights to execute this command");
+			PacketSendUtility.sendMessage(admin, LocaleManager.getString(1));
 			return;
 		}
 
 		if(params.length == 0)
 		{
-			PacketSendUtility.sendMessage(admin, "//syntax announce <message>");
+			PacketSendUtility.sendMessage(admin, LocaleManager.getString(30));
 		}
 		else
 		{
 			Iterator<Player> iter = admin.getActiveRegion().getWorld().getPlayersIterator();
-			StringBuilder sbMessage = new StringBuilder("Annonce de " + admin.getName() + " : ");
+			StringBuilder sbMessage = new StringBuilder(LocaleManager.getString(31) + admin.getName() + " : ");
 
 			for(String p : params)
 				sbMessage.append(p + " ");
