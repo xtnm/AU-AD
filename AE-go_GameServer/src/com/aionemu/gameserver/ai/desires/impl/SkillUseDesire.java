@@ -93,18 +93,21 @@ public class SkillUseDesire extends AbstractDesire
 		{
 			for(NpcSkillTemplate template : skills)
 			{
-				NpcLifeStats nls = (NpcLifeStats)owner.getLifeStats();
-				int minHpPercent = template.getMinHp();
-				int maxHpPercent = template.getMaxHp();
-				int currentNpcHpPercent = (nls.getCurrentHp() / nls.getMaxHp()) * 100;
-				if(currentNpcHpPercent >= minHpPercent && currentNpcHpPercent <= maxHpPercent)
+				if(template.isAboutHp())
 				{
-					if(Rnd.get(0, 100) < template.getProbability())
+					NpcLifeStats nls = (NpcLifeStats)owner.getLifeStats();
+					int minHpPercent = template.getMinHp();
+					int maxHpPercent = template.getMaxHp();
+					int currentNpcHpPercent = (nls.getCurrentHp() / nls.getMaxHp()) * 100;
+					if(currentNpcHpPercent >= minHpPercent && currentNpcHpPercent <= maxHpPercent)
 					{
-						Skill skill = SkillEngine.getInstance().getSkill(owner, template.getSkillid(), template.getSkillLevel(),
-							owner.getTarget());
-						skill.useSkill();
-						return true;
+						if(Rnd.get(0, 100) < template.getProbability())
+						{
+							Skill skill = SkillEngine.getInstance().getSkill(owner, template.getSkillid(), template.getSkillLevel(),
+								owner.getTarget());
+							skill.useSkill();
+							return true;
+						}
 					}
 				}
 			}
