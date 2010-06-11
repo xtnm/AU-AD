@@ -349,7 +349,7 @@ public abstract class CreatureLifeStats<T extends Creature>
 	 */
 	public int getHpPercentage()
 	{
-		return 100 * currentHp / getMaxHp();
+		return (int) (100L * currentHp / getMaxHp());
 	}
 	
 	/**
@@ -408,7 +408,7 @@ public abstract class CreatureLifeStats<T extends Creature>
 		try
 		{
 			int maxHp = getMaxHp();
-			this.currentHp = maxHp * hpPercent / 100;
+			this.currentHp = (int)((long)maxHp * hpPercent / 100);
 			
 			if(this.currentHp > 0)
 				this.alreadyDead = false;
