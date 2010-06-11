@@ -22,6 +22,7 @@ import java.util.Iterator;
 import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.model.Race;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.utils.LocaleManager;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.chathandlers.AdminCommand;
 
@@ -43,13 +44,13 @@ public class AnnounceFaction extends AdminCommand
 	{
 		if (admin.getAccessLevel() < AdminConfig.COMMAND_ANNOUNCE_FACTION)
 		{
-			PacketSendUtility.sendMessage(admin, "You don't have enough rights to execute this command.");
+			PacketSendUtility.sendMessage(admin, LocaleManager.getString(1));
 			return;
 		}
 		
 		if (params.length < 2)
 		{
-			PacketSendUtility.sendMessage(admin, "Syntax: //announcefaction <ely | asmo> <message>");
+			PacketSendUtility.sendMessage(admin, LocaleManager.getString(32));
 		}
 		else
 		{
@@ -57,9 +58,9 @@ public class AnnounceFaction extends AdminCommand
 			String message = null;
 			
 			if (params[0].equals("ely"))
-				message = "Elyos : ";
+				message = LocaleManager.getString(33) + " : ";
 			else
-				message = "Asmodians : ";
+				message = LocaleManager.getString(34) + " : ";
 			
 			// Add with space
 			for (int i=1; i<params.length-1; i++)
