@@ -121,6 +121,16 @@ public class SkillUseDesire extends AbstractDesire
 						}
 					}
 				}
+				else
+				{
+					if(Rnd.get(0, 100) < template.getProbability())
+					{
+							Skill skill = SkillEngine.getInstance().getSkill(owner, template.getSkillid(), template.getSkillLevel(),
+								owner.getTarget());
+							skill.useSkill();
+							return true;
+					}
+				}
 			}
 		}
 		
