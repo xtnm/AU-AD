@@ -38,6 +38,8 @@ public class NpcSkillList
 	protected int				count;
 	@XmlElement(name = "npcskill")
 	protected List<NpcSkillTemplate>	npcSkills;
+	@XmlElement(name = "npcuniqueskill")
+	protected List<NpcUniqueSkillTemplate> npcUniqueSkills;
 
 	/**
 	 * @return the npcId
@@ -61,5 +63,10 @@ public class NpcSkillList
 	public List<NpcSkillTemplate> getNpcSkills()
 	{
 		return npcSkills;
+	}
+	
+	public List<NpcUniqueSkillTemplate> getNpcUniqueSkills()
+	{
+		return npcUniqueSkills;
 	}
 }

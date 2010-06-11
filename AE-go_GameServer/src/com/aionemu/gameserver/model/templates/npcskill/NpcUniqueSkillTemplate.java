@@ -22,31 +22,19 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * @author AionChs Master
+ * @author Xitanium
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "npcskill")
-public class NpcSkillTemplate
+@XmlType(name = "npcuniqueskill")
+public class NpcUniqueSkillTemplate
 {
-	@XmlAttribute(name = "id")
-	protected int		id;
 	@XmlAttribute(name = "skillid")
 	protected int		skillid;
 	@XmlAttribute(name = "skilllevel")
 	protected int		skilllevel;
-	@XmlAttribute(name = "probability")
-	protected int		probability;
-	@XmlAttribute(name = "abouthp")
-	protected boolean	abouthp;
-
-	/**
-	 * @return the id
-	 */
-	public int getId()
-	{
-		return id;
-	}
+	@XmlAttribute(name = "hp_percent")
+	protected int		hpPercent;
 
 	/**
 	 * @return the skillid
@@ -65,18 +53,10 @@ public class NpcSkillTemplate
 	}
 
 	/**
-	 * @return the probability
+	 * @return the percentage of hp
 	 */
-	public int getProbability()
+	public int getHPPercent()
 	{
-		return probability;
-	}
-
-	/**
-	 * @return the abouthp
-	 */
-	public boolean isAboutHp()
-	{
-		return abouthp;
+		return hpPercent;
 	}
 }
