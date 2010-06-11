@@ -16,6 +16,9 @@
  */
 package com.aionemu.gameserver.model.gameobjects;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javolution.util.FastMap;
@@ -71,6 +74,8 @@ public abstract class Creature extends VisibleObject
 	private Map<Integer, Long> skillCoolDowns;
 	private int transformedModelId;
 	private ObserveController 	observeController;
+	
+	private ArrayList<Integer> castedUniqueSkills = new ArrayList<Integer>();
 
 	/**
 	 * 
@@ -639,4 +644,16 @@ public abstract class Creature extends VisibleObject
 			return;
 		skillCoolDowns.remove(skillId);
 	}
+	
+	
+	public boolean hasCastedUniqueSkill(int skillId)
+	{
+		return castedUniqueSkills.contains(skillId);
+	}
+	
+	public void setCastedUniqueSkill(int skillId)
+	{
+		castedUniqueSkills.add(skillId);
+	}
+	
 }

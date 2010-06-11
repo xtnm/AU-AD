@@ -39,6 +39,10 @@ public class NpcSkillTemplate
 	protected int		probability;
 	@XmlAttribute(name = "abouthp")
 	protected boolean	abouthp;
+	@XmlAttribute(name = "min_hp", required = false)
+	protected int		min_hp;
+	@XmlAttribute(name = "max_hp", required = false)
+	protected int		max_hp;
 
 	/**
 	 * @return the id
@@ -78,5 +82,15 @@ public class NpcSkillTemplate
 	public boolean isAboutHp()
 	{
 		return abouthp;
+	}
+	
+	public int getMinHp()
+	{
+		return min_hp;
+	}
+	
+	public int getMaxHp()
+	{
+		return max_hp;
 	}
 }

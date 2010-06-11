@@ -38,7 +38,7 @@ public class NpcSkillList
 	protected int				count;
 	@XmlElement(name = "npcskill")
 	protected List<NpcSkillTemplate>	npcSkills;
-	@XmlElement(name = "npcuniqueskill")
+	@XmlElement(name = "npcuniqueskill", required = false)
 	protected List<NpcUniqueSkillTemplate> npcUniqueSkills;
 
 	/**

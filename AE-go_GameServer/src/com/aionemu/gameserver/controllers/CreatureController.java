@@ -16,6 +16,8 @@
  */
 package com.aionemu.gameserver.controllers;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.Future;
 
 import javolution.util.FastMap;
@@ -47,6 +49,7 @@ public abstract class CreatureController<T extends Creature> extends VisibleObje
 	/**
 	 * {@inheritDoc}
 	 */
+	
 	@Override
 	public void notSee(VisibleObject object, boolean isOutOfRange)
 	{

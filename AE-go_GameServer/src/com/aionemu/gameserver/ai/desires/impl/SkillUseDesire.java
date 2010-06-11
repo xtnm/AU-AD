@@ -23,8 +23,11 @@ import com.aionemu.gameserver.ai.AI;
 import com.aionemu.gameserver.ai.desires.AbstractDesire;
 import com.aionemu.gameserver.model.gameobjects.Creature;
 import com.aionemu.gameserver.model.gameobjects.Npc;
+import com.aionemu.gameserver.model.gameobjects.stats.CreatureLifeStats;
+import com.aionemu.gameserver.model.gameobjects.stats.NpcLifeStats;
 import com.aionemu.gameserver.model.templates.npcskill.NpcSkillList;
 import com.aionemu.gameserver.model.templates.npcskill.NpcSkillTemplate;
+import com.aionemu.gameserver.model.templates.npcskill.NpcUniqueSkillTemplate;
 import com.aionemu.gameserver.skillengine.SkillEngine;
 import com.aionemu.gameserver.skillengine.model.Skill;
 
@@ -55,24 +58,57 @@ public class SkillUseDesire extends AbstractDesire
 		if(owner.isCasting())
 			return true;
 		
-		/**
-		 * Demo mode - take random skill
-		 */
 		List<NpcSkillTemplate> skills = skillList.getNpcSkills();
-		NpcSkillTemplate npcSkill = skills.get(Rnd.get(0, skillList.getCount() - 1));
-
-		/**
-		 * Demo mode - use probability from template
-		 */
-
-		int skillProbability = npcSkill.getProbability();
-		if(Rnd.get(0, 100) < skillProbability)
+		List<NpcUniqueSkillTemplate> uniqueSkills = skillList.getNpcUniqueSkills();
+		
+		// 1 : If npc has unique skill, process it
+		if(uniqueSkills != null && uniqueSkills.size() > 0)
 		{
-			Skill skill = SkillEngine.getInstance().getSkill(owner, npcSkill.getSkillid(), npcSkill.getSkillLevel(),
-				owner.getTarget());
-			skill.useSkill();
+			for(NpcUniqueSkillTemplate uSkill : uniqueSkills)
+			{
+				if(!owner.hasCastedUniqueSkill(uSkill.getSkillid()))
+				{
+					NpcLifeStats nls = (NpcLifeStats)owner.getLifeStats();
+					int requiredHpPercent = uSkill.getHPPercent();
+					int currentNpcHpPercent = (nls.getCurrentHp() / nls.getMaxHp()) * 100;
+					if(currentNpcHpPercent <= requiredHpPercent)
+					{
+						Skill skill = SkillEngine.getInstance().getSkill(owner, uSkill.getSkillid(), uSkill.getSkillLevel(),owner.getTarget());
+						if(skill != null)
+						{
+							owner.setCastedUniqueSkill(uSkill.getSkillid());
+							// MEGA KILL !!!!!
+							skill.useSkill();
+							// let's sleep a second ...
+							return true;
+						}						
+					}
+				}
+			}
 		}
 		
+		// 2 : No unique skill to cast, well let's try classic skills
+		
+		if(skills != null && skills.size() > 0)
+		{
+			for(NpcSkillTemplate template : skills)
+			{
+				NpcLifeStats nls = (NpcLifeStats)owner.getLifeStats();
+				int minHpPercent = template.getMinHp();
+				int maxHpPercent = template.getMaxHp();
+				int currentNpcHpPercent = (nls.getCurrentHp() / nls.getMaxHp()) * 100;
+				if(currentNpcHpPercent >= minHpPercent && currentNpcHpPercent <= maxHpPercent)
+				{
+					if(Rnd.get(0, 100) < template.getProbability())
+					{
+						Skill skill = SkillEngine.getInstance().getSkill(owner, template.getSkillid(), template.getSkillLevel(),
+							owner.getTarget());
+						skill.useSkill();
+						return true;
+					}
+				}
+			}
+		}
 		
 		return true;
 	}

@@ -1149,7 +1149,7 @@
       <npcskill abouthp="false" probability="10" skilllevel="10" skillid="16434" id="1" /> 
    </npcskills>
    <npcskills npcid="264511" skill_count="1">
-   		<npcskill abouthp="true" probability="100" skilllevel="10" skillid="16434" id="1" />
+   		<npcskill abouthp="true" probability="100" skilllevel="10" skillid="16434" id="1" min_hp="20" max_hp="50" />
    		<npcuniqueskill skillid="" skilllevel="1" hp_percent="25" />
    </npcskills>
 </npc_skill_templates>

@@ -16,7 +16,7 @@
 		<xs:sequence>
 			<xs:element name="npcskill" type="NpcSkillTemplate"
 				minOccurs="0" maxOccurs="unbounded" />
-			<xs:element name="npcuniqueskill" type="NpcUniqueSkillTemplate" minOccurs="0" maxOccurs="1" />
+			<xs:element name="npcuniqueskill" type="NpcUniqueSkillTemplate" minOccurs="0" maxOccurs="2" />
 		</xs:sequence>
 		<xs:attribute name="skill_count" type="xs:int" />
 		<xs:attribute name="npcid" type="xs:int" />
