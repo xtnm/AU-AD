@@ -78,9 +78,7 @@ public class SkillUseDesire extends AbstractDesire
 				if(!owner.hasCastedUniqueSkill(uSkill.getSkillid()))
 				{
 					NpcLifeStats nls = (NpcLifeStats)owner.getLifeStats();
-					int requiredHpPercent = uSkill.getHPPercent();
-					int currentNpcHpPercent = Math.round((nls.getCurrentHp() / nls.getMaxHp()) * 100);
-					if(currentNpcHpPercent <= requiredHpPercent)
+					if(nls.getHpPercentage() <= uSkill.getHPPercent())
 					{
 						Skill skill = SkillEngine.getInstance().getSkill(owner, uSkill.getSkillid(), uSkill.getSkillLevel(),owner.getTarget());
 						if(skill != null)
