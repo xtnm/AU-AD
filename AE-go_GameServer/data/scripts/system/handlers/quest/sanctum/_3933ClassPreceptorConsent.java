@@ -41,12 +41,12 @@ public class _3933ClassPreceptorConsent extends QuestHandler
 	@Override
 	public void register()
 	{
-		qe.setNpcQuestData(203797).addOnQuestStart(questId);	//Lavirintos
+		qe.setNpcQuestData(203701).addOnQuestStart(questId);	//Lavirintos
 		qe.setNpcQuestData(203704).addOnTalkEvent(questId);		//Boreas
 		qe.setNpcQuestData(203705).addOnTalkEvent(questId);		//Jumentis
 		qe.setNpcQuestData(203706).addOnTalkEvent(questId);		//Charnas
 		qe.setNpcQuestData(203707).addOnTalkEvent(questId);		//Thrasymedes
-		qe.setNpcQuestData(203797).addOnTalkEvent(questId);		//Lavirintos
+		qe.setNpcQuestData(203701).addOnTalkEvent(questId);		//Lavirintos
 	}
 
 	@Override
@@ -64,7 +64,7 @@ public class _3933ClassPreceptorConsent extends QuestHandler
 		// 0 - Start to Lavirintos
 		if(qs == null || qs.getStatus() == QuestStatus.NONE) 
 		{
-			if(targetId == 203797)
+			if(targetId == 203701)
 			{
 				// Get HACTION_QUEST_SELECT in the eddit-HyperLinks.xml
 				if(env.getDialogId() == 25)
@@ -156,7 +156,7 @@ public class _3933ClassPreceptorConsent extends QuestHandler
 						}
 					}
 				// 5 - Report the result to Lavirintos with the Oath Stone
-				case 203797:
+				case 203701:
 					if(var == 4)
 					{
 						switch(env.getDialogId())
@@ -186,7 +186,7 @@ public class _3933ClassPreceptorConsent extends QuestHandler
 		}
 		else if(qs.getStatus() == QuestStatus.REWARD)
 		{
-			if(targetId == 203797)
+			if(targetId == 203701)
 				return defaultQuestEndDialog(env);
 		}
 	return false;
