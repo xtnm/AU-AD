@@ -34,8 +34,6 @@ public class NpcSkillList
 {
 	@XmlAttribute(name = "npcid")
 	protected int				npcId;
-	@XmlAttribute(name = "skill_count")
-	protected int				count;
 	@XmlElement(name = "npcskill")
 	protected List<NpcSkillTemplate>	npcSkills;
 	@XmlElement(name = "npcuniqueskill", required = false)
@@ -47,14 +45,6 @@ public class NpcSkillList
 	public int getNpcId()
 	{
 		return npcId;
-	}
-
-	/**
-	 * @return the count
-	 */
-	public int getCount()
-	{
-		return count;
 	}
 
 	/**
