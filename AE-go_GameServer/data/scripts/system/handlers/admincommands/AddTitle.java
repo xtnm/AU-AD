@@ -19,6 +19,7 @@ package admincommands;
 import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.utils.LocaleManager;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.Util;
 import com.aionemu.gameserver.utils.chathandlers.AdminCommand;
@@ -44,20 +45,20 @@ public class AddTitle extends AdminCommand
 	{
 		if(admin.getAccessLevel() < AdminConfig.COMMAND_ADDTITLE)
 		{
-			PacketSendUtility.sendMessage(admin, "You dont have enough rights to execute this command");
+			PacketSendUtility.sendMessage(admin, LocaleManager.getString(1));
 			return;
 		}
 		
 		if((params.length < 1) || (params.length > 2))
 		{
-			PacketSendUtility.sendMessage(admin, "syntax //addtitle title_id [playerName]");
+			PacketSendUtility.sendMessage(admin, LocaleManager.getString(27));
 			return;
 		}
 
 		int titleId = Integer.parseInt(params[0]);
 		if((titleId > 50) || (titleId < 1))
 		{
-			PacketSendUtility.sendMessage(admin, "title id " + titleId + " is invalid (must be between 1 and 50)");
+			PacketSendUtility.sendMessage(admin, LocaleManager.getString(28));
 			return;
 		}
 
@@ -67,7 +68,7 @@ public class AddTitle extends AdminCommand
 			target = world.findPlayer(Util.convertName(params[1]));
 			if(target == null)
 			{
-				PacketSendUtility.sendMessage(admin, "player " + params[1] + " was not found");
+				PacketSendUtility.sendMessage(admin, LocaleManager.getString(29));
 				return;
 			}
 		}

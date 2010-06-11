@@ -26,6 +26,7 @@ import com.aionemu.gameserver.model.drop.DropList;
 import com.aionemu.gameserver.model.drop.DropTemplate;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.services.DropService;
+import com.aionemu.gameserver.utils.LocaleManager;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.chathandlers.AdminCommand;
 import com.google.inject.Inject;
@@ -49,13 +50,13 @@ public class AddDrop extends AdminCommand
 	{
 		if(admin.getAccessLevel() < AdminConfig.COMMAND_ADDDROP)
 		{
-			PacketSendUtility.sendMessage(admin, "You dont have enough rights to execute this command");
+			PacketSendUtility.sendMessage(admin, LocaleManager.getString(1));
 			return;
 		}
 
 		if(params.length != 5)
 		{
-			PacketSendUtility.sendMessage(admin, "syntax //adddrop <mobid> <itemid> <min> <max> <chance>");
+			PacketSendUtility.sendMessage(admin, LocaleManager.getString(16));
 			return;
 		}
 
@@ -89,7 +90,7 @@ public class AddDrop extends AdminCommand
 		}
 		catch(Exception ex)
 		{
-			PacketSendUtility.sendMessage(admin, "Only numbers are allowed");
+			PacketSendUtility.sendMessage(admin, LocaleManager.getString(17));
 			return;
 		}
 

@@ -19,6 +19,7 @@ package admincommands;
 import com.aionemu.gameserver.configs.administration.AdminConfig;
 import com.aionemu.gameserver.model.gameobjects.VisibleObject;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
+import com.aionemu.gameserver.utils.LocaleManager;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.chathandlers.AdminCommand;
 
@@ -42,13 +43,13 @@ public class AddSkill extends AdminCommand
 	{
 		if(admin.getAccessLevel() < AdminConfig.COMMAND_ADDSKILL)
 		{
-			PacketSendUtility.sendMessage(admin, "You dont have enough rights to execute this command");
+			PacketSendUtility.sendMessage(admin, LocaleManager.getString(1));
 			return;
 		}
 
 		if(params.length != 2)
 		{
-			PacketSendUtility.sendMessage(admin, "syntax //addskill <skillId> <skillLevel>");
+			PacketSendUtility.sendMessage(admin, LocaleManager.getString(24));
 			return;
 		}
 		
@@ -64,7 +65,7 @@ public class AddSkill extends AdminCommand
 		}
 		catch (NumberFormatException e)
 		{
-			PacketSendUtility.sendMessage(admin, "Parameters need to be an integer.");
+			PacketSendUtility.sendMessage(admin, LocaleManager.getString(17));
 			return;
 		}
 		
@@ -72,8 +73,8 @@ public class AddSkill extends AdminCommand
         {
             Player player = (Player) target;
             player.getSkillList().addSkill(player, skillId, skillLevel, true);
-            PacketSendUtility.sendMessage(admin, "You have success add skill");
-            PacketSendUtility.sendMessage(player, "You have acquire a new skill");
+            PacketSendUtility.sendMessage(admin, LocaleManager.getString(25));
+            PacketSendUtility.sendMessage(player, LocaleManager.getString(26));
         }
 	}
 

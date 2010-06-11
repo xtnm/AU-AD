@@ -46,6 +46,19 @@ public class _1300OrdersfromTelemachus extends QuestHandler
 	}
 
 	@Override
+    public boolean onLvlUpEvent(QuestEnv env)
+    {
+            Player player = env.getPlayer();
+            QuestState qs = player.getQuestStateList().getQuestState(questId);
+            if(qs == null || player.getCommonData().getLevel() < 19 || qs.getStatus() != QuestStatus.LOCKED)
+                    return false;
+            qs.setStatus(QuestStatus.START);
+            updateQuestStatus(player, qs);
+            return true;
+    }
+
+	
+	@Override
 	public boolean onDialogEvent(QuestEnv env)
 	{
 		final Player player = env.getPlayer();

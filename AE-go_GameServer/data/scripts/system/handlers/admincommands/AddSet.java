@@ -22,6 +22,7 @@ import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.templates.itemset.ItemPart;
 import com.aionemu.gameserver.model.templates.itemset.ItemSetTemplate;
 import com.aionemu.gameserver.services.ItemService;
+import com.aionemu.gameserver.utils.LocaleManager;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 import com.aionemu.gameserver.utils.Util;
 import com.aionemu.gameserver.utils.chathandlers.AdminCommand;
@@ -50,14 +51,13 @@ public class AddSet extends AdminCommand
 	{
 		if(admin.getAccessLevel() < AdminConfig.COMMAND_ADDSET)
 		{
-			PacketSendUtility.sendMessage(admin, "You dont have enough rights to execute this command");
+			PacketSendUtility.sendMessage(admin, LocaleManager.getString(1));
 			return;
 		}
 
 		if(params.length == 0 || params.length > 2)
 		{
-			PacketSendUtility.sendMessage(admin, "syntax //addset <player> <itemset ID>");
-			PacketSendUtility.sendMessage(admin, "syntax //addset <itemset ID>");
+			PacketSendUtility.sendMessage(admin, LocaleManager.getString(18));
 			return;
 		}
 
@@ -80,12 +80,12 @@ public class AddSet extends AdminCommand
 			catch (NumberFormatException ex)
 			{
 			
-				PacketSendUtility.sendMessage(admin, "You must give number to itemset ID.");
+				PacketSendUtility.sendMessage(admin, LocaleManager.getString(19));
 				return;
 			}
 			catch (Exception ex2)
 			{
-				PacketSendUtility.sendMessage(admin, "Occurs an error.");
+				PacketSendUtility.sendMessage(admin, LocaleManager.getString(7));
 				return;
 			}
 		}
@@ -93,13 +93,13 @@ public class AddSet extends AdminCommand
 		ItemSetTemplate itemSet = DataManager.ITEM_SET_DATA.getItemSetTemplate(itemSetId);
 		if( itemSet == null )
 		{
-			PacketSendUtility.sendMessage(admin, "ItemSet does not exist with id " + itemSetId);
+			PacketSendUtility.sendMessage(admin, LocaleManager.getString(20) + " " + itemSetId);
 			return;
 		}
 		
 		if( receiver.getInventory().getNumberOfFreeSlots() < itemSet.getItempart().size() )
 		{
-			PacketSendUtility.sendMessage(admin, "Inventory needs at least " + itemSet.getItempart().size() + " free slots.");
+			PacketSendUtility.sendMessage(admin, LocaleManager.getString(21));
 			return;			
 		}
 		
@@ -114,7 +114,7 @@ public class AddSet extends AdminCommand
 			}
 		}
 		
-		PacketSendUtility.sendMessage(admin, "Item Set added successfully");
-		PacketSendUtility.sendMessage(receiver, "Admin gives you an item set");
+		PacketSendUtility.sendMessage(admin, LocaleManager.getString(23));
+		PacketSendUtility.sendMessage(receiver, LocaleManager.getString(22));
 	}
 }
