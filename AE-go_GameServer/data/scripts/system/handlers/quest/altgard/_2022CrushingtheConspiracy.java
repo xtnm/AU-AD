@@ -14,7 +14,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with aion-unique.  If not, see <http://www.gnu.org/licenses/>.
  */
-package quest.verteron;
+package quest.altgard;
 
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
@@ -32,7 +32,7 @@ import com.google.inject.Inject;
  * @author HGabor85
  *
  */
-public class _1020SealingTheAbyssGate extends QuestHandler
+public class _2022CrushingtheConspiracy extends QuestHandler
 {
         private final static int        questId = 2022;
 
@@ -42,7 +42,7 @@ public class _1020SealingTheAbyssGate extends QuestHandler
         World world;
 
         
-        public _1020SealingTheAbyssGate()
+        public _2022CrushingtheConspiracy()
         {
                 super(questId);
         }
