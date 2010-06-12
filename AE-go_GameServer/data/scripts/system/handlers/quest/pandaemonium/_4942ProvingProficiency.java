@@ -197,7 +197,7 @@ public class _4942ProvingProficiency extends QuestHandler
 					break;
 				// 4 - Talk with Armorsmithing Master Kinterun
 				case 204106:
-					if(var == 1)
+					if(var == 3)
 					{
 						switch(env.getDialogId())
 						{
@@ -221,7 +221,7 @@ public class _4942ProvingProficiency extends QuestHandler
 					break;
 				// 5 - Talk with Tailoring Master Zyakia
 				case 204110:
-					if(var == 1)
+					if(var == 4)
 					{
 						switch(env.getDialogId())
 						{
@@ -245,7 +245,7 @@ public class _4942ProvingProficiency extends QuestHandler
 					break;
 				// 6 - Talk with Cooking Master Lainita
 				case 204100:
-					if(var == 1)
+					if(var == 5)
 					{
 						switch(env.getDialogId())
 						{
@@ -269,7 +269,7 @@ public class _4942ProvingProficiency extends QuestHandler
 					break;
 				// 7 - Talk with Alchemy Master Honir
 				case 204102:
-					if(var == 1)
+					if(var == 6)
 					{
 						switch(env.getDialogId())
 						{
@@ -293,7 +293,7 @@ public class _4942ProvingProficiency extends QuestHandler
 					break;
 				// 8 - Take Crafted Heart to Usener
 				case 798317:
-					if(var == 2)
+					if(var == 7)
 					{
 						switch(env.getDialogId())
 						{
@@ -319,7 +319,7 @@ public class _4942ProvingProficiency extends QuestHandler
 					break;
 				// 10 - Take Brightly Glowing Holy Water to visit High Priest Balder for a purification ritual.
 				case 204075:
-					if(var == 3)
+					if(var == 8)
 					{
 						switch(env.getDialogId())
 						{
