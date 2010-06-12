@@ -173,7 +173,7 @@ public class _4942ProvingProficiency extends QuestHandler
 					break;
 				// 3 - Talk with Handicrafting Master Lanse
 				case 204108:
-					if(var == 1)
+					if(var == 2)
 					{
 						switch(env.getDialogId())
 						{
