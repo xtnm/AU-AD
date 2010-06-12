@@ -65,7 +65,7 @@ public class InstanceService
 		WorldMap map = world.getWorldMap(worldId);
 
 		if(!map.isInstanceType())
-			throw new UnsupportedOperationException("Invalid call for next available instance  of " + worldId);
+			throw new UnsupportedOperationException("Invalid call for next available instance of " + worldId);
 
 		int nextInstanceId = map.getNextInstanceId();
 		log.info("Creating new instance: " + worldId + " " + nextInstanceId);

@@ -41,7 +41,7 @@
 	<map id="310120000" name="IDAbProL3" death_level="0" water_level="16"/>
 	<map id="320010000" name="IDAbProD1" instance="true" death_level="0" water_level="16"/>
 	<map id="320020000" name="IDAbProD2" instance="true" death_level="0" water_level="16"/>
-	<map id="320030000" name="IDAbGateD1" death_level="0" water_level="16"/>
+	<map id="320030000" name="IDAbGateD1" death_level="0" water_level="16" instance="true" />
 	<map id="320040000" name="IDAbGateD2" death_level="0" water_level="16"/>
 	<map id="320050000" name="IDDF2Flying" death_level="0" instance="true" water_level="16"/>
 	<map id="320060000" name="IDDF1B" death_level="0" water_level="16"/>
