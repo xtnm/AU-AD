@@ -89,7 +89,7 @@ public class _3939PersistenceAndLuck extends QuestHandler
 			switch(targetId)
 			{
 				// 1 - Talk with Cornelius
-				case 203704:
+				case 203780:
 					if(var == 0)
 					{
 						switch(env.getDialogId())
@@ -132,7 +132,7 @@ public class _3939PersistenceAndLuck extends QuestHandler
 					}
 					break;
 				// 2 - Talk with Sabotes
-				case 203705:
+				case 203781:
 					if(var == 1)
 					{
 						switch(env.getDialogId())
