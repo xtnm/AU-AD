@@ -242,7 +242,7 @@ public class _3934TheQuestForTemplars extends QuestHandler
 					break;
 				// 9 - Report the result to Jucleas with the Oath Stone
 				case 203752 :
-					if(var == 4)
+					if(var == 8)
 					{
 						switch(env.getDialogId())
 						{
