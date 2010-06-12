@@ -47,7 +47,8 @@ public class _3930SecretoftheShatteredStigma extends QuestHandler
 	@Override
 	public void register()
 	{
-		qe.setNpcQuestData(203833).addOnQuestStart(questId);	//Xenophon
+		qe.setNpcQuestData(203711).addOnQuestStart(questId); //miriya start
+		qe.setNpcQuestData(203833).addOnTalkEvent(questId);	//Xenophon
 		qe.setNpcQuestData(798321).addOnTalkEvent(questId);		//Koruchinerk
 		qe.setQuestItemIds(182206075).add(questId);				//Drana crystal
 		qe.setNpcQuestData(203711).addOnTalkEvent(questId);		// Miriya
@@ -68,7 +69,7 @@ public class _3930SecretoftheShatteredStigma extends QuestHandler
 		// 0 - Start to Xenophon
 		if(qs == null || qs.getStatus() == QuestStatus.NONE) 
 		{
-			if(targetId == 203833)
+			if(targetId == 203711)
 			{
 				// Get HACTION_QUEST_SELECT in the eddit-HyperLinks.xml
 				if(env.getDialogId() == 25)
@@ -92,8 +93,7 @@ public class _3930SecretoftheShatteredStigma extends QuestHandler
 			
 			switch(targetId)
 			{
-				// 1 / 4- Talk ith Koruchinerk
-				case 798321:
+				case 203833:
 					if(var == 0)
 					{
 						switch(env.getDialogId())
@@ -102,6 +102,24 @@ public class _3930SecretoftheShatteredStigma extends QuestHandler
 							case 25:
 								// Send select1 to eddit-HtmlPages.xml
 								return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1011);
+							// Get HACTION_SETPRO1 in the eddit-HyperLinks.xml
+							case 10000:
+								qs.setQuestVarById(0, var++);
+								updateQuestStatus(player, qs);
+								PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
+							return true;
+						}
+					}
+				// 2 / 4- Talk ith Koruchinerk
+				case 798321:
+					if(var == 1)
+					{
+						switch(env.getDialogId())
+						{
+							// Get HACTION_QUEST_SELECT in the eddit-HyperLinks.xml
+							case 25:
+								// Send select1 to eddit-HtmlPages.xml
+								return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1352);
 							// Get HACTION_SETPRO1 in the eddit-HyperLinks.xml
 							case 10000:
 								player.getInventory().putToBag(itemService.newItem(182206076, 1));
