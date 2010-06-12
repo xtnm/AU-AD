@@ -151,14 +151,10 @@ public class _4943LuckandPersistence extends QuestHandler
 								return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1352);
 							// Get HACTION_SETPRO2 in the eddit-HyperLinks.xml
 							case 10001:
-								Storage inventory = player.getInventory();
-								Item KinahsItemPlayer = inventory.getKinahItem();
-								Integer KinahsPlayer = KinahsItemPlayer.getItemCount();
-								PacketSendUtility.sendMessage(player, Integer.toString(KinahsPlayer));
-								if(KinahsPlayer >= 3400000)
+								if(player.getInventory().getKinahItem().getItemCount() >= 3400000)
 								{
-									KinahsItemPlayer.decreaseItemCount(3400000);
-									PacketSendUtility.sendPacket(player, new SM_UPDATE_ITEM(KinahsItemPlayer));
+									player.getInventory().decreaseKinah(3400000);
+									PacketSendUtility.sendPacket(player, new SM_UPDATE_ITEM(player.getInventory().getKinahItem()));
 									
 									if(player.getInventory().getItemCountByItemId(182207123) == 0)
 									{
