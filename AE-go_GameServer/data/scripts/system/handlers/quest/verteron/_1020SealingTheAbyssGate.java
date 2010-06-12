@@ -124,6 +124,14 @@ public class _1020SealingTheAbyssGate extends QuestHandler
 					updateQuestStatus( player, qs );
 					return true;
 				}
+			case 700143:
+				if( var == 3)
+				{
+					teleportService.teleportTo(player, 320030000, 1, (float)275.39395, (float)167.63506, (float)204.34718, 0);
+					qs.setStatus(QuestStatus.REWARD);
+					updateQuestStatus( player, qs );
+					return true;
+				}
 
 			default:
 				return false;
