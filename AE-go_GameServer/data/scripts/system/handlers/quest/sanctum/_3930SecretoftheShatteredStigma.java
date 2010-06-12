@@ -76,8 +76,6 @@ public class _3930SecretoftheShatteredStigma extends QuestHandler
 					// Send HTML_PAGE_SELECT_NONE to eddit-HtmlPages.xml
 					return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 4762);
 				else
-					qs.setStatus(QuestStatus.START);
-					updateQuestStatus(player, qs);
 					return defaultQuestStartDialog(env);
 
 			}
