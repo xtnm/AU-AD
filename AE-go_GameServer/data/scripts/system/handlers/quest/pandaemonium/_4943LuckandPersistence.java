@@ -190,10 +190,10 @@ public class _4943LuckandPersistence extends QuestHandler
 							case 25:
 								if(player.getInventory().getItemCountByItemId(186000085) >= 1)
 									// Send select5 to eddit-HtmlPages.xml
-									return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2375);
+									return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2034);
 								else
 									// Send select5_2 to eddit-HtmlPages.xml
-									return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2461);
+									return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 2120);
 							// Get HACTION_SET_SUCCEED in the eddit-HyperLinks.xml
 							case 10255:
 									// Send select_success to eddit-HtmlPages.xml
