@@ -66,7 +66,7 @@ public class _3930SecretoftheShatteredStigma extends QuestHandler
 		
 		// ------------------------------------------------------------
 		// NPC Quest :
-		// 0 - Start to Xenophon
+		// 0 - Start to Miriya
 		if(qs == null || qs.getStatus() == QuestStatus.NONE) 
 		{
 			if(targetId == 203711)
@@ -102,13 +102,13 @@ public class _3930SecretoftheShatteredStigma extends QuestHandler
 								return sendQuestDialog(player, env.getVisibleObject().getObjectId(), 1011);
 							// Get HACTION_SETPRO1 in the eddit-HyperLinks.xml
 							case 10000:
-								qs.setQuestVarById(0, var++);
+								qs.setQuestVar(1);
 								updateQuestStatus(player, qs);
 								PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
 							return true;
 						}
 					}
-				// 2 / 4- Talk ith Koruchinerk
+				// 2 / 4- Talk with Koruchinerk
 				case 798321:
 					if(var == 1)
 					{
@@ -121,7 +121,7 @@ public class _3930SecretoftheShatteredStigma extends QuestHandler
 							// Get HACTION_SETPRO1 in the eddit-HyperLinks.xml
 							case 10000:
 								player.getInventory().putToBag(itemService.newItem(182206076, 1));
-								qs.setQuestVarById(0, var++);
+								qs.setQuestVar(2);
 								updateQuestStatus(player, qs);
 								PacketSendUtility.sendPacket(player, new SM_DIALOG_WINDOW(env.getVisibleObject().getObjectId(), 10));
 							return true;
