@@ -60,7 +60,7 @@ public class _4943LuckandPersistence extends QuestHandler
 		qe.setNpcQuestData(204096).addOnTalkEvent(questId);		//Latatusk
 		qe.setNpcQuestData(204097).addOnTalkEvent(questId);		//Relir
 		qe.setNpcQuestData(204075).addOnTalkEvent(questId);		//Balder
-		qe.setNpcQuestData(204053).addOnQuestStart(questId);	//Kvasir
+		qe.setNpcQuestData(204053).addOnTalkEvent(questId);	//Kvasir
 	}
 
 	@Override
