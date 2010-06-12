@@ -18,6 +18,8 @@ package quest.pandaemonium;
 
 import java.util.Collections;
 
+import org.apache.log4j.Logger;
+
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.Npc;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
@@ -43,6 +45,8 @@ public class _4943LuckandPersistence extends QuestHandler
 	
 	@Inject
 	private ItemService itemService;
+	
+	private static final Logger log = Logger.getLogger(_4943LuckandPersistence.class);
 
 	public _4943LuckandPersistence()
 	{
@@ -143,6 +147,7 @@ public class _4943LuckandPersistence extends QuestHandler
 				case 204097:
 					if(var == 1)
 					{
+						log.info("Received dialog id :" + env.getDialogId());
 						switch(env.getDialogId())
 						{
 							// Get HACTION_QUEST_SELECT in the eddit-HyperLinks.xml
