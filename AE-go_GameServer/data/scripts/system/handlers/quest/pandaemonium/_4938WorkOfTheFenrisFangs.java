@@ -242,7 +242,7 @@ public class _4938WorkOfTheFenrisFangs extends QuestHandler
 					break;
 				// 9 - Take Glossy Holy Water to High Priest Balder for a purification ritual
 				case 204075 :
-					if(var == 4)
+					if(var == 8)
 					{
 						switch(env.getDialogId())
 						{
