@@ -173,7 +173,7 @@ public class _3938WellRounded extends QuestHandler
 					break;
 				// 3 - Talk with Handicrafting Master Utsida
 				case 203792:
-					if(var == 1)
+					if(var == 2)
 					{
 						switch(env.getDialogId())
 						{
@@ -197,7 +197,7 @@ public class _3938WellRounded extends QuestHandler
 					break;
 				// 4 - Talk with Armorsmithing Master Vulcanus
 				case 203790:
-					if(var == 1)
+					if(var == 3)
 					{
 						switch(env.getDialogId())
 						{
@@ -221,7 +221,7 @@ public class _3938WellRounded extends QuestHandler
 					break;
 				// 5 - Talk with Tailoring Master Daphnis
 				case 203793:
-					if(var == 1)
+					if(var == 4)
 					{
 						switch(env.getDialogId())
 						{
@@ -245,7 +245,7 @@ public class _3938WellRounded extends QuestHandler
 					break;
 				// 6 - Talk with Cooking Master Hestia
 				case 203784:
-					if(var == 1)
+					if(var == 5)
 					{
 						switch(env.getDialogId())
 						{
@@ -269,7 +269,7 @@ public class _3938WellRounded extends QuestHandler
 					break;
 				// 7 - Talk with Alchemy Master Diana
 				case 203786:
-					if(var == 1)
+					if(var == 6)
 					{
 						switch(env.getDialogId())
 						{
@@ -293,7 +293,7 @@ public class _3938WellRounded extends QuestHandler
 					break;
 				// 8 - Talk with Crafting Master Anusis
 				case 798316:
-					if(var == 2)
+					if(var == 7)
 					{
 						switch(env.getDialogId())
 						{
@@ -319,7 +319,7 @@ public class _3938WellRounded extends QuestHandler
 					break;
 				// 10 - Take the Glossy Oath Stone to High Priest Jucleas and ask him to perform the ritual of affirmation
 				case 203752:
-					if(var == 3)
+					if(var == 8)
 					{
 						switch(env.getDialogId())
 						{
