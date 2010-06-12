@@ -67,6 +67,7 @@ public class _1020SealingTheAbyssGate extends QuestHandler
 	public void register()
 	{
 		qe.addQuestLvlUp(questId);
+		qe.addOnEnterWorld(questId);
 		qe.setNpcQuestData(203098).addOnTalkEvent(questId);
 		qe.setNpcQuestData(700141).addOnTalkEvent(questId);
 		qe.setNpcQuestData(210753).addOnKillEvent(questId);		
@@ -158,6 +159,26 @@ public class _1020SealingTheAbyssGate extends QuestHandler
 	
 	@Override
 	public boolean onLvlUpEvent(QuestEnv env)
+	{
+		Player player = env.getPlayer();
+		QuestState qs = player.getQuestStateList().getQuestState(questId);
+		if(qs == null || qs.getStatus() != QuestStatus.LOCKED)
+			return false;
+		int[] quests = {1130, 1011, 1012, 1013, 1014, 1015, 1016, 1017, 1018, 1019, 1021, 1022, 1023};
+		for (int id : quests)
+		{
+			QuestState qs2 = player.getQuestStateList().getQuestState(id);
+			if (qs2 == null || qs2.getStatus() != QuestStatus.COMPLETE)
+				return false;
+		}
+
+		qs.setStatus(QuestStatus.START);
+		updateQuestStatus(player, qs);
+		return true;
+	}
+	
+	@Override
+	public boolean onEnterWorldEvent(QuestEnv env)
 	{
 		Player player = env.getPlayer();
 		QuestState qs = player.getQuestStateList().getQuestState(questId);
