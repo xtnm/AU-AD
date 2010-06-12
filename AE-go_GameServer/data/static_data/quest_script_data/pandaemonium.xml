@@ -410,4 +410,6 @@
         
         <!-- [Top Expert] Weaponsmithing Expertise -->
         <item_collecting start_npc_id="204104" id="4945" />
+        
+        <report_to start_npc_id="204211" end_npc_id="204051" id="4934" />
 </quest_scripts>
