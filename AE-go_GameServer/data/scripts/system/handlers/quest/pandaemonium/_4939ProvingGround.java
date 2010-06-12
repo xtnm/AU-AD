@@ -46,7 +46,7 @@ public class _4939ProvingGround extends QuestHandler
 		qe.setNpcQuestData(204273).addOnTalkEvent(questId);		//Sichel
 		qe.setNpcQuestData(204054).addOnTalkEvent(questId);		//Skadi
 		qe.setNpcQuestData(204075).addOnTalkEvent(questId);		//Balder
-		qe.setNpcQuestData(204053).addOnQuestStart(questId);	//Kvasir
+		qe.setNpcQuestData(204053).addOnTalkEvent(questId);	//Kvasir
 	}
 
 	@Override
