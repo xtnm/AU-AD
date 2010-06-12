@@ -58,7 +58,7 @@ public class _4942ProvingProficiency extends QuestHandler
 		qe.setNpcQuestData(204102).addOnTalkEvent(questId);		//Honir
 		qe.setNpcQuestData(798317).addOnTalkEvent(questId);		//Usener
 		qe.setNpcQuestData(204075).addOnTalkEvent(questId);		//Balder
-		qe.setNpcQuestData(204053).addOnQuestStart(questId);	//Kvasir
+		qe.setNpcQuestData(204053).addOnTalkEvent(questId);	//Kvasir
 	}
 
 	@Override
