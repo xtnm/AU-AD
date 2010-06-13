@@ -44,7 +44,21 @@ public class SM_DIE extends AionServerPacket
 		int kiskReviveDelay = (this.reviveType == ReviveType.KISK_REVIVE ? 6660 : 0); 
 		
 		writeC(buf, 0); // skillRevive
-		writeC(buf, 0); // itemRevive
+		
+		/*
+		 * Demo mode
+		 */
+		
+		if(con.getActivePlayer().getInventory().getItemCountByItemId(161000004) >= 1)
+		{
+			writeD(buf, 161000004);
+		}
+		else
+		{
+			writeD(buf, 0);
+		}
+		
+		//writeC(buf, 0); // itemRevive : original code
 		writeD(buf, kiskReviveDelay); // kiskReviveDelay
 	}
 }
