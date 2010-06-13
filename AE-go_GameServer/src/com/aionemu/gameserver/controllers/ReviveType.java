@@ -25,11 +25,11 @@ public enum ReviveType
 	/**
 	 * Revive from item
 	 */
-	ITEM_REVIVE(1),
+	ITEM_REVIVE(2),
 	/**
 	 * Bind + item revive ??
 	 */
-	BIND_ITEM_REVIVE(2),
+	BIND_ITEM_REVIVE(1),
 	/**
 	 * Revive from skill
 	 */
