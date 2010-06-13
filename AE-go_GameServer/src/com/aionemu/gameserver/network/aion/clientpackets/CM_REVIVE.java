@@ -48,7 +48,6 @@ public class CM_REVIVE extends AionClientPacket
 	protected void readImpl()
 	{
 		reviveId = readC();
-		log.info("Got revive id: " + reviveId);
 	}
 
 	/**

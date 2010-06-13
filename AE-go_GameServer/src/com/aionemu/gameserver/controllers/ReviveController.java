@@ -74,11 +74,10 @@ public class ReviveController
 		
 		if(usedSkillId != 0 && player.getSkillList().isSkillPresent(1169) && !player.isSkillDisabled(1169))
 		{
-			Skill skill = SkillEngine.getInstance().getSkillFor(player, 1169, player);
-			skill.useSkill();
+			player.setSkillCoolDown(1169, 180000);
 		}
 		
-		//revive(30, 30);
+		revive(30, 30);
 		PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, 14), true);
 
 		PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.REVIVE);
