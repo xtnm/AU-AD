@@ -79,7 +79,7 @@ public class CM_REVIVE extends AionClientPacket
 		}
 		
 		activePlayer.getReviveController().setUsedItemId(0);
-		activePlayer.getReviveController().setUsedSkillId(0);
+		activePlayer.getReviveController().setUsedSkillTime(0);
 		
 	}
 }

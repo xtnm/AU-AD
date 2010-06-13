@@ -17,12 +17,14 @@
 package com.aionemu.gameserver.network.aion.serverpackets;
 
 import java.nio.ByteBuffer;
+import java.util.List;
 
 import com.aionemu.gameserver.controllers.ReviveType;
 import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.AionConnection;
 import com.aionemu.gameserver.network.aion.AionServerPacket;
+import com.aionemu.gameserver.skillengine.model.Effect;
 
 /**
  * @author orz
@@ -49,15 +51,24 @@ public class SM_DIE extends AionServerPacket
 		/*
 		 * Skill revive (Cleric : Rebirth)
 		 */
-		if(player.getSkillList().isSkillPresent(1169) && !player.isSkillDisabled(1169))
+		
+		boolean hasEffect = false;
+		
+		List<Effect> playersEffects = player.getEffectController().getAbnormalEffects();
+		for(Effect e : playersEffects)
 		{
-			player.getReviveController().setUsedSkillId(1169);
-			writeC(buf, 1169);
+			if(e.getSkillId() == 1169)
+			{
+				player.getReviveController().setUsedSkillTime(e.getElapsedTime());
+				writeC(buf, 1169);
+				hasEffect = true;
+				break;
+			}
 		}
-		else
-		{		
-			writeC(buf, 0); // skillRevive
-		}		
+		if(!hasEffect)
+		{
+			writeC(buf, 0);
+		}	
 		
 		/*
 		 * Item revive

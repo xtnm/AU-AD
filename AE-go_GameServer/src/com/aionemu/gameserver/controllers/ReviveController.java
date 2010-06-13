@@ -43,7 +43,7 @@ public class ReviveController
 	private Player	player;
 	
 	private int usedItemId = 0;
-	private int usedSkillId = 0;
+	private int usedSkillRemainingTime = 0;
 
 	public ReviveController(Player player)
 	{
@@ -61,14 +61,14 @@ public class ReviveController
 		usedItemId = itemId;
 	}
 	
-	public int getUsedSkillId()
+	public int getUsedSkillTime()
 	{
-		return usedSkillId;
+		return usedSkillRemainingTime;
 	}
 	
-	public void setUsedSkillId(int skillId)
+	public void setUsedSkillTime(int time)
 	{
-		usedSkillId = skillId;
+		usedSkillRemainingTime = time;
 	}
 
 	/**
@@ -77,10 +77,9 @@ public class ReviveController
 	public void skillRevive()
 	{
 		
-		if(usedSkillId != 0 && player.getSkillList().isSkillPresent(1169) && !player.isSkillDisabled(1169))
+		if(usedSkillRemainingTime != 0)
 		{
-			player.setSkillCoolDown(1169, 1800000 + 2000 + System.currentTimeMillis());
-			PacketSendUtility.sendPacket(player, new SM_SKILL_COOLDOWN(player.getSkillCoolDowns()));
+			player.getEffectController().addSavedEffect(1169, 1, usedSkillRemainingTime);
 		}
 		
 		revive(30, 30);
