@@ -17681,6 +17681,9 @@
         <useconditions>
             <playermove allow="false"/>
         </useconditions>
+        <effects>
+        	<aura skill_id="1169" distance="1" />
+        </effects>
         <actions>
             <mpuse value="536" delta="16"/>
         </actions>
