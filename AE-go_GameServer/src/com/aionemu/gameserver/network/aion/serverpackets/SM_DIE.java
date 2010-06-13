@@ -52,7 +52,7 @@ public class SM_DIE extends AionServerPacket
 		 * Demo mode
 		 */
 		
-		if(player.getInventory().getItemCountByItemId(161000004) >= 1 && player.getItemCoolDown(161000004) == 0)
+		if(player.getInventory().getItemCountByItemId(161000004) >= 1 && !player.isItemUseDisabled(161000004))
 		{
 			//Item reviveItem = con.getActivePlayer().getInventory().getFirstItemByItemId(161000004);
 			con.getActivePlayer().getReviveController().setUsedItemId(161000004);
