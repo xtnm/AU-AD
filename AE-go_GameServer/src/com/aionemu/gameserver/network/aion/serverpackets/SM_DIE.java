@@ -46,7 +46,9 @@ public class SM_DIE extends AionServerPacket
 		// If anyone has retail SM_DIE data from retail please feel free to update the last dword.
 		int kiskReviveDelay = (this.reviveType == ReviveType.KISK_REVIVE ? 6660 : 0); 
 				
-		// rebirth skill
+		/*
+		 * Skill revive (Cleric : Rebirth)
+		 */
 		if(player.getSkillList().isSkillPresent(1169) && !player.isSkillDisabled(1169))
 		{
 			player.getReviveController().setUsedSkillId(1169);
@@ -55,16 +57,27 @@ public class SM_DIE extends AionServerPacket
 		else
 		{		
 			writeC(buf, 0); // skillRevive
-		}
+		}		
 		
-		// pierre tombale de renouveau
-		if(player.getInventory().getItemCountByItemId(161000004) >= 1 && !player.isItemUseDisabled(161000004))
+		/*
+		 * Item revive
+		 */
+		
+		if(player.getInventory().getItemCountByItemId(161000001) >= 1 && !player.isItemUseDisabled(161000001))
 		{
-			//Item reviveItem = con.getActivePlayer().getInventory().getFirstItemByItemId(161000004);
+			player.getReviveController().setUsedItemId(161000001);
+			writeD(buf, 161000001);
+		}
+		else if(player.getInventory().getItemCountByItemId(161000003) >= 1 && !player.isItemUseDisabled(161000003))
+		{
+			player.getReviveController().setUsedItemId(161000003);
+			writeD(buf, 161000003);
+		}
+		else if(player.getInventory().getItemCountByItemId(161000004) >= 1 && !player.isItemUseDisabled(161000004))
+		{
 			player.getReviveController().setUsedItemId(161000004);
 			writeD(buf, 161000004);
 		}
-		// pierre de reanimation
 		else if(player.getInventory().getItemCountByItemId(161001001) >= 1 && !player.isItemUseDisabled(161001001))
 		{
 			player.getReviveController().setUsedItemId(161001001);
@@ -74,6 +87,10 @@ public class SM_DIE extends AionServerPacket
 		{
 			writeD(buf, 0);
 		}
+		
+		/*
+		 * Kisk revive
+		 */
 		
 		writeD(buf, kiskReviveDelay); // kiskReviveDelay
 	}

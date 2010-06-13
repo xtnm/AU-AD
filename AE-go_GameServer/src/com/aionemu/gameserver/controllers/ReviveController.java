@@ -16,13 +16,18 @@
  */
 package com.aionemu.gameserver.controllers;
 
+import com.aionemu.gameserver.model.gameobjects.Item;
 import com.aionemu.gameserver.model.gameobjects.Kisk;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.model.gameobjects.state.CreatureState;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_DELETE_ITEM;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_EMOTION;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_INVENTORY_INFO;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_PLAYER_INFO;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_SKILL_COOLDOWN;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_STATS_INFO;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
+import com.aionemu.gameserver.network.aion.serverpackets.SM_UPDATE_ITEM;
 import com.aionemu.gameserver.services.TeleportService;
 import com.aionemu.gameserver.skillengine.SkillEngine;
 import com.aionemu.gameserver.skillengine.model.Skill;
@@ -75,6 +80,7 @@ public class ReviveController
 		if(usedSkillId != 0 && player.getSkillList().isSkillPresent(1169) && !player.isSkillDisabled(1169))
 		{
 			player.setSkillCoolDown(1169, 180000);
+			PacketSendUtility.sendPacket(player, new SM_SKILL_COOLDOWN(player.getSkillCoolDowns()));
 		}
 		
 		revive(30, 30);
@@ -89,7 +95,17 @@ public class ReviveController
 		
 		if(usedItemId != 0 && player.getInventory().getItemCountByItemId(usedItemId) >= 1)
 		{
+			int itemCount = player.getInventory().getItemCountByItemId(usedItemId);
+			Item item = player.getInventory().getFirstItemByItemId(usedItemId);
 			player.getInventory().removeFromBagByItemId(usedItemId, 1);
+			if(itemCount == 1)
+			{
+				PacketSendUtility.sendPacket(player, new SM_DELETE_ITEM(item.getObjectId()));
+			}
+			else
+			{
+				PacketSendUtility.sendPacket(player, new SM_UPDATE_ITEM(item));
+			}
 		}
 		
 		revive(15, 15);
