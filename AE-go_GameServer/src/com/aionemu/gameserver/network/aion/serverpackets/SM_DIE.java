@@ -19,6 +19,8 @@ package com.aionemu.gameserver.network.aion.serverpackets;
 import java.nio.ByteBuffer;
 
 import com.aionemu.gameserver.controllers.ReviveType;
+import com.aionemu.gameserver.model.gameobjects.Item;
+import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.AionConnection;
 import com.aionemu.gameserver.network.aion.AionServerPacket;
 
@@ -39,18 +41,21 @@ public class SM_DIE extends AionServerPacket
 	@Override
 	protected void writeImpl(AionConnection con, ByteBuffer buf)
 	{
+		Player player = con.getActivePlayer();
 		// 6660 was sniffed from another free server.
 		// If anyone has retail SM_DIE data from retail please feel free to update the last dword.
 		int kiskReviveDelay = (this.reviveType == ReviveType.KISK_REVIVE ? 6660 : 0); 
-		
+				
 		writeC(buf, 0); // skillRevive
 		
 		/*
 		 * Demo mode
 		 */
 		
-		if(con.getActivePlayer().getInventory().getItemCountByItemId(161000004) >= 1)
+		if(player.getInventory().getItemCountByItemId(161000004) >= 1 && player.getItemCoolDown(161000004) == 0)
 		{
+			//Item reviveItem = con.getActivePlayer().getInventory().getFirstItemByItemId(161000004);
+			con.getActivePlayer().getReviveController().setUsedItemId(161000004);
 			writeD(buf, 161000004);
 		}
 		else

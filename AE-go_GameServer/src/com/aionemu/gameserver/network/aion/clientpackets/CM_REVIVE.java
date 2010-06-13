@@ -64,6 +64,9 @@ public class CM_REVIVE extends AionClientPacket
 			case SKILL_REVIVE:
 				activePlayer.getReviveController().skillRevive();
 				break;
+			case ITEM_REVIVE:
+				activePlayer.getReviveController().itemRevive();
+				break;
 			case KISK_REVIVE:
 				activePlayer.getReviveController().kiskRevive();
 				break;

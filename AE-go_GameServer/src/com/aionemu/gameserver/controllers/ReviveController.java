@@ -34,11 +34,34 @@ public class ReviveController
 	TeleportService	teleportService;
 
 	private Player	player;
+	
+	private int usedItemId = 0;
+	private int usedSkillId = 0;
 
 	public ReviveController(Player player)
 	{
 		this.player = player;
 		this.teleportService = player.getController().sp.getTeleportService();
+	}
+	
+	public int getUsedItemId()
+	{
+		return usedItemId;
+	}
+	
+	public void setUsedItemId(int itemId)
+	{
+		usedItemId = itemId;
+	}
+	
+	public int getUsedSkillId()
+	{
+		return usedSkillId;
+	}
+	
+	public void setUsedSkillId(int skillId)
+	{
+		usedSkillId = skillId;
 	}
 
 	/**
@@ -47,6 +70,22 @@ public class ReviveController
 	public void skillRevive()
 	{
 		revive(10, 10);
+		PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, 14), true);
+
+		PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.REVIVE);
+		PacketSendUtility.sendPacket(player, new SM_STATS_INFO(player));
+	}
+	
+	public void itemRevive()
+	{
+		
+		if(usedItemId != 0 && player.getInventory().getItemCountByItemId(usedItemId) >= 1)
+		{
+			player.getInventory().removeFromBagByItemId(usedItemId, 1);
+			usedItemId = 0;
+		}
+		
+		revive(15, 15);
 		PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, 14), true);
 
 		PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.REVIVE);
