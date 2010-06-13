@@ -79,7 +79,7 @@ public class ReviveController
 		
 		if(usedSkillId != 0 && player.getSkillList().isSkillPresent(1169) && !player.isSkillDisabled(1169))
 		{
-			player.setSkillCoolDown(1169, 180000);
+			player.setSkillCoolDown(1169, 180002 + System.currentTimeMillis());
 			PacketSendUtility.sendPacket(player, new SM_SKILL_COOLDOWN(player.getSkillCoolDowns()));
 		}
 		
