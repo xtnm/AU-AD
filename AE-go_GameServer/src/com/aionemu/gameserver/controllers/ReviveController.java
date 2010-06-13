@@ -24,6 +24,8 @@ import com.aionemu.gameserver.network.aion.serverpackets.SM_PLAYER_INFO;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_STATS_INFO;
 import com.aionemu.gameserver.network.aion.serverpackets.SM_SYSTEM_MESSAGE;
 import com.aionemu.gameserver.services.TeleportService;
+import com.aionemu.gameserver.skillengine.SkillEngine;
+import com.aionemu.gameserver.skillengine.model.Skill;
 import com.aionemu.gameserver.utils.PacketSendUtility;
 
 /**
@@ -69,7 +71,14 @@ public class ReviveController
 	 */
 	public void skillRevive()
 	{
-		revive(10, 10);
+		
+		if(usedSkillId != 0 && player.getSkillList().isSkillPresent(1169) && !player.isSkillDisabled(1169))
+		{
+			Skill skill = SkillEngine.getInstance().getSkillFor(player, 1169, player);
+			skill.useSkill();
+		}
+		
+		//revive(10, 10);
 		PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, 14), true);
 
 		PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.REVIVE);
@@ -82,7 +91,6 @@ public class ReviveController
 		if(usedItemId != 0 && player.getInventory().getItemCountByItemId(usedItemId) >= 1)
 		{
 			player.getInventory().removeFromBagByItemId(usedItemId, 1);
-			usedItemId = 0;
 		}
 		
 		revive(15, 15);

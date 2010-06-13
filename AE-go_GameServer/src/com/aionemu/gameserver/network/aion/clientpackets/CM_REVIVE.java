@@ -74,5 +74,8 @@ public class CM_REVIVE extends AionClientPacket
 				break;
 		}
 		
+		activePlayer.getReviveController().setUsedItemId(0);
+		activePlayer.getReviveController().setUsedSkillId(0);
+		
 	}
 }
