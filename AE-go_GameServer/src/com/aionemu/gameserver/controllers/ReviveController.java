@@ -78,7 +78,7 @@ public class ReviveController
 			skill.useSkill();
 		}
 		
-		//revive(10, 10);
+		//revive(30, 30);
 		PacketSendUtility.broadcastPacket(player, new SM_EMOTION(player, 14), true);
 
 		PacketSendUtility.sendPacket(player, SM_SYSTEM_MESSAGE.REVIVE);

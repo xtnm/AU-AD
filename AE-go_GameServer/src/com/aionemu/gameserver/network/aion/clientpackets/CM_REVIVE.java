@@ -16,6 +16,8 @@
  */
 package com.aionemu.gameserver.network.aion.clientpackets;
 
+import org.apache.log4j.Logger;
+
 import com.aionemu.gameserver.controllers.ReviveType;
 import com.aionemu.gameserver.model.gameobjects.player.Player;
 import com.aionemu.gameserver.network.aion.AionClientPacket;
@@ -27,6 +29,8 @@ import com.aionemu.gameserver.network.aion.AionClientPacket;
 public class CM_REVIVE extends AionClientPacket
 {
 	private int reviveId;
+	
+	private static final Logger log = Logger.getLogger(CM_REVIVE.class);
 	
 	/**
 	 * Constructs new instance of <tt>CM_REVIVE </tt> packet
@@ -44,6 +48,7 @@ public class CM_REVIVE extends AionClientPacket
 	protected void readImpl()
 	{
 		reviveId = readC();
+		log.info("Got revive id: " + reviveId);
 	}
 
 	/**
